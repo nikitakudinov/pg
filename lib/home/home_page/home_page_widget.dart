@@ -37,14 +37,39 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       if ((_model.apiResultxyl?.succeeded ?? true)) {
         FFAppState().update(() {
           FFAppState().authenticateduser = UserStruct(
-            id: getJsonField(
+            id: UserGroup.listuserbyuidCall.id(
               (_model.apiResultxyl?.jsonBody ?? ''),
-              r'''$[:].id''',
             ),
-            nickname: getJsonField(
-              (_model.apiResultxyl?.jsonBody ?? ''),
-              r'''$[:].nickname''',
-            ).toString().toString(),
+            nickname: UserGroup.listuserbyuidCall
+                .nickname(
+                  (_model.apiResultxyl?.jsonBody ?? ''),
+                )
+                .toString()
+                .toString(),
+            createdAt: UserGroup.listuserbyuidCall
+                .createdat(
+                  (_model.apiResultxyl?.jsonBody ?? ''),
+                )
+                .toString()
+                .toString(),
+            email: UserGroup.listuserbyuidCall
+                .email(
+                  (_model.apiResultxyl?.jsonBody ?? ''),
+                )
+                .toString()
+                .toString(),
+            tag: UserGroup.listuserbyuidCall
+                .tag(
+                  (_model.apiResultxyl?.jsonBody ?? ''),
+                )
+                .toString()
+                .toString(),
+            uid: UserGroup.listuserbyuidCall
+                .uid(
+                  (_model.apiResultxyl?.jsonBody ?? ''),
+                )
+                .toString()
+                .toString(),
           );
         });
         await showDialog(
@@ -129,6 +154,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               Text(
                 FFAppState().authenticateduser.nickname,
+                style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+              Text(
+                FFAppState().authenticateduser.createdAt,
+                style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+              Text(
+                FFAppState().authenticateduser.email,
+                style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+              Text(
+                'Hello World',
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
             ],

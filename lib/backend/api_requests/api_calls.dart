@@ -42,6 +42,31 @@ class ListuserbyuidCall {
       cache: false,
     );
   }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+      );
+  dynamic createdat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].created_at''',
+      );
+  dynamic nickname(dynamic response) => getJsonField(
+        response,
+        r'''$[:].nickname''',
+      );
+  dynamic uid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].uid''',
+      );
+  dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$[:].email''',
+      );
+  dynamic tag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tag''',
+      );
 }
 
 /// End USER Group Code
