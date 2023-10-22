@@ -36,7 +36,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         idList: currentUserUid,
       );
       if ((_model.apiResultxyl?.succeeded ?? true)) {
-        setState(() {
+        FFAppState().update(() {
           FFAppState().authenticateduser =
               UserStruct.fromMap((_model.apiResultxyl?.jsonBody ?? ''));
         });
