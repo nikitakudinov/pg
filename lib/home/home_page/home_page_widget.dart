@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -37,8 +36,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       );
       if ((_model.apiResultxyl?.succeeded ?? true)) {
         FFAppState().update(() {
-          FFAppState().authenticateduser =
-              UserStruct.fromMap((_model.apiResultxyl?.jsonBody ?? ''));
+          FFAppState().authenticateduser = UserStruct(
+            id: getJsonField(
+              (_model.apiResultxyl?.jsonBody ?? ''),
+              r'''$[:].id''',
+            ),
+            nickname: getJsonField(
+              (_model.apiResultxyl?.jsonBody ?? ''),
+              r'''$[:].nickname''',
+            ).toString().toString(),
+          );
         });
         await showDialog(
           context: context,
