@@ -1,18 +1,18 @@
 import '../database.dart';
 
-class CountryTable extends SupabaseTable<CountryRow> {
+class CountriesTable extends SupabaseTable<CountriesRow> {
   @override
-  String get tableName => 'Country';
+  String get tableName => 'countries';
 
   @override
-  CountryRow createRow(Map<String, dynamic> data) => CountryRow(data);
+  CountriesRow createRow(Map<String, dynamic> data) => CountriesRow(data);
 }
 
-class CountryRow extends SupabaseDataRow {
-  CountryRow(Map<String, dynamic> data) : super(data);
+class CountriesRow extends SupabaseDataRow {
+  CountriesRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => CountryTable();
+  SupabaseTable get table => CountriesTable();
 
   String get iso2 => getField<String>('Iso2')!;
   set iso2(String value) => setField<String>('Iso2', value);

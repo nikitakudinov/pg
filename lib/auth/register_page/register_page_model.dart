@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -15,22 +17,26 @@ class RegisterPageModel extends FlutterFlowModel<RegisterPageWidget> {
   FocusNode? emailFocusNode;
   TextEditingController? emailController;
   String? Function(BuildContext, String?)? emailControllerValidator;
+  // State field(s) for nickname widget.
+  FocusNode? nicknameFocusNode;
+  TextEditingController? nicknameController;
+  String? Function(BuildContext, String?)? nicknameControllerValidator;
   // State field(s) for password widget.
-  FocusNode? passwordFocusNode1;
-  TextEditingController? passwordController1;
-  late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? passwordController1Validator;
-  // State field(s) for password widget.
-  FocusNode? passwordFocusNode2;
-  TextEditingController? passwordController2;
-  late bool passwordVisibility2;
-  String? Function(BuildContext, String?)? passwordController2Validator;
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordControllerValidator;
+  // State field(s) for repassword widget.
+  FocusNode? repasswordFocusNode;
+  TextEditingController? repasswordController;
+  late bool repasswordVisibility;
+  String? Function(BuildContext, String?)? repasswordControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    passwordVisibility1 = false;
-    passwordVisibility2 = false;
+    passwordVisibility = false;
+    repasswordVisibility = false;
   }
 
   void dispose() {
@@ -38,11 +44,14 @@ class RegisterPageModel extends FlutterFlowModel<RegisterPageWidget> {
     emailFocusNode?.dispose();
     emailController?.dispose();
 
-    passwordFocusNode1?.dispose();
-    passwordController1?.dispose();
+    nicknameFocusNode?.dispose();
+    nicknameController?.dispose();
 
-    passwordFocusNode2?.dispose();
-    passwordController2?.dispose();
+    passwordFocusNode?.dispose();
+    passwordController?.dispose();
+
+    repasswordFocusNode?.dispose();
+    repasswordController?.dispose();
   }
 
   /// Action blocks are added here.

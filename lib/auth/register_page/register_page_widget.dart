@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -27,10 +29,12 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
 
     _model.emailController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
-    _model.passwordController1 ??= TextEditingController();
-    _model.passwordFocusNode1 ??= FocusNode();
-    _model.passwordController2 ??= TextEditingController();
-    _model.passwordFocusNode2 ??= FocusNode();
+    _model.nicknameController ??= TextEditingController();
+    _model.nicknameFocusNode ??= FocusNode();
+    _model.passwordController ??= TextEditingController();
+    _model.passwordFocusNode ??= FocusNode();
+    _model.repasswordController ??= TextEditingController();
+    _model.repasswordFocusNode ??= FocusNode();
   }
 
   @override
@@ -128,9 +132,53 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 15.0),
                   child: TextFormField(
-                    controller: _model.passwordController1,
-                    focusNode: _model.passwordFocusNode1,
-                    obscureText: !_model.passwordVisibility1,
+                    controller: _model.nicknameController,
+                    focusNode: _model.nicknameFocusNode,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Никнейм',
+                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedErrorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    validator:
+                        _model.nicknameControllerValidator.asValidator(context),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 15.0),
+                  child: TextFormField(
+                    controller: _model.passwordController,
+                    focusNode: _model.passwordFocusNode,
+                    obscureText: !_model.passwordVisibility,
                     decoration: InputDecoration(
                       labelText: 'Пароль',
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -165,12 +213,12 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                       ),
                       suffixIcon: InkWell(
                         onTap: () => setState(
-                          () => _model.passwordVisibility1 =
-                              !_model.passwordVisibility1,
+                          () => _model.passwordVisibility =
+                              !_model.passwordVisibility,
                         ),
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
-                          _model.passwordVisibility1
+                          _model.passwordVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                           size: 22,
@@ -178,16 +226,16 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator: _model.passwordController1Validator
-                        .asValidator(context),
+                    validator:
+                        _model.passwordControllerValidator.asValidator(context),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 15.0),
                   child: TextFormField(
-                    controller: _model.passwordController2,
-                    focusNode: _model.passwordFocusNode2,
-                    obscureText: !_model.passwordVisibility2,
+                    controller: _model.repasswordController,
+                    focusNode: _model.repasswordFocusNode,
+                    obscureText: !_model.repasswordVisibility,
                     decoration: InputDecoration(
                       labelText: 'Повторите пароль',
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -222,12 +270,12 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                       ),
                       suffixIcon: InkWell(
                         onTap: () => setState(
-                          () => _model.passwordVisibility2 =
-                              !_model.passwordVisibility2,
+                          () => _model.repasswordVisibility =
+                              !_model.repasswordVisibility,
                         ),
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
-                          _model.passwordVisibility2
+                          _model.repasswordVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                           size: 22,
@@ -235,7 +283,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator: _model.passwordController2Validator
+                    validator: _model.repasswordControllerValidator
                         .asValidator(context),
                   ),
                 ),
@@ -247,8 +295,38 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (_model.passwordController.text !=
+                                _model.repasswordController.text) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Passwords don\'t match!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              _model.emailController.text,
+                              _model.passwordController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            await UsersTable().insert({
+                              'nickname': _model.nicknameController.text,
+                              'uid': currentUserUid,
+                              'email': _model.emailController.text,
+                              'tag': 'вне команы',
+                            });
+
+                            context.goNamedAuth('HomePage', context.mounted);
                           },
                           text: 'Регистрация',
                           options: FFButtonOptions(
