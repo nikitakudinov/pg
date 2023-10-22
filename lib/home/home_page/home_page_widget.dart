@@ -165,7 +165,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Text(
-                'Hello World',
+                FFAppState().authenticateduser.tag,
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
             ],
