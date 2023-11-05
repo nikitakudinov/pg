@@ -102,6 +102,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'RegisterPage',
           path: '/registerPage',
           builder: (context, params) => RegisterPageWidget(),
+        ),
+        FFRoute(
+          name: 'CHATS',
+          path: '/chats',
+          builder: (context, params) => ChatsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

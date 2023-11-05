@@ -28,6 +28,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     _model.emailController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
+
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
   }
