@@ -34,6 +34,35 @@ class FFAppState extends ChangeNotifier {
   void updateAuthenticateduserStruct(Function(UserStruct) updateFn) {
     updateFn(_authenticateduser);
   }
+
+  List<ChatmemberStruct> _chatmembes = [];
+  List<ChatmemberStruct> get chatmembes => _chatmembes;
+  set chatmembes(List<ChatmemberStruct> _value) {
+    _chatmembes = _value;
+  }
+
+  void addToChatmembes(ChatmemberStruct _value) {
+    _chatmembes.add(_value);
+  }
+
+  void removeFromChatmembes(ChatmemberStruct _value) {
+    _chatmembes.remove(_value);
+  }
+
+  void removeAtIndexFromChatmembes(int _index) {
+    _chatmembes.removeAt(_index);
+  }
+
+  void updateChatmembesAtIndex(
+    int _index,
+    ChatmemberStruct Function(ChatmemberStruct) updateFn,
+  ) {
+    _chatmembes[_index] = updateFn(_chatmembes[_index]);
+  }
+
+  void insertAtIndexInChatmembes(int _index, ChatmemberStruct _value) {
+    _chatmembes.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

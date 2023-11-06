@@ -73,7 +73,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
           title: Text(
             'Регистрация',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  fontFamily: 'Roboto Condensed',
                   color: Colors.white,
                   fontSize: 22.0,
                 ),
@@ -344,7 +344,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Readex Pro',
+                                  fontFamily: 'Cabin Condensed',
                                   color: Colors.white,
                                 ),
                             elevation: 3.0,
