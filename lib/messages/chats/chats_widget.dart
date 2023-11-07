@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -139,6 +140,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           builder: (context) {
                                             final chatMembrsIds =
                                                 listViewChatsRow.chatMembers
+                                                    .where((e) =>
+                                                        e != currentUserUid)
                                                     .toList();
                                             return Row(
                                               mainAxisSize: MainAxisSize.max,
