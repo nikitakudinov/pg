@@ -14,8 +14,8 @@ class UsersRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => UsersTable();
 
-  int get id => getField<int>('id')!;
-  set id(int value) => setField<int>('id', value);
+  int get userId => getField<int>('user_id')!;
+  set userId(int value) => setField<int>('user_id', value);
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
@@ -23,12 +23,15 @@ class UsersRow extends SupabaseDataRow {
   String? get nickname => getField<String>('nickname');
   set nickname(String? value) => setField<String>('nickname', value);
 
-  String? get uid => getField<String>('uid');
-  set uid(String? value) => setField<String>('uid', value);
+  String get uid => getField<String>('uid')!;
+  set uid(String value) => setField<String>('uid', value);
 
   String? get email => getField<String>('email');
   set email(String? value) => setField<String>('email', value);
 
   String? get tag => getField<String>('tag');
   set tag(String? value) => setField<String>('tag', value);
+
+  String? get avatar => getField<String>('avatar');
+  set avatar(String? value) => setField<String>('avatar', value);
 }
