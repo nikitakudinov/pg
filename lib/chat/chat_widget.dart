@@ -12,10 +12,11 @@ export 'chat_model.dart';
 class ChatWidget extends StatefulWidget {
   const ChatWidget({
     Key? key,
-    required this.chatId,
-  }) : super(key: key);
+    int? chatId,
+  })  : this.chatId = chatId ?? 0,
+        super(key: key);
 
-  final int? chatId;
+  final int chatId;
 
   @override
   _ChatWidgetState createState() => _ChatWidgetState();
@@ -137,101 +138,69 @@ class _ChatWidgetState extends State<ChatWidget> {
                     itemBuilder: (context, listViewIndex) {
                       final listViewMessagesRow =
                           listViewMessagesRowList[listViewIndex];
-                      return FutureBuilder<List<UsersRow>>(
-                        future: UsersTable().querySingleRow(
-                          queryFn: (q) => q.eq(
-                            'uid',
-                            listViewMessagesRow.sander,
-                          ),
+                      return Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
-                                ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: 40.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
-                            );
-                          }
-                          List<UsersRow> containerUsersRowList = snapshot.data!;
-                          final containerUsersRow =
-                              containerUsersRowList.isNotEmpty
-                                  ? containerUsersRowList.first
-                                  : null;
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: Image.network(
+                                  'https://picsum.photos/seed/816/600',
                                   width: 40.0,
                                   height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Hello World',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(0.0),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/816/600',
-                                      width: 40.0,
-                                      height: 40.0,
-                                      fit: BoxFit.cover,
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                     ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        containerUsersRow!.nickname!,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                      Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Text(
-                                          listViewMessagesRow.message!,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      dateTimeFormat(
-                                          'Hm', listViewMessagesRow.createdAt),
+                                    child: Text(
+                                      listViewMessagesRow.message!,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
-                                  ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  dateTimeFormat(
+                                      'Hm', listViewMessagesRow.createdAt),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ],
                             ),
-                          );
-                        },
+                          ],
+                        ),
                       );
                     },
                   );
