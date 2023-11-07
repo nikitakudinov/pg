@@ -108,121 +108,140 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0x74F2C94C),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(0.0),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/532/600',
-                                      width: 50.0,
-                                      height: 50.0,
-                                      fit: BoxFit.cover,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'CHAT',
+                                  queryParameters: {
+                                    'chatId': serializeParam(
+                                      listViewChatsRow.id,
+                                      ParamType.int,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: Color(0x74F2C94C),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.network(
+                                        'https://picsum.photos/seed/532/600',
+                                        width: 50.0,
+                                        height: 50.0,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Builder(
-                                          builder: (context) {
-                                            final chatMembrsIds =
-                                                listViewChatsRow.chatMembers
-                                                    .where((e) =>
-                                                        e != currentUserUid)
-                                                    .toList();
-                                            return Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: List.generate(
-                                                  chatMembrsIds.length,
-                                                  (chatMembrsIdsIndex) {
-                                                final chatMembrsIdsItem =
-                                                    chatMembrsIds[
-                                                        chatMembrsIdsIndex];
-                                                return FutureBuilder<
-                                                    List<UsersRow>>(
-                                                  future: UsersTable()
-                                                      .querySingleRow(
-                                                    queryFn: (q) => q.eq(
-                                                      'uid',
-                                                      chatMembrsIdsItem,
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Builder(
+                                            builder: (context) {
+                                              final chatMembrsIds =
+                                                  listViewChatsRow
+                                                      .chatMembers
+                                                      .where((e) =>
+                                                          e != currentUserUid)
+                                                      .toList();
+                                              return Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: List.generate(
+                                                    chatMembrsIds.length,
+                                                    (chatMembrsIdsIndex) {
+                                                  final chatMembrsIdsItem =
+                                                      chatMembrsIds[
+                                                          chatMembrsIdsIndex];
+                                                  return FutureBuilder<
+                                                      List<UsersRow>>(
+                                                    future: UsersTable()
+                                                        .querySingleRow(
+                                                      queryFn: (q) => q.eq(
+                                                        'uid',
+                                                        chatMembrsIdsItem,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                CircularProgressIndicator(
+                                                              valueColor:
+                                                                  AlwaysStoppedAnimation<
+                                                                      Color>(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
+                                                        );
+                                                      }
+                                                      List<UsersRow>
+                                                          textUsersRowList =
+                                                          snapshot.data!;
+                                                      final textUsersRow =
+                                                          textUsersRowList
+                                                                  .isNotEmpty
+                                                              ? textUsersRowList
+                                                                  .first
+                                                              : null;
+                                                      return Text(
+                                                        textUsersRow!.nickname!,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium,
                                                       );
-                                                    }
-                                                    List<UsersRow>
-                                                        textUsersRowList =
-                                                        snapshot.data!;
-                                                    final textUsersRow =
-                                                        textUsersRowList
-                                                                .isNotEmpty
-                                                            ? textUsersRowList
-                                                                .first
-                                                            : null;
-                                                    return Text(
-                                                      textUsersRow!.nickname!,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium,
-                                                    );
-                                                  },
-                                                );
-                                              }),
-                                            );
-                                          },
-                                        ),
-                                        Text(
-                                          listViewChatsRow.lastMessage!,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                      ],
+                                                    },
+                                                  );
+                                                }),
+                                              );
+                                            },
+                                          ),
+                                          Text(
+                                            listViewChatsRow.lastMessage!,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      dateTimeFormat(
-                                          'Hm', listViewChatsRow.createdAt),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        dateTimeFormat(
+                                            'Hm', listViewChatsRow.createdAt),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(

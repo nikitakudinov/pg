@@ -220,6 +220,8 @@ dynamic deserializeParam<T>(
             return CountriesRow(data);
           case TeamsRow:
             return TeamsRow(data);
+          case MessagesRow:
+            return MessagesRow(data);
           case ChatsRow:
             return ChatsRow(data);
           case TeamMembersRow:
