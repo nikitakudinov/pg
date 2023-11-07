@@ -167,10 +167,42 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Hello World',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  FutureBuilder<List<UsersRow>>(
+                                    future: UsersTable().querySingleRow(
+                                      queryFn: (q) => q.eq(
+                                        'uid',
+                                        listViewMessagesRow.sander,
+                                      ),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<UsersRow> textUsersRowList =
+                                          snapshot.data!;
+                                      final textUsersRow =
+                                          textUsersRowList.isNotEmpty
+                                              ? textUsersRowList.first
+                                              : null;
+                                      return Text(
+                                        'Hello World',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      );
+                                    },
                                   ),
                                   Container(
                                     width:
