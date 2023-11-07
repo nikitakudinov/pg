@@ -198,7 +198,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                               ? textUsersRowList.first
                                               : null;
                                       return Text(
-                                        textUsersRow!.nickname!,
+                                        'Hello World',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       );
