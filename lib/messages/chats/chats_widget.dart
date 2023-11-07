@@ -1,4 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -79,10 +78,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<ChatsRow>>(
                   future: ChatsTable().queryRows(
-                    queryFn: (q) => q.contains(
-                      'chat_members',
-                      '{' + currentUserUid + '}',
-                    ),
+                    queryFn: (q) => q,
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
