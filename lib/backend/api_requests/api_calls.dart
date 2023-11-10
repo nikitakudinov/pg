@@ -19,6 +19,7 @@ class UserGroup {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
   };
   static ListuserbyuidCall listuserbyuidCall = ListuserbyuidCall();
+  static ListusersCall listusersCall = ListusersCall();
 }
 
 class ListuserbyuidCall {
@@ -69,7 +70,125 @@ class ListuserbyuidCall {
       );
 }
 
+class ListusersCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LISTUSERS',
+      apiUrl: '${UserGroup.baseUrl}users?select=*,teams(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+      );
+  dynamic createdat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].created_at''',
+        true,
+      );
+  dynamic nickname(dynamic response) => getJsonField(
+        response,
+        r'''$[:].nickname''',
+        true,
+      );
+  dynamic uid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].uid''',
+        true,
+      );
+  dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$[:].email''',
+        true,
+      );
+  dynamic tag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tag''',
+        true,
+      );
+}
+
 /// End USER Group Code
+
+/// Start TOURNAMENT Group Code
+
+class TournamentGroup {
+  static String baseUrl = 'https://supabase.proplayclub.ru/rest/v1/';
+  static Map<String, String> headers = {
+    'apikey':
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+    'Authorization':
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+  };
+  static ListtournamentsCall listtournamentsCall = ListtournamentsCall();
+}
+
+class ListtournamentsCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LISTTOURNAMENTS',
+      apiUrl: '${TournamentGroup.baseUrl}tournaments?id=in.%28${idList}%29',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      );
+  dynamic createdat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].created_at''',
+        true,
+      );
+  dynamic nickname(dynamic response) => getJsonField(
+        response,
+        r'''$[:].nickname''',
+      );
+  dynamic uid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].uid''',
+      );
+  dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$[:].email''',
+      );
+  dynamic tag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tag''',
+      );
+}
+
+/// End TOURNAMENT Group Code
 
 /// Start MESSAGING Group Code
 

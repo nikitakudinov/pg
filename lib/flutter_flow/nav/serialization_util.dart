@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/schema/structs/index.dart';
+
 import '/backend/supabase/supabase.dart';
 
 import '../../flutter_flow/lat_lng.dart';
@@ -214,20 +215,16 @@ dynamic deserializeParam<T>(
       case ParamType.SupabaseRow:
         final data = json.decode(param) as Map<String, dynamic>;
         switch (T) {
-          case ChatMembersRow:
-            return ChatMembersRow(data);
           case CountriesRow:
             return CountriesRow(data);
           case TeamsRow:
             return TeamsRow(data);
-          case MessagesRow:
-            return MessagesRow(data);
-          case ChatsRow:
-            return ChatsRow(data);
-          case TeamMembersRow:
-            return TeamMembersRow(data);
+          case TournamentsRow:
+            return TournamentsRow(data);
           case UsersRow:
             return UsersRow(data);
+          case MatchesRow:
+            return MatchesRow(data);
           default:
             return null;
         }

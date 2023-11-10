@@ -14,12 +14,24 @@ class TeamsRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => TeamsTable();
 
-  int get teamId => getField<int>('team_id')!;
-  set teamId(int value) => setField<int>('team_id', value);
+  int get id => getField<int>('id')!;
+  set id(int value) => setField<int>('id', value);
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  String? get name => getField<String>('name');
-  set name(String? value) => setField<String>('name', value);
+  String? get teamName => getField<String>('teamName');
+  set teamName(String? value) => setField<String>('teamName', value);
+
+  String? get teamTag => getField<String>('teamTag');
+  set teamTag(String? value) => setField<String>('teamTag', value);
+
+  String? get teamLogo => getField<String>('teamLogo');
+  set teamLogo(String? value) => setField<String>('teamLogo', value);
+
+  int? get teamOwner => getField<int>('teamOwner');
+  set teamOwner(int? value) => setField<int>('teamOwner', value);
+
+  List<int> get teamMembers => getListField<int>('teamMembers');
+  set teamMembers(List<int>? value) => setListField<int>('teamMembers', value);
 }

@@ -34,4 +34,7 @@ class UsersRow extends SupabaseDataRow {
 
   String? get avatar => getField<String>('avatar');
   set avatar(String? value) => setField<String>('avatar', value);
+
+  int? get teamId => getField<int>('teamId');
+  set teamId(int? value) => setField<int>('teamId', value);
 }

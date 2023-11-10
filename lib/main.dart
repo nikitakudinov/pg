@@ -120,7 +120,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'CHATS': ChatsWidget(),
+      'TEAMS': TeamsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -149,10 +149,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.chat_bubble,
+              Icons.groups,
               size: 24.0,
             ),
-            label: 'Сообщения',
+            label: 'Команды',
             tooltip: '',
           )
         ],

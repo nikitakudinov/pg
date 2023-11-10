@@ -6,6 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
+
 import '/backend/supabase/supabase.dart';
 import '/auth/base_auth_user_provider.dart';
 
@@ -106,17 +107,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RegisterPageWidget(),
         ),
         FFRoute(
-          name: 'CHATS',
-          path: '/chats',
+          name: 'TEAMS',
+          path: '/teams',
           builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'CHATS') : ChatsWidget(),
-        ),
-        FFRoute(
-          name: 'CHAT',
-          path: '/chat',
-          builder: (context, params) => ChatWidget(
-            chatId: params.getParam('chatId', ParamType.int),
-          ),
+              params.isEmpty ? NavBarPage(initialPage: 'TEAMS') : TeamsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
