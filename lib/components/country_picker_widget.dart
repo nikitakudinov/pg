@@ -43,6 +43,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
     context.watch<FFAppState>();
 
     return SingleChildScrollView(
+      primary: false,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -74,7 +75,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
-                              'https://picsum.photos/seed/360/600',
+                              _model.selectedFlag,
                               width: 24.0,
                               height: 16.0,
                               fit: BoxFit.cover,
