@@ -213,7 +213,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 child: Image.network(
-                                                  listViewTeamsRow.teamTag!,
+                                                  listViewTeamsRow.teamFlag!,
                                                   width: 24.0,
                                                   height: 16.0,
                                                   fit: BoxFit.cover,
