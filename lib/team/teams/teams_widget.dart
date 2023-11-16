@@ -191,6 +191,11 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
+                                        listViewTeamsRow.teamTag!,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall,
+                                      ),
+                                      Text(
                                         listViewTeamsRow.teamName!,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
