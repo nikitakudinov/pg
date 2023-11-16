@@ -284,7 +284,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                       child: TextFormField(
                         controller: _model.teamNameController,
                         focusNode: _model.teamNameFocusNode,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Название',
@@ -330,7 +329,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                       child: TextFormField(
                         controller: _model.teamTagController,
                         focusNode: _model.teamTagFocusNode,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Тэг',
@@ -408,20 +406,26 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await TeamsTable().insert({
-                            'team_created_at':
-                                supaSerialize<DateTime>(getCurrentTimestamp),
-                            'team_updated_at':
-                                supaSerialize<DateTime>(getCurrentTimestamp),
-                            'team_name': _model.teamNameController.text,
-                            'team_tag': _model.teamTagController.text,
-                            'team_flag': 'https://flagcdn.com/h24/be.png',
-                            'team_country': 'Бельгия',
-                            'team_creator': currentUserUid,
-                            'team_logo': _model.logo,
-                            'team_recruitment': true,
-                            'team_status': 'Актив',
-                          });
+                          await TeamsTable().update(
+                            data: {
+                              'team_created_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'team_updated_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'team_name': _model.teamNameController.text,
+                              'team_tag': _model.teamTagController.text,
+                              'team_flag': 'https://flagcdn.com/h24/be.png',
+                              'team_country': 'Бельгия',
+                              'team_creator': currentUserUid,
+                              'team_logo': _model.logo,
+                              'team_recruitment': true,
+                              'team_status': 'Актив',
+                            },
+                            matchingRows: (rows) => rows.eq(
+                              'team_id',
+                              widget.teamID,
+                            ),
+                          );
 
                           context.pushNamed('TEAMS');
                         },
