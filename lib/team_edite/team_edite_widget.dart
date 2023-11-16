@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -370,6 +371,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                     ),
                   ],
                 ),
+              ),
+              wrapWithModel(
+                model: _model.countryPickerModel,
+                updateCallback: () => setState(() {}),
+                child: CountryPickerWidget(),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 50.0, 15.0, 0.0),

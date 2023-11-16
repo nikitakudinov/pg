@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -39,10 +40,14 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   FocusNode? teamTagFocusNode;
   TextEditingController? teamTagController;
   String? Function(BuildContext, String?)? teamTagControllerValidator;
+  // Model for countryPicker component.
+  late CountryPickerModel countryPickerModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    countryPickerModel = createModel(context, () => CountryPickerModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
@@ -51,6 +56,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
     teamTagFocusNode?.dispose();
     teamTagController?.dispose();
+
+    countryPickerModel.dispose();
   }
 
   /// Action blocks are added here.
