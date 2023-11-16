@@ -218,36 +218,38 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                       ),
                     ),
                   ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      await deleteSupabaseFileFromPublicUrl(
-                          _model.uploadedFileUrl);
-                      setState(() {
-                        _model.logo =
-                            'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png';
-                      });
-                    },
-                    text: 'Удалить',
-                    options: FFButtonOptions(
-                      width: 100.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Cabin Condensed',
-                                color: Colors.white,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                  if (_model.logo ==
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png')
+                    FFButtonWidget(
+                      onPressed: () async {
+                        await deleteSupabaseFileFromPublicUrl(
+                            _model.uploadedFileUrl);
+                        setState(() {
+                          _model.logo =
+                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png';
+                        });
+                      },
+                      text: 'Удалить',
+                      options: FFButtonOptions(
+                        width: 100.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(3.0),
                       ),
-                      borderRadius: BorderRadius.circular(3.0),
                     ),
-                  ),
                 ],
               ),
               Padding(
