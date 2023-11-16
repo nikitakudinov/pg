@@ -133,91 +133,96 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        final selectedMedia = await selectMedia(
-                          storageFolderPath: 'teamLogos',
-                          maxWidth: 150.00,
-                          maxHeight: 150.00,
-                          imageQuality: 100,
-                          mediaSource: MediaSource.photoGallery,
-                          multiImage: false,
-                        );
-                        if (selectedMedia != null &&
-                            selectedMedia.every((m) =>
-                                validateFileFormat(m.storagePath, context))) {
-                          setState(() => _model.isDataUploading = true);
-                          var selectedUploadedFiles = <FFUploadedFile>[];
+                  if (_model.logo ==
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png')
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          final selectedMedia = await selectMedia(
+                            storageFolderPath: 'teamLogos',
+                            maxWidth: 150.00,
+                            maxHeight: 150.00,
+                            imageQuality: 100,
+                            mediaSource: MediaSource.photoGallery,
+                            multiImage: false,
+                          );
+                          if (selectedMedia != null &&
+                              selectedMedia.every((m) =>
+                                  validateFileFormat(m.storagePath, context))) {
+                            setState(() => _model.isDataUploading = true);
+                            var selectedUploadedFiles = <FFUploadedFile>[];
 
-                          var downloadUrls = <String>[];
-                          try {
-                            showUploadMessage(
-                              context,
-                              'Uploading file...',
-                              showLoading: true,
-                            );
-                            selectedUploadedFiles = selectedMedia
-                                .map((m) => FFUploadedFile(
-                                      name: m.storagePath.split('/').last,
-                                      bytes: m.bytes,
-                                      height: m.dimensions?.height,
-                                      width: m.dimensions?.width,
-                                      blurHash: m.blurHash,
-                                    ))
-                                .toList();
+                            var downloadUrls = <String>[];
+                            try {
+                              showUploadMessage(
+                                context,
+                                'Uploading file...',
+                                showLoading: true,
+                              );
+                              selectedUploadedFiles = selectedMedia
+                                  .map((m) => FFUploadedFile(
+                                        name: m.storagePath.split('/').last,
+                                        bytes: m.bytes,
+                                        height: m.dimensions?.height,
+                                        width: m.dimensions?.width,
+                                        blurHash: m.blurHash,
+                                      ))
+                                  .toList();
 
-                            downloadUrls = await uploadSupabaseStorageFiles(
-                              bucketName: 'playground',
-                              selectedFiles: selectedMedia,
-                            );
-                          } finally {
-                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                            _model.isDataUploading = false;
+                              downloadUrls = await uploadSupabaseStorageFiles(
+                                bucketName: 'playground',
+                                selectedFiles: selectedMedia,
+                              );
+                            } finally {
+                              ScaffoldMessenger.of(context)
+                                  .hideCurrentSnackBar();
+                              _model.isDataUploading = false;
+                            }
+                            if (selectedUploadedFiles.length ==
+                                    selectedMedia.length &&
+                                downloadUrls.length == selectedMedia.length) {
+                              setState(() {
+                                _model.uploadedLocalFile =
+                                    selectedUploadedFiles.first;
+                                _model.uploadedFileUrl = downloadUrls.first;
+                              });
+                              showUploadMessage(context, 'Success!');
+                            } else {
+                              setState(() {});
+                              showUploadMessage(
+                                  context, 'Failed to upload data');
+                              return;
+                            }
                           }
-                          if (selectedUploadedFiles.length ==
-                                  selectedMedia.length &&
-                              downloadUrls.length == selectedMedia.length) {
-                            setState(() {
-                              _model.uploadedLocalFile =
-                                  selectedUploadedFiles.first;
-                              _model.uploadedFileUrl = downloadUrls.first;
-                            });
-                            showUploadMessage(context, 'Success!');
-                          } else {
-                            setState(() {});
-                            showUploadMessage(context, 'Failed to upload data');
-                            return;
-                          }
-                        }
 
-                        setState(() {
-                          _model.logo = _model.uploadedFileUrl;
-                        });
-                      },
-                      text: 'Загрузить ',
-                      options: FFButtonOptions(
-                        width: 100.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                          setState(() {
+                            _model.logo = _model.uploadedFileUrl;
+                          });
+                        },
+                        text: 'Загрузить ',
+                        options: FFButtonOptions(
+                          width: 100.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(3.0),
                         ),
-                        borderRadius: BorderRadius.circular(3.0),
                       ),
                     ),
-                  ),
                   if (_model.logo !=
                       'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png')
                     FFButtonWidget(
@@ -397,7 +402,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             'team_flag': 'https://flagcdn.com/h24/be.png',
                             'team_country': 'Бельгия',
                             'team_creator': currentUserUid,
-                            'team_logo': _model.uploadedFileUrl,
+                            'team_logo': _model.logo,
                             'team_recruitment': true,
                             'team_status': 'Актив',
                           });
