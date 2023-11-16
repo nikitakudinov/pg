@@ -50,10 +50,22 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
       }
     });
 
-    _model.teamNameController ??= TextEditingController();
+    _model.teamNameController ??= TextEditingController(
+        text: TeamGroup.listteambyuidCall
+            .teamnam(
+              (_model.apiResultsn8?.jsonBody ?? ''),
+            )
+            .toString()
+            .toString());
     _model.teamNameFocusNode ??= FocusNode();
 
-    _model.teamTagController ??= TextEditingController();
+    _model.teamTagController ??= TextEditingController(
+        text: TeamGroup.listteambyuidCall
+            .teamtag(
+              (_model.apiResultsn8?.jsonBody ?? ''),
+            )
+            .toString()
+            .toString());
     _model.teamTagFocusNode ??= FocusNode();
   }
 
