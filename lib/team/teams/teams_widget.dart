@@ -75,8 +75,8 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                   color: FlutterFlowTheme.of(context).secondaryText,
                   size: 30.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('TEAM_ADD');
                 },
               ),
             ),
