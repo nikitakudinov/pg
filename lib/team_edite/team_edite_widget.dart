@@ -46,26 +46,26 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
           _model.logo = TeamGroup.listteambyuidCall.teamlogo(
             (_model.apiResultsn8?.jsonBody ?? ''),
           );
+          _model.name = TeamGroup.listteambyuidCall
+              .teamnam(
+                (_model.apiResultsn8?.jsonBody ?? ''),
+              )
+              .toString()
+              .toString();
+          _model.tag = TeamGroup.listteambyuidCall
+              .teamtag(
+                (_model.apiResultsn8?.jsonBody ?? ''),
+              )
+              .toString()
+              .toString();
         });
       }
     });
 
-    _model.teamNameController ??= TextEditingController(
-        text: TeamGroup.listteambyuidCall
-            .teamnam(
-              (_model.apiResultsn8?.jsonBody ?? ''),
-            )
-            .toString()
-            .toString());
+    _model.teamNameController ??= TextEditingController(text: _model.name);
     _model.teamNameFocusNode ??= FocusNode();
 
-    _model.teamTagController ??= TextEditingController(
-        text: TeamGroup.listteambyuidCall
-            .teamtag(
-              (_model.apiResultsn8?.jsonBody ?? ''),
-            )
-            .toString()
-            .toString());
+    _model.teamTagController ??= TextEditingController(text: _model.tag);
     _model.teamTagFocusNode ??= FocusNode();
   }
 

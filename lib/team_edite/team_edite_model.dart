@@ -17,6 +17,10 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   String logo = 'false';
 
+  String name = '';
+
+  String tag = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
