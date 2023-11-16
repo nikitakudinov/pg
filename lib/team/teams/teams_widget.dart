@@ -136,6 +136,17 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 }.withoutNulls,
                               );
                             },
+                            onLongPress: () async {
+                              context.pushNamed(
+                                'TEAM_EDITE',
+                                queryParameters: {
+                                  'teamID': serializeParam(
+                                    listViewTeamsRow.teamId,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
