@@ -126,6 +126,11 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
 
                           var downloadUrls = <String>[];
                           try {
+                            showUploadMessage(
+                              context,
+                              'Uploading file...',
+                              showLoading: true,
+                            );
                             selectedUploadedFiles = selectedMedia
                                 .map((m) => FFUploadedFile(
                                       name: m.storagePath.split('/').last,
@@ -141,6 +146,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                               selectedFiles: selectedMedia,
                             );
                           } finally {
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
                             _model.isDataUploading = false;
                           }
                           if (selectedUploadedFiles.length ==
@@ -151,8 +157,10 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                   selectedUploadedFiles.first;
                               _model.uploadedFileUrl = downloadUrls.first;
                             });
+                            showUploadMessage(context, 'Success!');
                           } else {
                             setState(() {});
+                            showUploadMessage(context, 'Failed to upload data');
                             return;
                           }
                         }
