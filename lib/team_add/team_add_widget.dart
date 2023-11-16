@@ -192,8 +192,9 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                   ),
                   if (!_model.isDataUploading)
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await deleteSupabaseFileFromPublicUrl(
+                            _model.uploadedFileUrl);
                       },
                       text: 'Удалить',
                       options: FFButtonOptions(
