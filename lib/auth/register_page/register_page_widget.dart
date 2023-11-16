@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -323,13 +322,6 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                             if (user == null) {
                               return;
                             }
-
-                            await UsersTable().insert({
-                              'nickname': _model.nicknameController.text,
-                              'uid': currentUserUid,
-                              'email': _model.emailController.text,
-                              'tag': 'вне команы',
-                            });
 
                             context.goNamedAuth('HomePage', context.mounted);
                           },

@@ -111,6 +111,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/teams',
           builder: (context, params) =>
               params.isEmpty ? NavBarPage(initialPage: 'TEAMS') : TeamsWidget(),
+        ),
+        FFRoute(
+          name: 'TEAM_VIEW',
+          path: '/teamView',
+          builder: (context, params) => TeamViewWidget(
+            teamID: params.getParam('teamID', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

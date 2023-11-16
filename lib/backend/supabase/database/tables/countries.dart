@@ -14,14 +14,14 @@ class CountriesRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => CountriesTable();
 
-  String get iso2 => getField<String>('Iso2')!;
-  set iso2(String value) => setField<String>('Iso2', value);
+  String? get iso2 => getField<String>('Iso2');
+  set iso2(String? value) => setField<String>('Iso2', value);
 
   String? get enName => getField<String>('EnName');
   set enName(String? value) => setField<String>('EnName', value);
 
-  String? get ruName => getField<String>('RuName');
-  set ruName(String? value) => setField<String>('RuName', value);
+  String get ruName => getField<String>('RuName')!;
+  set ruName(String value) => setField<String>('RuName', value);
 
   String? get flagLink16x12 => getField<String>('FlagLink16x12');
   set flagLink16x12(String? value) => setField<String>('FlagLink16x12', value);

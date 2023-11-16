@@ -5,8 +5,8 @@ export '../supabase.dart';
 export 'row.dart';
 export 'table.dart';
 
+export 'tables/test_tenant.dart';
 export 'tables/countries.dart';
 export 'tables/teams.dart';
-export 'tables/tournaments.dart';
-export 'tables/users.dart';
-export 'tables/matches.dart';
+export 'tables/players.dart';
+export 'tables/team_members.dart';
