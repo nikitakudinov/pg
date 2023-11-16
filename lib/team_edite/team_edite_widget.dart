@@ -575,7 +575,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                           Text(
                                             '${listViewPlayersRow.playerTag} / ${listViewPlayersRow.playerNickname}',
                                             style: FlutterFlowTheme.of(context)
-                                                .titleLarge,
+                                                .titleSmall,
                                           ),
                                           Text(
                                             listViewPlayersRow.playerTeamRole!,
