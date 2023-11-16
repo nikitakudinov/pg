@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -318,6 +319,17 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                   ],
                 ),
               ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  child: wrapWithModel(
+                    model: _model.countryPickerModel,
+                    updateCallback: () => setState(() {}),
+                    child: CountryPickerWidget(),
+                  ),
+                ),
+              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 50.0, 15.0, 0.0),
                 child: Row(
@@ -360,8 +372,9 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                 supaSerialize<DateTime>(getCurrentTimestamp),
                             'team_name': _model.teamNameController.text,
                             'team_tag': _model.teamTagController.text,
-                            'team_flag': 'https://flagcdn.com/h24/be.png',
-                            'team_country': 'Бельгия',
+                            'team_flag': _model.countryPickerModel.selectedFlag,
+                            'team_country':
+                                _model.countryPickerModel.selectedCountry,
                             'team_creator': currentUserUid,
                             'team_logo': _model.uploadedFileUrl,
                             'team_recruitment': true,
