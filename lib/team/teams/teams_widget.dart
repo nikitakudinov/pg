@@ -167,8 +167,8 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 10.0, 10.0, 10.0),
                                     child: Container(
-                                      width: 40.0,
-                                      height: 40.0,
+                                      width: 55.0,
+                                      height: 55.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -178,8 +178,8 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
                                           listViewTeamsRow.teamLogo!,
-                                          width: 40.0,
-                                          height: 40.0,
+                                          width: 55.0,
+                                          height: 55.0,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
