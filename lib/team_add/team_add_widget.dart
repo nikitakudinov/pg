@@ -190,7 +190,8 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                       ),
                     ),
                   ),
-                  if (!_model.isDataUploading)
+                  if (_model.uploadedFileUrl ==
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png')
                     FFButtonWidget(
                       onPressed: () async {
                         await deleteSupabaseFileFromPublicUrl(
