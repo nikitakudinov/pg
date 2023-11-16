@@ -218,7 +218,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                       ),
                     ),
                   ),
-                  if (_model.logo ==
+                  if (_model.logo !=
                       'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png')
                     FFButtonWidget(
                       onPressed: () async {
