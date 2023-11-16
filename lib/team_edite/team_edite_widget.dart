@@ -376,10 +376,14 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                     ],
                   ),
                 ),
-                wrapWithModel(
-                  model: _model.countryPickerModel,
-                  updateCallback: () => setState(() {}),
-                  child: CountryPickerWidget(),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  child: wrapWithModel(
+                    model: _model.countryPickerModel,
+                    updateCallback: () => setState(() {}),
+                    child: CountryPickerWidget(),
+                  ),
                 ),
                 Padding(
                   padding:
