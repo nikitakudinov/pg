@@ -193,7 +193,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                       Text(
                                         listViewTeamsRow.teamTag!,
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineSmall,
+                                            .titleLarge,
                                       ),
                                       Text(
                                         listViewTeamsRow.teamName!,
