@@ -5,3 +5,4 @@ export '/auth/register_page/register_page_widget.dart' show RegisterPageWidget;
 export '/team/teams/teams_widget.dart' show TeamsWidget;
 export '/team_view/team_view_widget.dart' show TeamViewWidget;
 export '/team_add/team_add_widget.dart' show TeamAddWidget;
+export '/team_edite/team_edite_widget.dart' show TeamEditeWidget;
