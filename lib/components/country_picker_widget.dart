@@ -43,7 +43,6 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
     context.watch<FFAppState>();
 
     return SingleChildScrollView(
-      primary: false,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
