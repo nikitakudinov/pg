@@ -144,6 +144,14 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     listViewTeamsRow.teamId,
                                     ParamType.int,
                                   ),
+                                  'teamName': serializeParam(
+                                    listViewTeamsRow.teamName,
+                                    ParamType.String,
+                                  ),
+                                  'teamTag': serializeParam(
+                                    '',
+                                    ParamType.String,
+                                  ),
                                 }.withoutNulls,
                               );
                             },

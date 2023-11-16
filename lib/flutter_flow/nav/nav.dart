@@ -129,6 +129,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/teamEdite',
           builder: (context, params) => TeamEditeWidget(
             teamID: params.getParam('teamID', ParamType.int),
+            teamName: params.getParam('teamName', ParamType.String),
+            teamTag: params.getParam('teamTag', ParamType.String),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

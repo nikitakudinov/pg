@@ -17,10 +17,14 @@ class TeamEditeWidget extends StatefulWidget {
   const TeamEditeWidget({
     Key? key,
     int? teamID,
+    this.teamName,
+    this.teamTag,
   })  : this.teamID = teamID ?? 0,
         super(key: key);
 
   final int teamID;
+  final String? teamName;
+  final String? teamTag;
 
   @override
   _TeamEditeWidgetState createState() => _TeamEditeWidgetState();
@@ -62,10 +66,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
       }
     });
 
-    _model.teamNameController ??= TextEditingController(text: _model.name);
+    _model.teamNameController ??= TextEditingController(text: widget.teamName);
     _model.teamNameFocusNode ??= FocusNode();
 
-    _model.teamTagController ??= TextEditingController(text: _model.tag);
+    _model.teamTagController ??= TextEditingController(text: widget.teamTag);
     _model.teamTagFocusNode ??= FocusNode();
   }
 
