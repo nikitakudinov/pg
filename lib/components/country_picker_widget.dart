@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,14 @@ import 'country_picker_model.dart';
 export 'country_picker_model.dart';
 
 class CountryPickerWidget extends StatefulWidget {
-  const CountryPickerWidget({Key? key}) : super(key: key);
+  const CountryPickerWidget({
+    Key? key,
+    this.selectedCountry,
+    this.selectedFlag,
+  }) : super(key: key);
+
+  final String? selectedCountry;
+  final String? selectedFlag;
 
   @override
   _CountryPickerWidgetState createState() => _CountryPickerWidgetState();
@@ -29,6 +37,14 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CountryPickerModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.selectedCountry = widget.selectedCountry!;
+        _model.selectedFlag = widget.selectedFlag!;
+      });
+    });
   }
 
   @override

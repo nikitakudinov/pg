@@ -152,6 +152,14 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     listViewTeamsRow.teamTag,
                                     ParamType.String,
                                   ),
+                                  'teamCountry': serializeParam(
+                                    listViewTeamsRow.teamCountry,
+                                    ParamType.String,
+                                  ),
+                                  'teamFlag': serializeParam(
+                                    listViewTeamsRow.teamFlag,
+                                    ParamType.String,
+                                  ),
                                 }.withoutNulls,
                               );
                             },
@@ -162,6 +170,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(

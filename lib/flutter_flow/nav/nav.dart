@@ -131,6 +131,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             teamID: params.getParam('teamID', ParamType.int),
             teamName: params.getParam('teamName', ParamType.String),
             teamTag: params.getParam('teamTag', ParamType.String),
+            teamCountry: params.getParam('teamCountry', ParamType.String),
+            teamFlag: params.getParam('teamFlag', ParamType.String),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
