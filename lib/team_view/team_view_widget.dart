@@ -164,7 +164,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderRadius: BorderRadius.circular(0.0),
                                       child: Image.network(
                                         teamViewTeamsRow!.teamFlag!,
                                         width: 24.0,
