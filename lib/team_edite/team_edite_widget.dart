@@ -547,7 +547,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
+                                            10.0, 0.0, 10.0, 10.0),
                                         child: Container(
                                           width: 55.0,
                                           height: 55.0,
