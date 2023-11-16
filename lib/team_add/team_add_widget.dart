@@ -111,7 +111,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         final selectedMedia = await selectMedia(
-                          storageFolderPath: 'test',
+                          storageFolderPath: 'teamLogos',
                           maxWidth: 150.00,
                           maxHeight: 150.00,
                           imageQuality: 100,
@@ -142,7 +142,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                 .toList();
 
                             downloadUrls = await uploadSupabaseStorageFiles(
-                              bucketName: 'test',
+                              bucketName: 'playground',
                               selectedFiles: selectedMedia,
                             );
                           } finally {
