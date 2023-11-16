@@ -133,17 +133,13 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     .secondaryBackground,
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                              child: Visibility(
-                                visible: _model.uploadedFileUrl == null ||
-                                    _model.uploadedFileUrl == '',
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  child: Image.network(
-                                    _model.uploadedFileUrl,
-                                    width: 100.0,
-                                    height: 100.0,
-                                    fit: BoxFit.cover,
-                                  ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: Image.network(
+                                  teamEditeTeamsRow!.teamLogo!,
+                                  width: 100.0,
+                                  height: 100.0,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -159,13 +155,17 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     .secondaryBackground,
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5.0),
-                                child: Image.network(
-                                  teamEditeTeamsRow!.teamLogo!,
-                                  width: 100.0,
-                                  height: 100.0,
-                                  fit: BoxFit.cover,
+                              child: Visibility(
+                                visible: _model.uploadedFileUrl == null ||
+                                    _model.uploadedFileUrl == '',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  child: Image.network(
+                                    _model.uploadedFileUrl,
+                                    width: 100.0,
+                                    height: 100.0,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
