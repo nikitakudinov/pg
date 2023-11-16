@@ -43,6 +43,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
     context.watch<FFAppState>();
 
     return SingleChildScrollView(
+      primary: false,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -121,6 +122,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                   List<CountriesRow> listViewCountriesRowList = snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
+                    primary: false,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: listViewCountriesRowList.length,
