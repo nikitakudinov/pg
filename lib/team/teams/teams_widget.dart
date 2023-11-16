@@ -200,6 +200,35 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 10.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  listViewTeamsRow.teamTag!,
+                                                  width: 24.0,
+                                                  height: 16.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              listViewTeamsRow.teamCountry!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
