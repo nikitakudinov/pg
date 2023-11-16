@@ -149,7 +149,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     ParamType.String,
                                   ),
                                   'teamTag': serializeParam(
-                                    '',
+                                    listViewTeamsRow.teamTag,
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,
