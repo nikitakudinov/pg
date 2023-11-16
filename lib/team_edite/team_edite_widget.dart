@@ -430,8 +430,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     getCurrentTimestamp),
                                 'team_name': _model.teamNameController.text,
                                 'team_tag': _model.teamTagController.text,
-                                'team_flag': 'https://flagcdn.com/h24/be.png',
-                                'team_country': 'Бельгия',
+                                'team_flag':
+                                    _model.countryPickerModel.selectedFlag,
+                                'team_country':
+                                    _model.countryPickerModel.selectedCountry,
                                 'team_creator': currentUserUid,
                                 'team_logo': _model.logo,
                                 'team_recruitment': true,

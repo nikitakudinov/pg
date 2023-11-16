@@ -73,7 +73,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 5.0, 0.0),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(0.0),
                             child: Image.network(
                               _model.selectedFlag,
                               width: 24.0,
