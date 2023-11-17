@@ -14,9 +14,9 @@ class UserGroup {
   static String baseUrl = 'https://supabase.proplayclub.ru/rest/v1/';
   static Map<String, String> headers = {
     'apikey':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
     'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+        'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static ListuserbyuidCall listuserbyuidCall = ListuserbyuidCall();
   static ListusersCall listusersCall = ListusersCall();
@@ -28,13 +28,13 @@ class ListuserbyuidCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTUSERBYUID',
-      apiUrl: '${UserGroup.baseUrl}users?uid=in.%28${idList}%29',
+      apiUrl: '${UserGroup.baseUrl}players?player_id=in.%28${idList}%29',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
         'Authorization':
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
       },
       params: {},
       returnBody: true,
@@ -44,29 +44,45 @@ class ListuserbyuidCall {
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  dynamic playercreatedat(dynamic response) => getJsonField(
         response,
-        r'''$[:].id''',
+        r'''$[:].player_created_at''',
       );
-  dynamic createdat(dynamic response) => getJsonField(
+  dynamic playernickname(dynamic response) => getJsonField(
         response,
-        r'''$[:].created_at''',
+        r'''$[:].player_nickname''',
       );
-  dynamic nickname(dynamic response) => getJsonField(
+  dynamic playertag(dynamic response) => getJsonField(
         response,
-        r'''$[:].nickname''',
+        r'''$[:].player_tag''',
       );
-  dynamic uid(dynamic response) => getJsonField(
+  dynamic playerflag(dynamic response) => getJsonField(
         response,
-        r'''$[:].uid''',
+        r'''$[:].player_flag''',
       );
-  dynamic email(dynamic response) => getJsonField(
+  dynamic playercountrie(dynamic response) => getJsonField(
         response,
-        r'''$[:].email''',
+        r'''$[:].player_countrie''',
       );
-  dynamic tag(dynamic response) => getJsonField(
+  dynamic playeravatar(dynamic response) => getJsonField(
         response,
-        r'''$[:].tag''',
+        r'''$[:].player_avatar''',
+      );
+  dynamic playeruid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_uid''',
+      );
+  dynamic playerteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team''',
+      );
+  dynamic playerteamrole(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team_role''',
+      );
+  dynamic playerid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_id''',
       );
 }
 
@@ -80,9 +96,9 @@ class ListusersCall {
       callType: ApiCallType.GET,
       headers: {
         'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
         'Authorization':
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNjk3NDkwMDAwLAogICJleHAiOiAxODU1MzQyODAwCn0.GstXS2E-MRDa21g3c-jN67PbXZG9Cz8spj2pjoHheJA',
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
       },
       params: {},
       returnBody: true,
