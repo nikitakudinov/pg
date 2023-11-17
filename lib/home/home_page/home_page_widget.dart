@@ -100,15 +100,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               FutureBuilder<List<AlertsRow>>(
                 future: AlertsTable().queryRows(
-                  queryFn: (q) => q
-                      .eq(
-                        'to_user',
-                        currentUserUid,
-                      )
-                      .eq(
-                        'to_team',
-                        FFAppState().authenticateduser.team,
-                      ),
+                  queryFn: (q) => q.eq(
+                    'to_user',
+                    currentUserUid,
+                  ),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
