@@ -636,15 +636,28 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          _model.apiResultadv = await UserGroup
+                                              .listuserbyuidCall
+                                              .call(
+                                            idList: _model.textController3.text,
+                                          );
                                           await AlertsTable().insert({
                                             'created_at':
                                                 supaSerialize<DateTime>(
                                                     getCurrentTimestamp),
                                             'from_team': widget.teamID,
                                             'to_user':
-                                                _model.textController3.text,
+                                                UserGroup.listuserbyuidCall
+                                                    .playeruid(
+                                                      (_model.apiResultadv
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )
+                                                    .toString(),
                                             'type': 'Приглашение в команду',
                                           });
+
+                                          setState(() {});
                                         },
                                         text: 'ДА',
                                         options: FFButtonOptions(

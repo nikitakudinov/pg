@@ -47,6 +47,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String? Function(BuildContext, String?)? teamTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
+  // Stores action output result for [Backend Call - API (LISTUSERBYUID)] action in Button widget.
+  ApiCallResponse? apiResultadv;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
