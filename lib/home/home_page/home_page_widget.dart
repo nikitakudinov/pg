@@ -373,6 +373,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           containerTeamsRow
                                                               ?.teamId,
                                                     });
+                                                    await AlertsTable().delete(
+                                                      matchingRows: (rows) =>
+                                                          rows.eq(
+                                                        'id',
+                                                        listViewAlertsRow.id,
+                                                      ),
+                                                    );
                                                   },
                                                   text: 'ДА',
                                                   options: FFButtonOptions(
