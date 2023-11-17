@@ -5,6 +5,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -100,12 +101,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 FutureBuilder<List<AlertsRow>>(
-                  future: AlertsTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'to_user',
-                      currentUserUid,
-                    ),
-                  ),
+                  future:
+                      (_model.requestCompleter1 ??= Completer<List<AlertsRow>>()
+                            ..complete(AlertsTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'to_user',
+                                currentUserUid,
+                              ),
+                            )))
+                          .future,
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -403,6 +407,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           listViewAlertsRow.id,
                                                         ),
                                                       );
+                                                      setState(() => _model
+                                                              .requestCompleter1 =
+                                                          null);
+                                                      await _model
+                                                          .waitForRequestCompleted1();
                                                     },
                                                     text: 'ДА',
                                                     options: FFButtonOptions(
@@ -463,12 +472,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
                 FutureBuilder<List<AlertsRow>>(
-                  future: AlertsTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'to_team',
-                      FFAppState().authenticateduser.team,
-                    ),
-                  ),
+                  future:
+                      (_model.requestCompleter2 ??= Completer<List<AlertsRow>>()
+                            ..complete(AlertsTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'to_team',
+                                FFAppState().authenticateduser.team,
+                              ),
+                            )))
+                          .future,
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -663,6 +675,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       listViewAlertsRow.id,
                                                     ),
                                                   );
+                                                  setState(() =>
+                                                      _model.requestCompleter2 =
+                                                          null);
+                                                  await _model
+                                                      .waitForRequestCompleted2();
                                                 },
                                                 text: 'ЗАКРЫТЬ',
                                                 options: FFButtonOptions(
