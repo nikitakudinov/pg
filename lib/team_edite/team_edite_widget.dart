@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -76,6 +77,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
 
     _model.teamTagController ??= TextEditingController(text: widget.teamTag);
     _model.teamTagFocusNode ??= FocusNode();
+
+    _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -394,94 +398,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 50.0, 15.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            context.safePop();
-                          },
-                          text: 'Отмена',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await TeamsTable().update(
-                              data: {
-                                'team_created_at': supaSerialize<DateTime>(
-                                    getCurrentTimestamp),
-                                'team_updated_at': supaSerialize<DateTime>(
-                                    getCurrentTimestamp),
-                                'team_name': _model.teamNameController.text,
-                                'team_tag': _model.teamTagController.text,
-                                'team_flag':
-                                    _model.countryPickerModel.selectedFlag,
-                                'team_country':
-                                    _model.countryPickerModel.selectedCountry,
-                                'team_creator': currentUserUid,
-                                'team_logo': _model.logo,
-                                'team_recruitment': true,
-                                'team_status': 'Актив',
-                              },
-                              matchingRows: (rows) => rows.eq(
-                                'team_id',
-                                widget.teamID,
-                              ),
-                            );
-
-                            context.pushNamed('TEAMS');
-                          },
-                          text: 'Сохранить',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                      ),
-                    ].divide(SizedBox(width: 15.0)),
-                  ),
-                ),
-                Padding(
-                  padding:
                       EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
                   child: Container(
                     decoration: BoxDecoration(
@@ -492,6 +408,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                       children: [
                         Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -501,7 +418,242 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                 style: FlutterFlowTheme.of(context).titleMedium,
                               ),
                             ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderColor:
+                                    FlutterFlowTheme.of(context).tertiary,
+                                borderRadius: 3.0,
+                                buttonSize: 25.0,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).tertiary,
+                                icon: Icon(
+                                  Icons.add,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 10.0,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ),
                           ],
+                        ),
+                        FutureBuilder<List<PlayersRow>>(
+                          future: PlayersTable().querySingleRow(
+                            queryFn: (q) => q.eq(
+                              'player_id',
+                              int.tryParse(_model.textController3.text),
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<PlayersRow> containerPlayersRowList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final containerPlayersRow =
+                                containerPlayersRowList.isNotEmpty
+                                    ? containerPlayersRowList.first
+                                    : null;
+                            return Container(
+                              decoration: BoxDecoration(),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 10.0, 10.0),
+                                    child: Container(
+                                      width: 55.0,
+                                      height: 55.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: Image.network(
+                                          containerPlayersRow!.playerAvatar!,
+                                          width: 55.0,
+                                          height: 55.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${containerPlayersRow?.playerTag} / ${containerPlayersRow?.playerNickname}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall,
+                                      ),
+                                      Text(
+                                        containerPlayersRow!.playerTeamRole!,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 10.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  containerPlayersRow!
+                                                      .playerFlag!,
+                                                  width: 20.0,
+                                                  height: 12.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              containerPlayersRow!
+                                                  .playerCountrie!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController3,
+                                    focusNode: _model.textFieldFocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: '#UID игрока',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textController3Validator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 10.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    setState(() {
+                                      _model.messageConfirmInvintVISIBILITY =
+                                          true;
+                                    });
+                                  },
+                                  text: 'Найти',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          color: Colors.white,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(3.0),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         FutureBuilder<List<PlayersRow>>(
                           future: PlayersTable().queryRows(
@@ -627,6 +779,94 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 50.0, 15.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            context.safePop();
+                          },
+                          text: 'Отмена',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            await TeamsTable().update(
+                              data: {
+                                'team_created_at': supaSerialize<DateTime>(
+                                    getCurrentTimestamp),
+                                'team_updated_at': supaSerialize<DateTime>(
+                                    getCurrentTimestamp),
+                                'team_name': _model.teamNameController.text,
+                                'team_tag': _model.teamTagController.text,
+                                'team_flag':
+                                    _model.countryPickerModel.selectedFlag,
+                                'team_country':
+                                    _model.countryPickerModel.selectedCountry,
+                                'team_creator': currentUserUid,
+                                'team_logo': _model.logo,
+                                'team_recruitment': true,
+                                'team_status': 'Актив',
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'team_id',
+                                widget.teamID,
+                              ),
+                            );
+
+                            context.pushNamed('TEAMS');
+                          },
+                          text: 'Сохранить',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                      ),
+                    ].divide(SizedBox(width: 15.0)),
                   ),
                 ),
               ],

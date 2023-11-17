@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -21,6 +22,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String name = '';
 
   String tag = '';
+
+  bool messageConfirmInvintVISIBILITY = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -42,6 +45,10 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String? Function(BuildContext, String?)? teamTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
 
   /// Initialization and disposal methods.
 
@@ -58,6 +65,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
     teamTagController?.dispose();
 
     countryPickerModel.dispose();
+    textFieldFocusNode?.dispose();
+    textController3?.dispose();
   }
 
   /// Action blocks are added here.
