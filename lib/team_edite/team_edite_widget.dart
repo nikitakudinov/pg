@@ -656,6 +656,12 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     .toString(),
                                             'type': 'Приглашение в команду',
                                           });
+                                          setState(() {
+                                            _model.messageConfirmInvintVISIBILITY =
+                                                false;
+                                            _model.searchPlaerByIdVISIBILITY =
+                                                false;
+                                          });
 
                                           setState(() {});
                                         },
