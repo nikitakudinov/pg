@@ -635,8 +635,16 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          await AlertsTable().insert({
+                                            'created_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'from_team': widget.teamID,
+                                            'to_user':
+                                                _model.textController3.text,
+                                            'type': 'Приглашение в команду',
+                                          });
                                         },
                                         text: 'ДА',
                                         options: FFButtonOptions(

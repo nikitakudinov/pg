@@ -8,5 +8,6 @@ export 'table.dart';
 export 'tables/test_tenant.dart';
 export 'tables/countries.dart';
 export 'tables/teams.dart';
+export 'tables/alerts.dart';
 export 'tables/players.dart';
 export 'tables/team_members.dart';

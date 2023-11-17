@@ -221,6 +221,8 @@ dynamic deserializeParam<T>(
             return CountriesRow(data);
           case TeamsRow:
             return TeamsRow(data);
+          case AlertsRow:
+            return AlertsRow(data);
           case PlayersRow:
             return PlayersRow(data);
           case TeamMembersRow:
