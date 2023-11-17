@@ -420,6 +420,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           listViewAlertsRow.id,
                                                         ),
                                                       );
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .updateAuthenticateduserStruct(
+                                                          (e) => e
+                                                            ..team =
+                                                                listViewAlertsRow
+                                                                    .fromTeam,
+                                                        );
+                                                      });
                                                       setState(() => _model
                                                               .requestCompleter1 =
                                                           null);
