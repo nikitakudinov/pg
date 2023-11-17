@@ -20,8 +20,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ApiCallResponse? apiResultqcj;
   // Stores action output result for [Backend Call - Delete Row] action in Button widget.
   List<AlertsRow>? deliteAllers;
-  // Stores action output result for [Backend Call - Delete Row] action in Button widget.
-  List<AlertsRow>? deliteAllers1;
 
   /// Initialization and disposal methods.
 
