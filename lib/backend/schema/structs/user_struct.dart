@@ -13,12 +13,14 @@ class UserStruct extends BaseStruct {
     String? nickname,
     String? tag,
     String? uid,
+    int? team,
   })  : _id = id,
         _createdAt = createdAt,
         _email = email,
         _nickname = nickname,
         _tag = tag,
-        _uid = uid;
+        _uid = uid,
+        _team = team;
 
   // "id" field.
   int? _id;
@@ -57,6 +59,13 @@ class UserStruct extends BaseStruct {
   set uid(String? val) => _uid = val;
   bool hasUid() => _uid != null;
 
+  // "team" field.
+  int? _team;
+  int get team => _team ?? 0;
+  set team(int? val) => _team = val;
+  void incrementTeam(int amount) => _team = team + amount;
+  bool hasTeam() => _team != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
         id: castToType<int>(data['id']),
         createdAt: data['created_at'] as String?,
@@ -64,6 +73,7 @@ class UserStruct extends BaseStruct {
         nickname: data['nickname'] as String?,
         tag: data['tag'] as String?,
         uid: data['uid'] as String?,
+        team: castToType<int>(data['team']),
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -76,6 +86,7 @@ class UserStruct extends BaseStruct {
         'nickname': _nickname,
         'tag': _tag,
         'uid': _uid,
+        'team': _team,
       }.withoutNulls;
 
   @override
@@ -103,6 +114,10 @@ class UserStruct extends BaseStruct {
         'uid': serializeParam(
           _uid,
           ParamType.String,
+        ),
+        'team': serializeParam(
+          _team,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -138,6 +153,11 @@ class UserStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        team: deserializeParam(
+          data['team'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -151,12 +171,13 @@ class UserStruct extends BaseStruct {
         email == other.email &&
         nickname == other.nickname &&
         tag == other.tag &&
-        uid == other.uid;
+        uid == other.uid &&
+        team == other.team;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, createdAt, email, nickname, tag, uid]);
+  int get hashCode => const ListEquality()
+      .hash([id, createdAt, email, nickname, tag, uid, team]);
 }
 
 UserStruct createUserStruct({
@@ -166,6 +187,7 @@ UserStruct createUserStruct({
   String? nickname,
   String? tag,
   String? uid,
+  int? team,
 }) =>
     UserStruct(
       id: id,
@@ -174,4 +196,5 @@ UserStruct createUserStruct({
       nickname: nickname,
       tag: tag,
       uid: uid,
+      team: team,
     );

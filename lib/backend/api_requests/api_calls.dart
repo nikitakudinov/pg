@@ -19,6 +19,7 @@ class UserGroup {
         'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static ListuserbyuidCall listuserbyuidCall = ListuserbyuidCall();
+  static ListuserbyidCall listuserbyidCall = ListuserbyidCall();
   static ListusersCall listusersCall = ListusersCall();
 }
 
@@ -29,6 +30,70 @@ class ListuserbyuidCall {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTUSERBYUID',
       apiUrl: '${UserGroup.baseUrl}players?player_id=in.%28${idList}%29',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic playercreatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_created_at''',
+      );
+  dynamic playernickname(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_nickname''',
+      );
+  dynamic playertag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_tag''',
+      );
+  dynamic playerflag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_flag''',
+      );
+  dynamic playercountrie(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_countrie''',
+      );
+  dynamic playeravatar(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_avatar''',
+      );
+  dynamic playeruid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_uid''',
+      );
+  dynamic playerteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team''',
+      );
+  dynamic playerteamrole(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team_role''',
+      );
+  dynamic playerid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_id''',
+      );
+}
+
+class ListuserbyidCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LISTUSERBYID',
+      apiUrl: '${UserGroup.baseUrl}players?player_uid=in.%28${idList}%29',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

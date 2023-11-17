@@ -34,4 +34,7 @@ class AlertsRow extends SupabaseDataRow {
 
   String? get type => getField<String>('type');
   set type(String? value) => setField<String>('type', value);
+
+  int? get toTeam => getField<int>('to_team');
+  set toTeam(int? value) => setField<int>('to_team', value);
 }
