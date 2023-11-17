@@ -434,125 +434,229 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 10.0,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  setState(() {
+                                    _model.searchPlaerByIdVISIBILITY = true;
+                                  });
                                 },
                               ),
                             ),
                           ],
                         ),
-                        FutureBuilder<List<PlayersRow>>(
-                          future: PlayersTable().querySingleRow(
-                            queryFn: (q) => q.eq(
-                              'player_id',
-                              int.tryParse(_model.textController3.text),
-                            ),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
-                                  ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            FutureBuilder<List<PlayersRow>>(
+                              future: PlayersTable().querySingleRow(
+                                queryFn: (q) => q.eq(
+                                  'player_id',
+                                  int.tryParse(_model.textController3.text),
                                 ),
-                              );
-                            }
-                            List<PlayersRow> containerPlayersRowList =
-                                snapshot.data!;
-                            // Return an empty Container when the item does not exist.
-                            if (snapshot.data!.isEmpty) {
-                              return Container();
-                            }
-                            final containerPlayersRow =
-                                containerPlayersRowList.isNotEmpty
-                                    ? containerPlayersRowList.first
-                                    : null;
-                            return Container(
-                              decoration: BoxDecoration(),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Container(
-                                      width: 55.0,
-                                      height: 55.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.network(
-                                          containerPlayersRow!.playerAvatar!,
-                                          width: 55.0,
-                                          height: 55.0,
-                                          fit: BoxFit.cover,
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Column(
+                                  );
+                                }
+                                List<PlayersRow> containerPlayersRowList =
+                                    snapshot.data!;
+                                // Return an empty Container when the item does not exist.
+                                if (snapshot.data!.isEmpty) {
+                                  return Container();
+                                }
+                                final containerPlayersRow =
+                                    containerPlayersRowList.isNotEmpty
+                                        ? containerPlayersRowList.first
+                                        : null;
+                                return Container(
+                                  decoration: BoxDecoration(),
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        '${containerPlayersRow?.playerTag} / ${containerPlayersRow?.playerNickname}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall,
-                                      ),
-                                      Text(
-                                        containerPlayersRow!.playerTeamRole!,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  containerPlayersRow!
-                                                      .playerFlag!,
-                                                  width: 20.0,
-                                                  height: 12.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
+                                            10.0, 10.0, 10.0, 10.0),
+                                        child: Container(
+                                          width: 55.0,
+                                          height: 55.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
                                               containerPlayersRow!
-                                                  .playerCountrie!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                  .playerAvatar!,
+                                              width: 55.0,
+                                              height: 55.0,
+                                              fit: BoxFit.cover,
                                             ),
-                                          ],
+                                          ),
                                         ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${containerPlayersRow?.playerTag} / ${containerPlayersRow?.playerNickname}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleSmall,
+                                          ),
+                                          Text(
+                                            containerPlayersRow!
+                                                .playerTeamRole!,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 5.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                    child: Image.network(
+                                                      containerPlayersRow!
+                                                          .playerFlag!,
+                                                      width: 20.0,
+                                                      height: 12.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  containerPlayersRow!
+                                                      .playerCountrie!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                );
+                              },
+                            ),
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
-                            );
-                          },
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Text(
+                                  'Отправить приглашение вступуть в команду этому игроку?',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 10.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        setState(() {
+                                          _model.messageConfirmInvintVISIBILITY =
+                                              false;
+                                          _model.searchPlaerByIdVISIBILITY =
+                                              true;
+                                        });
+                                      },
+                                      text: 'НЕТ',
+                                      options: FFButtonOptions(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        print('Button pressed ...');
+                                      },
+                                      text: 'ДА',
+                                      options: FFButtonOptions(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                      ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(width: 10.0)),
+                              ),
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -627,6 +731,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     setState(() {
                                       _model.messageConfirmInvintVISIBILITY =
                                           true;
+                                      _model.searchPlaerByIdVISIBILITY = false;
                                     });
                                   },
                                   text: 'Найти',

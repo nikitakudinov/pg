@@ -25,6 +25,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   bool messageConfirmInvintVISIBILITY = false;
 
+  bool searchPlaerByIdVISIBILITY = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
