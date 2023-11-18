@@ -171,7 +171,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        containerTeamsRow!.teamName!,
+                                        'Hello World',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -181,7 +181,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                 1.0,
                                         decoration: BoxDecoration(),
                                         child: Text(
-                                          listViewChatsRow.chatLastMessage!,
+                                          'Hello World',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
