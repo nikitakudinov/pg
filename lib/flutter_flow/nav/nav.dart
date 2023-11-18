@@ -159,7 +159,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ALERTS',
           path: '/alerts',
-          builder: (context, params) => AlertsWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ALERTS')
+              : AlertsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
