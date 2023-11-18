@@ -16,6 +16,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
+  Completer<List<MessageRow>>? requestCompleter;
   // State field(s) for Column widget.
   ScrollController? columnController;
   // State field(s) for ListView widget.
@@ -24,7 +25,6 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  Completer<List<MessageRow>>? requestCompleter;
 
   /// Initialization and disposal methods.
 
