@@ -98,157 +98,162 @@ class _ChatWidgetState extends State<ChatWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
-                      child: FutureBuilder<List<MessageRow>>(
-                        future: (_model.requestCompleter ??=
-                                Completer<List<MessageRow>>()
-                                  ..complete(MessageTable().queryRows(
-                                    queryFn: (q) => q.eq(
-                                      'message_chat',
-                                      widget.chatID,
-                                    ),
-                                  )))
-                            .future,
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
-                          List<MessageRow> listViewMessageRowList =
-                              snapshot.data!;
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: listViewMessageRowList.length,
-                            itemBuilder: (context, listViewIndex) {
-                              final listViewMessageRow =
-                                  listViewMessageRowList[listViewIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        if (listViewMessageRow.messageSander !=
-                                            FFAppState()
-                                                .authenticateduser
-                                                .nickname)
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Container(
-                                              width: 45.0,
-                                              height: 45.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  listViewMessageRow
-                                                      .messageSanderAvatar!,
-                                                  width: 45.0,
-                                                  height: 45.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  listViewMessageRow
-                                                              .messageSander !=
-                                                          FFAppState()
-                                                              .authenticateduser
-                                                              .nickname
-                                                      ? listViewMessageRow
-                                                          .messageSander
-                                                      : 'Вы',
-                                                  '0',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium,
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                decoration: BoxDecoration(),
-                                                child: Text(
-                                                  listViewMessageRow
-                                                      .messageBody!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              dateTimeFormat(
-                                                  'Hm',
-                                                  listViewMessageRow
-                                                      .messageSandedAt),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            15.0, 15.0, 15.0, 15.0),
+                        child: FutureBuilder<List<MessageRow>>(
+                          future: (_model.requestCompleter ??=
+                                  Completer<List<MessageRow>>()
+                                    ..complete(MessageTable().queryRows(
+                                      queryFn: (q) => q.eq(
+                                        'message_chat',
+                                        widget.chatID,
+                                      ),
+                                    )))
+                              .future,
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
                                 ),
                               );
-                            },
-                          );
-                        },
+                            }
+                            List<MessageRow> listViewMessageRowList =
+                                snapshot.data!;
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: listViewMessageRowList.length,
+                              itemBuilder: (context, listViewIndex) {
+                                final listViewMessageRow =
+                                    listViewMessageRowList[listViewIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 10.0, 10.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          if (listViewMessageRow
+                                                  .messageSander !=
+                                              FFAppState()
+                                                  .authenticateduser
+                                                  .nickname)
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Container(
+                                                width: 45.0,
+                                                height: 45.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          3.0),
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
+                                                    listViewMessageRow
+                                                        .messageSanderAvatar!,
+                                                    width: 45.0,
+                                                    height: 45.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    listViewMessageRow
+                                                                .messageSander !=
+                                                            FFAppState()
+                                                                .authenticateduser
+                                                                .nickname
+                                                        ? listViewMessageRow
+                                                            .messageSander
+                                                        : 'Вы',
+                                                    '0',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium,
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          1.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: Text(
+                                                    listViewMessageRow
+                                                        .messageBody!,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                dateTimeFormat(
+                                                    'Hm',
+                                                    listViewMessageRow
+                                                        .messageSandedAt),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Padding(
