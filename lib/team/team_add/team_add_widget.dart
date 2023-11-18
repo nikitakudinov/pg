@@ -397,7 +397,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                             'chat_updated_at':
                                 supaSerialize<DateTime>(getCurrentTimestamp),
                             'chat_members': _model.chatMembers,
-                            'chat_last_message': 'Чат команды',
+                            'chat_last_message': 'Это чат вашей команды',
                             'chat_of_team': valueOrDefault<int>(
                               TeamGroup.teambycreatorCall
                                   .teamid(

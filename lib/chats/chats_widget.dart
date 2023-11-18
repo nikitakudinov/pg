@@ -97,20 +97,20 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                       ),
                     );
                   }
-                  List<ChatsRow> listViewChatsRowList = snapshot.data!;
+                  List<ChatsRow> teamChatChatsRowList = snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewChatsRowList.length,
-                    itemBuilder: (context, listViewIndex) {
-                      final listViewChatsRow =
-                          listViewChatsRowList[listViewIndex];
+                    itemCount: teamChatChatsRowList.length,
+                    itemBuilder: (context, teamChatIndex) {
+                      final teamChatChatsRow =
+                          teamChatChatsRowList[teamChatIndex];
                       return FutureBuilder<List<TeamsRow>>(
                         future: TeamsTable().querySingleRow(
                           queryFn: (q) => q.eq(
                             'team_id',
-                            FFAppState().authenticateduser.team,
+                            teamChatChatsRow.chatOfTeam,
                           ),
                         ),
                         builder: (context, snapshot) {
@@ -171,7 +171,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Hello World',
+                                        '${containerTeamsRow?.teamTag} / ${containerTeamsRow?.teamName}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -181,7 +181,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                 1.0,
                                         decoration: BoxDecoration(),
                                         child: Text(
-                                          'Hello World',
+                                          teamChatChatsRow.chatLastMessage!,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
@@ -195,7 +195,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                   children: [
                                     Text(
                                       dateTimeFormat(
-                                          'Hm', listViewChatsRow.chatUpdatedAt),
+                                          'Hm', teamChatChatsRow.chatUpdatedAt),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
