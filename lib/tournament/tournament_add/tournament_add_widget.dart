@@ -376,11 +376,12 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                                 _model.countryPickerModel.selectedFlag,
                             'tournament_country':
                                 _model.countryPickerModel.selectedCountry,
-                            'tournament_members': [0],
+                            'tournament_members':
+                                FFAppState().authenticateduser.team,
                             'tournament_organizators': [],
                           });
 
-                          context.pushNamed('TEAMS');
+                          context.pushNamed('TOURNAMENTS');
                         },
                         text: 'Сохранить',
                         options: FFButtonOptions(
