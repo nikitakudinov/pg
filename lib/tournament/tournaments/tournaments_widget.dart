@@ -140,6 +140,12 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                       ParamType.int,
                                       true,
                                     ),
+                                    'organizators': serializeParam(
+                                      listViewTournamentsRow
+                                          .tournamentOrganizators,
+                                      ParamType.String,
+                                      true,
+                                    ),
                                   }.withoutNulls,
                                 );
                               },

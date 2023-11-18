@@ -323,7 +323,10 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(0.0),
                                               child: Image.network(
-                                                listViewPlayersRow.playerFlag!,
+                                                valueOrDefault<String>(
+                                                  listViewPlayersRow.playerFlag,
+                                                  'false',
+                                                ),
                                                 width: 24.0,
                                                 height: 16.0,
                                                 fit: BoxFit.cover,
