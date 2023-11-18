@@ -75,140 +75,158 @@ class _ChatsWidgetState extends State<ChatsWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              FutureBuilder<List<ChatsRow>>(
-                future: ChatsTable().queryRows(
-                  queryFn: (q) => q.contains(
-                    'chat_members',
-                    '{' + currentUserUid + '}',
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                child: FutureBuilder<List<ChatsRow>>(
+                  future: ChatsTable().queryRows(
+                    queryFn: (q) => q.contains(
+                      'chat_members',
+                      '{' + currentUserUid + '}',
+                    ),
                   ),
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }
-                  List<ChatsRow> teamChatChatsRowList = snapshot.data!;
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: teamChatChatsRowList.length,
-                    itemBuilder: (context, teamChatIndex) {
-                      final teamChatChatsRow =
-                          teamChatChatsRowList[teamChatIndex];
-                      return FutureBuilder<List<TeamsRow>>(
-                        future: TeamsTable().querySingleRow(
-                          queryFn: (q) => q.eq(
-                            'team_id',
-                            teamChatChatsRow.chatOfTeam,
+                      );
+                    }
+                    List<ChatsRow> teamChatChatsRowList = snapshot.data!;
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: teamChatChatsRowList.length,
+                      itemBuilder: (context, teamChatIndex) {
+                        final teamChatChatsRow =
+                            teamChatChatsRowList[teamChatIndex];
+                        return FutureBuilder<List<TeamsRow>>(
+                          future: TeamsTable().querySingleRow(
+                            queryFn: (q) => q.eq(
+                              'team_id',
+                              teamChatChatsRow.chatOfTeam,
+                            ),
                           ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
                                 ),
+                              );
+                            }
+                            List<TeamsRow> containerTeamsRowList =
+                                snapshot.data!;
+                            final containerTeamsRow =
+                                containerTeamsRowList.isNotEmpty
+                                    ? containerTeamsRowList.first
+                                    : null;
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
-                            );
-                          }
-                          List<TeamsRow> containerTeamsRowList = snapshot.data!;
-                          final containerTeamsRow =
-                              containerTeamsRowList.isNotEmpty
-                                  ? containerTeamsRowList.first
-                                  : null;
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Column(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Container(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        child: Image.network(
-                                          containerTeamsRow!.teamLogo!,
-                                          width: 50.0,
-                                          height: 50.0,
-                                          fit: BoxFit.cover,
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Container(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                containerTeamsRow!.teamLogo!,
+                                                width: 50.0,
+                                                height: 50.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
                                         ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${containerTeamsRow?.teamTag} / ${containerTeamsRow?.teamName}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            decoration: BoxDecoration(),
+                                            child: Text(
+                                              teamChatChatsRow.chatLastMessage!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '${containerTeamsRow?.teamTag} / ${containerTeamsRow?.teamName}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                      Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        decoration: BoxDecoration(),
-                                        child: Text(
-                                          teamChatChatsRow.chatLastMessage!,
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          dateTimeFormat('Hm',
+                                              teamChatChatsRow.chatUpdatedAt),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      dateTimeFormat(
-                                          'Hm', teamChatChatsRow.chatUpdatedAt),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  );
-                },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),
