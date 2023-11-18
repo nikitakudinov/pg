@@ -98,19 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                valueOrDefault<String>(
-                  FFAppState().authenticateduser.id.toString(),
-                  '0',
-                ),
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-              Text(
-                FFAppState().authenticateduser.uid.first,
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-            ],
+            children: [],
           ),
         ),
       ),
