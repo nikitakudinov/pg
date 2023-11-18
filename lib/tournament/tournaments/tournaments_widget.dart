@@ -59,7 +59,7 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Команды                 ',
+            'Турниры       ',
             style: FlutterFlowTheme.of(context).headlineMedium,
           ),
           actions: [
