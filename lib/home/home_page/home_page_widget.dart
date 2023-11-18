@@ -100,7 +100,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
-                FFAppState().authenticateduser.id.toString(),
+                valueOrDefault<String>(
+                  FFAppState().authenticateduser.id.toString(),
+                  '0',
+                ),
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Text(
