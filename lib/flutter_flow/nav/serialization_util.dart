@@ -223,8 +223,12 @@ dynamic deserializeParam<T>(
             return AlertsRow(data);
           case TournamentsRow:
             return TournamentsRow(data);
+          case MessageRow:
+            return MessageRow(data);
           case PlayersRow:
             return PlayersRow(data);
+          case ChatsRow:
+            return ChatsRow(data);
           case TeamMembersRow:
             return TeamMembersRow(data);
           default:

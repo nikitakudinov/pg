@@ -123,6 +123,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'TEAMS': TeamsWidget(),
       'TOURNAMENTS': TournamentsWidget(),
       'ALERTS': AlertsWidget(),
+      'CHATS': ChatsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -171,6 +172,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Уведомления',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.chat_bubble,
+              size: 24.0,
+            ),
+            label: 'Сообщения',
             tooltip: '',
           )
         ],

@@ -9,5 +9,7 @@ export 'tables/countries.dart';
 export 'tables/teams.dart';
 export 'tables/alerts.dart';
 export 'tables/tournaments.dart';
+export 'tables/message.dart';
 export 'tables/players.dart';
+export 'tables/chats.dart';
 export 'tables/team_members.dart';
