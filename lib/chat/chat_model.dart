@@ -17,6 +17,10 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
   Completer<List<MessageRow>>? requestCompleter;
+  // State field(s) for Column widget.
+  ScrollController? columnController;
+  // State field(s) for ListView widget.
+  ScrollController? listViewController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -24,11 +28,16 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    columnController = ScrollController();
+    listViewController = ScrollController();
+  }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
+    columnController?.dispose();
+    listViewController?.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
