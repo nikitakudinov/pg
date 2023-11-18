@@ -134,6 +134,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             teamCountry: params.getParam('teamCountry', ParamType.String),
             teamFlag: params.getParam('teamFlag', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'TOURNAMENT_ADD',
+          path: '/tournamentAdd',
+          builder: (context, params) => TournamentAddWidget(),
+        ),
+        FFRoute(
+          name: 'TOURNAMENTS',
+          path: '/tournaments',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'TOURNAMENTS')
+              : TournamentsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
