@@ -126,88 +126,113 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 10.0, 10.0),
-                                  child: Container(
-                                    width: 55.0,
-                                    height: 55.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'TOURNAMENT_VIEW',
+                                  queryParameters: {
+                                    'members': serializeParam(
+                                      listViewTournamentsRow.tournamentMembers,
+                                      ParamType.int,
+                                      true,
                                     ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      child: Image.network(
-                                        listViewTournamentsRow.tournamentLogo!,
-                                        width: 55.0,
-                                        height: 55.0,
-                                        fit: BoxFit.cover,
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 10.0, 10.0),
+                                    child: Container(
+                                      width: 55.0,
+                                      height: 55.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: Image.network(
+                                          valueOrDefault<String>(
+                                            listViewTournamentsRow
+                                                .tournamentLogo,
+                                            'дщ',
+                                          ),
+                                          width: 55.0,
+                                          height: 55.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      valueOrDefault<String>(
-                                        listViewTournamentsRow.tournamentName,
-                                        '0',
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        valueOrDefault<String>(
+                                          listViewTournamentsRow.tournamentName,
+                                          '0',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge,
-                                    ),
-                                    Text(
-                                      valueOrDefault<String>(
-                                        listViewTournamentsRow.tournamentStatus,
-                                        'Не выбран',
+                                      Text(
+                                        valueOrDefault<String>(
+                                          listViewTournamentsRow
+                                              .tournamentStatus,
+                                          'Не выбран',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 10.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 5.0, 0.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.network(
-                                                listViewTournamentsRow
-                                                    .tournamentFlag!,
-                                                width: 20.0,
-                                                height: 12.0,
-                                                fit: BoxFit.cover,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 10.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  listViewTournamentsRow
+                                                      .tournamentFlag!,
+                                                  width: 20.0,
+                                                  height: 12.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            valueOrDefault<String>(
-                                              listViewTournamentsRow
-                                                  .tournamentCountry,
-                                              'Не выбран',
+                                            Text(
+                                              valueOrDefault<String>(
+                                                listViewTournamentsRow
+                                                    .tournamentCountry,
+                                                'Не выбран',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },

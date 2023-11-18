@@ -146,6 +146,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'TOURNAMENTS')
               : TournamentsWidget(),
+        ),
+        FFRoute(
+          name: 'TOURNAMENT_VIEW',
+          path: '/tournamentView',
+          builder: (context, params) => TournamentViewWidget(
+            members: params.getParam<int>('members', ParamType.int, true),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

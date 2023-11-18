@@ -9,3 +9,4 @@ export '/team/team_edite/team_edite_widget.dart' show TeamEditeWidget;
 export '/tournament/tournament_add/tournament_add_widget.dart'
     show TournamentAddWidget;
 export '/tournament/tournaments/tournaments_widget.dart' show TournamentsWidget;
+export '/tournament_view/tournament_view_widget.dart' show TournamentViewWidget;
