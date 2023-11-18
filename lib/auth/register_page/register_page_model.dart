@@ -1,4 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
+import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -30,12 +32,15 @@ class RegisterPageModel extends FlutterFlowModel<RegisterPageWidget> {
   TextEditingController? repasswordController;
   late bool repasswordVisibility;
   String? Function(BuildContext, String?)? repasswordControllerValidator;
+  // Model for countryPicker component.
+  late CountryPickerModel countryPickerModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     passwordVisibility = false;
     repasswordVisibility = false;
+    countryPickerModel = createModel(context, () => CountryPickerModel());
   }
 
   void dispose() {
@@ -51,6 +56,8 @@ class RegisterPageModel extends FlutterFlowModel<RegisterPageWidget> {
 
     repasswordFocusNode?.dispose();
     repasswordController?.dispose();
+
+    countryPickerModel.dispose();
   }
 
   /// Action blocks are added here.

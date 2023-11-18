@@ -1,4 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
+import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -291,6 +293,11 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                         .asValidator(context),
                   ),
                 ),
+                wrapWithModel(
+                  model: _model.countryPickerModel,
+                  updateCallback: () => setState(() {}),
+                  child: CountryPickerWidget(),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -322,6 +329,20 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                             if (user == null) {
                               return;
                             }
+
+                            await PlayersTable().insert({
+                              'player_created_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'player_nickname': _model.nicknameController.text,
+                              'player_tag': 'вне команды',
+                              'player_flag':
+                                  _model.countryPickerModel.selectedFlag,
+                              'player_countrie':
+                                  _model.countryPickerModel.selectedCountry,
+                              'player_avatar':
+                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/image-7XR1sw6U--transformed.png',
+                              'player_uid': currentUserUid,
+                            });
 
                             context.goNamedAuth('HomePage', context.mounted);
                           },
