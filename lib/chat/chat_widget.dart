@@ -41,8 +41,8 @@ class _ChatWidgetState extends State<ChatWidget> {
         callback: (timer) async {
           setState(() => _model.requestCompleter = null);
           await _model.waitForRequestCompleted();
-          await _model.listViewController?.animateTo(
-            _model.listViewController!.position.maxScrollExtent,
+          await _model.columnController?.animateTo(
+            _model.columnController!.position.maxScrollExtent,
             duration: Duration(milliseconds: 100),
             curve: Curves.ease,
           );
