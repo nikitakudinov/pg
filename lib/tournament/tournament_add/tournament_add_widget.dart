@@ -376,7 +376,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                                 _model.countryPickerModel.selectedFlag,
                             'tournament_country':
                                 _model.countryPickerModel.selectedCountry,
-                            'tournament_members': [],
+                            'tournament_members': [0],
                             'tournament_organizators': [],
                           });
 

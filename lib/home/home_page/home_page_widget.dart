@@ -43,8 +43,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ..id = UserGroup.listuserbyidCall.playerid(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
-              ..team = UserGroup.listuserbyidCall.playerteam(
-                (_model.apiResultqcj?.jsonBody ?? ''),
+              ..updateTeam(
+                (e) => e.add(UserGroup.listuserbyidCall.playeruid(
+                  (_model.apiResultqcj?.jsonBody ?? ''),
+                )),
               ),
           );
         });
@@ -380,7 +382,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             'Игрок покинул команду',
                                                         'to_team': FFAppState()
                                                             .authenticateduser
-                                                            .team,
+                                                            .team
+                                                            .first,
                                                       });
                                                       await PlayersTable()
                                                           .update(
@@ -424,9 +427,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         FFAppState()
                                                             .updateAuthenticateduserStruct(
                                                           (e) => e
-                                                            ..team =
-                                                                listViewAlertsRow
-                                                                    .fromTeam,
+                                                            ..updateTeam(
+                                                              (e) => e.add(
+                                                                  containerTeamsRow!
+                                                                      .teamId),
+                                                            ),
                                                         );
                                                       });
                                                       setState(() => _model
@@ -499,7 +504,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ..complete(AlertsTable().queryRows(
                               queryFn: (q) => q.eq(
                                 'to_team',
-                                FFAppState().authenticateduser.team,
+                                FFAppState().authenticateduser.team.first,
                               ),
                             )))
                           .future,

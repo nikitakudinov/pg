@@ -13,7 +13,7 @@ class UserStruct extends BaseStruct {
     String? nickname,
     String? tag,
     String? uid,
-    int? team,
+    List<int>? team,
   })  : _id = id,
         _createdAt = createdAt,
         _email = email,
@@ -60,10 +60,10 @@ class UserStruct extends BaseStruct {
   bool hasUid() => _uid != null;
 
   // "team" field.
-  int? _team;
-  int get team => _team ?? 0;
-  set team(int? val) => _team = val;
-  void incrementTeam(int amount) => _team = team + amount;
+  List<int>? _team;
+  List<int> get team => _team ?? const [];
+  set team(List<int>? val) => _team = val;
+  void updateTeam(Function(List<int>) updateFn) => updateFn(_team ??= []);
   bool hasTeam() => _team != null;
 
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
@@ -73,7 +73,7 @@ class UserStruct extends BaseStruct {
         nickname: data['nickname'] as String?,
         tag: data['tag'] as String?,
         uid: data['uid'] as String?,
-        team: castToType<int>(data['team']),
+        team: getDataList(data['team']),
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -118,6 +118,7 @@ class UserStruct extends BaseStruct {
         'team': serializeParam(
           _team,
           ParamType.int,
+          true,
         ),
       }.withoutNulls;
 
@@ -153,10 +154,10 @@ class UserStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        team: deserializeParam(
+        team: deserializeParam<int>(
           data['team'],
           ParamType.int,
-          false,
+          true,
         ),
       );
 
@@ -165,6 +166,7 @@ class UserStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is UserStruct &&
         id == other.id &&
         createdAt == other.createdAt &&
@@ -172,7 +174,7 @@ class UserStruct extends BaseStruct {
         nickname == other.nickname &&
         tag == other.tag &&
         uid == other.uid &&
-        team == other.team;
+        listEquality.equals(team, other.team);
   }
 
   @override
@@ -187,7 +189,6 @@ UserStruct createUserStruct({
   String? nickname,
   String? tag,
   String? uid,
-  int? team,
 }) =>
     UserStruct(
       id: id,
@@ -196,5 +197,4 @@ UserStruct createUserStruct({
       nickname: nickname,
       tag: tag,
       uid: uid,
-      team: team,
     );
