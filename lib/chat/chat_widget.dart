@@ -65,7 +65,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           title: Text(
             'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -136,31 +136,37 @@ class _ChatWidgetState extends State<ChatWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.network(
-                                              listViewMessageRow
-                                                  .messageSanderAvatar!,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
+                                      if (listViewMessageRow.messageSander !=
+                                          FFAppState()
+                                              .authenticateduser
+                                              .nickname)
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Container(
+                                            width: 45.0,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                listViewMessageRow
+                                                    .messageSanderAvatar!,
+                                                width: 45.0,
+                                                height: 45.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
                                       Expanded(
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -262,6 +268,9 @@ class _ChatWidgetState extends State<ChatWidget> {
                           'message_chat': widget.chatID,
                           'message_sander_avatar':
                               FFAppState().authenticateduser.avatar,
+                        });
+                        setState(() {
+                          _model.textController?.clear();
                         });
                         setState(() => _model.requestCompleter = null);
                         await _model.waitForRequestCompleted();
