@@ -39,11 +39,9 @@ class _ChatWidgetState extends State<ChatWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 5000),
         callback: (timer) async {
-          setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
           await _model.columnController?.animateTo(
             _model.columnController!.position.maxScrollExtent,
-            duration: Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 10),
             curve: Curves.ease,
           );
         },
