@@ -47,6 +47,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 (e) => e.add(UserGroup.listuserbyidCall.playeruid(
                   (_model.apiResultqcj?.jsonBody ?? ''),
                 )),
+              )
+              ..updateUid(
+                (e) => e.add(currentUserUid),
               ),
           );
         });
