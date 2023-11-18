@@ -60,8 +60,8 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: false,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+          automaticallyImplyLeading: true,
           title: Text(
             'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
