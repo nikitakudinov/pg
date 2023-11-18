@@ -168,6 +168,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/chats',
           builder: (context, params) =>
               params.isEmpty ? NavBarPage(initialPage: 'CHATS') : ChatsWidget(),
+        ),
+        FFRoute(
+          name: 'CHAT',
+          path: '/chat',
+          builder: (context, params) => ChatWidget(
+            chatID: params.getParam('chatID', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

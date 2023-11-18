@@ -45,7 +45,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ..team = UserGroup.listuserbyidCall.playerteam(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
-              ..uid = currentUserUid,
+              ..uid = currentUserUid
+              ..nickname = UserGroup.listuserbyidCall
+                  .playernickname(
+                    (_model.apiResultqcj?.jsonBody ?? ''),
+                  )
+                  .toString()
+                  .toString()
+              ..avatar = UserGroup.listuserbyidCall.playeravatar(
+                (_model.apiResultqcj?.jsonBody ?? ''),
+              ),
           );
         });
       }

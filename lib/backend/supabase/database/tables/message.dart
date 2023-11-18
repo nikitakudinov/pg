@@ -14,8 +14,8 @@ class MessageRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => MessageTable();
 
-  int get messageD => getField<int>('message_d')!;
-  set messageD(int value) => setField<int>('message_d', value);
+  int get messageId => getField<int>('message_id')!;
+  set messageId(int value) => setField<int>('message_id', value);
 
   DateTime get messageSandedAt => getField<DateTime>('message_sanded_at')!;
   set messageSandedAt(DateTime value) =>
@@ -29,4 +29,8 @@ class MessageRow extends SupabaseDataRow {
 
   int? get messageChat => getField<int>('message_chat');
   set messageChat(int? value) => setField<int>('message_chat', value);
+
+  String? get messageSanderAvatar => getField<String>('message_sander_avatar');
+  set messageSanderAvatar(String? value) =>
+      setField<String>('message_sander_avatar', value);
 }

@@ -12,3 +12,4 @@ export '/tournament/tournaments/tournaments_widget.dart' show TournamentsWidget;
 export '/tournament_view/tournament_view_widget.dart' show TournamentViewWidget;
 export '/alerts/alerts/alerts_widget.dart' show AlertsWidget;
 export '/chats/chats_widget.dart' show ChatsWidget;
+export '/chat/chat_widget.dart' show ChatWidget;
