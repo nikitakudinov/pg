@@ -2,9 +2,11 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import 'chat_widget.dart' show ChatWidget;
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,11 +15,12 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
+  Completer<List<MessageRow>>? requestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  Completer<List<MessageRow>>? requestCompleter;
 
   /// Initialization and disposal methods.
 
@@ -25,6 +28,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
