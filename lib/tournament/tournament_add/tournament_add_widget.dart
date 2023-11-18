@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,14 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TournamentAddModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.addToMembers(FFAppState().authenticateduser.team);
+        _model.addToOrganizators(currentUserUid);
+      });
+    });
 
     _model.tournamentNameController ??= TextEditingController();
     _model.tournamentNameFocusNode ??= FocusNode();
@@ -381,16 +390,8 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                                 _model.countryPickerModel.selectedFlag,
                             'tournament_country':
                                 _model.countryPickerModel.selectedCountry,
-                            'tournament_members':
-                                UserGroup.listuserbyuidCall.playerteam(
-                              (_model.ass?.jsonBody ?? ''),
-                            ),
-                            'tournament_organizators':
-                                (UserGroup.listuserbyuidCall.playeruid(
-                              (_model.ass?.jsonBody ?? ''),
-                            ) as List)
-                                    .map<String>((s) => s.toString())
-                                    .toList(),
+                            'tournament_members': _model.members,
+                            'tournament_organizators': _model.organizators,
                           });
 
                           context.pushNamed('TOURNAMENTS');
