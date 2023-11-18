@@ -378,10 +378,9 @@ class _AlertsWidgetState extends State<AlertsWidget> {
                                                                 currentUserUid,
                                                             'type':
                                                                 'Игрок покинул команду',
-                                                            'to_team': FFAppState()
-                                                                .authenticateduser
-                                                                .team
-                                                                .first,
+                                                            'to_team':
+                                                                containerTeamsRow
+                                                                    ?.teamId,
                                                           });
                                                           await PlayersTable()
                                                               .update(
@@ -428,12 +427,7 @@ class _AlertsWidgetState extends State<AlertsWidget> {
                                                           setState(() {
                                                             FFAppState()
                                                                 .updateAuthenticateduserStruct(
-                                                              (e) => e
-                                                                ..updateTeam(
-                                                                  (e) => e.add(
-                                                                      containerTeamsRow!
-                                                                          .teamId),
-                                                                ),
+                                                              (e) => e,
                                                             );
                                                           });
                                                           setState(() => _model
@@ -509,7 +503,7 @@ class _AlertsWidgetState extends State<AlertsWidget> {
                                 ..complete(AlertsTable().queryRows(
                                   queryFn: (q) => q.eq(
                                     'to_team',
-                                    FFAppState().authenticateduser.team.first,
+                                    FFAppState().authenticateduser.team,
                                   ),
                                 )))
                           .future,

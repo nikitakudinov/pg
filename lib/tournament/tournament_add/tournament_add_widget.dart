@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -364,6 +366,9 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          _model.ass = await UserGroup.listuserbyuidCall.call(
+                            idList: currentUserUid,
+                          );
                           await TournamentsTable().insert({
                             'tournament_created_at':
                                 supaSerialize<DateTime>(getCurrentTimestamp),
@@ -377,12 +382,20 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                             'tournament_country':
                                 _model.countryPickerModel.selectedCountry,
                             'tournament_members':
-                                FFAppState().authenticateduser.team,
+                                UserGroup.listuserbyuidCall.playerteam(
+                              (_model.ass?.jsonBody ?? ''),
+                            ),
                             'tournament_organizators':
-                                FFAppState().authenticateduser.uid,
+                                (UserGroup.listuserbyuidCall.playeruid(
+                              (_model.ass?.jsonBody ?? ''),
+                            ) as List)
+                                    .map<String>((s) => s.toString())
+                                    .toList(),
                           });
 
                           context.pushNamed('TOURNAMENTS');
+
+                          setState(() {});
                         },
                         text: 'Сохранить',
                         options: FFButtonOptions(

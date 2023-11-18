@@ -41,11 +41,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ..id = UserGroup.listuserbyidCall.playerid(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
-              ..updateTeam(
-                (e) => e.add(UserGroup.listuserbyidCall.playeruid(
-                  (_model.apiResultqcj?.jsonBody ?? ''),
-                )),
-              ),
+              ..team = UserGroup.listuserbyidCall.playerteam(
+                (_model.apiResultqcj?.jsonBody ?? ''),
+              )
+              ..uid = currentUserUid,
           );
         });
       }
@@ -98,12 +97,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                FFAppState().authenticateduser.uid.first,
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-            ],
+            children: [],
           ),
         ),
       ),

@@ -12,8 +12,8 @@ class UserStruct extends BaseStruct {
     String? email,
     String? nickname,
     String? tag,
-    List<int>? team,
-    List<String>? uid,
+    int? team,
+    String? uid,
   })  : _id = id,
         _createdAt = createdAt,
         _email = email,
@@ -54,17 +54,16 @@ class UserStruct extends BaseStruct {
   bool hasTag() => _tag != null;
 
   // "team" field.
-  List<int>? _team;
-  List<int> get team => _team ?? const [];
-  set team(List<int>? val) => _team = val;
-  void updateTeam(Function(List<int>) updateFn) => updateFn(_team ??= []);
+  int? _team;
+  int get team => _team ?? 0;
+  set team(int? val) => _team = val;
+  void incrementTeam(int amount) => _team = team + amount;
   bool hasTeam() => _team != null;
 
   // "uid" field.
-  List<String>? _uid;
-  List<String> get uid => _uid ?? const [];
-  set uid(List<String>? val) => _uid = val;
-  void updateUid(Function(List<String>) updateFn) => updateFn(_uid ??= []);
+  String? _uid;
+  String get uid => _uid ?? '';
+  set uid(String? val) => _uid = val;
   bool hasUid() => _uid != null;
 
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
@@ -73,8 +72,8 @@ class UserStruct extends BaseStruct {
         email: data['email'] as String?,
         nickname: data['nickname'] as String?,
         tag: data['tag'] as String?,
-        team: getDataList(data['team']),
-        uid: getDataList(data['uid']),
+        team: castToType<int>(data['team']),
+        uid: data['uid'] as String?,
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -115,12 +114,10 @@ class UserStruct extends BaseStruct {
         'team': serializeParam(
           _team,
           ParamType.int,
-          true,
         ),
         'uid': serializeParam(
           _uid,
           ParamType.String,
-          true,
         ),
       }.withoutNulls;
 
@@ -151,15 +148,15 @@ class UserStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        team: deserializeParam<int>(
+        team: deserializeParam(
           data['team'],
           ParamType.int,
-          true,
+          false,
         ),
-        uid: deserializeParam<String>(
+        uid: deserializeParam(
           data['uid'],
           ParamType.String,
-          true,
+          false,
         ),
       );
 
@@ -168,15 +165,14 @@ class UserStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
-    const listEquality = ListEquality();
     return other is UserStruct &&
         id == other.id &&
         createdAt == other.createdAt &&
         email == other.email &&
         nickname == other.nickname &&
         tag == other.tag &&
-        listEquality.equals(team, other.team) &&
-        listEquality.equals(uid, other.uid);
+        team == other.team &&
+        uid == other.uid;
   }
 
   @override
@@ -190,6 +186,8 @@ UserStruct createUserStruct({
   String? email,
   String? nickname,
   String? tag,
+  int? team,
+  String? uid,
 }) =>
     UserStruct(
       id: id,
@@ -197,4 +195,6 @@ UserStruct createUserStruct({
       email: email,
       nickname: nickname,
       tag: tag,
+      team: team,
+      uid: uid,
     );
