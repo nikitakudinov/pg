@@ -217,6 +217,7 @@ class TeamGroup {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static ListteambyuidCall listteambyuidCall = ListteambyuidCall();
+  static TeambycreatorCall teambycreatorCall = TeambycreatorCall();
   static LISTUSERSCopyCall lISTUSERSCopyCall = LISTUSERSCopyCall();
 }
 
@@ -269,6 +270,85 @@ class ListteambyuidCall {
   dynamic teamid(dynamic response) => getJsonField(
         response,
         r'''$[:].team_id''',
+      );
+}
+
+class TeambycreatorCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TEAMBYCREATOR',
+      apiUrl: '${TeamGroup.baseUrl}teams?team_creator=in.%28${idList}%29',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic teamcreatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_created_at''',
+        true,
+      );
+  dynamic teamnam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_name''',
+        true,
+      );
+  dynamic teamtag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_tag''',
+        true,
+      );
+  dynamic teamflag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_flag''',
+        true,
+      );
+  dynamic teamcountry(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_country''',
+        true,
+      );
+  dynamic teamlogo(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_logo''',
+        true,
+      );
+  dynamic teamid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_id''',
+        true,
+      );
+  dynamic teamupdatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_updated_at''',
+        true,
+      );
+  dynamic teamcreator(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_creator''',
+        true,
+      );
+  dynamic teamrecruitment(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_recruitment''',
+        true,
+      );
+  dynamic teamstatus(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_status''',
+        true,
       );
 }
 

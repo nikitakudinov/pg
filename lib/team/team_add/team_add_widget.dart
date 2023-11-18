@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +30,13 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TeamAddModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.addToChatMembers(currentUserUid);
+      });
+    });
 
     _model.teamNameController ??= TextEditingController();
     _model.teamNameFocusNode ??= FocusNode();
@@ -380,8 +389,28 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                             'team_recruitment': true,
                             'team_status': 'Актив',
                           });
+                          _model.createdteam =
+                              await TeamGroup.teambycreatorCall.call(
+                            idList: currentUserUid,
+                          );
+                          await ChatsTable().insert({
+                            'chat_updated_at':
+                                supaSerialize<DateTime>(getCurrentTimestamp),
+                            'chat_members': _model.chatMembers,
+                            'chat_last_message': 'Чат команды',
+                            'chat_of_team': valueOrDefault<int>(
+                              TeamGroup.teambycreatorCall
+                                  .teamid(
+                                    (_model.createdteam?.jsonBody ?? ''),
+                                  )
+                                  .first,
+                              0,
+                            ),
+                          });
 
                           context.pushNamed('TEAMS');
+
+                          setState(() {});
                         },
                         text: 'Сохранить',
                         options: FFButtonOptions(
