@@ -28,4 +28,7 @@ class ChatsRow extends SupabaseDataRow {
   String? get chatLastMessage => getField<String>('chat_last_message');
   set chatLastMessage(String? value) =>
       setField<String>('chat_last_message', value);
+
+  int? get chatOfTeam => getField<int>('chat_of_team');
+  set chatOfTeam(int? value) => setField<int>('chat_of_team', value);
 }
