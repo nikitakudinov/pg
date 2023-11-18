@@ -174,7 +174,17 @@ class _ChatWidgetState extends State<ChatWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              listViewMessageRow.messageSander!,
+                                              valueOrDefault<String>(
+                                                listViewMessageRow
+                                                            .messageSander !=
+                                                        FFAppState()
+                                                            .authenticateduser
+                                                            .nickname
+                                                    ? listViewMessageRow
+                                                        .messageSander
+                                                    : 'Вы',
+                                                '0',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium,
