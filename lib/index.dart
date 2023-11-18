@@ -10,3 +10,4 @@ export '/tournament/tournament_add/tournament_add_widget.dart'
     show TournamentAddWidget;
 export '/tournament/tournaments/tournaments_widget.dart' show TournamentsWidget;
 export '/tournament_view/tournament_view_widget.dart' show TournamentViewWidget;
+export '/alerts/alerts/alerts_widget.dart' show AlertsWidget;

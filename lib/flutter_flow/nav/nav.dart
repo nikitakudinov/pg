@@ -155,6 +155,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             organizators:
                 params.getParam<String>('organizators', ParamType.String, true),
           ),
+        ),
+        FFRoute(
+          name: 'ALERTS',
+          path: '/alerts',
+          builder: (context, params) => AlertsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
