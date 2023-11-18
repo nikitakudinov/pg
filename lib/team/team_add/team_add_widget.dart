@@ -407,8 +407,23 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                               0,
                             ),
                           });
+                          await PlayersTable().update(
+                            data: {
+                              'player_team': TeamGroup.teambycreatorCall
+                                  .teamid(
+                                    (_model.createdteam?.jsonBody ?? ''),
+                                  )
+                                  .first,
+                              'player_team_role': 'Основатель',
+                              'player_team_lineup': false,
+                            },
+                            matchingRows: (rows) => rows.eq(
+                              'player_uid',
+                              currentUserUid,
+                            ),
+                          );
 
-                          context.pushNamed('TEAMS');
+                          context.pushNamed('HomePage');
 
                           setState(() {});
                         },
