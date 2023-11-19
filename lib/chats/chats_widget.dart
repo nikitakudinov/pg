@@ -401,23 +401,14 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
                                               ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Text(
-                                                  teamChatChatsRow
-                                                      .chatLastMessage!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
+                                              Text(
+                                                teamChatChatsRow
+                                                    .chatLastMessage!
+                                                    .maybeHandleOverflow(
+                                                        maxChars: 50),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
