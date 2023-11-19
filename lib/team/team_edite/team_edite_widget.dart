@@ -846,91 +846,138 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                               itemBuilder: (context, listViewIndex) {
                                 final listViewPlayersRow =
                                     listViewPlayersRowList[listViewIndex];
-                                return Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                return FutureBuilder<List<ChatsRow>>(
+                                  future: ChatsTable().queryRows(
+                                    queryFn: (q) => q
+                                        .contains(
+                                          'chat_members',
+                                          '{' + currentUserUid + '}',
+                                        )
+                                        .contains(
+                                          'chat_members',
+                                          '{' +
+                                              listViewPlayersRow.playerUid +
+                                              '}',
+                                        ),
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 10.0, 10.0),
-                                        child: Container(
-                                          width: 55.0,
-                                          height: 55.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.network(
-                                              listViewPlayersRow.playerAvatar!,
-                                              width: 55.0,
-                                              height: 55.0,
-                                              fit: BoxFit.cover,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                             ),
                                           ),
                                         ),
+                                      );
+                                    }
+                                    List<ChatsRow> containerChatsRowList =
+                                        snapshot.data!;
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
-                                      Column(
+                                      child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            '${listViewPlayersRow.playerTag} / ${listViewPlayersRow.playerNickname}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleSmall,
-                                          ),
-                                          Text(
-                                            listViewPlayersRow.playerTeamRole!,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                    child: Image.network(
-                                                      listViewPlayersRow
-                                                          .playerFlag!,
-                                                      width: 20.0,
-                                                      height: 12.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
+                                                    10.0, 0.0, 10.0, 10.0),
+                                            child: Container(
+                                              width: 55.0,
+                                              height: 55.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
                                                   listViewPlayersRow
-                                                      .playerCountrie!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                      .playerAvatar!,
+                                                  width: 55.0,
+                                                  height: 55.0,
+                                                  fit: BoxFit.cover,
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${listViewPlayersRow.playerTag} / ${listViewPlayersRow.playerNickname}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall,
+                                              ),
+                                              Text(
+                                                listViewPlayersRow
+                                                    .playerTeamRole!,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 10.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.network(
+                                                          listViewPlayersRow
+                                                              .playerFlag!,
+                                                          width: 20.0,
+                                                          height: 12.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      listViewPlayersRow
+                                                          .playerCountrie!,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ],
-                                  ),
+                                    );
+                                  },
                                 );
                               },
                             );
