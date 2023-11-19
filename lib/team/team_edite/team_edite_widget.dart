@@ -957,10 +957,12 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                           );
                                           if ((_model.apiResultigb?.succeeded ??
                                               true)) {
-                                            if ((_model.apiResultigb
-                                                        ?.bodyText ??
-                                                    '') ==
-                                                '[]') {
+                                            if (MessagingGroup.chatsCall.chatid(
+                                                  (_model.apiResultigb
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                ) ==
+                                                null) {
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {
