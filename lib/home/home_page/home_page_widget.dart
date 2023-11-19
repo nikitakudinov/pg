@@ -335,150 +335,159 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          _model.chatByTeamId =
-                                              await MessagingGroup
-                                                  .chatbyteamidCall
-                                                  .call(
-                                            idList: columnTeamsRow?.teamId
-                                                ?.toString(),
-                                          );
-                                          _model.userByYathUID = await UserGroup
-                                              .listuserbyuidCall
-                                              .call(
-                                            idList: currentUserUid,
-                                          );
-                                          _model.fromTeamInfo = await TeamGroup
-                                              .listteambyuidCall
-                                              .call(
-                                            idList: listViewAlertsRow.fromTeam
-                                                ?.toString(),
-                                          );
-                                          setState(() {
-                                            _model.chatMembers = (MessagingGroup
+                                    if (listViewAlertsRow.type !=
+                                        'Исключение из команды')
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            _model.chatByTeamId =
+                                                await MessagingGroup
                                                     .chatbyteamidCall
-                                                    .chatmembers(
-                                              (_model.chatByTeamId?.jsonBody ??
-                                                  ''),
-                                            ) as List)
-                                                .map<String>(
-                                                    (s) => s.toString())
-                                                .toList()!
-                                                .map((e) => e.toString())
-                                                .toList()
-                                                .cast<String>();
-                                          });
-                                          setState(() {
-                                            _model.removeFromChatMembers(
-                                                currentUserUid);
-                                          });
-                                          await MessageTable().insert({
-                                            'message_sanded_at':
-                                                supaSerialize<DateTime>(
-                                                    getCurrentTimestamp),
-                                            'message_sander': 'Дозорный бот',
-                                            'message_body':
-                                                'Игрок ${UserGroup.listuserbyuidCall.playernickname(
-                                                      (_model.userByYathUID
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    ).toString()} покинул команду',
-                                            'message_chat': MessagingGroup
-                                                .chatbyteamidCall
-                                                .chatid(
-                                              (_model.chatByTeamId?.jsonBody ??
-                                                  ''),
-                                            ),
-                                            'message_sander_avatar':
-                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/playerAvatars/Iconarchive-Robot-Avatar-Blue-2-Robot-Avatar.512.png',
-                                            'message_parametrSTRING1':
-                                                currentUserUid,
-                                            'message_type':
-                                                'Сообщение от бота Игрок покину команду',
-                                          });
-                                          await ChatsTable().update(
-                                            data: {
-                                              'chat_members':
-                                                  _model.chatMembers,
-                                            },
-                                            matchingRows: (rows) => rows.eq(
-                                              'chat_id',
-                                              valueOrDefault<int>(
-                                                MessagingGroup.chatbyteamidCall
-                                                    .chatid(
-                                                  (_model.chatByTeamId
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                ),
-                                                0,
-                                              ),
-                                            ),
-                                          );
-                                          await PlayersTable().update(
-                                            data: {
-                                              'player_team':
-                                                  listViewAlertsRow.fromTeam,
-                                              'player_team_role':
-                                                  'Игрок команды',
-                                              'player_team_lineup': false,
-                                              'player_tag':
-                                                  TeamGroup.listteambyuidCall
-                                                      .teamtag(
-                                                        (_model.fromTeamInfo
+                                                    .call(
+                                              idList: columnTeamsRow?.teamId
+                                                  ?.toString(),
+                                            );
+                                            _model.userByYathUID =
+                                                await UserGroup
+                                                    .listuserbyuidCall
+                                                    .call(
+                                              idList: currentUserUid,
+                                            );
+                                            _model.fromTeamInfo =
+                                                await TeamGroup
+                                                    .listteambyuidCall
+                                                    .call(
+                                              idList: listViewAlertsRow.fromTeam
+                                                  ?.toString(),
+                                            );
+                                            setState(() {
+                                              _model.chatMembers =
+                                                  (MessagingGroup
+                                                          .chatbyteamidCall
+                                                          .chatmembers(
+                                                (_model.chatByTeamId
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) as List)
+                                                      .map<String>(
+                                                          (s) => s.toString())
+                                                      .toList()!
+                                                      .map((e) => e.toString())
+                                                      .toList()
+                                                      .cast<String>();
+                                            });
+                                            setState(() {
+                                              _model.removeFromChatMembers(
+                                                  currentUserUid);
+                                            });
+                                            await MessageTable().insert({
+                                              'message_sanded_at':
+                                                  supaSerialize<DateTime>(
+                                                      getCurrentTimestamp),
+                                              'message_sander': 'Дозорный бот',
+                                              'message_body':
+                                                  'Игрок ${UserGroup.listuserbyuidCall.playernickname(
+                                                        (_model.userByYathUID
                                                                 ?.jsonBody ??
                                                             ''),
-                                                      )
-                                                      .toString(),
-                                            },
-                                            matchingRows: (rows) => rows.eq(
-                                              'player_uid',
-                                              currentUserUid,
-                                            ),
-                                          );
-
-                                          context.pushNamed('HomePage');
-
-                                          await AlertsTable().delete(
-                                            matchingRows: (rows) => rows.eq(
-                                              'id',
-                                              listViewAlertsRow.id,
-                                            ),
-                                          );
-
-                                          setState(() {});
-                                        },
-                                        text: 'Вступить',
-                                        options: FFButtonOptions(
-                                          height: 30.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Cabin Condensed',
-                                                    color: Colors.white,
+                                                      ).toString()} покинул команду',
+                                              'message_chat': MessagingGroup
+                                                  .chatbyteamidCall
+                                                  .chatid(
+                                                (_model.chatByTeamId
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ),
+                                              'message_sander_avatar':
+                                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/playerAvatars/Iconarchive-Robot-Avatar-Blue-2-Robot-Avatar.512.png',
+                                              'message_parametrSTRING1':
+                                                  currentUserUid,
+                                              'message_type':
+                                                  'Сообщение от бота Игрок покину команду',
+                                            });
+                                            await ChatsTable().update(
+                                              data: {
+                                                'chat_members':
+                                                    _model.chatMembers,
+                                              },
+                                              matchingRows: (rows) => rows.eq(
+                                                'chat_id',
+                                                valueOrDefault<int>(
+                                                  MessagingGroup
+                                                      .chatbyteamidCall
+                                                      .chatid(
+                                                    (_model.chatByTeamId
+                                                            ?.jsonBody ??
+                                                        ''),
                                                   ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
+                                                  0,
+                                                ),
+                                              ),
+                                            );
+                                            await PlayersTable().update(
+                                              data: {
+                                                'player_team':
+                                                    listViewAlertsRow.fromTeam,
+                                                'player_team_role':
+                                                    'Игрок команды',
+                                                'player_team_lineup': false,
+                                                'player_tag':
+                                                    TeamGroup.listteambyuidCall
+                                                        .teamtag(
+                                                          (_model.fromTeamInfo
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )
+                                                        .toString(),
+                                              },
+                                              matchingRows: (rows) => rows.eq(
+                                                'player_uid',
+                                                currentUserUid,
+                                              ),
+                                            );
+
+                                            context.pushNamed('HomePage');
+
+                                            await AlertsTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'id',
+                                                listViewAlertsRow.id,
+                                              ),
+                                            );
+
+                                            setState(() {});
+                                          },
+                                          text: 'Вступить',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
-                                            width: 1.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
                                         ),
                                       ),
-                                    ),
                                     if (listViewAlertsRow.type ==
                                         'Исключение из команды')
                                       Expanded(
