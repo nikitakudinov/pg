@@ -1,8 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -256,17 +258,20 @@ class _ChatsWidgetState extends State<ChatsWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<ChatsRow>>(
-                  future: ChatsTable().queryRows(
-                    queryFn: (q) => q
-                        .contains(
-                          'chat_members',
-                          '{' + currentUserUid + '}',
-                        )
-                        .eq(
-                          'chat_of_team',
-                          0,
-                        ),
-                  ),
+                  future:
+                      (_model.requestCompleter ??= Completer<List<ChatsRow>>()
+                            ..complete(ChatsTable().queryRows(
+                              queryFn: (q) => q
+                                  .contains(
+                                    'chat_members',
+                                    '{' + currentUserUid + '}',
+                                  )
+                                  .eq(
+                                    'chat_of_team',
+                                    0,
+                                  ),
+                            )))
+                          .future,
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -345,16 +350,19 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                       ),
                                     );
                                   }
-                                  List<PlayersRow> rowPlayersRowList =
+                                  List<PlayersRow> columnPlayersRowList =
                                       snapshot.data!;
-                                  return Row(
+                                  return Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: List.generate(
-                                        rowPlayersRowList.length, (rowIndex) {
-                                      final rowPlayersRow =
-                                          rowPlayersRowList[rowIndex];
+                                        columnPlayersRowList.length,
+                                        (columnIndex) {
+                                      final columnPlayersRow =
+                                          columnPlayersRowList[columnIndex];
                                       return Row(
-                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -379,7 +387,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                         BorderRadius.circular(
                                                             5.0),
                                                     child: Image.network(
-                                                      rowPlayersRow
+                                                      columnPlayersRow
                                                           .playerAvatar!,
                                                       width: 50.0,
                                                       height: 50.0,
@@ -390,27 +398,60 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                               ),
                                             ],
                                           ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                rowPlayersRow.playerNickname!,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                              Text(
-                                                teamChatChatsRow
-                                                    .chatLastMessage!
-                                                    .maybeHandleOverflow(
-                                                        maxChars: 50),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  columnPlayersRow
+                                                      .playerNickname!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                                Text(
+                                                  teamChatChatsRow
+                                                      .chatLastMessage!
+                                                      .maybeHandleOverflow(
+                                                          maxChars: 50),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          FlutterFlowIconButton(
+                                            borderRadius: 20.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 40.0,
+                                            icon: Icon(
+                                              Icons.delete,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 16.0,
+                                            ),
+                                            onPressed: () async {
+                                              await MessageTable().delete(
+                                                matchingRows: (rows) => rows.eq(
+                                                  'message_chat',
+                                                  teamChatChatsRow.chatId,
+                                                ),
+                                              );
+                                              await ChatsTable().delete(
+                                                matchingRows: (rows) => rows.eq(
+                                                  'chat_id',
+                                                  teamChatChatsRow.chatId,
+                                                ),
+                                              );
+                                              setState(() => _model
+                                                  .requestCompleter = null);
+                                              await _model
+                                                  .waitForRequestCompleted();
+                                            },
                                           ),
                                         ],
                                       );
