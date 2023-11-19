@@ -95,8 +95,8 @@ class _ChatWidgetState extends State<ChatWidget> {
               color: FlutterFlowTheme.of(context).primaryText,
               size: 24.0,
             ),
-            onPressed: () async {
-              context.pushNamed('CHATS');
+            onPressed: () {
+              print('IconButton pressed ...');
             },
           ),
           title: Text(
