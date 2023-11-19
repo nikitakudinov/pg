@@ -980,6 +980,52 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   );
                                                 },
                                               );
+                                              setState(() {
+                                                _model.addToChatMembers(
+                                                    currentUserUid);
+                                              });
+                                              setState(() {
+                                                _model.addToChatMembers(
+                                                    listViewPlayersRow
+                                                        .playerUid!);
+                                              });
+                                              await ChatsTable().insert({
+                                                'chat_updated_at':
+                                                    supaSerialize<DateTime>(
+                                                        getCurrentTimestamp),
+                                                'chat_members':
+                                                    _model.chatMembers,
+                                                'chat_last_message':
+                                                    'Чат с игроком',
+                                                'chat_of_team': 0,
+                                                'chat_count_of_members': 2,
+                                              });
+                                              _model.apiResult8j2 =
+                                                  await MessagingGroup.chatsCall
+                                                      .call(
+                                                idList: currentUserUid,
+                                                idList1: listViewPlayersRow
+                                                    .playerUid,
+                                                idList2: 2,
+                                              );
+                                              if ((_model.apiResult8j2
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                context.pushNamed(
+                                                  'CHAT',
+                                                  queryParameters: {
+                                                    'chatID': serializeParam(
+                                                      MessagingGroup.chatsCall
+                                                          .chatid(
+                                                        (_model.apiResult8j2
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ),
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              }
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -996,6 +1042,21 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     ],
                                                   );
                                                 },
+                                              );
+
+                                              context.pushNamed(
+                                                'CHAT',
+                                                queryParameters: {
+                                                  'chatID': serializeParam(
+                                                    MessagingGroup.chatsCall
+                                                        .chatid(
+                                                      (_model.apiResultigb
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ),
+                                                    ParamType.int,
+                                                  ),
+                                                }.withoutNulls,
                                               );
                                             }
                                           }

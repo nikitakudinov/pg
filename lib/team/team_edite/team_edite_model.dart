@@ -28,6 +28,15 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   bool searchPlaerByIdVISIBILITY = false;
 
+  List<String> chatMembers = [];
+  void addToChatMembers(String item) => chatMembers.add(item);
+  void removeFromChatMembers(String item) => chatMembers.remove(item);
+  void removeAtIndexFromChatMembers(int index) => chatMembers.removeAt(index);
+  void insertAtIndexInChatMembers(int index, String item) =>
+      chatMembers.insert(index, item);
+  void updateChatMembersAtIndex(int index, Function(String) updateFn) =>
+      chatMembers[index] = updateFn(chatMembers[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -56,6 +65,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String? Function(BuildContext, String?)? textController3Validator;
   // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
   ApiCallResponse? apiResultigb;
+  // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
+  ApiCallResponse? apiResult8j2;
 
   /// Initialization and disposal methods.
 
