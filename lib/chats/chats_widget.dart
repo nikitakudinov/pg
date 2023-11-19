@@ -371,7 +371,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  rowPlayersRow!.playerAvatar!,
+                                                  'https://picsum.photos/seed/746/600',
                                                   width: 50.0,
                                                   height: 50.0,
                                                   fit: BoxFit.cover,
@@ -388,7 +388,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              rowPlayersRow!.playerNickname!,
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
