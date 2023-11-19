@@ -323,146 +323,103 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 10.0, 10.0),
-                                child: FutureBuilder<List<PlayersRow>>(
-                                  future: PlayersTable().queryRows(
-                                    queryFn: (q) => q
-                                        .in_(
-                                          'player_uid',
-                                          playersChatChatsRow.chatMembers,
-                                        )
-                                        .neq(
-                                          'player_uid',
-                                          currentUserUid,
-                                        ),
-                                    limit: 1,
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<PlayersRow> columnPlayersRowList =
-                                        snapshot.data!;
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(
-                                          columnPlayersRowList.length,
-                                          (columnIndex) {
-                                        final columnPlayersRow =
-                                            columnPlayersRowList[columnIndex];
-                                        return Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 10.0, 0.0),
-                                                  child: Container(
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Container(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                  child: Image.network(
+                                                    'https://picsum.photos/seed/746/600',
                                                     width: 50.0,
                                                     height: 50.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                    ),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      child: Image.network(
-                                                        columnPlayersRow
-                                                            .playerAvatar!,
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    columnPlayersRow
-                                                        .playerNickname!,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                  Text(
-                                                    playersChatChatsRow
-                                                        .chatLastMessage!
-                                                        .maybeHandleOverflow(
-                                                            maxChars: 50),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
                                               ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              icon: Icon(
-                                                Icons.delete,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 16.0,
-                                              ),
-                                              onPressed: () async {
-                                                await MessageTable().delete(
-                                                  matchingRows: (rows) =>
-                                                      rows.eq(
-                                                    'message_chat',
-                                                    playersChatChatsRow.chatId,
-                                                  ),
-                                                );
-                                                await ChatsTable().delete(
-                                                  matchingRows: (rows) =>
-                                                      rows.eq(
-                                                    'chat_id',
-                                                    playersChatChatsRow.chatId,
-                                                  ),
-                                                );
-                                                setState(() => _model
-                                                    .requestCompleter = null);
-                                                await _model
-                                                    .waitForRequestCompleted();
-                                              },
                                             ),
                                           ],
-                                        );
-                                      }),
-                                    );
-                                  },
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Hello World',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                playersChatChatsRow
+                                                    .chatLastMessage!
+                                                    .maybeHandleOverflow(
+                                                        maxChars: 50),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        FlutterFlowIconButton(
+                                          borderRadius: 20.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          icon: Icon(
+                                            Icons.delete,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 16.0,
+                                          ),
+                                          onPressed: () async {
+                                            await MessageTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'message_chat',
+                                                playersChatChatsRow.chatId,
+                                              ),
+                                            );
+                                            await ChatsTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'chat_id',
+                                                playersChatChatsRow.chatId,
+                                              ),
+                                            );
+                                            setState(() =>
+                                                _model.requestCompleter = null);
+                                            await _model
+                                                .waitForRequestCompleted();
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
