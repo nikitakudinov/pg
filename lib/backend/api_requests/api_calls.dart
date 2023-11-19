@@ -29,7 +29,7 @@ class ListuserbyuidCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTUSERBYUID',
-      apiUrl: '${UserGroup.baseUrl}players?player_id=in.%28${idList}%29',
+      apiUrl: '${UserGroup.baseUrl}players?player_uid=eq.${idList}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -483,6 +483,7 @@ class MessagingGroup {
         'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static ChatsCall chatsCall = ChatsCall();
+  static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
 }
 
 class ChatsCall {
@@ -495,6 +496,60 @@ class ChatsCall {
       callName: 'CHATS',
       apiUrl:
           '${MessagingGroup.baseUrl}chats?chat_members=cs.{${idList}}&chat_members=cs.{${idList1}}&chat_count_of_members=in.(${idList2})',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Prefer': 'count=exact',
+        'Range-Unit': 'items',
+        'Range': '0-24',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic chatid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_id''',
+      );
+  dynamic chatupdatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_updated_at''',
+      );
+  dynamic chatmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_members''',
+        true,
+      );
+  dynamic chatlastmessage(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_last_message''',
+      );
+  dynamic chatofteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_of_team''',
+      );
+  dynamic chatcountofmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_count_of_members''',
+      );
+}
+
+class ChatbyteamidCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+    String? idList1 = '',
+    int? idList2,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'CHATBYTEAMID',
+      apiUrl: '${MessagingGroup.baseUrl}chats?chat_of_team=eq.${idList}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

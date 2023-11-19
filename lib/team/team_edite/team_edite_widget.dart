@@ -61,13 +61,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
               .teamnam(
                 (_model.apiResultsn8?.jsonBody ?? ''),
               )
-              .toString()
               .toString();
           _model.tag = TeamGroup.listteambyuidCall
               .teamtag(
                 (_model.apiResultsn8?.jsonBody ?? ''),
               )
-              .toString()
               .toString();
         });
       }

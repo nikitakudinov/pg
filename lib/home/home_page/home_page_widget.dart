@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -132,6 +133,327 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   '0',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                child: FutureBuilder<List<AlertsRow>>(
+                  future: AlertsTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'to_user',
+                      currentUserUid,
+                    ),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    List<AlertsRow> listViewAlertsRowList = snapshot.data!;
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewAlertsRowList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewAlertsRow =
+                            listViewAlertsRowList[listViewIndex];
+                        return FutureBuilder<List<TeamsRow>>(
+                          future: TeamsTable().querySingleRow(
+                            queryFn: (q) => q.eq(
+                              'team_id',
+                              listViewAlertsRow.fromTeam,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<TeamsRow> columnTeamsRowList = snapshot.data!;
+                            final columnTeamsRow = columnTeamsRowList.isNotEmpty
+                                ? columnTeamsRowList.first
+                                : null;
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав. ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 10.0, 0.0),
+                                        child: Container(
+                                          width: 45.0,
+                                          height: 45.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              columnTeamsRow!.teamLogo!,
+                                              width: 45.0,
+                                              height: 45.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            columnTeamsRow!.teamName!,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium,
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 20.0,
+                                                height: 12.0,
+                                                decoration: BoxDecoration(),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
+                                                    columnTeamsRow!.teamFlag!,
+                                                    width: 20.0,
+                                                    height: 12.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                columnTeamsRow!.teamCountry!,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text: 'Отказаться',
+                                        options: FFButtonOptions(
+                                          height: 30.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Cabin Condensed',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          _model.chatByTeamId =
+                                              await MessagingGroup
+                                                  .chatbyteamidCall
+                                                  .call(
+                                            idList: columnTeamsRow?.teamId
+                                                ?.toString(),
+                                          );
+                                          _model.userByYathUID = await UserGroup
+                                              .listuserbyuidCall
+                                              .call(
+                                            idList: currentUserUid,
+                                          );
+                                          setState(() {
+                                            _model.chatMembers = (MessagingGroup
+                                                    .chatbyteamidCall
+                                                    .chatmembers(
+                                              (_model.chatByTeamId?.jsonBody ??
+                                                  ''),
+                                            ) as List)
+                                                .map<String>(
+                                                    (s) => s.toString())
+                                                .toList()!
+                                                .map((e) => e.toString())
+                                                .toList()
+                                                .cast<String>();
+                                          });
+                                          setState(() {
+                                            _model.removeFromChatMembers(
+                                                currentUserUid);
+                                          });
+                                          await MessageTable().insert({
+                                            'message_sanded_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'message_sander': 'Дозорный бот',
+                                            'message_body':
+                                                'Игрок ${UserGroup.listuserbyuidCall.playernickname(
+                                                      (_model.userByYathUID
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString()} покинул команду',
+                                            'message_chat': MessagingGroup
+                                                .chatbyteamidCall
+                                                .chatid(
+                                              (_model.chatByTeamId?.jsonBody ??
+                                                  ''),
+                                            ),
+                                            'message_sander_avatar':
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/playerAvatars/Iconarchive-Robot-Avatar-Blue-2-Robot-Avatar.512.png',
+                                            'message_parametrSTRING1':
+                                                currentUserUid,
+                                            'message_type':
+                                                'Сообщение от бота Игрок покину команду',
+                                          });
+                                          await ChatsTable().update(
+                                            data: {
+                                              'chat_members':
+                                                  _model.chatMembers,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'chat_id',
+                                              valueOrDefault<int>(
+                                                MessagingGroup.chatbyteamidCall
+                                                    .chatid(
+                                                  (_model.chatByTeamId
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                ),
+                                                0,
+                                              ),
+                                            ),
+                                          );
+                                          await PlayersTable().update(
+                                            data: {
+                                              'player_team':
+                                                  listViewAlertsRow.fromTeam,
+                                              'player_team_role':
+                                                  'Игрок команды',
+                                              'player_team_lineup': false,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'player_uid',
+                                              currentUserUid,
+                                            ),
+                                          );
+                                          await AlertsTable().delete(
+                                            matchingRows: (rows) => rows.eq(
+                                              'id',
+                                              listViewAlertsRow.id,
+                                            ),
+                                          );
+
+                                          setState(() {});
+                                        },
+                                        text: 'Вступить',
+                                        options: FFButtonOptions(
+                                          height: 30.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Cabin Condensed',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(width: 10.0)),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),

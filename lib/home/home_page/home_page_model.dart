@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,11 +14,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+  ///  Local state fields for this page.
+
+  List<String> chatMembers = [];
+  void addToChatMembers(String item) => chatMembers.add(item);
+  void removeFromChatMembers(String item) => chatMembers.remove(item);
+  void removeAtIndexFromChatMembers(int index) => chatMembers.removeAt(index);
+  void insertAtIndexInChatMembers(int index, String item) =>
+      chatMembers.insert(index, item);
+  void updateChatMembersAtIndex(int index, Function(String) updateFn) =>
+      chatMembers[index] = updateFn(chatMembers[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (LISTUSERBYID)] action in HomePage widget.
   ApiCallResponse? apiResultqcj;
+  // Stores action output result for [Backend Call - API (CHATBYTEAMID)] action in Button widget.
+  ApiCallResponse? chatByTeamId;
+  // Stores action output result for [Backend Call - API (LISTUSERBYUID)] action in Button widget.
+  ApiCallResponse? userByYathUID;
 
   /// Initialization and disposal methods.
 

@@ -246,6 +246,142 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         .bodyMedium,
                                                   ),
                                                 ),
+                                                if (listViewMessageRow
+                                                        .messageType ==
+                                                    'Сообщение от бота Игрок покину команду')
+                                                  FutureBuilder<
+                                                      List<PlayersRow>>(
+                                                    future: PlayersTable()
+                                                        .querySingleRow(
+                                                      queryFn: (q) => q.eq(
+                                                        'player_uid',
+                                                        listViewMessageRow
+                                                            .messageParametrSTRING1,
+                                                      ),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                CircularProgressIndicator(
+                                                              valueColor:
+                                                                  AlwaysStoppedAnimation<
+                                                                      Color>(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<PlayersRow>
+                                                          rowPlayersRowList =
+                                                          snapshot.data!;
+                                                      final rowPlayersRow =
+                                                          rowPlayersRowList
+                                                                  .isNotEmpty
+                                                              ? rowPlayersRowList
+                                                                  .first
+                                                              : null;
+                                                      return Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        5.0,
+                                                                        5.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: 35.0,
+                                                              height: 35.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                              ),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  rowPlayersRow!
+                                                                      .playerAvatar!,
+                                                                  width: 35.0,
+                                                                  height: 35.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                rowPlayersRow!
+                                                                    .playerNickname!,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            0.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      rowPlayersRow!
+                                                                          .playerFlag!,
+                                                                      width:
+                                                                          20.0,
+                                                                      height:
+                                                                          12.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    rowPlayersRow!
+                                                                        .playerCountrie!,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ),
                                               ],
                                             ),
                                           ),

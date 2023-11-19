@@ -33,4 +33,12 @@ class MessageRow extends SupabaseDataRow {
   String? get messageSanderAvatar => getField<String>('message_sander_avatar');
   set messageSanderAvatar(String? value) =>
       setField<String>('message_sander_avatar', value);
+
+  String? get messageType => getField<String>('message_type');
+  set messageType(String? value) => setField<String>('message_type', value);
+
+  String get messageParametrSTRING1 =>
+      getField<String>('message_parametrSTRING1')!;
+  set messageParametrSTRING1(String value) =>
+      setField<String>('message_parametrSTRING1', value);
 }
