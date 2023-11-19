@@ -485,8 +485,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     decoration: BoxDecoration(),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Padding(
                                           padding:
@@ -513,60 +515,67 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             ),
                                           ),
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '${containerPlayersRow?.playerTag} / ${containerPlayersRow?.playerNickname}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall,
-                                            ),
-                                            Text(
-                                              containerPlayersRow!
-                                                  .playerTeamRole!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 10.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        containerPlayersRow!
-                                                            .playerFlag!,
-                                                        width: 20.0,
-                                                        height: 12.0,
-                                                        fit: BoxFit.cover,
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${containerPlayersRow?.playerTag} / ${containerPlayersRow?.playerNickname}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall,
+                                              ),
+                                              Text(
+                                                containerPlayersRow!
+                                                    .playerTeamRole!,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 10.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.network(
+                                                          containerPlayersRow!
+                                                              .playerFlag!,
+                                                          width: 20.0,
+                                                          height: 12.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    containerPlayersRow!
-                                                        .playerCountrie!,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
+                                                    Text(
+                                                      containerPlayersRow!
+                                                          .playerCountrie!,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
