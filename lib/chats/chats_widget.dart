@@ -326,6 +326,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         'player_uid',
                                         currentUserUid,
                                       ),
+                                  limit: 1,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -373,7 +374,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/746/600',
+                                                  rowPlayersRow.playerAvatar!,
                                                   width: 50.0,
                                                   height: 50.0,
                                                   fit: BoxFit.cover,
