@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import 'chats_widget.dart' show ChatsWidget;
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +17,7 @@ class ChatsModel extends FlutterFlowModel<ChatsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
   Completer<List<ChatsRow>>? requestCompleter;
 
   /// Initialization and disposal methods.
@@ -23,6 +26,7 @@ class ChatsModel extends FlutterFlowModel<ChatsWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
   }
 
   /// Action blocks are added here.
