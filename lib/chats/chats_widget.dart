@@ -84,10 +84,9 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                           'chat_members',
                           '{' + currentUserUid + '}',
                         )
-                        .not(
+                        .neq(
                           'chat_of_team',
-                          'is',
-                          null,
+                          0,
                         ),
                   ),
                   builder: (context, snapshot) {
