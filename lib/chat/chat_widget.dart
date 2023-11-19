@@ -314,6 +314,17 @@ class _ChatWidgetState extends State<ChatWidget> {
                           'message_sander_avatar':
                               FFAppState().authenticateduser.avatar,
                         });
+                        await ChatsTable().update(
+                          data: {
+                            'chat_updated_at':
+                                supaSerialize<DateTime>(getCurrentTimestamp),
+                            'chat_last_message': _model.textController.text,
+                          },
+                          matchingRows: (rows) => rows.eq(
+                            'chat_id',
+                            widget.chatID,
+                          ),
+                        );
                         setState(() {
                           _model.textController?.clear();
                         });
