@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -137,12 +138,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<AlertsRow>>(
-                  future: AlertsTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'to_user',
-                      currentUserUid,
-                    ),
-                  ),
+                  future:
+                      (_model.requestCompleter ??= Completer<List<AlertsRow>>()
+                            ..complete(AlertsTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'to_user',
+                                currentUserUid,
+                              ),
+                            )))
+                          .future,
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -405,6 +409,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               currentUserUid,
                                             ),
                                           );
+                                          setState(() =>
+                                              _model.requestCompleter = null);
+                                          await _model
+                                              .waitForRequestCompleted();
                                           await AlertsTable().delete(
                                             matchingRows: (rows) => rows.eq(
                                               'id',
