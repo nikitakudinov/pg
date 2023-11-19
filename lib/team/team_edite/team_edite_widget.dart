@@ -645,7 +645,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           _model.apiResultadv = await UserGroup
-                                              .listuserbyuidCall
+                                              .listuserbyidCall
                                               .call(
                                             idList: _model.textController3.text,
                                           );
@@ -655,7 +655,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     getCurrentTimestamp),
                                             'from_team': widget.teamID,
                                             'to_user':
-                                                UserGroup.listuserbyuidCall
+                                                UserGroup.listuserbyidCall
                                                     .playeruid(
                                                       (_model.apiResultadv
                                                               ?.jsonBody ??
