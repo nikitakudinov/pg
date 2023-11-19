@@ -950,7 +950,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                           _model.apiResultigb =
                                               await MessagingGroup.chatsCall
                                                   .call(
-                                            idList: widget.teamID.toString(),
+                                            idList:
+                                                listViewPlayersRow.playerUid,
                                             idList1:
                                                 listViewPlayersRow.playerUid,
                                             idList2: 2,
