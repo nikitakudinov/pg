@@ -325,6 +325,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                             widget.chatID,
                           ),
                         );
+                        setState(() => _model.requestCompleter = null);
+                        await _model.waitForRequestCompleted();
                         setState(() {
                           _model.textController?.clear();
                         });
