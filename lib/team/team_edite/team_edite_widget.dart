@@ -960,6 +960,15 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               listViewPlayersRow.playerId,
                                             ),
                                           );
+                                          await AlertsTable().insert({
+                                            'created_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'from_team': widget.teamID,
+                                            'to_user':
+                                                listViewPlayersRow.playerUid,
+                                            'type': 'Исключение из команды',
+                                          });
                                           setState(() =>
                                               _model.requestCompleter = null);
                                           await _model

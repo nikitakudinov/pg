@@ -200,7 +200,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав. ',
+                                      listViewAlertsRow.type ==
+                                              'Приглашение в команду'
+                                          ? 'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав'
+                                          : 'фы',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
