@@ -79,10 +79,16 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<ChatsRow>>(
                   future: ChatsTable().queryRows(
-                    queryFn: (q) => q.contains(
-                      'chat_members',
-                      '{' + currentUserUid + '}',
-                    ),
+                    queryFn: (q) => q
+                        .contains(
+                          'chat_members',
+                          '{' + currentUserUid + '}',
+                        )
+                        .not(
+                          'chat_of_team',
+                          'is',
+                          null,
+                        ),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
