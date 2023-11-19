@@ -488,16 +488,22 @@ class MessagingGroup {
 class ChatsCall {
   Future<ApiCallResponse> call({
     String? idList = '',
+    String? idList1 = '',
+    int? idList2,
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'CHATS',
-      apiUrl: '${MessagingGroup.baseUrl}chats?chat_members=in.%28${idList}%29',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${idList}}&chat_members=cs.{${idList1}}&chat_count_of_members=in.(${idList2})',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
         'Authorization':
             'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Prefer': 'count=exact',
+        'Range-Unit': 'items',
+        'Range': '0-24',
       },
       params: {},
       returnBody: true,
@@ -507,29 +513,30 @@ class ChatsCall {
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  dynamic chatid(dynamic response) => getJsonField(
         response,
-        r'''$[:].id''',
+        r'''$[:].chat_id''',
       );
-  dynamic createdat(dynamic response) => getJsonField(
+  dynamic chatupdatedat(dynamic response) => getJsonField(
         response,
-        r'''$[:].created_at''',
+        r'''$[:].chat_updated_at''',
       );
-  dynamic nickname(dynamic response) => getJsonField(
+  dynamic chatmembers(dynamic response) => getJsonField(
         response,
-        r'''$[:].nickname''',
+        r'''$[:].chat_members''',
+        true,
       );
-  dynamic uid(dynamic response) => getJsonField(
+  dynamic chatlastmessage(dynamic response) => getJsonField(
         response,
-        r'''$[:].uid''',
+        r'''$[:].chat_last_message''',
       );
-  dynamic email(dynamic response) => getJsonField(
+  dynamic chatofteam(dynamic response) => getJsonField(
         response,
-        r'''$[:].email''',
+        r'''$[:].chat_of_team''',
       );
-  dynamic tag(dynamic response) => getJsonField(
+  dynamic chatcountofmembers(dynamic response) => getJsonField(
         response,
-        r'''$[:].tag''',
+        r'''$[:].chat_count_of_members''',
       );
 }
 

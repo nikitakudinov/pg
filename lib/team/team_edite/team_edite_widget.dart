@@ -10,6 +10,7 @@ import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'team_edite_model.dart';
@@ -846,144 +847,161 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                               itemBuilder: (context, listViewIndex) {
                                 final listViewPlayersRow =
                                     listViewPlayersRowList[listViewIndex];
-                                return FutureBuilder<List<ChatsRow>>(
-                                  future: ChatsTable().queryRows(
-                                    queryFn: (q) => q
-                                        .contains(
-                                          'chat_members',
-                                          '{' + currentUserUid + '}',
-                                        )
-                                        .contains(
-                                          'chat_members',
-                                          '{' +
-                                              listViewPlayersRow.playerUid +
-                                              '}',
-                                        ),
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 10.0),
+                                        child: Container(
+                                          width: 55.0,
+                                          height: 55.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                           ),
-                                        ),
-                                      );
-                                    }
-                                    List<ChatsRow> containerChatsRowList =
-                                        snapshot.data!;
-                                    return Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 10.0, 10.0),
-                                            child: Container(
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              listViewPlayersRow.playerAvatar!,
                                               width: 55.0,
                                               height: 55.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  listViewPlayersRow
-                                                      .playerAvatar!,
-                                                  width: 55.0,
-                                                  height: 55.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${listViewPlayersRow.playerTag} / ${listViewPlayersRow.playerNickname}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall,
-                                              ),
-                                              Text(
-                                                listViewPlayersRow
-                                                    .playerTeamRole!,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 10.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.network(
-                                                          listViewPlayersRow
-                                                              .playerFlag!,
-                                                          width: 20.0,
-                                                          height: 12.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${listViewPlayersRow.playerTag} / ${listViewPlayersRow.playerNickname}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
+                                            ),
+                                            Text(
+                                              listViewPlayersRow
+                                                  .playerTeamRole!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 10.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                5.0, 0.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.network(
+                                                        listViewPlayersRow
+                                                            .playerFlag!,
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        fit: BoxFit.cover,
                                                       ),
                                                     ),
-                                                    Text(
-                                                      listViewPlayersRow
-                                                          .playerCountrie!,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                  Text(
+                                                    listViewPlayersRow
+                                                        .playerCountrie!,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
-                                          Text(
-                                            containerChatsRowList.length
-                                                .toString(),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    );
-                                  },
+                                      FlutterFlowIconButton(
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.telegramPlane,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          _model.apiResultigb =
+                                              await MessagingGroup.chatsCall
+                                                  .call(
+                                            idList: widget.teamID.toString(),
+                                            idList1:
+                                                listViewPlayersRow.playerUid,
+                                            idList2: 2,
+                                          );
+                                          if ((_model.apiResultigb?.succeeded ??
+                                              true)) {
+                                            if ((_model.apiResultigb
+                                                        ?.bodyText ??
+                                                    '') ==
+                                                '[]') {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('ПРАВДА'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('ЛОЖЬ'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          }
+
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ],
+                                  ),
                                 );
                               },
                             );
