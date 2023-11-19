@@ -317,10 +317,15 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                   10.0, 10.0, 10.0, 10.0),
                               child: FutureBuilder<List<PlayersRow>>(
                                 future: PlayersTable().queryRows(
-                                  queryFn: (q) => q.in_(
-                                    'player_uid',
-                                    teamChatChatsRow.chatMembers,
-                                  ),
+                                  queryFn: (q) => q
+                                      .in_(
+                                        'player_uid',
+                                        teamChatChatsRow.chatMembers,
+                                      )
+                                      .neq(
+                                        'player_uid',
+                                        currentUserUid,
+                                      ),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
