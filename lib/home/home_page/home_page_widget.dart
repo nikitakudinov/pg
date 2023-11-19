@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -136,12 +137,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<AlertsRow>>(
-                  future: AlertsTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'to_user',
-                      currentUserUid,
-                    ),
-                  ),
+                  future:
+                      (_model.requestCompleter ??= Completer<List<AlertsRow>>()
+                            ..complete(AlertsTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'to_user',
+                                currentUserUid,
+                              ),
+                            )))
+                          .future,
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -216,78 +220,83 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 10.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.network(
-                                              columnTeamsRow!.teamLogo!,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
+                                if (listViewAlertsRow.type !=
+                                    'Исключение из команды')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Container(
+                                            width: 45.0,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                columnTeamsRow!.teamLogo!,
+                                                width: 45.0,
+                                                height: 45.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            columnTeamsRow!.teamName!,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 20.0,
-                                                height: 12.0,
-                                                decoration: BoxDecoration(),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: Image.network(
-                                                    columnTeamsRow!.teamFlag!,
-                                                    width: 20.0,
-                                                    height: 12.0,
-                                                    fit: BoxFit.cover,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              columnTeamsRow!.teamName!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium,
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 20.0,
+                                                  height: 12.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                    child: Image.network(
+                                                      columnTeamsRow!.teamFlag!,
+                                                      width: 20.0,
+                                                      height: 12.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              Text(
-                                                columnTeamsRow!.teamCountry!,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                                Text(
+                                                  columnTeamsRow!.teamCountry!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -470,6 +479,53 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ),
                                     ),
+                                    if (listViewAlertsRow.type ==
+                                        'Исключение из команды')
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            await AlertsTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'id',
+                                                listViewAlertsRow.id,
+                                              ),
+                                            );
+                                            setState(() =>
+                                                _model.requestCompleter = null);
+                                            await _model
+                                                .waitForRequestCompleted();
+                                          },
+                                          text: 'Ясно',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
                                   ].divide(SizedBox(width: 10.0)),
                                 ),
                               ],
