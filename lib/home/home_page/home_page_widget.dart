@@ -398,6 +398,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               'player_team_role':
                                                   'Игрок команды',
                                               'player_team_lineup': false,
+                                              'player_tag':
+                                                  columnTeamsRow?.teamTag,
                                             },
                                             matchingRows: (rows) => rows.eq(
                                               'player_uid',

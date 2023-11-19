@@ -938,11 +938,26 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         borderRadius: 20.0,
                                         borderWidth: 1.0,
                                         buttonSize: 40.0,
+                                        icon: Icon(
+                                          Icons.delete_forever_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 15.0,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
                                         icon: FaIcon(
                                           FontAwesomeIcons.telegramPlane,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
-                                          size: 24.0,
+                                          size: 15.0,
                                         ),
                                         onPressed: () async {
                                           _model.apiResultigb =
