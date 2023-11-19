@@ -975,7 +975,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             ],
                                           ),
                                           Text(
-                                            'Hello World',
+                                            containerChatsRowList.length
+                                                .toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
