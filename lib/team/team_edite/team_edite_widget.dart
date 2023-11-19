@@ -964,22 +964,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                       ''),
                                                 ) ==
                                                 null) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('ПРАВДА'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
                                               setState(() {
                                                 _model.addToChatMembers(
                                                     currentUserUid);
@@ -1027,23 +1011,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 );
                                               }
                                             } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('ЛОЖЬ'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-
                                               context.pushNamed(
                                                 'CHAT',
                                                 queryParameters: {
