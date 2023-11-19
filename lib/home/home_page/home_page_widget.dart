@@ -200,10 +200,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      listViewAlertsRow.type ==
-                                              'Приглашение в команду'
-                                          ? 'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав'
-                                          : 'фы',
+                                      () {
+                                        if (listViewAlertsRow.type ==
+                                            'Приглашение в команду') {
+                                          return 'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав';
+                                        } else if (listViewAlertsRow.type ==
+                                            'Исключение из команды') {
+                                          return 'Вы были исключены из команды';
+                                        } else {
+                                          return '0';
+                                        }
+                                      }(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
