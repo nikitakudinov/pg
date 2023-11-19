@@ -34,6 +34,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ApiCallResponse? chatByTeamId;
   // Stores action output result for [Backend Call - API (LISTUSERBYUID)] action in Button widget.
   ApiCallResponse? userByYathUID;
+  // Stores action output result for [Backend Call - API (LISTTEAMBYUID)] action in Button widget.
+  ApiCallResponse? fromTeamInfo;
 
   /// Initialization and disposal methods.
 

@@ -331,6 +331,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               .call(
                                             idList: currentUserUid,
                                           );
+                                          _model.fromTeamInfo = await TeamGroup
+                                              .listteambyuidCall
+                                              .call(
+                                            idList: listViewAlertsRow.fromTeam
+                                                ?.toString(),
+                                          );
                                           setState(() {
                                             _model.chatMembers = (MessagingGroup
                                                     .chatbyteamidCall
@@ -399,7 +405,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   'Игрок команды',
                                               'player_team_lineup': false,
                                               'player_tag':
-                                                  columnTeamsRow?.teamTag,
+                                                  TeamGroup.listteambyuidCall
+                                                      .teamtag(
+                                                        (_model.fromTeamInfo
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      )
+                                                      .toString(),
                                             },
                                             matchingRows: (rows) => rows.eq(
                                               'player_uid',
