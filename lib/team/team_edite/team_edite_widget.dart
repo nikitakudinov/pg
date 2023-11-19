@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -814,12 +815,15 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             ),
                           ),
                         FutureBuilder<List<PlayersRow>>(
-                          future: PlayersTable().queryRows(
-                            queryFn: (q) => q.eq(
-                              'player_team',
-                              widget.teamID,
-                            ),
-                          ),
+                          future: (_model.requestCompleter ??=
+                                  Completer<List<PlayersRow>>()
+                                    ..complete(PlayersTable().queryRows(
+                                      queryFn: (q) => q.eq(
+                                        'player_team',
+                                        widget.teamID,
+                                      ),
+                                    )))
+                              .future,
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -944,8 +948,22 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               .primaryText,
                                           size: 15.0,
                                         ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
+                                        onPressed: () async {
+                                          await PlayersTable().update(
+                                            data: {
+                                              'player_team': 0,
+                                              'player_tag': 'вне команды',
+                                              'player_team_role': 'Вне команды',
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'player_id',
+                                              listViewPlayersRow.playerId,
+                                            ),
+                                          );
+                                          setState(() =>
+                                              _model.requestCompleter = null);
+                                          await _model
+                                              .waitForRequestCompleted();
                                         },
                                       ),
                                       FlutterFlowIconButton(
