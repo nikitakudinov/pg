@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -34,27 +33,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultqcj = await UserGroup.listuserbyidCall.call(
+      _model.apiResultqcj = await UserGroup.listuserbyuidCall.call(
         idList: currentUserUid,
       );
       if ((_model.apiResultqcj?.succeeded ?? true)) {
         setState(() {
           FFAppState().updateAuthenticateduserStruct(
             (e) => e
-              ..id = UserGroup.listuserbyidCall.playerid(
+              ..id = UserGroup.listuserbyuidCall.playerid(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
-              ..team = UserGroup.listuserbyidCall.playerteam(
+              ..team = UserGroup.listuserbyuidCall.playerteam(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
               ..uid = currentUserUid
-              ..nickname = UserGroup.listuserbyidCall
+              ..nickname = UserGroup.listuserbyuidCall
                   .playernickname(
                     (_model.apiResultqcj?.jsonBody ?? ''),
                   )
                   .toString()
-                  .toString()
-              ..avatar = UserGroup.listuserbyidCall.playeravatar(
+              ..avatar = UserGroup.listuserbyuidCall.playeravatar(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               ),
           );
@@ -138,15 +136,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<AlertsRow>>(
-                  future:
-                      (_model.requestCompleter ??= Completer<List<AlertsRow>>()
-                            ..complete(AlertsTable().queryRows(
-                              queryFn: (q) => q.eq(
-                                'to_user',
-                                currentUserUid,
-                              ),
-                            )))
-                          .future,
+                  future: AlertsTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'to_user',
+                      currentUserUid,
+                    ),
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -409,10 +404,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               currentUserUid,
                                             ),
                                           );
-                                          setState(() =>
-                                              _model.requestCompleter = null);
-                                          await _model
-                                              .waitForRequestCompleted();
+
+                                          context.pushNamed('HomePage');
+
                                           await AlertsTable().delete(
                                             matchingRows: (rows) => rows.eq(
                                               'id',
