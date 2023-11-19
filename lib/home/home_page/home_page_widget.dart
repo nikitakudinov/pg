@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -137,15 +136,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: FutureBuilder<List<AlertsRow>>(
-                  future:
-                      (_model.requestCompleter ??= Completer<List<AlertsRow>>()
-                            ..complete(AlertsTable().queryRows(
-                              queryFn: (q) => q.eq(
-                                'to_user',
-                                currentUserUid,
-                              ),
-                            )))
-                          .future,
+                  future: AlertsTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'to_user',
+                      currentUserUid,
+                    ),
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -300,41 +296,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Expanded(
-                                      child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
-                                        },
-                                        text: 'Отказаться',
-                                        options: FFButtonOptions(
-                                          height: 30.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Cabin Condensed',
-                                                    color: Colors.white,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
+                                    if (listViewAlertsRow.type !=
+                                        'Исключение из команды')
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () {
+                                            print('Button pressed ...');
+                                          },
+                                          text: 'Отказаться',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
-                                            width: 1.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
                                         ),
                                       ),
-                                    ),
                                     if (listViewAlertsRow.type !=
                                         'Исключение из команды')
                                       Expanded(
@@ -499,10 +498,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 listViewAlertsRow.id,
                                               ),
                                             );
-                                            setState(() =>
-                                                _model.requestCompleter = null);
-                                            await _model
-                                                .waitForRequestCompleted();
+
+                                            context.pushNamed('HomePage');
                                           },
                                           text: 'Ясно',
                                           options: FFButtonOptions(
