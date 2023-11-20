@@ -134,7 +134,8 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                           setState(() {
                             _model.selectedCountry =
                                 allCountriesListItem.ruName;
-                            _model.selectedFlag = widget.selectedFlag!;
+                            _model.selectedFlag =
+                                allCountriesListItem.flagLinkH24;
                             _model.countriesListVISIBILITY = false;
                           });
                         },
