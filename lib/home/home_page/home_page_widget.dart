@@ -157,7 +157,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: Image.network(
-                            'https://picsum.photos/seed/120/600',
+                            FFAppState().authPlayer.playerAvatar,
                             width: 60.0,
                             height: 60.0,
                             fit: BoxFit.cover,
