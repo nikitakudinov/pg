@@ -36,6 +36,35 @@ class FFAppState extends ChangeNotifier {
     updateFn(_authenticateduser);
   }
 
+  List<PlayerStruct> _authinticatedPlayer = [];
+  List<PlayerStruct> get authinticatedPlayer => _authinticatedPlayer;
+  set authinticatedPlayer(List<PlayerStruct> _value) {
+    _authinticatedPlayer = _value;
+  }
+
+  void addToAuthinticatedPlayer(PlayerStruct _value) {
+    _authinticatedPlayer.add(_value);
+  }
+
+  void removeFromAuthinticatedPlayer(PlayerStruct _value) {
+    _authinticatedPlayer.remove(_value);
+  }
+
+  void removeAtIndexFromAuthinticatedPlayer(int _index) {
+    _authinticatedPlayer.removeAt(_index);
+  }
+
+  void updateAuthinticatedPlayerAtIndex(
+    int _index,
+    PlayerStruct Function(PlayerStruct) updateFn,
+  ) {
+    _authinticatedPlayer[_index] = updateFn(_authinticatedPlayer[_index]);
+  }
+
+  void insertAtIndexInAuthinticatedPlayer(int _index, PlayerStruct _value) {
+    _authinticatedPlayer.insert(_index, _value);
+  }
+
   final _countriesListManager = FutureRequestManager<List<CountriesRow>>();
   Future<List<CountriesRow>> countriesList({
     String? uniqueQueryKey,
