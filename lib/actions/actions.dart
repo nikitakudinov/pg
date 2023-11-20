@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future dowloadAllTeamsDataToAppState(BuildContext context) async {
   ApiCallResponse? allTeamsJsonData;
@@ -19,5 +20,31 @@ Future dowloadAllTeamsDataToAppState(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().allTEAMS = convertedData!.toList().cast<TeamStruct>();
     });
+  }
+}
+
+Future dowloadAllCountrieToAppState(BuildContext context) async {
+  ApiCallResponse? allCountrieJsonData;
+  List<CountrieStruct>? convertedCountriesData;
+
+  allCountrieJsonData = await CountryGroup.countriesCall.call();
+  if ((allCountrieJsonData?.succeeded ?? true)) {
+    convertedCountriesData = await actions.dtCOUNTRIE(
+      (allCountrieJsonData?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().allCountries =
+          convertedCountriesData!.toList().cast<CountrieStruct>();
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Страны и флаги загружены в апстейт успешно',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
   }
 }

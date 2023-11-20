@@ -214,6 +214,80 @@ class ListplayersCall {
 
 /// End PLAYER Group Code
 
+/// Start COUNTRY Group Code
+
+class CountryGroup {
+  static String baseUrl = 'https://supabase.proplayclub.ru/rest/v1/';
+  static Map<String, String> headers = {
+    'apikey':
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+    'Authorization':
+        'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+  };
+  static CountriesCall countriesCall = CountriesCall();
+}
+
+class CountriesCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'COUNTRIES',
+      apiUrl: '${CountryGroup.baseUrl}countries?select=*',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic flagLinkH24(dynamic response) => getJsonField(
+        response,
+        r'''$[:].FlagLinkH24''',
+        true,
+      );
+  dynamic flagLink32x24(dynamic response) => getJsonField(
+        response,
+        r'''$[:].FlagLink32x24''',
+        true,
+      );
+  dynamic flagLink48x36(dynamic response) => getJsonField(
+        response,
+        r'''$[:].FlagLink48x36''',
+        true,
+      );
+  dynamic flagLink16x12(dynamic response) => getJsonField(
+        response,
+        r'''$[:].FlagLink16x12''',
+        true,
+      );
+  dynamic ruName(dynamic response) => getJsonField(
+        response,
+        r'''$[:].RuName''',
+        true,
+      );
+  dynamic enName(dynamic response) => getJsonField(
+        response,
+        r'''$[:].EnName''',
+        true,
+      );
+  dynamic iso2(dynamic response) => getJsonField(
+        response,
+        r'''$[:].Iso2''',
+        true,
+      );
+}
+
+/// End COUNTRY Group Code
+
 /// Start TEAM Group Code
 
 class TeamGroup {
