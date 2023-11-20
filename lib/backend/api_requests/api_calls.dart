@@ -942,8 +942,7 @@ class UseralertsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'USERALERTS',
-      apiUrl:
-          '${MessagingGroup.baseUrl}message?message_to_player=eq.${uid}&message_sander=eq.Уведомление',
+      apiUrl: '${MessagingGroup.baseUrl}message?message_to_player=eq.${uid}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
