@@ -164,15 +164,19 @@ Future loadAuthUserAlerts(BuildContext context) async {
       FFAppState().authUserAlerts =
           convertedMessageData!.toList().cast<MessageStruct>();
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Уведомления загружены',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 4000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('фывфы'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
