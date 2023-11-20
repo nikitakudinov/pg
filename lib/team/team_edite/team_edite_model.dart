@@ -111,7 +111,7 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   Future dowloadTeamMembersToPageState(
     BuildContext context, {
-    required int? teamId,
+    int? teamId,
   }) async {
     ApiCallResponse? allMembersOfTeamJson;
     List<PlayerStruct>? converterTeamMembersData;

@@ -72,7 +72,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
         });
         await _model.dowloadTeamMembersToPageState(
           context,
-          teamId: widget.teamID,
+          teamId: valueOrDefault<int>(
+            widget.teamID,
+            0,
+          ),
         );
         setState(() {});
       }
