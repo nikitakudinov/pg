@@ -92,6 +92,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAllCountries(int _index, CountrieStruct _value) {
     _allCountries.insert(_index, _value);
   }
+
+  List<ChatStruct> _AllAuthUsersChats = [];
+  List<ChatStruct> get AllAuthUsersChats => _AllAuthUsersChats;
+  set AllAuthUsersChats(List<ChatStruct> _value) {
+    _AllAuthUsersChats = _value;
+  }
+
+  void addToAllAuthUsersChats(ChatStruct _value) {
+    _AllAuthUsersChats.add(_value);
+  }
+
+  void removeFromAllAuthUsersChats(ChatStruct _value) {
+    _AllAuthUsersChats.remove(_value);
+  }
+
+  void removeAtIndexFromAllAuthUsersChats(int _index) {
+    _AllAuthUsersChats.removeAt(_index);
+  }
+
+  void updateAllAuthUsersChatsAtIndex(
+    int _index,
+    ChatStruct Function(ChatStruct) updateFn,
+  ) {
+    _AllAuthUsersChats[_index] = updateFn(_AllAuthUsersChats[_index]);
+  }
+
+  void insertAtIndexInAllAuthUsersChats(int _index, ChatStruct _value) {
+    _AllAuthUsersChats.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

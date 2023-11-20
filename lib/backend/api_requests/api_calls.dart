@@ -676,6 +676,8 @@ class MessagingGroup {
         'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static ChatsCall chatsCall = ChatsCall();
+  static GetchatsCall getchatsCall = GetchatsCall();
+  static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
 }
 
@@ -731,6 +733,150 @@ class ChatsCall {
   dynamic chatcountofmembers(dynamic response) => getJsonField(
         response,
         r'''$[:].chat_count_of_members''',
+      );
+}
+
+class GetchatsCall {
+  Future<ApiCallResponse> call({
+    String? authUser = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETCHATS',
+      apiUrl: '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic chatid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_id''',
+      );
+  dynamic chatupdatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_updated_at''',
+      );
+  dynamic chatmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_members''',
+        true,
+      );
+  dynamic chatlastmessage(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_last_message''',
+      );
+  dynamic chatofteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_of_team''',
+      );
+  dynamic chatcountofmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_count_of_members''',
+      );
+}
+
+class GetuserchatsCall {
+  Future<ApiCallResponse> call({
+    String? authUser = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETUSERCHATS',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}&select=*,members:players(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic chatid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_id''',
+      );
+  dynamic chatupdatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_updated_at''',
+      );
+  dynamic chatmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_members''',
+        true,
+      );
+  dynamic chatlastmessage(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_last_message''',
+      );
+  dynamic chatofteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_of_team''',
+      );
+  dynamic members(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members''',
+        true,
+      );
+  dynamic membersplayercreatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_created_at''',
+      );
+  dynamic membersplayernickname(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_nickname''',
+      );
+  dynamic membersplayertag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_tag''',
+      );
+  dynamic membersplayerflag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_flag''',
+      );
+  dynamic membersplayercountrie(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_countrie''',
+      );
+  dynamic membersplayeravatar(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_avatar''',
+      );
+  dynamic membersplayeruid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_uid''',
+      );
+  dynamic membersplayerteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_team''',
+      );
+  dynamic membersplayerteamrole(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_team_role''',
+      );
+  dynamic membersplayerteamlineup(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_team_lineup''',
+      );
+  dynamic membersplayerid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_id''',
       );
 }
 
