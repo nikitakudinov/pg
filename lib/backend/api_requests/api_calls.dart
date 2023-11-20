@@ -30,7 +30,8 @@ class ListplayerbyuidCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTPLAYERBYUID',
-      apiUrl: '${PlayerGroup.baseUrl}players?player_uid=eq.${idList}',
+      apiUrl:
+          '${PlayerGroup.baseUrl}players?player_uid=eq.${idList}&select=*,player_team:teams(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
