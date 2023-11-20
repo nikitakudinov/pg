@@ -588,7 +588,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       final allChatsListItem = allChatsList[allChatsListIndex];
                       return Builder(
                         builder: (context) {
-                          final chatMember = allChatsListItem.members.toList();
+                          final chatMember = allChatsListItem.members
+                              .where((e) => e.playerUid == currentUserUid)
+                              .toList();
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: List.generate(chatMember.length,
