@@ -36,33 +36,33 @@ class FFAppState extends ChangeNotifier {
     updateFn(_authenticateduser);
   }
 
-  List<PlayerStruct> _authinticatedPlayer = [];
-  List<PlayerStruct> get authinticatedPlayer => _authinticatedPlayer;
-  set authinticatedPlayer(List<PlayerStruct> _value) {
-    _authinticatedPlayer = _value;
+  List<TeamStruct> _allTEAMS = [];
+  List<TeamStruct> get allTEAMS => _allTEAMS;
+  set allTEAMS(List<TeamStruct> _value) {
+    _allTEAMS = _value;
   }
 
-  void addToAuthinticatedPlayer(PlayerStruct _value) {
-    _authinticatedPlayer.add(_value);
+  void addToAllTEAMS(TeamStruct _value) {
+    _allTEAMS.add(_value);
   }
 
-  void removeFromAuthinticatedPlayer(PlayerStruct _value) {
-    _authinticatedPlayer.remove(_value);
+  void removeFromAllTEAMS(TeamStruct _value) {
+    _allTEAMS.remove(_value);
   }
 
-  void removeAtIndexFromAuthinticatedPlayer(int _index) {
-    _authinticatedPlayer.removeAt(_index);
+  void removeAtIndexFromAllTEAMS(int _index) {
+    _allTEAMS.removeAt(_index);
   }
 
-  void updateAuthinticatedPlayerAtIndex(
+  void updateAllTEAMSAtIndex(
     int _index,
-    PlayerStruct Function(PlayerStruct) updateFn,
+    TeamStruct Function(TeamStruct) updateFn,
   ) {
-    _authinticatedPlayer[_index] = updateFn(_authinticatedPlayer[_index]);
+    _allTEAMS[_index] = updateFn(_allTEAMS[_index]);
   }
 
-  void insertAtIndexInAuthinticatedPlayer(int _index, PlayerStruct _value) {
-    _authinticatedPlayer.insert(_index, _value);
+  void insertAtIndexInAllTEAMS(int _index, TeamStruct _value) {
+    _allTEAMS.insert(_index, _value);
   }
 
   final _countriesListManager = FutureRequestManager<List<CountriesRow>>();

@@ -226,7 +226,7 @@ class TeamGroup {
   };
   static ListteambyidCall listteambyidCall = ListteambyidCall();
   static TeambycreatorCall teambycreatorCall = TeambycreatorCall();
-  static LISTUSERSCopyCall lISTUSERSCopyCall = LISTUSERSCopyCall();
+  static ListallteamsCall listallteamsCall = ListallteamsCall();
 }
 
 class ListteambyidCall {
@@ -380,13 +380,13 @@ class TeambycreatorCall {
       );
 }
 
-class LISTUSERSCopyCall {
+class ListallteamsCall {
   Future<ApiCallResponse> call({
     String? idList = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTUSERS Copy',
-      apiUrl: '${TeamGroup.baseUrl}users?select=*,teams(*)',
+      callName: 'LISTALLTEAMS',
+      apiUrl: '${TeamGroup.baseUrl}teams?select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

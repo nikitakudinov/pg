@@ -253,6 +253,34 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                   ),
                 ),
               ),
+              Builder(
+                builder: (context) {
+                  final allTeamList = FFAppState().allTEAMS.toList();
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: allTeamList.length,
+                    itemBuilder: (context, allTeamListIndex) {
+                      final allTeamListItem = allTeamList[allTeamListIndex];
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Hello World',
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),

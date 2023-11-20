@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -45,16 +44,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             .toString()
             .toString(),
       );
-      _model.userJsonData = await PlayerGroup.listplayerbyuidCall.call(
-        idList: currentUserUid,
-      );
-      _model.convertedJsonUser = await actions.dtPLAYER(
-        (_model.userJsonData?.jsonBody ?? ''),
-      );
-      setState(() {
-        FFAppState().authinticatedPlayer =
-            _model.convertedJsonUser!.toList().cast<PlayerStruct>();
-      });
       if ((_model.apiResultqcj?.succeeded ?? true)) {
         setState(() {
           FFAppState().updateAuthenticateduserStruct(
@@ -584,64 +573,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     );
                   },
                 ),
-              ),
-              ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 80.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.network(
-                            'https://picsum.photos/seed/274/600',
-                            width: 300.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
               ),
             ],
           ),
