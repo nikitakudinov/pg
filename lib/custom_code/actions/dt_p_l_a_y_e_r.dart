@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<List<UserStruct>> dtUSER(List<dynamic>? jsonArray) async {
+Future<List<PlayerStruct>> dtPLAYER(List<dynamic>? jsonArray) async {
   // Add your function code here!
-  List<UserStruct> listOfStruct = [];
+  List<PlayerStruct> listOfStruct = [];
   for (var item in jsonArray!) {
-    listOfStruct.add(UserStruct.fromMap(item));
+    listOfStruct.add(PlayerStruct.fromMap(item));
   }
   return listOfStruct;
 }

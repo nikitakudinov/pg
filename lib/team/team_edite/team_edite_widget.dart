@@ -1001,7 +1001,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   'Игрок был исключен из команды',
                                               'message_chat': FFAppState()
                                                   .authenticateduser
-                                                  .teamChat,
+                                                  .team,
                                               'message_sander_avatar': '',
                                               'message_type':
                                                   'Сообщение об исключении из команды',

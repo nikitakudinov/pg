@@ -62,9 +62,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   .toString()
               ..avatar = PlayerGroup.listplayerbyuidCall.playeravatar(
                 (_model.apiResultqcj?.jsonBody ?? ''),
-              )
-              ..teamChat = TeamGroup.listteambyidCall.teamchatid(
-                (_model.teambyid?.jsonBody ?? ''),
               ),
           );
         });
