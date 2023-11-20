@@ -595,9 +595,43 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 (chatMemberIndex) {
                               final chatMemberItem =
                                   chatMember[chatMemberIndex];
-                              return Text(
-                                chatMemberItem.playerNickname,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Image.network(
+                                        chatMemberItem.playerAvatar,
+                                        width: 50.0,
+                                        height: 50.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        chatMemberItem.playerNickname,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                      Text(
+                                        'Hello World',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               );
                             }),
                           );
