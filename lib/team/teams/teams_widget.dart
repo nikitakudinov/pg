@@ -1,4 +1,3 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -100,33 +99,16 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                 child: Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                  child: FutureBuilder<List<TeamsRow>>(
-                    future: TeamsTable().queryRows(
-                      queryFn: (q) => q,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      List<TeamsRow> listViewTeamsRowList = snapshot.data!;
+                  child: Builder(
+                    builder: (context) {
+                      final allTeamsList = FFAppState().allTEAMS.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewTeamsRowList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewTeamsRow =
-                              listViewTeamsRowList[listViewIndex];
+                        itemCount: allTeamsList.length,
+                        itemBuilder: (context, allTeamsListIndex) {
+                          final allTeamsListItem =
+                              allTeamsList[allTeamsListIndex];
                           return InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -137,7 +119,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 'TEAM_VIEW',
                                 queryParameters: {
                                   'teamID': serializeParam(
-                                    listViewTeamsRow.teamId,
+                                    allTeamsListItem.teamId,
                                     ParamType.int,
                                   ),
                                 }.withoutNulls,
@@ -148,23 +130,26 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 'TEAM_EDITE',
                                 queryParameters: {
                                   'teamID': serializeParam(
-                                    listViewTeamsRow.teamId,
+                                    valueOrDefault<int>(
+                                      allTeamsListItem.teamId,
+                                      0,
+                                    ),
                                     ParamType.int,
                                   ),
                                   'teamName': serializeParam(
-                                    listViewTeamsRow.teamName,
+                                    allTeamsListItem.teamName,
                                     ParamType.String,
                                   ),
                                   'teamTag': serializeParam(
-                                    listViewTeamsRow.teamTag,
+                                    allTeamsListItem.teamTag,
                                     ParamType.String,
                                   ),
                                   'teamCountry': serializeParam(
-                                    listViewTeamsRow.teamCountry,
+                                    allTeamsListItem.teamCountry,
                                     ParamType.String,
                                   ),
                                   'teamFlag': serializeParam(
-                                    listViewTeamsRow.teamFlag,
+                                    allTeamsListItem.teamFlag,
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,
@@ -193,7 +178,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          listViewTeamsRow.teamLogo!,
+                                          allTeamsListItem.teamLogo,
                                           width: 55.0,
                                           height: 55.0,
                                           fit: BoxFit.cover,
@@ -206,13 +191,17 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        listViewTeamsRow.teamTag!,
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Text(
+                                          allTeamsListItem.teamTag,
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge,
+                                        ),
                                       ),
                                       Text(
-                                        listViewTeamsRow.teamName!,
+                                        allTeamsListItem.teamName,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -222,25 +211,29 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    listViewTeamsRow.teamFlag,
-                                                    '0',
+                                            Container(
+                                              width: 20.0,
+                                              height: 12.0,
+                                              decoration: BoxDecoration(),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 5.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
+                                                    allTeamsListItem.teamFlag,
+                                                    width: 20.0,
+                                                    height: 12.0,
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                  width: 20.0,
-                                                  height: 12.0,
-                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
                                             Text(
-                                              listViewTeamsRow.teamCountry!,
+                                              allTeamsListItem.teamCountry,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
@@ -259,34 +252,6 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                     },
                   ),
                 ),
-              ),
-              Builder(
-                builder: (context) {
-                  final allTeamList = FFAppState().allTEAMS.toList();
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: allTeamList.length,
-                    itemBuilder: (context, allTeamListIndex) {
-                      final allTeamListItem = allTeamList[allTeamListIndex];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                allTeamListItem.teamName,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
               ),
             ],
           ),
