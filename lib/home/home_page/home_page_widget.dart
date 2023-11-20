@@ -68,8 +68,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
           );
         });
-
-        context.pushNamed('HomePage');
       }
     });
   }
