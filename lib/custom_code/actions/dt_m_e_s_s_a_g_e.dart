@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<List<MessageStruct>> dtMESSAGE(List<dynamic>? jsonArray) async {
+Future<List<MessageStruct>?> dtMESSAGE(List<dynamic>? jsonArray) async {
   // Add your function code here!
   List<MessageStruct> listOfStruct = [];
   for (var item in jsonArray!) {
