@@ -86,52 +86,50 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   );
   if ((apiResultp0p?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().authPlayer = PlayerStruct(
-        playerCreatedAt: PlayerGroup.listplayerbyuidCall
-            .playercreatedat(
-              (apiResultp0p?.jsonBody ?? ''),
-            )
-            .toString(),
-        playerNickname: PlayerGroup.listplayerbyuidCall
-            .playernickname(
-              (apiResultp0p?.jsonBody ?? ''),
-            )
-            .toString(),
-        playerTag: PlayerGroup.listplayerbyuidCall
-            .playertag(
-              (apiResultp0p?.jsonBody ?? ''),
-            )
-            .toString(),
-        playerFlag: PlayerGroup.listplayerbyuidCall.playerflag(
-          (apiResultp0p?.jsonBody ?? ''),
-        ),
-        playerCountrie: PlayerGroup.listplayerbyuidCall
-            .playercountrie(
-              (apiResultp0p?.jsonBody ?? ''),
-            )
-            .toString(),
-        playerAvatar: PlayerGroup.listplayerbyuidCall.playeravatar(
-          (apiResultp0p?.jsonBody ?? ''),
-        ),
-        playerUid: PlayerGroup.listplayerbyuidCall
-            .playeruid(
-              (apiResultp0p?.jsonBody ?? ''),
-            )
-            .toString(),
-        playerTeam: PlayerGroup.listplayerbyuidCall.playerteam(
-          (apiResultp0p?.jsonBody ?? ''),
-        ),
-        playerTeamRole: PlayerGroup.listplayerbyuidCall
-            .playerteamrole(
-              (apiResultp0p?.jsonBody ?? ''),
-            )
-            .toString(),
-        playerTeamLineup: PlayerGroup.listplayerbyuidCall.playerteamlineup(
-          (apiResultp0p?.jsonBody ?? ''),
-        ),
-        playerId: PlayerGroup.listplayerbyuidCall.playerid(
-          (apiResultp0p?.jsonBody ?? ''),
-        ),
+      FFAppState().updateAuthPlayerStruct(
+        (e) => e
+          ..playerCreatedAt = PlayerGroup.listplayerbyuidCall
+              .playercreatedat(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerNickname = PlayerGroup.listplayerbyuidCall
+              .playernickname(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerTag = PlayerGroup.listplayerbyuidCall
+              .playertag(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerFlag = PlayerGroup.listplayerbyuidCall.playerflag(
+            (apiResultp0p?.jsonBody ?? ''),
+          )
+          ..playerCountrie = PlayerGroup.listplayerbyuidCall
+              .playercountrie(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerAvatar = PlayerGroup.listplayerbyuidCall.playeravatar(
+            (apiResultp0p?.jsonBody ?? ''),
+          )
+          ..playerUid = PlayerGroup.listplayerbyuidCall
+              .playeruid(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerTeamRole = PlayerGroup.listplayerbyuidCall
+              .playerteamrole(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerTeamLineup = PlayerGroup.listplayerbyuidCall.playerteamlineup(
+            (apiResultp0p?.jsonBody ?? ''),
+          )
+          ..playerId = PlayerGroup.listplayerbyuidCall.playerid(
+            (apiResultp0p?.jsonBody ?? ''),
+          ),
       );
     });
     await showDialog(
