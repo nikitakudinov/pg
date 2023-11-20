@@ -180,4 +180,5 @@ Future loadAuthUserAlerts(BuildContext context) async {
 
 Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.upadateAuthUserDataValues(context);
+  await action_blocks.loadAuthUserChats(context);
 }
