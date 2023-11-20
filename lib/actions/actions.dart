@@ -150,12 +150,13 @@ Future upadateAuthUserDataValues(BuildContext context) async {
 }
 
 Future loadAuthUserAlerts(BuildContext context) async {
-  ApiCallResponse? apiResultugd;
+  ApiCallResponse? jsonMessagesAlertsData;
+  List<MessageStruct>? convertedMessageData;
 
-  apiResultugd = await MessagingGroup.useralertsCall.call(
+  jsonMessagesAlertsData = await MessagingGroup.useralertsCall.call(
     uid: currentUserUid,
   );
-  if ((apiResultugd?.succeeded ?? true)) {
+  if ((jsonMessagesAlertsData?.succeeded ?? true)) {
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
@@ -170,5 +171,12 @@ Future loadAuthUserAlerts(BuildContext context) async {
         );
       },
     );
+    convertedMessageData = await actions.dtMESSAGE(
+      (jsonMessagesAlertsData?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().authUserAlerts =
+          convertedMessageData!.toList().cast<MessageStruct>();
+    });
   }
 }
