@@ -45,6 +45,8 @@ class TeamAddModel extends FlutterFlowModel<TeamAddWidget> {
   late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (TEAMBYCREATOR)] action in saveButton widget.
   ApiCallResponse? createdteam;
+  // Stores action output result for [Backend Call - API (CHATBYTEAMID)] action in saveButton widget.
+  ApiCallResponse? createdchat;
 
   /// Initialization and disposal methods.
 

@@ -407,6 +407,32 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                               0,
                             ),
                           });
+                          _model.createdchat =
+                              await MessagingGroup.chatbyteamidCall.call(
+                            idList: (TeamGroup.teambycreatorCall.teamid(
+                              (_model.createdteam?.jsonBody ?? ''),
+                            ) as List)
+                                .map<String>((s) => s.toString())
+                                .toList()
+                                .first
+                                .toString(),
+                          );
+                          await TeamsTable().update(
+                            data: {
+                              'team_chat_id':
+                                  MessagingGroup.chatbyteamidCall.chatid(
+                                (_model.createdchat?.jsonBody ?? ''),
+                              ),
+                            },
+                            matchingRows: (rows) => rows.eq(
+                              'team_id',
+                              TeamGroup.teambycreatorCall
+                                  .teamid(
+                                    (_model.createdteam?.jsonBody ?? ''),
+                                  )
+                                  .first,
+                            ),
+                          );
                           await PlayersTable().update(
                             data: {
                               'player_team': TeamGroup.teambycreatorCall
@@ -416,6 +442,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                   .first,
                               'player_team_role': 'Основатель',
                               'player_team_lineup': false,
+                              'player_tag': _model.teamTagController.text,
                             },
                             matchingRows: (rows) => rows.eq(
                               'player_uid',
