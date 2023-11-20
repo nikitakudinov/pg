@@ -171,7 +171,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                   child: Builder(
                     builder: (context) {
-                      final alertsList = FFAppState().authUserAlerts.toList();
+                      final alertsList = FFAppState().alerts.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,

@@ -142,33 +142,33 @@ class FFAppState extends ChangeNotifier {
     updateFn(_authPlayerTeam);
   }
 
-  List<MessageStruct> _authUserAlerts = [];
-  List<MessageStruct> get authUserAlerts => _authUserAlerts;
-  set authUserAlerts(List<MessageStruct> _value) {
-    _authUserAlerts = _value;
+  List<MessageStruct> _alerts = [];
+  List<MessageStruct> get alerts => _alerts;
+  set alerts(List<MessageStruct> _value) {
+    _alerts = _value;
   }
 
-  void addToAuthUserAlerts(MessageStruct _value) {
-    _authUserAlerts.add(_value);
+  void addToAlerts(MessageStruct _value) {
+    _alerts.add(_value);
   }
 
-  void removeFromAuthUserAlerts(MessageStruct _value) {
-    _authUserAlerts.remove(_value);
+  void removeFromAlerts(MessageStruct _value) {
+    _alerts.remove(_value);
   }
 
-  void removeAtIndexFromAuthUserAlerts(int _index) {
-    _authUserAlerts.removeAt(_index);
+  void removeAtIndexFromAlerts(int _index) {
+    _alerts.removeAt(_index);
   }
 
-  void updateAuthUserAlertsAtIndex(
+  void updateAlertsAtIndex(
     int _index,
     MessageStruct Function(MessageStruct) updateFn,
   ) {
-    _authUserAlerts[_index] = updateFn(_authUserAlerts[_index]);
+    _alerts[_index] = updateFn(_alerts[_index]);
   }
 
-  void insertAtIndexInAuthUserAlerts(int _index, MessageStruct _value) {
-    _authUserAlerts.insert(_index, _value);
+  void insertAtIndexInAlerts(int _index, MessageStruct _value) {
+    _alerts.insert(_index, _value);
   }
 }
 
