@@ -5,6 +5,7 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -132,20 +133,6 @@ Future upadateAuthUserDataValues(BuildContext context) async {
           ),
       );
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('1'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 
@@ -179,4 +166,8 @@ Future loadAuthUserAlerts(BuildContext context) async {
       },
     );
   }
+}
+
+Future preloadDataOfHomePage(BuildContext context) async {
+  await action_blocks.upadateAuthUserDataValues(context);
 }
