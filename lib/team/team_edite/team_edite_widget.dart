@@ -48,6 +48,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await _model.updateInitPageStateValues(context);
       setState(() {});
+      await _model.dowloadTeamMembersToPageState(
+        context,
+        teamId: widget.teamId,
+      );
+      setState(() {});
     });
 
     _model.teamNameController ??= TextEditingController(
