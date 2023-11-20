@@ -56,7 +56,7 @@ Future loadAuthUserChats(BuildContext context) async {
   List<ChatStruct>? convertedChatsData;
 
   apiResultce6 = await MessagingGroup.getuserchatsCall.call(
-    authUser: currentUserUid,
+    authUser: FFAppState().authPlayer.playerUid,
   );
   if ((apiResultce6?.succeeded ?? true)) {
     convertedChatsData = await actions.dtCHAT(
