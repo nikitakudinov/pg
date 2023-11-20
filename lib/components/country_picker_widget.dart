@@ -1,4 +1,3 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -114,37 +113,18 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
-              child: FutureBuilder<List<CountriesRow>>(
-                future: FFAppState().countriesList(
-                  requestFn: () => CountriesTable().queryRows(
-                    queryFn: (q) => q,
-                  ),
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                  List<CountriesRow> listViewCountriesRowList = snapshot.data!;
+              child: Builder(
+                builder: (context) {
+                  final allCountriesList = FFAppState().allCountries.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewCountriesRowList.length,
-                    itemBuilder: (context, listViewIndex) {
-                      final listViewCountriesRow =
-                          listViewCountriesRowList[listViewIndex];
+                    itemCount: allCountriesList.length,
+                    itemBuilder: (context, allCountriesListIndex) {
+                      final allCountriesListItem =
+                          allCountriesList[allCountriesListIndex];
                       return InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -152,10 +132,8 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           setState(() {
-                            _model.selectedCountry =
-                                listViewCountriesRow.ruName;
-                            _model.selectedFlag =
-                                listViewCountriesRow.flagLinkH24!;
+                            _model.selectedCountry = widget.selectedCountry!;
+                            _model.selectedFlag = widget.selectedFlag!;
                             _model.countriesListVISIBILITY = false;
                           });
                         },
@@ -181,7 +159,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                                       fadeOutDuration:
                                           Duration(milliseconds: 3000),
                                       imageUrl:
-                                          listViewCountriesRow.flagLinkH24!,
+                                          allCountriesListItem.flagLinkH24,
                                       width: 24.0,
                                       height: 16.0,
                                       fit: BoxFit.cover,
@@ -190,7 +168,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    listViewCountriesRow.ruName,
+                                    allCountriesListItem.ruName,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),

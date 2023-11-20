@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flutter_flow/request_manager.dart';
 import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'backend/supabase/supabase.dart';
@@ -93,21 +92,6 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAllCountries(int _index, CountrieStruct _value) {
     _allCountries.insert(_index, _value);
   }
-
-  final _countriesListManager = FutureRequestManager<List<CountriesRow>>();
-  Future<List<CountriesRow>> countriesList({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Future<List<CountriesRow>> Function() requestFn,
-  }) =>
-      _countriesListManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearCountriesListCache() => _countriesListManager.clear();
-  void clearCountriesListCacheKey(String? uniqueKey) =>
-      _countriesListManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {
