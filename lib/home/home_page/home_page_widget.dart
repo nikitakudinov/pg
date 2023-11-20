@@ -1,6 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -34,42 +32,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.upadateAuthUserDataValues(context);
-      await action_blocks.loadAuthUserAlerts(context);
-      await action_blocks.loadAuthUserChats(context);
-      setState(() {});
-      _model.apiResultqcj = await PlayerGroup.listplayerbyuidCall.call(
-        idList: currentUserUid,
-      );
-      _model.teambyid = await TeamGroup.listteambyidCall.call(
-        idList: PlayerGroup.listplayerbyuidCall
-            .playerteam(
-              (_model.apiResultqcj?.jsonBody ?? ''),
-            )
-            .toString()
-            .toString(),
-      );
-      if ((_model.apiResultqcj?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().updateAuthenticateduserStruct(
-            (e) => e
-              ..id = PlayerGroup.listplayerbyuidCall.playerid(
-                (_model.apiResultqcj?.jsonBody ?? ''),
-              )
-              ..team = PlayerGroup.listplayerbyuidCall.playerteam(
-                (_model.apiResultqcj?.jsonBody ?? ''),
-              )
-              ..uid = currentUserUid
-              ..nickname = PlayerGroup.listplayerbyuidCall
-                  .playernickname(
-                    (_model.apiResultqcj?.jsonBody ?? ''),
-                  )
-                  .toString()
-              ..avatar = PlayerGroup.listplayerbyuidCall.playeravatar(
-                (_model.apiResultqcj?.jsonBody ?? ''),
-              ),
-          );
-        });
-      }
     });
   }
 
