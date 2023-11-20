@@ -70,6 +70,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
               )
               .toString();
         });
+        await _model.dowloadTeamMembersToPageState(
+          context,
+          teamId: widget.teamID,
+        );
+        setState(() {});
       }
     });
 

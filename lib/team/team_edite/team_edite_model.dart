@@ -124,6 +124,18 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
         (allMembersOfTeamJson?.jsonBody ?? ''),
       );
       teamMembersList = converterTeamMembersData!.toList().cast<PlayerStruct>();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Участники команды загружены',
+            style: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+            ),
+          ),
+          duration: Duration(milliseconds: 4000),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+        ),
+      );
     }
   }
 
