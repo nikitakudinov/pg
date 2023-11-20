@@ -586,9 +586,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     itemCount: allChatsList.length,
                     itemBuilder: (context, allChatsListIndex) {
                       final allChatsListItem = allChatsList[allChatsListIndex];
-                      return Text(
-                        allChatsListItem.chatId.toString(),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      return Builder(
+                        builder: (context) {
+                          final chatMember =
+                              allChatsListItem.chatMembers.toList();
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: List.generate(chatMember.length,
+                                (chatMemberIndex) {
+                              final chatMemberItem =
+                                  chatMember[chatMemberIndex];
+                              return Text(
+                                chatMemberItem,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              );
+                            }),
+                          );
+                        },
                       );
                     },
                   );
