@@ -15,6 +15,7 @@ class UserStruct extends BaseStruct {
     int? team,
     String? uid,
     String? avatar,
+    int? teamChat,
   })  : _id = id,
         _createdAt = createdAt,
         _email = email,
@@ -22,7 +23,8 @@ class UserStruct extends BaseStruct {
         _tag = tag,
         _team = team,
         _uid = uid,
-        _avatar = avatar;
+        _avatar = avatar,
+        _teamChat = teamChat;
 
   // "id" field.
   int? _id;
@@ -74,6 +76,13 @@ class UserStruct extends BaseStruct {
   set avatar(String? val) => _avatar = val;
   bool hasAvatar() => _avatar != null;
 
+  // "team_chat" field.
+  int? _teamChat;
+  int get teamChat => _teamChat ?? 0;
+  set teamChat(int? val) => _teamChat = val;
+  void incrementTeamChat(int amount) => _teamChat = teamChat + amount;
+  bool hasTeamChat() => _teamChat != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
         id: castToType<int>(data['id']),
         createdAt: data['created_at'] as String?,
@@ -83,6 +92,7 @@ class UserStruct extends BaseStruct {
         team: castToType<int>(data['team']),
         uid: data['uid'] as String?,
         avatar: data['avatar'] as String?,
+        teamChat: castToType<int>(data['team_chat']),
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -97,6 +107,7 @@ class UserStruct extends BaseStruct {
         'team': _team,
         'uid': _uid,
         'avatar': _avatar,
+        'team_chat': _teamChat,
       }.withoutNulls;
 
   @override
@@ -132,6 +143,10 @@ class UserStruct extends BaseStruct {
         'avatar': serializeParam(
           _avatar,
           ParamType.String,
+        ),
+        'team_chat': serializeParam(
+          _teamChat,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -177,6 +192,11 @@ class UserStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        teamChat: deserializeParam(
+          data['team_chat'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -192,12 +212,13 @@ class UserStruct extends BaseStruct {
         tag == other.tag &&
         team == other.team &&
         uid == other.uid &&
-        avatar == other.avatar;
+        avatar == other.avatar &&
+        teamChat == other.teamChat;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([id, createdAt, email, nickname, tag, team, uid, avatar]);
+      .hash([id, createdAt, email, nickname, tag, team, uid, avatar, teamChat]);
 }
 
 UserStruct createUserStruct({
@@ -209,6 +230,7 @@ UserStruct createUserStruct({
   int? team,
   String? uid,
   String? avatar,
+  int? teamChat,
 }) =>
     UserStruct(
       id: id,
@@ -219,4 +241,5 @@ UserStruct createUserStruct({
       team: team,
       uid: uid,
       avatar: avatar,
+      teamChat: teamChat,
     );

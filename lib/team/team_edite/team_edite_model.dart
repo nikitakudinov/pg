@@ -41,7 +41,7 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (LISTTEAMBYUID)] action in TEAM_EDITE widget.
+  // Stores action output result for [Backend Call - API (LISTTEAMBYID)] action in TEAM_EDITE widget.
   ApiCallResponse? apiResultsn8;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
@@ -58,13 +58,13 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String? Function(BuildContext, String?)? teamTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (LISTUSERBYID)] action in Button widget.
+  // Stores action output result for [Backend Call - API (LISTPLAYERBYID)] action in Button widget.
   ApiCallResponse? apiResultadv;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // Stores action output result for [Backend Call - API (LISTTEAMBYUID)] action in IconButton widget.
+  // Stores action output result for [Backend Call - API (LISTTEAMBYID)] action in IconButton widget.
   ApiCallResponse? curentUserTeam;
   // Stores action output result for [Backend Call - API (CHATBYTEAMID)] action in IconButton widget.
   ApiCallResponse? chatOfCurentTeam;

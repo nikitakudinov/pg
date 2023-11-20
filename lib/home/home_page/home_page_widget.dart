@@ -33,30 +33,43 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultqcj = await UserGroup.listuserbyuidCall.call(
+      _model.apiResultqcj = await PlayerGroup.listplayerbyuidCall.call(
         idList: currentUserUid,
+      );
+      _model.teambyid = await TeamGroup.listteambyidCall.call(
+        idList: PlayerGroup.listplayerbyuidCall
+            .playerteam(
+              (_model.apiResultqcj?.jsonBody ?? ''),
+            )
+            .toString()
+            .toString(),
       );
       if ((_model.apiResultqcj?.succeeded ?? true)) {
         setState(() {
           FFAppState().updateAuthenticateduserStruct(
             (e) => e
-              ..id = UserGroup.listuserbyuidCall.playerid(
+              ..id = PlayerGroup.listplayerbyuidCall.playerid(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
-              ..team = UserGroup.listuserbyuidCall.playerteam(
+              ..team = PlayerGroup.listplayerbyuidCall.playerteam(
                 (_model.apiResultqcj?.jsonBody ?? ''),
               )
               ..uid = currentUserUid
-              ..nickname = UserGroup.listuserbyuidCall
+              ..nickname = PlayerGroup.listplayerbyuidCall
                   .playernickname(
                     (_model.apiResultqcj?.jsonBody ?? ''),
                   )
                   .toString()
-              ..avatar = UserGroup.listuserbyuidCall.playeravatar(
+              ..avatar = PlayerGroup.listplayerbyuidCall.playeravatar(
                 (_model.apiResultqcj?.jsonBody ?? ''),
+              )
+              ..teamChat = TeamGroup.listteambyidCall.teamchatid(
+                (_model.teambyid?.jsonBody ?? ''),
               ),
           );
         });
+
+        context.pushNamed('HomePage');
       }
     });
   }
@@ -351,14 +364,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   ?.toString(),
                                             );
                                             _model.userByYathUID =
-                                                await UserGroup
-                                                    .listuserbyuidCall
+                                                await PlayerGroup
+                                                    .listplayerbyuidCall
                                                     .call(
                                               idList: currentUserUid,
                                             );
                                             _model.fromTeamInfo =
-                                                await TeamGroup
-                                                    .listteambyuidCall
+                                                await TeamGroup.listteambyidCall
                                                     .call(
                                               idList: listViewAlertsRow.fromTeam
                                                   ?.toString(),
@@ -389,7 +401,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       getCurrentTimestamp),
                                               'message_sander': 'Дозорный бот',
                                               'message_body':
-                                                  'Игрок ${UserGroup.listuserbyuidCall.playernickname(
+                                                  'Игрок ${PlayerGroup.listplayerbyuidCall.playernickname(
                                                         (_model.userByYathUID
                                                                 ?.jsonBody ??
                                                             ''),
@@ -435,7 +447,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     'Игрок команды',
                                                 'player_team_lineup': false,
                                                 'player_tag':
-                                                    TeamGroup.listteambyuidCall
+                                                    TeamGroup.listteambyidCall
                                                         .teamtag(
                                                           (_model.fromTeamInfo
                                                                   ?.jsonBody ??

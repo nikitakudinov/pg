@@ -52,7 +52,7 @@ class TournamentAddModel extends FlutterFlowModel<TournamentAddWidget> {
   String? Function(BuildContext, String?)? tournamentTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (LISTUSERBYUID)] action in saveButton widget.
+  // Stores action output result for [Backend Call - API (LISTPLAYERBYUID)] action in saveButton widget.
   ApiCallResponse? ass;
 
   /// Initialization and disposal methods.

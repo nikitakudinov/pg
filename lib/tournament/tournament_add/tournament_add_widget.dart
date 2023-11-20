@@ -375,7 +375,8 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          _model.ass = await UserGroup.listuserbyuidCall.call(
+                          _model.ass =
+                              await PlayerGroup.listplayerbyuidCall.call(
                             idList: currentUserUid,
                           );
                           await TournamentsTable().insert({

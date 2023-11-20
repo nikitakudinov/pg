@@ -48,4 +48,7 @@ class TeamsRow extends SupabaseDataRow {
 
   int get teamId => getField<int>('team_id')!;
   set teamId(int value) => setField<int>('team_id', value);
+
+  int get teamChatId => getField<int>('team_chat_id')!;
+  set teamChatId(int value) => setField<int>('team_chat_id', value);
 }

@@ -8,9 +8,9 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-/// Start USER Group Code
+/// Start PLAYER Group Code
 
-class UserGroup {
+class PlayerGroup {
   static String baseUrl = 'https://supabase.proplayclub.ru/rest/v1/';
   static Map<String, String> headers = {
     'apikey':
@@ -18,18 +18,18 @@ class UserGroup {
     'Authorization':
         'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
-  static ListuserbyuidCall listuserbyuidCall = ListuserbyuidCall();
-  static ListuserbyidCall listuserbyidCall = ListuserbyidCall();
-  static ListusersCall listusersCall = ListusersCall();
+  static ListplayerbyuidCall listplayerbyuidCall = ListplayerbyuidCall();
+  static ListplayerbyidCall listplayerbyidCall = ListplayerbyidCall();
+  static ListplayersCall listplayersCall = ListplayersCall();
 }
 
-class ListuserbyuidCall {
+class ListplayerbyuidCall {
   Future<ApiCallResponse> call({
     String? idList = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTUSERBYUID',
-      apiUrl: '${UserGroup.baseUrl}players?player_uid=eq.${idList}',
+      callName: 'LISTPLAYERBYUID',
+      apiUrl: '${PlayerGroup.baseUrl}players?player_uid=eq.${idList}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -85,15 +85,19 @@ class ListuserbyuidCall {
         response,
         r'''$[:].player_id''',
       );
+  dynamic playerteamlineup(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team_lineup''',
+      );
 }
 
-class ListuserbyidCall {
+class ListplayerbyidCall {
   Future<ApiCallResponse> call({
     String? idList = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTUSERBYID',
-      apiUrl: '${UserGroup.baseUrl}players?player_id=in.%28${idList}%29',
+      callName: 'LISTPLAYERBYID',
+      apiUrl: '${PlayerGroup.baseUrl}players?player_id=in.%28${idList}%29',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -149,15 +153,19 @@ class ListuserbyidCall {
         response,
         r'''$[:].player_id''',
       );
+  dynamic playerteamlineup(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team_lineup''',
+      );
 }
 
-class ListusersCall {
+class ListplayersCall {
   Future<ApiCallResponse> call({
     String? idList = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTUSERS',
-      apiUrl: '${UserGroup.baseUrl}users?select=*,teams(*)',
+      callName: 'LISTPLAYERS',
+      apiUrl: '${PlayerGroup.baseUrl}users?select=*,teams(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -204,7 +212,7 @@ class ListusersCall {
       );
 }
 
-/// End USER Group Code
+/// End PLAYER Group Code
 
 /// Start TEAM Group Code
 
@@ -216,17 +224,17 @@ class TeamGroup {
     'Authorization':
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
-  static ListteambyuidCall listteambyuidCall = ListteambyuidCall();
+  static ListteambyidCall listteambyidCall = ListteambyidCall();
   static TeambycreatorCall teambycreatorCall = TeambycreatorCall();
   static LISTUSERSCopyCall lISTUSERSCopyCall = LISTUSERSCopyCall();
 }
 
-class ListteambyuidCall {
+class ListteambyidCall {
   Future<ApiCallResponse> call({
     String? idList = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTTEAMBYUID',
+      callName: 'LISTTEAMBYID',
       apiUrl: '${TeamGroup.baseUrl}teams?team_id=in.%28${idList}%29',
       callType: ApiCallType.GET,
       headers: {
@@ -270,6 +278,26 @@ class ListteambyuidCall {
   dynamic teamid(dynamic response) => getJsonField(
         response,
         r'''$[:].team_id''',
+      );
+  dynamic teamstatus(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_status''',
+      );
+  dynamic teamcreator(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_creator''',
+      );
+  dynamic teamupdatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_updated_at''',
+      );
+  dynamic teamrecruitment(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_recruitment''',
+      );
+  dynamic teamchatid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].team_chat_id''',
       );
 }
 

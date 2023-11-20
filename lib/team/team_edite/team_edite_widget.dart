@@ -50,20 +50,20 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultsn8 = await TeamGroup.listteambyuidCall.call(
+      _model.apiResultsn8 = await TeamGroup.listteambyidCall.call(
         idList: widget.teamID.toString(),
       );
       if ((_model.apiResultsn8?.succeeded ?? true)) {
         setState(() {
-          _model.logo = TeamGroup.listteambyuidCall.teamlogo(
+          _model.logo = TeamGroup.listteambyidCall.teamlogo(
             (_model.apiResultsn8?.jsonBody ?? ''),
           );
-          _model.name = TeamGroup.listteambyuidCall
+          _model.name = TeamGroup.listteambyidCall
               .teamnam(
                 (_model.apiResultsn8?.jsonBody ?? ''),
               )
               .toString();
-          _model.tag = TeamGroup.listteambyuidCall
+          _model.tag = TeamGroup.listteambyidCall
               .teamtag(
                 (_model.apiResultsn8?.jsonBody ?? ''),
               )
@@ -645,9 +645,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          _model.apiResultadv = await UserGroup
-                                              .listuserbyidCall
-                                              .call(
+                                          _model.apiResultadv =
+                                              await PlayerGroup
+                                                  .listplayerbyidCall
+                                                  .call(
                                             idList: _model.textController3.text,
                                           );
                                           await AlertsTable().insert({
@@ -656,7 +657,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     getCurrentTimestamp),
                                             'from_team': widget.teamID,
                                             'to_user':
-                                                UserGroup.listuserbyidCall
+                                                PlayerGroup.listplayerbyidCall
                                                     .playeruid(
                                                       (_model.apiResultadv
                                                               ?.jsonBody ??
@@ -950,7 +951,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         ),
                                         onPressed: () async {
                                           _model.curentUserTeam =
-                                              await TeamGroup.listteambyuidCall
+                                              await TeamGroup.listteambyidCall
                                                   .call(
                                             idList: listViewPlayersRow.playerId
                                                 .toString(),
@@ -959,7 +960,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               await MessagingGroup
                                                   .chatbyteamidCall
                                                   .call(
-                                            idList: TeamGroup.listteambyuidCall
+                                            idList: TeamGroup.listteambyidCall
                                                 .teamid(
                                                   (_model.curentUserTeam
                                                           ?.jsonBody ??
