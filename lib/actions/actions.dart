@@ -151,7 +151,7 @@ Future loadAuthUserAlerts(BuildContext context) async {
   List<MessageStruct>? convertedMessagesData;
 
   apiResultce61 = await MessagingGroup.useralertsCall.call(
-    uid: currentUserUid,
+    uid: FFAppState().authPlayer.playerUid,
   );
   if ((apiResultce61?.succeeded ?? true)) {
     convertedMessagesData = await actions.dtMESSAGE(
