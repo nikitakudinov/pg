@@ -995,13 +995,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             'message_sander': 'Дозорный бот',
                                             'message_body':
                                                 'Игрок был исключен из команды',
-                                            'message_chat': MessagingGroup
-                                                .chatbyteamidCall
-                                                .chatid(
-                                              (_model.chatOfCurentTeam
-                                                      ?.jsonBody ??
-                                                  ''),
-                                            ),
+                                            'message_chat': FFAppState()
+                                                .authenticateduser
+                                                .teamChat,
                                             'message_sander_avatar': '',
                                             'message_type':
                                                 'Сообщение об исключении из команды',
