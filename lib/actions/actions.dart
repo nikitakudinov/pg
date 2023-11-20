@@ -168,8 +168,24 @@ Future loadAuthUserAlerts(BuildContext context) async {
         );
       },
     );
-    FFAppState().addToAuthUserAlerts(
-        MessageStruct.fromMap((apiResult00d?.jsonBody ?? '')));
+    FFAppState().update(() {
+      FFAppState().addToAuthUserAlerts(
+          MessageStruct.fromMap((apiResult00d?.jsonBody ?? '')));
+    });
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('13'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
