@@ -128,11 +128,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'TEAM_EDITE',
           path: '/teamEdite',
           builder: (context, params) => TeamEditeWidget(
-            teamID: params.getParam('teamID', ParamType.int),
-            teamName: params.getParam('teamName', ParamType.String),
-            teamTag: params.getParam('teamTag', ParamType.String),
-            teamCountry: params.getParam('teamCountry', ParamType.String),
-            teamFlag: params.getParam('teamFlag', ParamType.String),
+            teamId: params.getParam('teamId', ParamType.int),
+            teamIndex: params.getParam('teamIndex', ParamType.int),
           ),
         ),
         FFRoute(

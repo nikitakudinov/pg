@@ -12,7 +12,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'team_edite_widget.dart' show TeamEditeWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,11 +51,13 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
           int index, Function(PlayerStruct) updateFn) =>
       teamMembersList[index] = updateFn(teamMembersList[index]);
 
+  TeamStruct? curentTeamData;
+  void updateCurentTeamDataStruct(Function(TeamStruct) updateFn) =>
+      updateFn(curentTeamData ??= TeamStruct());
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (LISTTEAMBYID)] action in TEAM_EDITE widget.
-  ApiCallResponse? apiResultsn8;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -138,6 +139,11 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
       );
     }
   }
+
+  Future dowloadCurentTeamDataToPageState(
+    BuildContext context, {
+    required int? teamId,
+  }) async {}
 
   /// Additional helper methods are added here.
 

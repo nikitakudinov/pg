@@ -10,7 +10,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,19 +20,14 @@ export 'team_edite_model.dart';
 class TeamEditeWidget extends StatefulWidget {
   const TeamEditeWidget({
     Key? key,
-    int? teamID,
-    this.teamName,
-    this.teamTag,
-    required this.teamCountry,
-    this.teamFlag,
-  })  : this.teamID = teamID ?? 0,
+    int? teamId,
+    int? teamIndex,
+  })  : this.teamId = teamId ?? 0,
+        this.teamIndex = teamIndex ?? 0,
         super(key: key);
 
-  final int teamID;
-  final String? teamName;
-  final String? teamTag;
-  final String? teamCountry;
-  final String? teamFlag;
+  final int teamId;
+  final int teamIndex;
 
   @override
   _TeamEditeWidgetState createState() => _TeamEditeWidgetState();
@@ -49,42 +43,12 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
     super.initState();
     _model = createModel(context, () => TeamEditeModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultsn8 = await TeamGroup.listteambyidCall.call(
-        idList: widget.teamID.toString(),
-      );
-      if ((_model.apiResultsn8?.succeeded ?? true)) {
-        setState(() {
-          _model.logo = TeamGroup.listteambyidCall.teamlogo(
-            (_model.apiResultsn8?.jsonBody ?? ''),
-          );
-          _model.name = TeamGroup.listteambyidCall
-              .teamnam(
-                (_model.apiResultsn8?.jsonBody ?? ''),
-              )
-              .toString();
-          _model.tag = TeamGroup.listteambyidCall
-              .teamtag(
-                (_model.apiResultsn8?.jsonBody ?? ''),
-              )
-              .toString();
-        });
-        await _model.dowloadTeamMembersToPageState(
-          context,
-          teamId: valueOrDefault<int>(
-            widget.teamID,
-            0,
-          ),
-        );
-        setState(() {});
-      }
-    });
-
-    _model.teamNameController ??= TextEditingController(text: widget.teamName);
+    _model.teamNameController ??= TextEditingController(
+        text: FFAppState().allTEAMS[widget.teamIndex].teamName);
     _model.teamNameFocusNode ??= FocusNode();
 
-    _model.teamTagController ??= TextEditingController(text: widget.teamTag);
+    _model.teamTagController ??= TextEditingController(
+        text: FFAppState().allTEAMS[widget.teamIndex].teamTag);
     _model.teamTagFocusNode ??= FocusNode();
 
     _model.textController3 ??= TextEditingController();
@@ -158,7 +122,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5.0),
                               child: Image.network(
-                                _model.logo,
+                                FFAppState()
+                                    .allTEAMS[widget.teamIndex]
+                                    .teamLogo,
                                 width: 100.0,
                                 height: 100.0,
                                 fit: BoxFit.cover,
@@ -400,8 +366,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                     model: _model.countryPickerModel,
                     updateCallback: () => setState(() {}),
                     child: CountryPickerWidget(
-                      selectedCountry: widget.teamCountry,
-                      selectedFlag: widget.teamFlag,
+                      selectedCountry:
+                          FFAppState().allTEAMS[widget.teamIndex].teamCountry,
+                      selectedFlag:
+                          FFAppState().allTEAMS[widget.teamIndex].teamFlag,
                     ),
                   ),
                 ),
@@ -664,7 +632,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             'created_at':
                                                 supaSerialize<DateTime>(
                                                     getCurrentTimestamp),
-                                            'from_team': widget.teamID,
+                                            'from_team': widget.teamId,
                                             'to_user': (PlayerGroup
                                                     .listplayerbyidCall
                                                     .playeruid(
@@ -832,7 +800,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     ..complete(PlayersTable().queryRows(
                                       queryFn: (q) => q.eq(
                                         'player_team',
-                                        widget.teamID,
+                                        widget.teamId,
                                       ),
                                     )))
                               .future,
@@ -998,7 +966,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               'created_at':
                                                   supaSerialize<DateTime>(
                                                       getCurrentTimestamp),
-                                              'from_team': widget.teamID,
+                                              'from_team': widget.teamId,
                                               'to_user':
                                                   listViewPlayersRow.playerUid,
                                               'type': 'Исключение из команды',
@@ -1190,7 +1158,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                               },
                               matchingRows: (rows) => rows.eq(
                                 'team_id',
-                                widget.teamID,
+                                widget.teamId,
                               ),
                             );
 

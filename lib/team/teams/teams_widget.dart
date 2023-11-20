@@ -130,25 +130,13 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                               context.pushNamed(
                                 'TEAM_EDITE',
                                 queryParameters: {
-                                  'teamID': serializeParam(
-                                    0,
+                                  'teamId': serializeParam(
+                                    allTeamsListItem.teamId,
                                     ParamType.int,
                                   ),
-                                  'teamName': serializeParam(
-                                    allTeamsListItem.teamName,
-                                    ParamType.String,
-                                  ),
-                                  'teamTag': serializeParam(
-                                    allTeamsListItem.teamTag,
-                                    ParamType.String,
-                                  ),
-                                  'teamCountry': serializeParam(
-                                    allTeamsListItem.teamCountry,
-                                    ParamType.String,
-                                  ),
-                                  'teamFlag': serializeParam(
-                                    allTeamsListItem.teamFlag,
-                                    ParamType.String,
+                                  'teamIndex': serializeParam(
+                                    allTeamsListIndex,
+                                    ParamType.int,
                                   ),
                                 }.withoutNulls,
                               );
