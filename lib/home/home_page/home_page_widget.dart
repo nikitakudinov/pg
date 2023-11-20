@@ -35,6 +35,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.upadateAuthUserDataValues(context);
+      await action_blocks.loadAuthUserAlerts(context);
       await action_blocks.loadAuthUserChats(context);
       setState(() {});
       _model.apiResultqcj = await PlayerGroup.listplayerbyuidCall.call(
