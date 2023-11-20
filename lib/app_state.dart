@@ -121,6 +121,26 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAllAuthUsersChats(int _index, ChatStruct _value) {
     _AllAuthUsersChats.insert(_index, _value);
   }
+
+  PlayerStruct _authPlayer = PlayerStruct();
+  PlayerStruct get authPlayer => _authPlayer;
+  set authPlayer(PlayerStruct _value) {
+    _authPlayer = _value;
+  }
+
+  void updateAuthPlayerStruct(Function(PlayerStruct) updateFn) {
+    updateFn(_authPlayer);
+  }
+
+  TeamStruct _authPlayerTeam = TeamStruct();
+  TeamStruct get authPlayerTeam => _authPlayerTeam;
+  set authPlayerTeam(TeamStruct _value) {
+    _authPlayerTeam = _value;
+  }
+
+  void updateAuthPlayerTeamStruct(Function(TeamStruct) updateFn) {
+    updateFn(_authPlayerTeam);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
