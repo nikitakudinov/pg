@@ -53,7 +53,6 @@ Future dowloadAllCountrieToAppState(BuildContext context) async {
 Future loadAuthUserChats(BuildContext context) async {
   ApiCallResponse? apiResultce6;
   List<ChatStruct>? convertedChatsData;
-  List<PlayerStruct>? convertedMembersData;
 
   apiResultce6 = await MessagingGroup.getuserchatsCall.call(
     authUser: currentUserUid,
@@ -61,13 +60,6 @@ Future loadAuthUserChats(BuildContext context) async {
   if ((apiResultce6?.succeeded ?? true)) {
     convertedChatsData = await actions.dtCHAT(
       (apiResultce6?.jsonBody ?? ''),
-    );
-    convertedMembersData = await actions.dtPLAYER(
-      MessagingGroup.getuserchatsCall
-          .members(
-            (apiResultce6?.jsonBody ?? ''),
-          )
-          ?.toList(),
     );
     FFAppState().update(() {
       FFAppState().AllAuthUsersChats =
