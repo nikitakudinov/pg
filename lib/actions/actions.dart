@@ -6,7 +6,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -149,6 +148,7 @@ Future upadateAuthUserDataValues(BuildContext context) async {
 
 Future loadAuthUserAlerts(BuildContext context) async {
   ApiCallResponse? apiResult00d;
+  List<MessageStruct>? jsonData;
 
   apiResult00d = await MessagingGroup.useralertsCall.call(
     uid: currentUserUid,
@@ -168,9 +168,11 @@ Future loadAuthUserAlerts(BuildContext context) async {
         );
       },
     );
+    jsonData = await actions.dtMESSAGE(
+      (apiResult00d?.jsonBody ?? ''),
+    );
     FFAppState().update(() {
-      FFAppState().addToAuthUserAlerts(
-          MessageStruct.fromMap((apiResult00d?.jsonBody ?? '')));
+      FFAppState().authUserAlerts = jsonData!.toList().cast<MessageStruct>();
     });
     await showDialog(
       context: context,
