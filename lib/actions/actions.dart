@@ -147,46 +147,29 @@ Future upadateAuthUserDataValues(BuildContext context) async {
 }
 
 Future loadAuthUserAlerts(BuildContext context) async {
-  ApiCallResponse? apiResult00d;
-  List<MessageStruct>? jsonData;
+  ApiCallResponse? apiResultce61;
+  List<MessageStruct>? convertedMessagesData;
 
-  apiResult00d = await MessagingGroup.useralertsCall.call(
+  apiResultce61 = await MessagingGroup.useralertsCall.call(
     uid: currentUserUid,
   );
-  if ((apiResult00d?.succeeded ?? true)) {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('12'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
-    jsonData = await actions.dtMESSAGE(
-      (apiResult00d?.jsonBody ?? ''),
+  if ((apiResultce61?.succeeded ?? true)) {
+    convertedMessagesData = await actions.dtMESSAGE(
+      (apiResultce61?.jsonBody ?? ''),
     );
     FFAppState().update(() {
-      FFAppState().authUserAlerts = jsonData!.toList().cast<MessageStruct>();
+      FFAppState().authUserAlerts =
+          convertedMessagesData!.toList().cast<MessageStruct>();
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('13'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Chats Uploaderd 111',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
     );
   }
 }
