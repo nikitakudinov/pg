@@ -588,8 +588,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       final allChatsListItem = allChatsList[allChatsListIndex];
                       return Builder(
                         builder: (context) {
-                          final chatMember =
-                              allChatsListItem.chatMembers.toList();
+                          final chatMember = allChatsListItem.members.toList();
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: List.generate(chatMember.length,
@@ -597,7 +596,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               final chatMemberItem =
                                   chatMember[chatMemberIndex];
                               return Text(
-                                chatMemberItem,
+                                chatMemberItem.playerNickname,
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               );
                             }),
