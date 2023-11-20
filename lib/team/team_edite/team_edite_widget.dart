@@ -949,6 +949,24 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                           size: 15.0,
                                         ),
                                         onPressed: () async {
+                                          _model.curentUserTeam =
+                                              await TeamGroup.listteambyuidCall
+                                                  .call(
+                                            idList: listViewPlayersRow.playerId
+                                                .toString(),
+                                          );
+                                          _model.chatOfCurentTeam =
+                                              await MessagingGroup
+                                                  .chatbyteamidCall
+                                                  .call(
+                                            idList: TeamGroup.listteambyuidCall
+                                                .teamid(
+                                                  (_model.curentUserTeam
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )
+                                                .toString(),
+                                          );
                                           await PlayersTable().update(
                                             data: {
                                               'player_team': 0,
@@ -969,10 +987,32 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 listViewPlayersRow.playerUid,
                                             'type': 'Исключение из команды',
                                           });
+                                          await MessageTable().insert({
+                                            'message_sanded_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'message_sander': 'Дозорный бот',
+                                            'message_body':
+                                                'Игрок был исключен из команды',
+                                            'message_chat': MessagingGroup
+                                                .chatbyteamidCall
+                                                .chatid(
+                                              (_model.chatOfCurentTeam
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ),
+                                            'message_sander_avatar': '',
+                                            'message_type':
+                                                'Сообщение об исключении из команды',
+                                            'message_parametrSTRING1':
+                                                listViewPlayersRow.playerUid,
+                                          });
                                           setState(() =>
                                               _model.requestCompleter = null);
                                           await _model
                                               .waitForRequestCompleted();
+
+                                          setState(() {});
                                         },
                                       ),
                                       FlutterFlowIconButton(

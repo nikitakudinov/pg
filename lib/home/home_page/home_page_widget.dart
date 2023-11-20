@@ -196,25 +196,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      () {
-                                        if (listViewAlertsRow.type ==
-                                            'Приглашение в команду') {
-                                          return 'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав';
-                                        } else if (listViewAlertsRow.type ==
-                                            'Исключение из команды') {
-                                          return 'Вы были исключены из команды';
-                                        } else {
-                                          return '0';
-                                        }
-                                      }(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 15.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        () {
+                                          if (listViewAlertsRow.type ==
+                                              'Приглашение в команду') {
+                                            return 'Команда ${columnTeamsRow?.teamName} предлагает вступить в ее состав';
+                                          } else if (listViewAlertsRow.type ==
+                                              'Исключение из команды') {
+                                            return 'Вы были исключены из команды';
+                                          } else {
+                                            return '0';
+                                          }
+                                        }(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 if (listViewAlertsRow.type !=
                                     'Исключение из команды')

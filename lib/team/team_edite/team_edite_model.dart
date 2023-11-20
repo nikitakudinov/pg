@@ -64,6 +64,10 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
+  // Stores action output result for [Backend Call - API (LISTTEAMBYUID)] action in IconButton widget.
+  ApiCallResponse? curentUserTeam;
+  // Stores action output result for [Backend Call - API (CHATBYTEAMID)] action in IconButton widget.
+  ApiCallResponse? chatOfCurentTeam;
   Completer<List<PlayersRow>>? requestCompleter;
   // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
   ApiCallResponse? apiResultigb;
