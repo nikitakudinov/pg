@@ -131,10 +131,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 'TEAM_EDITE',
                                 queryParameters: {
                                   'teamID': serializeParam(
-                                    valueOrDefault<int>(
-                                      allTeamsListItem.teamId,
-                                      0,
-                                    ),
+                                    0,
                                     ParamType.int,
                                   ),
                                   'teamName': serializeParam(
