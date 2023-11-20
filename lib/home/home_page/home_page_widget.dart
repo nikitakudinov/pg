@@ -589,7 +589,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       return Builder(
                         builder: (context) {
                           final chatMember = allChatsListItem.members
-                              .where((e) => e.playerUid == currentUserUid)
+                              .where((e) => e.playerUid != currentUserUid)
                               .toList();
                           return Column(
                             mainAxisSize: MainAxisSize.max,
