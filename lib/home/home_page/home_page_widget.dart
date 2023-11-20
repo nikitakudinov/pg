@@ -576,6 +576,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
               ),
+              Builder(
+                builder: (context) {
+                  final allChatsList = FFAppState().AllAuthUsersChats.toList();
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: allChatsList.length,
+                    itemBuilder: (context, allChatsListIndex) {
+                      final allChatsListItem = allChatsList[allChatsListIndex];
+                      return Text(
+                        allChatsListItem.chatId.toString(),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),
