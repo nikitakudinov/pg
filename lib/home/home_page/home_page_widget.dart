@@ -458,6 +458,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 currentUserUid,
                                               ),
                                             );
+                                            await MessageTable().insert({
+                                              'message_sanded_at':
+                                                  supaSerialize<DateTime>(
+                                                      getCurrentTimestamp),
+                                              'message_sander': 'Дозорный бот',
+                                              'message_body':
+                                                  'Игрок ${PlayerGroup.listplayerbyuidCall.playernickname(
+                                                        (_model.userByYathUID
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString()}вступил в команду',
+                                              'message_chat':
+                                                  columnTeamsRow?.teamChatId,
+                                              'message_sander_avatar':
+                                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/playerAvatars/Iconarchive-Robot-Avatar-Blue-2-Robot-Avatar.512.png',
+                                              'message_parametrSTRING1':
+                                                  currentUserUid,
+                                              'message_type':
+                                                  'Сообщение от бота Игрок покину команду',
+                                            });
 
                                             context.pushNamed('HomePage');
 
