@@ -148,3 +148,31 @@ Future upadateAuthUserDataValues(BuildContext context) async {
     );
   }
 }
+
+Future loadAuthUserAlerts(BuildContext context) async {
+  ApiCallResponse? apiResultugd;
+  List<MessageStruct>? convertedMessageData;
+
+  apiResultugd = await MessagingGroup.useralertsCall.call(
+    uid: currentUserUid,
+  );
+  if ((apiResultugd?.succeeded ?? true)) {
+    convertedMessageData = await actions.dtMESSAGE(
+      (apiResultugd?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().authUserAlerts =
+          convertedMessageData!.toList().cast<MessageStruct>();
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Уведомления загружены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
+  }
+}

@@ -680,6 +680,7 @@ class MessagingGroup {
   static GetchatsCall getchatsCall = GetchatsCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
+  static UseralertsCall useralertsCall = UseralertsCall();
 }
 
 class ChatsCall {
@@ -932,6 +933,81 @@ class ChatbyteamidCall {
   dynamic chatcountofmembers(dynamic response) => getJsonField(
         response,
         r'''$[:].chat_count_of_members''',
+      );
+}
+
+class UseralertsCall {
+  Future<ApiCallResponse> call({
+    String? uid = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'USERALERTS',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?message_to_player=eq.${uid}&message_sander=eq.Уведомление',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic messageid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_id''',
+        true,
+      );
+  dynamic messagesandedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_sanded_at''',
+        true,
+      );
+  dynamic messagesander(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_sander''',
+        true,
+      );
+  dynamic messagebody(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_body''',
+        true,
+      );
+  dynamic messagechat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_chat''',
+        true,
+      );
+  dynamic messagesanderavatar(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_sander_avatar''',
+        true,
+      );
+  dynamic messagetype(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_type''',
+        true,
+      );
+  dynamic messageparametrSTRING1(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_parametrSTRING1''',
+        true,
+      );
+  dynamic messageparametrINT1(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_parametrINT1''',
+        true,
+      );
+  dynamic messagetoplayer(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message_to_player''',
+        true,
       );
 }
 

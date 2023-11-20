@@ -141,6 +141,35 @@ class FFAppState extends ChangeNotifier {
   void updateAuthPlayerTeamStruct(Function(TeamStruct) updateFn) {
     updateFn(_authPlayerTeam);
   }
+
+  List<MessageStruct> _authUserAlerts = [];
+  List<MessageStruct> get authUserAlerts => _authUserAlerts;
+  set authUserAlerts(List<MessageStruct> _value) {
+    _authUserAlerts = _value;
+  }
+
+  void addToAuthUserAlerts(MessageStruct _value) {
+    _authUserAlerts.add(_value);
+  }
+
+  void removeFromAuthUserAlerts(MessageStruct _value) {
+    _authUserAlerts.remove(_value);
+  }
+
+  void removeAtIndexFromAuthUserAlerts(int _index) {
+    _authUserAlerts.removeAt(_index);
+  }
+
+  void updateAuthUserAlertsAtIndex(
+    int _index,
+    MessageStruct Function(MessageStruct) updateFn,
+  ) {
+    _authUserAlerts[_index] = updateFn(_authUserAlerts[_index]);
+  }
+
+  void insertAtIndexInAuthUserAlerts(int _index, MessageStruct _value) {
+    _authUserAlerts.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
