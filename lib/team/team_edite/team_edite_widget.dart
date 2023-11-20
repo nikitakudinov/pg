@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,12 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TeamEditeModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await _model.updateInitPageStateValues(context);
+      setState(() {});
+    });
 
     _model.teamNameController ??= TextEditingController(
         text: FFAppState().allTEAMS[widget.teamIndex].teamName);
