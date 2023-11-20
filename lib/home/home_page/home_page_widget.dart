@@ -139,10 +139,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
-                valueOrDefault<String>(
-                  FFAppState().authenticateduser.nickname,
-                  '0',
-                ),
+                FFAppState().authPlayer.playerNickname,
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Padding(
