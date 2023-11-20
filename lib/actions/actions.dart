@@ -154,8 +154,6 @@ Future loadAuthUserAlerts(BuildContext context) async {
     uid: currentUserUid,
   );
   if ((apiResult00d?.succeeded ?? true)) {
-    FFAppState().addToAuthUserAlerts(
-        MessageStruct.fromMap((apiResult00d?.jsonBody ?? '')));
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
@@ -170,6 +168,8 @@ Future loadAuthUserAlerts(BuildContext context) async {
         );
       },
     );
+    FFAppState().addToAuthUserAlerts(
+        MessageStruct.fromMap((apiResult00d?.jsonBody ?? '')));
   }
 }
 
