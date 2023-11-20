@@ -145,6 +145,10 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
     required int? teamId,
   }) async {}
 
+  Future updateInitPageStateValues(BuildContext context) async {
+    logo = FFAppState().allTEAMS[widget.teamIndex].teamLogo;
+  }
+
   /// Additional helper methods are added here.
 
   Future waitForRequestCompleted({

@@ -122,9 +122,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5.0),
                               child: Image.network(
-                                FFAppState()
-                                    .allTEAMS[widget.teamIndex]
-                                    .teamLogo,
+                                _model.logo,
                                 width: 100.0,
                                 height: 100.0,
                                 fit: BoxFit.cover,
