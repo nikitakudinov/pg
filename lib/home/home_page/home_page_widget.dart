@@ -138,9 +138,69 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text(
-                FFAppState().authPlayer.playerNickname,
-                style: FlutterFlowTheme.of(context).bodyMedium,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Container(
+                        width: 60.0,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: Image.network(
+                            'https://picsum.photos/seed/120/600',
+                            width: 60.0,
+                            height: 60.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          FFAppState().authPlayer.playerNickname,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().authPlayer.playerTag,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().authPlayer.playerCountrie,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().authPlayer.playerUid,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().authPlayer.playerTeam.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().authPlayer.playerTeamRole,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().authPlayer.playerId.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
