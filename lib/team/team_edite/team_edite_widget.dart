@@ -1103,6 +1103,144 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             );
                           },
                         ),
+                        Builder(
+                          builder: (context) {
+                            final membersList = _model.teamMembersList.toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: membersList.length,
+                              itemBuilder: (context, membersListIndex) {
+                                final membersListItem =
+                                    membersList[membersListIndex];
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 10.0),
+                                        child: Container(
+                                          width: 55.0,
+                                          height: 55.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              membersListItem.playerAvatar,
+                                              width: 55.0,
+                                              height: 55.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${membersListItem.playerTag} / ${membersListItem.playerNickname}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
+                                            ),
+                                            Text(
+                                              membersListItem.playerTeamRole,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 10.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                5.0, 0.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.network(
+                                                        membersListItem
+                                                            .playerFlag,
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    membersListItem
+                                                        .playerCountrie,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      if (membersListItem.playerTeamRole !=
+                                          'Основатель')
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 20.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          icon: Icon(
+                                            Icons.delete_forever_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
+                                          ),
+                                          onPressed: () {
+                                            print('IconButton pressed ...');
+                                          },
+                                        ),
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.telegramPlane,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 15.0,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
