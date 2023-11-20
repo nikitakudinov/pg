@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'team_edite_widget.dart' show TeamEditeWidget;
 import 'package:flutter/material.dart';
@@ -37,6 +39,18 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
       chatMembers.insert(index, item);
   void updateChatMembersAtIndex(int index, Function(String) updateFn) =>
       chatMembers[index] = updateFn(chatMembers[index]);
+
+  List<PlayerStruct> teamMembersList = [];
+  void addToTeamMembersList(PlayerStruct item) => teamMembersList.add(item);
+  void removeFromTeamMembersList(PlayerStruct item) =>
+      teamMembersList.remove(item);
+  void removeAtIndexFromTeamMembersList(int index) =>
+      teamMembersList.removeAt(index);
+  void insertAtIndexInTeamMembersList(int index, PlayerStruct item) =>
+      teamMembersList.insert(index, item);
+  void updateTeamMembersListAtIndex(
+          int index, Function(PlayerStruct) updateFn) =>
+      teamMembersList[index] = updateFn(teamMembersList[index]);
 
   ///  State fields for stateful widgets in this page.
 
@@ -94,6 +108,24 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   }
 
   /// Action blocks are added here.
+
+  Future dowloadTeamMembersToPageState(
+    BuildContext context, {
+    required int? teamId,
+  }) async {
+    ApiCallResponse? allMembersOfTeamJson;
+    List<PlayerStruct>? converterTeamMembersData;
+
+    allMembersOfTeamJson = await PlayerGroup.listplayerbyteamCall.call(
+      idList: teamID?.toString(),
+    );
+    if ((allMembersOfTeamJson?.succeeded ?? true)) {
+      converterTeamMembersData = await actions.dtPLAYER(
+        (allMembersOfTeamJson?.jsonBody ?? ''),
+      );
+      teamMembersList = converterTeamMembersData!.toList().cast<PlayerStruct>();
+    }
+  }
 
   /// Additional helper methods are added here.
 

@@ -20,6 +20,7 @@ class PlayerGroup {
   };
   static ListplayerbyuidCall listplayerbyuidCall = ListplayerbyuidCall();
   static ListplayerbyidCall listplayerbyidCall = ListplayerbyidCall();
+  static ListplayerbyteamCall listplayerbyteamCall = ListplayerbyteamCall();
   static ListplayersCall listplayersCall = ListplayersCall();
 }
 
@@ -116,46 +117,136 @@ class ListplayerbyidCall {
   dynamic playercreatedat(dynamic response) => getJsonField(
         response,
         r'''$[:].player_created_at''',
+        true,
       );
   dynamic playernickname(dynamic response) => getJsonField(
         response,
         r'''$[:].player_nickname''',
+        true,
       );
   dynamic playertag(dynamic response) => getJsonField(
         response,
         r'''$[:].player_tag''',
+        true,
       );
   dynamic playerflag(dynamic response) => getJsonField(
         response,
         r'''$[:].player_flag''',
+        true,
       );
   dynamic playercountrie(dynamic response) => getJsonField(
         response,
         r'''$[:].player_countrie''',
+        true,
       );
   dynamic playeravatar(dynamic response) => getJsonField(
         response,
         r'''$[:].player_avatar''',
+        true,
       );
   dynamic playeruid(dynamic response) => getJsonField(
         response,
         r'''$[:].player_uid''',
+        true,
       );
   dynamic playerteam(dynamic response) => getJsonField(
         response,
         r'''$[:].player_team''',
+        true,
       );
   dynamic playerteamrole(dynamic response) => getJsonField(
         response,
         r'''$[:].player_team_role''',
+        true,
       );
   dynamic playerid(dynamic response) => getJsonField(
         response,
         r'''$[:].player_id''',
+        true,
       );
   dynamic playerteamlineup(dynamic response) => getJsonField(
         response,
         r'''$[:].player_team_lineup''',
+        true,
+      );
+}
+
+class ListplayerbyteamCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LISTPLAYERBYTEAM',
+      apiUrl: '${PlayerGroup.baseUrl}players?player_team=in.%28${idList}%29',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic playercreatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_created_at''',
+        true,
+      );
+  dynamic playernickname(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_nickname''',
+        true,
+      );
+  dynamic playertag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_tag''',
+        true,
+      );
+  dynamic playerflag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_flag''',
+        true,
+      );
+  dynamic playercountrie(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_countrie''',
+        true,
+      );
+  dynamic playeravatar(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_avatar''',
+        true,
+      );
+  dynamic playeruid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_uid''',
+        true,
+      );
+  dynamic playerteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team''',
+        true,
+      );
+  dynamic playerteamrole(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team_role''',
+        true,
+      );
+  dynamic playerid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_id''',
+        true,
+      );
+  dynamic playerteamlineup(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team_lineup''',
+        true,
       );
 }
 
