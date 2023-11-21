@@ -240,3 +240,5 @@ Future onlineStatesUpdater(BuildContext context) async {
     ),
   );
 }
+
+Future sandAlertToTeamAdmins(BuildContext context) async {}

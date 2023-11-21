@@ -352,10 +352,56 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await MessageTable().insert({
+                                          'message_sanded_at':
+                                              supaSerialize<DateTime>(
+                                                  getCurrentTimestamp),
+                                          'message_sander': 'Уведомление',
+                                          'message_body':
+                                              'Игрок подтвердил приглашение.',
+                                          'message_chat': 0,
+                                          'message_sander_avatar': 'false',
+                                          'message_type':
+                                              'Подтверждение приглашения в команду',
+                                          'message_parametrSTRING1': '',
+                                          'message_parametrINT1': 0,
+                                          'message_from_team': 0,
+                                          'message_to_player':
+                                              alertsListItem.messageToPlayer,
+                                        });
                                       },
                                       text: 'Вступить',
+                                      options: FFButtonOptions(
+                                        height: 30.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: FFButtonWidget(
+                                      onPressed: () async {},
+                                      text: 'Отправить ссобщеня',
                                       options: FFButtonOptions(
                                         height: 30.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(

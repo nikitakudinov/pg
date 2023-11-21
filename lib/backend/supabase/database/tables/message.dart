@@ -46,9 +46,9 @@ class MessageRow extends SupabaseDataRow {
   set messageParametrINT1(int? value) =>
       setField<int>('message_parametrINT1', value);
 
-  List<String> get messageToPlayer => getListField<String>('message_to_player');
-  set messageToPlayer(List<String>? value) =>
-      setListField<String>('message_to_player', value);
+  String? get messageToPlayer => getField<String>('message_to_player');
+  set messageToPlayer(String? value) =>
+      setField<String>('message_to_player', value);
 
   int? get messageFromTeam => getField<int>('message_from_team');
   set messageFromTeam(int? value) => setField<int>('message_from_team', value);

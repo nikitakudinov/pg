@@ -4,5 +4,6 @@ export 'chat_struct.dart';
 export 'countrie_struct.dart';
 export 'message_struct.dart';
 export 'player_struct.dart';
+export 'player_uid_struct.dart';
 export 'team_struct.dart';
 export 'user_struct.dart';

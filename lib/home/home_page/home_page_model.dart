@@ -26,6 +26,15 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   void updateChatMembersAtIndex(int index, Function(String) updateFn) =>
       chatMembers[index] = updateFn(chatMembers[index]);
 
+  List<PlayerUidStruct> playerUID = [];
+  void addToPlayerUID(PlayerUidStruct item) => playerUID.add(item);
+  void removeFromPlayerUID(PlayerUidStruct item) => playerUID.remove(item);
+  void removeAtIndexFromPlayerUID(int index) => playerUID.removeAt(index);
+  void insertAtIndexInPlayerUID(int index, PlayerUidStruct item) =>
+      playerUID.insert(index, item);
+  void updatePlayerUIDAtIndex(int index, Function(PlayerUidStruct) updateFn) =>
+      playerUID[index] = updateFn(playerUID[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
