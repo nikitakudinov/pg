@@ -624,12 +624,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          _model.apiResultdy1 =
-                                              await PlayerGroup
-                                                  .listplayerbyidCall
-                                                  .call(
-                                            idList: _model.textController3.text,
-                                          );
                                           _model.addNotification1 =
                                               await NotificationsTable()
                                                   .insert({
@@ -761,6 +755,49 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         _model.searchPlaerByIdVISIBILITY =
                                             false;
                                       });
+                                      _model.apiResultxwd = await PlayerGroup
+                                          .listplayerbyidCall
+                                          .call(
+                                        idList: _model.textController3.text,
+                                      );
+                                      if ((_model.apiResultxwd?.succeeded ??
+                                          true)) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Игрок найден'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Игрок не найден'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+
+                                      setState(() {});
                                     },
                                     text: 'Найти',
                                     options: FFButtonOptions(
