@@ -360,13 +360,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           'message_sander': 'Уведомление',
                                           'message_body':
                                               'Игрок подтвердил приглашение.',
-                                          'message_chat': 0,
-                                          'message_sander_avatar': 'false',
                                           'message_type':
                                               'Подтверждение приглашения в команду',
-                                          'message_parametrSTRING1': '',
-                                          'message_parametrINT1': 0,
-                                          'message_from_team': 0,
                                           'message_to_player': alertsListItem
                                               .messageFromTeam.teamCreator,
                                         });
