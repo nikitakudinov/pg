@@ -170,6 +170,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAlerts(int _index, MessageStruct _value) {
     _alerts.insert(_index, _value);
   }
+
+  int _alertsCount = 0;
+  int get alertsCount => _alertsCount;
+  set alertsCount(int _value) {
+    _alertsCount = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

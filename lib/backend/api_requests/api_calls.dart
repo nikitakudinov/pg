@@ -264,13 +264,14 @@ class LISTPLAYERBYTEAMandTEAMROLEcountCall {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTPLAYERBYTEAMandTEAMROLEcount',
       apiUrl:
-          '${PlayerGroup.baseUrl}players?player_team=in.%28${playersOfTeam}%29&or=(player_team_role.cs.{Основатель},player_team_role.cs.{Администратор})',
+          '${PlayerGroup.baseUrl}players?player_team=in.%28${playersOfTeam}%29&or=(player_team_role.cs.{Основатель},player_team_role.cs.{Администратор})&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
         'Authorization':
             'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Prefer': 'count=exact',
       },
       params: {},
       returnBody: true,
@@ -844,6 +845,7 @@ class MessagingGroup {
   static ChatsCall chatsCall = ChatsCall();
   static GetchatsCall getchatsCall = GetchatsCall();
   static GetalertsCall getalertsCall = GetalertsCall();
+  static GETALERTScountCall gETALERTScountCall = GETALERTScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
 }
@@ -960,6 +962,56 @@ class GetalertsCall {
       callName: 'GETALERTS',
       apiUrl:
           '${MessagingGroup.baseUrl}message?message_to_player=cs.{${authUser}}&message_sander=eq.Уведомление&select=*,message_from_team:teams(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic chatid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_id''',
+      );
+  dynamic chatupdatedat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_updated_at''',
+      );
+  dynamic chatmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_members''',
+        true,
+      );
+  dynamic chatlastmessage(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_last_message''',
+      );
+  dynamic chatofteam(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_of_team''',
+      );
+  dynamic chatcountofmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_count_of_members''',
+      );
+}
+
+class GETALERTScountCall {
+  Future<ApiCallResponse> call({
+    String? authUser = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETALERTScount',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?message_to_player=cs.{${authUser}}&message_sander=eq.Уведомление&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
