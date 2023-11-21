@@ -621,6 +621,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 widget.teamId,
                                             'notification_to_player': _model
                                                 .searchedPlayer.first.playerUid,
+                                            'notification_from_player':
+                                                currentUserUid,
                                           });
 
                                           setState(() {});
