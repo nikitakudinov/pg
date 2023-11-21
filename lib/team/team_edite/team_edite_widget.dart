@@ -626,7 +626,13 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             'notification_type':
                                                 'Приглашение в команду',
                                             'notification_body':
-                                                'Команда${FFAppState().allTEAMS[widget.teamIndex].teamName} предлагает вступить в ее ряды.',
+                                                'Команда ${FFAppState().allTEAMS[widget.teamIndex].teamName}  предлагает вступить в ее ряды.',
+                                          });
+                                          setState(() {
+                                            _model.messageConfirmInvintVISIBILITY =
+                                                false;
+                                            _model.searchPlaerByIdVISIBILITY =
+                                                false;
                                           });
 
                                           setState(() {});
