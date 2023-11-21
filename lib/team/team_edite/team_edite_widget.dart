@@ -642,20 +642,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     .teamId,
                                             'notification_from_player':
                                                 currentUserUid,
-                                            'notification_to_player':
-                                                valueOrDefault<String>(
-                                              (PlayerGroup.listplayerbyidCall
-                                                      .playeruid(
-                                                (_model.apiResultdy1
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ) as List)
-                                                  .map<String>(
-                                                      (s) => s.toString())
-                                                  .toList()
-                                                  .first,
-                                              ' 0',
-                                            ),
                                             'notification_type':
                                                 'Приглашение в команду',
                                             'notification_body':
