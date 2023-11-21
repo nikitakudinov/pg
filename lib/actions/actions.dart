@@ -191,7 +191,6 @@ Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.upadateAuthUserDataValues(context);
   await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserChats(context);
-  await Future.delayed(const Duration(milliseconds: 100));
 }
 
 Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}

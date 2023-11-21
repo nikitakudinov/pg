@@ -18,6 +18,7 @@ class PlayerStruct extends BaseStruct {
     bool? playerTeamLineup,
     int? playerId,
     List<String>? playerTeamRole,
+    bool? playerOnline,
   })  : _playerCreatedAt = playerCreatedAt,
         _playerNickname = playerNickname,
         _playerTag = playerTag,
@@ -28,7 +29,8 @@ class PlayerStruct extends BaseStruct {
         _playerTeam = playerTeam,
         _playerTeamLineup = playerTeamLineup,
         _playerId = playerId,
-        _playerTeamRole = playerTeamRole;
+        _playerTeamRole = playerTeamRole,
+        _playerOnline = playerOnline;
 
   // "player_created_at" field.
   String? _playerCreatedAt;
@@ -100,6 +102,12 @@ class PlayerStruct extends BaseStruct {
       updateFn(_playerTeamRole ??= []);
   bool hasPlayerTeamRole() => _playerTeamRole != null;
 
+  // "player_online" field.
+  bool? _playerOnline;
+  bool get playerOnline => _playerOnline ?? false;
+  set playerOnline(bool? val) => _playerOnline = val;
+  bool hasPlayerOnline() => _playerOnline != null;
+
   static PlayerStruct fromMap(Map<String, dynamic> data) => PlayerStruct(
         playerCreatedAt: data['player_created_at'] as String?,
         playerNickname: data['player_nickname'] as String?,
@@ -112,6 +120,7 @@ class PlayerStruct extends BaseStruct {
         playerTeamLineup: data['player_team_lineup'] as bool?,
         playerId: castToType<int>(data['player_id']),
         playerTeamRole: getDataList(data['player_team_role']),
+        playerOnline: data['player_online'] as bool?,
       );
 
   static PlayerStruct? maybeFromMap(dynamic data) =>
@@ -129,6 +138,7 @@ class PlayerStruct extends BaseStruct {
         'player_team_lineup': _playerTeamLineup,
         'player_id': _playerId,
         'player_team_role': _playerTeamRole,
+        'player_online': _playerOnline,
       }.withoutNulls;
 
   @override
@@ -177,6 +187,10 @@ class PlayerStruct extends BaseStruct {
           _playerTeamRole,
           ParamType.String,
           true,
+        ),
+        'player_online': serializeParam(
+          _playerOnline,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -237,6 +251,11 @@ class PlayerStruct extends BaseStruct {
           ParamType.String,
           true,
         ),
+        playerOnline: deserializeParam(
+          data['player_online'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -256,7 +275,8 @@ class PlayerStruct extends BaseStruct {
         playerTeam == other.playerTeam &&
         playerTeamLineup == other.playerTeamLineup &&
         playerId == other.playerId &&
-        listEquality.equals(playerTeamRole, other.playerTeamRole);
+        listEquality.equals(playerTeamRole, other.playerTeamRole) &&
+        playerOnline == other.playerOnline;
   }
 
   @override
@@ -271,7 +291,8 @@ class PlayerStruct extends BaseStruct {
         playerTeam,
         playerTeamLineup,
         playerId,
-        playerTeamRole
+        playerTeamRole,
+        playerOnline
       ]);
 }
 
@@ -286,6 +307,7 @@ PlayerStruct createPlayerStruct({
   int? playerTeam,
   bool? playerTeamLineup,
   int? playerId,
+  bool? playerOnline,
 }) =>
     PlayerStruct(
       playerCreatedAt: playerCreatedAt,
@@ -298,4 +320,5 @@ PlayerStruct createPlayerStruct({
       playerTeam: playerTeam,
       playerTeamLineup: playerTeamLineup,
       playerId: playerId,
+      playerOnline: playerOnline,
     );
