@@ -75,6 +75,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (LISTPLAYERBYID)] action in Button widget.
   ApiCallResponse? apiResultdy1;
+  // Stores action output result for [Backend Call - Insert Row] action in Button widget.
+  NotificationsRow? addNotification1;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;

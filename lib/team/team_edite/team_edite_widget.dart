@@ -630,7 +630,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   .call(
                                             idList: _model.textController3.text,
                                           );
-                                          await NotificationsTable().insert({
+                                          _model.addNotification1 =
+                                              await NotificationsTable()
+                                                  .insert({
                                             'notification_created_at':
                                                 supaSerialize<DateTime>(
                                                     getCurrentTimestamp),
