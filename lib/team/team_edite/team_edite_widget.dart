@@ -619,6 +619,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     getCurrentTimestamp),
                                             'notification_from_team':
                                                 widget.teamId,
+                                            'notification_to_player': _model
+                                                .searchedPlayer.first.playerUid,
                                           });
 
                                           setState(() {});
