@@ -190,7 +190,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      alertsListItem.messageBody.toString(),
+                                      alertsListItem.messageBody,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
@@ -219,7 +219,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(0.0),
                                           child: Image.network(
-                                            alertsListItem.messageSanderAvatar,
+                                            'https://picsum.photos/seed/59/600',
                                             width: 45.0,
                                             height: 45.0,
                                             fit: BoxFit.cover,

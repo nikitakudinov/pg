@@ -10,8 +10,8 @@ class MessageStruct extends BaseStruct {
     int? messageId,
     String? messageSandedAt,
     String? messageSander,
-    int? messageBody,
-    String? messageChat,
+    String? messageBody,
+    int? messageChat,
     String? messageSanderAvatar,
     String? messageType,
     String? messageParametrSTRING1,
@@ -48,16 +48,16 @@ class MessageStruct extends BaseStruct {
   bool hasMessageSander() => _messageSander != null;
 
   // "message_body" field.
-  int? _messageBody;
-  int get messageBody => _messageBody ?? 0;
-  set messageBody(int? val) => _messageBody = val;
-  void incrementMessageBody(int amount) => _messageBody = messageBody + amount;
+  String? _messageBody;
+  String get messageBody => _messageBody ?? '';
+  set messageBody(String? val) => _messageBody = val;
   bool hasMessageBody() => _messageBody != null;
 
   // "message_chat" field.
-  String? _messageChat;
-  String get messageChat => _messageChat ?? '';
-  set messageChat(String? val) => _messageChat = val;
+  int? _messageChat;
+  int get messageChat => _messageChat ?? 0;
+  set messageChat(int? val) => _messageChat = val;
+  void incrementMessageChat(int amount) => _messageChat = messageChat + amount;
   bool hasMessageChat() => _messageChat != null;
 
   // "message_sander_avatar" field.
@@ -98,8 +98,8 @@ class MessageStruct extends BaseStruct {
         messageId: castToType<int>(data['message_id']),
         messageSandedAt: data['message_sanded_at'] as String?,
         messageSander: data['message_sander'] as String?,
-        messageBody: castToType<int>(data['message_body']),
-        messageChat: data['message_chat'] as String?,
+        messageBody: data['message_body'] as String?,
+        messageChat: castToType<int>(data['message_chat']),
         messageSanderAvatar: data['message_sander_avatar'] as String?,
         messageType: data['message_type'] as String?,
         messageParametrSTRING1: data['message_parametrSTRING1'] as String?,
@@ -139,11 +139,11 @@ class MessageStruct extends BaseStruct {
         ),
         'message_body': serializeParam(
           _messageBody,
-          ParamType.int,
+          ParamType.String,
         ),
         'message_chat': serializeParam(
           _messageChat,
-          ParamType.String,
+          ParamType.int,
         ),
         'message_sander_avatar': serializeParam(
           _messageSanderAvatar,
@@ -187,12 +187,12 @@ class MessageStruct extends BaseStruct {
         ),
         messageBody: deserializeParam(
           data['message_body'],
-          ParamType.int,
+          ParamType.String,
           false,
         ),
         messageChat: deserializeParam(
           data['message_chat'],
-          ParamType.String,
+          ParamType.int,
           false,
         ),
         messageSanderAvatar: deserializeParam(
@@ -260,8 +260,8 @@ MessageStruct createMessageStruct({
   int? messageId,
   String? messageSandedAt,
   String? messageSander,
-  int? messageBody,
-  String? messageChat,
+  String? messageBody,
+  int? messageChat,
   String? messageSanderAvatar,
   String? messageType,
   String? messageParametrSTRING1,
