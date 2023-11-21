@@ -17,6 +17,7 @@ class MessageStruct extends BaseStruct {
     String? messageParametrSTRING1,
     int? messageParametrINT1,
     List<String>? messageToPlayer,
+    TeamStruct? messageFromTeam,
   })  : _messageId = messageId,
         _messageSandedAt = messageSandedAt,
         _messageSander = messageSander,
@@ -26,7 +27,8 @@ class MessageStruct extends BaseStruct {
         _messageType = messageType,
         _messageParametrSTRING1 = messageParametrSTRING1,
         _messageParametrINT1 = messageParametrINT1,
-        _messageToPlayer = messageToPlayer;
+        _messageToPlayer = messageToPlayer,
+        _messageFromTeam = messageFromTeam;
 
   // "message_id" field.
   int? _messageId;
@@ -94,6 +96,14 @@ class MessageStruct extends BaseStruct {
       updateFn(_messageToPlayer ??= []);
   bool hasMessageToPlayer() => _messageToPlayer != null;
 
+  // "message_from_team" field.
+  TeamStruct? _messageFromTeam;
+  TeamStruct get messageFromTeam => _messageFromTeam ?? TeamStruct();
+  set messageFromTeam(TeamStruct? val) => _messageFromTeam = val;
+  void updateMessageFromTeam(Function(TeamStruct) updateFn) =>
+      updateFn(_messageFromTeam ??= TeamStruct());
+  bool hasMessageFromTeam() => _messageFromTeam != null;
+
   static MessageStruct fromMap(Map<String, dynamic> data) => MessageStruct(
         messageId: castToType<int>(data['message_id']),
         messageSandedAt: data['message_sanded_at'] as String?,
@@ -105,6 +115,7 @@ class MessageStruct extends BaseStruct {
         messageParametrSTRING1: data['message_parametrSTRING1'] as String?,
         messageParametrINT1: castToType<int>(data['message_parametrINT1']),
         messageToPlayer: getDataList(data['message_to_player']),
+        messageFromTeam: TeamStruct.maybeFromMap(data['message_from_team']),
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
@@ -121,6 +132,7 @@ class MessageStruct extends BaseStruct {
         'message_parametrSTRING1': _messageParametrSTRING1,
         'message_parametrINT1': _messageParametrINT1,
         'message_to_player': _messageToPlayer,
+        'message_from_team': _messageFromTeam?.toMap(),
       }.withoutNulls;
 
   @override
@@ -165,6 +177,10 @@ class MessageStruct extends BaseStruct {
           _messageToPlayer,
           ParamType.String,
           true,
+        ),
+        'message_from_team': serializeParam(
+          _messageFromTeam,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -220,6 +236,12 @@ class MessageStruct extends BaseStruct {
           ParamType.String,
           true,
         ),
+        messageFromTeam: deserializeStructParam(
+          data['message_from_team'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: TeamStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -238,7 +260,8 @@ class MessageStruct extends BaseStruct {
         messageType == other.messageType &&
         messageParametrSTRING1 == other.messageParametrSTRING1 &&
         messageParametrINT1 == other.messageParametrINT1 &&
-        listEquality.equals(messageToPlayer, other.messageToPlayer);
+        listEquality.equals(messageToPlayer, other.messageToPlayer) &&
+        messageFromTeam == other.messageFromTeam;
   }
 
   @override
@@ -252,7 +275,8 @@ class MessageStruct extends BaseStruct {
         messageType,
         messageParametrSTRING1,
         messageParametrINT1,
-        messageToPlayer
+        messageToPlayer,
+        messageFromTeam
       ]);
 }
 
@@ -266,6 +290,7 @@ MessageStruct createMessageStruct({
   String? messageType,
   String? messageParametrSTRING1,
   int? messageParametrINT1,
+  TeamStruct? messageFromTeam,
 }) =>
     MessageStruct(
       messageId: messageId,
@@ -277,4 +302,5 @@ MessageStruct createMessageStruct({
       messageType: messageType,
       messageParametrSTRING1: messageParametrSTRING1,
       messageParametrINT1: messageParametrINT1,
+      messageFromTeam: messageFromTeam ?? TeamStruct(),
     );
