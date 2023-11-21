@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -762,6 +763,16 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                       );
                                       if ((_model.apiResultxwd?.succeeded ??
                                           true)) {
+                                        _model.searchedPlayerData =
+                                            await actions.dtPLAYER(
+                                          (_model.apiResultxwd?.jsonBody ?? ''),
+                                        );
+                                        setState(() {
+                                          _model.searchedPlayer = _model
+                                              .searchedPlayerData!
+                                              .toList()
+                                              .cast<PlayerStruct>();
+                                        });
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {

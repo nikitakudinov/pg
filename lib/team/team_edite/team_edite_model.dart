@@ -55,9 +55,17 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   void updateCurentTeamDataStruct(Function(TeamStruct) updateFn) =>
       updateFn(curentTeamData ??= TeamStruct());
 
-  PlayerStruct? searchedPlayer;
-  void updateSearchedPlayerStruct(Function(PlayerStruct) updateFn) =>
-      updateFn(searchedPlayer ??= PlayerStruct());
+  List<PlayerStruct> searchedPlayer = [];
+  void addToSearchedPlayer(PlayerStruct item) => searchedPlayer.add(item);
+  void removeFromSearchedPlayer(PlayerStruct item) =>
+      searchedPlayer.remove(item);
+  void removeAtIndexFromSearchedPlayer(int index) =>
+      searchedPlayer.removeAt(index);
+  void insertAtIndexInSearchedPlayer(int index, PlayerStruct item) =>
+      searchedPlayer.insert(index, item);
+  void updateSearchedPlayerAtIndex(
+          int index, Function(PlayerStruct) updateFn) =>
+      searchedPlayer[index] = updateFn(searchedPlayer[index]);
 
   ///  State fields for stateful widgets in this page.
 
@@ -85,6 +93,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String? Function(BuildContext, String?)? textController3Validator;
   // Stores action output result for [Backend Call - API (LISTPLAYERBYID)] action in Button widget.
   ApiCallResponse? apiResultxwd;
+  // Stores action output result for [Custom Action - dtPLAYER] action in Button widget.
+  List<PlayerStruct>? searchedPlayerData;
   // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
   ApiCallResponse? apiResultigb;
   // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
