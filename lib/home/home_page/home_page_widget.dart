@@ -1,4 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -281,8 +283,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await MessageTable().delete(
+                                          matchingRows: (rows) => rows.eq(
+                                            'message_id',
+                                            alertsListItem.messageId,
+                                          ),
+                                        );
+                                        setState(() {
+                                          FFAppState().removeAtIndexFromAlerts(
+                                              alertsListIndex);
+                                        });
                                       },
                                       text: 'Отказаться',
                                       options: FFButtonOptions(
