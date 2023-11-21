@@ -149,13 +149,11 @@ Future loadAuthUserAlerts(BuildContext context) async {
   getCountOfAllerts = await MessagingGroup.gETALERTScountCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
-  if (FFAppState().alertsCount !=
+  if (FFAppState().alertsCount ==
       getJsonField(
         (getCountOfAllerts?.jsonBody ?? ''),
         r'''$.count''',
       )) {
-    Navigator.pop(context);
-  } else {
     apiResultfyh = await MessagingGroup.getalertsCall.call(
       authUser: FFAppState().authPlayer.playerUid,
     );
