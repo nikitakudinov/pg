@@ -36,7 +36,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.preloadDataOfHomePage(context);
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 5000),
+        duration: Duration(milliseconds: 10000),
         callback: (timer) async {
           await action_blocks.alertsUpdater(context);
         },
