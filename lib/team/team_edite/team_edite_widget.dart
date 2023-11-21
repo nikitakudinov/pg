@@ -623,8 +623,23 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          await NotificationsTable().insert({
+                                            'notification_created_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'notification_from_team':
+                                                FFAppState()
+                                                    .authPlayerTeam
+                                                    .teamId,
+                                            'notification_from_player':
+                                                currentUserUid,
+                                            'notification_to_player': '',
+                                            'notification_type':
+                                                'Приглашение в команду',
+                                            'notification_body':
+                                                'Команда предлагает вступить в ее состав',
+                                          });
                                         },
                                         text: 'ДА',
                                         options: FFButtonOptions(
