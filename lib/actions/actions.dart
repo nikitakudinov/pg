@@ -146,7 +146,29 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   }
 }
 
-Future loadAuthUserAlerts(BuildContext context) async {}
+Future loadAuthUserAlerts(BuildContext context) async {
+  ApiCallResponse? apiResultfyh;
+
+  apiResultfyh = await MessagingGroup.useralertsCall.call(
+    uid: FFAppState().authPlayer.playerUid,
+  );
+  if ((apiResultfyh?.succeeded ?? true)) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Api call works!'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
 
 Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.upadateAuthUserDataValues(context);
