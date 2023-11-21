@@ -216,7 +216,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      FFAppState().alertsCount.toString(),
+                                      notificationsListItem.notificationBody,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
@@ -281,7 +281,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Hello World',
+                                          () {
+                                            if (notificationsListItem
+                                                    .notificationType ==
+                                                'Приглашение в команду') {
+                                              return notificationsListItem
+                                                  .notificationFromTeam
+                                                  .teamName;
+                                            } else if (notificationsListItem
+                                                    .notificationType ==
+                                                'Принял заявку вступления в клан') {
+                                              return notificationsListItem
+                                                  .notificationFromPlayer
+                                                  .playerNickname;
+                                            } else if (notificationsListItem
+                                                    .notificationType ==
+                                                'Команда зачислена в состав турнира') {
+                                              return notificationsListItem
+                                                  .notificationFromTournament
+                                                  .tournamentName;
+                                            } else {
+                                              return '0';
+                                            }
+                                          }(),
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium,
                                         ),
