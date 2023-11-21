@@ -169,7 +169,11 @@ Future loadAuthUserAlerts(BuildContext context) async {
       },
     );
     alertsData = await actions.dtMSG(
-      (apiResultfyh?.jsonBody ?? ''),
+      getJsonField(
+        (apiResultfyh?.jsonBody ?? ''),
+        r'''$[:]''',
+        true,
+      ),
     );
     FFAppState().update(() {
       FFAppState().alerts = alertsData!.toList().cast<MessageStruct>();
