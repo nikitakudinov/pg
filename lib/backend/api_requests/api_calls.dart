@@ -1093,7 +1093,7 @@ class GETALERTScountCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETALERTScount',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?message_to_player=cs.{${authUser}}&message_sander=eq.Уведомление&select=count',
+          '${MessagingGroup.baseUrl}message?message_to_player=eq.{${authUser}}&message_sander=eq.Уведомление&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
