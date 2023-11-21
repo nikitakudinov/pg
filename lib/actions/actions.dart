@@ -146,37 +146,7 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   }
 }
 
-Future loadAuthUserAlerts(BuildContext context) async {
-  ApiCallResponse? apiResultce61;
-  List<MessageStruct>? convertedMessagesData;
-
-  apiResultce61 = await MessagingGroup.useralertsCall.call(
-    uid: FFAppState().authPlayer.playerUid,
-  );
-  if ((apiResultce61?.succeeded ?? true)) {
-    convertedMessagesData = await actions.dtMESSAGE(
-      (apiResultce61?.jsonBody ?? ''),
-    );
-    FFAppState().update(() {
-      FFAppState().alerts =
-          convertedMessagesData!.toList().cast<MessageStruct>();
-    });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('zsc'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
+Future loadAuthUserAlerts(BuildContext context) async {}
 
 Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.upadateAuthUserDataValues(context);
