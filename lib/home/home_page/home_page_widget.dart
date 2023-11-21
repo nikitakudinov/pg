@@ -1,6 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -196,14 +195,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                   child: Builder(
                     builder: (context) {
-                      final alertsList = FFAppState().alerts.toList();
+                      final notificationsList =
+                          FFAppState().notofications.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: alertsList.length,
-                        itemBuilder: (context, alertsListIndex) {
-                          final alertsListItem = alertsList[alertsListIndex];
+                        itemCount: notificationsList.length,
+                        itemBuilder: (context, notificationsListIndex) {
+                          final notificationsListItem =
+                              notificationsList[notificationsListIndex];
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,101 +228,106 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ],
                                 ),
                               ),
-                              if (alertsListItem.messageType ==
-                                  'Приглашение в команду')
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 10.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.network(
-                                              alertsListItem
-                                                  .messageFromTeam.teamLogo,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
-                                            ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 10.0, 0.0),
+                                      child: Container(
+                                        width: 45.0,
+                                        height: 45.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            () {
+                                              if (notificationsListItem
+                                                      .notificationType ==
+                                                  'Приглашение в команду') {
+                                                return notificationsListItem
+                                                    .notificationFromTeam
+                                                    .teamLogo;
+                                              } else if (notificationsListItem
+                                                      .notificationType ==
+                                                  'Принял заявку вступления в клан') {
+                                                return notificationsListItem
+                                                    .notificationFromPlayer
+                                                    .playerAvatar;
+                                              } else if (notificationsListItem
+                                                      .notificationType ==
+                                                  'Команда зачислена в состав турнира') {
+                                                return notificationsListItem
+                                                    .notificationFromTournament
+                                                    .tournamentLogo;
+                                              } else {
+                                                return '0';
+                                              }
+                                            }(),
+                                            width: 45.0,
+                                            height: 45.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            alertsListItem
-                                                .messageFromTeam.teamName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 20.0,
-                                                height: 12.0,
-                                                decoration: BoxDecoration(),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: Image.network(
-                                                    alertsListItem
-                                                        .messageFromTeam
-                                                        .teamFlag,
-                                                    width: 20.0,
-                                                    height: 12.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Hello World',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium,
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 20.0,
+                                              height: 12.0,
+                                              decoration: BoxDecoration(),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  'https://picsum.photos/seed/770/600',
+                                                  width: 20.0,
+                                                  height: 12.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
-                                              Text(
-                                                alertsListItem.messageFromTeam
-                                                    .teamCountry,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                            ),
+                                            Text(
+                                              'Hello World',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
+                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await MessageTable().delete(
-                                          matchingRows: (rows) => rows.eq(
-                                            'message_id',
-                                            alertsListItem.messageId,
-                                          ),
-                                        );
-                                        setState(() {
-                                          FFAppState().removeAtIndexFromAlerts(
-                                              alertsListIndex);
-                                        });
+                                      onPressed: () {
+                                        print('Button pressed ...');
                                       },
                                       text: 'Отказаться',
                                       options: FFButtonOptions(
@@ -352,19 +358,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await MessageTable().insert({
-                                          'message_sanded_at':
-                                              supaSerialize<DateTime>(
-                                                  getCurrentTimestamp),
-                                          'message_sander': 'Уведомление',
-                                          'message_body':
-                                              'Игрок подтвердил приглашение.',
-                                          'message_type':
-                                              'Подтверждение приглашения в команду',
-                                          'message_to_player': alertsListItem
-                                              .messageFromTeam.teamCreator,
-                                        });
+                                      onPressed: () {
+                                        print('Button pressed ...');
                                       },
                                       text: 'Вступить',
                                       options: FFButtonOptions(
