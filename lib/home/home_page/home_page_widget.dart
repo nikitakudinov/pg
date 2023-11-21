@@ -38,7 +38,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 10000),
         callback: (timer) async {
-          await action_blocks.alertsUpdater(context);
+          await action_blocks.notificationsUpdater(context);
         },
         startImmediately: true,
       );

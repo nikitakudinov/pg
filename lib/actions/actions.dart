@@ -141,28 +141,25 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   }
 }
 
-Future loadAuthUserAlerts(BuildContext context) async {
+Future loadAuthUserNotifications(BuildContext context) async {
   ApiCallResponse? apiResultfyh;
-  List<MessageStruct>? alertsData;
+  List<NotificationStruct>? notificationsData;
 
-  apiResultfyh = await MessagingGroup.getalertsCall.call(
+  apiResultfyh = await MessagingGroup.gETuserNotificationsCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
   if ((apiResultfyh?.succeeded ?? true)) {
-    alertsData = await actions.dtMSG(
-      getJsonField(
-        (apiResultfyh?.jsonBody ?? ''),
-        r'''$[:]''',
-        true,
-      ),
+    notificationsData = await actions.dtNOTIFICATION(
+      (apiResultfyh?.jsonBody ?? ''),
     );
     FFAppState().update(() {
-      FFAppState().alerts = alertsData!.toList().cast<MessageStruct>();
+      FFAppState().notofications =
+          notificationsData!.toList().cast<NotificationStruct>();
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'Allerts Updated',
+          'Notifications Updated',
           style: TextStyle(),
         ),
         duration: Duration(milliseconds: 4000),
@@ -196,22 +193,22 @@ Future preloadDataOfHomePage(BuildContext context) async {
 
 Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
 
-Future alertsUpdater(BuildContext context) async {
+Future notificationsUpdater(BuildContext context) async {
   ApiCallResponse? apiResultc64;
 
-  apiResultc64 = await MessagingGroup.gETALERTScountCall.call(
+  apiResultc64 = await MessagingGroup.gETNOTIFICATIONScountCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
   if (FFAppState().alertsCount !=
-      MessagingGroup.gETALERTScountCall.count(
+      MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
       )) {
     FFAppState().update(() {
-      FFAppState().alertsCount = MessagingGroup.gETALERTScountCall.count(
+      FFAppState().alertsCount = MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
       );
     });
-    await action_blocks.loadAuthUserAlerts(context);
+    await action_blocks.loadAuthUserNotifications(context);
     await showDialog(
       context: context,
       builder: (alertDialogContext) {

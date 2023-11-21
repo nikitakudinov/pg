@@ -4,4 +4,5 @@ export 'dt_p_l_a_y_e_r.dart' show dtPLAYER;
 export 'dt_p_l_a_y_e_r_u_i_d.dart' show dtPLAYERUID;
 export 'dt_t_e_a_m.dart' show dtTEAM;
 export 'dt_u_s_e_r.dart' show dtUSER;
+export 'dt_n_o_t_i_f_i_c_a_t_i_o_n.dart' show dtNOTIFICATION;
 export 'dt_m_s_g.dart' show dtMSG;

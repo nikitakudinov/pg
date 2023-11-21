@@ -176,6 +176,35 @@ class FFAppState extends ChangeNotifier {
   set alertsCount(int _value) {
     _alertsCount = _value;
   }
+
+  List<NotificationStruct> _notofications = [];
+  List<NotificationStruct> get notofications => _notofications;
+  set notofications(List<NotificationStruct> _value) {
+    _notofications = _value;
+  }
+
+  void addToNotofications(NotificationStruct _value) {
+    _notofications.add(_value);
+  }
+
+  void removeFromNotofications(NotificationStruct _value) {
+    _notofications.remove(_value);
+  }
+
+  void removeAtIndexFromNotofications(int _index) {
+    _notofications.removeAt(_index);
+  }
+
+  void updateNotoficationsAtIndex(
+    int _index,
+    NotificationStruct Function(NotificationStruct) updateFn,
+  ) {
+    _notofications[_index] = updateFn(_notofications[_index]);
+  }
+
+  void insertAtIndexInNotofications(int _index, NotificationStruct _value) {
+    _notofications.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

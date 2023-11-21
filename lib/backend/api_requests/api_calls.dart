@@ -926,8 +926,10 @@ class MessagingGroup {
   };
   static ChatsCall chatsCall = ChatsCall();
   static GetchatsCall getchatsCall = GetchatsCall();
-  static GetalertsCall getalertsCall = GetalertsCall();
-  static GETALERTScountCall gETALERTScountCall = GETALERTScountCall();
+  static GETuserNotificationsCall gETuserNotificationsCall =
+      GETuserNotificationsCall();
+  static GETNOTIFICATIONScountCall gETNOTIFICATIONScountCall =
+      GETNOTIFICATIONScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
 }
@@ -1036,14 +1038,14 @@ class GetchatsCall {
       );
 }
 
-class GetalertsCall {
+class GETuserNotificationsCall {
   Future<ApiCallResponse> call({
     String? authUser = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETALERTS',
+      callName: 'GETuserNotifications',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?message_to_player=eq.${authUser}&message_sander=eq.Уведомление&select=*,message_from_team:teams(*)',
+          '${MessagingGroup.baseUrl}notifications?notification_to_player=eq.${authUser}&select=*,notification_from_player:players!notifications_notification_from_player_fkey(*),notification_from_team:teams(*),notification_from_tournament:tournaments(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1058,42 +1060,16 @@ class GetalertsCall {
       cache: false,
     );
   }
-
-  dynamic chatid(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_id''',
-      );
-  dynamic chatupdatedat(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_updated_at''',
-      );
-  dynamic chatmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_members''',
-        true,
-      );
-  dynamic chatlastmessage(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_last_message''',
-      );
-  dynamic chatofteam(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_of_team''',
-      );
-  dynamic chatcountofmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_count_of_members''',
-      );
 }
 
-class GETALERTScountCall {
+class GETNOTIFICATIONScountCall {
   Future<ApiCallResponse> call({
     String? authUser = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETALERTScount',
+      callName: 'GETNOTIFICATIONScount',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?message_to_player=eq.${authUser}&message_sander=eq.Уведомление&select=count',
+          '${MessagingGroup.baseUrl}notifications?notification_to_player=eq.${authUser}&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
