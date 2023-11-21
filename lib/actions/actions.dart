@@ -154,20 +154,6 @@ Future loadAuthUserAlerts(BuildContext context) async {
     authUser: FFAppState().authPlayer.playerUid,
   );
   if ((apiResultfyh?.succeeded ?? true)) {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('Api call works!'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
     alertsData = await actions.dtMSG(
       getJsonField(
         (apiResultfyh?.jsonBody ?? ''),
@@ -178,22 +164,6 @@ Future loadAuthUserAlerts(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().alerts = alertsData!.toList().cast<MessageStruct>();
     });
-    if ((apiResultfyh?.succeeded ?? true)) {
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('AlertsLoaded'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
-    }
   } else {
     await showDialog(
       context: context,
@@ -214,8 +184,8 @@ Future loadAuthUserAlerts(BuildContext context) async {
 
 Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.upadateAuthUserDataValues(context);
-  await Future.delayed(const Duration(milliseconds: 1000));
+  await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserChats(context);
-  await Future.delayed(const Duration(milliseconds: 1000));
+  await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserAlerts(context);
 }

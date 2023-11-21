@@ -294,6 +294,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           FFAppState().removeAtIndexFromAlerts(
                                               alertsListIndex);
                                         });
+
+                                        context.pushNamed('HomePage');
                                       },
                                       text: 'Отказаться',
                                       options: FFButtonOptions(
