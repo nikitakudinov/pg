@@ -188,7 +188,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Hello World',
+                                      FFAppState().alerts.length.toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
