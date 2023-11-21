@@ -318,7 +318,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/770/600',
+                                                  () {
+                                                    if (notificationsListItem
+                                                            .notificationType ==
+                                                        'Приглашение в команду') {
+                                                      return notificationsListItem
+                                                          .notificationFromTeam
+                                                          .teamFlag;
+                                                    } else if (notificationsListItem
+                                                            .notificationType ==
+                                                        'Принял заявку вступления в клан') {
+                                                      return notificationsListItem
+                                                          .notificationFromPlayer
+                                                          .playerFlag;
+                                                    } else if (notificationsListItem
+                                                            .notificationType ==
+                                                        'Команда зачислена в состав турнира') {
+                                                      return notificationsListItem
+                                                          .notificationFromTournament
+                                                          .tournamentFlag;
+                                                    } else {
+                                                      return '0';
+                                                    }
+                                                  }(),
                                                   width: 20.0,
                                                   height: 12.0,
                                                   fit: BoxFit.cover,
@@ -326,7 +348,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Hello World',
+                                              () {
+                                                if (notificationsListItem
+                                                        .notificationType ==
+                                                    'Приглашение в команду') {
+                                                  return notificationsListItem
+                                                      .notificationFromTeam
+                                                      .teamCountry;
+                                                } else if (notificationsListItem
+                                                        .notificationType ==
+                                                    'Принял заявку вступления в клан') {
+                                                  return notificationsListItem
+                                                      .notificationFromPlayer
+                                                      .playerCountrie;
+                                                } else if (notificationsListItem
+                                                        .notificationType ==
+                                                    'Команда зачислена в состав турнира') {
+                                                  return notificationsListItem
+                                                      .notificationFromTournament
+                                                      .tournamentCountry;
+                                                } else {
+                                                  return '0';
+                                                }
+                                              }(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
