@@ -221,7 +221,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(0.0),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/59/600',
+                                              alertsListItem
+                                                  .messageFromTeam.teamLogo,
                                               width: 45.0,
                                               height: 45.0,
                                               fit: BoxFit.cover,
@@ -235,7 +236,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            alertsListItem.messageId.toString(),
+                                            alertsListItem
+                                                .messageFromTeam.teamName,
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium,
                                           ),
@@ -251,7 +253,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       BorderRadius.circular(
                                                           0.0),
                                                   child: Image.network(
-                                                    'https://picsum.photos/seed/770/600',
+                                                    alertsListItem
+                                                        .messageFromTeam
+                                                        .teamFlag,
                                                     width: 20.0,
                                                     height: 12.0,
                                                     fit: BoxFit.cover,
