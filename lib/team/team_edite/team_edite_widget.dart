@@ -617,7 +617,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             'notification_created_at':
                                                 supaSerialize<DateTime>(
                                                     getCurrentTimestamp),
-                                            'notification_from_team': 11,
+                                            'notification_from_team':
+                                                FFAppState()
+                                                    .authPlayer
+                                                    .playerTeam,
                                           });
 
                                           setState(() {});
