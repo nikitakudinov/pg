@@ -206,11 +206,17 @@ Future alertsUpdater(BuildContext context) async {
       MessagingGroup.gETALERTScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
       )) {
+    FFAppState().update(() {
+      FFAppState().alertsCount = MessagingGroup.gETALERTScountCall.count(
+        (apiResultc64?.jsonBody ?? ''),
+      );
+    });
+    await action_blocks.loadAuthUserAlerts(context);
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
         return AlertDialog(
-          title: Text('2'),
+          title: Text('Allerts updated'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
@@ -220,11 +226,5 @@ Future alertsUpdater(BuildContext context) async {
         );
       },
     );
-    FFAppState().update(() {
-      FFAppState().alertsCount = MessagingGroup.gETALERTScountCall.count(
-        (apiResultc64?.jsonBody ?? ''),
-      );
-    });
-    await action_blocks.loadAuthUserAlerts(context);
   }
 }
