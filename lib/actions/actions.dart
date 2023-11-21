@@ -203,13 +203,6 @@ Future alertsUpdater(BuildContext context) async {
   apiResultc64 = await MessagingGroup.gETALERTScountCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
-  if ((apiResultc64?.succeeded ?? true)) {
-    FFAppState().update(() {
-      FFAppState().alertsCount = MessagingGroup.gETALERTScountCall.count(
-        (apiResultc64?.jsonBody ?? ''),
-      );
-    });
-  }
   if (FFAppState().alertsCount ==
       MessagingGroup.gETALERTScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
@@ -243,5 +236,10 @@ Future alertsUpdater(BuildContext context) async {
         );
       },
     );
+    FFAppState().update(() {
+      FFAppState().alertsCount = MessagingGroup.gETALERTScountCall.count(
+        (apiResultc64?.jsonBody ?? ''),
+      );
+    });
   }
 }
