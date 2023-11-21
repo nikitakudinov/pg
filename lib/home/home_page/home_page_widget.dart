@@ -263,7 +263,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                'Hello World',
+                                                alertsListItem.messageFromTeam
+                                                    .teamCountry,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
