@@ -148,6 +148,7 @@ Future upadateAuthUserDataValues(BuildContext context) async {
 
 Future loadAuthUserAlerts(BuildContext context) async {
   ApiCallResponse? apiResultfyh;
+  List<MessageStruct>? alertsData;
 
   apiResultfyh = await MessagingGroup.getalertsCall.call(
     authUser: FFAppState().authPlayer.playerUid,
@@ -167,6 +168,28 @@ Future loadAuthUserAlerts(BuildContext context) async {
         );
       },
     );
+    alertsData = await actions.dtMSG(
+      (apiResultfyh?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().alerts = alertsData!.toList().cast<MessageStruct>();
+    });
+    if ((apiResultfyh?.succeeded ?? true)) {
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('AlertsLoaded'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   } else {
     await showDialog(
       context: context,
