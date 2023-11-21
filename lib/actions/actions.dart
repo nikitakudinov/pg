@@ -149,8 +149,8 @@ Future upadateAuthUserDataValues(BuildContext context) async {
 Future loadAuthUserAlerts(BuildContext context) async {
   ApiCallResponse? apiResultfyh;
 
-  apiResultfyh = await MessagingGroup.useralertsCall.call(
-    uid: FFAppState().authPlayer.playerUid,
+  apiResultfyh = await MessagingGroup.getalertsCall.call(
+    authUser: FFAppState().authPlayer.playerUid,
   );
   if ((apiResultfyh?.succeeded ?? true)) {
     await showDialog(

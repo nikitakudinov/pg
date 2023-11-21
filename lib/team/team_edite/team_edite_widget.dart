@@ -1041,7 +1041,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               setState(() {
                                                 _model.addToChatMembers(
                                                     listViewPlayersRow
-                                                        .playerUid!);
+                                                        .playerUid);
                                               });
                                               await ChatsTable().insert({
                                                 'chat_updated_at':
@@ -1052,7 +1052,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 'chat_last_message':
                                                     'Чат с игроком',
                                                 'chat_of_team': 0,
-                                                'chat_count_of_members': 2,
                                               });
                                               _model.apiResult8j2 =
                                                   await MessagingGroup.chatsCall

@@ -16,7 +16,7 @@ class MessageStruct extends BaseStruct {
     String? messageType,
     String? messageParametrSTRING1,
     int? messageParametrINT1,
-    String? messageToPlayer,
+    List<String>? messageToPlayer,
   })  : _messageId = messageId,
         _messageSandedAt = messageSandedAt,
         _messageSander = messageSander,
@@ -87,9 +87,11 @@ class MessageStruct extends BaseStruct {
   bool hasMessageParametrINT1() => _messageParametrINT1 != null;
 
   // "message_to_player" field.
-  String? _messageToPlayer;
-  String get messageToPlayer => _messageToPlayer ?? '';
-  set messageToPlayer(String? val) => _messageToPlayer = val;
+  List<String>? _messageToPlayer;
+  List<String> get messageToPlayer => _messageToPlayer ?? const [];
+  set messageToPlayer(List<String>? val) => _messageToPlayer = val;
+  void updateMessageToPlayer(Function(List<String>) updateFn) =>
+      updateFn(_messageToPlayer ??= []);
   bool hasMessageToPlayer() => _messageToPlayer != null;
 
   static MessageStruct fromMap(Map<String, dynamic> data) => MessageStruct(
@@ -102,7 +104,7 @@ class MessageStruct extends BaseStruct {
         messageType: data['message_type'] as String?,
         messageParametrSTRING1: data['message_parametrSTRING1'] as String?,
         messageParametrINT1: castToType<int>(data['message_parametrINT1']),
-        messageToPlayer: data['message_to_player'] as String?,
+        messageToPlayer: getDataList(data['message_to_player']),
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
@@ -162,6 +164,7 @@ class MessageStruct extends BaseStruct {
         'message_to_player': serializeParam(
           _messageToPlayer,
           ParamType.String,
+          true,
         ),
       }.withoutNulls;
 
@@ -212,10 +215,10 @@ class MessageStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        messageToPlayer: deserializeParam(
+        messageToPlayer: deserializeParam<String>(
           data['message_to_player'],
           ParamType.String,
-          false,
+          true,
         ),
       );
 
@@ -224,6 +227,7 @@ class MessageStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is MessageStruct &&
         messageId == other.messageId &&
         messageSandedAt == other.messageSandedAt &&
@@ -234,7 +238,7 @@ class MessageStruct extends BaseStruct {
         messageType == other.messageType &&
         messageParametrSTRING1 == other.messageParametrSTRING1 &&
         messageParametrINT1 == other.messageParametrINT1 &&
-        messageToPlayer == other.messageToPlayer;
+        listEquality.equals(messageToPlayer, other.messageToPlayer);
   }
 
   @override
@@ -262,7 +266,6 @@ MessageStruct createMessageStruct({
   String? messageType,
   String? messageParametrSTRING1,
   int? messageParametrINT1,
-  String? messageToPlayer,
 }) =>
     MessageStruct(
       messageId: messageId,
@@ -274,5 +277,4 @@ MessageStruct createMessageStruct({
       messageType: messageType,
       messageParametrSTRING1: messageParametrSTRING1,
       messageParametrINT1: messageParametrINT1,
-      messageToPlayer: messageToPlayer,
     );
