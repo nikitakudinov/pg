@@ -1027,30 +1027,9 @@ class GETALERTScountCall {
     );
   }
 
-  dynamic chatid(dynamic response) => getJsonField(
+  dynamic count(dynamic response) => getJsonField(
         response,
-        r'''$[:].chat_id''',
-      );
-  dynamic chatupdatedat(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_updated_at''',
-      );
-  dynamic chatmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_members''',
-        true,
-      );
-  dynamic chatlastmessage(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_last_message''',
-      );
-  dynamic chatofteam(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_of_team''',
-      );
-  dynamic chatcountofmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_count_of_members''',
+        r'''$[:].count''',
       );
 }
 

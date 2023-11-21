@@ -196,3 +196,18 @@ Future preloadDataOfHomePage(BuildContext context) async {
 }
 
 Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
+
+Future alertsUpdater(BuildContext context) async {
+  ApiCallResponse? apiResultc64;
+
+  apiResultc64 = await MessagingGroup.gETALERTScountCall.call(
+    authUser: FFAppState().authPlayer.playerUid,
+  );
+  if ((apiResultc64?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().alertsCount = MessagingGroup.gETALERTScountCall.count(
+        (apiResultc64?.jsonBody ?? ''),
+      );
+    });
+  }
+}
