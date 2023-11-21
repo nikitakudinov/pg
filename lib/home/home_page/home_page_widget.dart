@@ -388,8 +388,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await NotificationsTable().delete(
+                                          matchingRows: (rows) => rows.eq(
+                                            'notification_id',
+                                            notificationsListItem
+                                                .notificationId,
+                                          ),
+                                        );
+                                        setState(() {
+                                          FFAppState().removeFromNotofications(
+                                              notificationsListItem);
+                                        });
                                       },
                                       text: 'Отказаться',
                                       options: FFButtonOptions(
