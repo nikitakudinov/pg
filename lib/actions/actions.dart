@@ -210,4 +210,38 @@ Future alertsUpdater(BuildContext context) async {
       );
     });
   }
+  if (FFAppState().alertsCount ==
+      MessagingGroup.gETALERTScountCall.count(
+        (apiResultc64?.jsonBody ?? ''),
+      )) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('1'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('2'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
