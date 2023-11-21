@@ -617,6 +617,18 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             'notification_created_at':
                                                 supaSerialize<DateTime>(
                                                     getCurrentTimestamp),
+                                            'notification_from_team':
+                                                FFAppState()
+                                                    .authPlayer
+                                                    .playerTeam,
+                                            'notification_from_player':
+                                                currentUserUid,
+                                            'notification_to_player': _model
+                                                .searchedPlayer.first.playerUid,
+                                            'notification_type':
+                                                'Приглашение в команду',
+                                            'notification_body':
+                                                'Команда предлагает вступить в ее ряды',
                                           });
 
                                           setState(() {});
