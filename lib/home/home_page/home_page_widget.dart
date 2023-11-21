@@ -155,12 +155,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ),
-                              if (FFAppState().authPlayer.playerOnline == true)
-                                Icon(
-                                  Icons.circle_sharp,
-                                  color: Color(0xFF06A502),
-                                  size: 8.0,
-                                ),
+                              Icon(
+                                Icons.circle_sharp,
+                                color: Color(0xFF06A502),
+                                size: 8.0,
+                              ),
                             ],
                           ),
                           Text(
