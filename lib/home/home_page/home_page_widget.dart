@@ -367,8 +367,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           'message_parametrSTRING1': '',
                                           'message_parametrINT1': 0,
                                           'message_from_team': 0,
-                                          'message_to_player':
-                                              alertsListItem.messageToPlayer,
+                                          'message_to_player': alertsListItem
+                                              .messageFromTeam.teamCreator,
                                         });
                                       },
                                       text: 'Вступить',
@@ -400,7 +400,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () async {},
+                                      onPressed: () {
+                                        print('Button pressed ...');
+                                      },
                                       text: 'Отправить ссобщеня',
                                       options: FFButtonOptions(
                                         height: 30.0,
