@@ -794,7 +794,7 @@ class GetalertsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETALERTS',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?message_to_player=cs.{${authUser}}',
+          '${MessagingGroup.baseUrl}message?message_to_player=cs.{${authUser}}&message_sander=eq.Уведомление',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
