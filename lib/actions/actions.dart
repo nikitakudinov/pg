@@ -142,62 +142,48 @@ Future upadateAuthUserDataValues(BuildContext context) async {
 }
 
 Future loadAuthUserAlerts(BuildContext context) async {
-  ApiCallResponse? getCountOfAllerts;
   ApiCallResponse? apiResultfyh;
   List<MessageStruct>? alertsData;
 
-  getCountOfAllerts = await MessagingGroup.gETALERTScountCall.call(
+  apiResultfyh = await MessagingGroup.getalertsCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
-  if (FFAppState().alertsCount ==
+  if ((apiResultfyh?.succeeded ?? true)) {
+    alertsData = await actions.dtMSG(
       getJsonField(
-        (getCountOfAllerts?.jsonBody ?? ''),
-        r'''$.count''',
-      )) {
-    apiResultfyh = await MessagingGroup.getalertsCall.call(
-      authUser: FFAppState().authPlayer.playerUid,
+        (apiResultfyh?.jsonBody ?? ''),
+        r'''$[:]''',
+        true,
+      ),
     );
-    if ((apiResultfyh?.succeeded ?? true)) {
-      alertsData = await actions.dtMSG(
-        getJsonField(
-          (apiResultfyh?.jsonBody ?? ''),
-          r'''$[:]''',
-          true,
+    FFAppState().update(() {
+      FFAppState().alerts = alertsData!.toList().cast<MessageStruct>();
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Allerts Updated',
+          style: TextStyle(),
         ),
-      );
-      FFAppState().update(() {
-        FFAppState().alerts = alertsData!.toList().cast<MessageStruct>();
-        FFAppState().alertsCount = getJsonField(
-          (getCountOfAllerts?.jsonBody ?? ''),
-          r'''$.count''',
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Api call dont works!'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
         );
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Allerts Updated',
-            style: TextStyle(),
-          ),
-          duration: Duration(milliseconds: 4000),
-          backgroundColor: FlutterFlowTheme.of(context).secondary,
-        ),
-      );
-    } else {
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('Api call dont works!'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
-    }
+      },
+    );
   }
 }
 
