@@ -389,7 +389,9 @@ class _AlertsWidgetState extends State<AlertsWidget> {
                                                                   containerTeamsRow
                                                                       ?.teamId,
                                                               'player_team_role':
-                                                                  'Игрок команды',
+                                                                  [
+                                                                '[\"Нет роли\"]'
+                                                              ],
                                                               'player_team_lineup':
                                                                   false,
                                                             },

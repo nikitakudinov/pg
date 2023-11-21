@@ -118,8 +118,9 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
     ApiCallResponse? allMembersOfTeamJson;
     List<PlayerStruct>? converterTeamMembersData;
 
-    allMembersOfTeamJson = await PlayerGroup.listplayerbyteamCall.call(
-      idList: teamId?.toString(),
+    allMembersOfTeamJson =
+        await PlayerGroup.lISTPLAYERBYTEAMandTEAMROLECall.call(
+      playersOfTeam: teamId?.toString(),
     );
     if ((allMembersOfTeamJson?.succeeded ?? true)) {
       converterTeamMembersData = await actions.dtPLAYER(

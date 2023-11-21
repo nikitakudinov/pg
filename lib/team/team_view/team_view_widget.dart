@@ -550,14 +550,6 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
                                         ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            listViewPlayersRow.playerTeamRole,
-                                            '0',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall,
-                                        ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [

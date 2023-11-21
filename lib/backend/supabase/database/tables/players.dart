@@ -41,14 +41,14 @@ class PlayersRow extends SupabaseDataRow {
   int? get playerTeam => getField<int>('player_team');
   set playerTeam(int? value) => setField<int>('player_team', value);
 
-  String? get playerTeamRole => getField<String>('player_team_role');
-  set playerTeamRole(String? value) =>
-      setField<String>('player_team_role', value);
-
   bool? get playerTeamLineup => getField<bool>('player_team_lineup');
   set playerTeamLineup(bool? value) =>
       setField<bool>('player_team_lineup', value);
 
   int get playerId => getField<int>('player_id')!;
   set playerId(int value) => setField<int>('player_id', value);
+
+  List<String> get playerTeamRole => getListField<String>('player_team_role');
+  set playerTeamRole(List<String>? value) =>
+      setListField<String>('player_team_role', value);
 }

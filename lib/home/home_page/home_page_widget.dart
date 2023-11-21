@@ -156,10 +156,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Text(
-                            FFAppState().authPlayer.playerTeamRole,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
                             FFAppState().authPlayer.playerId.toString(),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
@@ -294,8 +290,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           FFAppState().removeAtIndexFromAlerts(
                                               alertsListIndex);
                                         });
-
-                                        context.pushNamed('HomePage');
                                       },
                                       text: 'Отказаться',
                                       options: FFButtonOptions(

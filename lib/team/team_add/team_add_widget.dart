@@ -440,7 +440,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                     (_model.createdteam?.jsonBody ?? ''),
                                   )
                                   .first,
-                              'player_team_role': 'Основатель',
+                              'player_team_role': ['[\"Нет роли\"]'],
                               'player_team_lineup': false,
                               'player_tag': _model.teamTagController.text,
                             },

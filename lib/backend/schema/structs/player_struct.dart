@@ -15,9 +15,9 @@ class PlayerStruct extends BaseStruct {
     String? playerAvatar,
     String? playerUid,
     int? playerTeam,
-    String? playerTeamRole,
     bool? playerTeamLineup,
     int? playerId,
+    List<String>? playerTeamRole,
   })  : _playerCreatedAt = playerCreatedAt,
         _playerNickname = playerNickname,
         _playerTag = playerTag,
@@ -26,9 +26,9 @@ class PlayerStruct extends BaseStruct {
         _playerAvatar = playerAvatar,
         _playerUid = playerUid,
         _playerTeam = playerTeam,
-        _playerTeamRole = playerTeamRole,
         _playerTeamLineup = playerTeamLineup,
-        _playerId = playerId;
+        _playerId = playerId,
+        _playerTeamRole = playerTeamRole;
 
   // "player_created_at" field.
   String? _playerCreatedAt;
@@ -79,12 +79,6 @@ class PlayerStruct extends BaseStruct {
   void incrementPlayerTeam(int amount) => _playerTeam = playerTeam + amount;
   bool hasPlayerTeam() => _playerTeam != null;
 
-  // "player_team_role" field.
-  String? _playerTeamRole;
-  String get playerTeamRole => _playerTeamRole ?? '';
-  set playerTeamRole(String? val) => _playerTeamRole = val;
-  bool hasPlayerTeamRole() => _playerTeamRole != null;
-
   // "player_team_lineup" field.
   bool? _playerTeamLineup;
   bool get playerTeamLineup => _playerTeamLineup ?? false;
@@ -98,6 +92,14 @@ class PlayerStruct extends BaseStruct {
   void incrementPlayerId(int amount) => _playerId = playerId + amount;
   bool hasPlayerId() => _playerId != null;
 
+  // "player_team_role" field.
+  List<String>? _playerTeamRole;
+  List<String> get playerTeamRole => _playerTeamRole ?? const [];
+  set playerTeamRole(List<String>? val) => _playerTeamRole = val;
+  void updatePlayerTeamRole(Function(List<String>) updateFn) =>
+      updateFn(_playerTeamRole ??= []);
+  bool hasPlayerTeamRole() => _playerTeamRole != null;
+
   static PlayerStruct fromMap(Map<String, dynamic> data) => PlayerStruct(
         playerCreatedAt: data['player_created_at'] as String?,
         playerNickname: data['player_nickname'] as String?,
@@ -107,9 +109,9 @@ class PlayerStruct extends BaseStruct {
         playerAvatar: data['player_avatar'] as String?,
         playerUid: data['player_uid'] as String?,
         playerTeam: castToType<int>(data['player_team']),
-        playerTeamRole: data['player_team_role'] as String?,
         playerTeamLineup: data['player_team_lineup'] as bool?,
         playerId: castToType<int>(data['player_id']),
+        playerTeamRole: getDataList(data['player_team_role']),
       );
 
   static PlayerStruct? maybeFromMap(dynamic data) =>
@@ -124,9 +126,9 @@ class PlayerStruct extends BaseStruct {
         'player_avatar': _playerAvatar,
         'player_uid': _playerUid,
         'player_team': _playerTeam,
-        'player_team_role': _playerTeamRole,
         'player_team_lineup': _playerTeamLineup,
         'player_id': _playerId,
+        'player_team_role': _playerTeamRole,
       }.withoutNulls;
 
   @override
@@ -163,10 +165,6 @@ class PlayerStruct extends BaseStruct {
           _playerTeam,
           ParamType.int,
         ),
-        'player_team_role': serializeParam(
-          _playerTeamRole,
-          ParamType.String,
-        ),
         'player_team_lineup': serializeParam(
           _playerTeamLineup,
           ParamType.bool,
@@ -174,6 +172,11 @@ class PlayerStruct extends BaseStruct {
         'player_id': serializeParam(
           _playerId,
           ParamType.int,
+        ),
+        'player_team_role': serializeParam(
+          _playerTeamRole,
+          ParamType.String,
+          true,
         ),
       }.withoutNulls;
 
@@ -219,11 +222,6 @@ class PlayerStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        playerTeamRole: deserializeParam(
-          data['player_team_role'],
-          ParamType.String,
-          false,
-        ),
         playerTeamLineup: deserializeParam(
           data['player_team_lineup'],
           ParamType.bool,
@@ -234,6 +232,11 @@ class PlayerStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        playerTeamRole: deserializeParam<String>(
+          data['player_team_role'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -241,6 +244,7 @@ class PlayerStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is PlayerStruct &&
         playerCreatedAt == other.playerCreatedAt &&
         playerNickname == other.playerNickname &&
@@ -250,9 +254,9 @@ class PlayerStruct extends BaseStruct {
         playerAvatar == other.playerAvatar &&
         playerUid == other.playerUid &&
         playerTeam == other.playerTeam &&
-        playerTeamRole == other.playerTeamRole &&
         playerTeamLineup == other.playerTeamLineup &&
-        playerId == other.playerId;
+        playerId == other.playerId &&
+        listEquality.equals(playerTeamRole, other.playerTeamRole);
   }
 
   @override
@@ -265,9 +269,9 @@ class PlayerStruct extends BaseStruct {
         playerAvatar,
         playerUid,
         playerTeam,
-        playerTeamRole,
         playerTeamLineup,
-        playerId
+        playerId,
+        playerTeamRole
       ]);
 }
 
@@ -280,7 +284,6 @@ PlayerStruct createPlayerStruct({
   String? playerAvatar,
   String? playerUid,
   int? playerTeam,
-  String? playerTeamRole,
   bool? playerTeamLineup,
   int? playerId,
 }) =>
@@ -293,7 +296,6 @@ PlayerStruct createPlayerStruct({
       playerAvatar: playerAvatar,
       playerUid: playerUid,
       playerTeam: playerTeam,
-      playerTeamRole: playerTeamRole,
       playerTeamLineup: playerTeamLineup,
       playerId: playerId,
     );

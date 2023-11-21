@@ -514,13 +514,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall,
                                               ),
-                                              Text(
-                                                containerPlayersRow!
-                                                    .playerTeamRole!,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -883,12 +876,31 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall,
                                             ),
-                                            Text(
-                                              listViewPlayersRow
-                                                  .playerTeamRole!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                            Builder(
+                                              builder: (context) {
+                                                final playerRoles =
+                                                    listViewPlayersRow
+                                                        .playerTeamRole
+                                                        .toList();
+                                                return Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: List.generate(
+                                                      playerRoles.length,
+                                                      (playerRolesIndex) {
+                                                    final playerRolesItem =
+                                                        playerRoles[
+                                                            playerRolesIndex];
+                                                    return Text(
+                                                      playerRolesItem,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    );
+                                                  }),
+                                                );
+                                              },
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -928,83 +940,81 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                           ],
                                         ),
                                       ),
-                                      if (listViewPlayersRow.playerTeamRole !=
-                                          'Основатель')
-                                        FlutterFlowIconButton(
-                                          borderRadius: 20.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 40.0,
-                                          icon: Icon(
-                                            Icons.delete_forever_sharp,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                          onPressed: () async {
-                                            _model.curentUserTeam =
-                                                await TeamGroup.listteambyidCall
-                                                    .call(
-                                              idList: listViewPlayersRow
-                                                  .playerId
-                                                  .toString(),
-                                            );
-                                            _model.chatOfCurentTeam =
-                                                await MessagingGroup
-                                                    .chatbyteamidCall
-                                                    .call(
-                                              idList: TeamGroup.listteambyidCall
-                                                  .teamid(
-                                                    (_model.curentUserTeam
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString(),
-                                            );
-                                            await PlayersTable().update(
-                                              data: {
-                                                'player_team': 0,
-                                                'player_tag': 'вне команды',
-                                                'player_team_role':
-                                                    'Вне команды',
-                                              },
-                                              matchingRows: (rows) => rows.eq(
-                                                'player_id',
-                                                listViewPlayersRow.playerId,
-                                              ),
-                                            );
-                                            await AlertsTable().insert({
-                                              'created_at':
-                                                  supaSerialize<DateTime>(
-                                                      getCurrentTimestamp),
-                                              'from_team': widget.teamId,
-                                              'to_user':
-                                                  listViewPlayersRow.playerUid,
-                                              'type': 'Исключение из команды',
-                                            });
-                                            await MessageTable().insert({
-                                              'message_sanded_at':
-                                                  supaSerialize<DateTime>(
-                                                      getCurrentTimestamp),
-                                              'message_sander': 'Дозорный бот',
-                                              'message_body':
-                                                  'Игрок был исключен из команды',
-                                              'message_chat': FFAppState()
-                                                  .authenticateduser
-                                                  .team,
-                                              'message_sander_avatar': '',
-                                              'message_type':
-                                                  'Сообщение об исключении из команды',
-                                              'message_parametrSTRING1':
-                                                  listViewPlayersRow.playerUid,
-                                            });
-                                            setState(() =>
-                                                _model.requestCompleter = null);
-                                            await _model
-                                                .waitForRequestCompleted();
-
-                                            setState(() {});
-                                          },
+                                      FlutterFlowIconButton(
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        icon: Icon(
+                                          Icons.delete_forever_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 20.0,
                                         ),
+                                        onPressed: () async {
+                                          _model.curentUserTeam =
+                                              await TeamGroup.listteambyidCall
+                                                  .call(
+                                            idList: listViewPlayersRow.playerId
+                                                .toString(),
+                                          );
+                                          _model.chatOfCurentTeam =
+                                              await MessagingGroup
+                                                  .chatbyteamidCall
+                                                  .call(
+                                            idList: TeamGroup.listteambyidCall
+                                                .teamid(
+                                                  (_model.curentUserTeam
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )
+                                                .toString(),
+                                          );
+                                          await PlayersTable().update(
+                                            data: {
+                                              'player_team': 0,
+                                              'player_tag': 'вне команды',
+                                              'player_team_role': [
+                                                '[\"Нет роли\"]'
+                                              ],
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'player_id',
+                                              listViewPlayersRow.playerId,
+                                            ),
+                                          );
+                                          await AlertsTable().insert({
+                                            'created_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'from_team': widget.teamId,
+                                            'to_user':
+                                                listViewPlayersRow.playerUid,
+                                            'type': 'Исключение из команды',
+                                          });
+                                          await MessageTable().insert({
+                                            'message_sanded_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                            'message_sander': 'Дозорный бот',
+                                            'message_body':
+                                                'Игрок был исключен из команды',
+                                            'message_chat': FFAppState()
+                                                .authenticateduser
+                                                .team,
+                                            'message_sander_avatar': '',
+                                            'message_type':
+                                                'Сообщение об исключении из команды',
+                                            'message_parametrSTRING1':
+                                                listViewPlayersRow.playerUid,
+                                          });
+                                          setState(() =>
+                                              _model.requestCompleter = null);
+                                          await _model
+                                              .waitForRequestCompleted();
+
+                                          setState(() {});
+                                        },
+                                      ),
                                       FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 20.0,
@@ -1162,12 +1172,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall,
                                             ),
-                                            Text(
-                                              membersListItem.playerTeamRole,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1206,23 +1210,21 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                           ],
                                         ),
                                       ),
-                                      if (membersListItem.playerTeamRole !=
-                                          'Основатель')
-                                        FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 20.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 40.0,
-                                          icon: Icon(
-                                            Icons.delete_forever_sharp,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                          onPressed: () {
-                                            print('IconButton pressed ...');
-                                          },
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        icon: Icon(
+                                          Icons.delete_forever_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 20.0,
                                         ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
                                       FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 20.0,

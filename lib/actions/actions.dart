@@ -120,11 +120,6 @@ Future upadateAuthUserDataValues(BuildContext context) async {
                 (apiResultp0p?.jsonBody ?? ''),
               )
               .toString()
-          ..playerTeamRole = PlayerGroup.listplayerbyuidCall
-              .playerteamrole(
-                (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString()
           ..playerTeamLineup = PlayerGroup.listplayerbyuidCall.playerteamlineup(
             (apiResultp0p?.jsonBody ?? ''),
           )
@@ -189,3 +184,5 @@ Future preloadDataOfHomePage(BuildContext context) async {
   await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserAlerts(context);
 }
+
+Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
