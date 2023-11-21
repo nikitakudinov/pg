@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'dart:async';
 import 'team_edite_widget.dart' show TeamEditeWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -74,17 +73,10 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   String? Function(BuildContext, String?)? teamTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (LISTPLAYERBYID)] action in Button widget.
-  ApiCallResponse? apiResultadv;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // Stores action output result for [Backend Call - API (LISTTEAMBYID)] action in IconButton widget.
-  ApiCallResponse? curentUserTeam;
-  // Stores action output result for [Backend Call - API (CHATBYTEAMID)] action in IconButton widget.
-  ApiCallResponse? chatOfCurentTeam;
-  Completer<List<PlayersRow>>? requestCompleter;
   // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
   ApiCallResponse? apiResultigb;
   // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
@@ -152,19 +144,4 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   }
 
   /// Additional helper methods are added here.
-
-  Future waitForRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
 }

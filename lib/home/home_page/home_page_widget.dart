@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -419,8 +420,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await NotificationsTable().insert({
+                                          'notification_created_at':
+                                              supaSerialize<DateTime>(
+                                                  getCurrentTimestamp),
+                                          'notification_from_player':
+                                              FFAppState().authPlayer.playerUid,
+                                          'notification_to_player':
+                                              notificationsListItem
+                                                  .notificationFromPlayer
+                                                  .playerUid,
+                                          'notification_type':
+                                              'Принял заявку вступления в клан',
+                                          'notification_body':
+                                              'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                        });
                                       },
                                       text: 'Вступить',
                                       options: FFButtonOptions(

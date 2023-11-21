@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -624,38 +623,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () async {
-                                          _model.apiResultadv =
-                                              await PlayerGroup
-                                                  .listplayerbyidCall
-                                                  .call(
-                                            idList: _model.textController3.text,
-                                          );
-                                          await AlertsTable().insert({
-                                            'created_at':
-                                                supaSerialize<DateTime>(
-                                                    getCurrentTimestamp),
-                                            'from_team': widget.teamId,
-                                            'to_user': (PlayerGroup
-                                                    .listplayerbyidCall
-                                                    .playeruid(
-                                              (_model.apiResultadv?.jsonBody ??
-                                                  ''),
-                                            ) as List)
-                                                .map<String>(
-                                                    (s) => s.toString())
-                                                .toList()
-                                                .first,
-                                            'type': 'Приглашение в команду',
-                                          });
-                                          setState(() {
-                                            _model.messageConfirmInvintVISIBILITY =
-                                                false;
-                                            _model.searchPlaerByIdVISIBILITY =
-                                                false;
-                                          });
-
-                                          setState(() {});
+                                        onPressed: () {
+                                          print('Button pressed ...');
                                         },
                                         text: 'ДА',
                                         options: FFButtonOptions(
@@ -798,15 +767,12 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             ),
                           ),
                         FutureBuilder<List<PlayersRow>>(
-                          future: (_model.requestCompleter ??=
-                                  Completer<List<PlayersRow>>()
-                                    ..complete(PlayersTable().queryRows(
-                                      queryFn: (q) => q.eq(
-                                        'player_team',
-                                        widget.teamId,
-                                      ),
-                                    )))
-                              .future,
+                          future: PlayersTable().queryRows(
+                            queryFn: (q) => q.eq(
+                              'player_team',
+                              widget.teamId,
+                            ),
+                          ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -950,69 +916,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               .primaryText,
                                           size: 20.0,
                                         ),
-                                        onPressed: () async {
-                                          _model.curentUserTeam =
-                                              await TeamGroup.listteambyidCall
-                                                  .call(
-                                            idList: listViewPlayersRow.playerId
-                                                .toString(),
-                                          );
-                                          _model.chatOfCurentTeam =
-                                              await MessagingGroup
-                                                  .chatbyteamidCall
-                                                  .call(
-                                            idList: TeamGroup.listteambyidCall
-                                                .teamid(
-                                                  (_model.curentUserTeam
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                          );
-                                          await PlayersTable().update(
-                                            data: {
-                                              'player_team': 0,
-                                              'player_tag': 'вне команды',
-                                              'player_team_role': [
-                                                '[\"Нет роли\"]'
-                                              ],
-                                            },
-                                            matchingRows: (rows) => rows.eq(
-                                              'player_id',
-                                              listViewPlayersRow.playerId,
-                                            ),
-                                          );
-                                          await AlertsTable().insert({
-                                            'created_at':
-                                                supaSerialize<DateTime>(
-                                                    getCurrentTimestamp),
-                                            'from_team': widget.teamId,
-                                            'to_user':
-                                                listViewPlayersRow.playerUid,
-                                            'type': 'Исключение из команды',
-                                          });
-                                          await MessageTable().insert({
-                                            'message_sanded_at':
-                                                supaSerialize<DateTime>(
-                                                    getCurrentTimestamp),
-                                            'message_sander': 'Дозорный бот',
-                                            'message_body':
-                                                'Игрок был исключен из команды',
-                                            'message_chat': FFAppState()
-                                                .authenticateduser
-                                                .team,
-                                            'message_sander_avatar': '',
-                                            'message_type':
-                                                'Сообщение об исключении из команды',
-                                            'message_parametrSTRING1':
-                                                listViewPlayersRow.playerUid,
-                                          });
-                                          setState(() =>
-                                              _model.requestCompleter = null);
-                                          await _model
-                                              .waitForRequestCompleted();
-
-                                          setState(() {});
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
                                         },
                                       ),
                                       FlutterFlowIconButton(

@@ -154,13 +154,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ALERTS',
-          path: '/alerts',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ALERTS')
-              : AlertsWidget(),
-        ),
-        FFRoute(
           name: 'CHATS',
           path: '/chats',
           builder: (context, params) =>
