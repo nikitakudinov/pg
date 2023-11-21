@@ -623,6 +623,10 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 .searchedPlayer.first.playerUid,
                                             'notification_from_player':
                                                 currentUserUid,
+                                            'notification_type':
+                                                'Приглашение в команду',
+                                            'notification_body':
+                                                'Команда${FFAppState().allTEAMS[widget.teamIndex].teamName} предлагает вступить в ее ряды.',
                                           });
 
                                           setState(() {});
