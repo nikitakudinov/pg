@@ -191,6 +191,7 @@ Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.upadateAuthUserDataValues(context);
   await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserChats(context);
+  await action_blocks.onlineStatesUpdater(context);
 }
 
 Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
@@ -226,4 +227,16 @@ Future alertsUpdater(BuildContext context) async {
       },
     );
   }
+}
+
+Future onlineStatesUpdater(BuildContext context) async {
+  await PlayersTable().update(
+    data: {
+      'player_online': true,
+    },
+    matchingRows: (rows) => rows.eq(
+      'player_uid',
+      FFAppState().authPlayer.playerUid,
+    ),
+  );
 }

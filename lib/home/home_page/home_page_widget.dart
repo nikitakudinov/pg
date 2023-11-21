@@ -143,9 +143,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            FFAppState().authPlayer.playerNickname,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFAppState().authPlayer.playerNickname,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ),
+                              if (FFAppState().authPlayer.playerOnline == true)
+                                Icon(
+                                  Icons.circle_sharp,
+                                  color: Color(0xFF06A502),
+                                  size: 8.0,
+                                ),
+                            ],
                           ),
                           Text(
                             FFAppState().authPlayer.playerTag,
