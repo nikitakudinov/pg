@@ -192,7 +192,6 @@ Future preloadDataOfHomePage(BuildContext context) async {
   await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserChats(context);
   await Future.delayed(const Duration(milliseconds: 100));
-  await action_blocks.loadAuthUserAlerts(context);
 }
 
 Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
@@ -226,5 +225,6 @@ Future alertsUpdater(BuildContext context) async {
         (apiResultc64?.jsonBody ?? ''),
       );
     });
+    await action_blocks.loadAuthUserAlerts(context);
   }
 }
