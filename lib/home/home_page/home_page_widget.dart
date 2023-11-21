@@ -182,6 +182,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState().authPlayer.playerId.toString(),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
+                          Text(
+                            FFAppState().authPlayer.playerOnline.toString(),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
                         ],
                       ),
                     ],
