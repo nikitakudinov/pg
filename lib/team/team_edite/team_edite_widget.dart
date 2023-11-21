@@ -624,6 +624,12 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          _model.apiResultdy1 =
+                                              await PlayerGroup
+                                                  .listplayerbyidCall
+                                                  .call(
+                                            idList: _model.textController3.text,
+                                          );
                                           await NotificationsTable().insert({
                                             'notification_created_at':
                                                 supaSerialize<DateTime>(
@@ -634,12 +640,27 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     .teamId,
                                             'notification_from_player':
                                                 currentUserUid,
-                                            'notification_to_player': '',
+                                            'notification_to_player':
+                                                valueOrDefault<String>(
+                                              (PlayerGroup.listplayerbyidCall
+                                                      .playeruid(
+                                                (_model.apiResultdy1
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) as List)
+                                                  .map<String>(
+                                                      (s) => s.toString())
+                                                  .toList()
+                                                  .first,
+                                              ' 0',
+                                            ),
                                             'notification_type':
                                                 'Приглашение в команду',
                                             'notification_body':
                                                 'Команда предлагает вступить в ее состав',
                                           });
+
+                                          setState(() {});
                                         },
                                         text: 'ДА',
                                         options: FFButtonOptions(
