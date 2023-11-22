@@ -253,7 +253,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                               ),
                                         ),
                                         Text(
-                                          '15',
+                                          '9',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -278,7 +278,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                               ),
                                         ),
                                         Text(
-                                          '15',
+                                          '6',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -316,7 +316,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                               ),
                                         ),
                                         Text(
-                                          '15',
+                                          '8',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -332,7 +332,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'ВЫЙГРАНО',
+                                          'АКТИВНЫХ',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -341,7 +341,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                               ),
                                         ),
                                         Text(
-                                          '15',
+                                          '3',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -357,7 +357,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'ПРОИГРАНО',
+                                          'ЗАВЕРШЕН.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -366,7 +366,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                               ),
                                         ),
                                         Text(
-                                          '15',
+                                          '5',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
