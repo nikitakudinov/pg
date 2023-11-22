@@ -119,7 +119,7 @@ Future upadateAuthUserDataValues(BuildContext context) async {
               )
               .toString()
           ..playerTag = PlayerGroup.listplayerbyuidCall
-              .playerflag(
+              .playertag(
                 (jsonPlayerData?.jsonBody ?? ''),
               )
               .toString()
