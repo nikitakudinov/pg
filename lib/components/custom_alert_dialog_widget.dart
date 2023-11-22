@@ -52,7 +52,7 @@ class _CustomAlertDialogWidgetState extends State<CustomAlertDialogWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
       child: Container(
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
