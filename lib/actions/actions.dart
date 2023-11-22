@@ -278,3 +278,22 @@ Future loadCurentTeamMembers(
     );
   }
 }
+
+Future allTEAMSUpdater(BuildContext context) async {
+  ApiCallResponse? apiResultd1w;
+
+  apiResultd1w = await TeamGroup.lISTALLTEAMScountCall.call();
+  if ((apiResultd1w?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().allTEAMScount = TeamGroup.lISTALLTEAMScountCall.count(
+        (apiResultd1w?.jsonBody ?? ''),
+      );
+    });
+    if (FFAppState().allTEAMScount !=
+        TeamGroup.lISTALLTEAMScountCall.count(
+          (apiResultd1w?.jsonBody ?? ''),
+        )) {
+      await action_blocks.dowloadAllTeamsDataToAppState(context);
+    }
+  }
+}
