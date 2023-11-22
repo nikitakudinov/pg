@@ -52,7 +52,7 @@ class _CustomAlertDialogWidgetState extends State<CustomAlertDialogWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(50.0, 50.0, 50.0, 50.0),
+      padding: EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 0.0),
       child: Container(
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -76,9 +76,14 @@ class _CustomAlertDialogWidgetState extends State<CustomAlertDialogWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
-                    widget.dialogBody!,
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(),
+                      child: Text(
+                        widget.dialogBody!,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ),
                   ),
                 ],
               ),
