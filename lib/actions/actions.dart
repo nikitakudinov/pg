@@ -326,35 +326,13 @@ Future allTeamsUpdater(BuildContext context) async {
         (jsonAllTeamsCount?.jsonBody ?? ''),
       );
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('AllTeamsCount = respons count'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
+    await action_blocks.loadAllTeamsDataToAppState(context);
   } else {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('AllTeamsCount not=  respons count'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
+    FFAppState().update(() {
+      FFAppState().allTEAMScount = TeamGroup.lISTALLTEAMScountCall.count(
+        (jsonAllTeamsCount?.jsonBody ?? ''),
+      );
+    });
     await action_blocks.loadAllTeamsDataToAppState(context);
   }
 }
