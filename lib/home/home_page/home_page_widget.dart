@@ -170,6 +170,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Text(
+                            FFAppState().authPlayer.playerTag,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                          Text(
                             FFAppState().authPlayer.playerCountrie,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
