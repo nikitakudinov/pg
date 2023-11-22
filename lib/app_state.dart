@@ -275,6 +275,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAuthPlayerTeamList(int _index, TeamStruct _value) {
     _authPlayerTeamList.insert(_index, _value);
   }
+
+  String _authUserUpdated = '';
+  String get authUserUpdated => _authUserUpdated;
+  set authUserUpdated(String _value) {
+    _authUserUpdated = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

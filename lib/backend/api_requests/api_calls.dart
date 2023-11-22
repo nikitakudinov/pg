@@ -19,6 +19,7 @@ class PlayerGroup {
         'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static ListplayerbyuidCall listplayerbyuidCall = ListplayerbyuidCall();
+  static AuthplayerupdatedCall authplayerupdatedCall = AuthplayerupdatedCall();
   static ListplayerbyidCall listplayerbyidCall = ListplayerbyidCall();
   static LISTPLAYERBYTEAMandTEAMROLECall lISTPLAYERBYTEAMandTEAMROLECall =
       LISTPLAYERBYTEAMandTEAMROLECall();
@@ -105,6 +106,35 @@ class ListplayerbyuidCall {
   dynamic playeronline(dynamic response) => getJsonField(
         response,
         r'''$[:].player_online''',
+      );
+}
+
+class AuthplayerupdatedCall {
+  Future<ApiCallResponse> call({
+    String? uid = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'AUTHPLAYERUPDATED',
+      apiUrl:
+          '${PlayerGroup.baseUrl}players?player_uid=eq.${uid}&select=player_update_at',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic playerupdateat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_update_at''',
       );
 }
 

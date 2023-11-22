@@ -269,7 +269,7 @@ Future loadAuthUserNotifications(BuildContext context) async {
 }
 
 Future preloadDataOfHomePage(BuildContext context) async {
-  await action_blocks.upadateAuthUserDataValues(context);
+  await action_blocks.authPlayerUpdater(context);
   await Future.delayed(const Duration(milliseconds: 100));
   await action_blocks.loadAuthUserChats(context);
   await action_blocks.loadAuthUserNotifications(context);
@@ -391,5 +391,19 @@ Future allTeamsUpdater(BuildContext context) async {
       );
     });
     await action_blocks.loadAllTeamsDataToAppState(context);
+  }
+}
+
+Future authPlayerUpdater(BuildContext context) async {
+  ApiCallResponse? jsonAuthUserUpdated;
+
+  jsonAuthUserUpdated = await PlayerGroup.authplayerupdatedCall.call(
+    uid: currentUserUid,
+  );
+  if (FFAppState().authUserUpdated !=
+      PlayerGroup.authplayerupdatedCall.playerupdateat(
+        (jsonAuthUserUpdated?.jsonBody ?? ''),
+      )) {
+    await action_blocks.upadateAuthUserDataValues(context);
   }
 }
