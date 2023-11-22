@@ -1,9 +1,11 @@
+import '/components/custom_alert_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -208,39 +210,78 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                               BorderRadius.circular(4.0),
                                         ),
                                       ),
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          setState(() {
-                                            _model.teamActionsVISIBILITY =
-                                                false;
-                                          });
-                                        },
-                                        text: 'Выйти из команды',
-                                        icon: Icon(
-                                          Icons.person_remove_sharp,
-                                          size: 15.0,
-                                        ),
-                                        options: FFButtonOptions(
-                                          width: 140.0,
-                                          height: 30.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall,
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
+                                      Builder(
+                                        builder: (context) => FFButtonWidget(
+                                          onPressed: () async {
+                                            setState(() {
+                                              _model.teamActionsVISIBILITY =
+                                                  false;
+                                            });
+                                            await showAlignedDialog(
+                                              context: context,
+                                              isGlobal: true,
+                                              avoidOverflow: false,
+                                              targetAnchor:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              followerAnchor:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              builder: (dialogContext) {
+                                                return Material(
+                                                  color: Colors.transparent,
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child:
+                                                        CustomAlertDialogWidget(
+                                                      width: 200,
+                                                      height: 300,
+                                                      dialogBody:
+                                                          'Вы уверены что хотите покинуть команду?',
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          text: 'Выйти из команды',
+                                          icon: Icon(
+                                            Icons.person_remove_sharp,
+                                            size: 15.0,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(4.0),
+                                          options: FFButtonOptions(
+                                            width: 140.0,
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall,
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
                                         ),
                                       ),
                                     ].divide(SizedBox(height: 5.0)),
