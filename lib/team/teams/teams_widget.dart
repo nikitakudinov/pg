@@ -135,7 +135,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(0.0),
                                   child: Image.network(
-                                    'https://picsum.photos/seed/711/600',
+                                    FFAppState().authPlayerTeam.teamLogo,
                                     width: 70.0,
                                     height: 70.0,
                                     fit: BoxFit.cover,
@@ -145,6 +145,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   FFAppState().authPlayerTeam.teamTag,
