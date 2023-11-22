@@ -91,6 +91,7 @@ Future loadAuthUserChats(BuildContext context) async {
 
 Future upadateAuthUserDataValues(BuildContext context) async {
   ApiCallResponse? apiResultp0p;
+  List<TeamStruct>? dtPLAYERTEAM;
 
   apiResultp0p = await PlayerGroup.listplayerbyuidCall.call(
     idList: currentUserUid,
@@ -137,6 +138,14 @@ Future upadateAuthUserDataValues(BuildContext context) async {
             (apiResultp0p?.jsonBody ?? ''),
           ),
       );
+    });
+    dtPLAYERTEAM = await actions.dtTEAM(
+      PlayerGroup.listplayerbyuidCall.playerteam(
+        (apiResultp0p?.jsonBody ?? ''),
+      ),
+    );
+    FFAppState().update(() {
+      FFAppState().authPlayerTeam = dtPLAYERTEAM!.first;
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
