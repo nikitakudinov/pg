@@ -210,7 +210,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     Text(
                                       'ВСЕГО',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodySmall,
                                     ),
                                     Text(
                                       '15',
@@ -227,7 +227,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     Text(
                                       'ВЫЙГРАНО',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodySmall,
                                     ),
                                     Text(
                                       '15',
@@ -244,7 +244,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     Text(
                                       'ПРОИГРАНО',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodySmall,
                                     ),
                                     Text(
                                       '15',
