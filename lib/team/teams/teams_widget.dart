@@ -30,7 +30,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await action_blocks.dowloadAllTeamsDataToAppState(context);
+      await action_blocks.loadAllTeamsDataToAppState(context);
       await action_blocks.dowloadAllCountrieToAppState(context);
     });
   }

@@ -10,7 +10,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Future dowloadAllTeamsDataToAppState(BuildContext context) async {
+Future loadAllTeamsDataToAppState(BuildContext context) async {
   ApiCallResponse? allTeamsJsonData;
   List<TeamStruct>? convertedData;
 
@@ -276,5 +276,22 @@ Future loadCurentTeamMembers(
         );
       },
     );
+  }
+}
+
+Future allTeamsUpdater(BuildContext context) async {
+  ApiCallResponse? jsonAllTeamsCount;
+
+  jsonAllTeamsCount = await TeamGroup.lISTALLTEAMScountCall.call();
+  if (FFAppState().allTEAMScount ==
+      TeamGroup.lISTALLTEAMScountCall.count(
+        (jsonAllTeamsCount?.jsonBody ?? ''),
+      )) {
+    FFAppState().update(() {
+      FFAppState().allTEAMScount = TeamGroup.lISTALLTEAMScountCall.count(
+        (jsonAllTeamsCount?.jsonBody ?? ''),
+      );
+    });
+    await action_blocks.loadAllTeamsDataToAppState(context);
   }
 }
