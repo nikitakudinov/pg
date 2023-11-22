@@ -97,7 +97,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
-                FFAppState().authPlayerTeam.teamName,
+                'Hello World',
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Expanded(

@@ -275,17 +275,6 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAuthPlayerTeamList(int _index, TeamStruct _value) {
     _authPlayerTeamList.insert(_index, _value);
   }
-
-  AuthenticateduserStruct _authenticateduserData = AuthenticateduserStruct();
-  AuthenticateduserStruct get authenticateduserData => _authenticateduserData;
-  set authenticateduserData(AuthenticateduserStruct _value) {
-    _authenticateduserData = _value;
-  }
-
-  void updateAuthenticateduserDataStruct(
-      Function(AuthenticateduserStruct) updateFn) {
-    updateFn(_authenticateduserData);
-  }
 }
 
 LatLng? _latLngFromString(String? val) {

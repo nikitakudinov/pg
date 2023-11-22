@@ -91,33 +91,26 @@ Future loadAuthUserChats(BuildContext context) async {
 }
 
 Future upadateAuthUserDataValues(BuildContext context) async {
-  ApiCallResponse? apiResultp0p;
+  ApiCallResponse? jsonPlayerData;
+  ApiCallResponse? jsonTeamData;
 
-  apiResultp0p = await PlayerGroup.listplayerbyuidCall.call(
+  jsonPlayerData = await PlayerGroup.listplayerbyuidCall.call(
     idList: currentUserUid,
   );
-  if ((apiResultp0p?.succeeded ?? true)) {
+  jsonTeamData = await TeamGroup.listteambyidCall.call(
+    idList: PlayerGroup.listplayerbyuidCall
+        .playerteam(
+          (jsonPlayerData?.jsonBody ?? ''),
+        )
+        .toString()
+        .toString(),
+  );
+  if ((jsonPlayerData?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().updateAuthenticateduserDataStruct(
-        (e) => e
-          ..playerTeam = PlayerGroup.listplayerbyuidCall.playerteam(
-                        (apiResultp0p?.jsonBody ?? ''),
-                      ) !=
-                      null &&
-                  PlayerGroup.listplayerbyuidCall.playerteam(
-                        (apiResultp0p?.jsonBody ?? ''),
-                      ) !=
-                      ''
-              ? TeamStruct.fromMap(PlayerGroup.listplayerbyuidCall.playerteam(
-                  (apiResultp0p?.jsonBody ?? ''),
-                ))
-              : null
-          ..playerNickname = PlayerGroup.listplayerbyuidCall
-              .playernickname(
-                (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString(),
-      );
+      FFAppState().authPlayer =
+          PlayerStruct.fromMap((jsonPlayerData?.jsonBody ?? ''));
+      FFAppState().authPlayerTeam =
+          TeamStruct.fromMap((jsonTeamData?.jsonBody ?? ''));
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

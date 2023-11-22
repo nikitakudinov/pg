@@ -153,9 +153,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 10.0, 0.0),
                                 child: Text(
-                                  FFAppState()
-                                      .authenticateduserData
-                                      .playerNickname,
+                                  FFAppState().authPlayer.playerNickname,
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
