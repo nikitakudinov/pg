@@ -48,16 +48,6 @@ Future dowloadAllCountrieToAppState(BuildContext context) async {
       FFAppState().allCountries =
           convertedCountriesData!.toList().cast<CountrieStruct>();
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Страны и флаги загружены в апстейт успешно',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 4000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 
