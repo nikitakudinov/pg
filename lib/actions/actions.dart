@@ -240,4 +240,69 @@ Future onlineStatesUpdater(BuildContext context) async {
 
 Future sandAlertToTeamAdmins(BuildContext context) async {}
 
-Future loadCurentTeamMembers(BuildContext context) async {}
+Future loadCurentTeamMembers(
+  BuildContext context, {
+  int? selectedTeamID,
+}) async {
+  ApiCallResponse? jsonTeamMembers;
+  List<PlayerStruct>? dtTeamMembers;
+
+  FFAppState().update(() {
+    FFAppState().selectedTeamId = selectedTeamID!;
+  });
+  jsonTeamMembers = await PlayerGroup.listplayerbyteamCall.call(
+    idList: FFAppState().selectedTeamId.toString(),
+  );
+  if ((jsonTeamMembers?.succeeded ?? true)) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('1'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    dtTeamMembers = await actions.dtPLAYER(
+      (jsonTeamMembers?.jsonBody ?? ''),
+    );
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('11'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    FFAppState().update(() {
+      FFAppState().curentTeamMembersList =
+          dtTeamMembers!.toList().cast<PlayerStruct>();
+    });
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('2'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
