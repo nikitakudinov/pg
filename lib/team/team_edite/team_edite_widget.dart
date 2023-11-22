@@ -847,6 +847,44 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                               ],
                             ),
                           ),
+                        Builder(
+                          builder: (context) {
+                            final temaMembers = _model.teamMembersList.toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: temaMembers.length,
+                              itemBuilder: (context, temaMembersIndex) {
+                                final temaMembersItem =
+                                    temaMembers[temaMembersIndex];
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: Image.network(
+                                          'https://picsum.photos/seed/493/600',
+                                          width: 40.0,
+                                          height: 40.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
