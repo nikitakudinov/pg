@@ -205,6 +205,41 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInNotofications(int _index, NotificationStruct _value) {
     _notofications.insert(_index, _value);
   }
+
+  int _selectedTeamId = 0;
+  int get selectedTeamId => _selectedTeamId;
+  set selectedTeamId(int _value) {
+    _selectedTeamId = _value;
+  }
+
+  List<PlayerStruct> _curentTeamMembersList = [];
+  List<PlayerStruct> get curentTeamMembersList => _curentTeamMembersList;
+  set curentTeamMembersList(List<PlayerStruct> _value) {
+    _curentTeamMembersList = _value;
+  }
+
+  void addToCurentTeamMembersList(PlayerStruct _value) {
+    _curentTeamMembersList.add(_value);
+  }
+
+  void removeFromCurentTeamMembersList(PlayerStruct _value) {
+    _curentTeamMembersList.remove(_value);
+  }
+
+  void removeAtIndexFromCurentTeamMembersList(int _index) {
+    _curentTeamMembersList.removeAt(_index);
+  }
+
+  void updateCurentTeamMembersListAtIndex(
+    int _index,
+    PlayerStruct Function(PlayerStruct) updateFn,
+  ) {
+    _curentTeamMembersList[_index] = updateFn(_curentTeamMembersList[_index]);
+  }
+
+  void insertAtIndexInCurentTeamMembersList(int _index, PlayerStruct _value) {
+    _curentTeamMembersList.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

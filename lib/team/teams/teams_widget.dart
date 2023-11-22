@@ -1,8 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -127,6 +130,72 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                               );
                             },
                             onLongPress: () async {
+                              setState(() {
+                                FFAppState().selectedTeamId =
+                                    allTeamsListItem.teamId;
+                              });
+                              _model.jsonTeamMembers =
+                                  await PlayerGroup.listplayerbyteamCall.call(
+                                idList: FFAppState().selectedTeamId.toString(),
+                              );
+                              if ((_model.jsonTeamMembers?.succeeded ?? true)) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('1'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                _model.dtTeamMembers = await actions.dtPLAYER(
+                                  (_model.jsonTeamMembers?.jsonBody ?? ''),
+                                );
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('11'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                setState(() {
+                                  FFAppState().curentTeamMembersList = _model
+                                      .dtTeamMembers!
+                                      .toList()
+                                      .cast<PlayerStruct>();
+                                });
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('2'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+
                               context.pushNamed(
                                 'TEAM_EDITE',
                                 queryParameters: {
@@ -140,6 +209,8 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                   ),
                                 }.withoutNulls,
                               );
+
+                              setState(() {});
                             },
                             child: Container(
                               decoration: BoxDecoration(

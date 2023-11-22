@@ -489,8 +489,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    searchedPlayerRowItem
-                                                        .playerNickname,
+                                                    _model
+                                                        .teamMembersList.length
+                                                        .toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleSmall,
