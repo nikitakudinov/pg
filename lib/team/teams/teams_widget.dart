@@ -112,6 +112,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                               10.0, 10.0, 10.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 'Ваша команда',
@@ -143,55 +144,57 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 ),
                               ),
                             ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  FFAppState().authPlayerTeam.teamTag,
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium,
-                                ),
-                                Text(
-                                  FFAppState().authPlayerTeam.teamName,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 5.0, 0.0),
-                                      child: Container(
-                                        width: 20.0,
-                                        height: 12.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.network(
-                                            FFAppState()
-                                                .authPlayerTeam
-                                                .teamFlag,
-                                            width: 20.0,
-                                            height: 12.0,
-                                            fit: BoxFit.cover,
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    FFAppState().authPlayerTeam.teamTag,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium,
+                                  ),
+                                  Text(
+                                    FFAppState().authPlayerTeam.teamName,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 5.0, 0.0),
+                                        child: Container(
+                                          width: 20.0,
+                                          height: 12.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              FFAppState()
+                                                  .authPlayerTeam
+                                                  .teamFlag,
+                                              width: 20.0,
+                                              height: 12.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Text(
-                                      FFAppState().authPlayerTeam.teamCountry,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                      Text(
+                                        FFAppState().authPlayerTeam.teamCountry,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                             Expanded(
                               child: Column(
