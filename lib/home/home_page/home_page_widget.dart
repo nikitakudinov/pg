@@ -449,6 +449,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           'notification_body':
                                               'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
                                         });
+                                        await PlayersTable().update(
+                                          data: {
+                                            'player_team': notificationsListItem
+                                                .notificationFromTeam.teamId,
+                                            'player_team_role': [
+                                              'Рядовой боец'
+                                            ],
+                                            'player_team_lineup': false,
+                                          },
+                                          matchingRows: (rows) => rows.eq(
+                                            'player_uid',
+                                            currentUserUid,
+                                          ),
+                                        );
                                       },
                                       text: 'Вступить',
                                       options: FFButtonOptions(
