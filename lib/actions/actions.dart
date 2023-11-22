@@ -22,6 +22,20 @@ Future loadAllTeamsDataToAppState(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().allTEAMS = convertedData!.toList().cast<TeamStruct>();
     });
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('assdasd'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
