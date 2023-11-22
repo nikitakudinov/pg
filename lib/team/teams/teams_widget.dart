@@ -214,7 +214,12 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                       Text(
                                         'ВСЕГО',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              fontSize: 10.0,
+                                              lineHeight: 0.1,
+                                            ),
                                       ),
                                       Text(
                                         '15',
@@ -231,7 +236,12 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                       Text(
                                         'ВЫЙГРАНО',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              fontSize: 10.0,
+                                              lineHeight: 0.1,
+                                            ),
                                       ),
                                       Text(
                                         '15',
@@ -248,7 +258,12 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                       Text(
                                         'ПРОИГРАНО',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              fontSize: 10.0,
+                                              lineHeight: 0.1,
+                                            ),
                                       ),
                                       Text(
                                         '15',
