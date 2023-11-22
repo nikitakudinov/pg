@@ -355,5 +355,6 @@ Future allTeamsUpdater(BuildContext context) async {
         );
       },
     );
+    await action_blocks.loadAllTeamsDataToAppState(context);
   }
 }
