@@ -258,17 +258,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      'https://picsum.photos/seed/713/600',
-                      width: 300.0,
-                      height: 200.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
+                children: [],
               ),
             ],
           ),

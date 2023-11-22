@@ -6,6 +6,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -97,51 +98,23 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   );
   if ((apiResultp0p?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().updateAuthPlayerStruct(
-        (e) => e
-          ..playerCreatedAt = PlayerGroup.listplayerbyuidCall
-              .playercreatedat(
+      FFAppState().authenticateduserData = AuthenticatedUserStruct(
+        playerData: (apiResultp0p?.jsonBody ?? '') != null &&
+                (apiResultp0p?.jsonBody ?? '') != ''
+            ? PlayerStruct.fromMap((apiResultp0p?.jsonBody ?? ''))
+            : null,
+        teamData: PlayerGroup.listplayerbyuidCall.playerteam(
+                      (apiResultp0p?.jsonBody ?? ''),
+                    ) !=
+                    null &&
+                PlayerGroup.listplayerbyuidCall.playerteam(
+                      (apiResultp0p?.jsonBody ?? ''),
+                    ) !=
+                    ''
+            ? TeamStruct.fromMap(PlayerGroup.listplayerbyuidCall.playerteam(
                 (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerNickname = PlayerGroup.listplayerbyuidCall
-              .playernickname(
-                (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerTag = PlayerGroup.listplayerbyuidCall
-              .playertag(
-                (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerFlag = PlayerGroup.listplayerbyuidCall.playerflag(
-            (apiResultp0p?.jsonBody ?? ''),
-          )
-          ..playerCountrie = PlayerGroup.listplayerbyuidCall
-              .playercountrie(
-                (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerAvatar = PlayerGroup.listplayerbyuidCall.playeravatar(
-            (apiResultp0p?.jsonBody ?? ''),
-          )
-          ..playerUid = PlayerGroup.listplayerbyuidCall
-              .playeruid(
-                (apiResultp0p?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerTeamLineup = PlayerGroup.listplayerbyuidCall.playerteamlineup(
-            (apiResultp0p?.jsonBody ?? ''),
-          )
-          ..playerId = PlayerGroup.listplayerbyuidCall.playerid(
-            (apiResultp0p?.jsonBody ?? ''),
-          ),
-      );
-      FFAppState().updateAuthPlayerTeamStruct(
-        (e) => e
-          ..teamLogo = PlayerGroup.listplayerbyuidCall.playerteamteamlogo(
-            (apiResultp0p?.jsonBody ?? ''),
-          ),
+              ))
+            : null,
       );
     });
     ScaffoldMessenger.of(context).showSnackBar(
