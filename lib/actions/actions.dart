@@ -294,19 +294,15 @@ Future notificationsUpdater(BuildContext context) async {
       );
     });
     await action_blocks.loadAuthUserNotifications(context);
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('Allerts updated'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Notifications updated',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 1000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
     );
   }
 }

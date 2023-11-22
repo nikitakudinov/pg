@@ -166,7 +166,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ],
                           ),
                           Text(
-                            FFAppState().authPlayer.playerTag,
+                            FFAppState().authUserUpdated,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Text(
