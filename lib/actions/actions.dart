@@ -99,10 +99,6 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   if ((apiResultp0p?.succeeded ?? true)) {
     FFAppState().update(() {
       FFAppState().authenticateduserData = AuthenticatedUserStruct(
-        playerData: (apiResultp0p?.jsonBody ?? '') != null &&
-                (apiResultp0p?.jsonBody ?? '') != ''
-            ? PlayerStruct.fromMap((apiResultp0p?.jsonBody ?? ''))
-            : null,
         teamData: PlayerGroup.listplayerbyuidCall.playerteam(
                       (apiResultp0p?.jsonBody ?? ''),
                     ) !=
