@@ -145,7 +145,8 @@ Future upadateAuthUserDataValues(BuildContext context) async {
       ),
     );
     FFAppState().update(() {
-      FFAppState().authPlayerTeam = dtPLAYERTEAM!.first;
+      FFAppState().authPlayerTeamList =
+          dtPLAYERTEAM!.toList().cast<TeamStruct>();
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

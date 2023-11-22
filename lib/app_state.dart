@@ -246,6 +246,35 @@ class FFAppState extends ChangeNotifier {
   set allTEAMScount(int _value) {
     _allTEAMScount = _value;
   }
+
+  List<TeamStruct> _authPlayerTeamList = [];
+  List<TeamStruct> get authPlayerTeamList => _authPlayerTeamList;
+  set authPlayerTeamList(List<TeamStruct> _value) {
+    _authPlayerTeamList = _value;
+  }
+
+  void addToAuthPlayerTeamList(TeamStruct _value) {
+    _authPlayerTeamList.add(_value);
+  }
+
+  void removeFromAuthPlayerTeamList(TeamStruct _value) {
+    _authPlayerTeamList.remove(_value);
+  }
+
+  void removeAtIndexFromAuthPlayerTeamList(int _index) {
+    _authPlayerTeamList.removeAt(_index);
+  }
+
+  void updateAuthPlayerTeamListAtIndex(
+    int _index,
+    TeamStruct Function(TeamStruct) updateFn,
+  ) {
+    _authPlayerTeamList[_index] = updateFn(_authPlayerTeamList[_index]);
+  }
+
+  void insertAtIndexInAuthPlayerTeamList(int _index, TeamStruct _value) {
+    _authPlayerTeamList.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
