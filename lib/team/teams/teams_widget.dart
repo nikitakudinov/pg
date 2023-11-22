@@ -103,7 +103,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                   model: _model.verticalItemCardModel,
                   updateCallback: () => setState(() {}),
                   child: VerticalItemCardWidget(
-                    imageSize: 80,
+                    imageSize: 60,
                     imagePath: FFAppState().authPlayerTeam.teamLogo,
                   ),
                 ),
