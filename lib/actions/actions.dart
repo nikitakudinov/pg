@@ -6,7 +6,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -107,8 +106,13 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   );
   if ((jsonPlayerData?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().authPlayer =
-          PlayerStruct.fromMap((jsonPlayerData?.jsonBody ?? ''));
+      FFAppState().authPlayer = PlayerStruct(
+        playerNickname: PlayerGroup.listplayerbyuidCall
+            .playernickname(
+              (jsonPlayerData?.jsonBody ?? ''),
+            )
+            .toString(),
+      );
       FFAppState().updateAuthPlayerTeamStruct(
         (e) => e
           ..teamName = TeamGroup.listteambyidCall
