@@ -22,6 +22,16 @@ Future loadAllTeamsDataToAppState(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().allTEAMS = convertedData!.toList().cast<TeamStruct>();
     });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Команды обновлены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
   }
 }
 
