@@ -872,7 +872,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          'https://picsum.photos/seed/493/600',
+                                          temaMembersItem.playerAvatar,
                                           width: 40.0,
                                           height: 40.0,
                                           fit: BoxFit.cover,
