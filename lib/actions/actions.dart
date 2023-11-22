@@ -29,32 +29,19 @@ Future dowloadAllCountrieToAppState(BuildContext context) async {
   ApiCallResponse? allCountrieJsonData;
   List<CountrieStruct>? convertedCountriesData;
 
-  if (FFAppState().allCountries.first != null) {
-    allCountrieJsonData = await CountryGroup.countriesCall.call();
-    if ((allCountrieJsonData?.succeeded ?? true)) {
-      convertedCountriesData = await actions.dtCOUNTRIE(
-        (allCountrieJsonData?.jsonBody ?? ''),
-      );
-      FFAppState().update(() {
-        FFAppState().allCountries =
-            convertedCountriesData!.toList().cast<CountrieStruct>();
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Страны и флаги загружены в апстейт успешно',
-            style: TextStyle(),
-          ),
-          duration: Duration(milliseconds: 4000),
-          backgroundColor: FlutterFlowTheme.of(context).secondary,
-        ),
-      );
-    }
-  } else {
+  allCountrieJsonData = await CountryGroup.countriesCall.call();
+  if ((allCountrieJsonData?.succeeded ?? true)) {
+    convertedCountriesData = await actions.dtCOUNTRIE(
+      (allCountrieJsonData?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().allCountries =
+          convertedCountriesData!.toList().cast<CountrieStruct>();
+    });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'Страны уже загруцжены',
+          'Страны и флаги загружены в апстейт успешно',
           style: TextStyle(),
         ),
         duration: Duration(milliseconds: 4000),
