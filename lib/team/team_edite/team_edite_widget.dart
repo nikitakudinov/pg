@@ -872,6 +872,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
                                         ),
                                         child: ClipRRect(
                                           borderRadius:
