@@ -178,7 +178,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Text(
-                            FFAppState().authPlayerTeamList.first.teamName,
+                            'Hello World',
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Text(
