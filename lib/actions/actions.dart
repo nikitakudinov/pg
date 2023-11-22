@@ -280,20 +280,32 @@ Future loadCurentTeamMembers(
 }
 
 Future allTEAMSUpdater(BuildContext context) async {
-  ApiCallResponse? apiResultd1w;
+  ApiCallResponse? allTeamsCount;
 
-  apiResultd1w = await TeamGroup.lISTALLTEAMScountCall.call();
-  if ((apiResultd1w?.succeeded ?? true)) {
+  allTeamsCount = await TeamGroup.lISTALLTEAMScountCall.call();
+  if (FFAppState().alertsCount !=
+      MessagingGroup.gETNOTIFICATIONScountCall.count(
+        (apiResultc64?.jsonBody ?? ''),
+      )) {
     FFAppState().update(() {
       FFAppState().allTEAMScount = TeamGroup.lISTALLTEAMScountCall.count(
-        (apiResultd1w?.jsonBody ?? ''),
+        (allTeamsCount?.jsonBody ?? ''),
       );
     });
-    if (FFAppState().allTEAMScount !=
-        TeamGroup.lISTALLTEAMScountCall.count(
-          (apiResultd1w?.jsonBody ?? ''),
-        )) {
-      await action_blocks.dowloadAllTeamsDataToAppState(context);
-    }
+    await action_blocks.dowloadAllTeamsDataToAppState(context);
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Teams updated'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
