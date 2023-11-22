@@ -14,7 +14,7 @@ Future dowloadAllTeamsDataToAppState(BuildContext context) async {
   ApiCallResponse? allTeamsJsonData;
   List<TeamStruct>? convertedData;
 
-  allTeamsJsonData = await TeamGroup.listallteamsCall.call();
+  allTeamsJsonData = await TeamGroup.lISTALLTEAMScountCall.call();
   if ((allTeamsJsonData?.succeeded ?? true)) {
     convertedData = await actions.dtTEAM(
       (allTeamsJsonData?.jsonBody ?? ''),

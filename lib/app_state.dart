@@ -240,6 +240,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInCurentTeamMembersList(int _index, PlayerStruct _value) {
     _curentTeamMembersList.insert(_index, _value);
   }
+
+  int _allTEAMScount = 0;
+  int get allTEAMScount => _allTEAMScount;
+  set allTEAMScount(int _value) {
+    _allTEAMScount = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

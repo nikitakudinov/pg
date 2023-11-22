@@ -640,7 +640,8 @@ class TeamGroup {
   };
   static ListteambyidCall listteambyidCall = ListteambyidCall();
   static TeambycreatorCall teambycreatorCall = TeambycreatorCall();
-  static ListallteamsCall listallteamsCall = ListallteamsCall();
+  static LISTALLTEAMScountCall lISTALLTEAMScountCall = LISTALLTEAMScountCall();
+  static LISTALLTEAMSCopyCall lISTALLTEAMSCopyCall = LISTALLTEAMSCopyCall();
 }
 
 class ListteambyidCall {
@@ -794,12 +795,40 @@ class TeambycreatorCall {
       );
 }
 
-class ListallteamsCall {
+class LISTALLTEAMScountCall {
   Future<ApiCallResponse> call({
     String? idList = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTALLTEAMS',
+      callName: 'LISTALLTEAMScount',
+      apiUrl: '${TeamGroup.baseUrl}teams?select=count',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic count(dynamic response) => getJsonField(
+        response,
+        r'''$[:].count''',
+      );
+}
+
+class LISTALLTEAMSCopyCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LISTALLTEAMS Copy',
       apiUrl: '${TeamGroup.baseUrl}teams?select=*',
       callType: ApiCallType.GET,
       headers: {
