@@ -850,7 +850,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                           ),
                         Builder(
                           builder: (context) {
-                            final temaMembers = _model.teamMembersList.toList();
+                            final temaMembers =
+                                FFAppState().curentTeamMembersList.toList();
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
@@ -873,7 +874,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          temaMembersItem.playerAvatar,
+                                          'https://picsum.photos/seed/493/600',
                                           width: 40.0,
                                           height: 40.0,
                                           fit: BoxFit.cover,
