@@ -1154,7 +1154,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '${membersListItem.playerTag} / ${membersListItem.playerNickname}',
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall,
@@ -1176,8 +1176,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                           BorderRadius.circular(
                                                               0.0),
                                                       child: Image.network(
-                                                        membersListItem
-                                                            .playerFlag,
+                                                        'https://picsum.photos/seed/660/600',
                                                         width: 20.0,
                                                         height: 12.0,
                                                         fit: BoxFit.cover,
@@ -1185,8 +1184,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    membersListItem
-                                                        .playerCountrie,
+                                                    'Hello World',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
