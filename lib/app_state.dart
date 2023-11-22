@@ -241,7 +241,7 @@ class FFAppState extends ChangeNotifier {
     _curentTeamMembersList.insert(_index, _value);
   }
 
-  int _allTEAMScount = 0;
+  int _allTEAMScount = 3;
   int get allTEAMScount => _allTEAMScount;
   set allTEAMScount(int _value) {
     _allTEAMScount = _value;
