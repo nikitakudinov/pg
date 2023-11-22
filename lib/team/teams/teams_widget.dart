@@ -1,3 +1,4 @@
+import '/components/vertical_item_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -96,9 +97,41 @@ class _TeamsWidgetState extends State<TeamsWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text(
-                FFAppState().authPlayerTeam.teamName,
-                style: FlutterFlowTheme.of(context).bodyMedium,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              'Ваша команда',
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [],
+                      ),
+                      wrapWithModel(
+                        model: _model.verticalItemCardModel,
+                        updateCallback: () => setState(() {}),
+                        child: VerticalItemCardWidget(
+                          imageSize: 30,
+                          imagePath: FFAppState().authPlayerTeam.teamLogo,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Expanded(
                 child: Padding(
