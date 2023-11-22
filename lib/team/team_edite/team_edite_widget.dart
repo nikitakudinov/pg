@@ -634,6 +634,24 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                             _model.searchPlaerByIdVISIBILITY =
                                                 false;
                                           });
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Приглашение игроку отправлено.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
