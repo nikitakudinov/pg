@@ -1,4 +1,3 @@
-import '/components/vertical_item_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,18 +14,13 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for VerticalItemCard component.
-  late VerticalItemCardModel verticalItemCardModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    verticalItemCardModel = createModel(context, () => VerticalItemCardModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
-    verticalItemCardModel.dispose();
   }
 
   /// Action blocks are added here.

@@ -1,4 +1,3 @@
-import '/components/vertical_item_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -119,15 +118,17 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                      wrapWithModel(
-                        model: _model.verticalItemCardModel,
-                        updateCallback: () => setState(() {}),
-                        child: VerticalItemCardWidget(
-                          imageSize: 30,
-                          imagePath: FFAppState().authPlayerTeam.teamLogo,
-                        ),
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              FFAppState().authPlayerTeam.teamLogo,
+                              width: 50.0,
+                              height: 50.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
