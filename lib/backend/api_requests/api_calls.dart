@@ -89,6 +89,7 @@ class ListplayerbyuidCall {
   dynamic playerteamrole(dynamic response) => getJsonField(
         response,
         r'''$[:].player_team_role''',
+        true,
       );
   dynamic playerid(dynamic response) => getJsonField(
         response,
@@ -97,6 +98,10 @@ class ListplayerbyuidCall {
   dynamic playerteamlineup(dynamic response) => getJsonField(
         response,
         r'''$[:].player_team_lineup''',
+      );
+  dynamic playerteamteamlogo(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_team.team_logo''',
       );
 }
 

@@ -6,7 +6,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -138,10 +137,12 @@ Future upadateAuthUserDataValues(BuildContext context) async {
             (apiResultp0p?.jsonBody ?? ''),
           ),
       );
-      FFAppState().authPlayerTeam =
-          TeamStruct.fromMap(PlayerGroup.listplayerbyuidCall.playerteam(
-        (apiResultp0p?.jsonBody ?? ''),
-      ));
+      FFAppState().updateAuthPlayerTeamStruct(
+        (e) => e
+          ..teamLogo = PlayerGroup.listplayerbyuidCall.playerteamteamlogo(
+            (apiResultp0p?.jsonBody ?? ''),
+          ),
+      );
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
