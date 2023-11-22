@@ -33,12 +33,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().authPlayer == null) {
+      if (FFAppState().authPlayer.playerId == 0) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
             return AlertDialog(
-              title: Text(' Auth player UNSET'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
