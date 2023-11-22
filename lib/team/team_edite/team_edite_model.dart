@@ -13,7 +13,6 @@ import 'team_edite_widget.dart' show TeamEditeWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -95,10 +94,6 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   ApiCallResponse? apiResultxwd;
   // Stores action output result for [Custom Action - dtPLAYER] action in Button widget.
   List<PlayerStruct>? searchedPlayerData;
-  // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
-  ApiCallResponse? apiResultigb;
-  // Stores action output result for [Backend Call - API (CHATS)] action in IconButton widget.
-  ApiCallResponse? apiResult8j2;
 
   /// Initialization and disposal methods.
 
