@@ -29,7 +29,7 @@ Future dowloadAllCountrieToAppState(BuildContext context) async {
   ApiCallResponse? allCountrieJsonData;
   List<CountrieStruct>? convertedCountriesData;
 
-  if (FFAppState().allCountries.first == null) {
+  if (FFAppState().allCountries.first != null) {
     allCountrieJsonData = await CountryGroup.countriesCall.call();
     if ((allCountrieJsonData?.succeeded ?? true)) {
       convertedCountriesData = await actions.dtCOUNTRIE(
