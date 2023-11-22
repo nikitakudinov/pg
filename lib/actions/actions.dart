@@ -6,6 +6,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -91,7 +92,6 @@ Future loadAuthUserChats(BuildContext context) async {
 
 Future upadateAuthUserDataValues(BuildContext context) async {
   ApiCallResponse? apiResultp0p;
-  List<TeamStruct>? dtPLAYERTEAM;
 
   apiResultp0p = await PlayerGroup.listplayerbyuidCall.call(
     idList: currentUserUid,
@@ -138,15 +138,10 @@ Future upadateAuthUserDataValues(BuildContext context) async {
             (apiResultp0p?.jsonBody ?? ''),
           ),
       );
-    });
-    dtPLAYERTEAM = await actions.dtTEAM(
-      PlayerGroup.listplayerbyuidCall.playerteam(
+      FFAppState().authPlayerTeam =
+          TeamStruct.fromMap(PlayerGroup.listplayerbyuidCall.playerteam(
         (apiResultp0p?.jsonBody ?? ''),
-      ),
-    );
-    FFAppState().update(() {
-      FFAppState().authPlayerTeamList =
-          dtPLAYERTEAM!.toList().cast<TeamStruct>();
+      ));
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
