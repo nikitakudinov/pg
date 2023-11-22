@@ -254,36 +254,8 @@ Future loadCurentTeamMembers(
     idList: FFAppState().selectedTeamId.toString(),
   );
   if ((jsonTeamMembers?.succeeded ?? true)) {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('1'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
     dtTeamMembers = await actions.dtPLAYER(
       (jsonTeamMembers?.jsonBody ?? ''),
-    );
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('11'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
     );
     FFAppState().update(() {
       FFAppState().curentTeamMembersList =
@@ -294,7 +266,7 @@ Future loadCurentTeamMembers(
       context: context,
       builder: (alertDialogContext) {
         return AlertDialog(
-          title: Text('2'),
+          title: Text('Нет данных в json'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
