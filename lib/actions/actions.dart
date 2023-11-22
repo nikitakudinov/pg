@@ -111,7 +111,12 @@ Future upadateAuthUserDataValues(BuildContext context) async {
               ? TeamStruct.fromMap(PlayerGroup.listplayerbyuidCall.playerteam(
                   (apiResultp0p?.jsonBody ?? ''),
                 ))
-              : null,
+              : null
+          ..playerNickname = PlayerGroup.listplayerbyuidCall
+              .playernickname(
+                (apiResultp0p?.jsonBody ?? ''),
+              )
+              .toString(),
       );
     });
     ScaffoldMessenger.of(context).showSnackBar(
