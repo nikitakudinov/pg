@@ -278,34 +278,3 @@ Future loadCurentTeamMembers(
     );
   }
 }
-
-Future allTEAMSUpdater(BuildContext context) async {
-  ApiCallResponse? allTeamsCount;
-
-  allTeamsCount = await TeamGroup.lISTALLTEAMScountCall.call();
-  if (FFAppState().allTEAMScount !=
-      MessagingGroup.gETNOTIFICATIONScountCall.count(
-        (apiResultc64?.jsonBody ?? ''),
-      )) {
-    FFAppState().update(() {
-      FFAppState().allTEAMScount = TeamGroup.lISTALLTEAMScountCall.count(
-        (allTeamsCount?.jsonBody ?? ''),
-      );
-    });
-    await action_blocks.dowloadAllTeamsDataToAppState(context);
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('Teams updated'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
