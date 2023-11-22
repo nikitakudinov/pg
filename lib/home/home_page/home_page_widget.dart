@@ -35,6 +35,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.preloadDataOfHomePage(context);
+      setState(() {
+        FFAppState().allTEAMScount = 0;
+      });
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 10000),
         callback: (timer) async {
