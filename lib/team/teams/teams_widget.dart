@@ -195,6 +195,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   'МАТЧИ',
