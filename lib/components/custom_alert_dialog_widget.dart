@@ -51,83 +51,89 @@ class _CustomAlertDialogWidgetState extends State<CustomAlertDialogWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              'Внимание!',
-              style: FlutterFlowTheme.of(context).bodyMedium,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              widget.dialogBody!,
-              style: FlutterFlowTheme.of(context).bodyMedium,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              child: FFButtonWidget(
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-                text: 'Остаться',
-                options: FFButtonOptions(
-                  height: 30.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).tertiary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Cabin Condensed',
-                        color: Colors.white,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(50.0, 150.0, 50.0, 50.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                'Внимание!',
+                style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                widget.dialogBody!,
+                style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
+                  text: 'Остаться',
+                  options: FFButtonOptions(
+                    height: 30.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Cabin Condensed',
+                          color: Colors.white,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(4.0),
                   ),
-                  borderRadius: BorderRadius.circular(4.0),
                 ),
               ),
-            ),
-            Expanded(
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Покинуть',
-                options: FFButtonOptions(
-                  height: 30.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).tertiary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Cabin Condensed',
-                        color: Colors.white,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+              Expanded(
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Покинуть',
+                  options: FFButtonOptions(
+                    height: 30.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Cabin Condensed',
+                          color: Colors.white,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(4.0),
                   ),
-                  borderRadius: BorderRadius.circular(4.0),
                 ),
               ),
-            ),
-          ].divide(SizedBox(width: 10.0)),
-        ),
-      ].divide(SizedBox(height: 15.0)),
+            ].divide(SizedBox(width: 10.0)),
+          ),
+        ].divide(SizedBox(height: 15.0)),
+      ),
     );
   }
 }
