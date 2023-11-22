@@ -283,7 +283,7 @@ Future allTEAMSUpdater(BuildContext context) async {
   ApiCallResponse? allTeamsCount;
 
   allTeamsCount = await TeamGroup.lISTALLTEAMScountCall.call();
-  if (FFAppState().alertsCount !=
+  if (FFAppState().allTEAMScount !=
       MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
       )) {
