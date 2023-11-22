@@ -102,6 +102,10 @@ class ListplayerbyuidCall {
         response,
         r'''$[:].player_team.team_logo''',
       );
+  dynamic playeronline(dynamic response) => getJsonField(
+        response,
+        r'''$[:].player_online''',
+      );
 }
 
 class ListplayerbyidCall {

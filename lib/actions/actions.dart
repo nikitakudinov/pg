@@ -106,12 +106,57 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   );
   if ((jsonPlayerData?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().authPlayer = PlayerStruct(
-        playerNickname: PlayerGroup.listplayerbyuidCall
-            .playernickname(
-              (jsonPlayerData?.jsonBody ?? ''),
-            )
-            .toString(),
+      FFAppState().updateAuthPlayerStruct(
+        (e) => e
+          ..playerCreatedAt = PlayerGroup.listplayerbyuidCall
+              .playercreatedat(
+                (jsonPlayerData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerNickname = PlayerGroup.listplayerbyuidCall
+              .playernickname(
+                (jsonPlayerData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerTag = PlayerGroup.listplayerbyuidCall
+              .playerflag(
+                (jsonPlayerData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerFlag = PlayerGroup.listplayerbyuidCall.playerflag(
+            (jsonPlayerData?.jsonBody ?? ''),
+          )
+          ..playerCountrie = PlayerGroup.listplayerbyuidCall
+              .playercountrie(
+                (jsonPlayerData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerAvatar = PlayerGroup.listplayerbyuidCall.playeravatar(
+            (jsonPlayerData?.jsonBody ?? ''),
+          )
+          ..playerUid = PlayerGroup.listplayerbyuidCall
+              .playeruid(
+                (jsonPlayerData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..playerTeam = PlayerGroup.listplayerbyuidCall.playerteam(
+            (jsonPlayerData?.jsonBody ?? ''),
+          )
+          ..playerTeamLineup = PlayerGroup.listplayerbyuidCall.playerteamlineup(
+            (jsonPlayerData?.jsonBody ?? ''),
+          )
+          ..playerId = PlayerGroup.listplayerbyuidCall.playerid(
+            (jsonPlayerData?.jsonBody ?? ''),
+          )
+          ..playerTeamRole = (PlayerGroup.listplayerbyuidCall.playerteamrole(
+            (jsonPlayerData?.jsonBody ?? ''),
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
+              .toList()
+          ..playerOnline = PlayerGroup.listplayerbyuidCall.playeronline(
+            (jsonPlayerData?.jsonBody ?? ''),
+          ),
       );
       FFAppState().updateAuthPlayerTeamStruct(
         (e) => e
@@ -119,7 +164,52 @@ Future upadateAuthUserDataValues(BuildContext context) async {
               .teamnam(
                 (jsonTeamData?.jsonBody ?? ''),
               )
-              .toString(),
+              .toString()
+          ..teamCreatedAt = TeamGroup.listteambyidCall
+              .teamcreatedat(
+                (jsonTeamData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..teamUpdatedAt = TeamGroup.listteambyidCall
+              .teamupdatedat(
+                (jsonTeamData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..teamTag = TeamGroup.listteambyidCall
+              .teamtag(
+                (jsonTeamData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..teamFlag = TeamGroup.listteambyidCall.teamflag(
+            (jsonTeamData?.jsonBody ?? ''),
+          )
+          ..teamCountry = TeamGroup.listteambyidCall
+              .teamcountry(
+                (jsonTeamData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..teamCreator = TeamGroup.listteambyidCall
+              .teamcreator(
+                (jsonTeamData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..teamLogo = TeamGroup.listteambyidCall.teamlogo(
+            (jsonTeamData?.jsonBody ?? ''),
+          )
+          ..teamRecruitment = TeamGroup.listteambyidCall.teamrecruitment(
+            (jsonTeamData?.jsonBody ?? ''),
+          )
+          ..teamStatus = TeamGroup.listteambyidCall
+              .teamstatus(
+                (jsonTeamData?.jsonBody ?? ''),
+              )
+              .toString()
+          ..teamId = TeamGroup.listteambyidCall.teamid(
+            (jsonTeamData?.jsonBody ?? ''),
+          )
+          ..teamChatId = TeamGroup.listteambyidCall.teamchatid(
+            (jsonTeamData?.jsonBody ?? ''),
+          ),
       );
     });
     ScaffoldMessenger.of(context).showSnackBar(
