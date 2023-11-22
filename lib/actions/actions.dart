@@ -98,8 +98,21 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   );
   if ((apiResultp0p?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().authenticateduserData =
-          AuthenticateduserStruct.fromMap((apiResultp0p?.jsonBody ?? ''));
+      FFAppState().updateAuthenticateduserDataStruct(
+        (e) => e
+          ..playerTeam = PlayerGroup.listplayerbyuidCall.playerteam(
+                        (apiResultp0p?.jsonBody ?? ''),
+                      ) !=
+                      null &&
+                  PlayerGroup.listplayerbyuidCall.playerteam(
+                        (apiResultp0p?.jsonBody ?? ''),
+                      ) !=
+                      ''
+              ? TeamStruct.fromMap(PlayerGroup.listplayerbyuidCall.playerteam(
+                  (apiResultp0p?.jsonBody ?? ''),
+                ))
+              : null,
+      );
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
