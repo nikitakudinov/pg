@@ -188,20 +188,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               child: Image.network(
                                                 () {
                                                   if (notificationsListItem
-                                                          .notificationType ==
-                                                      'Приглашение в команду') {
+                                                          .notificationCategory ==
+                                                      'От команды') {
                                                     return notificationsListItem
                                                         .notificationFromTeam
                                                         .teamLogo;
                                                   } else if (notificationsListItem
-                                                          .notificationType ==
-                                                      'Принял заявку вступления в клан') {
+                                                          .notificationCategory ==
+                                                      'От игрока') {
                                                     return notificationsListItem
                                                         .notificationFromPlayer
                                                         .playerAvatar;
                                                   } else if (notificationsListItem
-                                                          .notificationType ==
-                                                      'Команда зачислена в состав турнира') {
+                                                          .notificationCategory ==
+                                                      'От турнира') {
                                                     return notificationsListItem
                                                         .notificationFromTournament
                                                         .tournamentLogo;
