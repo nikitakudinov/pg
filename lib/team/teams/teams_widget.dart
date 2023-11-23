@@ -194,7 +194,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                               ),
                                               child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(0.0),
+                                                    BorderRadius.circular(5.0),
                                                 child: Image.network(
                                                   () {
                                                     if (notificationsListItem
@@ -750,7 +750,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                       borderRadius: BorderRadius.circular(5.0),
                                     ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0.0),
+                                      borderRadius: BorderRadius.circular(5.0),
                                       child: Image.network(
                                         FFAppState().authPlayerTeam.teamLogo,
                                         width: 70.0,
@@ -1212,7 +1212,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                       ),
                                       child: ClipRRect(
                                         borderRadius:
-                                            BorderRadius.circular(0.0),
+                                            BorderRadius.circular(5.0),
                                         child: Image.network(
                                           allTeamsListItem.teamLogo,
                                           width: 55.0,
