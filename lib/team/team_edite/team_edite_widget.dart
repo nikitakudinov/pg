@@ -442,126 +442,133 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Builder(
-                                    builder: (context) {
-                                      final searchedPlayerRow =
-                                          _model.searchedPlayer.toList();
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: searchedPlayerRow.length,
-                                        itemBuilder:
-                                            (context, searchedPlayerRowIndex) {
-                                          final searchedPlayerRowItem =
-                                              searchedPlayerRow[
-                                                  searchedPlayerRowIndex];
-                                          return Container(
-                                            decoration: BoxDecoration(),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10.0, 10.0,
-                                                          10.0, 10.0),
-                                                  child: Container(
-                                                    width: 55.0,
-                                                    height: 55.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        searchedPlayerRowItem
-                                                            .playerAvatar,
-                                                        width: 55.0,
-                                                        height: 55.0,
-                                                        fit: BoxFit.cover,
+                                  if (_model.teamMembersList.first != null)
+                                    Builder(
+                                      builder: (context) {
+                                        final searchedPlayerRow =
+                                            _model.searchedPlayer.toList();
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: searchedPlayerRow.length,
+                                          itemBuilder: (context,
+                                              searchedPlayerRowIndex) {
+                                            final searchedPlayerRowItem =
+                                                searchedPlayerRow[
+                                                    searchedPlayerRowIndex];
+                                            return Container(
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10.0,
+                                                                10.0,
+                                                                10.0,
+                                                                10.0),
+                                                    child: Container(
+                                                      width: 55.0,
+                                                      height: 55.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                       ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        '${searchedPlayerRowItem.playerTag} | ${searchedPlayerRowItem.playerNickname}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall,
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            0.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  searchedPlayerRowItem
-                                                                      .playerFlag,
-                                                                  width: 20.0,
-                                                                  height: 12.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              searchedPlayerRowItem
-                                                                  .playerCountrie,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ],
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.network(
+                                                          searchedPlayerRowItem
+                                                              .playerAvatar,
+                                                          width: 55.0,
+                                                          height: 55.0,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
-                                                    ],
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                                  Expanded(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          '${searchedPlayerRowItem.playerTag} | ${searchedPlayerRowItem.playerNickname}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleSmall,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              0.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    searchedPlayerRowItem
+                                                                        .playerFlag,
+                                                                    width: 20.0,
+                                                                    height:
+                                                                        12.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                searchedPlayerRowItem
+                                                                    .playerCountrie,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
                                   Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
