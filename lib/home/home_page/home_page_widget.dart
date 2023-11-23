@@ -35,6 +35,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (FFAppState().authPlayer.playerId == 0) {
         await action_blocks.authPlayerUpdater(context);
+        await action_blocks.notificationsUpdater(context);
+        await action_blocks.loadAuthUserChats(context);
+      } else {
+        await action_blocks.authPlayerUpdater(context);
+        await action_blocks.notificationsUpdater(context);
+        await action_blocks.loadAuthUserChats(context);
       }
     });
   }
