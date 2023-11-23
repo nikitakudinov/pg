@@ -641,6 +641,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                     'Приглашение в команду',
                                                 'notification_body':
                                                     'Команда ${FFAppState().allTEAMS[widget.teamIndex].teamName}  предлагает вступить в ее ряды.',
+                                                'notification_category':
+                                                    'От команды',
                                               });
                                               setState(() {
                                                 _model.messageConfirmInvintVISIBILITY =
@@ -802,22 +804,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                               .toList()
                                               .cast<PlayerStruct>();
                                         });
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Игрок найден'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
                                       } else {
                                         await showDialog(
                                           context: context,
