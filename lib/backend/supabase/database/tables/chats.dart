@@ -32,6 +32,6 @@ class ChatsRow extends SupabaseDataRow {
   int? get chatOfTeam => getField<int>('chat_of_team');
   set chatOfTeam(int? value) => setField<int>('chat_of_team', value);
 
-  String? get chatType => getField<String>('chat_type');
-  set chatType(String? value) => setField<String>('chat_type', value);
+  String get chatChattype => getField<String>('chat_chattype')!;
+  set chatChattype(String value) => setField<String>('chat_chattype', value);
 }

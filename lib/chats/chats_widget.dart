@@ -105,7 +105,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
                                       child: Image.network(
-                                        (chatsItem.chatType == 'Чат команды') &&
+                                        (chatsItem.chatChattype ==
+                                                    'Чат команды') &&
                                                 (chatsItem.chatOfTeam ==
                                                     FFAppState()
                                                         .authPlayer
