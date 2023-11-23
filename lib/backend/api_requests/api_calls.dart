@@ -998,6 +998,7 @@ class MessagingGroup {
   static GETNOTIFICATIONScountCall gETNOTIFICATIONScountCall =
       GETNOTIFICATIONScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
+  static GETUSERCHATSCopyCall gETUSERCHATSCopyCall = GETUSERCHATSCopyCall();
   static GETUSERCHATScountCall gETUSERCHATScountCall = GETUSERCHATScountCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
 }
@@ -1251,6 +1252,36 @@ class GetuserchatsCall {
   dynamic membersplayerid(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_id''',
+      );
+}
+
+class GETUSERCHATSCopyCall {
+  Future<ApiCallResponse> call({
+    String? authUser = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETUSERCHATS Copy',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*,chat_members(member:players(*)))',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic chatid(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chat_id''',
+        true,
       );
 }
 
