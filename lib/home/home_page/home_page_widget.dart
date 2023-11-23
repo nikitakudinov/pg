@@ -97,6 +97,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 setState(() {
                   FFAppState().authPlayerTeam = TeamStruct();
                 });
+                setState(() {
+                  FFAppState().authUserUpdated = '';
+                });
 
                 context.goNamedAuth('LoginPage', context.mounted);
               },
