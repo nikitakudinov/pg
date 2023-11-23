@@ -1291,7 +1291,8 @@ class GETUSERCHATScountCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETUSERCHATScount',
-      apiUrl: '${MessagingGroup.baseUrl}chats?select=count',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
