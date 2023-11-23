@@ -138,10 +138,14 @@ class _TeamsWidgetState extends State<TeamsWidget>
                     builder: (context) {
                       final notificationsList =
                           FFAppState().notofications.toList();
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(notificationsList.length,
-                            (notificationsListIndex) {
+                      return ListView.separated(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: notificationsList.length,
+                        separatorBuilder: (_, __) => SizedBox(height: 10.0),
+                        itemBuilder: (context, notificationsListIndex) {
                           final notificationsListItem =
                               notificationsList[notificationsListIndex];
                           return Container(
@@ -581,7 +585,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                               ),
                             ),
                           );
-                        }),
+                        },
                       );
                     },
                   ),
