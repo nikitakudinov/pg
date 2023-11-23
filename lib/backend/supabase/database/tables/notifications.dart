@@ -49,4 +49,8 @@ class NotificationsRow extends SupabaseDataRow {
   String? get notificationBody => getField<String>('notification_body');
   set notificationBody(String? value) =>
       setField<String>('notification_body', value);
+
+  String? get notificationCategory => getField<String>('notification_category');
+  set notificationCategory(String? value) =>
+      setField<String>('notification_category', value);
 }

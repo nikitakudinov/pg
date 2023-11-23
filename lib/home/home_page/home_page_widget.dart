@@ -370,6 +370,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   'Отказ на предложение',
                                               'notification_body':
                                                   'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
+                                              'notification_category':
+                                                  'От игрока',
                                             });
                                             await NotificationsTable().delete(
                                               matchingRows: (rows) => rows.eq(

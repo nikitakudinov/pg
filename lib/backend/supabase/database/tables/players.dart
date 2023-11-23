@@ -54,4 +54,8 @@ class PlayersRow extends SupabaseDataRow {
 
   bool get playerOnline => getField<bool>('player_online')!;
   set playerOnline(bool value) => setField<bool>('player_online', value);
+
+  DateTime? get playerUpdateAt => getField<DateTime>('player_update_at');
+  set playerUpdateAt(DateTime? value) =>
+      setField<DateTime>('player_update_at', value);
 }
