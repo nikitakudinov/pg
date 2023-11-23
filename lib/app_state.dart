@@ -281,6 +281,12 @@ class FFAppState extends ChangeNotifier {
   set authUserUpdated(String _value) {
     _authUserUpdated = _value;
   }
+
+  int _chatsCount = 0;
+  int get chatsCount => _chatsCount;
+  set chatsCount(int _value) {
+    _chatsCount = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

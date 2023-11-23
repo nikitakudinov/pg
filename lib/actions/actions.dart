@@ -430,3 +430,22 @@ Future authPlayerUpdater(BuildContext context) async {
     );
   }
 }
+
+Future chasUpdater(BuildContext context) async {
+  ApiCallResponse? apiResult9bd;
+
+  apiResult9bd = await MessagingGroup.gETUSERCHATScountCall.call(
+    authUser: currentUserUid,
+  );
+  if (FFAppState().chatsCount !=
+      MessagingGroup.gETUSERCHATScountCall.count(
+        (apiResult9bd?.jsonBody ?? ''),
+      )) {
+    await action_blocks.loadAuthUserChats(context);
+    FFAppState().update(() {
+      FFAppState().chatsCount = MessagingGroup.gETUSERCHATScountCall.count(
+        (apiResult9bd?.jsonBody ?? ''),
+      );
+    });
+  }
+}
