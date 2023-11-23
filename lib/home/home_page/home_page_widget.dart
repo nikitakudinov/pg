@@ -153,13 +153,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        notificationsListItem.notificationBody,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    ],
+                                    children: [],
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -320,6 +314,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               ],
                                             ),
                                           ],
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Text(
+                                            notificationsListItem
+                                                .notificationBody,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
                                         ),
                                       ],
                                     ),
