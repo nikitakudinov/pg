@@ -128,7 +128,6 @@ class _TeamsWidgetState extends State<TeamsWidget>
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -141,7 +140,6 @@ class _TeamsWidgetState extends State<TeamsWidget>
                           FFAppState().notofications.toList();
                       return ListView.separated(
                         padding: EdgeInsets.zero,
-                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: notificationsList.length,
@@ -1065,7 +1063,6 @@ class _TeamsWidgetState extends State<TeamsWidget>
                       final allTeamsList = FFAppState().allTEAMS.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
-                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: allTeamsList.length,
