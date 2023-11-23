@@ -124,6 +124,433 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  child: Builder(
+                    builder: (context) {
+                      final notificationsList =
+                          FFAppState().notofications.toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: notificationsList.length,
+                        itemBuilder: (context, notificationsListIndex) {
+                          final notificationsListItem =
+                              notificationsList[notificationsListIndex];
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Color(0x6F000000),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 10.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        notificationsListItem.notificationBody,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Container(
+                                            width: 45.0,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                () {
+                                                  if (notificationsListItem
+                                                          .notificationType ==
+                                                      'Приглашение в команду') {
+                                                    return notificationsListItem
+                                                        .notificationFromTeam
+                                                        .teamLogo;
+                                                  } else if (notificationsListItem
+                                                          .notificationType ==
+                                                      'Принял заявку вступления в клан') {
+                                                    return notificationsListItem
+                                                        .notificationFromPlayer
+                                                        .playerAvatar;
+                                                  } else if (notificationsListItem
+                                                          .notificationType ==
+                                                      'Команда зачислена в состав турнира') {
+                                                    return notificationsListItem
+                                                        .notificationFromTournament
+                                                        .tournamentLogo;
+                                                  } else {
+                                                    return '0';
+                                                  }
+                                                }(),
+                                                width: 45.0,
+                                                height: 45.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              () {
+                                                if (notificationsListItem
+                                                        .notificationType ==
+                                                    'Приглашение в команду') {
+                                                  return notificationsListItem
+                                                      .notificationFromTeam
+                                                      .teamName;
+                                                } else if (notificationsListItem
+                                                        .notificationType ==
+                                                    'Принял заявку вступления в клан') {
+                                                  return notificationsListItem
+                                                      .notificationFromPlayer
+                                                      .playerNickname;
+                                                } else if (notificationsListItem
+                                                        .notificationType ==
+                                                    'Команда зачислена в состав турнира') {
+                                                  return notificationsListItem
+                                                      .notificationFromTournament
+                                                      .tournamentName;
+                                                } else {
+                                                  return '0';
+                                                }
+                                              }(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium,
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 20.0,
+                                                  height: 12.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                    child: Image.network(
+                                                      () {
+                                                        if (notificationsListItem
+                                                                .notificationType ==
+                                                            'Приглашение в команду') {
+                                                          return notificationsListItem
+                                                              .notificationFromTeam
+                                                              .teamFlag;
+                                                        } else if (notificationsListItem
+                                                                .notificationType ==
+                                                            'Принял заявку вступления в клан') {
+                                                          return notificationsListItem
+                                                              .notificationFromPlayer
+                                                              .playerFlag;
+                                                        } else if (notificationsListItem
+                                                                .notificationType ==
+                                                            'Команда зачислена в состав турнира') {
+                                                          return notificationsListItem
+                                                              .notificationFromTournament
+                                                              .tournamentFlag;
+                                                        } else {
+                                                          return '0';
+                                                        }
+                                                      }(),
+                                                      width: 20.0,
+                                                      height: 12.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  () {
+                                                    if (notificationsListItem
+                                                            .notificationType ==
+                                                        'Приглашение в команду') {
+                                                      return notificationsListItem
+                                                          .notificationFromTeam
+                                                          .teamCountry;
+                                                    } else if (notificationsListItem
+                                                            .notificationType ==
+                                                        'Принял заявку вступления в клан') {
+                                                      return notificationsListItem
+                                                          .notificationFromPlayer
+                                                          .playerCountrie;
+                                                    } else if (notificationsListItem
+                                                            .notificationType ==
+                                                        'Команда зачислена в состав турнира') {
+                                                      return notificationsListItem
+                                                          .notificationFromTournament
+                                                          .tournamentCountry;
+                                                    } else {
+                                                      return '0';
+                                                    }
+                                                  }(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            await NotificationsTable().insert({
+                                              'notification_created_at':
+                                                  supaSerialize<DateTime>(
+                                                      getCurrentTimestamp),
+                                              'notification_from_player':
+                                                  currentUserUid,
+                                              'notification_to_player':
+                                                  notificationsListItem
+                                                      .notificationFromPlayer
+                                                      .playerUid,
+                                              'notification_type':
+                                                  'Отказ на предложение',
+                                              'notification_body':
+                                                  'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
+                                            });
+                                            await NotificationsTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'notification_id',
+                                                notificationsListItem
+                                                    .notificationId,
+                                              ),
+                                            );
+                                            setState(() {
+                                              FFAppState()
+                                                  .removeFromNotofications(
+                                                      notificationsListItem);
+                                            });
+                                          },
+                                          text: 'Отказаться',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            await NotificationsTable().insert({
+                                              'notification_created_at':
+                                                  supaSerialize<DateTime>(
+                                                      getCurrentTimestamp),
+                                              'notification_from_player':
+                                                  FFAppState()
+                                                      .authPlayer
+                                                      .playerUid,
+                                              'notification_to_player':
+                                                  notificationsListItem
+                                                      .notificationFromPlayer
+                                                      .playerUid,
+                                              'notification_type':
+                                                  'Принял заявку вступления в клан',
+                                              'notification_body':
+                                                  'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                            });
+                                            await PlayersTable().update(
+                                              data: {
+                                                'player_team':
+                                                    notificationsListItem
+                                                        .notificationFromTeam
+                                                        .teamId,
+                                                'player_team_role': [
+                                                  'Рядовой боец'
+                                                ],
+                                                'player_team_lineup': false,
+                                              },
+                                              matchingRows: (rows) => rows.eq(
+                                                'player_uid',
+                                                currentUserUid,
+                                              ),
+                                            );
+                                          },
+                                          text: 'Вступить',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () {
+                                            print('Button pressed ...');
+                                          },
+                                          text: 'Отправить ссобщеня',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            await NotificationsTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'notification_id',
+                                                notificationsListItem
+                                                    .notificationId,
+                                              ),
+                                            );
+                                            setState(() {
+                                              FFAppState()
+                                                  .removeAtIndexFromNotofications(
+                                                      notificationsListIndex);
+                                            });
+                                          },
+                                          text: 'Ясно',
+                                          options: FFButtonOptions(
+                                            height: 30.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Cabin Condensed',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 10.0)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
                 if (FFAppState().authPlayer.playerId != 0)
                   Padding(
                     padding:
@@ -209,402 +636,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ],
                     ),
                   ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                  child: Builder(
-                    builder: (context) {
-                      final notificationsList =
-                          FFAppState().notofications.toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: notificationsList.length,
-                        itemBuilder: (context, notificationsListIndex) {
-                          final notificationsListItem =
-                              notificationsList[notificationsListIndex];
-                          return Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 15.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      notificationsListItem.notificationBody,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 10.0, 0.0),
-                                      child: Container(
-                                        width: 45.0,
-                                        height: 45.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.network(
-                                            () {
-                                              if (notificationsListItem
-                                                      .notificationType ==
-                                                  'Приглашение в команду') {
-                                                return notificationsListItem
-                                                    .notificationFromTeam
-                                                    .teamLogo;
-                                              } else if (notificationsListItem
-                                                      .notificationType ==
-                                                  'Принял заявку вступления в клан') {
-                                                return notificationsListItem
-                                                    .notificationFromPlayer
-                                                    .playerAvatar;
-                                              } else if (notificationsListItem
-                                                      .notificationType ==
-                                                  'Команда зачислена в состав турнира') {
-                                                return notificationsListItem
-                                                    .notificationFromTournament
-                                                    .tournamentLogo;
-                                              } else {
-                                                return '0';
-                                              }
-                                            }(),
-                                            width: 45.0,
-                                            height: 45.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          () {
-                                            if (notificationsListItem
-                                                    .notificationType ==
-                                                'Приглашение в команду') {
-                                              return notificationsListItem
-                                                  .notificationFromTeam
-                                                  .teamName;
-                                            } else if (notificationsListItem
-                                                    .notificationType ==
-                                                'Принял заявку вступления в клан') {
-                                              return notificationsListItem
-                                                  .notificationFromPlayer
-                                                  .playerNickname;
-                                            } else if (notificationsListItem
-                                                    .notificationType ==
-                                                'Команда зачислена в состав турнира') {
-                                              return notificationsListItem
-                                                  .notificationFromTournament
-                                                  .tournamentName;
-                                            } else {
-                                              return '0';
-                                            }
-                                          }(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium,
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: 20.0,
-                                              height: 12.0,
-                                              decoration: BoxDecoration(),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  () {
-                                                    if (notificationsListItem
-                                                            .notificationType ==
-                                                        'Приглашение в команду') {
-                                                      return notificationsListItem
-                                                          .notificationFromTeam
-                                                          .teamFlag;
-                                                    } else if (notificationsListItem
-                                                            .notificationType ==
-                                                        'Принял заявку вступления в клан') {
-                                                      return notificationsListItem
-                                                          .notificationFromPlayer
-                                                          .playerFlag;
-                                                    } else if (notificationsListItem
-                                                            .notificationType ==
-                                                        'Команда зачислена в состав турнира') {
-                                                      return notificationsListItem
-                                                          .notificationFromTournament
-                                                          .tournamentFlag;
-                                                    } else {
-                                                      return '0';
-                                                    }
-                                                  }(),
-                                                  width: 20.0,
-                                                  height: 12.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              () {
-                                                if (notificationsListItem
-                                                        .notificationType ==
-                                                    'Приглашение в команду') {
-                                                  return notificationsListItem
-                                                      .notificationFromTeam
-                                                      .teamCountry;
-                                                } else if (notificationsListItem
-                                                        .notificationType ==
-                                                    'Принял заявку вступления в клан') {
-                                                  return notificationsListItem
-                                                      .notificationFromPlayer
-                                                      .playerCountrie;
-                                                } else if (notificationsListItem
-                                                        .notificationType ==
-                                                    'Команда зачислена в состав турнира') {
-                                                  return notificationsListItem
-                                                      .notificationFromTournament
-                                                      .tournamentCountry;
-                                                } else {
-                                                  return '0';
-                                                }
-                                              }(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await NotificationsTable().insert({
-                                          'notification_created_at':
-                                              supaSerialize<DateTime>(
-                                                  getCurrentTimestamp),
-                                          'notification_from_player':
-                                              currentUserUid,
-                                          'notification_to_player':
-                                              notificationsListItem
-                                                  .notificationFromPlayer
-                                                  .playerUid,
-                                          'notification_type':
-                                              'Отказ на предложение',
-                                          'notification_body':
-                                              'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
-                                        });
-                                        await NotificationsTable().delete(
-                                          matchingRows: (rows) => rows.eq(
-                                            'notification_id',
-                                            notificationsListItem
-                                                .notificationId,
-                                          ),
-                                        );
-                                        setState(() {
-                                          FFAppState().removeFromNotofications(
-                                              notificationsListItem);
-                                        });
-                                      },
-                                      text: 'Отказаться',
-                                      options: FFButtonOptions(
-                                        height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              color: Colors.white,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await NotificationsTable().insert({
-                                          'notification_created_at':
-                                              supaSerialize<DateTime>(
-                                                  getCurrentTimestamp),
-                                          'notification_from_player':
-                                              FFAppState().authPlayer.playerUid,
-                                          'notification_to_player':
-                                              notificationsListItem
-                                                  .notificationFromPlayer
-                                                  .playerUid,
-                                          'notification_type':
-                                              'Принял заявку вступления в клан',
-                                          'notification_body':
-                                              'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
-                                        });
-                                        await PlayersTable().update(
-                                          data: {
-                                            'player_team': notificationsListItem
-                                                .notificationFromTeam.teamId,
-                                            'player_team_role': [
-                                              'Рядовой боец'
-                                            ],
-                                            'player_team_lineup': false,
-                                          },
-                                          matchingRows: (rows) => rows.eq(
-                                            'player_uid',
-                                            currentUserUid,
-                                          ),
-                                        );
-                                      },
-                                      text: 'Вступить',
-                                      options: FFButtonOptions(
-                                        height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              color: Colors.white,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: 'Отправить ссобщеня',
-                                      options: FFButtonOptions(
-                                        height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              color: Colors.white,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await NotificationsTable().delete(
-                                          matchingRows: (rows) => rows.eq(
-                                            'notification_id',
-                                            notificationsListItem
-                                                .notificationId,
-                                          ),
-                                        );
-                                        setState(() {
-                                          FFAppState()
-                                              .removeAtIndexFromNotofications(
-                                                  notificationsListIndex);
-                                        });
-                                      },
-                                      text: 'Ясно',
-                                      options: FFButtonOptions(
-                                        height: 30.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              color: Colors.white,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(width: 10.0)),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
               ],
             ),
           ),

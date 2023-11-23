@@ -15,6 +15,7 @@ class NotificationStruct extends BaseStruct {
     String? notificationType,
     String? notificationBody,
     String? notificationToPlayer,
+    String? notificationCategory,
   })  : _notificationId = notificationId,
         _notificationCreatedAt = notificationCreatedAt,
         _notificationFromTeam = notificationFromTeam,
@@ -22,7 +23,8 @@ class NotificationStruct extends BaseStruct {
         _notificationFromTournament = notificationFromTournament,
         _notificationType = notificationType,
         _notificationBody = notificationBody,
-        _notificationToPlayer = notificationToPlayer;
+        _notificationToPlayer = notificationToPlayer,
+        _notificationCategory = notificationCategory;
 
   // "notification_id" field.
   int? _notificationId;
@@ -84,6 +86,12 @@ class NotificationStruct extends BaseStruct {
   set notificationToPlayer(String? val) => _notificationToPlayer = val;
   bool hasNotificationToPlayer() => _notificationToPlayer != null;
 
+  // "notification_category" field.
+  String? _notificationCategory;
+  String get notificationCategory => _notificationCategory ?? '';
+  set notificationCategory(String? val) => _notificationCategory = val;
+  bool hasNotificationCategory() => _notificationCategory != null;
+
   static NotificationStruct fromMap(Map<String, dynamic> data) =>
       NotificationStruct(
         notificationId: castToType<int>(data['notification_id']),
@@ -97,6 +105,7 @@ class NotificationStruct extends BaseStruct {
         notificationType: data['notification_type'] as String?,
         notificationBody: data['notification_body'] as String?,
         notificationToPlayer: data['notification_to_player'] as String?,
+        notificationCategory: data['notification_category'] as String?,
       );
 
   static NotificationStruct? maybeFromMap(dynamic data) =>
@@ -111,6 +120,7 @@ class NotificationStruct extends BaseStruct {
         'notification_type': _notificationType,
         'notification_body': _notificationBody,
         'notification_to_player': _notificationToPlayer,
+        'notification_category': _notificationCategory,
       }.withoutNulls;
 
   @override
@@ -145,6 +155,10 @@ class NotificationStruct extends BaseStruct {
         ),
         'notification_to_player': serializeParam(
           _notificationToPlayer,
+          ParamType.String,
+        ),
+        'notification_category': serializeParam(
+          _notificationCategory,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -194,6 +208,11 @@ class NotificationStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        notificationCategory: deserializeParam(
+          data['notification_category'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -209,7 +228,8 @@ class NotificationStruct extends BaseStruct {
         notificationFromTournament == other.notificationFromTournament &&
         notificationType == other.notificationType &&
         notificationBody == other.notificationBody &&
-        notificationToPlayer == other.notificationToPlayer;
+        notificationToPlayer == other.notificationToPlayer &&
+        notificationCategory == other.notificationCategory;
   }
 
   @override
@@ -221,7 +241,8 @@ class NotificationStruct extends BaseStruct {
         notificationFromTournament,
         notificationType,
         notificationBody,
-        notificationToPlayer
+        notificationToPlayer,
+        notificationCategory
       ]);
 }
 
@@ -234,6 +255,7 @@ NotificationStruct createNotificationStruct({
   String? notificationType,
   String? notificationBody,
   String? notificationToPlayer,
+  String? notificationCategory,
 }) =>
     NotificationStruct(
       notificationId: notificationId,
@@ -245,4 +267,5 @@ NotificationStruct createNotificationStruct({
       notificationType: notificationType,
       notificationBody: notificationBody,
       notificationToPlayer: notificationToPlayer,
+      notificationCategory: notificationCategory,
     );
