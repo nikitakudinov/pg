@@ -436,6 +436,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   'Принял заявку вступления в клан',
                                               'notification_body':
                                                   'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                              'notification_category':
+                                                  'От игрока',
                                             });
                                             await PlayersTable().update(
                                               data: {
