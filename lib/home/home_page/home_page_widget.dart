@@ -153,7 +153,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    children: [],
+                                    children: [
+                                      Text(
+                                        notificationsListItem
+                                            .notificationCreatedAt!
+                                            .toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -245,41 +253,46 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Container(
-                                                  width: 20.0,
-                                                  height: 12.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                    child: Image.network(
-                                                      () {
-                                                        if (notificationsListItem
-                                                                .notificationType ==
-                                                            'Приглашение в команду') {
-                                                          return notificationsListItem
-                                                              .notificationFromTeam
-                                                              .teamFlag;
-                                                        } else if (notificationsListItem
-                                                                .notificationType ==
-                                                            'Принял заявку вступления в клан') {
-                                                          return notificationsListItem
-                                                              .notificationFromPlayer
-                                                              .playerFlag;
-                                                        } else if (notificationsListItem
-                                                                .notificationType ==
-                                                            'Команда зачислена в состав турнира') {
-                                                          return notificationsListItem
-                                                              .notificationFromTournament
-                                                              .tournamentFlag;
-                                                        } else {
-                                                          return '0';
-                                                        }
-                                                      }(),
-                                                      width: 20.0,
-                                                      height: 12.0,
-                                                      fit: BoxFit.cover,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 5.0, 0.0),
+                                                  child: Container(
+                                                    width: 20.0,
+                                                    height: 12.0,
+                                                    decoration: BoxDecoration(),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.network(
+                                                        () {
+                                                          if (notificationsListItem
+                                                                  .notificationType ==
+                                                              'Приглашение в команду') {
+                                                            return notificationsListItem
+                                                                .notificationFromTeam
+                                                                .teamFlag;
+                                                          } else if (notificationsListItem
+                                                                  .notificationType ==
+                                                              'Принял заявку вступления в клан') {
+                                                            return notificationsListItem
+                                                                .notificationFromPlayer
+                                                                .playerFlag;
+                                                          } else if (notificationsListItem
+                                                                  .notificationType ==
+                                                              'Команда зачислена в состав турнира') {
+                                                            return notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentFlag;
+                                                          } else {
+                                                            return '0';
+                                                          }
+                                                        }(),
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

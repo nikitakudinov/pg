@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 class NotificationStruct extends BaseStruct {
   NotificationStruct({
     int? notificationId,
-    String? notificationCreatedAt,
     TeamStruct? notificationFromTeam,
     PlayerStruct? notificationFromPlayer,
     TournamentStruct? notificationFromTournament,
@@ -16,15 +15,16 @@ class NotificationStruct extends BaseStruct {
     String? notificationBody,
     String? notificationToPlayer,
     String? notificationCategory,
+    DateTime? notificationCreatedAt,
   })  : _notificationId = notificationId,
-        _notificationCreatedAt = notificationCreatedAt,
         _notificationFromTeam = notificationFromTeam,
         _notificationFromPlayer = notificationFromPlayer,
         _notificationFromTournament = notificationFromTournament,
         _notificationType = notificationType,
         _notificationBody = notificationBody,
         _notificationToPlayer = notificationToPlayer,
-        _notificationCategory = notificationCategory;
+        _notificationCategory = notificationCategory,
+        _notificationCreatedAt = notificationCreatedAt;
 
   // "notification_id" field.
   int? _notificationId;
@@ -33,12 +33,6 @@ class NotificationStruct extends BaseStruct {
   void incrementNotificationId(int amount) =>
       _notificationId = notificationId + amount;
   bool hasNotificationId() => _notificationId != null;
-
-  // "notification_created_at" field.
-  String? _notificationCreatedAt;
-  String get notificationCreatedAt => _notificationCreatedAt ?? '';
-  set notificationCreatedAt(String? val) => _notificationCreatedAt = val;
-  bool hasNotificationCreatedAt() => _notificationCreatedAt != null;
 
   // "notification_from_team" field.
   TeamStruct? _notificationFromTeam;
@@ -92,10 +86,15 @@ class NotificationStruct extends BaseStruct {
   set notificationCategory(String? val) => _notificationCategory = val;
   bool hasNotificationCategory() => _notificationCategory != null;
 
+  // "notification_created_at" field.
+  DateTime? _notificationCreatedAt;
+  DateTime? get notificationCreatedAt => _notificationCreatedAt;
+  set notificationCreatedAt(DateTime? val) => _notificationCreatedAt = val;
+  bool hasNotificationCreatedAt() => _notificationCreatedAt != null;
+
   static NotificationStruct fromMap(Map<String, dynamic> data) =>
       NotificationStruct(
         notificationId: castToType<int>(data['notification_id']),
-        notificationCreatedAt: data['notification_created_at'] as String?,
         notificationFromTeam:
             TeamStruct.maybeFromMap(data['notification_from_team']),
         notificationFromPlayer:
@@ -106,6 +105,7 @@ class NotificationStruct extends BaseStruct {
         notificationBody: data['notification_body'] as String?,
         notificationToPlayer: data['notification_to_player'] as String?,
         notificationCategory: data['notification_category'] as String?,
+        notificationCreatedAt: data['notification_created_at'] as DateTime?,
       );
 
   static NotificationStruct? maybeFromMap(dynamic data) =>
@@ -113,7 +113,6 @@ class NotificationStruct extends BaseStruct {
 
   Map<String, dynamic> toMap() => {
         'notification_id': _notificationId,
-        'notification_created_at': _notificationCreatedAt,
         'notification_from_team': _notificationFromTeam?.toMap(),
         'notification_from_player': _notificationFromPlayer?.toMap(),
         'notification_from_tournament': _notificationFromTournament?.toMap(),
@@ -121,6 +120,7 @@ class NotificationStruct extends BaseStruct {
         'notification_body': _notificationBody,
         'notification_to_player': _notificationToPlayer,
         'notification_category': _notificationCategory,
+        'notification_created_at': _notificationCreatedAt,
       }.withoutNulls;
 
   @override
@@ -128,10 +128,6 @@ class NotificationStruct extends BaseStruct {
         'notification_id': serializeParam(
           _notificationId,
           ParamType.int,
-        ),
-        'notification_created_at': serializeParam(
-          _notificationCreatedAt,
-          ParamType.String,
         ),
         'notification_from_team': serializeParam(
           _notificationFromTeam,
@@ -161,6 +157,10 @@ class NotificationStruct extends BaseStruct {
           _notificationCategory,
           ParamType.String,
         ),
+        'notification_created_at': serializeParam(
+          _notificationCreatedAt,
+          ParamType.DateTime,
+        ),
       }.withoutNulls;
 
   static NotificationStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -168,11 +168,6 @@ class NotificationStruct extends BaseStruct {
         notificationId: deserializeParam(
           data['notification_id'],
           ParamType.int,
-          false,
-        ),
-        notificationCreatedAt: deserializeParam(
-          data['notification_created_at'],
-          ParamType.String,
           false,
         ),
         notificationFromTeam: deserializeStructParam(
@@ -213,6 +208,11 @@ class NotificationStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        notificationCreatedAt: deserializeParam(
+          data['notification_created_at'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -222,33 +222,32 @@ class NotificationStruct extends BaseStruct {
   bool operator ==(Object other) {
     return other is NotificationStruct &&
         notificationId == other.notificationId &&
-        notificationCreatedAt == other.notificationCreatedAt &&
         notificationFromTeam == other.notificationFromTeam &&
         notificationFromPlayer == other.notificationFromPlayer &&
         notificationFromTournament == other.notificationFromTournament &&
         notificationType == other.notificationType &&
         notificationBody == other.notificationBody &&
         notificationToPlayer == other.notificationToPlayer &&
-        notificationCategory == other.notificationCategory;
+        notificationCategory == other.notificationCategory &&
+        notificationCreatedAt == other.notificationCreatedAt;
   }
 
   @override
   int get hashCode => const ListEquality().hash([
         notificationId,
-        notificationCreatedAt,
         notificationFromTeam,
         notificationFromPlayer,
         notificationFromTournament,
         notificationType,
         notificationBody,
         notificationToPlayer,
-        notificationCategory
+        notificationCategory,
+        notificationCreatedAt
       ]);
 }
 
 NotificationStruct createNotificationStruct({
   int? notificationId,
-  String? notificationCreatedAt,
   TeamStruct? notificationFromTeam,
   PlayerStruct? notificationFromPlayer,
   TournamentStruct? notificationFromTournament,
@@ -256,10 +255,10 @@ NotificationStruct createNotificationStruct({
   String? notificationBody,
   String? notificationToPlayer,
   String? notificationCategory,
+  DateTime? notificationCreatedAt,
 }) =>
     NotificationStruct(
       notificationId: notificationId,
-      notificationCreatedAt: notificationCreatedAt,
       notificationFromTeam: notificationFromTeam ?? TeamStruct(),
       notificationFromPlayer: notificationFromPlayer ?? PlayerStruct(),
       notificationFromTournament:
@@ -268,4 +267,5 @@ NotificationStruct createNotificationStruct({
       notificationBody: notificationBody,
       notificationToPlayer: notificationToPlayer,
       notificationCategory: notificationCategory,
+      notificationCreatedAt: notificationCreatedAt,
     );
