@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'teams_widget.dart' show TeamsWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -23,6 +24,7 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
 
   /// Initialization and disposal methods.
 
@@ -30,6 +32,7 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
   }
 
   /// Action blocks are added here.

@@ -7,7 +7,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/upload_data.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'team_edite_widget.dart' show TeamEditeWidget;
 import 'package:flutter/material.dart';
@@ -69,6 +71,7 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -103,6 +106,7 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     teamNameFocusNode?.dispose();
     teamNameController?.dispose();
 

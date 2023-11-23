@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,15 @@ class _TeamsWidgetState extends State<TeamsWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.allTeamsUpdater(context);
       await action_blocks.dowloadAllCountrieToAppState(context);
+      // Загрузка и обновление notifications
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 5000),
+        callback: (timer) async {
+          await action_blocks.notificationsUpdater(context);
+          await action_blocks.chasUpdater(context);
+        },
+        startImmediately: true,
+      );
     });
   }
 
