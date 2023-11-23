@@ -825,6 +825,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                   ),
                                 ),
                                 Expanded(
+                                  flex: 2,
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
