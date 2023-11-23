@@ -386,10 +386,48 @@ Future authPlayerUpdater(BuildContext context) async {
   jsonAuthUserUpdated = await PlayerGroup.authplayerupdatedCall.call(
     uid: currentUserUid,
   );
-  if (FFAppState().authUserUpdated !=
-      PlayerGroup.authplayerupdatedCall.playerupdateat(
-        (jsonAuthUserUpdated?.jsonBody ?? ''),
-      )) {
+  if ((FFAppState().authUserUpdated ==
+          PlayerGroup.authplayerupdatedCall.playerupdateat(
+            (jsonAuthUserUpdated?.jsonBody ?? ''),
+          )) ||
+      (FFAppState().authUserUpdated == '0')) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Данные пользователя Обновление не требуется'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  } else {
     await action_blocks.upadateAuthUserDataValues(context);
+    FFAppState().update(() {
+      FFAppState().authUserUpdated = PlayerGroup.authplayerupdatedCall
+          .playerupdateat(
+            (jsonAuthUserUpdated?.jsonBody ?? ''),
+          )
+          .toString()
+          .toString();
+    });
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Данные пользователя обновлены'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
