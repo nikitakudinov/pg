@@ -91,7 +91,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 await authManager.signOut();
                 GoRouter.of(context).clearRedirectLocation();
 
-                setState(() {});
+                setState(() {
+                  FFAppState().authPlayer = PlayerStruct();
+                });
+                setState(() {
+                  FFAppState().authPlayerTeam = TeamStruct();
+                });
 
                 context.goNamedAuth('LoginPage', context.mounted);
               },
