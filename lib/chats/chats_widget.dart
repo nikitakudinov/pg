@@ -105,7 +105,15 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
                                       child: Image.network(
-                                        'https://picsum.photos/seed/535/600',
+                                        (chatsItem.chatType == 'Чат команды') &&
+                                                (chatsItem.chatOfTeam ==
+                                                    FFAppState()
+                                                        .authPlayer
+                                                        .playerTeam)
+                                            ? FFAppState()
+                                                .authPlayerTeam
+                                                .teamLogo
+                                            : '0',
                                         width: 50.0,
                                         height: 50.0,
                                         fit: BoxFit.cover,
@@ -117,6 +125,16 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'Чат вашей команды',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ],
+                                      ),
                                       Builder(
                                         builder: (context) {
                                           final chatMembers =
