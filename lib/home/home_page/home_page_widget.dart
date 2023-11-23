@@ -436,76 +436,94 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             ),
                                           ),
                                         ),
-                                      Expanded(
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            await NotificationsTable().insert({
-                                              'notification_created_at':
-                                                  supaSerialize<DateTime>(
-                                                      getCurrentTimestamp),
-                                              'notification_from_player':
-                                                  FFAppState()
-                                                      .authPlayer
-                                                      .playerUid,
-                                              'notification_to_player':
-                                                  notificationsListItem
-                                                      .notificationFromPlayer
-                                                      .playerUid,
-                                              'notification_type':
-                                                  'Принял заявку вступления в клан',
-                                              'notification_body':
-                                                  'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
-                                              'notification_category':
-                                                  'От игрока',
-                                            });
-                                            await PlayersTable().update(
-                                              data: {
-                                                'player_team':
+                                      if (() {
+                                        if (notificationsListItem
+                                                .notificationCategory ==
+                                            'От игрока') {
+                                          return false;
+                                        } else if (notificationsListItem
+                                                .notificationCategory ==
+                                            'От команды') {
+                                          return true;
+                                        } else if (notificationsListItem
+                                                .notificationCategory ==
+                                            'От турнира') {
+                                          return true;
+                                        } else {
+                                          return false;
+                                        }
+                                      }())
+                                        Expanded(
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await NotificationsTable()
+                                                  .insert({
+                                                'notification_created_at':
+                                                    supaSerialize<DateTime>(
+                                                        getCurrentTimestamp),
+                                                'notification_from_player':
+                                                    FFAppState()
+                                                        .authPlayer
+                                                        .playerUid,
+                                                'notification_to_player':
                                                     notificationsListItem
-                                                        .notificationFromTeam
-                                                        .teamId,
-                                                'player_team_role': [
-                                                  'Рядовой боец'
-                                                ],
-                                                'player_team_lineup': false,
-                                              },
-                                              matchingRows: (rows) => rows.eq(
-                                                'player_uid',
-                                                currentUserUid,
-                                              ),
-                                            );
-                                          },
-                                          text: 'Вступить',
-                                          options: FFButtonOptions(
-                                            height: 30.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily:
-                                                          'Cabin Condensed',
-                                                      color: Colors.white,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
+                                                        .notificationFromPlayer
+                                                        .playerUid,
+                                                'notification_type':
+                                                    'Принял заявку вступления в клан',
+                                                'notification_body':
+                                                    'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                                'notification_category':
+                                                    'От игрока',
+                                              });
+                                              await PlayersTable().update(
+                                                data: {
+                                                  'player_team':
+                                                      notificationsListItem
+                                                          .notificationFromTeam
+                                                          .teamId,
+                                                  'player_team_role': [
+                                                    'Рядовой боец'
+                                                  ],
+                                                  'player_team_lineup': false,
+                                                },
+                                                matchingRows: (rows) => rows.eq(
+                                                  'player_uid',
+                                                  currentUserUid,
+                                                ),
+                                              );
+                                            },
+                                            text: 'Вступить',
+                                            options: FFButtonOptions(
+                                              height: 30.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
-                                              width: 1.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
                                           ),
                                         ),
-                                      ),
                                       Expanded(
                                         child: FFButtonWidget(
                                           onPressed: () async {
