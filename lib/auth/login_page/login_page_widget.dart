@@ -235,6 +235,108 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+
+                            final user = await authManager.signInWithEmail(
+                              context,
+                              '1@1.ru',
+                              '123123',
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            setState(() {
+                              FFAppState().authUserUpdated = '0';
+                            });
+
+                            context.goNamedAuth('HomePage', context.mounted);
+                          },
+                          text: 'Войти как VORTEX',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0x79D4E7E5),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+
+                            final user = await authManager.signInWithEmail(
+                              context,
+                              '2@2.ru',
+                              '123123',
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            setState(() {
+                              FFAppState().authUserUpdated = '0';
+                            });
+
+                            context.goNamedAuth('HomePage', context.mounted);
+                          },
+                          text: 'Войти как RIMO',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0x79D4E7E5),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
