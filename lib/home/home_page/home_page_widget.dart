@@ -407,6 +407,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Expanded(
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        await NotificationsTable().insert({
+                                          'notification_created_at':
+                                              supaSerialize<DateTime>(
+                                                  getCurrentTimestamp),
+                                          'notification_from_team': 0,
+                                          'notification_from_player':
+                                              currentUserUid,
+                                          'notification_from_tournament': 0,
+                                          'notification_to_player':
+                                              notificationsListItem
+                                                  .notificationFromPlayer
+                                                  .playerUid,
+                                          'notification_type':
+                                              'Отказ на предложение',
+                                          'notification_body':
+                                              'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
+                                        });
                                         await NotificationsTable().delete(
                                           matchingRows: (rows) => rows.eq(
                                             'notification_id',
@@ -540,8 +557,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await NotificationsTable().delete(
+                                          matchingRows: (rows) => rows.eq(
+                                            'notification_id',
+                                            notificationsListItem
+                                                .notificationId,
+                                          ),
+                                        );
+                                        setState(() {
+                                          FFAppState()
+                                              .removeAtIndexFromNotofications(
+                                                  notificationsListIndex);
+                                        });
                                       },
                                       text: 'Ясно',
                                       options: FFButtonOptions(
