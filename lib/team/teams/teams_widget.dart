@@ -226,118 +226,126 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                               ),
                                             ),
                                           ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                () {
-                                                  if (notificationsListItem
-                                                          .notificationCategory ==
-                                                      'От игрока') {
-                                                    return notificationsListItem
-                                                        .notificationFromPlayer
-                                                        .playerNickname;
-                                                  } else if (notificationsListItem
-                                                          .notificationCategory ==
-                                                      'От команды') {
-                                                    return notificationsListItem
-                                                        .notificationFromTeam
-                                                        .teamName;
-                                                  } else if (notificationsListItem
-                                                          .notificationCategory ==
-                                                      'От турнира') {
-                                                    return notificationsListItem
-                                                        .notificationFromTournament
-                                                        .tournamentName;
-                                                  } else {
-                                                    return '0';
-                                                  }
-                                                }(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium,
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Container(
-                                                      width: 20.0,
-                                                      height: 12.0,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.network(
-                                                          () {
-                                                            if (notificationsListItem
-                                                                    .notificationCategory ==
-                                                                'От игрока') {
-                                                              return notificationsListItem
-                                                                  .notificationFromPlayer
-                                                                  .playerFlag;
-                                                            } else if (notificationsListItem
-                                                                    .notificationCategory ==
-                                                                'От команды') {
-                                                              return notificationsListItem
-                                                                  .notificationFromTeam
-                                                                  .teamFlag;
-                                                            } else if (notificationsListItem
-                                                                    .notificationCategory ==
-                                                                'От турнира') {
-                                                              return notificationsListItem
-                                                                  .notificationFromTournament
-                                                                  .tournamentFlag;
-                                                            } else {
-                                                              return '0';
-                                                            }
-                                                          }(),
-                                                          width: 20.0,
-                                                          height: 12.0,
-                                                          fit: BoxFit.cover,
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  () {
+                                                    if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От игрока') {
+                                                      return notificationsListItem
+                                                          .notificationFromPlayer
+                                                          .playerNickname;
+                                                    } else if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От команды') {
+                                                      return notificationsListItem
+                                                          .notificationFromTeam
+                                                          .teamName;
+                                                    } else if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От турнира') {
+                                                      return notificationsListItem
+                                                          .notificationFromTournament
+                                                          .tournamentName;
+                                                    } else {
+                                                      return '0';
+                                                    }
+                                                  }(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium,
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                          child: Image.network(
+                                                            () {
+                                                              if (notificationsListItem
+                                                                      .notificationCategory ==
+                                                                  'От игрока') {
+                                                                return notificationsListItem
+                                                                    .notificationFromPlayer
+                                                                    .playerFlag;
+                                                              } else if (notificationsListItem
+                                                                      .notificationCategory ==
+                                                                  'От команды') {
+                                                                return notificationsListItem
+                                                                    .notificationFromTeam
+                                                                    .teamFlag;
+                                                              } else if (notificationsListItem
+                                                                      .notificationCategory ==
+                                                                  'От турнира') {
+                                                                return notificationsListItem
+                                                                    .notificationFromTournament
+                                                                    .tournamentFlag;
+                                                              } else {
+                                                                return '0';
+                                                              }
+                                                            }(),
+                                                            width: 20.0,
+                                                            height: 12.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    () {
-                                                      if (notificationsListItem
-                                                              .notificationCategory ==
-                                                          'От игрока') {
-                                                        return notificationsListItem
-                                                            .notificationFromPlayer
-                                                            .playerCountrie;
-                                                      } else if (notificationsListItem
-                                                              .notificationCategory ==
-                                                          'От команды') {
-                                                        return notificationsListItem
-                                                            .notificationFromTeam
-                                                            .teamCountry;
-                                                      } else if (notificationsListItem
-                                                              .notificationCategory ==
-                                                          'От турнира') {
-                                                        return notificationsListItem
-                                                            .notificationFromTournament
-                                                            .tournamentCountry;
-                                                      } else {
-                                                        return '0';
-                                                      }
-                                                    }(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                                    Text(
+                                                      () {
+                                                        if (notificationsListItem
+                                                                .notificationCategory ==
+                                                            'От игрока') {
+                                                          return notificationsListItem
+                                                              .notificationFromPlayer
+                                                              .playerCountrie;
+                                                        } else if (notificationsListItem
+                                                                .notificationCategory ==
+                                                            'От команды') {
+                                                          return notificationsListItem
+                                                              .notificationFromTeam
+                                                              .teamCountry;
+                                                        } else if (notificationsListItem
+                                                                .notificationCategory ==
+                                                            'От турнира') {
+                                                          return notificationsListItem
+                                                              .notificationFromTournament
+                                                              .tournamentCountry;
+                                                        } else {
+                                                          return '0';
+                                                        }
+                                                      }(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                           Expanded(
                                             child: Padding(
