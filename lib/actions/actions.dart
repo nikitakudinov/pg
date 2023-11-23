@@ -54,25 +54,13 @@ Future dowloadAllCountrieToAppState(BuildContext context) async {
 Future loadAuthUserChats(BuildContext context) async {
   ApiCallResponse? apiResultce6;
   List<ChatStruct>? convertedChatsData;
-  List<PlayerStruct>? chatMembersData;
 
-  apiResultce6 = await MessagingGroup.gETUSERCHATSCopyCall.call(
-    authUser: currentUserUid,
+  apiResultce6 = await MessagingGroup.getuserchatsCall.call(
+    authUser: FFAppState().authPlayer.playerUid,
   );
   if ((apiResultce6?.succeeded ?? true)) {
     convertedChatsData = await actions.dtCHAT(
       (apiResultce6?.jsonBody ?? ''),
-    );
-    FFAppState().update(() {
-      FFAppState().AllAuthUsersChats =
-          convertedChatsData!.toList().cast<ChatStruct>();
-    });
-    chatMembersData = await actions.dtPLAYER(
-      MessagingGroup.gETUSERCHATSCopyCall
-          .chatschatmembersmember(
-            (apiResultce6?.jsonBody ?? ''),
-          )
-          ?.toList(),
     );
     FFAppState().update(() {
       FFAppState().AllAuthUsersChats =
