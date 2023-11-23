@@ -224,20 +224,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Text(
                                               () {
                                                 if (notificationsListItem
-                                                        .notificationType ==
-                                                    'Приглашение в команду') {
-                                                  return notificationsListItem
-                                                      .notificationFromTeam
-                                                      .teamName;
-                                                } else if (notificationsListItem
-                                                        .notificationType ==
-                                                    'Принял заявку вступления в клан') {
+                                                        .notificationCategory ==
+                                                    'От игрока') {
                                                   return notificationsListItem
                                                       .notificationFromPlayer
                                                       .playerNickname;
                                                 } else if (notificationsListItem
-                                                        .notificationType ==
-                                                    'Команда зачислена в состав турнира') {
+                                                        .notificationCategory ==
+                                                    'От команды') {
+                                                  return notificationsListItem
+                                                      .notificationFromTeam
+                                                      .teamName;
+                                                } else if (notificationsListItem
+                                                        .notificationCategory ==
+                                                    'От турнира') {
                                                   return notificationsListItem
                                                       .notificationFromTournament
                                                       .tournamentName;
@@ -267,20 +267,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       child: Image.network(
                                                         () {
                                                           if (notificationsListItem
-                                                                  .notificationType ==
-                                                              'Приглашение в команду') {
-                                                            return notificationsListItem
-                                                                .notificationFromTeam
-                                                                .teamFlag;
-                                                          } else if (notificationsListItem
-                                                                  .notificationType ==
-                                                              'Принял заявку вступления в клан') {
+                                                                  .notificationCategory ==
+                                                              'От игрока') {
                                                             return notificationsListItem
                                                                 .notificationFromPlayer
                                                                 .playerFlag;
                                                           } else if (notificationsListItem
-                                                                  .notificationType ==
-                                                              'Команда зачислена в состав турнира') {
+                                                                  .notificationCategory ==
+                                                              'От команды') {
+                                                            return notificationsListItem
+                                                                .notificationFromTeam
+                                                                .teamFlag;
+                                                          } else if (notificationsListItem
+                                                                  .notificationCategory ==
+                                                              'От турнира') {
                                                             return notificationsListItem
                                                                 .notificationFromTournament
                                                                 .tournamentFlag;
@@ -298,20 +298,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 Text(
                                                   () {
                                                     if (notificationsListItem
-                                                            .notificationType ==
-                                                        'Приглашение в команду') {
-                                                      return notificationsListItem
-                                                          .notificationFromTeam
-                                                          .teamCountry;
-                                                    } else if (notificationsListItem
-                                                            .notificationType ==
-                                                        'Принял заявку вступления в клан') {
+                                                            .notificationCategory ==
+                                                        'От игрока') {
                                                       return notificationsListItem
                                                           .notificationFromPlayer
                                                           .playerCountrie;
                                                     } else if (notificationsListItem
-                                                            .notificationType ==
-                                                        'Команда зачислена в состав турнира') {
+                                                            .notificationCategory ==
+                                                        'От команды') {
+                                                      return notificationsListItem
+                                                          .notificationFromTeam
+                                                          .teamCountry;
+                                                    } else if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От турнира') {
                                                       return notificationsListItem
                                                           .notificationFromTournament
                                                           .tournamentCountry;
