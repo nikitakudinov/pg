@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -202,6 +203,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             if (user == null) {
                               return;
                             }
+
+                            await action_blocks.authPlayerUpdater(context);
 
                             context.goNamedAuth('HomePage', context.mounted);
                           },
