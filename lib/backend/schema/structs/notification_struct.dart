@@ -15,7 +15,7 @@ class NotificationStruct extends BaseStruct {
     String? notificationBody,
     String? notificationToPlayer,
     String? notificationCategory,
-    DateTime? notificationCreatedAt,
+    String? notificationCreatedAt,
   })  : _notificationId = notificationId,
         _notificationFromTeam = notificationFromTeam,
         _notificationFromPlayer = notificationFromPlayer,
@@ -87,9 +87,9 @@ class NotificationStruct extends BaseStruct {
   bool hasNotificationCategory() => _notificationCategory != null;
 
   // "notification_created_at" field.
-  DateTime? _notificationCreatedAt;
-  DateTime? get notificationCreatedAt => _notificationCreatedAt;
-  set notificationCreatedAt(DateTime? val) => _notificationCreatedAt = val;
+  String? _notificationCreatedAt;
+  String get notificationCreatedAt => _notificationCreatedAt ?? '';
+  set notificationCreatedAt(String? val) => _notificationCreatedAt = val;
   bool hasNotificationCreatedAt() => _notificationCreatedAt != null;
 
   static NotificationStruct fromMap(Map<String, dynamic> data) =>
@@ -105,7 +105,7 @@ class NotificationStruct extends BaseStruct {
         notificationBody: data['notification_body'] as String?,
         notificationToPlayer: data['notification_to_player'] as String?,
         notificationCategory: data['notification_category'] as String?,
-        notificationCreatedAt: data['notification_created_at'] as DateTime?,
+        notificationCreatedAt: data['notification_created_at'] as String?,
       );
 
   static NotificationStruct? maybeFromMap(dynamic data) =>
@@ -159,7 +159,7 @@ class NotificationStruct extends BaseStruct {
         ),
         'notification_created_at': serializeParam(
           _notificationCreatedAt,
-          ParamType.DateTime,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -210,7 +210,7 @@ class NotificationStruct extends BaseStruct {
         ),
         notificationCreatedAt: deserializeParam(
           data['notification_created_at'],
-          ParamType.DateTime,
+          ParamType.String,
           false,
         ),
       );
@@ -255,7 +255,7 @@ NotificationStruct createNotificationStruct({
   String? notificationBody,
   String? notificationToPlayer,
   String? notificationCategory,
-  DateTime? notificationCreatedAt,
+  String? notificationCreatedAt,
 }) =>
     NotificationStruct(
       notificationId: notificationId,
