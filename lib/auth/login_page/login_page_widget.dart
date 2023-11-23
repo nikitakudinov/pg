@@ -203,6 +203,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               return;
                             }
 
+                            setState(() {
+                              FFAppState().authUserUpdated = '0';
+                            });
+
                             context.goNamedAuth('HomePage', context.mounted);
                           },
                           text: 'Войти',
