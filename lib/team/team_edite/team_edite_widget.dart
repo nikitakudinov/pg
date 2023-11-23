@@ -134,6 +134,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                           FFAppState().notofications.toList();
                       return ListView.separated(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: notificationsList.length,
