@@ -155,7 +155,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Hello World',
+                                        notificationsListItem
+                                            .notificationCreatedAt,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
