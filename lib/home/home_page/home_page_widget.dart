@@ -131,11 +131,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     builder: (context) {
                       final notificationsList =
                           FFAppState().notofications.toList();
-                      return ListView.builder(
+                      return ListView.separated(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: notificationsList.length,
+                        separatorBuilder: (_, __) => SizedBox(height: 10.0),
                         itemBuilder: (context, notificationsListIndex) {
                           final notificationsListItem =
                               notificationsList[notificationsListIndex];
@@ -353,70 +354,88 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Expanded(
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            await NotificationsTable().insert({
-                                              'notification_created_at':
-                                                  supaSerialize<DateTime>(
-                                                      getCurrentTimestamp),
-                                              'notification_from_player':
-                                                  currentUserUid,
-                                              'notification_to_player':
+                                      if (() {
+                                        if (notificationsListItem
+                                                .notificationCategory ==
+                                            'От игрока') {
+                                          return false;
+                                        } else if (notificationsListItem
+                                                .notificationCategory ==
+                                            'От команды') {
+                                          return true;
+                                        } else if (notificationsListItem
+                                                .notificationCategory ==
+                                            'От турнира') {
+                                          return true;
+                                        } else {
+                                          return false;
+                                        }
+                                      }())
+                                        Expanded(
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await NotificationsTable()
+                                                  .insert({
+                                                'notification_created_at':
+                                                    supaSerialize<DateTime>(
+                                                        getCurrentTimestamp),
+                                                'notification_from_player':
+                                                    currentUserUid,
+                                                'notification_to_player':
+                                                    notificationsListItem
+                                                        .notificationFromPlayer
+                                                        .playerUid,
+                                                'notification_type':
+                                                    'Отказ на предложение',
+                                                'notification_body':
+                                                    'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
+                                                'notification_category':
+                                                    'От игрока',
+                                              });
+                                              await NotificationsTable().delete(
+                                                matchingRows: (rows) => rows.eq(
+                                                  'notification_id',
                                                   notificationsListItem
-                                                      .notificationFromPlayer
-                                                      .playerUid,
-                                              'notification_type':
-                                                  'Отказ на предложение',
-                                              'notification_body':
-                                                  'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
-                                              'notification_category':
-                                                  'От игрока',
-                                            });
-                                            await NotificationsTable().delete(
-                                              matchingRows: (rows) => rows.eq(
-                                                'notification_id',
-                                                notificationsListItem
-                                                    .notificationId,
-                                              ),
-                                            );
-                                            setState(() {
-                                              FFAppState()
-                                                  .removeFromNotofications(
-                                                      notificationsListItem);
-                                            });
-                                          },
-                                          text: 'Отказаться',
-                                          options: FFButtonOptions(
-                                            height: 30.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily:
-                                                          'Cabin Condensed',
-                                                      color: Colors.white,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
+                                                      .notificationId,
+                                                ),
+                                              );
+                                              setState(() {
+                                                FFAppState()
+                                                    .removeFromNotofications(
+                                                        notificationsListItem);
+                                              });
+                                            },
+                                            text: 'Отказаться',
+                                            options: FFButtonOptions(
+                                              height: 30.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
-                                              width: 1.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
                                           ),
                                         ),
-                                      ),
                                       Expanded(
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -457,42 +476,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             );
                                           },
                                           text: 'Вступить',
-                                          options: FFButtonOptions(
-                                            height: 30.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily:
-                                                          'Cabin Condensed',
-                                                      color: Colors.white,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: 'Отправить ссобщеня',
                                           options: FFButtonOptions(
                                             height: 30.0,
                                             padding:
