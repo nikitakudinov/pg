@@ -315,16 +315,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             ),
                                           ],
                                         ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: Text(
-                                            notificationsListItem
-                                                .notificationBody,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                        Expanded(
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Text(
+                                              notificationsListItem
+                                                  .notificationBody,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
                                           ),
                                         ),
                                       ],
