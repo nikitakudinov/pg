@@ -390,7 +390,9 @@ Future authPlayerUpdater(BuildContext context) async {
           PlayerGroup.authplayerupdatedCall.playerupdateat(
             (jsonAuthUserUpdated?.jsonBody ?? ''),
           )) ||
-      (FFAppState().authUserUpdated == '0')) {
+      (FFAppState().authUserUpdated == '0') ||
+      (FFAppState().authUserUpdated == null ||
+          FFAppState().authUserUpdated == '')) {
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
