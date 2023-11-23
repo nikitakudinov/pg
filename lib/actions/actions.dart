@@ -284,16 +284,6 @@ Future notificationsUpdater(BuildContext context) async {
       );
     });
     await action_blocks.loadAuthUserNotifications(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Notifications updated',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 1000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 
