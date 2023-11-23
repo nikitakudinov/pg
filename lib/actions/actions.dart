@@ -28,7 +28,7 @@ Future loadAllTeamsDataToAppState(BuildContext context) async {
           'Команды обновлены',
           style: TextStyle(),
         ),
-        duration: Duration(milliseconds: 4000),
+        duration: Duration(milliseconds: 1000),
         backgroundColor: FlutterFlowTheme.of(context).secondary,
       ),
     );
@@ -72,7 +72,7 @@ Future loadAuthUserChats(BuildContext context) async {
           'Chats Uploaderd',
           style: TextStyle(),
         ),
-        duration: Duration(milliseconds: 4000),
+        duration: Duration(milliseconds: 1000),
         backgroundColor: FlutterFlowTheme.of(context).secondary,
       ),
     );
@@ -236,7 +236,7 @@ Future loadAuthUserNotifications(BuildContext context) async {
           'Notifications Updated',
           style: TextStyle(),
         ),
-        duration: Duration(milliseconds: 4000),
+        duration: Duration(milliseconds: 1000),
         backgroundColor: FlutterFlowTheme.of(context).secondary,
       ),
     );
