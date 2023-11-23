@@ -386,11 +386,10 @@ Future authPlayerUpdater(BuildContext context) async {
   jsonAuthUserUpdated = await PlayerGroup.authplayerupdatedCall.call(
     uid: currentUserUid,
   );
-  if ((FFAppState().authUserUpdated ==
-          PlayerGroup.authplayerupdatedCall.playerupdateat(
-            (jsonAuthUserUpdated?.jsonBody ?? ''),
-          )) ||
-      (FFAppState().authUserUpdated != '0')) {
+  if (FFAppState().authUserUpdated ==
+      PlayerGroup.authplayerupdatedCall.playerupdateat(
+        (jsonAuthUserUpdated?.jsonBody ?? ''),
+      )) {
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
