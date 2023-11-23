@@ -411,10 +411,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           'notification_created_at':
                                               supaSerialize<DateTime>(
                                                   getCurrentTimestamp),
-                                          'notification_from_team': 0,
                                           'notification_from_player':
                                               currentUserUid,
-                                          'notification_from_tournament': 0,
                                           'notification_to_player':
                                               notificationsListItem
                                                   .notificationFromPlayer
