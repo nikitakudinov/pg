@@ -1057,7 +1057,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                                       .override(
                                                         fontFamily:
                                                             'Cabin Condensed',
-                                                        fontSize: 10.0,
+                                                        fontSize: 12.0,
                                                       ),
                                             ),
                                           ],
@@ -1090,7 +1090,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                                       .override(
                                                         fontFamily:
                                                             'Cabin Condensed',
-                                                        fontSize: 10.0,
+                                                        fontSize: 12.0,
                                                       ),
                                             ),
                                           ],
@@ -1123,7 +1123,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                                       .override(
                                                         fontFamily:
                                                             'Cabin Condensed',
-                                                        fontSize: 10.0,
+                                                        fontSize: 12.0,
                                                       ),
                                             ),
                                           ],
