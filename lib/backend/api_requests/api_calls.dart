@@ -998,7 +998,8 @@ class MessagingGroup {
   static GETNOTIFICATIONScountCall gETNOTIFICATIONScountCall =
       GETNOTIFICATIONScountCall();
   static GetchatbyidCall getchatbyidCall = GetchatbyidCall();
-  static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
+  static GetundreadedchatmessagescountCall getundreadedchatmessagescountCall =
+      GetundreadedchatmessagescountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static GETUSERCHATScountCall gETUSERCHATScountCall = GETUSERCHATScountCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
@@ -1267,14 +1268,14 @@ class GetchatbyidCall {
       );
 }
 
-class GetchatmessagesCall {
+class GetundreadedchatmessagescountCall {
   Future<ApiCallResponse> call({
-    String? authUser = '',
+    String? chatId = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETCHATMESSAGES',
+      callName: 'GETUNDREADEDCHATMESSAGESCOUNT',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}&select=*,players(*)',
+          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&message_readed=eq.false&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1290,75 +1291,9 @@ class GetchatmessagesCall {
     );
   }
 
-  dynamic chatid(dynamic response) => getJsonField(
+  dynamic count(dynamic response) => getJsonField(
         response,
-        r'''$[:].chat_id''',
-      );
-  dynamic chatupdatedat(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_updated_at''',
-      );
-  dynamic chatmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_members''',
-        true,
-      );
-  dynamic chatlastmessage(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_last_message''',
-      );
-  dynamic chatofteam(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_of_team''',
-      );
-  dynamic members(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members''',
-        true,
-      );
-  dynamic membersplayercreatedat(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_created_at''',
-      );
-  dynamic membersplayernickname(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_nickname''',
-      );
-  dynamic membersplayertag(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_tag''',
-      );
-  dynamic membersplayerflag(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_flag''',
-      );
-  dynamic membersplayercountrie(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_countrie''',
-      );
-  dynamic membersplayeravatar(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_avatar''',
-      );
-  dynamic membersplayeruid(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_uid''',
-      );
-  dynamic membersplayerteam(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_team''',
-      );
-  dynamic membersplayerteamrole(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_team_role''',
-      );
-  dynamic membersplayerteamlineup(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_team_lineup''',
-      );
-  dynamic membersplayerid(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_id''',
+        r'''$[:].count''',
       );
 }
 

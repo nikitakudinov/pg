@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -191,6 +192,40 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                             ),
                                           ),
                                         ],
+                                      ),
+                                      FutureBuilder<ApiCallResponse>(
+                                        future: MessagingGroup
+                                            .getundreadedchatmessagescountCall
+                                            .call(
+                                          chatId: chatsItem.chatId.toString(),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          final textGetundreadedchatmessagescountResponse =
+                                              snapshot.data!;
+                                          return Text(
+                                            'asd',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          );
+                                        },
                                       ),
                                     ].divide(SizedBox(width: 5.0)),
                                   ),
