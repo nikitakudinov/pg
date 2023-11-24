@@ -1,9 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'chat_widget.dart' show ChatWidget;
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -16,29 +18,22 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  InstantTimer? instantTimer;
-  Completer<List<MessageRow>>? requestCompleter;
-  // State field(s) for Column widget.
-  ScrollController? columnController;
-  // State field(s) for ListView widget.
-  ScrollController? listViewController;
+  // Stores action output result for [Backend Call - API (GETCHATMESSAGES)] action in CHAT widget.
+  ApiCallResponse? apiResult1wv;
+  // Stores action output result for [Custom Action - dtMSG] action in CHAT widget.
+  List<MessageStruct>? dtMessagesData;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  Completer<List<MessageRow>>? requestCompleter;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    columnController = ScrollController();
-    listViewController = ScrollController();
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
-    columnController?.dispose();
-    listViewController?.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

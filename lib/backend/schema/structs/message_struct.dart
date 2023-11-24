@@ -15,6 +15,7 @@ class MessageStruct extends BaseStruct {
     String? messageSanderAvatar,
     String? messageType,
     bool? messageReaded,
+    List<String>? messageReadedBy,
   })  : _messageId = messageId,
         _messageSandedAt = messageSandedAt,
         _messageSander = messageSander,
@@ -22,7 +23,8 @@ class MessageStruct extends BaseStruct {
         _messageChat = messageChat,
         _messageSanderAvatar = messageSanderAvatar,
         _messageType = messageType,
-        _messageReaded = messageReaded;
+        _messageReaded = messageReaded,
+        _messageReadedBy = messageReadedBy;
 
   // "message_id" field.
   int? _messageId;
@@ -74,6 +76,14 @@ class MessageStruct extends BaseStruct {
   set messageReaded(bool? val) => _messageReaded = val;
   bool hasMessageReaded() => _messageReaded != null;
 
+  // "message_readedBy" field.
+  List<String>? _messageReadedBy;
+  List<String> get messageReadedBy => _messageReadedBy ?? const [];
+  set messageReadedBy(List<String>? val) => _messageReadedBy = val;
+  void updateMessageReadedBy(Function(List<String>) updateFn) =>
+      updateFn(_messageReadedBy ??= []);
+  bool hasMessageReadedBy() => _messageReadedBy != null;
+
   static MessageStruct fromMap(Map<String, dynamic> data) => MessageStruct(
         messageId: castToType<int>(data['message_id']),
         messageSandedAt: data['message_sanded_at'] as String?,
@@ -83,6 +93,7 @@ class MessageStruct extends BaseStruct {
         messageSanderAvatar: data['message_sander_avatar'] as String?,
         messageType: data['message_type'] as String?,
         messageReaded: data['message_readed'] as bool?,
+        messageReadedBy: getDataList(data['message_readedBy']),
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
@@ -97,6 +108,7 @@ class MessageStruct extends BaseStruct {
         'message_sander_avatar': _messageSanderAvatar,
         'message_type': _messageType,
         'message_readed': _messageReaded,
+        'message_readedBy': _messageReadedBy,
       }.withoutNulls;
 
   @override
@@ -132,6 +144,11 @@ class MessageStruct extends BaseStruct {
         'message_readed': serializeParam(
           _messageReaded,
           ParamType.bool,
+        ),
+        'message_readedBy': serializeParam(
+          _messageReadedBy,
+          ParamType.String,
+          true,
         ),
       }.withoutNulls;
 
@@ -177,6 +194,11 @@ class MessageStruct extends BaseStruct {
           ParamType.bool,
           false,
         ),
+        messageReadedBy: deserializeParam<String>(
+          data['message_readedBy'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -184,6 +206,7 @@ class MessageStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is MessageStruct &&
         messageId == other.messageId &&
         messageSandedAt == other.messageSandedAt &&
@@ -192,7 +215,8 @@ class MessageStruct extends BaseStruct {
         messageChat == other.messageChat &&
         messageSanderAvatar == other.messageSanderAvatar &&
         messageType == other.messageType &&
-        messageReaded == other.messageReaded;
+        messageReaded == other.messageReaded &&
+        listEquality.equals(messageReadedBy, other.messageReadedBy);
   }
 
   @override
@@ -204,7 +228,8 @@ class MessageStruct extends BaseStruct {
         messageChat,
         messageSanderAvatar,
         messageType,
-        messageReaded
+        messageReaded,
+        messageReadedBy
       ]);
 }
 

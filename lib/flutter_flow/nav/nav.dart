@@ -164,6 +164,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/chat',
           builder: (context, params) => ChatWidget(
             chatID: params.getParam('chatID', ParamType.int),
+            chatIndex: params.getParam('chatIndex', ParamType.int),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

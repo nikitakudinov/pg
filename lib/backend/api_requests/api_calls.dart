@@ -1000,6 +1000,9 @@ class MessagingGroup {
   static GetchatbyidCall getchatbyidCall = GetchatbyidCall();
   static GetundreadedchatmessagescountCall getundreadedchatmessagescountCall =
       GetundreadedchatmessagescountCall();
+  static GetundreadedchatmessagesCall getundreadedchatmessagesCall =
+      GetundreadedchatmessagesCall();
+  static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static GETUSERCHATScountCall gETUSERCHATScountCall = GETUSERCHATScountCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
@@ -1276,6 +1279,66 @@ class GetundreadedchatmessagescountCall {
       callName: 'GETUNDREADEDCHATMESSAGESCOUNT',
       apiUrl:
           '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&message_readed=eq.false&select=count',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic count(dynamic response) => getJsonField(
+        response,
+        r'''$[:].count''',
+      );
+}
+
+class GetundreadedchatmessagesCall {
+  Future<ApiCallResponse> call({
+    String? chatId = '',
+    String? authUserUID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETUNDREADEDCHATMESSAGES',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&message_readed=eq.false&message_readedBy1=cs.${authUserUID}&select=count',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic count(dynamic response) => getJsonField(
+        response,
+        r'''$[:].count''',
+      );
+}
+
+class GetchatmessagesCall {
+  Future<ApiCallResponse> call({
+    String? chatId = '',
+    String? authUserUID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETCHATMESSAGES',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

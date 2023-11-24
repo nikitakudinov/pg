@@ -287,6 +287,35 @@ class FFAppState extends ChangeNotifier {
   set chatsCount(int _value) {
     _chatsCount = _value;
   }
+
+  List<MessageStruct> _messages = [];
+  List<MessageStruct> get messages => _messages;
+  set messages(List<MessageStruct> _value) {
+    _messages = _value;
+  }
+
+  void addToMessages(MessageStruct _value) {
+    _messages.add(_value);
+  }
+
+  void removeFromMessages(MessageStruct _value) {
+    _messages.remove(_value);
+  }
+
+  void removeAtIndexFromMessages(int _index) {
+    _messages.removeAt(_index);
+  }
+
+  void updateMessagesAtIndex(
+    int _index,
+    MessageStruct Function(MessageStruct) updateFn,
+  ) {
+    _messages[_index] = updateFn(_messages[_index]);
+  }
+
+  void insertAtIndexInMessages(int _index, MessageStruct _value) {
+    _messages.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

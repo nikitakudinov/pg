@@ -1,9 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -17,9 +19,11 @@ class ChatWidget extends StatefulWidget {
   const ChatWidget({
     Key? key,
     required this.chatID,
+    this.chatIndex,
   }) : super(key: key);
 
   final int? chatID;
+  final int? chatIndex;
 
   @override
   _ChatWidgetState createState() => _ChatWidgetState();
@@ -37,19 +41,63 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 2000),
-        callback: (timer) async {
-          setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
-          await _model.columnController?.animateTo(
-            _model.columnController!.position.maxScrollExtent,
-            duration: Duration(milliseconds: 10),
-            curve: Curves.ease,
+      if (FFAppState().messages[0] == null) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('messages на завгружены'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+        _model.apiResult1wv = await MessagingGroup.getchatmessagesCall.call(
+          chatId: widget.chatID?.toString(),
+        );
+        if ((_model.apiResult1wv?.succeeded ?? true)) {
+          _model.dtMessagesData = await actions.dtMSG(
+            (_model.apiResult1wv?.jsonBody ?? ''),
           );
-        },
-        startImmediately: true,
-      );
+          setState(() {
+            FFAppState().messages =
+                _model.dtMessagesData!.toList().cast<MessageStruct>();
+          });
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text('messages на завгружены в стейт'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('messages уже в appstate'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
     });
 
     _model.textController ??= TextEditingController();
@@ -118,7 +166,6 @@ class _ChatWidgetState extends State<ChatWidget> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  controller: _model.columnController,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -356,7 +403,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                                   ),
                                 );
                               },
-                              controller: _model.listViewController,
                             );
                           },
                         ),
