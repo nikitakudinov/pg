@@ -658,9 +658,33 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FFAppState().authPlayer.playerCountrie,
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
-                            Text(
-                              FFAppState().authPlayer.playerUid,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await Clipboard.setData(ClipboardData(
+                                    text: FFAppState().authPlayer.playerUid));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Скопировано',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 500),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                FFAppState().authPlayer.playerUid,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
                             ),
                             Text(
                               'Hello World',
