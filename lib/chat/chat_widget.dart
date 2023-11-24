@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
@@ -6,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -169,243 +169,11 @@ class _ChatWidgetState extends State<ChatWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 15.0),
-                        child: FutureBuilder<List<MessageRow>>(
-                          future: (_model.requestCompleter ??=
-                                  Completer<List<MessageRow>>()
-                                    ..complete(MessageTable().queryRows(
-                                      queryFn: (q) => q.eq(
-                                        'message_chat',
-                                        widget.chatID,
-                                      ),
-                                    )))
-                              .future,
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<MessageRow> listViewMessageRowList =
-                                snapshot.data!;
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewMessageRowList.length,
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewMessageRow =
-                                    listViewMessageRowList[listViewIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          if (listViewMessageRow
-                                                  .messageSander !=
-                                              FFAppState()
-                                                  .authenticateduser
-                                                  .nickname)
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: Container(
-                                                width: 45.0,
-                                                height: 45.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          3.0),
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: Image.network(
-                                                    listViewMessageRow
-                                                        .messageSanderAvatar!,
-                                                    width: 45.0,
-                                                    height: 45.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    listViewMessageRow
-                                                                .messageSander !=
-                                                            FFAppState()
-                                                                .authenticateduser
-                                                                .nickname
-                                                        ? listViewMessageRow
-                                                            .messageSander
-                                                        : 'Вы',
-                                                    '0',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium,
-                                                ),
-                                                Container(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: Text(
-                                                    listViewMessageRow
-                                                        .messageBody!,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ),
-                                                if (listViewMessageRow
-                                                        .messageType ==
-                                                    'Сообщение от бота Игрок покину команду')
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    5.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 35.0,
-                                                          height: 35.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.0),
-                                                          ),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0.0),
-                                                            child:
-                                                                Image.network(
-                                                              'https://picsum.photos/seed/254/600',
-                                                              width: 35.0,
-                                                              height: 35.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            'Hello World',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            0.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  'https://picsum.photos/seed/635/600',
-                                                                  width: 20.0,
-                                                                  height: 12.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                'Hello World',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                              ],
-                                            ),
-                                          ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                dateTimeFormat(
-                                                    'Hm',
-                                                    listViewMessageRow
-                                                        .messageSandedAt),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
+                      ListView(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: [],
                       ),
                     ],
                   ),
@@ -451,15 +219,20 @@ class _ChatWidgetState extends State<ChatWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        setState(() {
+                          _model.addToAuthUserUIDasArray(currentUserUid);
+                        });
                         await MessageTable().insert({
                           'message_sanded_at':
                               supaSerialize<DateTime>(getCurrentTimestamp),
                           'message_sander':
-                              FFAppState().authenticateduser.nickname,
+                              FFAppState().authPlayer.playerNickname,
                           'message_body': _model.textController.text,
                           'message_chat': widget.chatID,
                           'message_sander_avatar':
-                              FFAppState().authenticateduser.avatar,
+                              FFAppState().authPlayer.playerAvatar,
+                          'message_readedBy': _model.authUserUIDasArray,
+                          'message_type': 'Cообщение в чате',
                         });
                         await ChatsTable().update(
                           data: {
@@ -472,13 +245,9 @@ class _ChatWidgetState extends State<ChatWidget> {
                             widget.chatID,
                           ),
                         );
-                        setState(() => _model.requestCompleter = null);
-                        await _model.waitForRequestCompleted();
                         setState(() {
                           _model.textController?.clear();
                         });
-                        setState(() => _model.requestCompleter = null);
-                        await _model.waitForRequestCompleted();
                       },
                       text: 'Отправить',
                       options: FFButtonOptions(

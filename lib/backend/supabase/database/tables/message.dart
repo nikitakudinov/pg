@@ -39,4 +39,8 @@ class MessageRow extends SupabaseDataRow {
 
   bool get messageReaded => getField<bool>('message_readed')!;
   set messageReaded(bool value) => setField<bool>('message_readed', value);
+
+  List<String> get messageReadedBy => getListField<String>('message_readedBy');
+  set messageReadedBy(List<String>? value) =>
+      setListField<String>('message_readedBy', value);
 }
