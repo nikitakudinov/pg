@@ -1,4 +1,4 @@
-import '/backend/api_requests/api_calls.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -193,11 +193,17 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           ),
                                         ],
                                       ),
-                                      FutureBuilder<ApiCallResponse>(
-                                        future: MessagingGroup
-                                            .getundreadedchatmessagescountCall
-                                            .call(
-                                          chatId: chatsItem.chatId.toString(),
+                                      FutureBuilder<List<MessageRow>>(
+                                        future: MessageTable().queryRows(
+                                          queryFn: (q) => q
+                                              .eq(
+                                                'message_chat',
+                                                chatsItem.chatId,
+                                              )
+                                              .eq(
+                                                'message_readed',
+                                                false,
+                                              ),
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
@@ -218,16 +224,10 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                               ),
                                             );
                                           }
-                                          final textGetundreadedchatmessagescountResponse =
+                                          List<MessageRow> textMessageRowList =
                                               snapshot.data!;
                                           return Text(
-                                            MessagingGroup
-                                                .getundreadedchatmessagescountCall
-                                                .count(
-                                                  textGetundreadedchatmessagescountResponse
-                                                      .jsonBody,
-                                                )
-                                                .toString(),
+                                            'asd',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           );
