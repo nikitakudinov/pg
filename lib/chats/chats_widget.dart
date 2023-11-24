@@ -136,26 +136,15 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           ),
                                         ],
                                       ),
-                                      Builder(
-                                        builder: (context) {
-                                          final chatMembers =
-                                              chatsItem.members.toList();
-                                          return Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: List.generate(
-                                                chatMembers.length,
-                                                (chatMembersIndex) {
-                                              final chatMembersItem =
-                                                  chatMembers[chatMembersIndex];
-                                              return Text(
-                                                chatMembersItem.playerNickname,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              );
-                                            }),
-                                          );
-                                        },
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'Hello World',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ],
                                       ),
                                       Container(
                                         width:

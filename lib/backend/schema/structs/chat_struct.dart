@@ -11,15 +11,11 @@ class ChatStruct extends BaseStruct {
     String? chatUpdatedAt,
     String? chatLastMessage,
     int? chatOfTeam,
-    List<PlayerStruct>? members,
-    List<ChatmemberStruct>? chatMembers,
     String? chatChattype,
   })  : _chatId = chatId,
         _chatUpdatedAt = chatUpdatedAt,
         _chatLastMessage = chatLastMessage,
         _chatOfTeam = chatOfTeam,
-        _members = members,
-        _chatMembers = chatMembers,
         _chatChattype = chatChattype;
 
   // "chat_id" field.
@@ -48,22 +44,6 @@ class ChatStruct extends BaseStruct {
   void incrementChatOfTeam(int amount) => _chatOfTeam = chatOfTeam + amount;
   bool hasChatOfTeam() => _chatOfTeam != null;
 
-  // "members" field.
-  List<PlayerStruct>? _members;
-  List<PlayerStruct> get members => _members ?? const [];
-  set members(List<PlayerStruct>? val) => _members = val;
-  void updateMembers(Function(List<PlayerStruct>) updateFn) =>
-      updateFn(_members ??= []);
-  bool hasMembers() => _members != null;
-
-  // "chat_members" field.
-  List<ChatmemberStruct>? _chatMembers;
-  List<ChatmemberStruct> get chatMembers => _chatMembers ?? const [];
-  set chatMembers(List<ChatmemberStruct>? val) => _chatMembers = val;
-  void updateChatMembers(Function(List<ChatmemberStruct>) updateFn) =>
-      updateFn(_chatMembers ??= []);
-  bool hasChatMembers() => _chatMembers != null;
-
   // "chat_chattype" field.
   String? _chatChattype;
   String get chatChattype => _chatChattype ?? '';
@@ -75,14 +55,6 @@ class ChatStruct extends BaseStruct {
         chatUpdatedAt: data['chat_updated_at'] as String?,
         chatLastMessage: data['chat_last_message'] as String?,
         chatOfTeam: castToType<int>(data['chat_of_team']),
-        members: getStructList(
-          data['members'],
-          PlayerStruct.fromMap,
-        ),
-        chatMembers: getStructList(
-          data['chat_members'],
-          ChatmemberStruct.fromMap,
-        ),
         chatChattype: data['chat_chattype'] as String?,
       );
 
@@ -94,8 +66,6 @@ class ChatStruct extends BaseStruct {
         'chat_updated_at': _chatUpdatedAt,
         'chat_last_message': _chatLastMessage,
         'chat_of_team': _chatOfTeam,
-        'members': _members?.map((e) => e.toMap()).toList(),
-        'chat_members': _chatMembers?.map((e) => e.toMap()).toList(),
         'chat_chattype': _chatChattype,
       }.withoutNulls;
 
@@ -116,16 +86,6 @@ class ChatStruct extends BaseStruct {
         'chat_of_team': serializeParam(
           _chatOfTeam,
           ParamType.int,
-        ),
-        'members': serializeParam(
-          _members,
-          ParamType.DataStruct,
-          true,
-        ),
-        'chat_members': serializeParam(
-          _chatMembers,
-          ParamType.DataStruct,
-          true,
         ),
         'chat_chattype': serializeParam(
           _chatChattype,
@@ -155,18 +115,6 @@ class ChatStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        members: deserializeStructParam<PlayerStruct>(
-          data['members'],
-          ParamType.DataStruct,
-          true,
-          structBuilder: PlayerStruct.fromSerializableMap,
-        ),
-        chatMembers: deserializeStructParam<ChatmemberStruct>(
-          data['chat_members'],
-          ParamType.DataStruct,
-          true,
-          structBuilder: ChatmemberStruct.fromSerializableMap,
-        ),
         chatChattype: deserializeParam(
           data['chat_chattype'],
           ParamType.String,
@@ -179,27 +127,17 @@ class ChatStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
-    const listEquality = ListEquality();
     return other is ChatStruct &&
         chatId == other.chatId &&
         chatUpdatedAt == other.chatUpdatedAt &&
         chatLastMessage == other.chatLastMessage &&
         chatOfTeam == other.chatOfTeam &&
-        listEquality.equals(members, other.members) &&
-        listEquality.equals(chatMembers, other.chatMembers) &&
         chatChattype == other.chatChattype;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([
-        chatId,
-        chatUpdatedAt,
-        chatLastMessage,
-        chatOfTeam,
-        members,
-        chatMembers,
-        chatChattype
-      ]);
+  int get hashCode => const ListEquality()
+      .hash([chatId, chatUpdatedAt, chatLastMessage, chatOfTeam, chatChattype]);
 }
 
 ChatStruct createChatStruct({
