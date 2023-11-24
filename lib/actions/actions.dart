@@ -437,12 +437,7 @@ Future singlChatUpdater(
   apiResult7br = await MessagingGroup.getchatbyidCall.call(
     chatID: chatId?.toString(),
   );
-  if (FFAppState().AllAuthUsersChats[chatIndex!].chatUpdatedAt ==
-      MessagingGroup.getchatbyidCall
-          .chatupdatedat(
-            (apiResult7br?.jsonBody ?? ''),
-          )
-          .toString()) {
+  if ((apiResult7br?.succeeded ?? true)) {
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
