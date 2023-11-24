@@ -121,7 +121,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/811/600',
+                                              playersViewItem.playerAvatar,
                                               width: 80.0,
                                               height: 80.0,
                                               fit: BoxFit.cover,
@@ -139,13 +139,23 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
-                                          Text(
-                                            playersViewItem.playerTeamRole
-                                                .take(5)
-                                                .toList()
-                                                .first,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await Clipboard.setData(
+                                                  ClipboardData(
+                                                      text: playersViewItem
+                                                          .playerUid));
+                                            },
+                                            child: Text(
+                                              playersViewItem.playerUid,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -167,7 +177,8 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                                         BorderRadius.circular(
                                                             0.0),
                                                     child: Image.network(
-                                                      'https://picsum.photos/seed/728/600',
+                                                      playersViewItem
+                                                          .playerFlag,
                                                       width: 20.0,
                                                       height: 12.0,
                                                       fit: BoxFit.cover,
@@ -176,7 +187,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                'Hello World',
+                                                playersViewItem.playerCountrie,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
