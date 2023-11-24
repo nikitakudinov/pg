@@ -1,4 +1,5 @@
 export 'dt_c_h_a_t.dart' show dtCHAT;
+export 'dt_c_h_a_t_m_e_m_b_e_r_s.dart' show dtCHATMEMBERS;
 export 'dt_c_o_u_n_t_r_i_e.dart' show dtCOUNTRIE;
 export 'dt_p_l_a_y_e_r.dart' show dtPLAYER;
 export 'dt_p_l_a_y_e_r_u_i_d.dart' show dtPLAYERUID;

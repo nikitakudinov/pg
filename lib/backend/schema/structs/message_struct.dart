@@ -14,10 +14,7 @@ class MessageStruct extends BaseStruct {
     int? messageChat,
     String? messageSanderAvatar,
     String? messageType,
-    String? messageParametrSTRING1,
-    int? messageParametrINT1,
-    TeamStruct? messageFromTeam,
-    String? messageToPlayer,
+    bool? messageReaded,
   })  : _messageId = messageId,
         _messageSandedAt = messageSandedAt,
         _messageSander = messageSander,
@@ -25,10 +22,7 @@ class MessageStruct extends BaseStruct {
         _messageChat = messageChat,
         _messageSanderAvatar = messageSanderAvatar,
         _messageType = messageType,
-        _messageParametrSTRING1 = messageParametrSTRING1,
-        _messageParametrINT1 = messageParametrINT1,
-        _messageFromTeam = messageFromTeam,
-        _messageToPlayer = messageToPlayer;
+        _messageReaded = messageReaded;
 
   // "message_id" field.
   int? _messageId;
@@ -74,33 +68,11 @@ class MessageStruct extends BaseStruct {
   set messageType(String? val) => _messageType = val;
   bool hasMessageType() => _messageType != null;
 
-  // "message_parametrSTRING1" field.
-  String? _messageParametrSTRING1;
-  String get messageParametrSTRING1 => _messageParametrSTRING1 ?? '';
-  set messageParametrSTRING1(String? val) => _messageParametrSTRING1 = val;
-  bool hasMessageParametrSTRING1() => _messageParametrSTRING1 != null;
-
-  // "message_parametrINT1" field.
-  int? _messageParametrINT1;
-  int get messageParametrINT1 => _messageParametrINT1 ?? 0;
-  set messageParametrINT1(int? val) => _messageParametrINT1 = val;
-  void incrementMessageParametrINT1(int amount) =>
-      _messageParametrINT1 = messageParametrINT1 + amount;
-  bool hasMessageParametrINT1() => _messageParametrINT1 != null;
-
-  // "message_from_team" field.
-  TeamStruct? _messageFromTeam;
-  TeamStruct get messageFromTeam => _messageFromTeam ?? TeamStruct();
-  set messageFromTeam(TeamStruct? val) => _messageFromTeam = val;
-  void updateMessageFromTeam(Function(TeamStruct) updateFn) =>
-      updateFn(_messageFromTeam ??= TeamStruct());
-  bool hasMessageFromTeam() => _messageFromTeam != null;
-
-  // "message_to_player" field.
-  String? _messageToPlayer;
-  String get messageToPlayer => _messageToPlayer ?? '';
-  set messageToPlayer(String? val) => _messageToPlayer = val;
-  bool hasMessageToPlayer() => _messageToPlayer != null;
+  // "message_readed" field.
+  bool? _messageReaded;
+  bool get messageReaded => _messageReaded ?? false;
+  set messageReaded(bool? val) => _messageReaded = val;
+  bool hasMessageReaded() => _messageReaded != null;
 
   static MessageStruct fromMap(Map<String, dynamic> data) => MessageStruct(
         messageId: castToType<int>(data['message_id']),
@@ -110,10 +82,7 @@ class MessageStruct extends BaseStruct {
         messageChat: castToType<int>(data['message_chat']),
         messageSanderAvatar: data['message_sander_avatar'] as String?,
         messageType: data['message_type'] as String?,
-        messageParametrSTRING1: data['message_parametrSTRING1'] as String?,
-        messageParametrINT1: castToType<int>(data['message_parametrINT1']),
-        messageFromTeam: TeamStruct.maybeFromMap(data['message_from_team']),
-        messageToPlayer: data['message_to_player'] as String?,
+        messageReaded: data['message_readed'] as bool?,
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
@@ -127,10 +96,7 @@ class MessageStruct extends BaseStruct {
         'message_chat': _messageChat,
         'message_sander_avatar': _messageSanderAvatar,
         'message_type': _messageType,
-        'message_parametrSTRING1': _messageParametrSTRING1,
-        'message_parametrINT1': _messageParametrINT1,
-        'message_from_team': _messageFromTeam?.toMap(),
-        'message_to_player': _messageToPlayer,
+        'message_readed': _messageReaded,
       }.withoutNulls;
 
   @override
@@ -163,21 +129,9 @@ class MessageStruct extends BaseStruct {
           _messageType,
           ParamType.String,
         ),
-        'message_parametrSTRING1': serializeParam(
-          _messageParametrSTRING1,
-          ParamType.String,
-        ),
-        'message_parametrINT1': serializeParam(
-          _messageParametrINT1,
-          ParamType.int,
-        ),
-        'message_from_team': serializeParam(
-          _messageFromTeam,
-          ParamType.DataStruct,
-        ),
-        'message_to_player': serializeParam(
-          _messageToPlayer,
-          ParamType.String,
+        'message_readed': serializeParam(
+          _messageReaded,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -218,25 +172,9 @@ class MessageStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        messageParametrSTRING1: deserializeParam(
-          data['message_parametrSTRING1'],
-          ParamType.String,
-          false,
-        ),
-        messageParametrINT1: deserializeParam(
-          data['message_parametrINT1'],
-          ParamType.int,
-          false,
-        ),
-        messageFromTeam: deserializeStructParam(
-          data['message_from_team'],
-          ParamType.DataStruct,
-          false,
-          structBuilder: TeamStruct.fromSerializableMap,
-        ),
-        messageToPlayer: deserializeParam(
-          data['message_to_player'],
-          ParamType.String,
+        messageReaded: deserializeParam(
+          data['message_readed'],
+          ParamType.bool,
           false,
         ),
       );
@@ -254,10 +192,7 @@ class MessageStruct extends BaseStruct {
         messageChat == other.messageChat &&
         messageSanderAvatar == other.messageSanderAvatar &&
         messageType == other.messageType &&
-        messageParametrSTRING1 == other.messageParametrSTRING1 &&
-        messageParametrINT1 == other.messageParametrINT1 &&
-        messageFromTeam == other.messageFromTeam &&
-        messageToPlayer == other.messageToPlayer;
+        messageReaded == other.messageReaded;
   }
 
   @override
@@ -269,10 +204,7 @@ class MessageStruct extends BaseStruct {
         messageChat,
         messageSanderAvatar,
         messageType,
-        messageParametrSTRING1,
-        messageParametrINT1,
-        messageFromTeam,
-        messageToPlayer
+        messageReaded
       ]);
 }
 
@@ -284,10 +216,7 @@ MessageStruct createMessageStruct({
   int? messageChat,
   String? messageSanderAvatar,
   String? messageType,
-  String? messageParametrSTRING1,
-  int? messageParametrINT1,
-  TeamStruct? messageFromTeam,
-  String? messageToPlayer,
+  bool? messageReaded,
 }) =>
     MessageStruct(
       messageId: messageId,
@@ -297,8 +226,5 @@ MessageStruct createMessageStruct({
       messageChat: messageChat,
       messageSanderAvatar: messageSanderAvatar,
       messageType: messageType,
-      messageParametrSTRING1: messageParametrSTRING1,
-      messageParametrINT1: messageParametrINT1,
-      messageFromTeam: messageFromTeam ?? TeamStruct(),
-      messageToPlayer: messageToPlayer,
+      messageReaded: messageReaded,
     );
