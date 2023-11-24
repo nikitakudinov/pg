@@ -1358,7 +1358,7 @@ class GETUSERCHATSCopyCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETUSERCHATS Copy',
       apiUrl:
-          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*,chat_members(member:players(*)))',
+          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
