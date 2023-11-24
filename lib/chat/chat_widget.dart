@@ -41,7 +41,7 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().messages[0] == null) {
+      if (FFAppState().messages[0] != null) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
