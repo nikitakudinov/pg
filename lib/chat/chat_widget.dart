@@ -169,11 +169,41 @@ class _ChatWidgetState extends State<ChatWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [],
+                      Builder(
+                        builder: (context) {
+                          final chatMessages = FFAppState()
+                              .messages
+                              .where((e) => e.messageChat == widget.chatID)
+                              .toList();
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: chatMessages.length,
+                            itemBuilder: (context, chatMessagesIndex) {
+                              final chatMessagesItem =
+                                  chatMessages[chatMessagesIndex];
+                              return Container(
+                                width: 100.0,
+                                height: 100.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      chatMessagesItem.messageBody,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),
