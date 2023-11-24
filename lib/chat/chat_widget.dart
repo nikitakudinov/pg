@@ -41,61 +41,29 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().messages[0] != null) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('messages на завгружены'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
+      _model.jSONallChatMessages =
+          await MessagingGroup.getchatmessagesCall.call(
+        chatId: widget.chatID?.toString(),
+      );
+      if ((_model.jSONallChatMessages?.succeeded ?? true)) {
+        _model.dtMessages = await actions.dtMSG(
+          (_model.jSONallChatMessages?.jsonBody ?? ''),
         );
-        _model.apiResult1wv = await MessagingGroup.getchatmessagesCall.call(
-          chatId: widget.chatID?.toString(),
-        );
-        if ((_model.apiResult1wv?.succeeded ?? true)) {
-          _model.dtMessagesData = await actions.dtMSG(
-            (_model.apiResult1wv?.jsonBody ?? ''),
-          );
-          setState(() {
-            FFAppState().messages =
-                _model.dtMessagesData!.toList().cast<MessageStruct>();
-          });
-          await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text('messages на завгружены в стейт'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
-              );
-            },
-          );
-        }
-      } else {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('messages уже в appstate'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
+        setState(() {
+          FFAppState().messages =
+              _model.dtMessages!.toList().cast<MessageStruct>();
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Сообщения загружены',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).secondary,
+          ),
         );
       }
     });
