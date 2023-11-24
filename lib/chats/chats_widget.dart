@@ -221,7 +221,13 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           final textGetundreadedchatmessagescountResponse =
                                               snapshot.data!;
                                           return Text(
-                                            'asd',
+                                            MessagingGroup
+                                                .getundreadedchatmessagescountCall
+                                                .count(
+                                                  textGetundreadedchatmessagescountResponse
+                                                      .jsonBody,
+                                                )
+                                                .toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           );
