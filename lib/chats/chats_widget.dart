@@ -227,7 +227,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           List<MessageRow> textMessageRowList =
                                               snapshot.data!;
                                           return Text(
-                                            'asd',
+                                            textMessageRowList.length
+                                                .toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           );
