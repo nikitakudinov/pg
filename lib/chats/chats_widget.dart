@@ -2,8 +2,11 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +29,18 @@ class _ChatsWidgetState extends State<ChatsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 1000),
+        callback: (timer) async {
+          setState(() => _model.requestCompleter = null);
+          await _model.waitForRequestCompleted();
+        },
+        startImmediately: true,
+      );
+    });
   }
 
   @override
@@ -194,17 +209,21 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         ],
                                       ),
                                       FutureBuilder<List<MessageRow>>(
-                                        future: MessageTable().queryRows(
-                                          queryFn: (q) => q
-                                              .eq(
-                                                'message_chat',
-                                                chatsItem.chatId,
-                                              )
-                                              .eq(
-                                                'message_readed',
-                                                false,
-                                              ),
-                                        ),
+                                        future: (_model.requestCompleter ??=
+                                                Completer<List<MessageRow>>()
+                                                  ..complete(
+                                                      MessageTable().queryRows(
+                                                    queryFn: (q) => q
+                                                        .eq(
+                                                          'message_chat',
+                                                          chatsItem.chatId,
+                                                        )
+                                                        .eq(
+                                                          'message_readed',
+                                                          false,
+                                                        ),
+                                                  )))
+                                            .future,
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {
