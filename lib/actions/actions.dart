@@ -488,3 +488,28 @@ Future singlChatUpdater(
     );
   }
 }
+
+Future loadALLplayers(BuildContext context) async {
+  ApiCallResponse? jSONallPLAYERSdata;
+  List<PlayerStruct>? dtPLAYERdata;
+
+  jSONallPLAYERSdata = await PlayerGroup.listplayersCall.call();
+  if ((jSONallPLAYERSdata?.succeeded ?? true)) {
+    dtPLAYERdata = await actions.dtPLAYER(
+      (jSONallPLAYERSdata?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().players = dtPLAYERdata!.toList().cast<PlayerStruct>();
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'В память загружено ${FFAppState().players.length.toString()}профилей игроков',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
+  }
+}

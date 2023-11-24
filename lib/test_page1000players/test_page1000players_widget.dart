@@ -1,11 +1,7 @@
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,32 +25,6 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TestPage1000playersModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultsrx = await PlayerGroup.listplayersCall.call();
-      if ((_model.apiResultsrx?.succeeded ?? true)) {
-        _model.dtPLAYERdata = await actions.dtPLAYER(
-          (_model.apiResultsrx?.jsonBody ?? ''),
-        );
-        setState(() {
-          FFAppState().players =
-              _model.dtPLAYERdata!.toList().cast<PlayerStruct>();
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'В память загружено ${FFAppState().players.length.toString()}профилей игроков',
-              style: TextStyle(
-                color: FlutterFlowTheme.of(context).primaryText,
-              ),
-            ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).secondary,
-          ),
-        );
-      }
-    });
   }
 
   @override
