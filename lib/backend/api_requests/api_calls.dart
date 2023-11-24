@@ -538,12 +538,10 @@ class ListplayerbyteamCall {
 }
 
 class ListplayersCall {
-  Future<ApiCallResponse> call({
-    String? idList = '',
-  }) async {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTPLAYERS',
-      apiUrl: '${PlayerGroup.baseUrl}users?select=*,teams(*)',
+      apiUrl: '${PlayerGroup.baseUrl}players?select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -558,36 +556,6 @@ class ListplayersCall {
       cache: false,
     );
   }
-
-  dynamic id(dynamic response) => getJsonField(
-        response,
-        r'''$[:].id''',
-      );
-  dynamic createdat(dynamic response) => getJsonField(
-        response,
-        r'''$[:].created_at''',
-        true,
-      );
-  dynamic nickname(dynamic response) => getJsonField(
-        response,
-        r'''$[:].nickname''',
-        true,
-      );
-  dynamic uid(dynamic response) => getJsonField(
-        response,
-        r'''$[:].uid''',
-        true,
-      );
-  dynamic email(dynamic response) => getJsonField(
-        response,
-        r'''$[:].email''',
-        true,
-      );
-  dynamic tag(dynamic response) => getJsonField(
-        response,
-        r'''$[:].tag''',
-        true,
-      );
 }
 
 /// End PLAYER Group Code
@@ -1003,6 +971,10 @@ class MessagingGroup {
   static GetundreadedchatmessagesCall getundreadedchatmessagesCall =
       GetundreadedchatmessagesCall();
   static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
+  static GETCHATMESSAGESCopyCall gETCHATMESSAGESCopyCall =
+      GETCHATMESSAGESCopyCall();
+  static GETCHATMESSAGESCopyCopyCall gETCHATMESSAGESCopyCopyCall =
+      GETCHATMESSAGESCopyCopyCall();
   static GETCHATMESSAGEScountCall gETCHATMESSAGEScountCall =
       GETCHATMESSAGEScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
@@ -1362,6 +1334,64 @@ class GetchatmessagesCall {
       );
 }
 
+class GETCHATMESSAGESCopyCall {
+  Future<ApiCallResponse> call({
+    String? authUserUID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETCHATMESSAGES Copy',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?&select=*,message_readedBy(players(player_uid))&message_readedBy.players.player_uid=eq.${authUserUID}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic count(dynamic response) => getJsonField(
+        response,
+        r'''$[:].count''',
+      );
+}
+
+class GETCHATMESSAGESCopyCopyCall {
+  Future<ApiCallResponse> call({
+    String? authUserUID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETCHATMESSAGES Copy Copy',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?&select=*,message_readedBy(players(player_uid))&message_readedBy.players.player_uid=eq.${authUserUID}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic count(dynamic response) => getJsonField(
+        response,
+        r'''$[:].count''',
+      );
+}
+
 class GETCHATMESSAGEScountCall {
   Future<ApiCallResponse> call({
     String? chatId = '',
@@ -1377,6 +1407,7 @@ class GETCHATMESSAGEScountCall {
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
         'Authorization':
             'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Prefer': 'count=planned',
       },
       params: {},
       returnBody: true,

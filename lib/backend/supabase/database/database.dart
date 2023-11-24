@@ -7,6 +7,7 @@ export 'table.dart';
 
 export 'tables/chat_members.dart';
 export 'tables/countries.dart';
+export 'tables/message_readed_by.dart';
 export 'tables/teams.dart';
 export 'tables/tournaments.dart';
 export 'tables/message.dart';

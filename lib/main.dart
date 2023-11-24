@@ -123,6 +123,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'TEAMS': TeamsWidget(),
       'TOURNAMENTS': TournamentsWidget(),
       'CHATS': ChatsWidget(),
+      'testPage1000players': TestPage1000playersWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -171,6 +172,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Сообщения',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.restore,
+              size: 24.0,
+            ),
+            label: 'ТЕСТ',
             tooltip: '',
           )
         ],

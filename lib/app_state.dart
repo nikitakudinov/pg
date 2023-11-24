@@ -316,6 +316,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInMessages(int _index, MessageStruct _value) {
     _messages.insert(_index, _value);
   }
+
+  List<PlayerStruct> _players = [];
+  List<PlayerStruct> get players => _players;
+  set players(List<PlayerStruct> _value) {
+    _players = _value;
+  }
+
+  void addToPlayers(PlayerStruct _value) {
+    _players.add(_value);
+  }
+
+  void removeFromPlayers(PlayerStruct _value) {
+    _players.remove(_value);
+  }
+
+  void removeAtIndexFromPlayers(int _index) {
+    _players.removeAt(_index);
+  }
+
+  void updatePlayersAtIndex(
+    int _index,
+    PlayerStruct Function(PlayerStruct) updateFn,
+  ) {
+    _players[_index] = updateFn(_players[_index]);
+  }
+
+  void insertAtIndexInPlayers(int _index, PlayerStruct _value) {
+    _players.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
