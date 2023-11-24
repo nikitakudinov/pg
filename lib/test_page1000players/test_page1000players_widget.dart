@@ -231,16 +231,6 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(15.0),
                                             ),
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.00, 0.00),
-                                              child: Text(
-                                                playersViewIndex.toString(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ),
                                           ),
                                         ),
                                       ],
