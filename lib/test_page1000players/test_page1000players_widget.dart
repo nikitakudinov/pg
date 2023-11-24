@@ -81,8 +81,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                     child: Builder(
                       builder: (context) {
-                        final playersView =
-                            FFAppState().players.toList().take(10).toList();
+                        final playersView = FFAppState().players.toList();
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           primary: false,
