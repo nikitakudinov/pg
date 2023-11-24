@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 Future<List<ChatmemberStruct>?> dtCHATMEMBERS(List<dynamic>? jsonArray) async {
   // Add your function code here!
-  List<ChatmemberStructruct> listOfStruct = [];
+  List<ChatmemberStruct> listOfStruct = [];
   for (var item in jsonArray!) {
     listOfStruct.add(ChatmemberStruct.fromMap(item));
   }
