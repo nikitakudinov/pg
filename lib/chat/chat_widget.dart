@@ -41,29 +41,57 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.jSONallChatMessages =
-          await MessagingGroup.getchatmessagesCall.call(
+      _model.jSONchatMessagesCount =
+          await MessagingGroup.gETCHATMESSAGEScountCall.call(
         chatId: widget.chatID?.toString(),
       );
-      if ((_model.jSONallChatMessages?.succeeded ?? true)) {
-        _model.dtMessages = await actions.dtMSG(
-          (_model.jSONallChatMessages?.jsonBody ?? ''),
+      if (FFAppState()
+              .messages
+              .where((e) => e.messageChat == widget.chatID)
+              .toList()
+              .length !=
+          MessagingGroup.gETCHATMESSAGEScountCall.count(
+            (_model.jSONchatMessagesCount?.jsonBody ?? ''),
+          )) {
+        _model.jSONallChatMessages =
+            await MessagingGroup.getchatmessagesCall.call(
+          chatId: widget.chatID?.toString(),
         );
-        setState(() {
-          FFAppState().messages =
-              _model.dtMessages!.toList().cast<MessageStruct>();
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Сообщения загружены',
-              style: TextStyle(
-                color: FlutterFlowTheme.of(context).primaryText,
+        if ((_model.jSONallChatMessages?.succeeded ?? true)) {
+          _model.dtMessages = await actions.dtMSG(
+            (_model.jSONallChatMessages?.jsonBody ?? ''),
+          );
+          setState(() {
+            FFAppState().messages =
+                _model.dtMessages!.toList().cast<MessageStruct>();
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Сообщения загружены',
+                style: TextStyle(
+                  color: FlutterFlowTheme.of(context).primaryText,
+                ),
               ),
+              duration: Duration(milliseconds: 4000),
+              backgroundColor: FlutterFlowTheme.of(context).secondary,
             ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).secondary,
-          ),
+          );
+        }
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Количество сообщений не равно'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
         );
       }
     });
