@@ -85,7 +85,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
             'Всего в базе ${FFAppState().players.length.toString()}игроков',
