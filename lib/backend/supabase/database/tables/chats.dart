@@ -21,10 +21,6 @@ class ChatsRow extends SupabaseDataRow {
   set chatUpdatedAt(DateTime value) =>
       setField<DateTime>('chat_updated_at', value);
 
-  List<String> get chatMembers => getListField<String>('chat_members');
-  set chatMembers(List<String>? value) =>
-      setListField<String>('chat_members', value);
-
   String? get chatLastMessage => getField<String>('chat_last_message');
   set chatLastMessage(String? value) =>
       setField<String>('chat_last_message', value);
