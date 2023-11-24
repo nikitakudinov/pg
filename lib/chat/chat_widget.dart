@@ -155,7 +155,26 @@ class _ChatWidgetState extends State<ChatWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.restore_from_trash_rounded,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  setState(() {
+                    FFAppState().messages = [];
+                  });
+                },
+              ),
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),
