@@ -6,6 +6,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,12 +56,12 @@ Future loadAuthUserChats(BuildContext context) async {
   ApiCallResponse? apiResultce6;
   List<ChatStruct>? convertedChatsData;
 
-  apiResultce6 = await MessagingGroup.gETUSERCHATSCopyCall.call(
+  apiResultce6 = await MessagingGroup.getuserchatsCall.call(
     authUser: currentUserUid,
   );
   if ((apiResultce6?.succeeded ?? true)) {
     convertedChatsData = await actions.dtCHAT(
-      MessagingGroup.gETUSERCHATSCopyCall
+      MessagingGroup.getuserchatsCall
           .chats(
             (apiResultce6?.jsonBody ?? ''),
           )
@@ -422,5 +423,73 @@ Future chasUpdater(BuildContext context) async {
         (apiResult9bd?.jsonBody ?? ''),
       );
     });
+  }
+}
+
+Future singlChatUpdater(
+  BuildContext context, {
+  int? chatId,
+  int? chatIndex,
+}) async {
+  ApiCallResponse? apiResult7br;
+  ApiCallResponse? apiResultmyf;
+
+  apiResult7br = await MessagingGroup.getchatbyidCall.call(
+    chatID: chatId?.toString(),
+  );
+  if (FFAppState().AllAuthUsersChats[chatIndex!].chatUpdatedAt ==
+      MessagingGroup.getchatbyidCall
+          .chatupdatedat(
+            (apiResult7br?.jsonBody ?? ''),
+          )
+          .toString()) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('TRUE'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('FALSE'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    apiResultmyf = await MessagingGroup.getchatbyidCall.call(
+      chatID: chatId?.toString(),
+    );
+    FFAppState().update(() {
+      FFAppState().updateAllAuthUsersChatsAtIndex(
+        chatIndex!,
+        (_) => ChatStruct.fromMap((apiResultmyf?.jsonBody ?? '')),
+      );
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Singl chat updated',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
   }
 }

@@ -997,9 +997,9 @@ class MessagingGroup {
       GETuserNotificationsCall();
   static GETNOTIFICATIONScountCall gETNOTIFICATIONScountCall =
       GETNOTIFICATIONScountCall();
-  static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
+  static GetchatbyidCall getchatbyidCall = GetchatbyidCall();
   static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
-  static GETUSERCHATSCopyCall gETUSERCHATSCopyCall = GETUSERCHATSCopyCall();
+  static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
   static GETUSERCHATScountCall gETUSERCHATScountCall = GETUSERCHATScountCall();
   static ChatbyteamidCall chatbyteamidCall = ChatbyteamidCall();
 }
@@ -1161,14 +1161,14 @@ class GETNOTIFICATIONScountCall {
       );
 }
 
-class GetuserchatsCall {
+class GetchatbyidCall {
   Future<ApiCallResponse> call({
-    String? authUser = '',
+    String? chatID = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETUSERCHATS',
+      callName: 'GETCHATBYID',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}&select=*,players(*)',
+          '${MessagingGroup.baseUrl}chats?chat_id=eq.${chatID}&select=*,members:players(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1213,46 +1213,57 @@ class GetuserchatsCall {
   dynamic membersplayercreatedat(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_created_at''',
+        true,
       );
   dynamic membersplayernickname(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_nickname''',
+        true,
       );
   dynamic membersplayertag(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_tag''',
+        true,
       );
   dynamic membersplayerflag(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_flag''',
+        true,
       );
   dynamic membersplayercountrie(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_countrie''',
+        true,
       );
   dynamic membersplayeravatar(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_avatar''',
+        true,
       );
   dynamic membersplayeruid(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_uid''',
+        true,
       );
   dynamic membersplayerteam(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_team''',
+        true,
       );
   dynamic membersplayerteamrole(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_team_role''',
+        true,
       );
   dynamic membersplayerteamlineup(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_team_lineup''',
+        true,
       );
   dynamic membersplayerid(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_id''',
+        true,
       );
 }
 
@@ -1351,12 +1362,12 @@ class GetchatmessagesCall {
       );
 }
 
-class GETUSERCHATSCopyCall {
+class GetuserchatsCall {
   Future<ApiCallResponse> call({
     String? authUser = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETUSERCHATS Copy',
+      callName: 'GETUSERCHATS',
       apiUrl:
           '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*,members:players(*))',
       callType: ApiCallType.GET,
