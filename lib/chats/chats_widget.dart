@@ -136,16 +136,28 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           ),
                                         ],
                                       ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            chatsItem
-                                                .members.first.playerNickname,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ],
+                                      Builder(
+                                        builder: (context) {
+                                          final chatMembersList =
+                                              chatsItem.members.toList();
+                                          return Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: List.generate(
+                                                chatMembersList.length,
+                                                (chatMembersListIndex) {
+                                              final chatMembersListItem =
+                                                  chatMembersList[
+                                                      chatMembersListIndex];
+                                              return Text(
+                                                chatMembersListItem
+                                                    .playerNickname,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              );
+                                            }),
+                                          );
+                                        },
                                       ),
                                       Container(
                                         width:
