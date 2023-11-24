@@ -36,12 +36,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       // Обновляем данные авторизитванного пользователя
       await action_blocks.authPlayerUpdater(context);
+      await action_blocks.loadAuthUserChats(context);
       // Загрузка и обновление notifications
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 5000),
         callback: (timer) async {
           await action_blocks.notificationsUpdater(context);
-          await action_blocks.chasUpdater(context);
         },
         startImmediately: true,
       );
