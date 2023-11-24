@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -119,8 +120,13 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              playersViewItem.playerAvatar,
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 1400),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 1400),
+                                              imageUrl:
+                                                  playersViewItem.playerAvatar,
                                               width: 80.0,
                                               height: 80.0,
                                               fit: BoxFit.cover,
@@ -175,8 +181,12 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             0.0),
-                                                    child: Image.network(
-                                                      playersViewItem
+                                                    child: CachedNetworkImage(
+                                                      fadeInDuration: Duration(
+                                                          milliseconds: 500),
+                                                      fadeOutDuration: Duration(
+                                                          milliseconds: 500),
+                                                      imageUrl: playersViewItem
                                                           .playerFlag,
                                                       width: 20.0,
                                                       height: 12.0,
