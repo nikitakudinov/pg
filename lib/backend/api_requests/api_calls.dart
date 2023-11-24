@@ -1383,6 +1383,11 @@ class GETUSERCHATSCopyCall {
         response,
         r'''$[:].chats.chat_members[:].member''',
       );
+  dynamic chats(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chats''',
+        true,
+      );
 }
 
 class GETUSERCHATScountCall {

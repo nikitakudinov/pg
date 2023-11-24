@@ -58,11 +58,11 @@ Future loadAuthUserChats(BuildContext context) async {
   apiResultce6 = await MessagingGroup.gETUSERCHATSCopyCall.call();
   if ((apiResultce6?.succeeded ?? true)) {
     convertedChatsData = await actions.dtCHAT(
-      getJsonField(
-        (apiResultce6?.jsonBody ?? ''),
-        r'''$.chats''',
-        true,
-      ),
+      MessagingGroup.gETUSERCHATSCopyCall
+          .chats(
+            (apiResultce6?.jsonBody ?? ''),
+          )
+          ?.toList(),
     );
     FFAppState().update(() {
       FFAppState().AllAuthUsersChats =
