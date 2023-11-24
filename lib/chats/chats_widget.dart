@@ -140,7 +140,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Hello World',
+                                            chatsItem
+                                                .members.first.playerNickname,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
