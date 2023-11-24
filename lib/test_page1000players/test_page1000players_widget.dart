@@ -104,13 +104,14 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              if (FFAppState().players.first == null)
+              if (FFAppState().players.first != null)
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                   child: Builder(
                     builder: (context) {
-                      final playersView = FFAppState().players.toList();
+                      final playersView =
+                          FFAppState().players.toList().take(10).toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
