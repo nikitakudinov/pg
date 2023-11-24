@@ -140,7 +140,10 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                                 .bodyMedium,
                                           ),
                                           Text(
-                                            'Hello World',
+                                            playersViewItem.playerTeamRole
+                                                .take(5)
+                                                .toList()
+                                                .first,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
