@@ -88,7 +88,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'Всего в базе ${FFAppState().players.length.toString()}игроков',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
