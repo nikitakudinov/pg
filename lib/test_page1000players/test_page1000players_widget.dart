@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -99,11 +100,13 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                           '_model.textController',
                           Duration(milliseconds: 2000),
                           () async {
+                            setState(() {
+                              FFAppState().players = [];
+                            });
                             await action_blocks.loadSearchResults1(
                               context,
                               searchText: _model.textController.text,
                             );
-                            setState(() {});
                           },
                         ),
                         obscureText: false,
@@ -154,11 +157,13 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                               ? InkWell(
                                   onTap: () async {
                                     _model.textController?.clear();
+                                    setState(() {
+                                      FFAppState().players = [];
+                                    });
                                     await action_blocks.loadSearchResults1(
                                       context,
                                       searchText: _model.textController.text,
                                     );
-                                    setState(() {});
                                     setState(() {});
                                   },
                                   child: Icon(
