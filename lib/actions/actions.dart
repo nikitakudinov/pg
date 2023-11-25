@@ -531,5 +531,20 @@ Future loadSearchResults1(
     FFAppState().update(() {
       FFAppState().players = dTsearchResults!.toList().cast<PlayerStruct>();
     });
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('as'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
