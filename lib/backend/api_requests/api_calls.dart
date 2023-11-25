@@ -30,6 +30,7 @@ class PlayerGroup {
       LISTPLAYERBYTEAMandTEAMROLEcountCall();
   static ListplayerbyteamCall listplayerbyteamCall = ListplayerbyteamCall();
   static ListplayersCall listplayersCall = ListplayersCall();
+  static PlayersearchCall playersearchCall = PlayersearchCall();
 }
 
 class ListplayerbyuidCall {
@@ -542,6 +543,30 @@ class ListplayersCall {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTPLAYERS',
       apiUrl: '${PlayerGroup.baseUrl}players?select=*',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class PlayersearchCall {
+  Future<ApiCallResponse> call({
+    String? searchText = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'PLAYERSEARCH',
+      apiUrl:
+          '${PlayerGroup.baseUrl}players?or=(player_nickname.like.%${searchText}%,player_tag.like.%${searchText}%)&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

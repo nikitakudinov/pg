@@ -513,3 +513,23 @@ Future loadALLplayers(BuildContext context) async {
     );
   }
 }
+
+Future loadSearchResults1(
+  BuildContext context, {
+  required String? searchText,
+}) async {
+  ApiCallResponse? jSONsearchRESULTSdata;
+  List<PlayerStruct>? dTsearchResults;
+
+  jSONsearchRESULTSdata = await PlayerGroup.playersearchCall.call(
+    searchText: searchText,
+  );
+  if ((jSONsearchRESULTSdata?.jsonBody ?? '')) {
+    dTsearchResults = await actions.dtPLAYER(
+      (jSONsearchRESULTSdata?.jsonBody ?? ''),
+    );
+    FFAppState().update(() {
+      FFAppState().players = dTsearchResults!.toList().cast<PlayerStruct>();
+    });
+  }
+}
