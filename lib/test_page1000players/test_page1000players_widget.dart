@@ -107,6 +107,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                               context,
                               searchText: _model.textController.text,
                             );
+                            setState(() {});
                           },
                         ),
                         obscureText: false,
@@ -164,6 +165,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                       context,
                                       searchText: _model.textController.text,
                                     );
+                                    setState(() {});
                                     setState(() {});
                                   },
                                   child: Icon(
