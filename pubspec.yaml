@@ -29,6 +29,7 @@ dependencies:
   app_links: 3.4.1
   auto_size_text: 3.0.0
   cached_network_image: 3.2.1
+  easy_debounce: 2.0.1
   equatable: 2.0.5
   file_picker: 5.2.6
   flutter_animate: 4.1.1+1
@@ -70,6 +71,7 @@ dependencies:
   storage_client: 1.5.1
   supabase: 1.6.3
   supabase_flutter: 1.7.0
+  text_search: 1.0.1
   timeago: 3.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27

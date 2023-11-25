@@ -62,7 +62,6 @@ class _TeamsWidgetState extends State<TeamsWidget>
         duration: Duration(milliseconds: 5000),
         callback: (timer) async {
           await action_blocks.notificationsUpdater(context);
-          await action_blocks.chasUpdater(context);
         },
         startImmediately: true,
       );
