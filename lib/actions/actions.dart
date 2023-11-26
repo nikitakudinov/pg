@@ -524,7 +524,7 @@ Future loadSearchResults1(
   jSONsearchRESULTSdata = await PlayerGroup.playersearchCall.call(
     searchText: searchText,
   );
-  if ((jSONsearchRESULTSdata?.jsonBody ?? '')) {
+  if ((jSONsearchRESULTSdata?.succeeded ?? true)) {
     dTsearchResults = await actions.dtPLAYER(
       (jSONsearchRESULTSdata?.jsonBody ?? ''),
     );

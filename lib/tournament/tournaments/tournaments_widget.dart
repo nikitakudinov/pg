@@ -112,15 +112,17 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                           ),
                         );
                       }
-                      List<TournamentsRow> listViewTournamentsRowList =
+                      List<TournamentsRow>
+                          listViewTournamentsTournamentsRowList =
                           snapshot.data!;
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewTournamentsRowList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewTournamentsRow =
-                              listViewTournamentsRowList[listViewIndex];
+                        itemCount: listViewTournamentsTournamentsRowList.length,
+                        itemBuilder: (context, listViewTournamentsIndex) {
+                          final listViewTournamentsTournamentsRow =
+                              listViewTournamentsTournamentsRowList[
+                                  listViewTournamentsIndex];
                           return Container(
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
@@ -136,12 +138,13 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                   'TOURNAMENT_VIEW',
                                   queryParameters: {
                                     'members': serializeParam(
-                                      listViewTournamentsRow.tournamentMembers,
+                                      listViewTournamentsTournamentsRow
+                                          .tournamentMembers,
                                       ParamType.int,
                                       true,
                                     ),
                                     'organizators': serializeParam(
-                                      listViewTournamentsRow
+                                      listViewTournamentsTournamentsRow
                                           .tournamentOrganizators,
                                       ParamType.String,
                                       true,
@@ -168,7 +171,7 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
                                           valueOrDefault<String>(
-                                            listViewTournamentsRow
+                                            listViewTournamentsTournamentsRow
                                                 .tournamentLogo,
                                             'дщ',
                                           ),
@@ -186,7 +189,8 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                     children: [
                                       Text(
                                         valueOrDefault<String>(
-                                          listViewTournamentsRow.tournamentName,
+                                          listViewTournamentsTournamentsRow
+                                              .tournamentName,
                                           '0',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -194,7 +198,7 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                       ),
                                       Text(
                                         valueOrDefault<String>(
-                                          listViewTournamentsRow
+                                          listViewTournamentsTournamentsRow
                                               .tournamentStatus,
                                           'Не выбран',
                                         ),
@@ -214,7 +218,7 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 child: Image.network(
-                                                  listViewTournamentsRow
+                                                  listViewTournamentsTournamentsRow
                                                       .tournamentFlag!,
                                                   width: 20.0,
                                                   height: 12.0,
@@ -224,7 +228,7 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                             ),
                                             Text(
                                               valueOrDefault<String>(
-                                                listViewTournamentsRow
+                                                listViewTournamentsTournamentsRow
                                                     .tournamentCountry,
                                                 'Не выбран',
                                               ),
