@@ -566,7 +566,7 @@ class PlayersearchCall {
     return ApiManager.instance.makeApiCall(
       callName: 'PLAYERSEARCH',
       apiUrl:
-          '${PlayerGroup.baseUrl}players?or=(player_nickname.like.%${searchText}%,player_tag.like.%${searchText}%)&select=*',
+          '${PlayerGroup.baseUrl}players?or=(player_nickname.ilike.%${searchText}%player_tag.ilike%${searchText}%)&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
