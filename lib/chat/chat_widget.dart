@@ -1,12 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -41,49 +39,33 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.jSONchatMessagesCount =
-          await MessagingGroup.gETCHATMESSAGEScountCall.call(
-        chatId: widget.chatID?.toString(),
-      );
       if (FFAppState()
               .messages
               .where((e) => e.messageChat == widget.chatID)
               .toList()
-              .length !=
-          MessagingGroup.gETCHATMESSAGEScountCall.count(
-            (_model.jSONchatMessagesCount?.jsonBody ?? ''),
-          )) {
-        _model.jSONallChatMessages =
-            await MessagingGroup.getchatmessagesCall.call(
-          chatId: widget.chatID?.toString(),
-        );
-        if ((_model.jSONallChatMessages?.succeeded ?? true)) {
-          _model.dtMessages = await actions.dtMSG(
-            (_model.jSONallChatMessages?.jsonBody ?? ''),
-          );
-          setState(() {
-            FFAppState().messages =
-                _model.dtMessages!.toList().cast<MessageStruct>();
-          });
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Сообщения загружены',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryText,
+              .length ==
+          0) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Нет загруженных сообщений  в стате для этого чата'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
                 ),
-              ),
-              duration: Duration(milliseconds: 4000),
-              backgroundColor: FlutterFlowTheme.of(context).secondary,
-            ),
-          );
-        }
+              ],
+            );
+          },
+        );
       } else {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
             return AlertDialog(
-              title: Text('Количество сообщений не равно'),
+              title:
+                  Text('Естьв  загруженных сообщений  в стате для этого чата'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
