@@ -164,7 +164,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           .bodyMedium,
                                     ),
                                     Text(
-                                      chatsListDataItem.countOfMessages.count
+                                      chatsListDataItem
+                                          .countOfMessages.first.count
                                           .toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
