@@ -1,10 +1,10 @@
-import '/backend/supabase/supabase.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
-import '/actions/actions.dart' as action_blocks;
-import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -32,14 +32,31 @@ class _ChatsWidgetState extends State<ChatsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
-        callback: (timer) async {
-          setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
-        },
-        startImmediately: true,
+      _model.apiResult3cp = await MessagingGroup.getchatsCall.call(
+        authUser: currentUserUid,
       );
+      if ((_model.apiResult3cp?.succeeded ?? true)) {
+        _model.dtCHATSdata = await actions.dtCHAT(
+          (_model.apiResult3cp?.jsonBody ?? ''),
+        );
+        setState(() {
+          FFAppState().chats = _model.dtCHATSdata!.toList().cast<ChatStruct>();
+        });
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Чаты загружены'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
     });
   }
 
@@ -91,204 +108,107 @@ class _ChatsWidgetState extends State<ChatsWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                  child: Builder(
-                    builder: (context) {
-                      final chats = FFAppState().AllAuthUsersChats.toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: chats.length,
-                        itemBuilder: (context, chatsIndex) {
-                          final chatsItem = chats[chatsIndex];
-                          return RefreshIndicator(
-                            onRefresh: () async {
-                              await action_blocks.singlChatUpdater(
-                                context,
-                                chatId: chatsItem.chatId,
-                                chatIndex: chatsIndex,
-                              );
-                              setState(() {});
-                            },
-                            child: SingleChildScrollView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        'CHAT',
-                                        queryParameters: {
-                                          'chatID': serializeParam(
-                                            chatsItem.chatId,
-                                            ParamType.int,
-                                          ),
-                                          'chatIndex': serializeParam(
-                                            chatsIndex,
-                                            ParamType.int,
-                                          ),
-                                        }.withoutNulls,
-                                      );
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Container(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              (chatsItem.chatChattype ==
-                                                          'Чат команды') &&
-                                                      (chatsItem.chatOfTeam ==
-                                                          FFAppState()
-                                                              .authPlayer
-                                                              .playerTeam)
-                                                  ? FFAppState()
-                                                      .authPlayerTeam
-                                                      .teamLogo
-                                                  : '0',
-                                              width: 50.0,
-                                              height: 50.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'Чат вашей команды',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                            Builder(
-                                              builder: (context) {
-                                                final chatMembersList =
-                                                    chatsItem.members.toList();
-                                                return Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: List.generate(
-                                                      chatMembersList.length,
-                                                      (chatMembersListIndex) {
-                                                    final chatMembersListItem =
-                                                        chatMembersList[
-                                                            chatMembersListIndex];
-                                                    return Text(
-                                                      chatMembersListItem
-                                                          .playerNickname,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    );
-                                                  }),
-                                                );
-                                              },
-                                            ),
-                                            Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.5,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: Text(
-                                                chatsItem.chatLastMessage,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        FutureBuilder<List<MessageRow>>(
-                                          future: (_model.requestCompleter ??=
-                                                  Completer<List<MessageRow>>()
-                                                    ..complete(MessageTable()
-                                                        .queryRows(
-                                                      queryFn: (q) => q
-                                                          .eq(
-                                                            'message_chat',
-                                                            chatsItem.chatId,
-                                                          )
-                                                          .eq(
-                                                            'message_readed',
-                                                            false,
-                                                          ),
-                                                    )))
-                                              .future,
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<MessageRow>
-                                                textMessageRowList =
-                                                snapshot.data!;
-                                            return Text(
-                                              textMessageRowList.length
-                                                  .toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            );
-                                          },
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
+                Builder(
+                  builder: (context) {
+                    final chatsListData = FFAppState().chats.toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: chatsListData.length,
+                      itemBuilder: (context, chatsListDataIndex) {
+                        final chatsListDataItem =
+                            chatsListData[chatsListDataIndex];
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 15.0, 0.0),
+                                  child: Container(
+                                    width: 80.0,
+                                    height: 80.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Image.network(
+                                        'https://picsum.photos/seed/811/600',
+                                        width: 80.0,
+                                        height: 80.0,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Hello World',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Text(
+                                      'Hello World',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 5.0, 0.0),
+                                          child: Container(
+                                            width: 20.0,
+                                            height: 12.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/728/600',
+                                                width: 20.0,
+                                                height: 12.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          'Hello World',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),

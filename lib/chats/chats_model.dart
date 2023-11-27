@@ -1,11 +1,11 @@
-import '/backend/supabase/supabase.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
-import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
 import 'chats_widget.dart' show ChatsWidget;
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -16,8 +16,10 @@ class ChatsModel extends FlutterFlowModel<ChatsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  InstantTimer? instantTimer;
-  Completer<List<MessageRow>>? requestCompleter;
+  // Stores action output result for [Backend Call - API (GETCHATS)] action in CHATS widget.
+  ApiCallResponse? apiResult3cp;
+  // Stores action output result for [Custom Action - dtCHAT] action in CHATS widget.
+  List<ChatStruct>? dtCHATSdata;
 
   /// Initialization and disposal methods.
 
@@ -25,25 +27,9 @@ class ChatsModel extends FlutterFlowModel<ChatsWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
   }
 
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  Future waitForRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
 }
