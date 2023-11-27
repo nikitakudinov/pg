@@ -205,7 +205,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         ),
                                         Text(
                                           chatsListDataItem
-                                              .messages.first.messageBody,
+                                              .members.first.playerNickname,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
