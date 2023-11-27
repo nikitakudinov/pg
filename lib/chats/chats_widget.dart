@@ -37,10 +37,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
       );
       if ((_model.apiResult3cp?.succeeded ?? true)) {
         _model.dtCHATSdata = await actions.dtCHAT(
-          getJsonField(
+          MessagingGroup.getchatsCall.chats(
             (_model.apiResult3cp?.jsonBody ?? ''),
-            r'''$.chats''',
-            true,
           ),
         );
         setState(() {

@@ -1069,7 +1069,7 @@ class GetchatsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATS',
       apiUrl:
-          '${MessagingGroup.baseUrl}chat_members?select=chats(*)&or=(player_uid.eq.${authUser})',
+          '${MessagingGroup.baseUrl}chat_members?select=chats(*,messages:message(*),members:players(*),count_of_messages:message(count))&or=(player_uid.eq.${authUser})',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1085,31 +1085,19 @@ class GetchatsCall {
     );
   }
 
-  dynamic chatid(dynamic response) => getJsonField(
+  dynamic chats(dynamic response) => getJsonField(
         response,
-        r'''$[:].chat_id''',
+        r'''$[:].chats''',
+      );
+  dynamic chatsmembers(dynamic response) => getJsonField(
+        response,
+        r'''$[:].chats.members''',
         true,
       );
-  dynamic chatupdatedat(dynamic response) => getJsonField(
+  dynamic chatscountofmessages(dynamic response) => getJsonField(
         response,
-        r'''$[:].chat_updated_at''',
-      );
-  dynamic chatmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_members''',
+        r'''$[:].chats.count_of_messages''',
         true,
-      );
-  dynamic chatlastmessage(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_last_message''',
-      );
-  dynamic chatofteam(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_of_team''',
-      );
-  dynamic chatcountofmembers(dynamic response) => getJsonField(
-        response,
-        r'''$[:].chat_count_of_members''',
       );
 }
 
