@@ -550,7 +550,7 @@ Future loadSearchResults1(
 }
 
 Future addMessageReadedLoop(BuildContext context) async {
-  while (FFAppState().ureadedMessagesCount == 5) {
+  while (FFAppState().ureadedMessagesCount == 3) {
     await showDialog(
       context: context,
       builder: (alertDialogContext) {

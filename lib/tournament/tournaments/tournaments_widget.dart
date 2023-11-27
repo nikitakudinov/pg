@@ -31,6 +31,7 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.addMessageReadedLoop(context);
+      setState(() {});
     });
   }
 
