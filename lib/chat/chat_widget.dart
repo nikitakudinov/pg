@@ -1,10 +1,12 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -59,6 +61,32 @@ class _ChatWidgetState extends State<ChatWidget> {
             );
           },
         );
+        _model.apiResult3n7 = await MessagingGroup.getchatmessagesCall.call(
+          chatId: widget.chatID?.toString(),
+        );
+        if ((_model.apiResult3n7?.succeeded ?? true)) {
+          _model.dtMessagesData = await actions.dtMSG(
+            (_model.apiResult3n7?.jsonBody ?? ''),
+          );
+          setState(() {
+            FFAppState().messages =
+                _model.dtMessagesData!.toList().cast<MessageStruct>();
+          });
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text('Теперьзагружены'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              );
+            },
+          );
+        }
       } else {
         await showDialog(
           context: context,
