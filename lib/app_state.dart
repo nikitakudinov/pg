@@ -345,6 +345,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInPlayers(int _index, PlayerStruct _value) {
     _players.insert(_index, _value);
   }
+
+  int _ureadedMessagesCount = 0;
+  int get ureadedMessagesCount => _ureadedMessagesCount;
+  set ureadedMessagesCount(int _value) {
+    _ureadedMessagesCount = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

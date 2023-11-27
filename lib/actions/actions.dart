@@ -548,3 +548,25 @@ Future loadSearchResults1(
     );
   }
 }
+
+Future addMessageReadedLoop(BuildContext context) async {
+  while (FFAppState().ureadedMessagesCount == 5) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text(FFAppState().ureadedMessagesCount.toString()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    FFAppState().update(() {
+      FFAppState().ureadedMessagesCount = FFAppState().ureadedMessagesCount + 1;
+    });
+  }
+}
