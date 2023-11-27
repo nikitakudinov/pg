@@ -37,7 +37,11 @@ class _ChatsWidgetState extends State<ChatsWidget> {
       );
       if ((_model.apiResult3cp?.succeeded ?? true)) {
         _model.dtCHATSdata = await actions.dtCHAT(
-          (_model.apiResult3cp?.jsonBody ?? ''),
+          getJsonField(
+            (_model.apiResult3cp?.jsonBody ?? ''),
+            r'''$.chats''',
+            true,
+          ),
         );
         setState(() {
           FFAppState().chats = _model.dtCHATSdata!.toList().cast<ChatStruct>();
@@ -157,7 +161,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      chatsListDataItem.chatId.toString(),
+                                      chatsListDataItem.chatLastMessage,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
