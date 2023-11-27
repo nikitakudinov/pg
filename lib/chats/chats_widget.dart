@@ -41,13 +41,6 @@ class _ChatsWidgetState extends State<ChatsWidget> {
             (_model.apiResult3cp?.jsonBody ?? ''),
           ),
         );
-        _model.dtCHATmembersData = await actions.dtPLAYER(
-          MessagingGroup.getchatsCall
-              .chatsmembers(
-                (_model.apiResult3cp?.jsonBody ?? ''),
-              )
-              ?.toList(),
-        );
         setState(() {
           FFAppState().chats = _model.dtCHATSdata!.toList().cast<ChatStruct>();
         });

@@ -20,8 +20,6 @@ class ChatsModel extends FlutterFlowModel<ChatsWidget> {
   ApiCallResponse? apiResult3cp;
   // Stores action output result for [Custom Action - dtCHAT] action in CHATS widget.
   List<ChatStruct>? dtCHATSdata;
-  // Stores action output result for [Custom Action - dtPLAYER] action in CHATS widget.
-  List<PlayerStruct>? dtCHATmembersData;
 
   /// Initialization and disposal methods.
 
