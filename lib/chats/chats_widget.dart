@@ -157,7 +157,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Hello World',
+                                      chatsListDataItem.chatId.toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
