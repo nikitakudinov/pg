@@ -998,8 +998,8 @@ class MessagingGroup {
   static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
   static GETCHATMESSAGESCopyCall gETCHATMESSAGESCopyCall =
       GETCHATMESSAGESCopyCall();
-  static GETCHATMESSAGESCopyCopyCall gETCHATMESSAGESCopyCopyCall =
-      GETCHATMESSAGESCopyCopyCall();
+  static GetunreadedmessagesCall getunreadedmessagesCall =
+      GetunreadedmessagesCall();
   static GETCHATMESSAGEScountCall gETCHATMESSAGEScountCall =
       GETCHATMESSAGEScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
@@ -1068,7 +1068,8 @@ class GetchatsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATS',
-      apiUrl: '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chat_members?select=chats(*,messages:message(*),members:players(*),count_of_messages:message(count))&or=(player_uid.eq.${authUser})',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1087,6 +1088,7 @@ class GetchatsCall {
   dynamic chatid(dynamic response) => getJsonField(
         response,
         r'''$[:].chat_id''',
+        true,
       );
   dynamic chatupdatedat(dynamic response) => getJsonField(
         response,
@@ -1388,14 +1390,14 @@ class GETCHATMESSAGESCopyCall {
       );
 }
 
-class GETCHATMESSAGESCopyCopyCall {
+class GetunreadedmessagesCall {
   Future<ApiCallResponse> call({
     String? authUserUID = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETCHATMESSAGES Copy Copy',
+      callName: 'GETUNREADEDMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?&select=*,message_readedBy(players(player_uid))&message_readedBy.players.player_uid=eq.${authUserUID}',
+          '${MessagingGroup.baseUrl}message_readed?and=(player_uid.not.eq.${authUserUID})&select=message(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1414,6 +1416,11 @@ class GETCHATMESSAGESCopyCopyCall {
   dynamic count(dynamic response) => getJsonField(
         response,
         r'''$[:].count''',
+      );
+  dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$[:].message''',
+        true,
       );
 }
 
