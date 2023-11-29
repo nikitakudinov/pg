@@ -1381,11 +1381,12 @@ class GETCHATMESSAGESCopyCall {
 class GetunreadedmessagesCall {
   Future<ApiCallResponse> call({
     String? authUserUID = '',
+    int? chatID,
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETUNREADEDMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message_readed?and=(player_uid.not.eq.${authUserUID})&select=message(*)',
+          '${MessagingGroup.baseUrl}message?players=&select=players(player_uid),*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
