@@ -1327,7 +1327,7 @@ class GetchatmessagesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&select=*,message_readed(*)',
+          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&select=*,message_readed(*,player_uid:players(*))',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
