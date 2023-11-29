@@ -993,11 +993,9 @@ class MessagingGroup {
   static GetchatbyidCall getchatbyidCall = GetchatbyidCall();
   static GetundreadedchatmessagescountCall getundreadedchatmessagescountCall =
       GetundreadedchatmessagescountCall();
+  static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
   static GetundreadedchatmessagesCall getundreadedchatmessagesCall =
       GetundreadedchatmessagesCall();
-  static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
-  static GETCHATMESSAGESCopyCall gETCHATMESSAGESCopyCall =
-      GETCHATMESSAGESCopyCall();
   static GetunreadedmessagesCall getunreadedmessagesCall =
       GetunreadedmessagesCall();
   static GETCHATMESSAGEScountCall gETCHATMESSAGEScountCall =
@@ -1289,36 +1287,6 @@ class GetundreadedchatmessagescountCall {
       );
 }
 
-class GetundreadedchatmessagesCall {
-  Future<ApiCallResponse> call({
-    String? chatId = '',
-    String? authUserUID = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'GETUNDREADEDCHATMESSAGES',
-      apiUrl:
-          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&message_readed=eq.false&message_readedBy1=cs.${authUserUID}&select=count',
-      callType: ApiCallType.GET,
-      headers: {
-        'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-        'Authorization':
-            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  dynamic count(dynamic response) => getJsonField(
-        response,
-        r'''$[:].count''',
-      );
-}
-
 class GetchatmessagesCall {
   Future<ApiCallResponse> call({
     String? chatId = '',
@@ -1327,7 +1295,7 @@ class GetchatmessagesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=*,message_readed(*)',
+          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId})&select=*,message_readed(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1349,14 +1317,15 @@ class GetchatmessagesCall {
       );
 }
 
-class GETCHATMESSAGESCopyCall {
+class GetundreadedchatmessagesCall {
   Future<ApiCallResponse> call({
+    String? chatId = '',
     String? authUserUID = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETCHATMESSAGES Copy',
+      callName: 'GETUNDREADEDCHATMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?&select=*,message_readedBy(players(player_uid))&message_readedBy.players.player_uid=eq.${authUserUID}',
+          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=*,message_readed(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
