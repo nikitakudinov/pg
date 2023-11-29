@@ -991,13 +991,13 @@ class MessagingGroup {
   static GETNOTIFICATIONScountCall gETNOTIFICATIONScountCall =
       GETNOTIFICATIONScountCall();
   static GetchatbyidCall getchatbyidCall = GetchatbyidCall();
-  static GetundreadedchatmessagescountCall getundreadedchatmessagescountCall =
-      GetundreadedchatmessagescountCall();
   static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
-  static GetundreadedchatmessagesCall getundreadedchatmessagesCall =
-      GetundreadedchatmessagesCall();
-  static GetunreadedmessagesCall getunreadedmessagesCall =
-      GetunreadedmessagesCall();
+  static GetallundreadedchatmessagesCall getallundreadedchatmessagesCall =
+      GetallundreadedchatmessagesCall();
+  static GEToneUNDREADEDCHATMESSAGESCall gEToneUNDREADEDCHATMESSAGESCall =
+      GEToneUNDREADEDCHATMESSAGESCall();
+  static GETUNDREADEDCHATMESSAGEScountCall gETUNDREADEDCHATMESSAGEScountCall =
+      GETUNDREADEDCHATMESSAGEScountCall();
   static GETCHATMESSAGEScountCall gETCHATMESSAGEScountCall =
       GETCHATMESSAGEScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
@@ -1258,35 +1258,6 @@ class GetchatbyidCall {
       );
 }
 
-class GetundreadedchatmessagescountCall {
-  Future<ApiCallResponse> call({
-    String? chatId = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'GETUNDREADEDCHATMESSAGESCOUNT',
-      apiUrl:
-          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&message_readed=eq.false&select=count',
-      callType: ApiCallType.GET,
-      headers: {
-        'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-        'Authorization':
-            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  dynamic count(dynamic response) => getJsonField(
-        response,
-        r'''$[:].count''',
-      );
-}
-
 class GetchatmessagesCall {
   Future<ApiCallResponse> call({
     String? chatId = '',
@@ -1317,13 +1288,13 @@ class GetchatmessagesCall {
       );
 }
 
-class GetundreadedchatmessagesCall {
+class GetallundreadedchatmessagesCall {
   Future<ApiCallResponse> call({
     String? chatId = '',
     String? authUserUID = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETUNDREADEDCHATMESSAGES',
+      callName: 'GETALLUNDREADEDCHATMESSAGES',
       apiUrl:
           '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=*,message_readed(*)',
       callType: ApiCallType.GET,
@@ -1347,16 +1318,15 @@ class GetundreadedchatmessagesCall {
       );
 }
 
-class GetunreadedmessagesCall {
+class GEToneUNDREADEDCHATMESSAGESCall {
   Future<ApiCallResponse> call({
+    String? chatId = '',
     String? authUserUID = '',
-    int? messageID,
-    int? chatID,
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GETUNREADEDMESSAGES',
+      callName: 'GEToneUNDREADEDCHATMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}chat_members?select=chats(message(*,message_readed(message(*,message_readed(*)))))&player_uid=eq.${authUserUID}&chats.message.message_readed.player_uid=eq.${authUserUID}',
+          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=*,message_readed(*)&limit=1',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1376,10 +1346,35 @@ class GetunreadedmessagesCall {
         response,
         r'''$[:].count''',
       );
-  dynamic message(dynamic response) => getJsonField(
+}
+
+class GETUNDREADEDCHATMESSAGEScountCall {
+  Future<ApiCallResponse> call({
+    String? chatId = '',
+    String? authUserUID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETUNDREADEDCHATMESSAGEScount',
+      apiUrl:
+          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=count',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic count(dynamic response) => getJsonField(
         response,
-        r'''$[:].message''',
-        true,
+        r'''$[:].count''',
       );
 }
 

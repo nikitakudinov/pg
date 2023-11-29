@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -52,19 +53,40 @@ class _ChatWidgetState extends State<ChatWidget> {
           FFAppState().messages =
               _model.dtMSGdata!.toList().cast<MessageStruct>();
         });
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('as'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
+        _model.instantTimer = InstantTimer.periodic(
+          duration: Duration(milliseconds: 1000),
+          callback: (timer) async {
+            _model.apiResulthsd =
+                await MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.call();
+            setState(() {
+              _model.unreadedMessagesCount =
+                  MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
+                (_model.apiResulthsd?.jsonBody ?? ''),
+              );
+            });
+            if (_model.unreadedMessagesCount != 0) {
+              while (_model.loopActionCount == _model.unreadedMessagesCount) {
+                await showDialog(
+                  context: context,
+                  builder: (alertDialogContext) {
+                    return AlertDialog(
+                      title: Text(_model.loopActionCount!.toString()),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(alertDialogContext),
+                          child: Text('Ok'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+                setState(() {
+                  _model.loopActionCount = _model.loopActionCount! + 1;
+                });
+              }
+            }
           },
+          startImmediately: true,
         );
       }
     });
