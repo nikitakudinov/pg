@@ -380,6 +380,19 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInChats(int _index, ChatStruct _value) {
     _chats.insert(_index, _value);
   }
+
+  MessageReadedStruct _authPalayerMessageReaded =
+      MessageReadedStruct.fromSerializableMap(jsonDecode(
+          '{\"player_uid\":\"29ab458c-7308-44c3-9e1c-868ad41820cd\"}'));
+  MessageReadedStruct get authPalayerMessageReaded => _authPalayerMessageReaded;
+  set authPalayerMessageReaded(MessageReadedStruct _value) {
+    _authPalayerMessageReaded = _value;
+  }
+
+  void updateAuthPalayerMessageReadedStruct(
+      Function(MessageReadedStruct) updateFn) {
+    updateFn(_authPalayerMessageReaded);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
