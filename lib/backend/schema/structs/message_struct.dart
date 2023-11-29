@@ -15,7 +15,7 @@ class MessageStruct extends BaseStruct {
     List<String>? messageReadedBy,
     String? messageSanderAvatar,
     String? messageSandedAt,
-    List<MessageReadedStruct>? messageReaded,
+    List<PlayerStruct>? messageReaded,
   })  : _messageId = messageId,
         _messageSander = messageSander,
         _messageBody = messageBody,
@@ -79,10 +79,10 @@ class MessageStruct extends BaseStruct {
   bool hasMessageSandedAt() => _messageSandedAt != null;
 
   // "message_readed" field.
-  List<MessageReadedStruct>? _messageReaded;
-  List<MessageReadedStruct> get messageReaded => _messageReaded ?? const [];
-  set messageReaded(List<MessageReadedStruct>? val) => _messageReaded = val;
-  void updateMessageReaded(Function(List<MessageReadedStruct>) updateFn) =>
+  List<PlayerStruct>? _messageReaded;
+  List<PlayerStruct> get messageReaded => _messageReaded ?? const [];
+  set messageReaded(List<PlayerStruct>? val) => _messageReaded = val;
+  void updateMessageReaded(Function(List<PlayerStruct>) updateFn) =>
       updateFn(_messageReaded ??= []);
   bool hasMessageReaded() => _messageReaded != null;
 
@@ -97,7 +97,7 @@ class MessageStruct extends BaseStruct {
         messageSandedAt: data['message_sanded_at'] as String?,
         messageReaded: getStructList(
           data['message_readed'],
-          MessageReadedStruct.fromMap,
+          PlayerStruct.fromMap,
         ),
       );
 
@@ -200,11 +200,11 @@ class MessageStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        messageReaded: deserializeStructParam<MessageReadedStruct>(
+        messageReaded: deserializeStructParam<PlayerStruct>(
           data['message_readed'],
           ParamType.DataStruct,
           true,
-          structBuilder: MessageReadedStruct.fromSerializableMap,
+          structBuilder: PlayerStruct.fromSerializableMap,
         ),
       );
 

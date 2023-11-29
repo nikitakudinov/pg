@@ -227,33 +227,17 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         final messageReadRowItem =
                                                             messageReadRow[
                                                                 messageReadRowIndex];
-                                                        return Builder(
-                                                          builder: (context) {
-                                                            final players =
-                                                                messageReadRowItem
-                                                                    .players
-                                                                    .toList();
-                                                            return Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: List.generate(
-                                                                  players
-                                                                      .length,
-                                                                  (playersIndex) {
-                                                                final playersItem =
-                                                                    players[
-                                                                        playersIndex];
-                                                                return Text(
-                                                                  playersItem
-                                                                      .playerNickname,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
-                                                                );
-                                                              }),
-                                                            );
-                                                          },
+                                                        return Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              'Hello World',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
                                                         );
                                                       }),
                                                     );
