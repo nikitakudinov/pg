@@ -10,7 +10,7 @@ class MessageReadedStruct extends BaseStruct {
     int? id,
     String? createdAt,
     int? messageId,
-    PlayerStruct? playerUid,
+    String? playerUid,
   })  : _id = id,
         _createdAt = createdAt,
         _messageId = messageId,
@@ -37,11 +37,9 @@ class MessageReadedStruct extends BaseStruct {
   bool hasMessageId() => _messageId != null;
 
   // "player_uid" field.
-  PlayerStruct? _playerUid;
-  PlayerStruct get playerUid => _playerUid ?? PlayerStruct();
-  set playerUid(PlayerStruct? val) => _playerUid = val;
-  void updatePlayerUid(Function(PlayerStruct) updateFn) =>
-      updateFn(_playerUid ??= PlayerStruct());
+  String? _playerUid;
+  String get playerUid => _playerUid ?? '';
+  set playerUid(String? val) => _playerUid = val;
   bool hasPlayerUid() => _playerUid != null;
 
   static MessageReadedStruct fromMap(Map<String, dynamic> data) =>
@@ -49,7 +47,7 @@ class MessageReadedStruct extends BaseStruct {
         id: castToType<int>(data['id']),
         createdAt: data['created_at'] as String?,
         messageId: castToType<int>(data['message_id']),
-        playerUid: PlayerStruct.maybeFromMap(data['player_uid']),
+        playerUid: data['player_uid'] as String?,
       );
 
   static MessageReadedStruct? maybeFromMap(dynamic data) =>
@@ -59,7 +57,7 @@ class MessageReadedStruct extends BaseStruct {
         'id': _id,
         'created_at': _createdAt,
         'message_id': _messageId,
-        'player_uid': _playerUid?.toMap(),
+        'player_uid': _playerUid,
       }.withoutNulls;
 
   @override
@@ -78,7 +76,7 @@ class MessageReadedStruct extends BaseStruct {
         ),
         'player_uid': serializeParam(
           _playerUid,
-          ParamType.DataStruct,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -99,11 +97,10 @@ class MessageReadedStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        playerUid: deserializeStructParam(
+        playerUid: deserializeParam(
           data['player_uid'],
-          ParamType.DataStruct,
+          ParamType.String,
           false,
-          structBuilder: PlayerStruct.fromSerializableMap,
         ),
       );
 
@@ -128,11 +125,11 @@ MessageReadedStruct createMessageReadedStruct({
   int? id,
   String? createdAt,
   int? messageId,
-  PlayerStruct? playerUid,
+  String? playerUid,
 }) =>
     MessageReadedStruct(
       id: id,
       createdAt: createdAt,
       messageId: messageId,
-      playerUid: playerUid ?? PlayerStruct(),
+      playerUid: playerUid,
     );

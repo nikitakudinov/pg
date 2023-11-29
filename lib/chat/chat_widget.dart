@@ -232,9 +232,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                 asdasda[
                                                                     asdasdaIndex];
                                                             return Text(
-                                                              asdasdaItem
-                                                                  .playerUid
-                                                                  .playerNickname,
+                                                              'Hello World',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium,
