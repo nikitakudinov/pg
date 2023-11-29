@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -82,8 +81,28 @@ class _ChatWidgetState extends State<ChatWidget> {
                 (_model.apiResulthsd?.jsonBody ?? ''),
               );
             });
-            if (FFAppState().ureadedMessagesCount != 0) {
-              await action_blocks.addMessageReadedLoop(context);
+            if (FFAppState().ureadedMessagesCount == 0) {
+              while (FFAppState().unreadedMessagesLoop !=
+                  FFAppState().ureadedMessagesCount) {
+                await showDialog(
+                  context: context,
+                  builder: (alertDialogContext) {
+                    return AlertDialog(
+                      title: Text(FFAppState().unreadedMessagesLoop.toString()),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(alertDialogContext),
+                          child: Text('Ok'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+                setState(() {
+                  FFAppState().unreadedMessagesLoop =
+                      FFAppState().unreadedMessagesLoop + 1;
+                });
+              }
             }
           },
           startImmediately: true,

@@ -393,6 +393,12 @@ class FFAppState extends ChangeNotifier {
       Function(MessageReadedStruct) updateFn) {
     updateFn(_authPalayerMessageReaded);
   }
+
+  int _unreadedMessagesLoop = 0;
+  int get unreadedMessagesLoop => _unreadedMessagesLoop;
+  set unreadedMessagesLoop(int _value) {
+    _unreadedMessagesLoop = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
