@@ -81,7 +81,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                 (_model.apiResulthsd?.jsonBody ?? ''),
               );
             });
-            if (FFAppState().ureadedMessagesCount == 0) {
+            if (FFAppState().ureadedMessagesCount != 0) {
               while (FFAppState().unreadedMessagesLoop !=
                   FFAppState().ureadedMessagesCount) {
                 await showDialog(
