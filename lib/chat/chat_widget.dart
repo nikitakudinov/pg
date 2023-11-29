@@ -71,7 +71,10 @@ class _ChatWidgetState extends State<ChatWidget> {
           duration: Duration(milliseconds: 1000),
           callback: (timer) async {
             _model.apiResulthsd =
-                await MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.call();
+                await MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.call(
+              chatId: widget.chatID?.toString(),
+              authUserUID: currentUserUid,
+            );
             setState(() {
               _model.unreadedMessagesCount =
                   MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
