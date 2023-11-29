@@ -216,17 +216,32 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Hello World',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
+                                                    Builder(
+                                                      builder: (context) {
+                                                        final asdasda =
+                                                            chatMessagesItem
+                                                                .messageReaded
+                                                                .toList();
+                                                        return Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: List.generate(
+                                                              asdasda.length,
+                                                              (asdasdaIndex) {
+                                                            final asdasdaItem =
+                                                                asdasda[
+                                                                    asdasdaIndex];
+                                                            return Text(
+                                                              asdasdaItem
+                                                                  .playerUid
+                                                                  .playerNickname,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
                                                     ),
                                                   ],
                                                 ),
