@@ -253,7 +253,9 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                             asdasda[
                                                                 asdasdaIndex];
                                                         return Text(
-                                                          'Hello World',
+                                                          chatMessagesItem
+                                                              .messageReadedBy
+                                                              .first,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
