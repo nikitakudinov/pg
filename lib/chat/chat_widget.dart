@@ -1,14 +1,11 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -38,73 +35,6 @@ class _ChatWidgetState extends State<ChatWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState()
-              .messages
-              .where((e) => e.messageChat == widget.chatID)
-              .toList()
-              .length ==
-          0) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('Нет загруженных сообщений  в стате для этого чата'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-        _model.apiResult3n7 = await MessagingGroup.getchatmessagesCall.call(
-          chatId: widget.chatID?.toString(),
-        );
-        if ((_model.apiResult3n7?.succeeded ?? true)) {
-          _model.dtMessagesData = await actions.dtMSG(
-            (_model.apiResult3n7?.jsonBody ?? ''),
-          );
-          setState(() {
-            FFAppState().messages =
-                _model.dtMessagesData!.toList().cast<MessageStruct>();
-          });
-          await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text('Теперьзагружены'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
-              );
-            },
-          );
-        }
-      } else {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title:
-                  Text('Естьв  загруженных сообщений  в стате для этого чата'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    });
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -190,48 +120,56 @@ class _ChatWidgetState extends State<ChatWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Builder(
-                        builder: (context) {
-                          final chatMessages = FFAppState()
-                              .messages
-                              .where((e) => e.messageChat == widget.chatID)
-                              .toList();
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: chatMessages.length,
-                            itemBuilder: (context, chatMessagesIndex) {
-                              final chatMessagesItem =
-                                  chatMessages[chatMessagesIndex];
-                              return Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      chatMessagesItem.messageBody,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                child: Builder(
+                  builder: (context) {
+                    final chatData = FFAppState()
+                        .chats
+                        .where((e) => e.chatId == widget.chatID)
+                        .toList();
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children:
+                            List.generate(chatData.length, (chatDataIndex) {
+                          final chatDataItem = chatData[chatDataIndex];
+                          return Builder(
+                            builder: (context) {
+                              final chatMessages =
+                                  chatDataItem.messages.toList();
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: chatMessages.length,
+                                itemBuilder: (context, chatMessagesIndex) {
+                                  final chatMessagesItem =
+                                      chatMessages[chatMessagesIndex];
+                                  return Container(
+                                    width: 100.0,
+                                    height: 100.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                     ),
-                                  ],
-                                ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          chatMessagesItem.messageBody,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
                               );
                             },
                           );
-                        },
+                        }),
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
               Padding(
