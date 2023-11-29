@@ -82,7 +82,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               );
             });
             if (_model.unreadedMessagesCount != 0) {
-              while (_model.loopActionCount == 5) {
+              while (_model.loopActionCount == 3) {
                 await showDialog(
                   context: context,
                   builder: (alertDialogContext) {
