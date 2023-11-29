@@ -216,18 +216,16 @@ class _ChatWidgetState extends State<ChatWidget> {
                                               ],
                                             ),
                                             Text(
-                                              dateTimeFormat(
-                                                  'Hm',
-                                                  DateTime
-                                                      .fromMillisecondsSinceEpoch(
-                                                          valueOrDefault<int>(
-                                                    functions
-                                                        .newCustomFunction(
-                                                            chatMessagesItem
-                                                                .messageSandedAt)
-                                                        ?.millisecondsSinceEpoch,
-                                                    0,
-                                                  ))),
+                                              DateTime
+                                                  .fromMillisecondsSinceEpoch(
+                                                      valueOrDefault<int>(
+                                                functions
+                                                    .newCustomFunction(
+                                                        chatMessagesItem
+                                                            .messageSandedAt)
+                                                    ?.millisecondsSinceEpoch,
+                                                0,
+                                              )).toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
