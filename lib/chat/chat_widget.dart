@@ -86,7 +86,9 @@ class _ChatWidgetState extends State<ChatWidget> {
         );
       }
       while (FFAppState().unreadedMessagesLoop !=
-          FFAppState().ureadedMessagesCount) {
+          MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
+            (_model.apiResulthsd?.jsonBody ?? ''),
+          )) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
