@@ -85,7 +85,8 @@ class _ChatWidgetState extends State<ChatWidget> {
           startImmediately: true,
         );
       }
-      while (FFAppState().unreadedMessagesLoop != 3) {
+      while (FFAppState().unreadedMessagesLoop !=
+          FFAppState().ureadedMessagesCount) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
