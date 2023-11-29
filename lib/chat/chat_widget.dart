@@ -212,16 +212,30 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         .bodyMedium,
                                                   ),
                                                 ),
-                                                Text(
-                                                  chatMessagesItem
-                                                      .messageReaded
-                                                      .first
-                                                      .players
-                                                      .first
-                                                      .playerNickname,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                Builder(
+                                                  builder: (context) {
+                                                    final messageReadRow =
+                                                        chatMessagesItem
+                                                            .messageReaded
+                                                            .toList();
+                                                    return Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: List.generate(
+                                                          messageReadRow.length,
+                                                          (messageReadRowIndex) {
+                                                        final messageReadRowItem =
+                                                            messageReadRow[
+                                                                messageReadRowIndex];
+                                                        return Text(
+                                                          'Hello World',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        );
+                                                      }),
+                                                    );
+                                                  },
                                                 ),
                                               ],
                                             ),
