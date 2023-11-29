@@ -85,7 +85,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           startImmediately: true,
         );
       }
-      if (FFAppState().ureadedMessagesCount != 0) {
+      if (FFAppState().ureadedMessagesCount == 0) {
         while (FFAppState().unreadedMessagesLoop !=
             MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
               (_model.apiResulthsd?.jsonBody ?? ''),
