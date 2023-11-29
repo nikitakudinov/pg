@@ -177,7 +177,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       BorderRadius.circular(
                                                           5.0),
                                                   child: Image.network(
-                                                    'https://picsum.photos/seed/811/600',
+                                                    chatMessagesItem
+                                                        .messageSanderAvatar,
                                                     width: 80.0,
                                                     height: 80.0,
                                                     fit: BoxFit.cover,
@@ -191,60 +192,17 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Hello World',
+                                                  chatMessagesItem
+                                                      .messageSander,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
                                                 ),
                                                 Text(
-                                                  'Hello World',
+                                                  chatMessagesItem.messageBody,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        width: 20.0,
-                                                        height: 12.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                          child: Image.network(
-                                                            'https://picsum.photos/seed/728/600',
-                                                            width: 20.0,
-                                                            height: 12.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      'Hello World',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ],
                                                 ),
                                               ],
                                             ),
