@@ -85,31 +85,37 @@ class _ChatWidgetState extends State<ChatWidget> {
           startImmediately: true,
         );
       }
-      if (FFAppState().ureadedMessagesCount == 0) {
-        while (FFAppState().unreadedMessagesLoop !=
-            MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
-              (_model.apiResulthsd?.jsonBody ?? ''),
-            )) {
-          await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text(FFAppState().unreadedMessagesLoop.toString()),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
+      _model.instantTimer1 = InstantTimer.periodic(
+        duration: Duration(milliseconds: 1000),
+        callback: (timer) async {
+          if (FFAppState().ureadedMessagesCount == 0) {
+            while (FFAppState().unreadedMessagesLoop !=
+                MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
+                  (_model.apiResulthsd?.jsonBody ?? ''),
+                )) {
+              await showDialog(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: Text(FFAppState().unreadedMessagesLoop.toString()),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(alertDialogContext),
+                        child: Text('Ok'),
+                      ),
+                    ],
+                  );
+                },
               );
-            },
-          );
-          setState(() {
-            FFAppState().unreadedMessagesLoop =
-                FFAppState().unreadedMessagesLoop + 1;
-          });
-        }
-      }
+              setState(() {
+                FFAppState().unreadedMessagesLoop =
+                    FFAppState().unreadedMessagesLoop + 1;
+              });
+            }
+          }
+        },
+        startImmediately: true,
+      );
     });
 
     _model.textController ??= TextEditingController();

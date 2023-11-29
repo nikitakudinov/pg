@@ -43,6 +43,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   InstantTimer? instantTimer;
   // Stores action output result for [Backend Call - API (GETUNDREADEDCHATMESSAGEScount)] action in CHAT widget.
   ApiCallResponse? apiResulthsd;
+  InstantTimer? instantTimer1;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -55,6 +56,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
+    instantTimer1?.cancel();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
