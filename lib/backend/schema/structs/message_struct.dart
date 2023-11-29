@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 class MessageStruct extends BaseStruct {
   MessageStruct({
     int? messageId,
-    String? messageSandedAt,
     String? messageSander,
     String? messageBody,
     int? messageChat,
@@ -16,15 +15,16 @@ class MessageStruct extends BaseStruct {
     bool? messageReaded,
     List<String>? messageReadedBy,
     String? messageSanderAvatar,
+    DateTime? messageSandedAt,
   })  : _messageId = messageId,
-        _messageSandedAt = messageSandedAt,
         _messageSander = messageSander,
         _messageBody = messageBody,
         _messageChat = messageChat,
         _messageType = messageType,
         _messageReaded = messageReaded,
         _messageReadedBy = messageReadedBy,
-        _messageSanderAvatar = messageSanderAvatar;
+        _messageSanderAvatar = messageSanderAvatar,
+        _messageSandedAt = messageSandedAt;
 
   // "message_id" field.
   int? _messageId;
@@ -32,12 +32,6 @@ class MessageStruct extends BaseStruct {
   set messageId(int? val) => _messageId = val;
   void incrementMessageId(int amount) => _messageId = messageId + amount;
   bool hasMessageId() => _messageId != null;
-
-  // "message_sanded_at" field.
-  String? _messageSandedAt;
-  String get messageSandedAt => _messageSandedAt ?? '';
-  set messageSandedAt(String? val) => _messageSandedAt = val;
-  bool hasMessageSandedAt() => _messageSandedAt != null;
 
   // "message_sander" field.
   String? _messageSander;
@@ -84,9 +78,14 @@ class MessageStruct extends BaseStruct {
   set messageSanderAvatar(String? val) => _messageSanderAvatar = val;
   bool hasMessageSanderAvatar() => _messageSanderAvatar != null;
 
+  // "message_sanded_at" field.
+  DateTime? _messageSandedAt;
+  DateTime? get messageSandedAt => _messageSandedAt;
+  set messageSandedAt(DateTime? val) => _messageSandedAt = val;
+  bool hasMessageSandedAt() => _messageSandedAt != null;
+
   static MessageStruct fromMap(Map<String, dynamic> data) => MessageStruct(
         messageId: castToType<int>(data['message_id']),
-        messageSandedAt: data['message_sanded_at'] as String?,
         messageSander: data['message_sander'] as String?,
         messageBody: data['message_body'] as String?,
         messageChat: castToType<int>(data['message_chat']),
@@ -94,6 +93,7 @@ class MessageStruct extends BaseStruct {
         messageReaded: data['message_readed'] as bool?,
         messageReadedBy: getDataList(data['message_readedBy']),
         messageSanderAvatar: data['message_sander_avatar'] as String?,
+        messageSandedAt: data['message_sanded_at'] as DateTime?,
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
@@ -101,7 +101,6 @@ class MessageStruct extends BaseStruct {
 
   Map<String, dynamic> toMap() => {
         'message_id': _messageId,
-        'message_sanded_at': _messageSandedAt,
         'message_sander': _messageSander,
         'message_body': _messageBody,
         'message_chat': _messageChat,
@@ -109,6 +108,7 @@ class MessageStruct extends BaseStruct {
         'message_readed': _messageReaded,
         'message_readedBy': _messageReadedBy,
         'message_sander_avatar': _messageSanderAvatar,
+        'message_sanded_at': _messageSandedAt,
       }.withoutNulls;
 
   @override
@@ -116,10 +116,6 @@ class MessageStruct extends BaseStruct {
         'message_id': serializeParam(
           _messageId,
           ParamType.int,
-        ),
-        'message_sanded_at': serializeParam(
-          _messageSandedAt,
-          ParamType.String,
         ),
         'message_sander': serializeParam(
           _messageSander,
@@ -150,6 +146,10 @@ class MessageStruct extends BaseStruct {
           _messageSanderAvatar,
           ParamType.String,
         ),
+        'message_sanded_at': serializeParam(
+          _messageSandedAt,
+          ParamType.DateTime,
+        ),
       }.withoutNulls;
 
   static MessageStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -157,11 +157,6 @@ class MessageStruct extends BaseStruct {
         messageId: deserializeParam(
           data['message_id'],
           ParamType.int,
-          false,
-        ),
-        messageSandedAt: deserializeParam(
-          data['message_sanded_at'],
-          ParamType.String,
           false,
         ),
         messageSander: deserializeParam(
@@ -199,6 +194,11 @@ class MessageStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        messageSandedAt: deserializeParam(
+          data['message_sanded_at'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -209,47 +209,47 @@ class MessageStruct extends BaseStruct {
     const listEquality = ListEquality();
     return other is MessageStruct &&
         messageId == other.messageId &&
-        messageSandedAt == other.messageSandedAt &&
         messageSander == other.messageSander &&
         messageBody == other.messageBody &&
         messageChat == other.messageChat &&
         messageType == other.messageType &&
         messageReaded == other.messageReaded &&
         listEquality.equals(messageReadedBy, other.messageReadedBy) &&
-        messageSanderAvatar == other.messageSanderAvatar;
+        messageSanderAvatar == other.messageSanderAvatar &&
+        messageSandedAt == other.messageSandedAt;
   }
 
   @override
   int get hashCode => const ListEquality().hash([
         messageId,
-        messageSandedAt,
         messageSander,
         messageBody,
         messageChat,
         messageType,
         messageReaded,
         messageReadedBy,
-        messageSanderAvatar
+        messageSanderAvatar,
+        messageSandedAt
       ]);
 }
 
 MessageStruct createMessageStruct({
   int? messageId,
-  String? messageSandedAt,
   String? messageSander,
   String? messageBody,
   int? messageChat,
   String? messageType,
   bool? messageReaded,
   String? messageSanderAvatar,
+  DateTime? messageSandedAt,
 }) =>
     MessageStruct(
       messageId: messageId,
-      messageSandedAt: messageSandedAt,
       messageSander: messageSander,
       messageBody: messageBody,
       messageChat: messageChat,
       messageType: messageType,
       messageReaded: messageReaded,
       messageSanderAvatar: messageSanderAvatar,
+      messageSandedAt: messageSandedAt,
     );

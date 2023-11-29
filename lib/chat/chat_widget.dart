@@ -215,7 +215,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                               ],
                                             ),
                                             Text(
-                                              chatMessagesItem.messageSandedAt,
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
