@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'chat_widget.dart' show ChatWidget;
 import 'package:flutter/material.dart';
@@ -40,10 +39,6 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   ApiCallResponse? apiResulttpi;
   // Stores action output result for [Custom Action - dtMSG] action in CHAT widget.
   List<MessageStruct>? dtMSGdata;
-  InstantTimer? instantTimer;
-  // Stores action output result for [Backend Call - API (GETUNDREADEDCHATMESSAGEScount)] action in CHAT widget.
-  ApiCallResponse? apiResulthsd;
-  InstantTimer? instantTimer1;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -55,8 +50,6 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
-    instantTimer1?.cancel();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

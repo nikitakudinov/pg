@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -53,69 +52,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           FFAppState().messages =
               _model.dtMSGdata!.toList().cast<MessageStruct>();
         });
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('5634'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-        _model.instantTimer = InstantTimer.periodic(
-          duration: Duration(milliseconds: 1000),
-          callback: (timer) async {
-            _model.apiResulthsd =
-                await MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.call(
-              chatId: widget.chatID?.toString(),
-              authUserUID: currentUserUid,
-            );
-            setState(() {
-              FFAppState().ureadedMessagesCount =
-                  MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
-                (_model.apiResulthsd?.jsonBody ?? ''),
-              );
-            });
-          },
-          startImmediately: true,
-        );
       }
-      _model.instantTimer1 = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
-        callback: (timer) async {
-          if (FFAppState().ureadedMessagesCount == 0) {
-            while (FFAppState().unreadedMessagesLoop !=
-                MessagingGroup.gETUNDREADEDCHATMESSAGEScountCall.count(
-                  (_model.apiResulthsd?.jsonBody ?? ''),
-                )) {
-              await showDialog(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text(FFAppState().unreadedMessagesLoop.toString()),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(alertDialogContext),
-                        child: Text('Ok'),
-                      ),
-                    ],
-                  );
-                },
-              );
-              setState(() {
-                FFAppState().unreadedMessagesLoop =
-                    FFAppState().unreadedMessagesLoop + 1;
-              });
-            }
-          }
-        },
-        startImmediately: true,
-      );
     });
 
     _model.textController ??= TextEditingController();
