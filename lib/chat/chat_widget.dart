@@ -179,6 +179,10 @@ class _ChatWidgetState extends State<ChatWidget> {
                 },
               ),
             ),
+            Text(
+              _model.unreadedMessagesCount.toString(),
+              style: FlutterFlowTheme.of(context).bodyMedium,
+            ),
           ],
           centerTitle: false,
           elevation: 2.0,
