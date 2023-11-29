@@ -165,8 +165,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                   .fromSTEB(
                                                       0.0, 0.0, 15.0, 0.0),
                                               child: Container(
-                                                width: 80.0,
-                                                height: 80.0,
+                                                width: 45.0,
+                                                height: 45.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -179,8 +179,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                   child: Image.network(
                                                     chatMessagesItem
                                                         .messageSanderAvatar,
-                                                    width: 80.0,
-                                                    height: 80.0,
+                                                    width: 45.0,
+                                                    height: 5.0,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -196,15 +196,29 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       .messageSander,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .titleSmall,
                                                 ),
-                                                Text(
-                                                  chatMessagesItem.messageBody,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.6,
+                                                  decoration: BoxDecoration(),
+                                                  child: Text(
+                                                    chatMessagesItem
+                                                        .messageBody,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
                                                 ),
                                               ],
+                                            ),
+                                            Text(
+                                              chatMessagesItem.messageSandedAt,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
                                             ),
                                           ],
                                         ),
