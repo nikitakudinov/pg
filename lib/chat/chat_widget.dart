@@ -241,7 +241,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                   builder: (context) {
                                                     final asdasda =
                                                         chatMessagesItem
-                                                            .messageReaded
+                                                            .messageReadedBy
                                                             .toList();
                                                     return Row(
                                                       mainAxisSize:
@@ -253,9 +253,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                             asdasda[
                                                                 asdasdaIndex];
                                                         return Text(
-                                                          chatMessagesItem
-                                                              .messageReadedBy
-                                                              .first,
+                                                          asdasdaItem,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
