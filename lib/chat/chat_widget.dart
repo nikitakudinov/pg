@@ -233,7 +233,13 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                               MainAxisSize.max,
                                                           children: [
                                                             Text(
-                                                              'Hello World',
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                messageReadedByItem
+                                                                    .playerUid
+                                                                    .playerNickname,
+                                                                '0',
+                                                              ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium,
