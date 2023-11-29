@@ -228,7 +228,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                             messageReadRow[
                                                                 messageReadRowIndex];
                                                         return Text(
-                                                          'Hello World',
+                                                          valueOrDefault<
+                                                              String>(
+                                                            messageReadRowItem
+                                                                .players
+                                                                .first
+                                                                .playerNickname,
+                                                            '0',
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
