@@ -7,34 +7,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class MessageReadedStruct extends BaseStruct {
   MessageReadedStruct({
-    int? id,
-    String? createdAt,
-    int? messageId,
     String? playerUid,
-  })  : _id = id,
-        _createdAt = createdAt,
-        _messageId = messageId,
-        _playerUid = playerUid;
-
-  // "id" field.
-  int? _id;
-  int get id => _id ?? 0;
-  set id(int? val) => _id = val;
-  void incrementId(int amount) => _id = id + amount;
-  bool hasId() => _id != null;
-
-  // "created_at" field.
-  String? _createdAt;
-  String get createdAt => _createdAt ?? '';
-  set createdAt(String? val) => _createdAt = val;
-  bool hasCreatedAt() => _createdAt != null;
-
-  // "message_id" field.
-  int? _messageId;
-  int get messageId => _messageId ?? 0;
-  set messageId(int? val) => _messageId = val;
-  void incrementMessageId(int amount) => _messageId = messageId + amount;
-  bool hasMessageId() => _messageId != null;
+  }) : _playerUid = playerUid;
 
   // "player_uid" field.
   String? _playerUid;
@@ -44,9 +18,6 @@ class MessageReadedStruct extends BaseStruct {
 
   static MessageReadedStruct fromMap(Map<String, dynamic> data) =>
       MessageReadedStruct(
-        id: castToType<int>(data['id']),
-        createdAt: data['created_at'] as String?,
-        messageId: castToType<int>(data['message_id']),
         playerUid: data['player_uid'] as String?,
       );
 
@@ -54,26 +25,11 @@ class MessageReadedStruct extends BaseStruct {
       data is Map<String, dynamic> ? MessageReadedStruct.fromMap(data) : null;
 
   Map<String, dynamic> toMap() => {
-        'id': _id,
-        'created_at': _createdAt,
-        'message_id': _messageId,
         'player_uid': _playerUid,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'id': serializeParam(
-          _id,
-          ParamType.int,
-        ),
-        'created_at': serializeParam(
-          _createdAt,
-          ParamType.String,
-        ),
-        'message_id': serializeParam(
-          _messageId,
-          ParamType.int,
-        ),
         'player_uid': serializeParam(
           _playerUid,
           ParamType.String,
@@ -82,21 +38,6 @@ class MessageReadedStruct extends BaseStruct {
 
   static MessageReadedStruct fromSerializableMap(Map<String, dynamic> data) =>
       MessageReadedStruct(
-        id: deserializeParam(
-          data['id'],
-          ParamType.int,
-          false,
-        ),
-        createdAt: deserializeParam(
-          data['created_at'],
-          ParamType.String,
-          false,
-        ),
-        messageId: deserializeParam(
-          data['message_id'],
-          ParamType.int,
-          false,
-        ),
         playerUid: deserializeParam(
           data['player_uid'],
           ParamType.String,
@@ -109,27 +50,16 @@ class MessageReadedStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
-    return other is MessageReadedStruct &&
-        id == other.id &&
-        createdAt == other.createdAt &&
-        messageId == other.messageId &&
-        playerUid == other.playerUid;
+    return other is MessageReadedStruct && playerUid == other.playerUid;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, createdAt, messageId, playerUid]);
+  int get hashCode => const ListEquality().hash([playerUid]);
 }
 
 MessageReadedStruct createMessageReadedStruct({
-  int? id,
-  String? createdAt,
-  int? messageId,
   String? playerUid,
 }) =>
     MessageReadedStruct(
-      id: id,
-      createdAt: createdAt,
-      messageId: messageId,
       playerUid: playerUid,
     );
