@@ -315,7 +315,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                         },
                       ),
                       Text(
-                        _model.unreadedMessagesCount.toString(),
+                        FFAppState().ureadedMessagesCount.toString(),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                     ],
