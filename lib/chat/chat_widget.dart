@@ -214,7 +214,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                 ),
                                                 Builder(
                                                   builder: (context) {
-                                                    final messageReadRow =
+                                                    final messageReadedBy =
                                                         chatMessagesItem
                                                             .messageReaded
                                                             .toList();
@@ -222,11 +222,12 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: List.generate(
-                                                          messageReadRow.length,
-                                                          (messageReadRowIndex) {
-                                                        final messageReadRowItem =
-                                                            messageReadRow[
-                                                                messageReadRowIndex];
+                                                          messageReadedBy
+                                                              .length,
+                                                          (messageReadedByIndex) {
+                                                        final messageReadedByItem =
+                                                            messageReadedBy[
+                                                                messageReadedByIndex];
                                                         return Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
