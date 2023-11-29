@@ -212,6 +212,17 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         .bodyMedium,
                                                   ),
                                                 ),
+                                                Text(
+                                                  chatMessagesItem
+                                                      .messageReaded
+                                                      .first
+                                                      .players
+                                                      .first
+                                                      .playerNickname,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
                                               ],
                                             ),
                                           ],
