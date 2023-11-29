@@ -53,6 +53,20 @@ class _ChatWidgetState extends State<ChatWidget> {
           FFAppState().messages =
               _model.dtMSGdata!.toList().cast<MessageStruct>();
         });
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('5634'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         _model.instantTimer = InstantTimer.periodic(
           duration: Duration(milliseconds: 1000),
           callback: (timer) async {
