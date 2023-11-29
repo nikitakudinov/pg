@@ -212,43 +212,23 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         .bodyMedium,
                                                   ),
                                                 ),
-                                                Builder(
-                                                  builder: (context) {
-                                                    final messageReadedBy =
-                                                        chatMessagesItem
-                                                            .messageReaded
-                                                            .toList();
-                                                    return Row(
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
-                                                      children: List.generate(
-                                                          messageReadedBy
-                                                              .length,
-                                                          (messageReadedByIndex) {
-                                                        final messageReadedByItem =
-                                                            messageReadedBy[
-                                                                messageReadedByIndex];
-                                                        return Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                messageReadedByItem
-                                                                    .playerUid
-                                                                    .playerNickname,
-                                                                '0',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ],
-                                                        );
-                                                      }),
-                                                    );
-                                                  },
+                                                      children: [
+                                                        Text(
+                                                          'Hello World',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
