@@ -1327,7 +1327,7 @@ class GetchatmessagesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&select=*',
+          '${MessagingGroup.baseUrl}message?message_chat=eq.${chatId}&select=*,message_readed(players(*))',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1381,12 +1381,13 @@ class GETCHATMESSAGESCopyCall {
 class GetunreadedmessagesCall {
   Future<ApiCallResponse> call({
     String? authUserUID = '',
+    int? messageID,
     int? chatID,
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETUNREADEDMESSAGES',
       apiUrl:
-          '${MessagingGroup.baseUrl}message?players=&select=players(player_uid),*',
+          '${MessagingGroup.baseUrl}chat_members?select=chats(message(*,message_readed(message(*,message_readed(*)))))&player_uid=eq.${authUserUID}&chats.message.message_readed.player_uid=eq.${authUserUID}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

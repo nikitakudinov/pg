@@ -8,6 +8,7 @@ export 'message_struct.dart';
 export 'notification_struct.dart';
 export 'player_struct.dart';
 export 'player_uid_struct.dart';
+export 'players_struct.dart';
 export 'team_struct.dart';
 export 'tournament_struct.dart';
 export 'user_struct.dart';
