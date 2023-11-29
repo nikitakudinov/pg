@@ -227,18 +227,33 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         final messageReadRowItem =
                                                             messageReadRow[
                                                                 messageReadRowIndex];
-                                                        return Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            messageReadRowItem
-                                                                .players
-                                                                .first
-                                                                .playerNickname,
-                                                            '0',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
+                                                        return Builder(
+                                                          builder: (context) {
+                                                            final players =
+                                                                messageReadRowItem
+                                                                    .players
+                                                                    .toList();
+                                                            return Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: List.generate(
+                                                                  players
+                                                                      .length,
+                                                                  (playersIndex) {
+                                                                final playersItem =
+                                                                    players[
+                                                                        playersIndex];
+                                                                return Text(
+                                                                  playersItem
+                                                                      .playerNickname,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium,
+                                                                );
+                                                              }),
+                                                            );
+                                                          },
                                                         );
                                                       }),
                                                     );
