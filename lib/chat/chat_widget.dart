@@ -218,13 +218,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                             Text(
                                               dateTimeFormat(
                                                   'Hm',
-                                                  dateTimeFromSecondsSinceEpoch(
-                                                      valueOrDefault<int>(
+                                                  DateTime
+                                                      .fromMillisecondsSinceEpoch(
+                                                          valueOrDefault<int>(
                                                     functions
                                                         .newCustomFunction(
                                                             chatMessagesItem
                                                                 .messageSandedAt)
-                                                        ?.microsecondsSinceEpoch,
+                                                        ?.millisecondsSinceEpoch,
                                                     0,
                                                   ))),
                                               style:
