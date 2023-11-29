@@ -15,7 +15,7 @@ class MessageStruct extends BaseStruct {
     bool? messageReaded,
     List<String>? messageReadedBy,
     String? messageSanderAvatar,
-    DateTime? messageSandedAt,
+    String? messageSandedAt,
   })  : _messageId = messageId,
         _messageSander = messageSander,
         _messageBody = messageBody,
@@ -79,9 +79,9 @@ class MessageStruct extends BaseStruct {
   bool hasMessageSanderAvatar() => _messageSanderAvatar != null;
 
   // "message_sanded_at" field.
-  DateTime? _messageSandedAt;
-  DateTime? get messageSandedAt => _messageSandedAt;
-  set messageSandedAt(DateTime? val) => _messageSandedAt = val;
+  String? _messageSandedAt;
+  String get messageSandedAt => _messageSandedAt ?? '';
+  set messageSandedAt(String? val) => _messageSandedAt = val;
   bool hasMessageSandedAt() => _messageSandedAt != null;
 
   static MessageStruct fromMap(Map<String, dynamic> data) => MessageStruct(
@@ -93,7 +93,7 @@ class MessageStruct extends BaseStruct {
         messageReaded: data['message_readed'] as bool?,
         messageReadedBy: getDataList(data['message_readedBy']),
         messageSanderAvatar: data['message_sander_avatar'] as String?,
-        messageSandedAt: data['message_sanded_at'] as DateTime?,
+        messageSandedAt: data['message_sanded_at'] as String?,
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
@@ -148,7 +148,7 @@ class MessageStruct extends BaseStruct {
         ),
         'message_sanded_at': serializeParam(
           _messageSandedAt,
-          ParamType.DateTime,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -196,7 +196,7 @@ class MessageStruct extends BaseStruct {
         ),
         messageSandedAt: deserializeParam(
           data['message_sanded_at'],
-          ParamType.DateTime,
+          ParamType.String,
           false,
         ),
       );
@@ -241,7 +241,7 @@ MessageStruct createMessageStruct({
   String? messageType,
   bool? messageReaded,
   String? messageSanderAvatar,
-  DateTime? messageSandedAt,
+  String? messageSandedAt,
 }) =>
     MessageStruct(
       messageId: messageId,
