@@ -7,33 +7,50 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'tournament_add_model.dart';
-export 'tournament_add_model.dart';
+import 'tournament_edite_model.dart';
+export 'tournament_edite_model.dart';
 
-class TournamentAddWidget extends StatefulWidget {
-  const TournamentAddWidget({Key? key}) : super(key: key);
+class TournamentEditeWidget extends StatefulWidget {
+  const TournamentEditeWidget({
+    Key? key,
+    int? tournamentIndedx,
+  })  : this.tournamentIndedx = tournamentIndedx ?? 0,
+        super(key: key);
+
+  final int tournamentIndedx;
 
   @override
-  _TournamentAddWidgetState createState() => _TournamentAddWidgetState();
+  _TournamentEditeWidgetState createState() => _TournamentEditeWidgetState();
 }
 
-class _TournamentAddWidgetState extends State<TournamentAddWidget> {
-  late TournamentAddModel _model;
+class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
+  late TournamentEditeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TournamentAddModel());
+    _model = createModel(context, () => TournamentEditeModel());
 
-    _model.tournamentNameController ??= TextEditingController();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.tournamentLogo =
+            FFAppState().tournaments[widget.tournamentIndedx].tournamentLogo;
+      });
+    });
+
+    _model.tournamentNameController ??= TextEditingController(
+        text: FFAppState().tournaments[widget.tournamentIndedx].tournamentName);
     _model.tournamentNameFocusNode ??= FocusNode();
 
-    _model.tournamentTagController ??= TextEditingController();
+    _model.tournamentTagController ??= TextEditingController(
+        text: FFAppState().tournaments[widget.tournamentIndedx].tournamentTag);
     _model.tournamentTagFocusNode ??= FocusNode();
   }
 
@@ -68,7 +85,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Создать турнир',
+            'Управление турниром',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
@@ -100,10 +117,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5.0),
                         child: Image.network(
-                          valueOrDefault<String>(
-                            _model.uploadedFileUrl,
-                            'https://supabase.proplayclub.ru/storage/v1/object/public/playground/teamLogos/image-7XR1sw6U%20-%20transformed%20(1).png',
-                          ),
+                          _model.tournamentLogo,
                           width: 100.0,
                           height: 100.0,
                           fit: BoxFit.cover,
@@ -169,6 +183,10 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                             return;
                           }
                         }
+
+                        setState(() {
+                          _model.tournamentLogo = _model.uploadedFileUrl;
+                        });
                       },
                       text: 'Загрузить ',
                       options: FFButtonOptions(
@@ -195,7 +213,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                   FFButtonWidget(
                     onPressed: () async {
                       await deleteSupabaseFileFromPublicUrl(
-                          _model.uploadedFileUrl);
+                          _model.tournamentLogo);
                     },
                     text: 'Удалить',
                     options: FFButtonOptions(
@@ -327,7 +345,14 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                   child: wrapWithModel(
                     model: _model.countryPickerModel,
                     updateCallback: () => setState(() {}),
-                    child: CountryPickerWidget(),
+                    child: CountryPickerWidget(
+                      selectedCountry: FFAppState()
+                          .tournaments[widget.tournamentIndedx]
+                          .tournamentCountry,
+                      selectedFlag: FFAppState()
+                          .tournaments[widget.tournamentIndedx]
+                          .tournamentFlag,
+                    ),
                   ),
                 ),
               ),

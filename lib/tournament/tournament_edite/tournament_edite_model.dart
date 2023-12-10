@@ -6,13 +6,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'tournament_add_widget.dart' show TournamentAddWidget;
+import 'tournament_edite_widget.dart' show TournamentEditeWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TournamentAddModel extends FlutterFlowModel<TournamentAddWidget> {
+class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
   ///  Local state fields for this page.
 
   List<int> members = [];
@@ -32,6 +33,8 @@ class TournamentAddModel extends FlutterFlowModel<TournamentAddWidget> {
       organizators.insert(index, item);
   void updateOrganizatorsAtIndex(int index, Function(String) updateFn) =>
       organizators[index] = updateFn(organizators[index]);
+
+  String tournamentLogo = 'false';
 
   ///  State fields for stateful widgets in this page.
 

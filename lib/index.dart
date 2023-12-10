@@ -14,3 +14,5 @@ export '/chats/chats_widget.dart' show ChatsWidget;
 export '/chat/chat_widget.dart' show ChatWidget;
 export '/test_page1000players/test_page1000players_widget.dart'
     show TestPage1000playersWidget;
+export '/tournament/tournament_edite/tournament_edite_widget.dart'
+    show TournamentEditeWidget;
