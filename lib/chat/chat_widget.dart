@@ -1,12 +1,12 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/instant_timer.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -41,18 +41,14 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResulttpi = await MessagingGroup.getchatmessagesCall.call(
-        chatId: widget.chatID?.toString(),
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 1000),
+        callback: (timer) async {
+          setState(() => _model.requestCompleter = null);
+          await _model.waitForRequestCompleted();
+        },
+        startImmediately: true,
       );
-      if ((_model.apiResulttpi?.succeeded ?? true)) {
-        _model.dtMSGdata = await actions.dtMSG(
-          (_model.apiResulttpi?.jsonBody ?? ''),
-        );
-        setState(() {
-          FFAppState().messages =
-              _model.dtMSGdata!.toList().cast<MessageStruct>();
-        });
-      }
     });
 
     _model.textController ??= TextEditingController();
@@ -80,15 +76,17 @@ class _ChatWidgetState extends State<ChatWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<List<MessageRow>>(
-      future: MessageTable().queryRows(
-        queryFn: (q) => q.eq(
-          'message_chat',
-          valueOrDefault<int>(
-            widget.chatID,
-            0,
-          ),
-        ),
-      ),
+      future: (_model.requestCompleter ??= Completer<List<MessageRow>>()
+            ..complete(MessageTable().queryRows(
+              queryFn: (q) => q.eq(
+                'message_chat',
+                valueOrDefault<int>(
+                  widget.chatID,
+                  0,
+                ),
+              ),
+            )))
+          .future,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
