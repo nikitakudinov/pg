@@ -1,4 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -83,13 +82,15 @@ class _ChatWidgetState extends State<ChatWidget> {
     return FutureBuilder<List<MessageRow>>(
       future: (_model.requestCompleter ??= Completer<List<MessageRow>>()
             ..complete(MessageTable().queryRows(
-              queryFn: (q) => q.eq(
-                'message_chat',
-                valueOrDefault<int>(
-                  widget.chatID,
-                  0,
-                ),
-              ),
+              queryFn: (q) => q
+                  .eq(
+                    'message_chat',
+                    valueOrDefault<int>(
+                      widget.chatID,
+                      0,
+                    ),
+                  )
+                  .order('message_sanded_at'),
             )))
           .future,
       builder: (context, snapshot) {
@@ -314,9 +315,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            setState(() {
-                              _model.addToAuthUserUIDasArray(currentUserUid);
-                            });
                             await MessageTable().insert({
                               'message_sanded_at':
                                   supaSerialize<DateTime>(getCurrentTimestamp),
@@ -326,7 +324,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                               'message_chat': widget.chatID,
                               'message_sander_avatar':
                                   FFAppState().authPlayer.playerAvatar,
-                              'message_readedBy': _model.authUserUIDasArray,
                               'message_type': 'Cообщение в чате',
                             });
                             await ChatsTable().update(
