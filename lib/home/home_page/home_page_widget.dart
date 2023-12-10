@@ -37,8 +37,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       // Обновляем данные авторизитванного пользователя
       await action_blocks.authPlayerUpdater(context);
       await action_blocks.loadAuthUserChats(context);
-      await action_blocks.loadALLplayers(context);
-      setState(() {});
       // Загрузка и обновление notifications
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 5000),
