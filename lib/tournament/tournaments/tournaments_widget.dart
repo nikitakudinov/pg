@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/vertical_item_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -119,37 +120,13 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                       itemBuilder: (context, tournamentsListIndex) {
                         final tournamentsListItem =
                             tournamentsList[tournamentsListIndex];
-                        return Container(
-                          decoration: BoxDecoration(),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: 50.0,
-                                height: 50.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    tournamentsListItem.tournamentName,
-                                    style:
-                                        FlutterFlowTheme.of(context).titleLarge,
-                                  ),
-                                  Text(
-                                    tournamentsListItem.tournamentTag,
-                                    style:
-                                        FlutterFlowTheme.of(context).titleSmall,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                        return VerticalItemCardWidget(
+                          key: Key(
+                              'Keyfyu_${tournamentsListIndex}_of_${tournamentsList.length}'),
+                          imageSize: 30,
+                          imagePath: tournamentsListItem.tournamentLogo,
+                          flagPath: tournamentsListItem.tournamentFlag,
+                          country: tournamentsListItem.tournamentCountry,
                         );
                       },
                     );
