@@ -14,8 +14,6 @@ class TournamentStruct extends BaseStruct {
     String? tournamentLogo,
     String? tournamentFlag,
     String? tournamentCountry,
-    List<int>? tournamentMembers,
-    List<String>? tournamentOrganizators,
     String? tournamentStatus,
   })  : _tournamentId = tournamentId,
         _tournamentCreatedAt = tournamentCreatedAt,
@@ -24,8 +22,6 @@ class TournamentStruct extends BaseStruct {
         _tournamentLogo = tournamentLogo,
         _tournamentFlag = tournamentFlag,
         _tournamentCountry = tournamentCountry,
-        _tournamentMembers = tournamentMembers,
-        _tournamentOrganizators = tournamentOrganizators,
         _tournamentStatus = tournamentStatus;
 
   // "tournament_id" field.
@@ -72,24 +68,6 @@ class TournamentStruct extends BaseStruct {
   set tournamentCountry(String? val) => _tournamentCountry = val;
   bool hasTournamentCountry() => _tournamentCountry != null;
 
-  // "tournament_members" field.
-  List<int>? _tournamentMembers;
-  List<int> get tournamentMembers => _tournamentMembers ?? const [];
-  set tournamentMembers(List<int>? val) => _tournamentMembers = val;
-  void updateTournamentMembers(Function(List<int>) updateFn) =>
-      updateFn(_tournamentMembers ??= []);
-  bool hasTournamentMembers() => _tournamentMembers != null;
-
-  // "tournament_organizators" field.
-  List<String>? _tournamentOrganizators;
-  List<String> get tournamentOrganizators =>
-      _tournamentOrganizators ?? const [];
-  set tournamentOrganizators(List<String>? val) =>
-      _tournamentOrganizators = val;
-  void updateTournamentOrganizators(Function(List<String>) updateFn) =>
-      updateFn(_tournamentOrganizators ??= []);
-  bool hasTournamentOrganizators() => _tournamentOrganizators != null;
-
   // "tournament_status" field.
   String? _tournamentStatus;
   String get tournamentStatus => _tournamentStatus ?? '';
@@ -105,8 +83,6 @@ class TournamentStruct extends BaseStruct {
         tournamentLogo: data['tournament_logo'] as String?,
         tournamentFlag: data['tournament_flag'] as String?,
         tournamentCountry: data['tournament_country'] as String?,
-        tournamentMembers: getDataList(data['tournament_members']),
-        tournamentOrganizators: getDataList(data['tournament_organizators']),
         tournamentStatus: data['tournament_status'] as String?,
       );
 
@@ -121,8 +97,6 @@ class TournamentStruct extends BaseStruct {
         'tournament_logo': _tournamentLogo,
         'tournament_flag': _tournamentFlag,
         'tournament_country': _tournamentCountry,
-        'tournament_members': _tournamentMembers,
-        'tournament_organizators': _tournamentOrganizators,
         'tournament_status': _tournamentStatus,
       }.withoutNulls;
 
@@ -155,16 +129,6 @@ class TournamentStruct extends BaseStruct {
         'tournament_country': serializeParam(
           _tournamentCountry,
           ParamType.String,
-        ),
-        'tournament_members': serializeParam(
-          _tournamentMembers,
-          ParamType.int,
-          true,
-        ),
-        'tournament_organizators': serializeParam(
-          _tournamentOrganizators,
-          ParamType.String,
-          true,
         ),
         'tournament_status': serializeParam(
           _tournamentStatus,
@@ -209,16 +173,6 @@ class TournamentStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        tournamentMembers: deserializeParam<int>(
-          data['tournament_members'],
-          ParamType.int,
-          true,
-        ),
-        tournamentOrganizators: deserializeParam<String>(
-          data['tournament_organizators'],
-          ParamType.String,
-          true,
-        ),
         tournamentStatus: deserializeParam(
           data['tournament_status'],
           ParamType.String,
@@ -231,7 +185,6 @@ class TournamentStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
-    const listEquality = ListEquality();
     return other is TournamentStruct &&
         tournamentId == other.tournamentId &&
         tournamentCreatedAt == other.tournamentCreatedAt &&
@@ -240,9 +193,6 @@ class TournamentStruct extends BaseStruct {
         tournamentLogo == other.tournamentLogo &&
         tournamentFlag == other.tournamentFlag &&
         tournamentCountry == other.tournamentCountry &&
-        listEquality.equals(tournamentMembers, other.tournamentMembers) &&
-        listEquality.equals(
-            tournamentOrganizators, other.tournamentOrganizators) &&
         tournamentStatus == other.tournamentStatus;
   }
 
@@ -255,8 +205,6 @@ class TournamentStruct extends BaseStruct {
         tournamentLogo,
         tournamentFlag,
         tournamentCountry,
-        tournamentMembers,
-        tournamentOrganizators,
         tournamentStatus
       ]);
 }

@@ -983,7 +983,7 @@ class ListtournamentsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTTOURNAMENTS',
-      apiUrl: '${TournamentGroup.baseUrl}tournaments?id=in.%28${idList}%29',
+      apiUrl: '${TournamentGroup.baseUrl}tournaments?',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -999,31 +999,33 @@ class ListtournamentsCall {
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  dynamic tournamentid(dynamic response) => getJsonField(
         response,
-        r'''$[:].id''',
-        true,
+        r'''$[:].tournament_id''',
       );
-  dynamic createdat(dynamic response) => getJsonField(
+  dynamic tournamentcreatedat(dynamic response) => getJsonField(
         response,
-        r'''$[:].created_at''',
-        true,
+        r'''$[:].tournament_created_at''',
       );
-  dynamic nickname(dynamic response) => getJsonField(
+  dynamic tournamentname(dynamic response) => getJsonField(
         response,
-        r'''$[:].nickname''',
+        r'''$[:].tournament_name''',
       );
-  dynamic uid(dynamic response) => getJsonField(
+  dynamic tournamenttag(dynamic response) => getJsonField(
         response,
-        r'''$[:].uid''',
+        r'''$[:].tournament_tag''',
       );
-  dynamic email(dynamic response) => getJsonField(
+  dynamic tournamentflag(dynamic response) => getJsonField(
         response,
-        r'''$[:].email''',
+        r'''$[:].tournament_flag''',
       );
-  dynamic tag(dynamic response) => getJsonField(
+  dynamic tournamentcountry(dynamic response) => getJsonField(
         response,
-        r'''$[:].tag''',
+        r'''$[:].tournament_country''',
+      );
+  dynamic tournamentcreator(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_creator''',
       );
 }
 

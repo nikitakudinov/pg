@@ -399,6 +399,35 @@ class FFAppState extends ChangeNotifier {
   set unreadedMessagesLoop(int _value) {
     _unreadedMessagesLoop = _value;
   }
+
+  List<TournamentStruct> _tournaments = [];
+  List<TournamentStruct> get tournaments => _tournaments;
+  set tournaments(List<TournamentStruct> _value) {
+    _tournaments = _value;
+  }
+
+  void addToTournaments(TournamentStruct _value) {
+    _tournaments.add(_value);
+  }
+
+  void removeFromTournaments(TournamentStruct _value) {
+    _tournaments.remove(_value);
+  }
+
+  void removeAtIndexFromTournaments(int _index) {
+    _tournaments.removeAt(_index);
+  }
+
+  void updateTournamentsAtIndex(
+    int _index,
+    TournamentStruct Function(TournamentStruct) updateFn,
+  ) {
+    _tournaments[_index] = updateFn(_tournaments[_index]);
+  }
+
+  void insertAtIndexInTournaments(int _index, TournamentStruct _value) {
+    _tournaments.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
