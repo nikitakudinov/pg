@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -391,36 +390,30 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await TournamentsTable().insert({
-                            'tournament_created_at':
-                                supaSerialize<DateTime>(getCurrentTimestamp),
-                            'tournament_name':
-                                _model.tournamentNameController.text,
-                            'tournament_tag':
-                                _model.tournamentTagController.text,
-                            'tournament_logo': _model.uploadedFileUrl,
-                            'tournament_flag':
-                                _model.countryPickerModel.selectedFlag,
-                            'tournament_country':
-                                _model.countryPickerModel.selectedCountry,
-                            'tournament_creator': currentUserUid,
-                          });
-                          _model.jsonTOURNAMENT = await TournamentGroup
-                              .tournamentbycreatorCall
-                              .call(
-                            authUser: currentUserUid,
-                          );
-                          await TournamentOrganizatorsTable().insert({
-                            'tournament_id':
-                                TournamentGroup.tournamentbycreatorCall.id(
-                              (_model.jsonTOURNAMENT?.jsonBody ?? ''),
+                          await TournamentsTable().update(
+                            data: {
+                              'tournament_created_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'tournament_name':
+                                  _model.tournamentNameController.text,
+                              'tournament_tag':
+                                  _model.tournamentTagController.text,
+                              'tournament_logo': _model.uploadedFileUrl,
+                              'tournament_flag':
+                                  _model.countryPickerModel.selectedFlag,
+                              'tournament_country':
+                                  _model.countryPickerModel.selectedCountry,
+                              'tournament_creator': currentUserUid,
+                            },
+                            matchingRows: (rows) => rows.eq(
+                              'tournament_id',
+                              FFAppState()
+                                  .tournaments[widget.tournamentIndedx]
+                                  .tournamentId,
                             ),
-                            'player_uid': currentUserUid,
-                          });
+                          );
 
                           context.pushNamed('TOURNAMENTS');
-
-                          setState(() {});
                         },
                         text: 'Сохранить',
                         options: FFButtonOptions(
