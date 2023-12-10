@@ -46,6 +46,11 @@ class _ChatWidgetState extends State<ChatWidget> {
         callback: (timer) async {
           setState(() => _model.requestCompleter = null);
           await _model.waitForRequestCompleted();
+          await _model.columnController?.animateTo(
+            _model.columnController!.position.maxScrollExtent,
+            duration: Duration(milliseconds: 100),
+            curve: Curves.ease,
+          );
         },
         startImmediately: true,
       );
@@ -167,6 +172,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
+                      controller: _model.columnController,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -259,6 +265,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     ),
                                   );
                                 },
+                                controller: _model.listViewController,
                               );
                             },
                           ),
