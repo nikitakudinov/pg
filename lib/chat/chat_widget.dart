@@ -79,293 +79,295 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondary,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderRadius: 20.0,
-            borderWidth: 1.0,
-            buttonSize: 30.0,
-            icon: Icon(
-              Icons.arrow_back,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
-            ),
-            onPressed: () async {
-              context.pushNamed('CHATS');
-            },
-          ),
-          title: Text(
-            'Page Title',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto Condensed',
-                  color: Colors.white,
-                  fontSize: 22.0,
+    return FutureBuilder<List<MessageRow>>(
+      future: MessageTable().queryRows(
+        queryFn: (q) => q.eq(
+          'message_chat',
+          widget.chatID,
+        ),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: FlutterFlowIconButton(
+              ),
+            ),
+          );
+        }
+        List<MessageRow> chatMessageRowList = snapshot.data!;
+        return GestureDetector(
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).secondary,
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
                 borderRadius: 20.0,
                 borderWidth: 1.0,
-                buttonSize: 40.0,
+                buttonSize: 30.0,
                 icon: Icon(
-                  Icons.restore_from_trash_rounded,
+                  Icons.arrow_back,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  setState(() {
-                    FFAppState().messages = [];
-                  });
+                  context.pushNamed('CHATS');
                 },
               ),
+              title: Text(
+                'Page Title',
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Roboto Condensed',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                    ),
+              ),
+              actions: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderRadius: 20.0,
+                    borderWidth: 1.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.restore_from_trash_rounded,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 24.0,
+                    ),
+                    onPressed: () async {
+                      setState(() {
+                        FFAppState().messages = [];
+                      });
+                    },
+                  ),
+                ),
+              ],
+              centerTitle: false,
+              elevation: 2.0,
             ),
-          ],
-          centerTitle: false,
-          elevation: 2.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Builder(
-                        builder: (context) {
-                          final chatMessages = FFAppState()
-                              .messages
-                              .where((e) => e.messageChat == widget.chatID)
-                              .toList();
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: chatMessages.length,
-                            itemBuilder: (context, chatMessagesIndex) {
-                              final chatMessagesItem =
-                                  chatMessages[chatMessagesIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 10.0, 15.0, 0.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  child: Padding(
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Builder(
+                            builder: (context) {
+                              final messages = chatMessageRowList.toList();
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: messages.length,
+                                itemBuilder: (context, messagesIndex) {
+                                  final messagesItem = messages[messagesIndex];
+                                  return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 15.0, 0.0),
-                                          child: Container(
-                                            width: 45.0,
-                                            height: 45.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                chatMessagesItem
-                                                    .messageSanderAvatar,
-                                                width: 45.0,
-                                                height: 5.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Column(
+                                        15.0, 10.0, 15.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 10.0, 10.0, 10.0),
+                                        child: Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              chatMessagesItem.messageSander,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall,
-                                            ),
-                                            Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.6,
-                                              decoration: BoxDecoration(),
-                                              child: Text(
-                                                chatMessagesItem.messageBody,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 15.0, 0.0),
+                                              child: Container(
+                                                width: 45.0,
+                                                height: 45.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                  child: Image.network(
+                                                    messagesItem
+                                                        .messageSanderAvatar!,
+                                                    width: 45.0,
+                                                    height: 5.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                            Row(
+                                            Column(
                                               mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Builder(
-                                                  builder: (context) {
-                                                    final asdasda =
-                                                        chatMessagesItem
-                                                            .messageReadedBy
-                                                            .toList();
-                                                    return Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: List.generate(
-                                                          asdasda.length,
-                                                          (asdasdaIndex) {
-                                                        final asdasdaItem =
-                                                            asdasda[
-                                                                asdasdaIndex];
-                                                        return Text(
-                                                          asdasdaItem,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        );
-                                                      }),
-                                                    );
-                                                  },
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    messagesItem.messageSander,
+                                                    '0',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleSmall,
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.6,
+                                                  decoration: BoxDecoration(),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      messagesItem.messageBody,
+                                                      '0',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
                                                 ),
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                      ),
-                      Text(
-                        FFAppState().ureadedMessagesCount.toString(),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: TextFormField(
-                            controller: _model.textController,
-                            focusNode: _model.textFieldFocusNode,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              focusedErrorBorder: InputBorder.none,
-                              filled: true,
-                              fillColor: FlutterFlowTheme.of(context).tertiary,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            validator: _model.textControllerValidator
-                                .asValidator(context),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        setState(() {
-                          _model.addToAuthUserUIDasArray(currentUserUid);
-                        });
-                        await MessageTable().insert({
-                          'message_sanded_at':
-                              supaSerialize<DateTime>(getCurrentTimestamp),
-                          'message_sander':
-                              FFAppState().authPlayer.playerNickname,
-                          'message_body': _model.textController.text,
-                          'message_chat': widget.chatID,
-                          'message_sander_avatar':
-                              FFAppState().authPlayer.playerAvatar,
-                          'message_readedBy': _model.authUserUIDasArray,
-                          'message_type': 'Cообщение в чате',
-                        });
-                        await ChatsTable().update(
-                          data: {
-                            'chat_updated_at':
-                                supaSerialize<DateTime>(getCurrentTimestamp),
-                            'chat_last_message': _model.textController.text,
-                          },
-                          matchingRows: (rows) => rows.eq(
-                            'chat_id',
-                            widget.chatID,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).tertiary,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: TextFormField(
+                                controller: _model.textController,
+                                focusNode: _model.textFieldFocusNode,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                  filled: true,
+                                  fillColor:
+                                      FlutterFlowTheme.of(context).tertiary,
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                validator: _model.textControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
                           ),
-                        );
-                        setState(() {
-                          _model.textController?.clear();
-                        });
-                      },
-                      text: 'Отправить',
-                      options: FFButtonOptions(
-                        height: 45.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
+                        ),
+                        FFButtonWidget(
+                          onPressed: () async {
+                            setState(() {
+                              _model.addToAuthUserUIDasArray(currentUserUid);
+                            });
+                            await MessageTable().insert({
+                              'message_sanded_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'message_sander':
+                                  FFAppState().authPlayer.playerNickname,
+                              'message_body': _model.textController.text,
+                              'message_chat': widget.chatID,
+                              'message_sander_avatar':
+                                  FFAppState().authPlayer.playerAvatar,
+                              'message_readedBy': _model.authUserUIDasArray,
+                              'message_type': 'Cообщение в чате',
+                            });
+                            await ChatsTable().update(
+                              data: {
+                                'chat_updated_at': supaSerialize<DateTime>(
+                                    getCurrentTimestamp),
+                                'chat_last_message': _model.textController.text,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'chat_id',
+                                widget.chatID,
+                              ),
+                            );
+                            setState(() {
+                              _model.textController?.clear();
+                            });
+                          },
+                          text: 'Отправить',
+                          options: FFButtonOptions(
+                            height: 45.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
                                   fontFamily: 'Cabin Condensed',
                                   color: Colors.white,
                                 ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
+                      ].divide(SizedBox(width: 10.0)),
                     ),
-                  ].divide(SizedBox(width: 10.0)),
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
