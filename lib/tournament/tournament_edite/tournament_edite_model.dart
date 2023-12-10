@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'tournament_edite_widget.dart' show TournamentEditeWidget;
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -39,6 +40,9 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for BASE-TOURNAMENT-INFO widget.
+  late ExpandableController baseTournamentInfoController;
+
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -63,6 +67,7 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    baseTournamentInfoController.dispose();
     tournamentNameFocusNode?.dispose();
     tournamentNameController?.dispose();
 

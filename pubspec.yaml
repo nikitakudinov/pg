@@ -31,6 +31,7 @@ dependencies:
   cached_network_image: 3.2.1
   easy_debounce: 2.0.1
   equatable: 2.0.5
+  expandable: 5.0.1
   file_picker: 6.1.1
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.1
