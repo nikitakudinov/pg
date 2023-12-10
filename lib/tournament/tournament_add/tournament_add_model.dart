@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/backend/schema/structs/index.dart';
 import 'tournament_add_widget.dart' show TournamentAddWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -52,8 +53,8 @@ class TournamentAddModel extends FlutterFlowModel<TournamentAddWidget> {
   String? Function(BuildContext, String?)? tournamentTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (LISTPLAYERBYUID)] action in saveButton widget.
-  ApiCallResponse? ass;
+  // Stores action output result for [Backend Call - API (TOURNAMENTBYCREATOR)] action in saveButton widget.
+  ApiCallResponse? jsonTOURNAMENT;
 
   /// Initialization and disposal methods.
 

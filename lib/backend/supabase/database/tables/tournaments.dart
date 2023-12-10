@@ -41,16 +41,11 @@ class TournamentsRow extends SupabaseDataRow {
   set tournamentCountry(String? value) =>
       setField<String>('tournament_country', value);
 
-  List<int> get tournamentMembers => getListField<int>('tournament_members');
-  set tournamentMembers(List<int>? value) =>
-      setListField<int>('tournament_members', value);
-
-  List<String> get tournamentOrganizators =>
-      getListField<String>('tournament_organizators');
-  set tournamentOrganizators(List<String>? value) =>
-      setListField<String>('tournament_organizators', value);
-
   String? get tournamentStatus => getField<String>('tournament_status');
   set tournamentStatus(String? value) =>
       setField<String>('tournament_status', value);
+
+  String? get tournamentCreator => getField<String>('tournament_creator');
+  set tournamentCreator(String? value) =>
+      setField<String>('tournament_creator', value);
 }

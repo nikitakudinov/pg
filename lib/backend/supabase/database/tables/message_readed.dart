@@ -1,19 +1,19 @@
 import '../database.dart';
 
-class MessageReadedByTable extends SupabaseTable<MessageReadedByRow> {
+class MessageReadedTable extends SupabaseTable<MessageReadedRow> {
   @override
-  String get tableName => 'message_readedBy';
+  String get tableName => 'message_readed';
 
   @override
-  MessageReadedByRow createRow(Map<String, dynamic> data) =>
-      MessageReadedByRow(data);
+  MessageReadedRow createRow(Map<String, dynamic> data) =>
+      MessageReadedRow(data);
 }
 
-class MessageReadedByRow extends SupabaseDataRow {
-  MessageReadedByRow(Map<String, dynamic> data) : super(data);
+class MessageReadedRow extends SupabaseDataRow {
+  MessageReadedRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => MessageReadedByTable();
+  SupabaseTable get table => MessageReadedTable();
 
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);

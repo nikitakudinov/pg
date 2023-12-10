@@ -217,12 +217,14 @@ dynamic deserializeParam<T>(
         switch (T) {
           case ChatMembersRow:
             return ChatMembersRow(data);
+          case TournamentOrganizatorsRow:
+            return TournamentOrganizatorsRow(data);
           case CountriesRow:
             return CountriesRow(data);
-          case MessageReadedByRow:
-            return MessageReadedByRow(data);
           case TeamsRow:
             return TeamsRow(data);
+          case AeSearchResultsRow:
+            return AeSearchResultsRow(data);
           case TournamentsRow:
             return TournamentsRow(data);
           case MessageRow:
@@ -231,10 +233,14 @@ dynamic deserializeParam<T>(
             return PlayersRow(data);
           case ChatsRow:
             return ChatsRow(data);
+          case MessageReadedRow:
+            return MessageReadedRow(data);
           case TeamMembersRow:
             return TeamMembersRow(data);
           case NotificationsRow:
             return NotificationsRow(data);
+          case TestRow:
+            return TestRow(data);
           default:
             return null;
         }

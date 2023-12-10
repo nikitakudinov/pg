@@ -20,8 +20,8 @@ class TeamMembersRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  int get playerId => getField<int>('player_id')!;
-  set playerId(int value) => setField<int>('player_id', value);
+  String get playerId => getField<String>('player_id')!;
+  set playerId(String value) => setField<String>('player_id', value);
 
   int get teamId => getField<int>('team_id')!;
   set teamId(int value) => setField<int>('team_id', value);
