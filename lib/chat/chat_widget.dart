@@ -83,7 +83,10 @@ class _ChatWidgetState extends State<ChatWidget> {
       future: MessageTable().queryRows(
         queryFn: (q) => q.eq(
           'message_chat',
-          widget.chatID,
+          valueOrDefault<int>(
+            widget.chatID,
+            0,
+          ),
         ),
       ),
       builder: (context, snapshot) {
@@ -212,8 +215,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       BorderRadius.circular(
                                                           5.0),
                                                   child: Image.network(
-                                                    messagesItem
-                                                        .messageSanderAvatar!,
+                                                    'https://picsum.photos/seed/811/600',
                                                     width: 45.0,
                                                     height: 5.0,
                                                     fit: BoxFit.cover,
