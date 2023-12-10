@@ -37,9 +37,11 @@ class _ChatsWidgetState extends State<ChatsWidget> {
       );
       if ((_model.apiResult3cp?.succeeded ?? true)) {
         _model.dtCHATSdata = await actions.dtCHAT(
-          MessagingGroup.getchatsCall.chats(
-            (_model.apiResult3cp?.jsonBody ?? ''),
-          ),
+          MessagingGroup.getchatsCall
+              .chats(
+                (_model.apiResult3cp?.jsonBody ?? ''),
+              )
+              ?.toList(),
         );
         setState(() {
           FFAppState().chats = _model.dtCHATSdata!.toList().cast<ChatStruct>();
@@ -172,9 +174,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                             .bodyMedium,
                                       ),
                                       Text(
-                                        chatsListDataItem
-                                            .countOfMessages.first.count
-                                            .toString(),
+                                        'Hello World',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
