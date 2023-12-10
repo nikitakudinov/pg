@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -396,17 +395,10 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                             authUser: currentUserUid,
                           );
                           await TournamentOrganizatorsTable().insert({
-                            'tournament_id': ((_model
-                                                    .jsonTOURNAMENT?.jsonBody ??
-                                                '') !=
-                                            null &&
-                                        (_model.jsonTOURNAMENT?.jsonBody ??
-                                                '') !=
-                                            ''
-                                    ? TournamentStruct.fromMap(
-                                        (_model.jsonTOURNAMENT?.jsonBody ?? ''))
-                                    : null)
-                                ?.tournamentId,
+                            'tournament_id':
+                                TournamentGroup.tournamentbycreatorCall.id(
+                              (_model.jsonTOURNAMENT?.jsonBody ?? ''),
+                            ),
                             'player_uid': currentUserUid,
                           });
 

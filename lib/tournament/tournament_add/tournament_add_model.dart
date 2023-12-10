@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/backend/schema/structs/index.dart';
 import 'tournament_add_widget.dart' show TournamentAddWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

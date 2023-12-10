@@ -949,29 +949,31 @@ class TournamentbycreatorCall {
 
   dynamic id(dynamic response) => getJsonField(
         response,
-        r'''$[:].id''',
-        true,
+        r'''$[:].tournament_id''',
       );
   dynamic createdat(dynamic response) => getJsonField(
         response,
-        r'''$[:].created_at''',
-        true,
+        r'''$[:].tournament_created_at''',
       );
-  dynamic nickname(dynamic response) => getJsonField(
+  dynamic name(dynamic response) => getJsonField(
         response,
-        r'''$[:].nickname''',
-      );
-  dynamic uid(dynamic response) => getJsonField(
-        response,
-        r'''$[:].uid''',
-      );
-  dynamic email(dynamic response) => getJsonField(
-        response,
-        r'''$[:].email''',
+        r'''$[:].tournament_name''',
       );
   dynamic tag(dynamic response) => getJsonField(
         response,
-        r'''$[:].tag''',
+        r'''$[:].tournament_tag''',
+      );
+  dynamic flag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_flag''',
+      );
+  dynamic country(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_country''',
+      );
+  dynamic creator(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_creator''',
       );
 }
 
