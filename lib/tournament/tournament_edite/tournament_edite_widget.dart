@@ -332,12 +332,13 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                      .tertiary,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      8.0, 0.0, 8.0, 10.0),
+                                                  .fromSTEB(8.0, 5.0, 8.0, 5.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .tournamentNameController,
@@ -380,12 +381,14 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .tertiary,
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
                                               ),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        8.0, 0.0, 8.0, 0.0),
+                                                        8.0, 5.0, 8.0, 5.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .tournamentTagController,
@@ -431,6 +434,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
                                               ),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
