@@ -90,7 +90,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                       0,
                     ),
                   )
-                  .order('message_sanded_at'),
+                  .order('message_sanded_at', ascending: true),
             )))
           .future,
       builder: (context, snapshot) {
