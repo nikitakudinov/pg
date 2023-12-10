@@ -388,6 +388,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                                 _model.countryPickerModel.selectedFlag,
                             'tournament_country':
                                 _model.countryPickerModel.selectedCountry,
+                            'tournament_creator': currentUserUid,
                           });
                           _model.jsonTOURNAMENT = await TournamentGroup
                               .tournamentbycreatorCall
