@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -42,6 +43,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
         _model.tournamentLogo =
             FFAppState().tournaments[widget.tournamentIndedx].tournamentLogo;
       });
+      await action_blocks.dowloadAllCountrieToAppState(context);
+      setState(() {});
     });
 
     _model.tournamentNameController ??= TextEditingController(
@@ -398,7 +401,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                   _model.tournamentNameController.text,
                               'tournament_tag':
                                   _model.tournamentTagController.text,
-                              'tournament_logo': _model.uploadedFileUrl,
+                              'tournament_logo': _model.tournamentLogo,
                               'tournament_flag':
                                   _model.countryPickerModel.selectedFlag,
                               'tournament_country':
