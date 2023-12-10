@@ -44,20 +44,6 @@ class _ChatsWidgetState extends State<ChatsWidget> {
         setState(() {
           FFAppState().chats = _model.dtCHATSdata!.toList().cast<ChatStruct>();
         });
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('Чаты загружены'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
       }
     });
   }

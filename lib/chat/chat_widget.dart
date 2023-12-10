@@ -220,7 +220,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       BorderRadius.circular(
                                                           5.0),
                                                   child: Image.network(
-                                                    'https://picsum.photos/seed/811/600',
+                                                    messagesItem
+                                                        .messageSanderAvatar!,
                                                     width: 45.0,
                                                     height: 5.0,
                                                     fit: BoxFit.cover,
