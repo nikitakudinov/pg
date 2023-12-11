@@ -513,7 +513,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 10.0, 10.0, 10.0),
+                                                      15.0, 0.0, 15.0, 5.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -521,7 +521,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
-                                                                15.0, 0.0),
+                                                                5.0, 0.0),
                                                     child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
