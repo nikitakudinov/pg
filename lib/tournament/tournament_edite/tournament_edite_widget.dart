@@ -254,16 +254,17 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .primaryBackground,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Cabin Condensed',
-                                              color: Colors.white,
+                                              color: Color(0xFF5C676E),
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
-                                          color: Colors.transparent,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
                                           width: 1.0,
                                         ),
                                         borderRadius:
@@ -288,16 +289,17 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .primaryBackground,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Cabin Condensed',
-                                              color: Colors.white,
+                                              color: Color(0xFF5C676E),
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
-                                          color: Colors.transparent,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
                                           width: 1.0,
                                         ),
                                         borderRadius:
