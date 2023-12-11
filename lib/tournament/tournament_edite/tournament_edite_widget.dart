@@ -141,7 +141,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 15.0, 15.0, 15.0),
+                                        15.0, 0.0, 0.0, 5.0),
                                     child: Container(
                                       width: 100.0,
                                       height: 100.0,
@@ -165,7 +165,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 5.0),
+                                        15.0, 0.0, 0.0, 5.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         final selectedMedia = await selectMedia(
@@ -271,33 +271,38 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                       ),
                                     ),
                                   ),
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      await deleteSupabaseFileFromPublicUrl(
-                                          _model.tournamentLogo);
-                                    },
-                                    text: 'Удалить',
-                                    options: FFButtonOptions(
-                                      width: 100.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 0.0, 10.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Cabin Condensed',
-                                            color: Colors.white,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 0.0, 0.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        await deleteSupabaseFileFromPublicUrl(
+                                            _model.tournamentLogo);
+                                      },
+                                      text: 'Удалить',
+                                      options: FFButtonOptions(
+                                        width: 100.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(3.0),
                                     ),
                                   ),
                                 ],
@@ -305,7 +310,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 15.0, 15.0, 0.0),
+                                      0.0, 0.0, 15.0, 0.0),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -441,7 +446,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                   ),
                                 ),
                               ),
-                            ],
+                            ].divide(SizedBox(width: 5.0)),
                           ),
                         ),
                         theme: ExpandableThemeData(
