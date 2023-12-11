@@ -287,7 +287,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (_model.tournamentLogo ==
+                                  if (_model.tournamentLogo !=
                                       'https://supabase.proplayclub.ru/storage/v1/object/public/playground/image-7XR1sw6U--transformed.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -354,7 +354,6 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                 _model.tournamentNameController,
                                             focusNode:
                                                 _model.tournamentNameFocusNode,
-                                            autofocus: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Название',
@@ -398,7 +397,6 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                   .tournamentTagController,
                                               focusNode:
                                                   _model.tournamentTagFocusNode,
-                                              autofocus: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText: 'Тэг',
