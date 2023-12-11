@@ -135,6 +135,10 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                     tournamentsListIndex,
                                     ParamType.int,
                                   ),
+                                  'tournamentId': serializeParam(
+                                    tournamentsListItem.tournamentId,
+                                    ParamType.int,
+                                  ),
                                 }.withoutNulls,
                               );
                             },
