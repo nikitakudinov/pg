@@ -563,10 +563,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                         ),
                         collapsed: Container(),
                         expanded: Container(
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
+                          decoration: BoxDecoration(),
                           child: Builder(
                             builder: (context) {
                               final tournamentItem = FFAppState()
@@ -599,9 +596,6 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                   tournamentMembersIndex];
                                           return Container(
                                             decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                             ),
@@ -618,8 +612,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 15.0, 0.0),
                                                     child: Container(
-                                                      width: 80.0,
-                                                      height: 80.0,
+                                                      width: 50.0,
+                                                      height: 50.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -632,8 +626,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                         child: Image.network(
                                                           tournamentMembersItem
                                                               .teamLogo,
-                                                          width: 80.0,
-                                                          height: 80.0,
+                                                          width: 50.0,
+                                                          height: 50.0,
                                                           fit: BoxFit.cover,
                                                         ),
                                                       ),
