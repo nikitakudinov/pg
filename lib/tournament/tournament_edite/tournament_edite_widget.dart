@@ -165,7 +165,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 0.0, 5.0),
+                                        15.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         final selectedMedia = await selectMedia(
@@ -311,7 +311,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                       ),
                                     ),
                                   ),
-                                ],
+                                ].divide(SizedBox(height: 5.0)),
                               ),
                               Expanded(
                                 child: Padding(
@@ -452,7 +452,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(width: 5.0)),
+                            ].divide(SizedBox(width: 10.0)),
                           ),
                         ),
                         theme: ExpandableThemeData(
