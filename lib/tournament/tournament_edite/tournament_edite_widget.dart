@@ -456,95 +456,6 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 50.0, 15.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            context.safePop();
-                          },
-                          text: 'Отмена',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await TournamentsTable().update(
-                              data: {
-                                'tournament_created_at':
-                                    supaSerialize<DateTime>(
-                                        getCurrentTimestamp),
-                                'tournament_name':
-                                    _model.tournamentNameController.text,
-                                'tournament_tag':
-                                    _model.tournamentTagController.text,
-                                'tournament_logo': _model.tournamentLogo,
-                                'tournament_flag':
-                                    _model.countryPickerModel.selectedFlag,
-                                'tournament_country':
-                                    _model.countryPickerModel.selectedCountry,
-                                'tournament_creator': currentUserUid,
-                              },
-                              matchingRows: (rows) => rows.eq(
-                                'tournament_id',
-                                FFAppState()
-                                    .tournaments[widget.tournamentIndedx]
-                                    .tournamentId,
-                              ),
-                            );
-
-                            context.pushNamed('TOURNAMENTS');
-                          },
-                          text: 'Сохранить',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                      ),
-                    ].divide(SizedBox(width: 15.0)),
-                  ),
-                ),
                 Container(
                   decoration: BoxDecoration(),
                   child: Container(
@@ -728,6 +639,95 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 50.0, 15.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            context.safePop();
+                          },
+                          text: 'Отмена',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            await TournamentsTable().update(
+                              data: {
+                                'tournament_created_at':
+                                    supaSerialize<DateTime>(
+                                        getCurrentTimestamp),
+                                'tournament_name':
+                                    _model.tournamentNameController.text,
+                                'tournament_tag':
+                                    _model.tournamentTagController.text,
+                                'tournament_logo': _model.tournamentLogo,
+                                'tournament_flag':
+                                    _model.countryPickerModel.selectedFlag,
+                                'tournament_country':
+                                    _model.countryPickerModel.selectedCountry,
+                                'tournament_creator': currentUserUid,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'tournament_id',
+                                FFAppState()
+                                    .tournaments[widget.tournamentIndedx]
+                                    .tournamentId,
+                              ),
+                            );
+
+                            context.pushNamed('TOURNAMENTS');
+                          },
+                          text: 'Сохранить',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                      ),
+                    ].divide(SizedBox(width: 15.0)),
                   ),
                 ),
               ],
