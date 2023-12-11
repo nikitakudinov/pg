@@ -279,6 +279,10 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                       onPressed: () async {
                                         await deleteSupabaseFileFromPublicUrl(
                                             _model.tournamentLogo);
+                                        setState(() {
+                                          _model.tournamentLogo =
+                                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/image-7XR1sw6U--transformed.png';
+                                        });
                                       },
                                       text: 'Удалить',
                                       options: FFButtonOptions(
