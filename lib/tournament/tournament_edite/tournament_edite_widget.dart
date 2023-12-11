@@ -316,45 +316,42 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Container(
-                                          height: 40.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 5.0, 8.0, 5.0),
-                                            child: TextFormField(
-                                              controller: _model
-                                                  .tournamentNameController,
-                                              focusNode: _model
-                                                  .tournamentNameFocusNode,
-                                              autofocus: true,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText: 'Название',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                errorBorder: InputBorder.none,
-                                                focusedErrorBorder:
-                                                    InputBorder.none,
-                                              ),
-                                              style:
+                                          child: TextFormField(
+                                            controller:
+                                                _model.tournamentNameController,
+                                            focusNode:
+                                                _model.tournamentNameFocusNode,
+                                            autofocus: true,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText: 'Название',
+                                              labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              validator: _model
-                                                  .tournamentNameControllerValidator
-                                                  .asValidator(context),
+                                                      .labelMedium,
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              enabledBorder: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
+                                              errorBorder: InputBorder.none,
+                                              focusedErrorBorder:
+                                                  InputBorder.none,
+                                              contentPadding:
+                                                  EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                             ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                            validator: _model
+                                                .tournamentNameControllerValidator
+                                                .asValidator(context),
                                           ),
                                         ),
                                         Padding(
@@ -369,41 +366,44 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                             ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 5.0, 8.0, 5.0),
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .tournamentTagController,
-                                                focusNode: _model
-                                                    .tournamentTagFocusNode,
-                                                autofocus: true,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Тэг',
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium,
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium,
-                                                  enabledBorder:
-                                                      InputBorder.none,
-                                                  focusedBorder:
-                                                      InputBorder.none,
-                                                  errorBorder: InputBorder.none,
-                                                  focusedErrorBorder:
-                                                      InputBorder.none,
-                                                ),
-                                                style:
+                                            child: TextFormField(
+                                              controller: _model
+                                                  .tournamentTagController,
+                                              focusNode:
+                                                  _model.tournamentTagFocusNode,
+                                              autofocus: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText: 'Тэг',
+                                                labelStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                                validator: _model
-                                                    .tournamentTagControllerValidator
-                                                    .asValidator(context),
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                        ),
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium,
+                                                enabledBorder: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
+                                                errorBorder: InputBorder.none,
+                                                focusedErrorBorder:
+                                                    InputBorder.none,
+                                                contentPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(10.0, 0.0,
+                                                            0.0, 0.0),
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              validator: _model
+                                                  .tournamentTagControllerValidator
+                                                  .asValidator(context),
                                             ),
                                           ),
                                         ),
@@ -421,8 +421,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 15.0, 15.0, 15.0),
+                                                  .fromSTEB(5.0, 5.0, 5.0, 5.0),
                                               child: wrapWithModel(
                                                 model:
                                                     _model.countryPickerModel,
