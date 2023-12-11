@@ -11,6 +11,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tournament_edite_model.dart';
@@ -120,12 +121,32 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     child: ExpandableNotifier(
                       controller: _model.expandableController1,
                       child: ExpandablePanel(
-                        header: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Основная информация',
-                            style: FlutterFlowTheme.of(context).titleLarge,
+                        header: Container(
+                          height: 50.0,
+                          decoration: BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 0.0, 0.0),
+                                child: FaIcon(
+                                  FontAwesomeIcons.infoCircle,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 16.0,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  'Основная информация',
+                                  style:
+                                      FlutterFlowTheme.of(context).titleLarge,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         collapsed: Container(),
@@ -481,6 +502,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                           headerAlignment:
                               ExpandablePanelHeaderAlignment.center,
                           hasIcon: true,
+                          iconColor: FlutterFlowTheme.of(context).primaryText,
                         ),
                       ),
                     ),
@@ -494,12 +516,32 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     child: ExpandableNotifier(
                       controller: _model.expandableController2,
                       child: ExpandablePanel(
-                        header: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Участники турнира',
-                            style: FlutterFlowTheme.of(context).titleLarge,
+                        header: Container(
+                          height: 50.0,
+                          decoration: BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 0.0, 0.0),
+                                child: FaIcon(
+                                  FontAwesomeIcons.users,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 16.0,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  'Участники турнира',
+                                  style:
+                                      FlutterFlowTheme.of(context).titleLarge,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         collapsed: Container(),
@@ -666,6 +708,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                           headerAlignment:
                               ExpandablePanelHeaderAlignment.center,
                           hasIcon: true,
+                          iconColor: FlutterFlowTheme.of(context).primaryText,
                         ),
                       ),
                     ),
