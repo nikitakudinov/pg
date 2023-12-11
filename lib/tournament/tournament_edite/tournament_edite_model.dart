@@ -41,7 +41,7 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController;
+  late ExpandableController expandableController1;
 
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
@@ -58,6 +58,8 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
   String? Function(BuildContext, String?)? tournamentTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController2;
 
   /// Initialization and disposal methods.
 
@@ -67,7 +69,7 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    expandableController.dispose();
+    expandableController1.dispose();
     tournamentNameFocusNode?.dispose();
     tournamentNameController?.dispose();
 
@@ -75,6 +77,7 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
     tournamentTagController?.dispose();
 
     countryPickerModel.dispose();
+    expandableController2.dispose();
   }
 
   /// Action blocks are added here.

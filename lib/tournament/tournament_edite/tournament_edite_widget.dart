@@ -48,7 +48,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
       setState(() {});
     });
 
-    _model.expandableController = ExpandableController(initialExpanded: false);
+    _model.expandableController1 = ExpandableController(initialExpanded: false);
     _model.tournamentNameController ??= TextEditingController(
         text: FFAppState().tournaments[widget.tournamentIndedx].tournamentName);
     _model.tournamentNameFocusNode ??= FocusNode();
@@ -56,6 +56,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
     _model.tournamentTagController ??= TextEditingController(
         text: FFAppState().tournaments[widget.tournamentIndedx].tournamentTag);
     _model.tournamentTagFocusNode ??= FocusNode();
+
+    _model.expandableController2 = ExpandableController(initialExpanded: false);
   }
 
   @override
@@ -112,7 +114,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     width: double.infinity,
                     color: Color(0x00000000),
                     child: ExpandableNotifier(
-                      controller: _model.expandableController,
+                      controller: _model.expandableController1,
                       child: ExpandablePanel(
                         header: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -537,6 +539,150 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                         ),
                       ),
                     ].divide(SizedBox(width: 15.0)),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(),
+                  child: Container(
+                    width: double.infinity,
+                    color: Color(0x00000000),
+                    child: ExpandableNotifier(
+                      controller: _model.expandableController2,
+                      child: ExpandablePanel(
+                        header: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Участники турнира',
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
+                        ),
+                        collapsed: Container(),
+                        expanded: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 5.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 10.0, 10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 15.0, 0.0),
+                                          child: Container(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/811/600',
+                                                width: 50.0,
+                                                height: 50.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Hello World',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Text(
+                                              'Hello World',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 5.0, 0.0),
+                                                  child: Container(
+                                                    width: 20.0,
+                                                    height: 12.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.network(
+                                                        'https://picsum.photos/seed/728/600',
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Hello World',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        theme: ExpandableThemeData(
+                          tapHeaderToExpand: true,
+                          tapBodyToExpand: false,
+                          tapBodyToCollapse: false,
+                          headerAlignment:
+                              ExpandablePanelHeaderAlignment.center,
+                          hasIcon: true,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],

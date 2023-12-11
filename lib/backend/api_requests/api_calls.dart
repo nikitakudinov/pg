@@ -921,7 +921,8 @@ class TournamentGroup {
   };
   static TournamentbycreatorCall tournamentbycreatorCall =
       TournamentbycreatorCall();
-  static ListtournamentsCall listtournamentsCall = ListtournamentsCall();
+  static TournamentsCall tournamentsCall = TournamentsCall();
+  static TournamentmembersCall tournamentmembersCall = TournamentmembersCall();
 }
 
 class TournamentbycreatorCall {
@@ -977,13 +978,14 @@ class TournamentbycreatorCall {
       );
 }
 
-class ListtournamentsCall {
+class TournamentsCall {
   Future<ApiCallResponse> call({
-    String? idList = '',
+    String? authUser = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'LISTTOURNAMENTS',
-      apiUrl: '${TournamentGroup.baseUrl}tournaments?',
+      callName: 'TOURNAMENTS',
+      apiUrl:
+          '${TournamentGroup.baseUrl}tournaments?select=*,tournament_members:teams(*),tournament_creator:players!tournaments_tournament_creator_fkey(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -999,31 +1001,85 @@ class ListtournamentsCall {
     );
   }
 
-  dynamic tournamentid(dynamic response) => getJsonField(
+  dynamic id(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_id''',
       );
-  dynamic tournamentcreatedat(dynamic response) => getJsonField(
+  dynamic createdat(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_created_at''',
       );
-  dynamic tournamentname(dynamic response) => getJsonField(
+  dynamic name(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_name''',
       );
-  dynamic tournamenttag(dynamic response) => getJsonField(
+  dynamic tag(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_tag''',
       );
-  dynamic tournamentflag(dynamic response) => getJsonField(
+  dynamic flag(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_flag''',
       );
-  dynamic tournamentcountry(dynamic response) => getJsonField(
+  dynamic country(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_country''',
       );
-  dynamic tournamentcreator(dynamic response) => getJsonField(
+  dynamic creator(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_creator''',
+      );
+}
+
+class TournamentmembersCall {
+  Future<ApiCallResponse> call({
+    String? tournamentID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TOURNAMENTMEMBERS',
+      apiUrl:
+          '${TournamentGroup.baseUrl}tournament_members?tournament_id=eq.${tournamentID}&select=teams(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_id''',
+        true,
+      );
+  dynamic createdat(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_created_at''',
+      );
+  dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_name''',
+      );
+  dynamic tag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_tag''',
+      );
+  dynamic flag(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_flag''',
+      );
+  dynamic country(dynamic response) => getJsonField(
+        response,
+        r'''$[:].tournament_country''',
+      );
+  dynamic creator(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_creator''',
       );
