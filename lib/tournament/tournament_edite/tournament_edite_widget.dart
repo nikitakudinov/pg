@@ -52,7 +52,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
       setState(() {});
     });
 
-    _model.expandableController1 = ExpandableController(initialExpanded: false);
+    _model.expandableController1 = ExpandableController(initialExpanded: true);
     _model.tournamentNameController ??= TextEditingController(
         text: FFAppState().tournaments[widget.tournamentIndedx].tournamentName);
     _model.tournamentNameFocusNode ??= FocusNode();
@@ -61,7 +61,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
         text: FFAppState().tournaments[widget.tournamentIndedx].tournamentTag);
     _model.tournamentTagFocusNode ??= FocusNode();
 
-    _model.expandableController2 = ExpandableController(initialExpanded: false);
+    _model.expandableController2 = ExpandableController(initialExpanded: true);
   }
 
   @override
