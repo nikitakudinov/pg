@@ -316,6 +316,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Container(
+                                          height: 40.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
