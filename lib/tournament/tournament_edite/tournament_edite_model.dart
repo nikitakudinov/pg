@@ -40,8 +40,8 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for BASE-TOURNAMENT-INFO widget.
-  late ExpandableController baseTournamentInfoController;
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController;
 
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
@@ -67,7 +67,7 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    baseTournamentInfoController.dispose();
+    expandableController.dispose();
     tournamentNameFocusNode?.dispose();
     tournamentNameController?.dispose();
 
