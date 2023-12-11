@@ -114,9 +114,13 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     child: ExpandableNotifier(
                       controller: _model.expandableController,
                       child: ExpandablePanel(
-                        header: Text(
-                          'Основная информация',
-                          style: FlutterFlowTheme.of(context).titleLarge,
+                        header: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Основная информация',
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
                         ),
                         collapsed: Container(),
                         expanded: Container(
