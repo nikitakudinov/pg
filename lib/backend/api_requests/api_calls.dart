@@ -1130,9 +1130,7 @@ class TournamentbycreatorCall {
 }
 
 class TournamentsCall {
-  Future<ApiCallResponse> call({
-    String? authUser = '',
-  }) async {
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'TOURNAMENTS',
       apiUrl:
