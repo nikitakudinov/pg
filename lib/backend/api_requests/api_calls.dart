@@ -1136,7 +1136,7 @@ class TournamentsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'TOURNAMENTS',
       apiUrl:
-          '${TournamentGroup.baseUrl}tournaments?select=*,tournament_members:teams(*),tournament_creator:players(*)',
+          '${TournamentGroup.baseUrl}tournaments?select=*,tournament_members:teams(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
