@@ -169,10 +169,14 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: Text(
-                                    allCountriesListItem.ruName,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Text(
+                                      allCountriesListItem.ruName,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
                                   ),
                                 ),
                               ],

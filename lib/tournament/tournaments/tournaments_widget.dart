@@ -41,6 +41,20 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
           FFAppState().tournaments =
               _model.dtTOURNAMENTdata!.toList().cast<TournamentStruct>();
         });
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('1'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
       }
     });
   }
