@@ -91,8 +91,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: _model.textController,
                         focusNode: _model.textFieldFocusNode,
@@ -178,8 +177,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Builder(
                     builder: (context) {
                       final playersView =
@@ -202,8 +200,7 @@ class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [

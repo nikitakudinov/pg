@@ -111,8 +111,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color:
@@ -122,8 +121,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 10.0),
+                              padding: EdgeInsets.all(10.0),
                               child: Container(
                                 width: 80.0,
                                 height: 80.0,
@@ -198,8 +196,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 'Статистика',
                                 style: FlutterFlowTheme.of(context).bodyLarge,
@@ -231,8 +228,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -248,8 +244,8 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Сыграно карт',
                                               style:
@@ -270,8 +266,8 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Выйграно',
                                               style:
@@ -292,8 +288,8 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Проиграно',
                                               style:
@@ -314,8 +310,8 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'В/П',
                                               style:
@@ -344,7 +340,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'Сыграно матчей',
                                             style: FlutterFlowTheme.of(context)
@@ -365,7 +361,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'Выйграно',
                                             style: FlutterFlowTheme.of(context)
@@ -386,7 +382,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'Проиграно',
                                             style: FlutterFlowTheme.of(context)
@@ -407,7 +403,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'В/П',
                                             style: FlutterFlowTheme.of(context)
@@ -442,8 +438,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 'Состав команды',
                                 style: FlutterFlowTheme.of(context).bodyLarge,
@@ -511,8 +506,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Container(
                                         width: 50.0,
                                         height: 50.0,
@@ -589,16 +583,14 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: ListView(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,

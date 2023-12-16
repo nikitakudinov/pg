@@ -466,8 +466,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                   BorderRadius.circular(5.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                              padding: EdgeInsets.all(5.0),
                                               child: wrapWithModel(
                                                 model:
                                                     _model.countryPickerModel,

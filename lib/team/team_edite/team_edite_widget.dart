@@ -127,8 +127,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
               children: [
                 if (FFAppState().alertsCount != 0)
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Builder(
                       builder: (context) {
                         final notificationsList =
@@ -149,8 +148,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -601,8 +599,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                     Stack(
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 15.0, 15.0, 15.0),
+                          padding: EdgeInsets.all(15.0),
                           child: Container(
                             width: 100.0,
                             height: 100.0,
@@ -850,8 +847,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: wrapWithModel(
                     model: _model.countryPickerModel,
                     updateCallback: () => setState(() {}),
@@ -878,8 +874,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 10.0),
+                              padding: EdgeInsets.all(10.0),
                               child: Text(
                                 'Состав',
                                 style: FlutterFlowTheme.of(context).titleMedium,
@@ -911,8 +906,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Container(
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).tertiary,
@@ -947,9 +941,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10.0, 10.0,
-                                                          10.0, 10.0),
+                                                  padding: EdgeInsets.all(10.0),
                                                   child: Container(
                                                     width: 55.0,
                                                     height: 55.0,
@@ -1048,8 +1040,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         MediaQuery.sizeOf(context).width * 1.0,
                                     decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Text(
                                         'Отправить приглашение вступуть в команду этому игроку?',
                                         style: FlutterFlowTheme.of(context)
@@ -1058,8 +1049,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1350,8 +1340,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Container(
                                         width: 50.0,
                                         height: 50.0,

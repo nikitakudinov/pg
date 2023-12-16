@@ -126,8 +126,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               children: [
                 if (FFAppState().alertsCount != 0)
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Builder(
                       builder: (context) {
                         final notificationsList =
@@ -148,8 +147,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -596,14 +594,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                 if (FFAppState().authPlayer.playerId != 0)
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Container(
                             width: 60.0,
                             height: 60.0,

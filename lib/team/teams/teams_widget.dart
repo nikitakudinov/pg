@@ -132,8 +132,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
               children: [
                 if (FFAppState().alertsCount != 0)
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Builder(
                       builder: (context) {
                         final notificationsList =
@@ -154,8 +153,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -601,8 +599,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                     ),
                   ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -613,8 +610,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -740,8 +736,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 10.0, 10.0),
+                                  padding: EdgeInsets.all(10.0),
                                   child: Container(
                                     width: 70.0,
                                     height: 70.0,
@@ -892,8 +887,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -1140,8 +1134,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Builder(
                     builder: (context) {
                       final allTeamsList = FFAppState().allTEAMS.toList();
@@ -1200,8 +1193,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Container(
                                       width: 55.0,
                                       height: 55.0,

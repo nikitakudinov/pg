@@ -88,8 +88,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Container(
                       width: 100.0,
                       height: 100.0,
@@ -322,8 +321,7 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: wrapWithModel(
                     model: _model.countryPickerModel,
                     updateCallback: () => setState(() {}),

@@ -96,8 +96,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Container(
                       width: 100.0,
                       height: 100.0,
@@ -330,8 +329,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: wrapWithModel(
                     model: _model.countryPickerModel,
                     updateCallback: () => setState(() {}),
@@ -402,7 +400,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                   .teamid(
                                     (_model.createdteam?.jsonBody ?? ''),
                                   )
-                                  .first,
+                                  ?.first,
                               0,
                             ),
                           });
@@ -413,8 +411,8 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                             ) as List)
                                 .map<String>((s) => s.toString())
                                 .toList()
-                                .first
-                                .toString(),
+                                ?.first
+                                ?.toString(),
                           );
                           await TeamsTable().update(
                             data: {
@@ -429,7 +427,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                   .teamid(
                                     (_model.createdteam?.jsonBody ?? ''),
                                   )
-                                  .first,
+                                  ?.first,
                             ),
                           );
                           await PlayersTable().update(
@@ -438,7 +436,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                                   .teamid(
                                     (_model.createdteam?.jsonBody ?? ''),
                                   )
-                                  .first,
+                                  ?.first,
                               'player_team_role': ['[\"Нет роли\"]'],
                               'player_team_lineup': false,
                               'player_tag': _model.teamTagController.text,

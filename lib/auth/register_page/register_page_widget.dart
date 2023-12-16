@@ -87,7 +87,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+            padding: EdgeInsets.all(15.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -96,8 +96,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: Container(
                         width: 100.0,
                         height: 100.0,
