@@ -174,6 +174,8 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 '${matchesListItem.matchTournamentPair.toString()}',
