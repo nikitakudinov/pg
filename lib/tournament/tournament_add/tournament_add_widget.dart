@@ -2,9 +2,11 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -276,7 +278,6 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                       child: TextFormField(
                         controller: _model.tournamentTagController,
                         focusNode: _model.tournamentTagFocusNode,
-                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Тэг',
@@ -314,6 +315,38 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium,
                         validator: _model.tournamentTagControllerValidator
                             .asValidator(context),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      child: FlutterFlowDropDown<String>(
+                        controller: _model.dropDownValueController ??=
+                            FormFieldController<String>(null),
+                        options: ['32'],
+                        onChanged: (val) =>
+                            setState(() => _model.dropDownValue = val),
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: 50.0,
+                        textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        hintText: 'Количество команд',
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
+                        ),
+                        fillColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        elevation: 2.0,
+                        borderColor: Colors.transparent,
+                        borderWidth: 2.0,
+                        borderRadius: 8.0,
+                        margin: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 4.0, 10.0, 4.0),
+                        hidesUnderline: true,
+                        isOverButton: true,
+                        isSearchable: false,
+                        isMultiSelect: false,
                       ),
                     ),
                   ],

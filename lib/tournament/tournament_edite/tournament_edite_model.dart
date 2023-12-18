@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -38,6 +39,8 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
       organizators[index] = updateFn(organizators[index]);
 
   String tournamentLogo = 'false';
+
+  int? curentLoopCount = 1;
 
   ///  State fields for stateful widgets in this page.
 

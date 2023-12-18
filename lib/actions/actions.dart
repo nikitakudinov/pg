@@ -570,3 +570,45 @@ Future addMessageReadedLoop(BuildContext context) async {
     });
   }
 }
+
+Future creatTournamentMatches32(
+  BuildContext context, {
+  required int? tournamentID,
+}) async {
+  // R1P1
+  await MatchesTable().insert({
+    'match_tournament_round': 1,
+    'match_tournament_pair': 1,
+    'match_for_tournament': tournamentID,
+    'match_status': 'Соперники не определены',
+    'match_refery': 'не определен',
+    'match_date': 'матч еще не состоялся',
+  });
+  // R1P2
+  await MatchesTable().insert({
+    'match_tournament_round': 1,
+    'match_tournament_pair': 2,
+    'match_for_tournament': tournamentID,
+    'match_status': 'Соперники не определены',
+    'match_refery': 'не определен',
+    'match_date': 'матч еще не состоялся',
+  });
+  // R1P3
+  await MatchesTable().insert({
+    'match_tournament_round': 1,
+    'match_tournament_pair': 3,
+    'match_for_tournament': tournamentID,
+    'match_status': 'Соперники не определены',
+    'match_refery': 'не определен',
+    'match_date': 'матч еще не состоялся',
+  });
+  // R1P4
+  await MatchesTable().insert({
+    'match_tournament_round': 1,
+    'match_tournament_pair': 4,
+    'match_for_tournament': tournamentID,
+    'match_status': 'Соперники не определены',
+    'match_refery': 'не определен',
+    'match_date': 'матч еще не состоялся',
+  });
+}

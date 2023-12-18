@@ -34,20 +34,6 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResult147 = await TournamentGroup.tournamentsCall.call();
       if ((_model.apiResult147?.succeeded ?? true)) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('1'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
         _model.dtTOURNAMENTdata = await actions.dtTOURNAMENT(
           (_model.apiResult147?.jsonBody ?? ''),
         );

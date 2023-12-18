@@ -2,9 +2,11 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'tournament_add_widget.dart' show TournamentAddWidget;
 import 'package:flutter/material.dart';
@@ -49,6 +51,9 @@ class TournamentAddModel extends FlutterFlowModel<TournamentAddWidget> {
   FocusNode? tournamentTagFocusNode;
   TextEditingController? tournamentTagController;
   String? Function(BuildContext, String?)? tournamentTagControllerValidator;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (TOURNAMENTBYCREATOR)] action in saveButton widget.

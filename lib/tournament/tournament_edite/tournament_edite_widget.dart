@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -103,7 +104,35 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            FlutterFlowIconButton(
+              borderRadius: 20.0,
+              borderWidth: 1.0,
+              buttonSize: 40.0,
+              icon: Icon(
+                Icons.add,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                while (_model.curentLoopCount == FFAppConstants.pairs16) {
+                  await MatchesTable().insert({
+                    'match_date': 'Дата матча не определена',
+                    'match_tournament_round': 1,
+                    'match_tournament_pair': _model.curentLoopCount,
+                    'match_rival1': 0,
+                    'match_rival2': 0,
+                    'match_for_tournament': widget.tournamentId,
+                    'match_status': 'Соперники не определены',
+                    'match_refery': 'Рефери не определен',
+                  });
+                  setState(() {
+                    _model.curentLoopCount = _model.curentLoopCount! + 1;
+                  });
+                }
+              },
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),
