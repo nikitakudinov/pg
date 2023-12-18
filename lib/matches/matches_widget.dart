@@ -93,85 +93,145 @@ class _MatchesWidgetState extends State<MatchesWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Builder(
-                  builder: (context) {
-                    final matchesList = FFAppState().matches.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: matchesList.length,
-                      itemBuilder: (context, matchesListIndex) {
-                        final matchesListItem = matchesList[matchesListIndex];
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Row(
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Builder(
+                    builder: (context) {
+                      final matchesList = FFAppState().matches.toList();
+                      return ListView.separated(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: matchesList.length,
+                        separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                        itemBuilder: (context, matchesListIndex) {
+                          final matchesListItem = matchesList[matchesListIndex];
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 15.0, 0.0),
-                                  child: Container(
-                                    width: 80.0,
-                                    height: 80.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      child: Image.network(
-                                        'https://picsum.photos/seed/811/600',
-                                        width: 80.0,
-                                        height: 80.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Column(
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Text(
-                                      matchesListItem.matchForTournament
-                                          .toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Text(
-                                      matchesListItem.matchTournamentRound
-                                          .toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Row(
+                                    Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
+                                        Container(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: Image.network(
+                                              'https://picsum.photos/seed/811/600',
+                                              width: 50.0,
+                                              height: 50.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
                                         Text(
-                                          matchesListItem.matchTournamentPair
-                                              .toString(),
+                                          'Hello World',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          'Hello World',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
                                       ],
                                     ),
-                                  ],
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            '${matchesListItem.matchForTournament.toString()}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          Text(
+                                            '${matchesListItem.matchTournamentRound.toString()}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                '${matchesListItem.matchTournamentPair.toString()}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: Image.network(
+                                              'https://picsum.photos/seed/811/600',
+                                              width: 50.0,
+                                              height: 50.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          'Hello World',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          'Hello World',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ].divide(SizedBox(width: 10.0)),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [],
                                 ),
                               ],
                             ),
-                          ),
-                        );
-                      },
-                    );
-                  },
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
