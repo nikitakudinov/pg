@@ -156,11 +156,6 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
-                                        Text(
-                                          'Hello World',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
                                       ],
                                     ),
                                     Expanded(
@@ -221,11 +216,6 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                         ),
                                         Text(
                                           '${matchesListItem.matchRival2.teamName}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          'Hello World',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
