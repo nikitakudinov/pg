@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class MatchStruct extends BaseStruct {
   MatchStruct({
-    String? matchId,
     String? matchPlannedDate,
     String? matchDate,
     int? matchTournamentRound,
@@ -17,8 +16,7 @@ class MatchStruct extends BaseStruct {
     int? matchForTournament,
     String? matchStatus,
     String? matchRefery,
-  })  : _matchId = matchId,
-        _matchPlannedDate = matchPlannedDate,
+  })  : _matchPlannedDate = matchPlannedDate,
         _matchDate = matchDate,
         _matchTournamentRound = matchTournamentRound,
         _matchTournamentPair = matchTournamentPair,
@@ -27,12 +25,6 @@ class MatchStruct extends BaseStruct {
         _matchForTournament = matchForTournament,
         _matchStatus = matchStatus,
         _matchRefery = matchRefery;
-
-  // "match_id" field.
-  String? _matchId;
-  String get matchId => _matchId ?? '0';
-  set matchId(String? val) => _matchId = val;
-  bool hasMatchId() => _matchId != null;
 
   // "match_planned_date" field.
   String? _matchPlannedDate;
@@ -97,7 +89,6 @@ class MatchStruct extends BaseStruct {
   bool hasMatchRefery() => _matchRefery != null;
 
   static MatchStruct fromMap(Map<String, dynamic> data) => MatchStruct(
-        matchId: data['match_id'] as String?,
         matchPlannedDate: data['match_planned_date'] as String?,
         matchDate: data['match_date'] as String?,
         matchTournamentRound: castToType<int>(data['match_tournament_round']),
@@ -113,7 +104,6 @@ class MatchStruct extends BaseStruct {
       data is Map<String, dynamic> ? MatchStruct.fromMap(data) : null;
 
   Map<String, dynamic> toMap() => {
-        'match_id': _matchId,
         'match_planned_date': _matchPlannedDate,
         'match_date': _matchDate,
         'match_tournament_round': _matchTournamentRound,
@@ -127,10 +117,6 @@ class MatchStruct extends BaseStruct {
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'match_id': serializeParam(
-          _matchId,
-          ParamType.String,
-        ),
         'match_planned_date': serializeParam(
           _matchPlannedDate,
           ParamType.String,
@@ -171,11 +157,6 @@ class MatchStruct extends BaseStruct {
 
   static MatchStruct fromSerializableMap(Map<String, dynamic> data) =>
       MatchStruct(
-        matchId: deserializeParam(
-          data['match_id'],
-          ParamType.String,
-          false,
-        ),
         matchPlannedDate: deserializeParam(
           data['match_planned_date'],
           ParamType.String,
@@ -229,7 +210,6 @@ class MatchStruct extends BaseStruct {
   @override
   bool operator ==(Object other) {
     return other is MatchStruct &&
-        matchId == other.matchId &&
         matchPlannedDate == other.matchPlannedDate &&
         matchDate == other.matchDate &&
         matchTournamentRound == other.matchTournamentRound &&
@@ -243,7 +223,6 @@ class MatchStruct extends BaseStruct {
 
   @override
   int get hashCode => const ListEquality().hash([
-        matchId,
         matchPlannedDate,
         matchDate,
         matchTournamentRound,
@@ -257,7 +236,6 @@ class MatchStruct extends BaseStruct {
 }
 
 MatchStruct createMatchStruct({
-  String? matchId,
   String? matchPlannedDate,
   String? matchDate,
   int? matchTournamentRound,
@@ -269,7 +247,6 @@ MatchStruct createMatchStruct({
   String? matchRefery,
 }) =>
     MatchStruct(
-      matchId: matchId,
       matchPlannedDate: matchPlannedDate,
       matchDate: matchDate,
       matchTournamentRound: matchTournamentRound,
