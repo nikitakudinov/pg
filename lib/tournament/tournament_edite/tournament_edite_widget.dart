@@ -115,7 +115,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                while (_model.curentLoopCount! < FFAppConstants.pairs16) {
+                while (_model.curentLoopCount! <= FFAppConstants.pairs16) {
                   await MatchesTable().insert({
                     'match_date': 'Дата матча не определена',
                     'match_tournament_round': 1,
@@ -127,6 +127,61 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
                   });
                 }
+                setState(() {
+                  _model.curentLoopCount = 1;
+                });
+                while (_model.curentLoopCount! <= FFAppConstants.pairs8) {
+                  await MatchesTable().insert({
+                    'match_date': 'Дата матча не определена',
+                    'match_tournament_round': 2,
+                    'match_tournament_pair': _model.curentLoopCount,
+                    'match_for_tournament': widget.tournamentId,
+                    'match_status': 'Соперники не определены',
+                  });
+                  setState(() {
+                    _model.curentLoopCount = _model.curentLoopCount! + 1;
+                  });
+                }
+                setState(() {
+                  _model.curentLoopCount = 1;
+                });
+                while (_model.curentLoopCount! <= FFAppConstants.pairs4) {
+                  await MatchesTable().insert({
+                    'match_date': 'Дата матча не определена',
+                    'match_tournament_round': 3,
+                    'match_tournament_pair': _model.curentLoopCount,
+                    'match_for_tournament': widget.tournamentId,
+                    'match_status': 'Соперники не определены',
+                  });
+                  setState(() {
+                    _model.curentLoopCount = _model.curentLoopCount! + 1;
+                  });
+                }
+                setState(() {
+                  _model.curentLoopCount = 1;
+                });
+                while (_model.curentLoopCount! <= FFAppConstants.pairs2) {
+                  await MatchesTable().insert({
+                    'match_date': 'Дата матча не определена',
+                    'match_tournament_round': 4,
+                    'match_tournament_pair': _model.curentLoopCount,
+                    'match_for_tournament': widget.tournamentId,
+                    'match_status': 'Соперники не определены',
+                  });
+                  setState(() {
+                    _model.curentLoopCount = _model.curentLoopCount! + 1;
+                  });
+                }
+                setState(() {
+                  _model.curentLoopCount = 1;
+                });
+                await MatchesTable().insert({
+                  'match_date': 'Дата матча не определена',
+                  'match_tournament_round': 5,
+                  'match_tournament_pair': _model.curentLoopCount,
+                  'match_for_tournament': widget.tournamentId,
+                  'match_status': 'Соперники не определены',
+                });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
