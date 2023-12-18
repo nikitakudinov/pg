@@ -139,7 +139,12 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/811/600',
+                                              matchesListItem.matchRival1
+                                                          .teamName ==
+                                                      'Не определен'
+                                                  ? 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/unknowLogo.png'
+                                                  : matchesListItem
+                                                      .matchRival1.teamLogo,
                                               width: 50.0,
                                               height: 50.0,
                                               fit: BoxFit.cover,
@@ -202,7 +207,12 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/811/600',
+                                              matchesListItem.matchRival2
+                                                          .teamName ==
+                                                      'Не определен'
+                                                  ? 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/unknowLogo.png'
+                                                  : matchesListItem
+                                                      .matchRival2.teamLogo,
                                               width: 50.0,
                                               height: 50.0,
                                               fit: BoxFit.cover,
