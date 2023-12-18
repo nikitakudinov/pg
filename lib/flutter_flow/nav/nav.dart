@@ -182,6 +182,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 params.getParam('tournamentIndedx', ParamType.int),
             tournamentId: params.getParam('tournamentId', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'MATCHES',
+          path: '/matches',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'MATCHES')
+              : MatchesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

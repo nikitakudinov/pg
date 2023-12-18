@@ -12,6 +12,7 @@ import '/backend/supabase/supabase.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
@@ -124,6 +125,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'TOURNAMENTS': TournamentsWidget(),
       'CHATS': ChatsWidget(),
       'testPage1000players': TestPage1000playersWidget(),
+      'MATCHES': MatchesWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -180,6 +182,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'ТЕСТ',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.gamepad,
+              size: 24.0,
+            ),
+            label: 'Матчи',
             tooltip: '',
           )
         ],

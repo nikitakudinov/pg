@@ -1,4 +1,5 @@
 export 'dt_c_h_a_t.dart' show dtCHAT;
+export 'dt_m_a_t_c_h.dart' show dtMATCH;
 export 'dt_t_o_u_r_n_a_m_e_n_t.dart' show dtTOURNAMENT;
 export 'dt_c_h_a_t_m_e_m_b_e_r_s.dart' show dtCHATMEMBERS;
 export 'dt_c_o_u_n_t_r_i_e.dart' show dtCOUNTRIE;

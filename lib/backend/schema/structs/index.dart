@@ -4,6 +4,7 @@ export 'chat_struct.dart';
 export 'chatmember_struct.dart';
 export 'count_struct.dart';
 export 'countrie_struct.dart';
+export 'match_struct.dart';
 export 'message_struct.dart';
 export 'message_readed_struct.dart';
 export 'notification_struct.dart';
