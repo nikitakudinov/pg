@@ -120,11 +120,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     'match_date': 'Дата матча не определена',
                     'match_tournament_round': 1,
                     'match_tournament_pair': _model.curentLoopCount,
-                    'match_rival1': 0,
-                    'match_rival2': 0,
                     'match_for_tournament': widget.tournamentId,
                     'match_status': 'Соперники не определены',
-                    'match_refery': 'Рефери не определен',
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
