@@ -12,21 +12,21 @@ class MatchStruct extends BaseStruct {
     String? matchDate,
     int? matchTournamentRound,
     int? matchTournamentPair,
-    int? matchRival1,
-    int? matchRival2,
     int? matchForTournament,
     String? matchStatus,
     String? matchRefery,
+    TeamStruct? matchRival1,
+    TeamStruct? matchRival2,
   })  : _matchId = matchId,
         _matchPlannedDate = matchPlannedDate,
         _matchDate = matchDate,
         _matchTournamentRound = matchTournamentRound,
         _matchTournamentPair = matchTournamentPair,
-        _matchRival1 = matchRival1,
-        _matchRival2 = matchRival2,
         _matchForTournament = matchForTournament,
         _matchStatus = matchStatus,
-        _matchRefery = matchRefery;
+        _matchRefery = matchRefery,
+        _matchRival1 = matchRival1,
+        _matchRival2 = matchRival2;
 
   // "match_id" field.
   int? _matchId;
@@ -63,20 +63,6 @@ class MatchStruct extends BaseStruct {
       _matchTournamentPair = matchTournamentPair + amount;
   bool hasMatchTournamentPair() => _matchTournamentPair != null;
 
-  // "match_rival1" field.
-  int? _matchRival1;
-  int get matchRival1 => _matchRival1 ?? 0;
-  set matchRival1(int? val) => _matchRival1 = val;
-  void incrementMatchRival1(int amount) => _matchRival1 = matchRival1 + amount;
-  bool hasMatchRival1() => _matchRival1 != null;
-
-  // "match_rival2" field.
-  int? _matchRival2;
-  int get matchRival2 => _matchRival2 ?? 0;
-  set matchRival2(int? val) => _matchRival2 = val;
-  void incrementMatchRival2(int amount) => _matchRival2 = matchRival2 + amount;
-  bool hasMatchRival2() => _matchRival2 != null;
-
   // "match_for_tournament" field.
   int? _matchForTournament;
   int get matchForTournament => _matchForTournament ?? 0;
@@ -97,17 +83,33 @@ class MatchStruct extends BaseStruct {
   set matchRefery(String? val) => _matchRefery = val;
   bool hasMatchRefery() => _matchRefery != null;
 
+  // "match_rival1" field.
+  TeamStruct? _matchRival1;
+  TeamStruct get matchRival1 => _matchRival1 ?? TeamStruct();
+  set matchRival1(TeamStruct? val) => _matchRival1 = val;
+  void updateMatchRival1(Function(TeamStruct) updateFn) =>
+      updateFn(_matchRival1 ??= TeamStruct());
+  bool hasMatchRival1() => _matchRival1 != null;
+
+  // "match_rival2" field.
+  TeamStruct? _matchRival2;
+  TeamStruct get matchRival2 => _matchRival2 ?? TeamStruct();
+  set matchRival2(TeamStruct? val) => _matchRival2 = val;
+  void updateMatchRival2(Function(TeamStruct) updateFn) =>
+      updateFn(_matchRival2 ??= TeamStruct());
+  bool hasMatchRival2() => _matchRival2 != null;
+
   static MatchStruct fromMap(Map<String, dynamic> data) => MatchStruct(
         matchId: castToType<int>(data['match_id']),
         matchPlannedDate: data['match_planned_date'] as String?,
         matchDate: data['match_date'] as String?,
         matchTournamentRound: castToType<int>(data['match_tournament_round']),
         matchTournamentPair: castToType<int>(data['match_tournament_pair']),
-        matchRival1: castToType<int>(data['match_rival1']),
-        matchRival2: castToType<int>(data['match_rival2']),
         matchForTournament: castToType<int>(data['match_for_tournament']),
         matchStatus: data['match_status'] as String?,
         matchRefery: data['match_refery'] as String?,
+        matchRival1: TeamStruct.maybeFromMap(data['match_rival1']),
+        matchRival2: TeamStruct.maybeFromMap(data['match_rival2']),
       );
 
   static MatchStruct? maybeFromMap(dynamic data) =>
@@ -119,11 +121,11 @@ class MatchStruct extends BaseStruct {
         'match_date': _matchDate,
         'match_tournament_round': _matchTournamentRound,
         'match_tournament_pair': _matchTournamentPair,
-        'match_rival1': _matchRival1,
-        'match_rival2': _matchRival2,
         'match_for_tournament': _matchForTournament,
         'match_status': _matchStatus,
         'match_refery': _matchRefery,
+        'match_rival1': _matchRival1?.toMap(),
+        'match_rival2': _matchRival2?.toMap(),
       }.withoutNulls;
 
   @override
@@ -148,14 +150,6 @@ class MatchStruct extends BaseStruct {
           _matchTournamentPair,
           ParamType.int,
         ),
-        'match_rival1': serializeParam(
-          _matchRival1,
-          ParamType.int,
-        ),
-        'match_rival2': serializeParam(
-          _matchRival2,
-          ParamType.int,
-        ),
         'match_for_tournament': serializeParam(
           _matchForTournament,
           ParamType.int,
@@ -167,6 +161,14 @@ class MatchStruct extends BaseStruct {
         'match_refery': serializeParam(
           _matchRefery,
           ParamType.String,
+        ),
+        'match_rival1': serializeParam(
+          _matchRival1,
+          ParamType.DataStruct,
+        ),
+        'match_rival2': serializeParam(
+          _matchRival2,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -197,16 +199,6 @@ class MatchStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        matchRival1: deserializeParam(
-          data['match_rival1'],
-          ParamType.int,
-          false,
-        ),
-        matchRival2: deserializeParam(
-          data['match_rival2'],
-          ParamType.int,
-          false,
-        ),
         matchForTournament: deserializeParam(
           data['match_for_tournament'],
           ParamType.int,
@@ -222,6 +214,18 @@ class MatchStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        matchRival1: deserializeStructParam(
+          data['match_rival1'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: TeamStruct.fromSerializableMap,
+        ),
+        matchRival2: deserializeStructParam(
+          data['match_rival2'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: TeamStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -235,11 +239,11 @@ class MatchStruct extends BaseStruct {
         matchDate == other.matchDate &&
         matchTournamentRound == other.matchTournamentRound &&
         matchTournamentPair == other.matchTournamentPair &&
-        matchRival1 == other.matchRival1 &&
-        matchRival2 == other.matchRival2 &&
         matchForTournament == other.matchForTournament &&
         matchStatus == other.matchStatus &&
-        matchRefery == other.matchRefery;
+        matchRefery == other.matchRefery &&
+        matchRival1 == other.matchRival1 &&
+        matchRival2 == other.matchRival2;
   }
 
   @override
@@ -249,11 +253,11 @@ class MatchStruct extends BaseStruct {
         matchDate,
         matchTournamentRound,
         matchTournamentPair,
-        matchRival1,
-        matchRival2,
         matchForTournament,
         matchStatus,
-        matchRefery
+        matchRefery,
+        matchRival1,
+        matchRival2
       ]);
 }
 
@@ -263,11 +267,11 @@ MatchStruct createMatchStruct({
   String? matchDate,
   int? matchTournamentRound,
   int? matchTournamentPair,
-  int? matchRival1,
-  int? matchRival2,
   int? matchForTournament,
   String? matchStatus,
   String? matchRefery,
+  TeamStruct? matchRival1,
+  TeamStruct? matchRival2,
 }) =>
     MatchStruct(
       matchId: matchId,
@@ -275,9 +279,9 @@ MatchStruct createMatchStruct({
       matchDate: matchDate,
       matchTournamentRound: matchTournamentRound,
       matchTournamentPair: matchTournamentPair,
-      matchRival1: matchRival1,
-      matchRival2: matchRival2,
       matchForTournament: matchForTournament,
       matchStatus: matchStatus,
       matchRefery: matchRefery,
+      matchRival1: matchRival1 ?? TeamStruct(),
+      matchRival2: matchRival2 ?? TeamStruct(),
     );

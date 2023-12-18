@@ -1257,7 +1257,8 @@ class MatchesCall {
   Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'MATCHES',
-      apiUrl: '${MatchGroup.baseUrl}matches?',
+      apiUrl:
+          '${MatchGroup.baseUrl}matches?select=*,match_rival1:teams!matches_match_rival1_fkey(*),match_rival2:teams!matches_match_rival2_fkey(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
