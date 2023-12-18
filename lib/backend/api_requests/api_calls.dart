@@ -1258,7 +1258,7 @@ class MatchesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'MATCHES',
       apiUrl:
-          '${MatchGroup.baseUrl}matches?select=*,match_rival1:teams!matches_match_rival1_fkey(*),match_rival2:teams!matches_match_rival2_fkey(*)',
+          '${MatchGroup.baseUrl}matches?select=*,match_rival1:teams!matches_match_rival1_fkey(*),match_rival2:teams!matches_match_rival2_fkey(*),match_for_tournament:tournaments(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1318,13 +1318,11 @@ class MatchesCall {
         r'''$[:].match_rival2''',
         true,
       ) as List?;
-  List<int>? matchfortournament(dynamic response) => (getJsonField(
+  List? matchfortournament(dynamic response) => getJsonField(
         response,
         r'''$[:].match_for_tournament''',
         true,
-      ) as List?)
-          ?.withoutNulls
-          .cast<int>();
+      ) as List?;
   List<String>? matchstatus(dynamic response) => (getJsonField(
         response,
         r'''$[:].match_status''',
