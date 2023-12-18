@@ -125,6 +125,8 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                   children: [
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Container(
                                           width: 50.0,
@@ -160,7 +162,7 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '${matchesListItem.matchForTournament.toString()}',
@@ -174,8 +176,6 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 '${matchesListItem.matchTournamentPair.toString()}',
