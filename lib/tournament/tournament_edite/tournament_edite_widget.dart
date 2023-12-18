@@ -115,7 +115,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                while (_model.curentLoopCount == FFAppConstants.pairs16) {
+                while (_model.curentLoopCount! < FFAppConstants.pairs16) {
                   await MatchesTable().insert({
                     'match_date': 'Дата матча не определена',
                     'match_tournament_round': 1,
