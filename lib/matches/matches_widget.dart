@@ -98,6 +98,7 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                     final matchesList = FFAppState().matches.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: matchesList.length,
