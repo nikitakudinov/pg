@@ -527,44 +527,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                child:
-                                                                    Container(
-                                                                  width: 20.0,
-                                                                  height: 12.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                  ),
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            0.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      round1Item
-                                                                          .matchRival1
-                                                                          .teamFlag,
-                                                                      width:
-                                                                          20.0,
-                                                                      height:
-                                                                          12.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
                                                               Text(
                                                                 '${round1Item.matchRival1Wins.toString()}',
                                                                 style: FlutterFlowTheme.of(
@@ -702,44 +664,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                child:
-                                                                    Container(
-                                                                  width: 20.0,
-                                                                  height: 12.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                  ),
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            0.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      round1Item
-                                                                          .matchRival1
-                                                                          .teamFlag,
-                                                                      width:
-                                                                          20.0,
-                                                                      height:
-                                                                          12.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
                                                               Text(
                                                                 '${round1Item.matchRival2Wins.toString()}',
                                                                 style: FlutterFlowTheme.of(
