@@ -536,7 +536,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          15.0,
+                                                                          10.0,
                                                                           0.0),
                                                                   child: Text(
                                                                     '${round1Item.matchRival1Wins.toString()}',
@@ -677,11 +677,20 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              Text(
-                                                                '${round1Item.matchRival2Wins.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  '${round1Item.matchRival2Wins.toString()}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium,
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
