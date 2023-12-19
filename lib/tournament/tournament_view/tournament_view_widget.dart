@@ -58,7 +58,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
       }
     });
 
-    _model.expandableController = ExpandableController(initialExpanded: true);
+    _model.expandableController = ExpandableController(initialExpanded: false);
   }
 
   @override
