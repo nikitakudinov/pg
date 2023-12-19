@@ -186,7 +186,7 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                           Text(
                                             '${matchesListItem.matchRival1Wins.toString()} - ${matchesListItem.matchRival2Wins.toString()}',
                                             style: FlutterFlowTheme.of(context)
-                                                .headlineMedium,
+                                                .headlineLarge,
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
