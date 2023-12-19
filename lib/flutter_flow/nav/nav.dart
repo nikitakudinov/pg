@@ -151,6 +151,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             members: params.getParam<int>('members', ParamType.int, true),
             organizators:
                 params.getParam<String>('organizators', ParamType.String, true),
+            tournamentID: params.getParam('tournamentID', ParamType.int),
           ),
         ),
         FFRoute(

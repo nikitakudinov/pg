@@ -9,7 +9,8 @@ export '/team/team_edite/team_edite_widget.dart' show TeamEditeWidget;
 export '/tournament/tournament_add/tournament_add_widget.dart'
     show TournamentAddWidget;
 export '/tournament/tournaments/tournaments_widget.dart' show TournamentsWidget;
-export '/tournament_view/tournament_view_widget.dart' show TournamentViewWidget;
+export '/tournament/tournament_view/tournament_view_widget.dart'
+    show TournamentViewWidget;
 export '/chats/chats_widget.dart' show ChatsWidget;
 export '/chat/chat_widget.dart' show ChatWidget;
 export '/test_page1000players/test_page1000players_widget.dart'

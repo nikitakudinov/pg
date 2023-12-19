@@ -142,6 +142,20 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'TOURNAMENT_VIEW',
+                                queryParameters: {
+                                  'tournamentID': serializeParam(
+                                    valueOrDefault<int>(
+                                      tournamentsListItem.tournamentId,
+                                      0,
+                                    ),
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
                             onLongPress: () async {
                               context.pushNamed(
                                 'TOURNAMENT_EDITE',

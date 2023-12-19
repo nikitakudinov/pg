@@ -1283,6 +1283,7 @@ class MatchGroup {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   };
   static MatchesCall matchesCall = MatchesCall();
+  static TournamentmatchesCall tournamentmatchesCall = TournamentmatchesCall();
 }
 
 class MatchesCall {
@@ -1291,6 +1292,92 @@ class MatchesCall {
       callName: 'MATCHES',
       apiUrl:
           '${MatchGroup.baseUrl}matches?select=*,match_rival1:teams!matches_match_rival1_fkey(*),match_rival2:teams!matches_match_rival2_fkey(*),match_for_tournament:tournaments(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<int>? matchid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].match_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .cast<int>();
+  List? matchplanneddate(dynamic response) => getJsonField(
+        response,
+        r'''$[:].match_planned_date''',
+        true,
+      ) as List?;
+  List<String>? matchdate(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].match_date''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .cast<String>();
+  List<int>? matchtournamentround(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].match_tournament_round''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .cast<int>();
+  List<int>? matchtournamentpair(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].match_tournament_pair''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .cast<int>();
+  List? matchrival1(dynamic response) => getJsonField(
+        response,
+        r'''$[:].match_rival1''',
+        true,
+      ) as List?;
+  List? matchrival2(dynamic response) => getJsonField(
+        response,
+        r'''$[:].match_rival2''',
+        true,
+      ) as List?;
+  List? matchfortournament(dynamic response) => getJsonField(
+        response,
+        r'''$[:].match_for_tournament''',
+        true,
+      ) as List?;
+  List<String>? matchstatus(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].match_status''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .cast<String>();
+  List? matchrefery(dynamic response) => getJsonField(
+        response,
+        r'''$[:].match_refery''',
+        true,
+      ) as List?;
+}
+
+class TournamentmatchesCall {
+  Future<ApiCallResponse> call({
+    int? tournamentID,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TOURNAMENTMATCHES',
+      apiUrl:
+          '${MatchGroup.baseUrl}matches?match_for_tournament=eq.${tournamentID}&select=*,match_rival1:teams!matches_match_rival1_fkey(*),match_rival2:teams!matches_match_rival2_fkey(*),match_for_tournament:tournaments(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
