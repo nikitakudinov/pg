@@ -373,6 +373,27 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Text(
+                                                        'Матч состоится ${valueOrDefault<String>(
+                                                          round1Item
+                                                              .matchPlannedDate,
+                                                          '0',
+                                                        )}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                                 Padding(
                                                   padding: EdgeInsets.all(10.0),
                                                   child: Row(
