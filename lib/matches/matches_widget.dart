@@ -186,20 +186,13 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                           Text(
                                             '${matchesListItem.matchRival1Wins.toString()} - ${matchesListItem.matchRival2Wins.toString()}',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .headlineMedium,
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                '${matchesListItem.matchDate}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
+                                            children: [],
                                           ),
                                         ],
                                       ),
@@ -241,7 +234,14 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  children: [],
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '${matchesListItem.matchDate}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
