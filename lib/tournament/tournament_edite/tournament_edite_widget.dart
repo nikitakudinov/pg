@@ -133,18 +133,30 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 });
                 while (_model.curentLoopCount! <= FFAppConstants.pairs16) {
                   setState(() {
-                    _model.rival1 = functions.newCustomFunction(
-                        _model.tournamentMembersIDs.toList());
+                    _model.rival1 = valueOrDefault<int>(
+                      functions.newCustomFunction(
+                          _model.tournamentMembersIDs.toList()),
+                      0,
+                    );
                   });
                   setState(() {
-                    _model.removeFromTournamentMembersIDs(_model.rival1!);
+                    _model.removeFromTournamentMembersIDs(valueOrDefault<int>(
+                      _model.rival1,
+                      0,
+                    ));
                   });
                   setState(() {
-                    _model.rival2 = functions.newCustomFunction(
-                        _model.tournamentMembersIDs.toList());
+                    _model.rival2 = valueOrDefault<int>(
+                      functions.newCustomFunction(
+                          _model.tournamentMembersIDs.toList()),
+                      0,
+                    );
                   });
                   setState(() {
-                    _model.removeFromTournamentMembersIDs(_model.rival2!);
+                    _model.removeFromTournamentMembersIDs(valueOrDefault<int>(
+                      _model.rival2,
+                      0,
+                    ));
                   });
                   await MatchesTable().insert({
                     'match_tournament_round': 1,
