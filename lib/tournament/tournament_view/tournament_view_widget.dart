@@ -406,7 +406,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                   ],
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.all(10.0),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10.0, 10.0,
+                                                          10.0, 5.0),
                                                   child: Container(
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
@@ -577,7 +579,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.all(10.0),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10.0, 0.0, 10.0,
+                                                          10.0),
                                                   child: Container(
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
