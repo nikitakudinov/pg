@@ -377,25 +377,30 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Text(
-                                                        round1Item.matchPlannedDate ==
-                                                                    null ||
-                                                                round1Item
-                                                                        .matchPlannedDate ==
-                                                                    ''
-                                                            ? 'Дата матча не запланирована'
-                                                            : 'Матч состоится ${valueOrDefault<String>(
-                                                                round1Item
-                                                                    .matchPlannedDate,
-                                                                '0',
-                                                              )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Text(
+                                                          round1Item.matchPlannedDate ==
+                                                                  '0'
+                                                              ? 'Дата матча не запланирована'
+                                                              : 'Матч состоится ${valueOrDefault<String>(
+                                                                  round1Item
+                                                                      .matchPlannedDate,
+                                                                  '0',
+                                                                )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
