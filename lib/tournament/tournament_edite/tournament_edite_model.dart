@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
@@ -8,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'tournament_edite_widget.dart' show TournamentEditeWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +44,21 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
 
   int? curentLoopCount = 1;
 
+  List<int> tournamentMembersIDs = [];
+  void addToTournamentMembersIDs(int item) => tournamentMembersIDs.add(item);
+  void removeFromTournamentMembersIDs(int item) =>
+      tournamentMembersIDs.remove(item);
+  void removeAtIndexFromTournamentMembersIDs(int index) =>
+      tournamentMembersIDs.removeAt(index);
+  void insertAtIndexInTournamentMembersIDs(int index, int item) =>
+      tournamentMembersIDs.insert(index, item);
+  void updateTournamentMembersIDsAtIndex(int index, Function(int) updateFn) =>
+      tournamentMembersIDs[index] = updateFn(tournamentMembersIDs[index]);
+
+  int? rival1;
+
+  int? rival2;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -65,6 +82,9 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
   late CountryPickerModel countryPickerModel;
   // State field(s) for Expandable widget.
   late ExpandableController expandableController2;
+
+  // Stores action output result for [Backend Call - API (TOURNAMENTMEMBERS)] action in IconButton widget.
+  ApiCallResponse? tournamentMember;
 
   /// Initialization and disposal methods.
 

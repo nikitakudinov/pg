@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker_widget.dart';
@@ -8,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -115,16 +117,49 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
+                _model.tournamentMember =
+                    await TournamentGroup.tournamentmembersCall.call(
+                  tournamentID: widget.tournamentId.toString(),
+                );
+                setState(() {
+                  _model.tournamentMembersIDs =
+                      TournamentGroup.tournamentmembersCall
+                          .teamsteamid(
+                            (_model.tournamentMember?.jsonBody ?? ''),
+                          )!
+                          .cast<int>()
+                          .toList()
+                          .cast<int>();
+                });
                 while (_model.curentLoopCount! <= FFAppConstants.pairs16) {
+                  setState(() {
+                    _model.rival1 = functions.newCustomFunction(
+                        _model.tournamentMembersIDs.toList());
+                  });
+                  setState(() {
+                    _model.removeFromTournamentMembersIDs(_model.rival1!);
+                  });
+                  setState(() {
+                    _model.rival2 = functions.newCustomFunction(
+                        _model.tournamentMembersIDs.toList());
+                  });
+                  setState(() {
+                    _model.removeFromTournamentMembersIDs(_model.rival2!);
+                  });
                   await MatchesTable().insert({
-                    'match_date': 'Дата матча не определена',
                     'match_tournament_round': 1,
                     'match_tournament_pair': _model.curentLoopCount,
+                    'match_rival1': _model.rival1,
+                    'match_rival2': _model.rival2,
                     'match_for_tournament': widget.tournamentId,
-                    'match_status': 'Соперники не определены',
+                    'match_status': 'Матч создан',
+                    'match_refery': 'не определен',
+                    'match_date': 'Дата матча не определена',
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
+                    _model.rival1 = null;
+                    _model.rival2 = null;
                   });
                 }
                 setState(() {
@@ -194,6 +229,21 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     backgroundColor: FlutterFlowTheme.of(context).secondary,
                   ),
                 );
+
+                setState(() {});
+              },
+            ),
+            FlutterFlowIconButton(
+              borderRadius: 20.0,
+              borderWidth: 1.0,
+              buttonSize: 40.0,
+              icon: Icon(
+                Icons.shuffle_outlined,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 24.0,
+              ),
+              onPressed: () {
+                print('IconButton pressed ...');
               },
             ),
           ],
