@@ -381,11 +381,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                       decoration:
                                                           BoxDecoration(),
                                                       child: Text(
-                                                        'Матч состоится ${valueOrDefault<String>(
-                                                          round1Item
-                                                              .matchPlannedDate,
-                                                          '0',
-                                                        )}',
+                                                        round1Item.matchPlannedDate ==
+                                                                    null ||
+                                                                round1Item
+                                                                        .matchPlannedDate ==
+                                                                    ''
+                                                            ? 'Дата матча не запланирована'
+                                                            : 'Матч состоится ${valueOrDefault<String>(
+                                                                round1Item
+                                                                    .matchPlannedDate,
+                                                                '0',
+                                                              )}',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
