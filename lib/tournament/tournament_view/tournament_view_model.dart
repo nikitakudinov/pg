@@ -22,7 +22,10 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   // Stores action output result for [Custom Action - dtMATCH] action in TOURNAMENT_VIEW widget.
   List<MatchStruct>? dtTOURNAMENTMATCHESdata;
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController;
+  late ExpandableController expandableController1;
+
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController2;
 
   /// Initialization and disposal methods.
 
@@ -30,7 +33,8 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    expandableController.dispose();
+    expandableController1.dispose();
+    expandableController2.dispose();
   }
 
   /// Action blocks are added here.
