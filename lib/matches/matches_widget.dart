@@ -97,7 +97,10 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                   padding: EdgeInsets.all(15.0),
                   child: Builder(
                     builder: (context) {
-                      final matchesList = FFAppState().matches.toList();
+                      final matchesList = FFAppState()
+                          .matches
+                          .sortedList((e) => e.matchTournamentRound)
+                          .toList();
                       return ListView.separated(
                         padding: EdgeInsets.zero,
                         primary: false,
