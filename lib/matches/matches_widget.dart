@@ -181,18 +181,20 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '${matchesListItem.matchTournamentRound.toString()}',
+                                            '${matchesListItem.matchRival1Wins.toString()} - ${matchesListItem.matchRival2Wins.toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                '${matchesListItem.matchTournamentPair.toString()}',
+                                                '${matchesListItem.matchDate}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
