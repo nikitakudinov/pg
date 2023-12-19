@@ -712,6 +712,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                   .toList();
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
+                                primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: tournamentItem.length,
@@ -725,6 +726,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                               .toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
+                                        primary: false,
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: tournamentMembers.length,
