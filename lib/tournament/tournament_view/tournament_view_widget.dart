@@ -151,7 +151,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                             final tournamentItem = FFAppState()
                                 .tournaments
                                 .where((e) =>
-                                    e.tournamentId == widget.tournamentId)
+                                    e.tournamentId == widget.tournamentID)
                                 .toList();
                             return ListView.builder(
                               padding: EdgeInsets.zero,
@@ -344,11 +344,14 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                       .tournamentMatches
                                       .where((e) => e.matchTournamentRound == 1)
                                       .toList();
-                                  return ListView.builder(
+                                  return ListView.separated(
                                     padding: EdgeInsets.zero,
+                                    primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     itemCount: round1.length,
+                                    separatorBuilder: (_, __) =>
+                                        SizedBox(height: 5.0),
                                     itemBuilder: (context, round1Index) {
                                       final round1Item = round1[round1Index];
                                       return Container(
