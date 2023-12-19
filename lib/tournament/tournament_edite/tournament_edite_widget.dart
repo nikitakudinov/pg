@@ -153,7 +153,6 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     'match_rival2': _model.rival2,
                     'match_for_tournament': widget.tournamentId,
                     'match_status': 'Матч создан',
-                    'match_refery': 'не определен',
                     'match_date': 'Дата матча не определена',
                   });
                   setState(() {
