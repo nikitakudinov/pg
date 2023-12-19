@@ -126,7 +126,18 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
-                                  ],
+                                    Text(
+                                      'Раунд',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Text(
+                                      matchesListItem.matchTournamentRound
+                                          .toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
