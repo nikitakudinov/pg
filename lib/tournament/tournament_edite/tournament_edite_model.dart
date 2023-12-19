@@ -55,9 +55,9 @@ class TournamentEditeModel extends FlutterFlowModel<TournamentEditeWidget> {
   void updateTournamentMembersIDsAtIndex(int index, Function(int) updateFn) =>
       tournamentMembersIDs[index] = updateFn(tournamentMembersIDs[index]);
 
-  int? rival1;
+  int? rival1 = 0;
 
-  int? rival2;
+  int? rival2 = 0;
 
   ///  State fields for stateful widgets in this page.
 

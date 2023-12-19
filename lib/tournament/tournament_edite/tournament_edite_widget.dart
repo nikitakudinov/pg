@@ -157,8 +157,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
-                    _model.rival1 = null;
-                    _model.rival2 = null;
+                    _model.rival1 = 0;
+                    _model.rival2 = 0;
                   });
                 }
                 setState(() {
