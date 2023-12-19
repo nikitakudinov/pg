@@ -139,12 +139,14 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                       0,
                     );
                   });
+                  await Future.delayed(const Duration(milliseconds: 2));
                   setState(() {
                     _model.removeFromTournamentMembersIDs(valueOrDefault<int>(
                       _model.rival1,
                       0,
                     ));
                   });
+                  await Future.delayed(const Duration(milliseconds: 2));
                   setState(() {
                     _model.rival2 = valueOrDefault<int>(
                       functions.newCustomFunction(
@@ -152,6 +154,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                       0,
                     );
                   });
+                  await Future.delayed(const Duration(milliseconds: 2));
                   setState(() {
                     _model.removeFromTournamentMembersIDs(valueOrDefault<int>(
                       _model.rival2,
