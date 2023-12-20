@@ -335,13 +335,14 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                           children: [
                                             Container(
                                               width: 1.0,
+                                              height: 65.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,
                                               ),
                                               child: Text(
-                                                '',
+                                                ' ',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
