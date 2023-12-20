@@ -66,7 +66,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: Text(
-                  'РАУНД 1',
+                  'РАУНД ${widget.round.toString()}',
                   style: FlutterFlowTheme.of(context).headlineSmall,
                 ),
               ),
