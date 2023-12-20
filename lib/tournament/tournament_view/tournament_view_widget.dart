@@ -145,18 +145,21 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                FFAppState()
-                                    .tournaments
-                                    .where((e) =>
-                                        e.tournamentId == widget.tournamentID)
-                                    .toList()[0]
-                                    .tournamentHeaderImage,
-                                width: double.infinity,
-                                height: double.infinity,
-                                fit: BoxFit.cover,
+                            child: Opacity(
+                              opacity: 0.5,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  FFAppState()
+                                      .tournaments
+                                      .where((e) =>
+                                          e.tournamentId == widget.tournamentID)
+                                      .toList()[0]
+                                      .tournamentHeaderImage,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
