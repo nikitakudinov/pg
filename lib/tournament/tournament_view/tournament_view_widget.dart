@@ -342,15 +342,50 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           ),
                         ),
                         collapsed: Container(),
-                        expanded: wrapWithModel(
-                          model: _model.tOURNAMENTgridROUNDModel,
-                          updateCallback: () => setState(() {}),
-                          child: TOURNAMENTgridROUNDWidget(
-                            round: 1,
-                            iteamspacing: 5,
-                            paddingtop: 0,
-                            itemheight: 220,
-                          ),
+                        expanded: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            wrapWithModel(
+                              model: _model.tOURNAMENTgridROUNDModel1,
+                              updateCallback: () => setState(() {}),
+                              child: TOURNAMENTgridROUNDWidget(
+                                round: 1,
+                                iteamspacing: 5,
+                                paddingtop: 0,
+                                itemheight: 220,
+                              ),
+                            ),
+                            wrapWithModel(
+                              model: _model.tOURNAMENTgridROUNDModel2,
+                              updateCallback: () => setState(() {}),
+                              child: TOURNAMENTgridROUNDWidget(
+                                round: 2,
+                                iteamspacing: 5,
+                                paddingtop: 0,
+                                itemheight: 220,
+                              ),
+                            ),
+                            wrapWithModel(
+                              model: _model.tOURNAMENTgridROUNDModel3,
+                              updateCallback: () => setState(() {}),
+                              child: TOURNAMENTgridROUNDWidget(
+                                round: 3,
+                                iteamspacing: 5,
+                                paddingtop: 0,
+                                itemheight: 220,
+                              ),
+                            ),
+                            wrapWithModel(
+                              model: _model.tOURNAMENTgridROUNDModel4,
+                              updateCallback: () => setState(() {}),
+                              child: TOURNAMENTgridROUNDWidget(
+                                round: 4,
+                                iteamspacing: 5,
+                                paddingtop: 0,
+                                itemheight: 220,
+                              ),
+                            ),
+                          ],
                         ),
                         theme: ExpandableThemeData(
                           tapHeaderToExpand: true,
