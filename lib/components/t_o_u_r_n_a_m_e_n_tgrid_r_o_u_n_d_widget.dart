@@ -70,343 +70,354 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                   style: FlutterFlowTheme.of(context).headlineSmall,
                 ),
               ),
-              Builder(
-                builder: (context) {
-                  final round = FFAppState()
-                      .tournamentMatches
-                      .where((e) => e.matchTournamentRound == widget.round)
-                      .toList()
-                      .sortedList((e) => e.matchTournamentPair)
-                      .toList();
-                  return ListView.separated(
-                    padding: EdgeInsets.fromLTRB(
-                      0,
-                      0,
-                      0,
-                      0,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(
+                    0.0,
+                    valueOrDefault<double>(
+                      widget.paddingtop.toDouble(),
+                      0.0,
                     ),
-                    primary: false,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: round.length,
-                    separatorBuilder: (_, __) =>
-                        SizedBox(height: widget.iteamspacing.toDouble()),
-                    itemBuilder: (context, roundIndex) {
-                      final roundItem = round[roundIndex];
-                      return Container(
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(),
-                                    child: Text(
-                                      roundItem.matchPlannedDate == '0'
-                                          ? 'Дата матча не запланирована'
-                                          : 'Матч состоится ${valueOrDefault<String>(
-                                              roundItem.matchPlannedDate,
-                                              '0',
-                                            )}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                    0.0,
+                    0.0),
+                child: Builder(
+                  builder: (context) {
+                    final round = FFAppState()
+                        .tournamentMatches
+                        .where((e) => e.matchTournamentRound == widget.round)
+                        .toList()
+                        .sortedList((e) => e.matchTournamentPair)
+                        .toList();
+                    return ListView.separated(
+                      padding: EdgeInsets.zero,
+                      primary: false,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: round.length,
+                      separatorBuilder: (_, __) =>
+                          SizedBox(height: widget.iteamspacing.toDouble()),
+                      itemBuilder: (context, roundIndex) {
+                        final roundItem = round[roundIndex];
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 0.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(),
+                                      child: Text(
+                                        roundItem.matchPlannedDate == '0'
+                                            ? 'Дата матча не запланирована'
+                                            : 'Матч состоится ${valueOrDefault<String>(
+                                                roundItem.matchPlannedDate,
+                                                '0',
+                                              )}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(),
-                                    child: Text(
-                                      'Пара ${roundItem.matchTournamentPair.toString()}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 0.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(),
+                                      child: Text(
+                                        'Пара ${roundItem.matchTournamentPair.toString()}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 5.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 15.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              roundItem.matchRival1.teamLogo,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 5.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 15.0, 0.0),
+                                          child: Container(
+                                            width: 45.0,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                roundItem.matchRival1.teamLogo,
+                                                width: 45.0,
+                                                height: 45.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${roundItem.matchRival1.teamName}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                '${roundItem.matchRival1.teamTag}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                5.0, 0.0),
+                                                    child: Container(
+                                                      width: 20.0,
+                                                      height: 12.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.network(
+                                                          roundItem.matchRival1
+                                                              .teamFlag,
+                                                          width: 20.0,
+                                                          height: 12.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '${roundItem.matchRival1.teamCountry}',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              '${roundItem.matchRival1.teamName}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Text(
-                                              '${roundItem.matchRival1.teamTag}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
+                                                  padding: EdgeInsets.all(5.0),
                                                   child: Container(
-                                                    width: 20.0,
-                                                    height: 12.0,
+                                                    width: 50.0,
+                                                    height: 50.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                    ),
-                                                    child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        roundItem.matchRival1
-                                                            .teamFlag,
-                                                        width: 20.0,
-                                                        height: 12.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                              3.0),
+                                                    ),
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      '${roundItem.matchRival1Wins.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium,
                                                     ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  '${roundItem.matchRival1.teamCountry}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
                                                 ),
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(5.0),
-                                                child: Container(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
-                                                  ),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    '${roundItem.matchRival1Wins.toString()}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineMedium,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 10.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 10.0, 10.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 15.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              roundItem.matchRival2.teamLogo,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 10.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 10.0, 10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 15.0, 0.0),
+                                          child: Container(
+                                            width: 45.0,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                roundItem.matchRival2.teamLogo,
+                                                width: 45.0,
+                                                height: 45.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${roundItem.matchRival2.teamName}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                '${roundItem.matchRival2.teamTag}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                5.0, 0.0),
+                                                    child: Container(
+                                                      width: 20.0,
+                                                      height: 12.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.network(
+                                                          roundItem.matchRival2
+                                                              .teamFlag,
+                                                          width: 20.0,
+                                                          height: 12.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '${roundItem.matchRival2.teamCountry}',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              '${roundItem.matchRival2.teamName}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Text(
-                                              '${roundItem.matchRival2.teamTag}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
+                                                  padding: EdgeInsets.all(5.0),
                                                   child: Container(
-                                                    width: 20.0,
-                                                    height: 12.0,
+                                                    width: 50.0,
+                                                    height: 50.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                    ),
-                                                    child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        roundItem.matchRival2
-                                                            .teamFlag,
-                                                        width: 20.0,
-                                                        height: 12.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                              3.0),
+                                                    ),
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      '${roundItem.matchRival2Wins.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium,
                                                     ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  '${roundItem.matchRival2.teamCountry}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
                                                 ),
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(5.0),
-                                                child: Container(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
-                                                  ),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    '${roundItem.matchRival2Wins.toString()}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineMedium,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),
