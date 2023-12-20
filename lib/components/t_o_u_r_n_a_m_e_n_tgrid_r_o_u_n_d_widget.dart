@@ -14,14 +14,17 @@ class TOURNAMENTgridROUNDWidget extends StatefulWidget {
     int? round,
     int? iteamspacing,
     int? paddingtop,
+    int? itemheight,
   })  : this.round = round ?? 0,
         this.iteamspacing = iteamspacing ?? 0,
         this.paddingtop = paddingtop ?? 0,
+        this.itemheight = itemheight ?? 0,
         super(key: key);
 
   final int round;
   final int iteamspacing;
   final int paddingtop;
+  final int itemheight;
 
   @override
   _TOURNAMENTgridROUNDWidgetState createState() =>
@@ -98,7 +101,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                       itemBuilder: (context, roundIndex) {
                         final roundItem = round[roundIndex];
                         return Container(
-                          height: 210.0,
+                          height: widget.itemheight.toDouble(),
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
