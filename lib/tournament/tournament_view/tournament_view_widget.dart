@@ -330,7 +330,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
-                                          ],
+                                          ].divide(SizedBox(height: 5.0)),
                                         ),
                                       ),
                                       Padding(
