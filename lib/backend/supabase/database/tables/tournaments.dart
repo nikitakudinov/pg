@@ -52,4 +52,9 @@ class TournamentsRow extends SupabaseDataRow {
   int? get tournamentTeamsCount => getField<int>('tournament_teams_count');
   set tournamentTeamsCount(int? value) =>
       setField<int>('tournament_teams_count', value);
+
+  String? get tournamentHeaderImage =>
+      getField<String>('tournament_header_image');
+  set tournamentHeaderImage(String? value) =>
+      setField<String>('tournament_header_image', value);
 }

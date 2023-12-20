@@ -17,6 +17,7 @@ class TournamentStruct extends BaseStruct {
     String? tournamentStatus,
     PlayerStruct? tournamentCreator,
     List<TeamStruct>? tournamentMembers,
+    String? tournamentHeaderImage,
   })  : _tournamentId = tournamentId,
         _tournamentCreatedAt = tournamentCreatedAt,
         _tournamentName = tournamentName,
@@ -26,7 +27,8 @@ class TournamentStruct extends BaseStruct {
         _tournamentCountry = tournamentCountry,
         _tournamentStatus = tournamentStatus,
         _tournamentCreator = tournamentCreator,
-        _tournamentMembers = tournamentMembers;
+        _tournamentMembers = tournamentMembers,
+        _tournamentHeaderImage = tournamentHeaderImage;
 
   // "tournament_id" field.
   int? _tournamentId;
@@ -94,6 +96,12 @@ class TournamentStruct extends BaseStruct {
       updateFn(_tournamentMembers ??= []);
   bool hasTournamentMembers() => _tournamentMembers != null;
 
+  // "tournament_header_image" field.
+  String? _tournamentHeaderImage;
+  String get tournamentHeaderImage => _tournamentHeaderImage ?? '';
+  set tournamentHeaderImage(String? val) => _tournamentHeaderImage = val;
+  bool hasTournamentHeaderImage() => _tournamentHeaderImage != null;
+
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         tournamentId: castToType<int>(data['tournament_id']),
@@ -110,6 +118,7 @@ class TournamentStruct extends BaseStruct {
           data['tournament_members'],
           TeamStruct.fromMap,
         ),
+        tournamentHeaderImage: data['tournament_header_image'] as String?,
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) =>
@@ -127,6 +136,7 @@ class TournamentStruct extends BaseStruct {
         'tournament_creator': _tournamentCreator?.toMap(),
         'tournament_members':
             _tournamentMembers?.map((e) => e.toMap()).toList(),
+        'tournament_header_image': _tournamentHeaderImage,
       }.withoutNulls;
 
   @override
@@ -171,6 +181,10 @@ class TournamentStruct extends BaseStruct {
           _tournamentMembers,
           ParamType.DataStruct,
           true,
+        ),
+        'tournament_header_image': serializeParam(
+          _tournamentHeaderImage,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -228,6 +242,11 @@ class TournamentStruct extends BaseStruct {
           true,
           structBuilder: TeamStruct.fromSerializableMap,
         ),
+        tournamentHeaderImage: deserializeParam(
+          data['tournament_header_image'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -246,7 +265,8 @@ class TournamentStruct extends BaseStruct {
         tournamentCountry == other.tournamentCountry &&
         tournamentStatus == other.tournamentStatus &&
         tournamentCreator == other.tournamentCreator &&
-        listEquality.equals(tournamentMembers, other.tournamentMembers);
+        listEquality.equals(tournamentMembers, other.tournamentMembers) &&
+        tournamentHeaderImage == other.tournamentHeaderImage;
   }
 
   @override
@@ -260,7 +280,8 @@ class TournamentStruct extends BaseStruct {
         tournamentCountry,
         tournamentStatus,
         tournamentCreator,
-        tournamentMembers
+        tournamentMembers,
+        tournamentHeaderImage
       ]);
 }
 
@@ -274,6 +295,7 @@ TournamentStruct createTournamentStruct({
   String? tournamentCountry,
   String? tournamentStatus,
   PlayerStruct? tournamentCreator,
+  String? tournamentHeaderImage,
 }) =>
     TournamentStruct(
       tournamentId: tournamentId,
@@ -285,4 +307,5 @@ TournamentStruct createTournamentStruct({
       tournamentCountry: tournamentCountry,
       tournamentStatus: tournamentStatus,
       tournamentCreator: tournamentCreator ?? PlayerStruct(),
+      tournamentHeaderImage: tournamentHeaderImage,
     );

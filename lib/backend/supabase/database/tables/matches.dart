@@ -47,4 +47,10 @@ class MatchesRow extends SupabaseDataRow {
 
   String? get matchRefery => getField<String>('match_refery');
   set matchRefery(String? value) => setField<String>('match_refery', value);
+
+  int? get matchRival1Wins => getField<int>('match_rival1_wins');
+  set matchRival1Wins(int? value) => setField<int>('match_rival1_wins', value);
+
+  int? get matchRival2Wins => getField<int>('match_rival2_wins');
+  set matchRival2Wins(int? value) => setField<int>('match_rival2_wins', value);
 }
