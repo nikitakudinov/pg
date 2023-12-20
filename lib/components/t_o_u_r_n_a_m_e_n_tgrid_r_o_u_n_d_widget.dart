@@ -98,6 +98,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                       itemBuilder: (context, roundIndex) {
                         final roundItem = round[roundIndex];
                         return Container(
+                          height: 210.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
