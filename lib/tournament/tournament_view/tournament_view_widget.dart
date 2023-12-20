@@ -265,7 +265,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                               unselectedLabelColor:
                                   FlutterFlowTheme.of(context).secondaryText,
                               labelStyle:
-                                  FlutterFlowTheme.of(context).titleMedium,
+                                  FlutterFlowTheme.of(context).bodyLarge,
                               unselectedLabelStyle: TextStyle(),
                               indicatorColor:
                                   FlutterFlowTheme.of(context).primary,
@@ -296,7 +296,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.end,
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -305,7 +305,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                 'Тип игры',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyMedium,
                                               ),
                                             ),
                                             Padding(
@@ -315,36 +315,40 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                 'Раундов в матче',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyMedium,
                                               ),
                                             ),
                                             Text(
                                               'Количество команд',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
+                                                      .bodyMedium,
                                             ),
                                           ],
                                         ),
                                       ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: 1.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 0.0, 5.0, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 1.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
+                                              child: Text(
+                                                '',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
                                             ),
-                                            child: Text(
-                                              '',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                       Expanded(
                                         flex: 2,
@@ -357,47 +361,31 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 5.0),
                                               child: Text(
-                                                FFAppState()
-                                                    .tournaments
-                                                    .where((e) =>
-                                                        e.tournamentId ==
-                                                        widget.tournamentID)
-                                                    .toList()[0]
-                                                    .tournamentGametype,
+                                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentGametype}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyMedium,
                                               ),
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 5.0),
                                               child: Text(
-                                                FFAppState()
-                                                    .tournaments
-                                                    .where((e) =>
-                                                        e.tournamentId ==
-                                                        widget.tournamentID)
-                                                    .toList()[0]
-                                                    .tournamentRoundsInMatch
-                                                    .toString(),
+                                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentRoundsInMatch.toString()}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyMedium,
                                               ),
                                             ),
-                                            Text(
-                                              FFAppState()
-                                                  .tournaments
-                                                  .where((e) =>
-                                                      e.tournamentId ==
-                                                      widget.tournamentID)
-                                                  .toList()[0]
-                                                  .tournamentTeamsCount
-                                                  .toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                              child: Text(
+                                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTeamsCount.toString()}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
                                             ),
                                           ],
                                         ),
