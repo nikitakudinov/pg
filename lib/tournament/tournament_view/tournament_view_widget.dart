@@ -383,13 +383,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                           ],
                                         ),
                                       ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [],
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
