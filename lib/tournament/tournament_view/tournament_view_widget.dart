@@ -273,9 +273,15 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                               tabs: [
                                 Tab(
                                   text: 'Основные параметры',
+                                  icon: Icon(
+                                    Icons.info,
+                                  ),
                                 ),
                                 Tab(
                                   text: 'Правила и ограничения',
+                                  icon: Icon(
+                                    Icons.back_hand_outlined,
+                                  ),
                                 ),
                               ],
                               controller: _model.tabBarController,
@@ -335,9 +341,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                           children: [
                                             Container(
                                               width: 2.0,
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  1.0,
+                                              height: 75.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -392,15 +396,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                     ],
                                   ),
                                 ),
-                                Text(
-                                  'Tab View 2',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Cabin Condensed',
-                                        fontSize: 32.0,
-                                      ),
-                                ),
+                                Container(),
                               ],
                             ),
                           ),
