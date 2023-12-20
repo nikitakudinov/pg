@@ -157,25 +157,6 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 15.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              roundItem.matchRival1.teamLogo,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
                                       Expanded(
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -188,49 +169,6 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
-                                            Text(
-                                              '${roundItem.matchRival1.teamTag}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: Container(
-                                                    width: 20.0,
-                                                    height: 12.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        roundItem.matchRival1
-                                                            .teamFlag,
-                                                        width: 20.0,
-                                                        height: 12.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '${roundItem.matchRival1.teamCountry}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
                                           ],
                                         ),
                                       ),
@@ -242,29 +180,12 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(5.0),
-                                                child: Container(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
-                                                  ),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    '${roundItem.matchRival1Wins.toString()}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineMedium,
-                                                  ),
-                                                ),
+                                              Text(
+                                                roundItem.matchRival1Wins
+                                                    .toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -290,25 +211,6 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 15.0, 0.0),
-                                        child: Container(
-                                          width: 45.0,
-                                          height: 45.0,
-                                          decoration: BoxDecoration(),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              roundItem.matchRival2.teamLogo,
-                                              width: 45.0,
-                                              height: 45.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
                                       Expanded(
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -321,49 +223,6 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
-                                            Text(
-                                              '${roundItem.matchRival2.teamTag}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: Container(
-                                                    width: 20.0,
-                                                    height: 12.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        roundItem.matchRival2
-                                                            .teamFlag,
-                                                        width: 20.0,
-                                                        height: 12.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '${roundItem.matchRival2.teamCountry}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
                                           ],
                                         ),
                                       ),
@@ -375,29 +234,12 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(5.0),
-                                                child: Container(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
-                                                  ),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    '${roundItem.matchRival2Wins.toString()}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineMedium,
-                                                  ),
-                                                ),
+                                              Text(
+                                                roundItem.matchRival2Wins
+                                                    .toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
