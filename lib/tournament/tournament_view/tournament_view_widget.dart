@@ -351,57 +351,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            children: [
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    wrapWithModel(
-                                      model: _model.tOURNAMENTgridROUNDModel1,
-                                      updateCallback: () => setState(() {}),
-                                      child: TOURNAMENTgridROUNDWidget(
-                                        round: 1,
-                                        iteamspacing: 5,
-                                        paddingtop: 0,
-                                        itemheight: 220,
-                                      ),
-                                    ),
-                                    wrapWithModel(
-                                      model: _model.tOURNAMENTgridROUNDModel2,
-                                      updateCallback: () => setState(() {}),
-                                      child: TOURNAMENTgridROUNDWidget(
-                                        round: 2,
-                                        iteamspacing: 230,
-                                        paddingtop: 110,
-                                        itemheight: 220,
-                                      ),
-                                    ),
-                                    wrapWithModel(
-                                      model: _model.tOURNAMENTgridROUNDModel3,
-                                      updateCallback: () => setState(() {}),
-                                      child: TOURNAMENTgridROUNDWidget(
-                                        round: 3,
-                                        iteamspacing: 680,
-                                        paddingtop: 335,
-                                        itemheight: 220,
-                                      ),
-                                    ),
-                                    wrapWithModel(
-                                      model: _model.tOURNAMENTgridROUNDModel4,
-                                      updateCallback: () => setState(() {}),
-                                      child: TOURNAMENTgridROUNDWidget(
-                                        round: 4,
-                                        iteamspacing: 1850,
-                                        paddingtop: 780,
-                                        itemheight: 220,
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(width: 25.0)),
-                                ),
-                              ),
-                            ],
+                            children: [],
                           ),
                         ),
                         theme: ExpandableThemeData(
@@ -438,7 +388,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                               scrollDirection: Axis.horizontal,
                               children: [
                                 wrapWithModel(
-                                  model: _model.tOURNAMENTgridROUNDModel5,
+                                  model: _model.tOURNAMENTgridROUNDModel1,
                                   updateCallback: () => setState(() {}),
                                   child: TOURNAMENTgridROUNDWidget(
                                     round: 1,
@@ -448,10 +398,30 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                   ),
                                 ),
                                 wrapWithModel(
-                                  model: _model.tOURNAMENTgridROUNDModel6,
+                                  model: _model.tOURNAMENTgridROUNDModel2,
                                   updateCallback: () => setState(() {}),
                                   child: TOURNAMENTgridROUNDWidget(
                                     round: 2,
+                                    iteamspacing: 5,
+                                    paddingtop: 0,
+                                    itemheight: 220,
+                                  ),
+                                ),
+                                wrapWithModel(
+                                  model: _model.tOURNAMENTgridROUNDModel3,
+                                  updateCallback: () => setState(() {}),
+                                  child: TOURNAMENTgridROUNDWidget(
+                                    round: 3,
+                                    iteamspacing: 5,
+                                    paddingtop: 0,
+                                    itemheight: 220,
+                                  ),
+                                ),
+                                wrapWithModel(
+                                  model: _model.tOURNAMENTgridROUNDModel4,
+                                  updateCallback: () => setState(() {}),
+                                  child: TOURNAMENTgridROUNDWidget(
+                                    round: 4,
                                     iteamspacing: 5,
                                     paddingtop: 0,
                                     itemheight: 220,
@@ -469,7 +439,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                               child: smooth_page_indicator.SmoothPageIndicator(
                                 controller: _model.pageViewController ??=
                                     PageController(initialPage: 0),
-                                count: 3,
+                                count: 5,
                                 axisDirection: Axis.horizontal,
                                 onDotClicked: (i) async {
                                   await _model.pageViewController!

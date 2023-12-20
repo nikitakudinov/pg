@@ -30,14 +30,6 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableController2;
 
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel1;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel2;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel3;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel4;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 
@@ -47,9 +39,13 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
       ? pageViewController!.page!.round()
       : 0;
   // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel5;
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel1;
   // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel6;
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel2;
+  // Model for TOURNAMENTgridROUND component.
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel3;
+  // Model for TOURNAMENTgridROUND component.
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel4;
 
   /// Initialization and disposal methods.
 
@@ -62,10 +58,6 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
         createModel(context, () => TOURNAMENTgridROUNDModel());
     tOURNAMENTgridROUNDModel4 =
         createModel(context, () => TOURNAMENTgridROUNDModel());
-    tOURNAMENTgridROUNDModel5 =
-        createModel(context, () => TOURNAMENTgridROUNDModel());
-    tOURNAMENTgridROUNDModel6 =
-        createModel(context, () => TOURNAMENTgridROUNDModel());
   }
 
   void dispose() {
@@ -76,8 +68,6 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
     tOURNAMENTgridROUNDModel2.dispose();
     tOURNAMENTgridROUNDModel3.dispose();
     tOURNAMENTgridROUNDModel4.dispose();
-    tOURNAMENTgridROUNDModel5.dispose();
-    tOURNAMENTgridROUNDModel6.dispose();
   }
 
   /// Action blocks are added here.
