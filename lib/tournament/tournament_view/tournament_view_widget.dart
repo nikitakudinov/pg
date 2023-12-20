@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -341,14 +342,14 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           ),
                         ),
                         collapsed: Container(),
-                        expanded: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).secondary,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [],
+                        expanded: wrapWithModel(
+                          model: _model.tOURNAMENTgridROUNDModel,
+                          updateCallback: () => setState(() {}),
+                          child: TOURNAMENTgridROUNDWidget(
+                            round: 1,
+                            iteamspacing: 5,
+                            paddingtop: 0,
+                            itemheight: 220,
                           ),
                         ),
                         theme: ExpandableThemeData(

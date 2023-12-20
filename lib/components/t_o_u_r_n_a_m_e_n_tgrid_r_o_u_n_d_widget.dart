@@ -59,7 +59,6 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
 
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
-      height: 200.0,
       decoration: BoxDecoration(),
       child: SingleChildScrollView(
         child: Column(
@@ -100,6 +99,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                     itemBuilder: (context, roundIndex) {
                       final roundItem = round[roundIndex];
                       return Container(
+                        width: 300.0,
                         height: widget.itemheight.toDouble(),
                         decoration: BoxDecoration(
                           color:
