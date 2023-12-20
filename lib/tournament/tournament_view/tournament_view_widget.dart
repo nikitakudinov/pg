@@ -247,7 +247,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                   child: Padding(
@@ -326,6 +326,25 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                             ),
                                           ],
                                         ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Text(
+                                              '',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       Expanded(
                                         flex: 2,
