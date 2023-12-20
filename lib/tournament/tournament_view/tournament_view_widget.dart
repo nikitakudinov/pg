@@ -190,7 +190,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                 0.8,
                                             decoration: BoxDecoration(),
                                             child: Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentName}',
+                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTag}',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineLarge,
