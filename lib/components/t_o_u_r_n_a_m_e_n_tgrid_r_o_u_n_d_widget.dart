@@ -15,6 +15,8 @@ class TOURNAMENTgridROUNDWidget extends StatefulWidget {
     int? iteamspacing,
     int? paddingtop,
     int? itemheight,
+    required this.pairFrom,
+    required this.pairTo,
   })  : this.round = round ?? 0,
         this.iteamspacing = iteamspacing ?? 0,
         this.paddingtop = paddingtop ?? 0,
@@ -25,6 +27,8 @@ class TOURNAMENTgridROUNDWidget extends StatefulWidget {
   final int iteamspacing;
   final int paddingtop;
   final int itemheight;
+  final int? pairFrom;
+  final int? pairTo;
 
   @override
   _TOURNAMENTgridROUNDWidgetState createState() =>
@@ -84,7 +88,10 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                 builder: (context) {
                   final round = FFAppState()
                       .tournamentMatches
-                      .where((e) => e.matchTournamentRound == widget.round)
+                      .where((e) =>
+                          (e.matchTournamentRound == widget.round) &&
+                          ((e.matchTournamentPair >= widget.pairFrom!) &&
+                              (e.matchTournamentPair <= widget.pairTo!)))
                       .toList()
                       .sortedList((e) => e.matchTournamentPair)
                       .toList();
