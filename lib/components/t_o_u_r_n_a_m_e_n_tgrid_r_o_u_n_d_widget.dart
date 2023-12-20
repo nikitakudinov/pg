@@ -102,6 +102,8 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                         width: 300.0,
                         height: widget.itemheight.toDouble(),
                         decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Column(
