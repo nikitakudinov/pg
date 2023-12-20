@@ -265,7 +265,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                               unselectedLabelColor:
                                   FlutterFlowTheme.of(context).secondaryText,
                               labelStyle:
-                                  FlutterFlowTheme.of(context).bodyLarge,
+                                  FlutterFlowTheme.of(context).bodySmall,
                               unselectedLabelStyle: TextStyle(),
                               indicatorColor:
                                   FlutterFlowTheme.of(context).primary,
