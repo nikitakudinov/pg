@@ -357,10 +357,19 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     wrapWithModel(
-                                      model: _model.tOURNAMENTgridROUNDModel,
+                                      model: _model.tOURNAMENTgridROUNDModel1,
                                       updateCallback: () => setState(() {}),
                                       child: TOURNAMENTgridROUNDWidget(
                                         round: 1,
+                                        iteamspacing: 5,
+                                        paddingtop: 0,
+                                      ),
+                                    ),
+                                    wrapWithModel(
+                                      model: _model.tOURNAMENTgridROUNDModel2,
+                                      updateCallback: () => setState(() {}),
+                                      child: TOURNAMENTgridROUNDWidget(
+                                        round: 2,
                                         iteamspacing: 5,
                                         paddingtop: 0,
                                       ),
