@@ -329,17 +329,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 5.0, 0.0),
+                                            10.0, 0.0, 10.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Container(
-                                              width: 1.0,
-                                              height: 65.0,
+                                              width: 2.0,
+                                              height: 80.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondary,
+                                                        .secondaryBackground,
                                               ),
                                               child: Text(
                                                 ' ',
