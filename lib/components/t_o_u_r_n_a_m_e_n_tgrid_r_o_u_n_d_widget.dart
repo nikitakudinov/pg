@@ -111,10 +111,11 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                           children: [
                             Row(
                               mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 0.0, 0.0),
+                                      10.0, 5.0, 0.0, 0.0),
                                   child: Container(
                                     decoration: BoxDecoration(),
                                     child: Text(
@@ -125,7 +126,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                               '0',
                                             )}',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodySmall,
                                     ),
                                   ),
                                 ),
@@ -137,7 +138,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                     child: Text(
                                       'Пара ${roundItem.matchTournamentPair.toString()}',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodySmall,
                                     ),
                                   ),
                                 ),
@@ -145,7 +146,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 0.0),
+                                  10.0, 5.0, 10.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
