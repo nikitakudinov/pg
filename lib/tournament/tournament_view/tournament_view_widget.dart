@@ -380,15 +380,11 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                         .bodyMedium,
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                              child: Text(
-                                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTeamsCount.toString()}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
+                                            Text(
+                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTeamsCount.toString()}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
                                             ),
                                           ],
                                         ),
