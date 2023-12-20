@@ -120,24 +120,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                     children: [
                       Stack(
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 150.0,
@@ -161,6 +143,62 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                 ),
                               ),
                             ),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          child: Image.network(
+                                            FFAppState()
+                                                .tournaments
+                                                .where((e) =>
+                                                    e.tournamentId ==
+                                                    widget.tournamentID)
+                                                .toList()[0]
+                                                .tournamentLogo,
+                                            width: 60.0,
+                                            height: 60.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentName}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineLarge,
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        'Hello World',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
