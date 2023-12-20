@@ -1,12 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
 import 'tournament_view_widget.dart' show TournamentViewWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -30,44 +27,14 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableController2;
 
-  // State field(s) for PageView widget.
-  PageController? pageViewController;
-
-  int get pageViewCurrentIndex => pageViewController != null &&
-          pageViewController!.hasClients &&
-          pageViewController!.page != null
-      ? pageViewController!.page!.round()
-      : 0;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel1;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel2;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel3;
-  // Model for TOURNAMENTgridROUND component.
-  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel4;
-
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    tOURNAMENTgridROUNDModel1 =
-        createModel(context, () => TOURNAMENTgridROUNDModel());
-    tOURNAMENTgridROUNDModel2 =
-        createModel(context, () => TOURNAMENTgridROUNDModel());
-    tOURNAMENTgridROUNDModel3 =
-        createModel(context, () => TOURNAMENTgridROUNDModel());
-    tOURNAMENTgridROUNDModel4 =
-        createModel(context, () => TOURNAMENTgridROUNDModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
     expandableController1.dispose();
     expandableController2.dispose();
-    tOURNAMENTgridROUNDModel1.dispose();
-    tOURNAMENTgridROUNDModel2.dispose();
-    tOURNAMENTgridROUNDModel3.dispose();
-    tOURNAMENTgridROUNDModel4.dispose();
   }
 
   /// Action blocks are added here.
