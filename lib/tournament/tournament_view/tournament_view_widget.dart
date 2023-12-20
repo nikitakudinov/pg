@@ -380,7 +380,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                       model: _model.tOURNAMENTgridROUNDModel3,
                                       updateCallback: () => setState(() {}),
                                       child: TOURNAMENTgridROUNDWidget(
-                                        round: 2,
+                                        round: 3,
                                         iteamspacing: 230,
                                         paddingtop: 330,
                                         itemheight: 220,
