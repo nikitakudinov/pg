@@ -155,22 +155,38 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                   Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(5.0),
-                                        child: ClipRRect(
+                                      Material(
+                                        color: Colors.transparent,
+                                        elevation: 2.0,
+                                        shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(5.0),
-                                          child: Image.network(
-                                            FFAppState()
-                                                .tournaments
-                                                .where((e) =>
-                                                    e.tournamentId ==
-                                                    widget.tournamentID)
-                                                .toList()[0]
-                                                .tournamentLogo,
-                                            width: 60.0,
-                                            height: 60.0,
-                                            fit: BoxFit.cover,
+                                        ),
+                                        child: Container(
+                                          width: 60.0,
+                                          height: 60.0,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(5.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                FFAppState()
+                                                    .tournaments
+                                                    .where((e) =>
+                                                        e.tournamentId ==
+                                                        widget.tournamentID)
+                                                    .toList()[0]
+                                                    .tournamentLogo,
+                                                width: 60.0,
+                                                height: 60.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
