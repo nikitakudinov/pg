@@ -354,7 +354,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                   round: 1,
                                   iteamspacing: 5,
                                   paddingtop: 0,
-                                  itemheight: 110,
+                                  itemheight: 150,
                                 ),
                               ),
                               wrapWithModel(

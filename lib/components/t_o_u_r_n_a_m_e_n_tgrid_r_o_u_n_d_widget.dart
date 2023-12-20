@@ -145,12 +145,17 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 5.0),
+                                  10.0, 10.0, 10.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                  ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(10.0),
@@ -203,7 +208,12 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5.0),
+                                    bottomRight: Radius.circular(5.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(0.0),
+                                  ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
