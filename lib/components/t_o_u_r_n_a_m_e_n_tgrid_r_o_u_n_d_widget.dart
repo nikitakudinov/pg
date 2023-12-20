@@ -101,7 +101,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                       return Container(
                         height: widget.itemheight.toDouble(),
                         decoration: BoxDecoration(
-                          color: (roundItem.matchTournamentPair == 1) &&
+                          color: (roundItem.matchTournamentPair == 1) ||
                                   (roundItem.matchTournamentPair == 2)
                               ? Color(0xFF750000)
                               : FlutterFlowTheme.of(context).accent2,
