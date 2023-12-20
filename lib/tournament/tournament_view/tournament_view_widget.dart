@@ -372,7 +372,16 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Container(
-                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    height: 100 +
+                        FFAppState()
+                                .matches
+                                .where((e) =>
+                                    (e.matchForTournament.tournamentId ==
+                                        widget.tournamentID) &&
+                                    (e.matchTournamentRound == 1))
+                                .toList()
+                                .length *
+                            220,
                     decoration: BoxDecoration(),
                     child: Container(
                       width: double.infinity,
