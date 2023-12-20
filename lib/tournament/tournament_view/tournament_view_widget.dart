@@ -425,7 +425,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                     height: 200.0,
                     child: Container(
                       width: double.infinity,
-                      height: 500.0,
+                      height: double.infinity,
                       child: Stack(
                         children: [
                           Padding(
