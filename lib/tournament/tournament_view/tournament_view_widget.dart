@@ -392,7 +392,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                       child: TOURNAMENTgridROUNDWidget(
                                         round: 4,
                                         iteamspacing: 680,
-                                        paddingtop: 680,
+                                        paddingtop: 900,
                                         itemheight: 220,
                                       ),
                                     ),
