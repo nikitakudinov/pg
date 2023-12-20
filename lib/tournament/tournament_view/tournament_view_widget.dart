@@ -764,7 +764,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 95.0, 0.0, 0.0),
+                                                        0.0, 100.0, 0.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
                                                     final round2 = FFAppState()
@@ -780,9 +780,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount: round2.length,
-                                                      separatorBuilder: (_,
-                                                              __) =>
-                                                          SizedBox(height: 5.0),
+                                                      separatorBuilder:
+                                                          (_, __) => SizedBox(
+                                                              height: 220.0),
                                                       itemBuilder: (context,
                                                           round2Index) {
                                                         final round2Item =
@@ -1147,7 +1147,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 190.0, 0.0, 0.0),
+                                                        0.0, 320.0, 0.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
                                                     final round3 = FFAppState()
@@ -1163,9 +1163,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount: round3.length,
-                                                      separatorBuilder: (_,
-                                                              __) =>
-                                                          SizedBox(height: 5.0),
+                                                      separatorBuilder:
+                                                          (_, __) => SizedBox(
+                                                              height: 220.0),
                                                       itemBuilder: (context,
                                                           round3Index) {
                                                         final round3Item =
@@ -1530,7 +1530,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 285.0, 0.0, 0.0),
+                                                        0.0, 540.0, 0.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
                                                     final round4 = FFAppState()
@@ -1546,9 +1546,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount: round4.length,
-                                                      separatorBuilder: (_,
-                                                              __) =>
-                                                          SizedBox(height: 5.0),
+                                                      separatorBuilder:
+                                                          (_, __) => SizedBox(
+                                                              height: 220.0),
                                                       itemBuilder: (context,
                                                           round4Index) {
                                                         final round4Item =
@@ -1913,7 +1913,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 380.0, 0.0, 0.0),
+                                                        0.0, 755.0, 0.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
                                                     final round5 = FFAppState()
@@ -2283,7 +2283,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           headerAlignment:
                               ExpandablePanelHeaderAlignment.center,
                           hasIcon: true,
-                          expandIcon: Icons.ten_k_rounded,
                           iconColor: FlutterFlowTheme.of(context).primaryText,
                         ),
                       ),
