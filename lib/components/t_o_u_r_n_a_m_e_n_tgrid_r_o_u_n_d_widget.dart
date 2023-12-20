@@ -59,9 +59,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
 
     return Container(
       width: 250.0,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-      ),
+      decoration: BoxDecoration(),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
