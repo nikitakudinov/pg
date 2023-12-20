@@ -373,14 +373,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                   ),
                   child: Container(
                     height: 100 +
-                        FFAppState()
-                                .matches
-                                .where((e) =>
-                                    (e.matchForTournament.tournamentId ==
-                                        widget.tournamentID) &&
-                                    (e.matchTournamentRound == 1))
-                                .toList()
-                                .length *
+                        valueOrDefault<int>(
+                              FFAppState()
+                                  .matches
+                                  .where((e) =>
+                                      (e.matchForTournament.tournamentId ==
+                                          widget.tournamentID) &&
+                                      (e.matchTournamentRound == 1))
+                                  .toList()
+                                  .length,
+                              0,
+                            ) *
                             220,
                     decoration: BoxDecoration(),
                     child: Container(
