@@ -59,7 +59,16 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
 
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
-      height: (225 * FFAppState().tournamentMatches.length).toDouble(),
+      height: (225 *
+              valueOrDefault<int>(
+                FFAppState()
+                    .tournamentMatches
+                    .where((e) => e.matchTournamentRound == 1)
+                    .toList()
+                    .length,
+                0,
+              ))
+          .toDouble(),
       decoration: BoxDecoration(),
       child: SingleChildScrollView(
         child: Column(
