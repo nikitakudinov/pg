@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'tournament_view_widget.dart' show TournamentViewWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +38,18 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel3;
   // Model for TOURNAMENTgridROUND component.
   late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel4;
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
+  // Model for TOURNAMENTgridROUND component.
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel5;
+  // Model for TOURNAMENTgridROUND component.
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel6;
 
   /// Initialization and disposal methods.
 
@@ -48,6 +62,10 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
         createModel(context, () => TOURNAMENTgridROUNDModel());
     tOURNAMENTgridROUNDModel4 =
         createModel(context, () => TOURNAMENTgridROUNDModel());
+    tOURNAMENTgridROUNDModel5 =
+        createModel(context, () => TOURNAMENTgridROUNDModel());
+    tOURNAMENTgridROUNDModel6 =
+        createModel(context, () => TOURNAMENTgridROUNDModel());
   }
 
   void dispose() {
@@ -58,6 +76,8 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
     tOURNAMENTgridROUNDModel2.dispose();
     tOURNAMENTgridROUNDModel3.dispose();
     tOURNAMENTgridROUNDModel4.dispose();
+    tOURNAMENTgridROUNDModel5.dispose();
+    tOURNAMENTgridROUNDModel6.dispose();
   }
 
   /// Action blocks are added here.

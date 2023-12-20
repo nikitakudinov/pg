@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -391,7 +393,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                       updateCallback: () => setState(() {}),
                                       child: TOURNAMENTgridROUNDWidget(
                                         round: 4,
-                                        iteamspacing: 1360,
+                                        iteamspacing: 1850,
                                         paddingtop: 780,
                                         itemheight: 220,
                                       ),
@@ -411,6 +413,88 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           hasIcon: true,
                           iconColor: FlutterFlowTheme.of(context).primaryText,
                         ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Container(
+                    height: 200.0,
+                    child: Container(
+                      width: double.infinity,
+                      height: 500.0,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 40.0),
+                            child: PageView(
+                              controller: _model.pageViewController ??=
+                                  PageController(initialPage: 0),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                wrapWithModel(
+                                  model: _model.tOURNAMENTgridROUNDModel5,
+                                  updateCallback: () => setState(() {}),
+                                  child: TOURNAMENTgridROUNDWidget(
+                                    round: 1,
+                                    iteamspacing: 5,
+                                    paddingtop: 0,
+                                    itemheight: 220,
+                                  ),
+                                ),
+                                wrapWithModel(
+                                  model: _model.tOURNAMENTgridROUNDModel6,
+                                  updateCallback: () => setState(() {}),
+                                  child: TOURNAMENTgridROUNDWidget(
+                                    round: 2,
+                                    iteamspacing: 230,
+                                    paddingtop: 110,
+                                    itemheight: 220,
+                                  ),
+                                ),
+                                Container(),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.0, 1.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 0.0, 16.0),
+                              child: smooth_page_indicator.SmoothPageIndicator(
+                                controller: _model.pageViewController ??=
+                                    PageController(initialPage: 0),
+                                count: 3,
+                                axisDirection: Axis.horizontal,
+                                onDotClicked: (i) async {
+                                  await _model.pageViewController!
+                                      .animateToPage(
+                                    i,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                effect:
+                                    smooth_page_indicator.ExpandingDotsEffect(
+                                  expansionFactor: 3.0,
+                                  spacing: 8.0,
+                                  radius: 16.0,
+                                  dotWidth: 16.0,
+                                  dotHeight: 8.0,
+                                  dotColor:
+                                      FlutterFlowTheme.of(context).accent1,
+                                  activeDotColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  paintStyle: PaintingStyle.fill,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
