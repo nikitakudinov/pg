@@ -204,9 +204,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.8,
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTag}',
