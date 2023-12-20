@@ -199,7 +199,13 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                         ],
                                       ),
                                       Text(
-                                        'Hello World',
+                                        FFAppState()
+                                            .tournaments
+                                            .where((e) =>
+                                                e.tournamentId ==
+                                                widget.tournamentID)
+                                            .toList()[0]
+                                            .tournamentName,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
