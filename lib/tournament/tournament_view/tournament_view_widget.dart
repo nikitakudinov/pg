@@ -380,7 +380,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                           children: [
                                             Container(
                                               width: 2.0,
-                                              height: 75.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -456,7 +455,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                       ),
                                             ),
                                             Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTeamsCount.toString()}',
+                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentStatus}',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
