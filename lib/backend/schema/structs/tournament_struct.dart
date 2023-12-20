@@ -18,6 +18,11 @@ class TournamentStruct extends BaseStruct {
     PlayerStruct? tournamentCreator,
     List<TeamStruct>? tournamentMembers,
     String? tournamentHeaderImage,
+    String? tournamentStartDate,
+    String? tournamentEndDate,
+    String? tournamentGametype,
+    int? tournamentRoundsInMatch,
+    int? tournamentTeamsCount,
   })  : _tournamentId = tournamentId,
         _tournamentCreatedAt = tournamentCreatedAt,
         _tournamentName = tournamentName,
@@ -28,7 +33,12 @@ class TournamentStruct extends BaseStruct {
         _tournamentStatus = tournamentStatus,
         _tournamentCreator = tournamentCreator,
         _tournamentMembers = tournamentMembers,
-        _tournamentHeaderImage = tournamentHeaderImage;
+        _tournamentHeaderImage = tournamentHeaderImage,
+        _tournamentStartDate = tournamentStartDate,
+        _tournamentEndDate = tournamentEndDate,
+        _tournamentGametype = tournamentGametype,
+        _tournamentRoundsInMatch = tournamentRoundsInMatch,
+        _tournamentTeamsCount = tournamentTeamsCount;
 
   // "tournament_id" field.
   int? _tournamentId;
@@ -102,6 +112,40 @@ class TournamentStruct extends BaseStruct {
   set tournamentHeaderImage(String? val) => _tournamentHeaderImage = val;
   bool hasTournamentHeaderImage() => _tournamentHeaderImage != null;
 
+  // "tournament_start_date" field.
+  String? _tournamentStartDate;
+  String get tournamentStartDate => _tournamentStartDate ?? '';
+  set tournamentStartDate(String? val) => _tournamentStartDate = val;
+  bool hasTournamentStartDate() => _tournamentStartDate != null;
+
+  // "tournament_end_date" field.
+  String? _tournamentEndDate;
+  String get tournamentEndDate => _tournamentEndDate ?? '';
+  set tournamentEndDate(String? val) => _tournamentEndDate = val;
+  bool hasTournamentEndDate() => _tournamentEndDate != null;
+
+  // "tournament_gametype" field.
+  String? _tournamentGametype;
+  String get tournamentGametype => _tournamentGametype ?? '';
+  set tournamentGametype(String? val) => _tournamentGametype = val;
+  bool hasTournamentGametype() => _tournamentGametype != null;
+
+  // "tournament_rounds_in_match" field.
+  int? _tournamentRoundsInMatch;
+  int get tournamentRoundsInMatch => _tournamentRoundsInMatch ?? 0;
+  set tournamentRoundsInMatch(int? val) => _tournamentRoundsInMatch = val;
+  void incrementTournamentRoundsInMatch(int amount) =>
+      _tournamentRoundsInMatch = tournamentRoundsInMatch + amount;
+  bool hasTournamentRoundsInMatch() => _tournamentRoundsInMatch != null;
+
+  // "tournament_teams_count" field.
+  int? _tournamentTeamsCount;
+  int get tournamentTeamsCount => _tournamentTeamsCount ?? 0;
+  set tournamentTeamsCount(int? val) => _tournamentTeamsCount = val;
+  void incrementTournamentTeamsCount(int amount) =>
+      _tournamentTeamsCount = tournamentTeamsCount + amount;
+  bool hasTournamentTeamsCount() => _tournamentTeamsCount != null;
+
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         tournamentId: castToType<int>(data['tournament_id']),
@@ -119,6 +163,12 @@ class TournamentStruct extends BaseStruct {
           TeamStruct.fromMap,
         ),
         tournamentHeaderImage: data['tournament_header_image'] as String?,
+        tournamentStartDate: data['tournament_start_date'] as String?,
+        tournamentEndDate: data['tournament_end_date'] as String?,
+        tournamentGametype: data['tournament_gametype'] as String?,
+        tournamentRoundsInMatch:
+            castToType<int>(data['tournament_rounds_in_match']),
+        tournamentTeamsCount: castToType<int>(data['tournament_teams_count']),
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) =>
@@ -137,6 +187,11 @@ class TournamentStruct extends BaseStruct {
         'tournament_members':
             _tournamentMembers?.map((e) => e.toMap()).toList(),
         'tournament_header_image': _tournamentHeaderImage,
+        'tournament_start_date': _tournamentStartDate,
+        'tournament_end_date': _tournamentEndDate,
+        'tournament_gametype': _tournamentGametype,
+        'tournament_rounds_in_match': _tournamentRoundsInMatch,
+        'tournament_teams_count': _tournamentTeamsCount,
       }.withoutNulls;
 
   @override
@@ -185,6 +240,26 @@ class TournamentStruct extends BaseStruct {
         'tournament_header_image': serializeParam(
           _tournamentHeaderImage,
           ParamType.String,
+        ),
+        'tournament_start_date': serializeParam(
+          _tournamentStartDate,
+          ParamType.String,
+        ),
+        'tournament_end_date': serializeParam(
+          _tournamentEndDate,
+          ParamType.String,
+        ),
+        'tournament_gametype': serializeParam(
+          _tournamentGametype,
+          ParamType.String,
+        ),
+        'tournament_rounds_in_match': serializeParam(
+          _tournamentRoundsInMatch,
+          ParamType.int,
+        ),
+        'tournament_teams_count': serializeParam(
+          _tournamentTeamsCount,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -247,6 +322,31 @@ class TournamentStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        tournamentStartDate: deserializeParam(
+          data['tournament_start_date'],
+          ParamType.String,
+          false,
+        ),
+        tournamentEndDate: deserializeParam(
+          data['tournament_end_date'],
+          ParamType.String,
+          false,
+        ),
+        tournamentGametype: deserializeParam(
+          data['tournament_gametype'],
+          ParamType.String,
+          false,
+        ),
+        tournamentRoundsInMatch: deserializeParam(
+          data['tournament_rounds_in_match'],
+          ParamType.int,
+          false,
+        ),
+        tournamentTeamsCount: deserializeParam(
+          data['tournament_teams_count'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -266,7 +366,12 @@ class TournamentStruct extends BaseStruct {
         tournamentStatus == other.tournamentStatus &&
         tournamentCreator == other.tournamentCreator &&
         listEquality.equals(tournamentMembers, other.tournamentMembers) &&
-        tournamentHeaderImage == other.tournamentHeaderImage;
+        tournamentHeaderImage == other.tournamentHeaderImage &&
+        tournamentStartDate == other.tournamentStartDate &&
+        tournamentEndDate == other.tournamentEndDate &&
+        tournamentGametype == other.tournamentGametype &&
+        tournamentRoundsInMatch == other.tournamentRoundsInMatch &&
+        tournamentTeamsCount == other.tournamentTeamsCount;
   }
 
   @override
@@ -281,7 +386,12 @@ class TournamentStruct extends BaseStruct {
         tournamentStatus,
         tournamentCreator,
         tournamentMembers,
-        tournamentHeaderImage
+        tournamentHeaderImage,
+        tournamentStartDate,
+        tournamentEndDate,
+        tournamentGametype,
+        tournamentRoundsInMatch,
+        tournamentTeamsCount
       ]);
 }
 
@@ -296,6 +406,11 @@ TournamentStruct createTournamentStruct({
   String? tournamentStatus,
   PlayerStruct? tournamentCreator,
   String? tournamentHeaderImage,
+  String? tournamentStartDate,
+  String? tournamentEndDate,
+  String? tournamentGametype,
+  int? tournamentRoundsInMatch,
+  int? tournamentTeamsCount,
 }) =>
     TournamentStruct(
       tournamentId: tournamentId,
@@ -308,4 +423,9 @@ TournamentStruct createTournamentStruct({
       tournamentStatus: tournamentStatus,
       tournamentCreator: tournamentCreator ?? PlayerStruct(),
       tournamentHeaderImage: tournamentHeaderImage,
+      tournamentStartDate: tournamentStartDate,
+      tournamentEndDate: tournamentEndDate,
+      tournamentGametype: tournamentGametype,
+      tournamentRoundsInMatch: tournamentRoundsInMatch,
+      tournamentTeamsCount: tournamentTeamsCount,
     );
