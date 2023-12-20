@@ -385,6 +385,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                       .where((e) =>
                                                           e.matchTournamentRound ==
                                                           1)
+                                                      .toList()
+                                                      .sortedList((e) =>
+                                                          e.matchTournamentPair)
                                                       .toList();
                                                   return ListView.separated(
                                                     padding: EdgeInsets.zero,
@@ -791,6 +794,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                         .where((e) =>
                                                             e.matchTournamentRound ==
                                                             2)
+                                                        .toList()
+                                                        .sortedList((e) => e
+                                                            .matchTournamentPair)
                                                         .toList();
                                                     return ListView.separated(
                                                       padding: EdgeInsets.zero,
@@ -1595,6 +1601,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                         .where((e) =>
                                                             e.matchTournamentRound ==
                                                             4)
+                                                        .toList()
+                                                        .sortedList((e) => e
+                                                            .matchTournamentPair)
                                                         .toList();
                                                     return ListView.separated(
                                                       padding: EdgeInsets.zero,
