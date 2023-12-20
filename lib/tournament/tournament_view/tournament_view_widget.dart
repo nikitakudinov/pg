@@ -117,6 +117,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Stack(
                         children: [
@@ -146,6 +147,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -182,10 +184,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentName}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineLarge,
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.8,
+                                            decoration: BoxDecoration(),
+                                            child: Text(
+                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentName}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLarge,
+                                            ),
                                           ),
                                         ],
                                       ),
