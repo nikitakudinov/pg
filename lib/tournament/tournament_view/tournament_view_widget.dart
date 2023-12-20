@@ -148,7 +148,12 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.network(
-                                'https://picsum.photos/seed/227/600',
+                                FFAppState()
+                                    .tournaments
+                                    .where((e) =>
+                                        e.tournamentId == widget.tournamentID)
+                                    .toList()[0]
+                                    .tournamentHeaderImage,
                                 width: double.infinity,
                                 height: double.infinity,
                                 fit: BoxFit.cover,
