@@ -387,7 +387,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                   itemheight: 220,
                                 ),
                               ),
-                            ],
+                            ].divide(SizedBox(width: 15.0)),
                           ),
                         ),
                         theme: ExpandableThemeData(
