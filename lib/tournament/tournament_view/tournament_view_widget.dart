@@ -145,91 +145,97 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                               ),
                             ),
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Material(
-                                        color: Colors.transparent,
-                                        elevation: 2.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: Container(
-                                          width: 60.0,
-                                          height: 60.0,
-                                          decoration: BoxDecoration(
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 50.0, 0.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(5.0),
-                                            child: ClipRRect(
+                                          child: Container(
+                                            width: 60.0,
+                                            height: 60.0,
+                                            decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                FFAppState()
-                                                    .tournaments
-                                                    .where((e) =>
-                                                        e.tournamentId ==
-                                                        widget.tournamentID)
-                                                    .toList()[0]
-                                                    .tournamentLogo,
-                                                width: 60.0,
-                                                height: 60.0,
-                                                fit: BoxFit.cover,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(5.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                                child: Image.network(
+                                                  FFAppState()
+                                                      .tournaments
+                                                      .where((e) =>
+                                                          e.tournamentId ==
+                                                          widget.tournamentID)
+                                                      .toList()[0]
+                                                      .tournamentLogo,
+                                                  width: 60.0,
+                                                  height: 60.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.8,
-                                            decoration: BoxDecoration(),
-                                            child: Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTag}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge,
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.8,
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTag}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLarge,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      Text(
-                                        FFAppState()
-                                            .tournaments
-                                            .where((e) =>
-                                                e.tournamentId ==
-                                                widget.tournamentID)
-                                            .toList()[0]
-                                            .tournamentName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                          ],
+                                        ),
+                                        Text(
+                                          FFAppState()
+                                              .tournaments
+                                              .where((e) =>
+                                                  e.tournamentId ==
+                                                  widget.tournamentID)
+                                              .toList()[0]
+                                              .tournamentName,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ]
+                                      .divide(SizedBox(width: 10.0))
+                                      .addToStart(SizedBox(width: 20.0)),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
