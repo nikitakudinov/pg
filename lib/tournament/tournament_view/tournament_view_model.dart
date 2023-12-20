@@ -34,6 +34,8 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel2;
   // Model for TOURNAMENTgridROUND component.
   late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel3;
+  // Model for TOURNAMENTgridROUND component.
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel4;
 
   /// Initialization and disposal methods.
 
@@ -44,6 +46,8 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
         createModel(context, () => TOURNAMENTgridROUNDModel());
     tOURNAMENTgridROUNDModel3 =
         createModel(context, () => TOURNAMENTgridROUNDModel());
+    tOURNAMENTgridROUNDModel4 =
+        createModel(context, () => TOURNAMENTgridROUNDModel());
   }
 
   void dispose() {
@@ -53,6 +57,7 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
     tOURNAMENTgridROUNDModel1.dispose();
     tOURNAMENTgridROUNDModel2.dispose();
     tOURNAMENTgridROUNDModel3.dispose();
+    tOURNAMENTgridROUNDModel4.dispose();
   }
 
   /// Action blocks are added here.

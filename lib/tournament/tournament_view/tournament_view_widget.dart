@@ -386,6 +386,16 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                         itemheight: 220,
                                       ),
                                     ),
+                                    wrapWithModel(
+                                      model: _model.tOURNAMENTgridROUNDModel4,
+                                      updateCallback: () => setState(() {}),
+                                      child: TOURNAMENTgridROUNDWidget(
+                                        round: 4,
+                                        iteamspacing: 680,
+                                        paddingtop: 680,
+                                        itemheight: 220,
+                                      ),
+                                    ),
                                   ].divide(SizedBox(width: 25.0)),
                                 ),
                               ),
