@@ -346,6 +346,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               wrapWithModel(
                                 model: _model.tOURNAMENTgridROUNDModel1,
@@ -354,7 +355,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                   round: 1,
                                   iteamspacing: 5,
                                   paddingtop: 0,
-                                  itemheight: 150,
+                                  itemheight: 120,
                                 ),
                               ),
                               wrapWithModel(

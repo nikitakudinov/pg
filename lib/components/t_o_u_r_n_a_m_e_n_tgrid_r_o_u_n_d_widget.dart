@@ -58,7 +58,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      width: MediaQuery.sizeOf(context).width * 1.0,
+      width: 250.0,
       decoration: BoxDecoration(),
       child: SingleChildScrollView(
         child: Column(
