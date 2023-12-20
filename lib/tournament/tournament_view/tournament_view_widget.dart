@@ -253,7 +253,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                   child: Padding(
                     padding: EdgeInsets.all(15.0),
                     child: Container(
-                      height: 200.0,
+                      height: MediaQuery.sizeOf(context).height * 0.3,
                       decoration: BoxDecoration(),
                       child: Column(
                         children: [
@@ -295,12 +295,12 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Row(
-                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Expanded(
                                         flex: 2,
                                         child: Column(
-                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisSize: MainAxisSize.min,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
                                           children: [
@@ -376,7 +376,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 10.0, 0.0),
                                         child: Column(
-                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: 2.0,
@@ -398,7 +398,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                       Expanded(
                                         flex: 2,
                                         child: Column(
-                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisSize: MainAxisSize.min,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
