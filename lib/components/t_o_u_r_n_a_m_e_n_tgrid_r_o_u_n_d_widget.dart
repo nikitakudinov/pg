@@ -136,7 +136,7 @@ class _TOURNAMENTgridROUNDWidgetState extends State<TOURNAMENTgridROUNDWidget> {
                                   child: Container(
                                     decoration: BoxDecoration(),
                                     child: Text(
-                                      'Пара ${roundItem.matchTournamentPair.toString()}',
+                                      '${roundItem.matchTournamentPair.toString()}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodySmall,
                                     ),
