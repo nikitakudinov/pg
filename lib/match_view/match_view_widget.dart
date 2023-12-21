@@ -151,11 +151,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    FFAppState()
-                                        .curentMatchData
-                                        .first
-                                        .matchForTournament
-                                        .tournamentTag,
+                                    '${FFAppState().curentMatchData.first.matchForTournament.tournamentTag}',
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
@@ -164,19 +160,21 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge,
                                   ),
-                                  Text(
-                                    FFAppState()
-                                        .curentMatchData
-                                        .first
-                                        .matchTournamentRound
-                                        .toString(),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                  Text(
-                                    'Раунд',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Раунд',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                      Text(
+                                        '${FFAppState().curentMatchData.first.matchTournamentRound.toString()}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
