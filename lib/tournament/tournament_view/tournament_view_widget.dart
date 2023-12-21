@@ -1085,7 +1085,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                               .tournamentMatches
                                               .where((e) =>
                                                   e.matchStatus ==
-                                                  'Матч сыгран')
+                                                  'Матч запланирован')
                                               .toList()
                                               .take(5)
                                               .toList();
