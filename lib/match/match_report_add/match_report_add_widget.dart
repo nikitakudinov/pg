@@ -34,8 +34,11 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.rival1WinsController ??= TextEditingController();
+    _model.rival1WinsFocusNode ??= FocusNode();
+
+    _model.rival2WinsController ??= TextEditingController();
+    _model.rival2WinsFocusNode ??= FocusNode();
   }
 
   @override
@@ -443,37 +446,44 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 8.0, 0.0),
-                                    child: TextFormField(
-                                      controller: _model.textController,
-                                      focusNode: _model.textFieldFocusNode,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'СЧЕТ',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelSmall,
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        focusedErrorBorder: InputBorder.none,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 15.0, 0.0, 0.0),
+                                  child: Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: TextFormField(
+                                        controller: _model.rival1WinsController,
+                                        focusNode: _model.rival1WinsFocusNode,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'СЧЕТ',
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmall,
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        keyboardType: TextInputType.number,
+                                        validator: _model
+                                            .rival1WinsControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                      keyboardType: TextInputType.number,
-                                      validator: _model.textControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -491,7 +501,49 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             flex: 1,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              children: [],
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 15.0, 0.0, 0.0),
+                                  child: Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: TextFormField(
+                                        controller: _model.rival2WinsController,
+                                        focusNode: _model.rival2WinsFocusNode,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'СЧЕТ',
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmall,
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        keyboardType: TextInputType.number,
+                                        validator: _model
+                                            .rival2WinsControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Expanded(
