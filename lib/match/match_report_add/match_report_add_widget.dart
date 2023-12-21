@@ -1866,6 +1866,20 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                   'Матч сыгран.  Нобходимо подтвердить статус',
                               'notification_category': 'Матч репорт',
                             });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Отчет отправлен на модерацию',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
                           },
                           text: 'ОТПРАВИТЬ',
                           options: FFButtonOptions(
