@@ -55,8 +55,6 @@ class _TeamsWidgetState extends State<TeamsWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await action_blocks.allTeamsUpdater(context);
-      await action_blocks.dowloadAllCountrieToAppState(context);
       // Загрузка и обновление notifications
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 5000),
