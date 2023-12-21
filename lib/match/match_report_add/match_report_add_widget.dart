@@ -948,7 +948,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                     ),
                   ),
                 ),
-              if (_model.screenShot3VALUE != '0')
+              if (_model.screenShot2VALUE != '0')
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                   child: Container(
