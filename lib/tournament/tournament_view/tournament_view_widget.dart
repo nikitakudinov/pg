@@ -325,12 +325,19 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                 curentTournamentDataItem
                                                     .tournamentOrganizators
                                                     .toList();
-                                            return ListView.builder(
-                                              padding: EdgeInsets.zero,
+                                            return ListView.separated(
+                                              padding: EdgeInsets.fromLTRB(
+                                                15.0,
+                                                0,
+                                                0,
+                                                0,
+                                              ),
                                               shrinkWrap: true,
                                               scrollDirection: Axis.horizontal,
                                               itemCount:
                                                   organizatorsList.length,
+                                              separatorBuilder: (_, __) =>
+                                                  SizedBox(width: 10.0),
                                               itemBuilder: (context,
                                                   organizatorsListIndex) {
                                                 final organizatorsListItem =
@@ -344,13 +351,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Container(
-                                                        width: 60.0,
-                                                        height: 60.0,
+                                                        width: 50.0,
+                                                        height: 50.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .tertiary,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
                                                         ),
                                                         child: ClipRRect(
                                                           borderRadius:
@@ -360,8 +371,8 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                           child: Image.network(
                                                             organizatorsListItem
                                                                 .playerAvatar,
-                                                            width: 60.0,
-                                                            height: 60.0,
+                                                            width: 50.0,
+                                                            height: 50.0,
                                                             fit: BoxFit.cover,
                                                           ),
                                                         ),
