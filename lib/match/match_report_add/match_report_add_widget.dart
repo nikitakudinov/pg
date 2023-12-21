@@ -276,7 +276,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                       .titleLarge,
                                             ),
                                             Text(
-                                              'Hello World',
+                                              matchItem.matchRival1.teamName
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 20),
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
