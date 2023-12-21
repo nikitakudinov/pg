@@ -146,7 +146,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 } else if (_model.dropDownValue1 == '4') {
                                   return FFAppConstants.List2;
                                 } else {
-                                  return FFAppConstants.List16;
+                                  return FFAppConstants.List1;
                                 }
                               }(),
                               onChanged: (val) =>

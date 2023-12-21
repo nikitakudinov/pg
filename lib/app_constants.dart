@@ -27,4 +27,5 @@ abstract class FFAppConstants {
   static const List<String> List8 = ['1', '2', '3', '4', '5', '6', '7', '8'];
   static const List<String> List4 = ['1', '2', '3', '4'];
   static const List<String> List2 = ['1', '2'];
+  static const List<String> List1 = ['1'];
 }
