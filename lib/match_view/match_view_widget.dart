@@ -97,7 +97,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
         body: SafeArea(
           top: true,
           child: Visibility(
-            visible: (_model.curentMatchData.isNotEmpty) == false,
+            visible: (_model.curentMatchData.isNotEmpty) != null,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
