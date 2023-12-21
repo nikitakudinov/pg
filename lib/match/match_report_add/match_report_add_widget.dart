@@ -738,7 +738,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               await deleteSupabaseFileFromPublicUrl(
                                   _model.screenShot1VALUE);
                               setState(() {
-                                _model.screenShot1VALUE = '';
+                                _model.screenShot1VALUE = '0';
                               });
                             },
                             text: 'Удалить',
@@ -914,9 +914,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             child: FFButtonWidget(
                               onPressed: () async {
                                 await deleteSupabaseFileFromPublicUrl(
-                                    _model.screenShot1VALUE);
+                                    _model.screenShot2VALUE);
                                 setState(() {
-                                  _model.screenShot1VALUE = '';
+                                  _model.screenShot2VALUE = '0';
                                 });
                               },
                               text: 'Удалить',
