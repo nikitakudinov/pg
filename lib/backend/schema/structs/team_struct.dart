@@ -19,6 +19,12 @@ class TeamStruct extends BaseStruct {
     String? teamStatus,
     int? teamId,
     int? teamChatId,
+    int? teamMatchesCount,
+    int? teamMatchWins,
+    int? teamMatchLoses,
+    int? teamMatchesRoundsCount,
+    int? teamMatchRoundWins,
+    int? teamMatchRoundLoses,
   })  : _teamCreatedAt = teamCreatedAt,
         _teamUpdatedAt = teamUpdatedAt,
         _teamName = teamName,
@@ -30,7 +36,13 @@ class TeamStruct extends BaseStruct {
         _teamRecruitment = teamRecruitment,
         _teamStatus = teamStatus,
         _teamId = teamId,
-        _teamChatId = teamChatId;
+        _teamChatId = teamChatId,
+        _teamMatchesCount = teamMatchesCount,
+        _teamMatchWins = teamMatchWins,
+        _teamMatchLoses = teamMatchLoses,
+        _teamMatchesRoundsCount = teamMatchesRoundsCount,
+        _teamMatchRoundWins = teamMatchRoundWins,
+        _teamMatchRoundLoses = teamMatchRoundLoses;
 
   // "team_created_at" field.
   String? _teamCreatedAt;
@@ -106,6 +118,54 @@ class TeamStruct extends BaseStruct {
   void incrementTeamChatId(int amount) => _teamChatId = teamChatId + amount;
   bool hasTeamChatId() => _teamChatId != null;
 
+  // "team_matches_count" field.
+  int? _teamMatchesCount;
+  int get teamMatchesCount => _teamMatchesCount ?? 0;
+  set teamMatchesCount(int? val) => _teamMatchesCount = val;
+  void incrementTeamMatchesCount(int amount) =>
+      _teamMatchesCount = teamMatchesCount + amount;
+  bool hasTeamMatchesCount() => _teamMatchesCount != null;
+
+  // "team_match_wins" field.
+  int? _teamMatchWins;
+  int get teamMatchWins => _teamMatchWins ?? 0;
+  set teamMatchWins(int? val) => _teamMatchWins = val;
+  void incrementTeamMatchWins(int amount) =>
+      _teamMatchWins = teamMatchWins + amount;
+  bool hasTeamMatchWins() => _teamMatchWins != null;
+
+  // "team_match_loses" field.
+  int? _teamMatchLoses;
+  int get teamMatchLoses => _teamMatchLoses ?? 0;
+  set teamMatchLoses(int? val) => _teamMatchLoses = val;
+  void incrementTeamMatchLoses(int amount) =>
+      _teamMatchLoses = teamMatchLoses + amount;
+  bool hasTeamMatchLoses() => _teamMatchLoses != null;
+
+  // "team_matches_rounds_count" field.
+  int? _teamMatchesRoundsCount;
+  int get teamMatchesRoundsCount => _teamMatchesRoundsCount ?? 0;
+  set teamMatchesRoundsCount(int? val) => _teamMatchesRoundsCount = val;
+  void incrementTeamMatchesRoundsCount(int amount) =>
+      _teamMatchesRoundsCount = teamMatchesRoundsCount + amount;
+  bool hasTeamMatchesRoundsCount() => _teamMatchesRoundsCount != null;
+
+  // "team_match_round_wins" field.
+  int? _teamMatchRoundWins;
+  int get teamMatchRoundWins => _teamMatchRoundWins ?? 0;
+  set teamMatchRoundWins(int? val) => _teamMatchRoundWins = val;
+  void incrementTeamMatchRoundWins(int amount) =>
+      _teamMatchRoundWins = teamMatchRoundWins + amount;
+  bool hasTeamMatchRoundWins() => _teamMatchRoundWins != null;
+
+  // "team_match_round_loses" field.
+  int? _teamMatchRoundLoses;
+  int get teamMatchRoundLoses => _teamMatchRoundLoses ?? 0;
+  set teamMatchRoundLoses(int? val) => _teamMatchRoundLoses = val;
+  void incrementTeamMatchRoundLoses(int amount) =>
+      _teamMatchRoundLoses = teamMatchRoundLoses + amount;
+  bool hasTeamMatchRoundLoses() => _teamMatchRoundLoses != null;
+
   static TeamStruct fromMap(Map<String, dynamic> data) => TeamStruct(
         teamCreatedAt: data['team_created_at'] as String?,
         teamUpdatedAt: data['team_updated_at'] as String?,
@@ -119,6 +179,13 @@ class TeamStruct extends BaseStruct {
         teamStatus: data['team_status'] as String?,
         teamId: castToType<int>(data['team_id']),
         teamChatId: castToType<int>(data['team_chat_id']),
+        teamMatchesCount: castToType<int>(data['team_matches_count']),
+        teamMatchWins: castToType<int>(data['team_match_wins']),
+        teamMatchLoses: castToType<int>(data['team_match_loses']),
+        teamMatchesRoundsCount:
+            castToType<int>(data['team_matches_rounds_count']),
+        teamMatchRoundWins: castToType<int>(data['team_match_round_wins']),
+        teamMatchRoundLoses: castToType<int>(data['team_match_round_loses']),
       );
 
   static TeamStruct? maybeFromMap(dynamic data) =>
@@ -137,6 +204,12 @@ class TeamStruct extends BaseStruct {
         'team_status': _teamStatus,
         'team_id': _teamId,
         'team_chat_id': _teamChatId,
+        'team_matches_count': _teamMatchesCount,
+        'team_match_wins': _teamMatchWins,
+        'team_match_loses': _teamMatchLoses,
+        'team_matches_rounds_count': _teamMatchesRoundsCount,
+        'team_match_round_wins': _teamMatchRoundWins,
+        'team_match_round_loses': _teamMatchRoundLoses,
       }.withoutNulls;
 
   @override
@@ -187,6 +260,30 @@ class TeamStruct extends BaseStruct {
         ),
         'team_chat_id': serializeParam(
           _teamChatId,
+          ParamType.int,
+        ),
+        'team_matches_count': serializeParam(
+          _teamMatchesCount,
+          ParamType.int,
+        ),
+        'team_match_wins': serializeParam(
+          _teamMatchWins,
+          ParamType.int,
+        ),
+        'team_match_loses': serializeParam(
+          _teamMatchLoses,
+          ParamType.int,
+        ),
+        'team_matches_rounds_count': serializeParam(
+          _teamMatchesRoundsCount,
+          ParamType.int,
+        ),
+        'team_match_round_wins': serializeParam(
+          _teamMatchRoundWins,
+          ParamType.int,
+        ),
+        'team_match_round_loses': serializeParam(
+          _teamMatchRoundLoses,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -253,6 +350,36 @@ class TeamStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        teamMatchesCount: deserializeParam(
+          data['team_matches_count'],
+          ParamType.int,
+          false,
+        ),
+        teamMatchWins: deserializeParam(
+          data['team_match_wins'],
+          ParamType.int,
+          false,
+        ),
+        teamMatchLoses: deserializeParam(
+          data['team_match_loses'],
+          ParamType.int,
+          false,
+        ),
+        teamMatchesRoundsCount: deserializeParam(
+          data['team_matches_rounds_count'],
+          ParamType.int,
+          false,
+        ),
+        teamMatchRoundWins: deserializeParam(
+          data['team_match_round_wins'],
+          ParamType.int,
+          false,
+        ),
+        teamMatchRoundLoses: deserializeParam(
+          data['team_match_round_loses'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -272,7 +399,13 @@ class TeamStruct extends BaseStruct {
         teamRecruitment == other.teamRecruitment &&
         teamStatus == other.teamStatus &&
         teamId == other.teamId &&
-        teamChatId == other.teamChatId;
+        teamChatId == other.teamChatId &&
+        teamMatchesCount == other.teamMatchesCount &&
+        teamMatchWins == other.teamMatchWins &&
+        teamMatchLoses == other.teamMatchLoses &&
+        teamMatchesRoundsCount == other.teamMatchesRoundsCount &&
+        teamMatchRoundWins == other.teamMatchRoundWins &&
+        teamMatchRoundLoses == other.teamMatchRoundLoses;
   }
 
   @override
@@ -288,7 +421,13 @@ class TeamStruct extends BaseStruct {
         teamRecruitment,
         teamStatus,
         teamId,
-        teamChatId
+        teamChatId,
+        teamMatchesCount,
+        teamMatchWins,
+        teamMatchLoses,
+        teamMatchesRoundsCount,
+        teamMatchRoundWins,
+        teamMatchRoundLoses
       ]);
 }
 
@@ -305,6 +444,12 @@ TeamStruct createTeamStruct({
   String? teamStatus,
   int? teamId,
   int? teamChatId,
+  int? teamMatchesCount,
+  int? teamMatchWins,
+  int? teamMatchLoses,
+  int? teamMatchesRoundsCount,
+  int? teamMatchRoundWins,
+  int? teamMatchRoundLoses,
 }) =>
     TeamStruct(
       teamCreatedAt: teamCreatedAt,
@@ -319,4 +464,10 @@ TeamStruct createTeamStruct({
       teamStatus: teamStatus,
       teamId: teamId,
       teamChatId: teamChatId,
+      teamMatchesCount: teamMatchesCount,
+      teamMatchWins: teamMatchWins,
+      teamMatchLoses: teamMatchLoses,
+      teamMatchesRoundsCount: teamMatchesRoundsCount,
+      teamMatchRoundWins: teamMatchRoundWins,
+      teamMatchRoundLoses: teamMatchRoundLoses,
     );
