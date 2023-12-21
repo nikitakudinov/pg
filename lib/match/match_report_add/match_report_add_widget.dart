@@ -448,6 +448,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
+                                  height: 50.0,
                                   decoration: BoxDecoration(
                                     color:
                                         FlutterFlowTheme.of(context).tertiary,
