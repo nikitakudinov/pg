@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -34,25 +33,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if ((_model.dropDownValue1 != null && _model.dropDownValue1 != '') &&
-          (_model.dropDownValue2 != null && _model.dropDownValue2 != '')) {
-        setState(() {
-          FFAppState().curentMatchData = FFAppState()
-              .tournamentMatches
-              .where((e) =>
-                  (e.matchTournamentRound ==
-                      functions.stringTOinteger(_model.dropDownValue1)) &&
-                  (e.matchTournamentPair ==
-                      functions.stringTOinteger(_model.dropDownValue2)))
-              .toList()
-              .toList()
-              .cast<MatchStruct>();
-        });
-      }
-    });
   }
 
   @override
