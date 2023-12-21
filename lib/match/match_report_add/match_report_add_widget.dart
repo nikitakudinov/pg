@@ -627,8 +627,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Visibility(
-                          visible: _model.screenShot1VALUE == null ||
-                              _model.screenShot1VALUE == '',
+                          visible: _model.screenShot1VALUE != null &&
+                              _model.screenShot1VALUE != '',
                           child: Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Container(
