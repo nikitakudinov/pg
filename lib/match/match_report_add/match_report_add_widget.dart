@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -1853,19 +1854,19 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                         .stringTOinteger(_model.dropDownValue2),
                                   ),
                             );
+                            _model.tournamentData =
+                                await TournamentGroup.tournamentbyidCall.call(
+                              tournamentID: widget.tournamentID,
+                            );
                             await NotificationsTable().insert({
                               'notification_created_at':
                                   supaSerialize<DateTime>(getCurrentTimestamp),
                               'notification_from_tournament':
                                   widget.tournamentID,
-                              'notification_to_player': FFAppState()
-                                  .tournaments
-                                  .where((e) =>
-                                      e.tournamentId == widget.tournamentID)
-                                  .toList()[0]
-                                  .tournamentCreator
-                                  .playerId
-                                  .toString(),
+                              'notification_to_player': getJsonField(
+                                (_model.tournamentData?.jsonBody ?? ''),
+                                r'''$[:].tournament_creator''',
+                              ).toString(),
                               'notification_type': 'Матч репорт',
                               'notification_body':
                                   'Матч сыгран.  Нобходимо подтвердить статус',
@@ -1885,6 +1886,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     FlutterFlowTheme.of(context).secondary,
                               ),
                             );
+
+                            setState(() {});
                           },
                           text: 'ОТПРАВИТЬ',
                           options: FFButtonOptions(

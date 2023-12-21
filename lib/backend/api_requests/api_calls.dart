@@ -1208,6 +1208,7 @@ class TournamentGroup {
   };
   static TournamentbycreatorCall tournamentbycreatorCall =
       TournamentbycreatorCall();
+  static TournamentbyidCall tournamentbyidCall = TournamentbyidCall();
   static TournamentsCall tournamentsCall = TournamentsCall();
   static TournamenorganizatorsCall tournamenorganizatorsCall =
       TournamenorganizatorsCall();
@@ -1268,6 +1269,60 @@ class TournamentbycreatorCall {
         response,
         r'''$[:].tournament_creator''',
       );
+}
+
+class TournamentbyidCall {
+  Future<ApiCallResponse> call({
+    int? tournamentID,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TOURNAMENTBYID',
+      apiUrl:
+          '${TournamentGroup.baseUrl}tournaments?tournament_id=eq.${tournamentID}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? id(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].tournament_id''',
+      ));
+  String? createdat(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].tournament_created_at''',
+      ));
+  String? name(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].tournament_name''',
+      ));
+  String? tag(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].tournament_tag''',
+      ));
+  String? flag(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].tournament_flag''',
+      ));
+  String? country(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].tournament_country''',
+      ));
+  String? creator(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].tournament_creator''',
+      ));
 }
 
 class TournamentsCall {

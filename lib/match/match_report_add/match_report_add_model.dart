@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -81,6 +82,9 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   FFUploadedFile uploadedLocalFile5 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl5 = '';
+
+  // Stores action output result for [Backend Call - API (TOURNAMENTBYID)] action in Button widget.
+  ApiCallResponse? tournamentData;
 
   /// Initialization and disposal methods.
 
