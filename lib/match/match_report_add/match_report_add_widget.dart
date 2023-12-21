@@ -292,7 +292,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     '${matchItem.matchRival1.teamName}'
                                                         .maybeHandleOverflow(
                                                             maxChars: 20),
-                                                    textAlign: TextAlign.end,
+                                                    textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium,
@@ -406,7 +406,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     '${matchItem.matchRival2.teamName}'
                                                         .maybeHandleOverflow(
                                                             maxChars: 20),
-                                                    textAlign: TextAlign.start,
+                                                    textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium,
