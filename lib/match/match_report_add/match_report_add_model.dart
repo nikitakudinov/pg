@@ -1,6 +1,5 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/screen_shot_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -54,8 +53,6 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   FocusNode? rival2WinsFocusNode;
   TextEditingController? rival2WinsController;
   String? Function(BuildContext, String?)? rival2WinsControllerValidator;
-  // Model for screenShotCard component.
-  late ScreenShotCardModel screenShotCardModel;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -66,11 +63,14 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl2 = '';
 
+  bool isDataUploading3 = false;
+  FFUploadedFile uploadedLocalFile3 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl3 = '';
+
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    screenShotCardModel = createModel(context, () => ScreenShotCardModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
@@ -79,8 +79,6 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
     rival2WinsFocusNode?.dispose();
     rival2WinsController?.dispose();
-
-    screenShotCardModel.dispose();
   }
 
   /// Action blocks are added here.
