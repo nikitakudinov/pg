@@ -101,7 +101,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                               flex: 2,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     width: 50.0,
@@ -205,11 +205,11 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                               flex: 2,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: 75.0,
-                                    height: 75.0,
+                                    width: 50.0,
+                                    height: 50.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -230,8 +230,8 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                                 .first
                                                 .matchRival2
                                                 .teamLogo,
-                                        width: 75.0,
-                                        height: 75.0,
+                                        width: 50.0,
+                                        height: 50.0,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
