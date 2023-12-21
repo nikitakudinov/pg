@@ -143,7 +143,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                         : FFAppState()
                                             .curentMatchData
                                             .first
-                                            .matchRival2
+                                            .matchRival1
                                             .teamLogo,
                                     width: 50.0,
                                     height: 50.0,
