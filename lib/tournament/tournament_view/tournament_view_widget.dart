@@ -929,6 +929,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                               .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
+                                            primary: false,
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount: playedMatchesList.length,
