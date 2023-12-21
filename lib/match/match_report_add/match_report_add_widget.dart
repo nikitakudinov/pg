@@ -675,6 +675,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     padding: EdgeInsets.all(10.0),
                                     child: Container(
                                       decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                       ),
