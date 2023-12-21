@@ -344,7 +344,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                                     organizatorsList[
                                                         organizatorsListIndex];
                                                 return Container(
-                                                  width: 100.0,
+                                                  width: 70.0,
                                                   decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
