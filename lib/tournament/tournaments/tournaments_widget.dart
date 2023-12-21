@@ -153,6 +153,11 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                     ),
                                     ParamType.int,
                                   ),
+                                  'tournamentCreator': serializeParam(
+                                    tournamentsListItem
+                                        .tournamentCreator.playerUid,
+                                    ParamType.String,
+                                  ),
                                 }.withoutNulls,
                               );
                             },

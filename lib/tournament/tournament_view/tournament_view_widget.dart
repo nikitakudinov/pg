@@ -20,10 +20,12 @@ class TournamentViewWidget extends StatefulWidget {
   const TournamentViewWidget({
     Key? key,
     int? tournamentID,
+    this.tournamentCreator,
   })  : this.tournamentID = tournamentID ?? 0,
         super(key: key);
 
   final int tournamentID;
+  final String? tournamentCreator;
 
   @override
   _TournamentViewWidgetState createState() => _TournamentViewWidgetState();
@@ -123,12 +125,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                         ParamType.int,
                       ),
                       'tournamentCreatorUID': serializeParam(
-                        FFAppState()
-                            .tournaments
-                            .where((e) => e.tournamentId == widget.tournamentID)
-                            .toList()[0]
-                            .tournamentCreator
-                            .playerUid,
+                        widget.tournamentCreator,
                         ParamType.String,
                       ),
                     }.withoutNulls,

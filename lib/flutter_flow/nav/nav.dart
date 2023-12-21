@@ -148,6 +148,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/tournamentView',
           builder: (context, params) => TournamentViewWidget(
             tournamentID: params.getParam('tournamentID', ParamType.int),
+            tournamentCreator:
+                params.getParam('tournamentCreator', ParamType.String),
           ),
         ),
         FFRoute(
