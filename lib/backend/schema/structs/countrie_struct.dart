@@ -75,7 +75,7 @@ class CountrieStruct extends BaseStruct {
       );
 
   static CountrieStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CountrieStruct.fromMap(data) : null;
+      data is Map ? CountrieStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'Iso2': _iso2,

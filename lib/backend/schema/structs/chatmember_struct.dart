@@ -23,8 +23,9 @@ class ChatmemberStruct extends BaseStruct {
         member: PlayerStruct.maybeFromMap(data['member']),
       );
 
-  static ChatmemberStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? ChatmemberStruct.fromMap(data) : null;
+  static ChatmemberStruct? maybeFromMap(dynamic data) => data is Map
+      ? ChatmemberStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'member': _member?.toMap(),

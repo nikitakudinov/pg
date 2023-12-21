@@ -189,7 +189,7 @@ class TeamStruct extends BaseStruct {
       );
 
   static TeamStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? TeamStruct.fromMap(data) : null;
+      data is Map ? TeamStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'team_created_at': _teamCreatedAt,

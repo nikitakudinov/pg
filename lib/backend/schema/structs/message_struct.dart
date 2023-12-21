@@ -102,7 +102,7 @@ class MessageStruct extends BaseStruct {
       );
 
   static MessageStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? MessageStruct.fromMap(data) : null;
+      data is Map ? MessageStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'message_id': _messageId,

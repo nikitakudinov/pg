@@ -22,7 +22,7 @@ class CountStruct extends BaseStruct {
       );
 
   static CountStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CountStruct.fromMap(data) : null;
+      data is Map ? CountStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'count': _count,

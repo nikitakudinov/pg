@@ -187,8 +187,9 @@ class TournamentStruct extends BaseStruct {
         ),
       );
 
-  static TournamentStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? TournamentStruct.fromMap(data) : null;
+  static TournamentStruct? maybeFromMap(dynamic data) => data is Map
+      ? TournamentStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'tournament_id': _tournamentId,

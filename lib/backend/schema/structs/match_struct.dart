@@ -137,7 +137,7 @@ class MatchStruct extends BaseStruct {
       );
 
   static MatchStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? MatchStruct.fromMap(data) : null;
+      data is Map ? MatchStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'match_id': _matchId,

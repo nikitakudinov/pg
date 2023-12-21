@@ -73,7 +73,7 @@ class ChatStruct extends BaseStruct {
       );
 
   static ChatStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? ChatStruct.fromMap(data) : null;
+      data is Map ? ChatStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'chat_id': _chatId,

@@ -97,7 +97,7 @@ Future upadateAuthUserDataValues(BuildContext context) async {
           (jsonPlayerData?.jsonBody ?? ''),
         )
         .toString()
-        .toString(),
+        ?.toString(),
   );
   if ((jsonPlayerData?.succeeded ?? true)) {
     FFAppState().update(() {
@@ -286,7 +286,7 @@ Future notificationsUpdater(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().alertsCount = MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
-      );
+      )!;
     });
     await action_blocks.loadAuthUserNotifications(context);
   }
@@ -421,7 +421,7 @@ Future chasUpdater(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().chatsCount = MessagingGroup.gETUSERCHATScountCall.count(
         (apiResult9bd?.jsonBody ?? ''),
-      );
+      )!;
     });
   }
 }
@@ -473,7 +473,7 @@ Future singlChatUpdater(
     FFAppState().update(() {
       FFAppState().updateAllAuthUsersChatsAtIndex(
         chatIndex!,
-        (_) => ChatStruct.fromMap((apiResultmyf?.jsonBody ?? '')),
+        (_) => ChatStruct.maybeFromMap((apiResultmyf?.jsonBody ?? ''))!,
       );
     });
     ScaffoldMessenger.of(context).showSnackBar(

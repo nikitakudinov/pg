@@ -133,7 +133,7 @@ class PlayerStruct extends BaseStruct {
       );
 
   static PlayerStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? PlayerStruct.fromMap(data) : null;
+      data is Map ? PlayerStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'player_created_at': _playerCreatedAt,

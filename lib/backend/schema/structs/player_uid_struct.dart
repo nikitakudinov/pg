@@ -20,8 +20,9 @@ class PlayerUidStruct extends BaseStruct {
         playerUid: data['player_uid'] as String?,
       );
 
-  static PlayerUidStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? PlayerUidStruct.fromMap(data) : null;
+  static PlayerUidStruct? maybeFromMap(dynamic data) => data is Map
+      ? PlayerUidStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'player_uid': _playerUid,

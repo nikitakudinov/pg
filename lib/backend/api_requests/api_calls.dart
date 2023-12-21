@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -56,53 +57,55 @@ class ListplayerbyuidCall {
     );
   }
 
-  dynamic playercreatedat(dynamic response) => getJsonField(
+  String? playercreatedat(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_created_at''',
-      );
-  dynamic playernickname(dynamic response) => getJsonField(
+      ));
+  String? playernickname(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_nickname''',
-      );
-  dynamic playertag(dynamic response) => getJsonField(
+      ));
+  String? playertag(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_tag''',
-      );
-  dynamic playerflag(dynamic response) => getJsonField(
+      ));
+  String? playerflag(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_flag''',
-      );
-  dynamic playercountrie(dynamic response) => getJsonField(
+      ));
+  String? playercountrie(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_countrie''',
-      );
-  dynamic playeravatar(dynamic response) => getJsonField(
+      ));
+  String? playeravatar(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_avatar''',
-      );
-  dynamic playeruid(dynamic response) => getJsonField(
+      ));
+  String? playeruid(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].player_uid''',
-      );
-  dynamic playerteam(dynamic response) => getJsonField(
+      ));
+  int? playerteam(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].player_team''',
-      );
+      ));
   List<String>? playerteamrole(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_role''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
-  dynamic playerid(dynamic response) => getJsonField(
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  int? playerid(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].player_id''',
-      );
-  dynamic playerteamlineup(dynamic response) => getJsonField(
+      ));
+  bool? playerteamlineup(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$[:].player_team_lineup''',
-      );
+      ));
   dynamic playerteamteamlogo(dynamic response) => getJsonField(
         response,
         r'''$[:].player_team.team_logo''',
@@ -172,77 +175,99 @@ class ListplayerbyidCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playernickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playertag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playercountrie(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_countrie''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeravatar(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_avatar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeruid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerteam(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerteamrole(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_role''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<bool>? playerteamlineup(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_lineup''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<bool>();
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
 }
 
 class LISTPLAYERBYTEAMandTEAMROLECall {
@@ -275,77 +300,99 @@ class LISTPLAYERBYTEAMandTEAMROLECall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playernickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playertag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playercountrie(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_countrie''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeravatar(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_avatar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeruid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerteam(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerteamrole(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_role''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<bool>? playerteamlineup(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_lineup''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<bool>();
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
 }
 
 class LISTPLAYERBYTEAMandTEAMROIDCall {
@@ -378,77 +425,99 @@ class LISTPLAYERBYTEAMandTEAMROIDCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playernickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playertag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playercountrie(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_countrie''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeravatar(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_avatar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeruid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerteam(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerteamrole(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_role''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<bool>? playerteamlineup(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_lineup''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<bool>();
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
 }
 
 class LISTPLAYERBYTEAMandTEAMROLEcountCall {
@@ -482,77 +551,99 @@ class LISTPLAYERBYTEAMandTEAMROLEcountCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playernickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playertag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playercountrie(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_countrie''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeravatar(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_avatar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeruid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerteam(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerteamrole(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_role''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<bool>? playerteamlineup(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_lineup''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<bool>();
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
 }
 
 class ListplayerbyteamCall {
@@ -584,77 +675,99 @@ class ListplayerbyteamCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playernickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playertag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playercountrie(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_countrie''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeravatar(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_avatar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? playeruid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerteam(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<String>? playerteamrole(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_role''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? playerid(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<bool>? playerteamlineup(dynamic response) => (getJsonField(
         response,
         r'''$[:].player_team_lineup''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<bool>();
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
 }
 
 class ListplayersCall {
@@ -820,50 +933,50 @@ class ListteambyidCall {
     );
   }
 
-  dynamic teamcreatedat(dynamic response) => getJsonField(
+  String? teamcreatedat(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_created_at''',
-      );
-  dynamic teamnam(dynamic response) => getJsonField(
+      ));
+  String? teamnam(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_name''',
-      );
-  dynamic teamtag(dynamic response) => getJsonField(
+      ));
+  String? teamtag(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_tag''',
-      );
-  dynamic teamflag(dynamic response) => getJsonField(
+      ));
+  String? teamflag(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_flag''',
-      );
-  dynamic teamcountry(dynamic response) => getJsonField(
+      ));
+  String? teamcountry(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_country''',
-      );
-  dynamic teamlogo(dynamic response) => getJsonField(
+      ));
+  String? teamlogo(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_logo''',
-      );
-  dynamic teamid(dynamic response) => getJsonField(
+      ));
+  int? teamid(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].team_id''',
-      );
-  dynamic teamstatus(dynamic response) => getJsonField(
+      ));
+  String? teamstatus(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_status''',
-      );
-  dynamic teamcreator(dynamic response) => getJsonField(
+      ));
+  String? teamcreator(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_creator''',
-      );
-  dynamic teamupdatedat(dynamic response) => getJsonField(
+      ));
+  String? teamupdatedat(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].team_updated_at''',
-      );
-  dynamic teamrecruitment(dynamic response) => getJsonField(
+      ));
+  bool? teamrecruitment(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$[:].team_recruitment''',
-      );
+      ));
   dynamic teamchatid(dynamic response) => getJsonField(
         response,
         r'''$[:].team_chat_id''',
@@ -899,49 +1012,63 @@ class TeambycreatorCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? teamnam(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_name''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? teamtag(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? teamflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? teamcountry(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_country''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? teamlogo(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_logo''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? teamid(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? teamupdatedat(dynamic response) => getJsonField(
         response,
         r'''$[:].team_updated_at''',
@@ -1026,35 +1153,45 @@ class ListallteamsCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? nickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? uid(dynamic response) => (getJsonField(
         response,
         r'''$[:].uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? email(dynamic response) => (getJsonField(
         response,
         r'''$[:].email''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? tag(dynamic response) => (getJsonField(
         response,
         r'''$[:].tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 /// End TEAM Group Code
@@ -1155,34 +1292,34 @@ class TournamentsCall {
     );
   }
 
-  dynamic id(dynamic response) => getJsonField(
+  int? id(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].tournament_id''',
-      );
-  dynamic createdat(dynamic response) => getJsonField(
+      ));
+  String? createdat(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].tournament_created_at''',
-      );
-  dynamic name(dynamic response) => getJsonField(
+      ));
+  String? name(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].tournament_name''',
-      );
-  dynamic tag(dynamic response) => getJsonField(
+      ));
+  String? tag(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].tournament_tag''',
-      );
-  dynamic flag(dynamic response) => getJsonField(
+      ));
+  String? flag(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].tournament_flag''',
-      );
-  dynamic country(dynamic response) => getJsonField(
+      ));
+  String? country(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].tournament_country''',
-      );
-  dynamic creator(dynamic response) => getJsonField(
+      ));
+  String? creator(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].tournament_creator''',
-      );
+      ));
 }
 
 class TournamenorganizatorsCall {
@@ -1270,7 +1407,9 @@ class TournamentmembersaCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   dynamic createdat(dynamic response) => getJsonField(
         response,
         r'''$[:].tournament_created_at''',
@@ -1342,7 +1481,9 @@ class MatchesCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? matchplanneddate(dynamic response) => getJsonField(
         response,
         r'''$[:].match_planned_date''',
@@ -1354,21 +1495,27 @@ class MatchesCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? matchtournamentround(dynamic response) => (getJsonField(
         response,
         r'''$[:].match_tournament_round''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<int>? matchtournamentpair(dynamic response) => (getJsonField(
         response,
         r'''$[:].match_tournament_pair''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? matchrival1(dynamic response) => getJsonField(
         response,
         r'''$[:].match_rival1''',
@@ -1390,7 +1537,9 @@ class MatchesCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List? matchrefery(dynamic response) => getJsonField(
         response,
         r'''$[:].match_refery''',
@@ -1428,7 +1577,9 @@ class TournamentmatchesCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? matchplanneddate(dynamic response) => getJsonField(
         response,
         r'''$[:].match_planned_date''',
@@ -1440,21 +1591,27 @@ class TournamentmatchesCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? matchtournamentround(dynamic response) => (getJsonField(
         response,
         r'''$[:].match_tournament_round''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List<int>? matchtournamentpair(dynamic response) => (getJsonField(
         response,
         r'''$[:].match_tournament_pair''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? matchrival1(dynamic response) => getJsonField(
         response,
         r'''$[:].match_rival1''',
@@ -1476,7 +1633,9 @@ class TournamentmatchesCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List? matchrefery(dynamic response) => getJsonField(
         response,
         r'''$[:].match_refery''',
@@ -1688,10 +1847,10 @@ class GETNOTIFICATIONScountCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class GetchatbyidCall {
@@ -1718,29 +1877,31 @@ class GetchatbyidCall {
     );
   }
 
-  dynamic chatid(dynamic response) => getJsonField(
+  int? chatid(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].chat_id''',
-      );
-  dynamic chatupdatedat(dynamic response) => getJsonField(
+      ));
+  String? chatupdatedat(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].chat_updated_at''',
-      );
+      ));
   List<String>? chatmembers(dynamic response) => (getJsonField(
         response,
         r'''$[:].chat_members''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
-  dynamic chatlastmessage(dynamic response) => getJsonField(
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  String? chatlastmessage(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].chat_last_message''',
-      );
-  dynamic chatofteam(dynamic response) => getJsonField(
+      ));
+  int? chatofteam(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].chat_of_team''',
-      );
+      ));
   List? members(dynamic response) => getJsonField(
         response,
         r'''$[:].members''',
@@ -1752,56 +1913,72 @@ class GetchatbyidCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? membersplayernickname(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_nickname''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? membersplayertag(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_tag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? membersplayerflag(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_flag''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? membersplayercountrie(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_countrie''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? membersplayeravatar(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_avatar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<String>? membersplayeruid(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_uid''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   List<int>? membersplayerteam(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_team''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? membersplayerteamrole(dynamic response) => getJsonField(
         response,
         r'''$[:].members[:].player_team_role''',
@@ -1813,14 +1990,18 @@ class GetchatbyidCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<bool>();
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
   List<int>? membersplayerid(dynamic response) => (getJsonField(
         response,
         r'''$[:].members[:].player_id''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
 class GetchatmessagesCall {
@@ -1848,10 +2029,10 @@ class GetchatmessagesCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class GetallundreadedchatmessagesCall {
@@ -1879,10 +2060,10 @@ class GetallundreadedchatmessagesCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class GEToneUNDREADEDCHATMESSAGESCall {
@@ -1910,10 +2091,10 @@ class GEToneUNDREADEDCHATMESSAGESCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class GETUNDREADEDCHATMESSAGEScountCall {
@@ -1941,10 +2122,10 @@ class GETUNDREADEDCHATMESSAGEScountCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class GETCHATMESSAGEScountCall {
@@ -1973,10 +2154,10 @@ class GETCHATMESSAGEScountCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class GetuserchatsCall {
@@ -2008,7 +2189,7 @@ class GetuserchatsCall {
         r'''$[:].chats.chat_members''',
         true,
       ) as List?;
-  dynamic chatschatmembersmember(dynamic response) => getJsonField(
+  dynamic? chatschatmembersmember(dynamic response) => getJsonField(
         response,
         r'''$[:].chats.chat_members[:].member''',
       );
@@ -2043,10 +2224,10 @@ class GETUSERCHATScountCall {
     );
   }
 
-  dynamic count(dynamic response) => getJsonField(
+  int? count(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].count''',
-      );
+      ));
 }
 
 class ChatbyteamidCall {

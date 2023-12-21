@@ -108,8 +108,9 @@ class NotificationStruct extends BaseStruct {
         notificationCreatedAt: data['notification_created_at'] as String?,
       );
 
-  static NotificationStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? NotificationStruct.fromMap(data) : null;
+  static NotificationStruct? maybeFromMap(dynamic data) => data is Map
+      ? NotificationStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'notification_id': _notificationId,

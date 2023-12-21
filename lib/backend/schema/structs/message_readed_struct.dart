@@ -21,8 +21,9 @@ class MessageReadedStruct extends BaseStruct {
         playerUid: data['player_uid'] as String?,
       );
 
-  static MessageReadedStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? MessageReadedStruct.fromMap(data) : null;
+  static MessageReadedStruct? maybeFromMap(dynamic data) => data is Map
+      ? MessageReadedStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'player_uid': _playerUid,
