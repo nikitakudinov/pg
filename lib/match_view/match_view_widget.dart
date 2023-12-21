@@ -96,14 +96,17 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                _model.curentMatchData.first.matchStatus,
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-            ],
+          child: Visibility(
+            visible: (_model.curentMatchData.isNotEmpty) == false,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  _model.curentMatchData.first.matchStatus,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+              ],
+            ),
           ),
         ),
       ),
