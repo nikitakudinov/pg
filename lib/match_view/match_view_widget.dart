@@ -105,7 +105,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                 children: [
                                   Container(
                                     width: 50.0,
-                                    height: 60.0,
+                                    height: 50.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
