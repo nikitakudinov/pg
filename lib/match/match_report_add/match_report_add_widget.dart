@@ -246,7 +246,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.center,
                                           children: [
                                             Expanded(
                                               flex: 2,
