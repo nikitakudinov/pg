@@ -1081,7 +1081,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                       ),
                                       Builder(
                                         builder: (context) {
-                                          final playedMatchesList = FFAppState()
+                                          final planedMatchesList = FFAppState()
                                               .tournamentMatches
                                               .where((e) =>
                                                   e.matchStatus ==
@@ -1093,12 +1093,12 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                             padding: EdgeInsets.zero,
                                             primary: false,
                                             scrollDirection: Axis.vertical,
-                                            itemCount: playedMatchesList.length,
+                                            itemCount: planedMatchesList.length,
                                             itemBuilder: (context,
-                                                playedMatchesListIndex) {
-                                              final playedMatchesListItem =
-                                                  playedMatchesList[
-                                                      playedMatchesListIndex];
+                                                planedMatchesListIndex) {
+                                              final planedMatchesListItem =
+                                                  planedMatchesList[
+                                                      planedMatchesListIndex];
                                               return Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1130,7 +1130,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                           children: [
                                                             Text(
                                                               'Игра состоится ${valueOrDefault<String>(
-                                                                playedMatchesListItem
+                                                                planedMatchesListItem
                                                                     .matchPlannedDate,
                                                                 '01.01.2024',
                                                               )}',
@@ -1159,7 +1159,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                               5.0),
                                                                   child: Image
                                                                       .network(
-                                                                    playedMatchesListItem
+                                                                    planedMatchesListItem
                                                                         .matchRival1
                                                                         .teamLogo,
                                                                     width: 50.0,
@@ -1170,7 +1170,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                   ),
                                                                 ),
                                                                 Text(
-                                                                  '${playedMatchesListItem.matchRival1.teamTag} ${playedMatchesListItem.matchRival1.teamName}',
+                                                                  '${planedMatchesListItem.matchRival1.teamTag} ${planedMatchesListItem.matchRival1.teamName}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium,
@@ -1186,7 +1186,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                       .max,
                                                               children: [
                                                                 Text(
-                                                                  '${playedMatchesListItem.matchRival1Wins.toString()} - ${playedMatchesListItem.matchRival2Wins.toString()}',
+                                                                  '${planedMatchesListItem.matchRival1Wins.toString()} - ${planedMatchesListItem.matchRival2Wins.toString()}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleLarge,
@@ -1208,7 +1208,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                               5.0),
                                                                   child: Image
                                                                       .network(
-                                                                    playedMatchesListItem
+                                                                    planedMatchesListItem
                                                                         .matchRival2
                                                                         .teamLogo,
                                                                     width: 50.0,
@@ -1219,7 +1219,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                   ),
                                                                 ),
                                                                 Text(
-                                                                  '${playedMatchesListItem.matchRival2.teamTag} ${playedMatchesListItem.matchRival2.teamName}',
+                                                                  '${planedMatchesListItem.matchRival2.teamTag} ${planedMatchesListItem.matchRival2.teamName}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium,
