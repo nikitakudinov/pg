@@ -1856,9 +1856,10 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               'notification_from_tournament':
                                   widget.tournamentID,
                               'notification_to_player': FFAppState()
-                                  .tournamentMatches
-                                  .first
-                                  .matchForTournament
+                                  .tournaments
+                                  .where((e) =>
+                                      e.tournamentId == widget.tournamentID)
+                                  .toList()[0]
                                   .tournamentCreator
                                   .playerUid,
                               'notification_type': 'Матч репорт',
