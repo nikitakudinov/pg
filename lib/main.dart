@@ -121,7 +121,6 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'TEAMS': TeamsWidget(),
       'TOURNAMENTS': TournamentsWidget(),
       'CHATS': ChatsWidget(),
       'PLAYERS': PlayersWidget(),
@@ -150,14 +149,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Главная',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.groups,
-              size: 24.0,
-            ),
-            label: 'Команды',
             tooltip: '',
           ),
           BottomNavigationBarItem(
