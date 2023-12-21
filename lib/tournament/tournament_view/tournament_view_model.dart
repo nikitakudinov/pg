@@ -51,6 +51,11 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableController4;
 
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
@@ -86,6 +91,7 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
     tOURNAMENTgridROUNDModel6.dispose();
     tOURNAMENTgridROUNDModel7.dispose();
     expandableController4.dispose();
+    tabBarController?.dispose();
   }
 
   /// Action blocks are added here.
