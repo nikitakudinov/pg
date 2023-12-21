@@ -295,13 +295,14 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'Hello World',
+                                              matchItem.matchForTournament
+                                                  .tournamentTag,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
                                             Text(
-                                              'Hello World',
+                                              'VS',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineLarge,
@@ -310,20 +311,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  'Раунд',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                                Text(
-                                                  'Hello World',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
+                                              children: [],
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -336,12 +324,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                   alignment:
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
-                                                  child: Text(
-                                                    'Hello World',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -369,7 +351,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/811/600',
+                                                  matchItem
+                                                      .matchRival2.teamLogo,
                                                   width: 50.0,
                                                   height: 50.0,
                                                   fit: BoxFit.cover,
@@ -377,14 +360,18 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Hello World',
+                                              matchItem.matchRival2.teamTag
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 20),
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge,
                                             ),
                                             Text(
-                                              'Hello World',
+                                              matchItem.matchRival2.teamName
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 20),
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
