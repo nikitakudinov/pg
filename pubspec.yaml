@@ -74,6 +74,7 @@ dependencies:
   storage_client: 1.5.4
   supabase: 1.11.11
   supabase_flutter: 1.10.24
+  table_calendar: 3.0.9
   timeago: 3.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27
