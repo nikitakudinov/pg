@@ -23,6 +23,7 @@ class TournamentStruct extends BaseStruct {
     String? tournamentGametype,
     int? tournamentRoundsInMatch,
     int? tournamentTeamsCount,
+    List<PlayerStruct>? tournamentOrganizators,
   })  : _tournamentId = tournamentId,
         _tournamentCreatedAt = tournamentCreatedAt,
         _tournamentName = tournamentName,
@@ -38,7 +39,8 @@ class TournamentStruct extends BaseStruct {
         _tournamentEndDate = tournamentEndDate,
         _tournamentGametype = tournamentGametype,
         _tournamentRoundsInMatch = tournamentRoundsInMatch,
-        _tournamentTeamsCount = tournamentTeamsCount;
+        _tournamentTeamsCount = tournamentTeamsCount,
+        _tournamentOrganizators = tournamentOrganizators;
 
   // "tournament_id" field.
   int? _tournamentId;
@@ -146,6 +148,16 @@ class TournamentStruct extends BaseStruct {
       _tournamentTeamsCount = tournamentTeamsCount + amount;
   bool hasTournamentTeamsCount() => _tournamentTeamsCount != null;
 
+  // "tournament_organizators" field.
+  List<PlayerStruct>? _tournamentOrganizators;
+  List<PlayerStruct> get tournamentOrganizators =>
+      _tournamentOrganizators ?? const [];
+  set tournamentOrganizators(List<PlayerStruct>? val) =>
+      _tournamentOrganizators = val;
+  void updateTournamentOrganizators(Function(List<PlayerStruct>) updateFn) =>
+      updateFn(_tournamentOrganizators ??= []);
+  bool hasTournamentOrganizators() => _tournamentOrganizators != null;
+
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         tournamentId: castToType<int>(data['tournament_id']),
@@ -169,6 +181,10 @@ class TournamentStruct extends BaseStruct {
         tournamentRoundsInMatch:
             castToType<int>(data['tournament_rounds_in_match']),
         tournamentTeamsCount: castToType<int>(data['tournament_teams_count']),
+        tournamentOrganizators: getStructList(
+          data['tournament_organizators'],
+          PlayerStruct.fromMap,
+        ),
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) =>
@@ -192,6 +208,8 @@ class TournamentStruct extends BaseStruct {
         'tournament_gametype': _tournamentGametype,
         'tournament_rounds_in_match': _tournamentRoundsInMatch,
         'tournament_teams_count': _tournamentTeamsCount,
+        'tournament_organizators':
+            _tournamentOrganizators?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -260,6 +278,11 @@ class TournamentStruct extends BaseStruct {
         'tournament_teams_count': serializeParam(
           _tournamentTeamsCount,
           ParamType.int,
+        ),
+        'tournament_organizators': serializeParam(
+          _tournamentOrganizators,
+          ParamType.DataStruct,
+          true,
         ),
       }.withoutNulls;
 
@@ -347,6 +370,12 @@ class TournamentStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        tournamentOrganizators: deserializeStructParam<PlayerStruct>(
+          data['tournament_organizators'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: PlayerStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -371,7 +400,9 @@ class TournamentStruct extends BaseStruct {
         tournamentEndDate == other.tournamentEndDate &&
         tournamentGametype == other.tournamentGametype &&
         tournamentRoundsInMatch == other.tournamentRoundsInMatch &&
-        tournamentTeamsCount == other.tournamentTeamsCount;
+        tournamentTeamsCount == other.tournamentTeamsCount &&
+        listEquality.equals(
+            tournamentOrganizators, other.tournamentOrganizators);
   }
 
   @override
@@ -391,7 +422,8 @@ class TournamentStruct extends BaseStruct {
         tournamentEndDate,
         tournamentGametype,
         tournamentRoundsInMatch,
-        tournamentTeamsCount
+        tournamentTeamsCount,
+        tournamentOrganizators
       ]);
 }
 

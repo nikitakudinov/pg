@@ -57,4 +57,21 @@ class TournamentsRow extends SupabaseDataRow {
       getField<String>('tournament_header_image');
   set tournamentHeaderImage(String? value) =>
       setField<String>('tournament_header_image', value);
+
+  String? get tournamentStartDate => getField<String>('tournament_start_date');
+  set tournamentStartDate(String? value) =>
+      setField<String>('tournament_start_date', value);
+
+  String? get tournamentEndDate => getField<String>('tournament_end_date');
+  set tournamentEndDate(String? value) =>
+      setField<String>('tournament_end_date', value);
+
+  String? get tournamentGametype => getField<String>('tournament_gametype');
+  set tournamentGametype(String? value) =>
+      setField<String>('tournament_gametype', value);
+
+  int? get tournamentRoundsInMatch =>
+      getField<int>('tournament_rounds_in_match');
+  set tournamentRoundsInMatch(int? value) =>
+      setField<int>('tournament_rounds_in_match', value);
 }

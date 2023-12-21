@@ -1072,6 +1072,8 @@ class TournamentGroup {
   static TournamentbycreatorCall tournamentbycreatorCall =
       TournamentbycreatorCall();
   static TournamentsCall tournamentsCall = TournamentsCall();
+  static TournamenorganizatorsCall tournamenorganizatorsCall =
+      TournamenorganizatorsCall();
   static TournamentmembersCall tournamentmembersCall = TournamentmembersCall();
   static TournamentmembersaCall tournamentmembersaCall =
       TournamentmembersaCall();
@@ -1136,7 +1138,7 @@ class TournamentsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'TOURNAMENTS',
       apiUrl:
-          '${TournamentGroup.baseUrl}tournaments?select=*,tournament_members:teams(*)',
+          '${TournamentGroup.baseUrl}tournaments?select=*,tournament_members:teams(*),tournament_organizators:players(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1181,6 +1183,31 @@ class TournamentsCall {
         response,
         r'''$[:].tournament_creator''',
       );
+}
+
+class TournamenorganizatorsCall {
+  Future<ApiCallResponse> call({
+    int? tournamentID,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TOURNAMENORGANIZATORS',
+      apiUrl:
+          '${TournamentGroup.baseUrl}tournaments?tournament_id=eq.${tournamentID}&select=tournamplayers(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class TournamentmembersCall {
