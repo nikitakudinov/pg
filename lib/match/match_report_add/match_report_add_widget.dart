@@ -254,7 +254,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                    CrossAxisAlignment.end,
                                                 children: [
                                                   Container(
                                                     width: 50.0,
@@ -296,7 +296,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodySmall
+                                                        .labelMedium
                                                         .override(
                                                           fontFamily:
                                                               'Cabin Condensed',
@@ -375,7 +375,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Container(
                                                     width: 50.0,
@@ -417,14 +417,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                        ),
+                                                        .labelMedium,
                                                   ),
                                                 ],
                                               ),
