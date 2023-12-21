@@ -230,31 +230,6 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                           ].divide(SizedBox(height: 5.0)),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 0.0),
-                              child: Container(
-                                width: 2.0,
-                                height: 120.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                ),
-                                child: Text(
-                                  ' ',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                       Expanded(
                         flex: 2,
                         child: Column(
@@ -314,7 +289,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                           ].divide(SizedBox(height: 5.0)),
                         ),
                       ),
-                    ],
+                    ].divide(SizedBox(width: 15.0)),
                   ),
                 ),
               ),
