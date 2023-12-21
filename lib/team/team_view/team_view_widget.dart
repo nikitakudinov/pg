@@ -337,17 +337,24 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                             ),
                                           ),
                                           Text(
-                                            (valueOrDefault<int>(
-                                                      _model.curentTeamDATA
-                                                          .first.teamMatchWins,
-                                                      0,
-                                                    ) /
-                                                    valueOrDefault<int>(
-                                                      _model.curentTeamDATA
-                                                          .first.teamMatchLoses,
-                                                      0,
-                                                    ))
-                                                .toString(),
+                                            valueOrDefault<String>(
+                                              (valueOrDefault<int>(
+                                                        _model
+                                                            .curentTeamDATA
+                                                            .first
+                                                            .teamMatchWins,
+                                                        0,
+                                                      ) /
+                                                      valueOrDefault<int>(
+                                                        _model
+                                                            .curentTeamDATA
+                                                            .first
+                                                            .teamMatchLoses,
+                                                        0,
+                                                      ))
+                                                  .toString(),
+                                              '0',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge,
                                           ),
@@ -438,7 +445,20 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                           ),
                                         ),
                                         Text(
-                                          '0,70',
+                                          valueOrDefault<String>(
+                                            (valueOrDefault<int>(
+                                                      _model.curentTeamDATA
+                                                          .first.teamMatchWins,
+                                                      0,
+                                                    ) /
+                                                    valueOrDefault<int>(
+                                                      _model.curentTeamDATA
+                                                          .first.teamMatchLoses,
+                                                      0,
+                                                    ))
+                                                .toString(),
+                                            '0',
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
                                         ),
