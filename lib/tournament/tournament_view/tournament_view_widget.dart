@@ -926,11 +926,12 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                               .where((e) =>
                                                   e.matchStatus ==
                                                   'Матч сыгран')
+                                              .toList()
+                                              .take(5)
                                               .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             primary: false,
-                                            shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount: playedMatchesList.length,
                                             itemBuilder: (context,
@@ -1078,14 +1079,168 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                           );
                                         },
                                       ),
-                                      Text(
-                                        'Tab View 2',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              fontSize: 32.0,
-                                            ),
+                                      Builder(
+                                        builder: (context) {
+                                          final playedMatchesList = FFAppState()
+                                              .tournamentMatches
+                                              .where((e) =>
+                                                  e.matchStatus ==
+                                                  'Матч сыгран')
+                                              .toList()
+                                              .take(5)
+                                              .toList();
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            primary: false,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: playedMatchesList.length,
+                                            itemBuilder: (context,
+                                                playedMatchesListIndex) {
+                                              final playedMatchesListItem =
+                                                  playedMatchesList[
+                                                      playedMatchesListIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.0, 5.0, 15.0, 0.0),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Text(
+                                                              'Игра состоится ${valueOrDefault<String>(
+                                                                playedMatchesListItem
+                                                                    .matchPlannedDate,
+                                                                '01.01.2024',
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmall,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            flex: 2,
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    playedMatchesListItem
+                                                                        .matchRival1
+                                                                        .teamLogo,
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '${playedMatchesListItem.matchRival1.teamTag} ${playedMatchesListItem.matchRival1.teamName}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 1,
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Text(
+                                                                  '${playedMatchesListItem.matchRival1Wins.toString()} - ${playedMatchesListItem.matchRival2Wins.toString()}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleLarge,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 2,
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    playedMatchesListItem
+                                                                        .matchRival2
+                                                                        .teamLogo,
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '${playedMatchesListItem.matchRival2.teamTag} ${playedMatchesListItem.matchRival2.teamName}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
                                       ),
                                     ],
                                   ),
