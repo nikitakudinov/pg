@@ -247,7 +247,9 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                   child: wrapWithModel(
                     model: _model.tournamentInfoTabsModel,
                     updateCallback: () => setState(() {}),
-                    child: TournamentInfoTabsWidget(),
+                    child: TournamentInfoTabsWidget(
+                      tournamentID: widget.tournamentID,
+                    ),
                   ),
                 ),
                 Container(
