@@ -185,10 +185,14 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        '${'${FFAppState().curentMatchData.first.matchDate}'}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                      Container(
+                                        width: 70.0,
+                                        decoration: BoxDecoration(),
+                                        child: Text(
+                                          '${'${FFAppState().curentMatchData.first.matchDate}'}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ),
                                     ],
                                   ),
