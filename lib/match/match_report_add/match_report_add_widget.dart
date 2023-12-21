@@ -220,8 +220,10 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                         itemCount: match.length,
                         itemBuilder: (context, matchIndex) {
                           final matchItem = match[matchIndex];
-                          return Container(
-                              width: 100, height: 100, color: Colors.green);
+                          return Text(
+                            matchItem.matchRival1.teamName,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          );
                         },
                       );
                     },
