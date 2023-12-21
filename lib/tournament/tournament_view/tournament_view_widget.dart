@@ -885,204 +885,213 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                         expanded: Container(
                           height: 200.0,
                           decoration: BoxDecoration(),
-                          child: Column(
-                            children: [
-                              Align(
-                                alignment: Alignment(0.0, 0),
-                                child: TabBar(
-                                  labelColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  unselectedLabelColor:
-                                      FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).titleMedium,
-                                  unselectedLabelStyle: TextStyle(),
-                                  indicatorColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  padding: EdgeInsets.all(4.0),
-                                  tabs: [
-                                    Tab(
-                                      text: 'Сыгранные',
-                                    ),
-                                    Tab(
-                                      text: 'Предстоящие',
-                                    ),
-                                  ],
-                                  controller: _model.tabBarController,
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 0.0),
+                            child: Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment(0.0, 0),
+                                  child: TabBar(
+                                    labelColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    unselectedLabelColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).titleSmall,
+                                    unselectedLabelStyle: TextStyle(),
+                                    indicatorColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    padding: EdgeInsets.all(4.0),
+                                    tabs: [
+                                      Tab(
+                                        text: 'Сыгранные',
+                                      ),
+                                      Tab(
+                                        text: 'Предстоящие',
+                                      ),
+                                    ],
+                                    controller: _model.tabBarController,
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: TabBarView(
-                                  controller: _model.tabBarController,
-                                  children: [
-                                    Builder(
-                                      builder: (context) {
-                                        final playedMatchesList = FFAppState()
-                                            .tournamentMatches
-                                            .where((e) =>
-                                                e.matchStatus == 'Матч сыгран')
-                                            .toList();
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: playedMatchesList.length,
-                                          itemBuilder: (context,
-                                              playedMatchesListIndex) {
-                                            final playedMatchesListItem =
-                                                playedMatchesList[
-                                                    playedMatchesListIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 5.0, 15.0, 0.0),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0),
-                                                      child: Row(
+                                Expanded(
+                                  child: TabBarView(
+                                    controller: _model.tabBarController,
+                                    children: [
+                                      Builder(
+                                        builder: (context) {
+                                          final playedMatchesList = FFAppState()
+                                              .tournamentMatches
+                                              .where((e) =>
+                                                  e.matchStatus ==
+                                                  'Матч сыгран')
+                                              .toList()
+                                              .take(5)
+                                              .toList();
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: playedMatchesList.length,
+                                            itemBuilder: (context,
+                                                playedMatchesListIndex) {
+                                              final playedMatchesListItem =
+                                                  playedMatchesList[
+                                                      playedMatchesListIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.0, 5.0, 15.0, 0.0),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Text(
+                                                              playedMatchesListItem
+                                                                  .matchDate,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
                                                         children: [
-                                                          Text(
-                                                            playedMatchesListItem
-                                                                .matchDate,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
+                                                          Expanded(
+                                                            flex: 2,
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    playedMatchesListItem
+                                                                        .matchRival1
+                                                                        .teamLogo,
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '${playedMatchesListItem.matchRival1.teamTag} ${playedMatchesListItem.matchRival1.teamName}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 1,
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Text(
+                                                                  '${playedMatchesListItem.matchRival1Wins.toString()} - ${playedMatchesListItem.matchRival2Wins.toString()}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleLarge,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 2,
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    playedMatchesListItem
+                                                                        .matchRival2
+                                                                        .teamLogo,
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '${playedMatchesListItem.matchRival2.teamTag} ${playedMatchesListItem.matchRival2.teamName}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium,
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ],
                                                       ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Expanded(
-                                                          flex: 2,
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  playedMatchesListItem
-                                                                      .matchRival1
-                                                                      .teamLogo,
-                                                                  width: 50.0,
-                                                                  height: 50.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                '${playedMatchesListItem.matchRival1.teamTag} ${playedMatchesListItem.matchRival1.teamName}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex: 1,
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
-                                                                '${playedMatchesListItem.matchRival1Wins.toString()} - ${playedMatchesListItem.matchRival2Wins.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLarge,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex: 2,
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  playedMatchesListItem
-                                                                      .matchRival2
-                                                                      .teamLogo,
-                                                                  width: 50.0,
-                                                                  height: 50.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                '${playedMatchesListItem.matchRival2.teamTag} ${playedMatchesListItem.matchRival2.teamName}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [],
-                                                    ),
-                                                  ],
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(
-                                      'Tab View 2',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Cabin Condensed',
-                                            fontSize: 32.0,
-                                          ),
-                                    ),
-                                  ],
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                      Text(
+                                        'Tab View 2',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              fontSize: 32.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         theme: ExpandableThemeData(
