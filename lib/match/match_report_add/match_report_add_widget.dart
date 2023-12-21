@@ -218,7 +218,11 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                   ),
                   child: Text(
                     valueOrDefault<String>(
-                      FFAppState().curentMatchData.first.matchRival1.teamName,
+                      FFAppState()
+                          .curentMatchData
+                          .first
+                          .matchRival1
+                          .teamCountry,
                       '0',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium,
