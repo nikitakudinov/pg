@@ -62,6 +62,8 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
 
     _model.expandableController1 = ExpandableController(initialExpanded: false);
     _model.expandableController2 = ExpandableController(initialExpanded: false);
+    _model.expandableController3 = ExpandableController(initialExpanded: false);
+    _model.expandableController4 = ExpandableController(initialExpanded: false);
   }
 
   @override
@@ -253,12 +255,68 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(),
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    color: FlutterFlowTheme.of(context).secondary,
+                    child: ExpandableNotifier(
+                      controller: _model.expandableController1,
+                      child: ExpandablePanel(
+                        header: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 0.0, 0.0),
+                              child: FaIcon(
+                                FontAwesomeIcons.chessKing,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                            ),
+                            Container(
+                              height: 60.0,
+                              decoration: BoxDecoration(),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 15.0, 0.0, 15.0),
+                                child: Text(
+                                  'Организаторы',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        collapsed: Container(),
+                        expanded: Container(),
+                        theme: ExpandableThemeData(
+                          tapHeaderToExpand: true,
+                          tapBodyToExpand: false,
+                          tapBodyToCollapse: false,
+                          headerAlignment:
+                              ExpandablePanelHeaderAlignment.center,
+                          hasIcon: true,
+                          iconColor: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondary,
+                  ),
                   child: Container(
                     width: double.infinity,
                     color: Color(0x00000000),
                     child: ExpandableNotifier(
-                      controller: _model.expandableController1,
+                      controller: _model.expandableController2,
                       child: ExpandablePanel(
                         header: Container(
                           height: 60.0,
@@ -469,7 +527,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                     width: double.infinity,
                     color: FlutterFlowTheme.of(context).secondary,
                     child: ExpandableNotifier(
-                      controller: _model.expandableController2,
+                      controller: _model.expandableController3,
                       child: ExpandablePanel(
                         header: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -595,6 +653,60 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                 .addToStart(SizedBox(width: 15.0)),
                           ),
                         ),
+                        theme: ExpandableThemeData(
+                          tapHeaderToExpand: true,
+                          tapBodyToExpand: false,
+                          tapBodyToCollapse: false,
+                          headerAlignment:
+                              ExpandablePanelHeaderAlignment.center,
+                          hasIcon: true,
+                          iconColor: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    color: FlutterFlowTheme.of(context).secondary,
+                    child: ExpandableNotifier(
+                      controller: _model.expandableController4,
+                      child: ExpandablePanel(
+                        header: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 0.0, 0.0),
+                              child: Icon(
+                                Icons.sports_kabaddi_sharp,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                            ),
+                            Container(
+                              height: 60.0,
+                              decoration: BoxDecoration(),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 15.0, 0.0, 15.0),
+                                child: Text(
+                                  'Матчи',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        collapsed: Container(),
+                        expanded: Container(),
                         theme: ExpandableThemeData(
                           tapHeaderToExpand: true,
                           tapBodyToExpand: false,
