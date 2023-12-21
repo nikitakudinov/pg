@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/screen_shot_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -601,173 +602,12 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                     ),
                   ),
                 ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 0.0, 10.0),
-                        child: Text(
-                          'Скриншот 1',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).bodyLarge,
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Visibility(
-                          visible: _model.screenShot1VALUE != '0',
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5.0),
-                                child: Image.network(
-                                  _model.screenShot1VALUE,
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (_model.screenShot1VALUE == '0')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 10.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              final selectedMedia = await selectMedia(
-                                storageFolderPath: 'matchScreenshots',
-                                imageQuality: 100,
-                                mediaSource: MediaSource.photoGallery,
-                                multiImage: false,
-                              );
-                              if (selectedMedia != null &&
-                                  selectedMedia.every((m) => validateFileFormat(
-                                      m.storagePath, context))) {
-                                setState(() => _model.isDataUploading1 = true);
-                                var selectedUploadedFiles = <FFUploadedFile>[];
-
-                                var downloadUrls = <String>[];
-                                try {
-                                  selectedUploadedFiles = selectedMedia
-                                      .map((m) => FFUploadedFile(
-                                            name: m.storagePath.split('/').last,
-                                            bytes: m.bytes,
-                                            height: m.dimensions?.height,
-                                            width: m.dimensions?.width,
-                                            blurHash: m.blurHash,
-                                          ))
-                                      .toList();
-
-                                  downloadUrls =
-                                      await uploadSupabaseStorageFiles(
-                                    bucketName: 'playground',
-                                    selectedFiles: selectedMedia,
-                                  );
-                                } finally {
-                                  _model.isDataUploading1 = false;
-                                }
-                                if (selectedUploadedFiles.length ==
-                                        selectedMedia.length &&
-                                    downloadUrls.length ==
-                                        selectedMedia.length) {
-                                  setState(() {
-                                    _model.uploadedLocalFile1 =
-                                        selectedUploadedFiles.first;
-                                    _model.uploadedFileUrl1 =
-                                        downloadUrls.first;
-                                  });
-                                } else {
-                                  setState(() {});
-                                  return;
-                                }
-                              }
-
-                              setState(() {
-                                _model.screenShot1VALUE =
-                                    _model.uploadedFileUrl1;
-                              });
-                            },
-                            text: 'Загрузить скриншот',
-                            options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).tertiary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(3.0),
-                            ),
-                          ),
-                        ),
-                      if (_model.screenShot1VALUE != '0')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 10.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await deleteSupabaseFileFromPublicUrl(
-                                  _model.screenShot1VALUE);
-                              setState(() {
-                                _model.screenShot1VALUE = '';
-                              });
-                            },
-                            text: 'Удалить',
-                            options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: Color(0xFF750000),
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(3.0),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
+              wrapWithModel(
+                model: _model.screenShotCardModel,
+                updateCallback: () => setState(() {}),
+                child: ScreenShotCardWidget(
+                  parameter1: _model.screenShot1VALUE,
+                  screenshotNumber: 1,
                 ),
               ),
               if (_model.screenShot1VALUE != '0')
@@ -787,6 +627,184 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               15.0, 15.0, 0.0, 10.0),
                           child: Text(
                             'Скриншот 2',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context).bodyLarge,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Visibility(
+                            visible: _model.screenShot2VALUE != '0',
+                            child: Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  child: Image.network(
+                                    valueOrDefault<String>(
+                                      _model.screenShot2VALUE,
+                                      '0',
+                                    ),
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        if (_model.screenShot2VALUE == '0')
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 10.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                final selectedMedia = await selectMedia(
+                                  storageFolderPath: 'matchScreenshots',
+                                  imageQuality: 100,
+                                  mediaSource: MediaSource.photoGallery,
+                                  multiImage: false,
+                                );
+                                if (selectedMedia != null &&
+                                    selectedMedia.every((m) =>
+                                        validateFileFormat(
+                                            m.storagePath, context))) {
+                                  setState(
+                                      () => _model.isDataUploading1 = true);
+                                  var selectedUploadedFiles =
+                                      <FFUploadedFile>[];
+
+                                  var downloadUrls = <String>[];
+                                  try {
+                                    selectedUploadedFiles = selectedMedia
+                                        .map((m) => FFUploadedFile(
+                                              name:
+                                                  m.storagePath.split('/').last,
+                                              bytes: m.bytes,
+                                              height: m.dimensions?.height,
+                                              width: m.dimensions?.width,
+                                              blurHash: m.blurHash,
+                                            ))
+                                        .toList();
+
+                                    downloadUrls =
+                                        await uploadSupabaseStorageFiles(
+                                      bucketName: 'playground',
+                                      selectedFiles: selectedMedia,
+                                    );
+                                  } finally {
+                                    _model.isDataUploading1 = false;
+                                  }
+                                  if (selectedUploadedFiles.length ==
+                                          selectedMedia.length &&
+                                      downloadUrls.length ==
+                                          selectedMedia.length) {
+                                    setState(() {
+                                      _model.uploadedLocalFile1 =
+                                          selectedUploadedFiles.first;
+                                      _model.uploadedFileUrl1 =
+                                          downloadUrls.first;
+                                    });
+                                  } else {
+                                    setState(() {});
+                                    return;
+                                  }
+                                }
+
+                                setState(() {
+                                  _model.screenShot2VALUE =
+                                      _model.uploadedFileUrl1;
+                                });
+                              },
+                              text: 'Загрузить скриншот',
+                              options: FFButtonOptions(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: 30.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).tertiary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color: Colors.white,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                            ),
+                          ),
+                        if (_model.screenShot2VALUE != '0')
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 10.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await deleteSupabaseFileFromPublicUrl(
+                                    _model.screenShot1VALUE);
+                                setState(() {
+                                  _model.screenShot1VALUE = '';
+                                });
+                              },
+                              text: 'Удалить',
+                              options: FFButtonOptions(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: 30.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color: Color(0xFF750000),
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              if (_model.screenShot1VALUE != '0')
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 15.0, 0.0, 10.0),
+                          child: Text(
+                            'Скриншот 3',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context).bodyLarge,
                           ),

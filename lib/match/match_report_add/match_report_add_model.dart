@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/screen_shot_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -20,6 +21,22 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   String screenShot2VALUE = '0';
 
+  String screenShot3VALUE = '0';
+
+  String screenShot4VALUE = '0';
+
+  String screenShot5VALUE = '0';
+
+  String? screenShot6VALUE = '0';
+
+  String screenShot7VALUE = '0';
+
+  String screenShot8VALUE = '0';
+
+  String screenShot9VALUE = '0';
+
+  String screenShot10VALUE = 'false';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -37,6 +54,8 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   FocusNode? rival2WinsFocusNode;
   TextEditingController? rival2WinsController;
   String? Function(BuildContext, String?)? rival2WinsControllerValidator;
+  // Model for screenShotCard component.
+  late ScreenShotCardModel screenShotCardModel;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -49,7 +68,9 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    screenShotCardModel = createModel(context, () => ScreenShotCardModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
@@ -58,6 +79,8 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
     rival2WinsFocusNode?.dispose();
     rival2WinsController?.dispose();
+
+    screenShotCardModel.dispose();
   }
 
   /// Action blocks are added here.
