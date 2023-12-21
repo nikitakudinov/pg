@@ -667,7 +667,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               Container(
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                 ),
                                 child: Visibility(
                                   visible: _model.screenShot1VALUE != '0',
@@ -675,8 +675,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     padding: EdgeInsets.all(10.0),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                       ),
@@ -855,7 +853,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               Container(
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                 ),
                                 child: Visibility(
                                   visible: _model.screenShot2VALUE != '0',
@@ -1044,7 +1042,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               Container(
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                 ),
                                 child: Visibility(
                                   visible: _model.screenShot3VALUE != '0',
