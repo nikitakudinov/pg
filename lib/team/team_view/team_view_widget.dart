@@ -338,21 +338,23 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                           ),
                                           Text(
                                             valueOrDefault<String>(
-                                              (valueOrDefault<int>(
-                                                        _model
-                                                            .curentTeamDATA
-                                                            .first
-                                                            .teamMatchRoundWins,
-                                                        0,
-                                                      ) /
-                                                      valueOrDefault<int>(
-                                                        _model
-                                                            .curentTeamDATA
-                                                            .first
-                                                            .teamMatchRoundLoses,
-                                                        0,
-                                                      ))
-                                                  .toString(),
+                                              formatNumber(
+                                                valueOrDefault<int>(
+                                                      _model
+                                                          .curentTeamDATA
+                                                          .first
+                                                          .teamMatchRoundWins,
+                                                      0,
+                                                    ) /
+                                                    valueOrDefault<int>(
+                                                      _model
+                                                          .curentTeamDATA
+                                                          .first
+                                                          .teamMatchRoundLoses,
+                                                      0,
+                                                    ),
+                                                formatType: FormatType.percent,
+                                              ),
                                               '0',
                                             ),
                                             style: FlutterFlowTheme.of(context)
