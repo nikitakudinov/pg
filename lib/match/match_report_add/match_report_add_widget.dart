@@ -457,32 +457,37 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                           FlutterFlowTheme.of(context).tertiary,
                                       borderRadius: BorderRadius.circular(5.0),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model.rival1WinsController,
-                                        focusNode: _model.rival1WinsFocusNode,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'СЧЕТ',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          enabledBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          focusedErrorBorder: InputBorder.none,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: TextFormField(
+                                          controller:
+                                              _model.rival1WinsController,
+                                          focusNode: _model.rival1WinsFocusNode,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'СЧЕТ',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelSmall,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            enabledBorder: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            focusedErrorBorder:
+                                                InputBorder.none,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          keyboardType: TextInputType.number,
+                                          validator: _model
+                                              .rival1WinsControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        keyboardType: TextInputType.number,
-                                        validator: _model
-                                            .rival1WinsControllerValidator
-                                            .asValidator(context),
                                       ),
                                     ),
                                   ),
@@ -513,32 +518,37 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                           FlutterFlowTheme.of(context).tertiary,
                                       borderRadius: BorderRadius.circular(5.0),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model.rival2WinsController,
-                                        focusNode: _model.rival2WinsFocusNode,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'СЧЕТ',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          enabledBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          focusedErrorBorder: InputBorder.none,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: TextFormField(
+                                          controller:
+                                              _model.rival2WinsController,
+                                          focusNode: _model.rival2WinsFocusNode,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'СЧЕТ',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelSmall,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            enabledBorder: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            focusedErrorBorder:
+                                                InputBorder.none,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          keyboardType: TextInputType.number,
+                                          validator: _model
+                                              .rival2WinsControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        keyboardType: TextInputType.number,
-                                        validator: _model
-                                            .rival2WinsControllerValidator
-                                            .asValidator(context),
                                       ),
                                     ),
                                   ),
