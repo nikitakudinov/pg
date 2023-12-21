@@ -797,7 +797,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 .secondaryBackground,
                           ),
                           child: Visibility(
-                            visible: _model.screenShot1VALUE != '0',
+                            visible: _model.screenShot2VALUE != '0',
                             child: Padding(
                               padding: EdgeInsets.all(10.0),
                               child: Container(
@@ -807,7 +807,10 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5.0),
                                   child: Image.network(
-                                    _model.screenShot1VALUE,
+                                    valueOrDefault<String>(
+                                      _model.screenShot2VALUE,
+                                      '0',
+                                    ),
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
                                     fit: BoxFit.cover,
@@ -817,7 +820,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             ),
                           ),
                         ),
-                        if (_model.screenShot1VALUE == '0')
+                        if (_model.screenShot2VALUE == '0')
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 10.0),
