@@ -19,14 +19,10 @@ export 'tournament_view_model.dart';
 class TournamentViewWidget extends StatefulWidget {
   const TournamentViewWidget({
     Key? key,
-    this.members,
-    this.organizators,
     int? tournamentID,
   })  : this.tournamentID = tournamentID ?? 0,
         super(key: key);
 
-  final List<int>? members;
-  final List<String>? organizators;
   final int tournamentID;
 
   @override
@@ -294,96 +290,144 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                           ],
                         ),
                         collapsed: Container(),
-                        expanded: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 110.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Builder(
-                            builder: (context) {
-                              final organizatorsList = FFAppState()
-                                  .tournaments
-                                  .where((e) =>
-                                      e.tournamentId == widget.tournamentID)
-                                  .toList()
-                                  .map((e) => e.tournamentOrganizators[0])
-                                  .toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: organizatorsList.length,
-                                itemBuilder: (context, organizatorsListIndex) {
-                                  final organizatorsListItem =
-                                      organizatorsList[organizatorsListIndex];
-                                  return Container(
-                                    width: 100.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 10.0, 0.0, 0.0),
-                                          child: Container(
-                                            width: 60.0,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                'https://picsum.photos/seed/335/600',
-                                                width: 60.0,
-                                                height: 60.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 0.0, 0.0, 10.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                width: 70.0,
+                        expanded: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Builder(
+                              builder: (context) {
+                                final curentTournamentData = FFAppState()
+                                    .tournaments
+                                    .where((e) =>
+                                        e.tournamentId == widget.tournamentID)
+                                    .toList();
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: curentTournamentData.length,
+                                  itemBuilder:
+                                      (context, curentTournamentDataIndex) {
+                                    final curentTournamentDataItem =
+                                        curentTournamentData[
+                                            curentTournamentDataIndex];
+                                    return Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      height: 110.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final organizatorsList =
+                                              curentTournamentDataItem
+                                                  .tournamentOrganizators
+                                                  .toList();
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: organizatorsList.length,
+                                            itemBuilder: (context,
+                                                organizatorsListIndex) {
+                                              final organizatorsListItem =
+                                                  organizatorsList[
+                                                      organizatorsListIndex];
+                                              return Container(
+                                                width: 100.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
                                                 ),
-                                                child: Text(
-                                                  'Hello World',
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 60.0,
+                                                        height: 60.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          child: Image.network(
+                                                            organizatorsListItem
+                                                                .playerAvatar,
+                                                            width: 60.0,
+                                                            height: 60.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                            width: 70.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            child: Text(
+                                                              organizatorsListItem
+                                                                  .playerNickname,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ],
                         ),
                         theme: ExpandableThemeData(
                           tapHeaderToExpand: true,
