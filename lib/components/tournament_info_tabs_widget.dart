@@ -1,7 +1,10 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tournament_info_tabs_model.dart';
@@ -21,8 +24,36 @@ class TournamentInfoTabsWidget extends StatefulWidget {
       _TournamentInfoTabsWidgetState();
 }
 
-class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
+class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
+    with TickerProviderStateMixin {
   late TournamentInfoTabsModel _model;
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -304,7 +335,8 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                       ].divide(SizedBox(width: 15.0)),
                     ),
                   ),
-                ),
+                ).animateOnPageLoad(
+                    animationsMap['containerOnPageLoadAnimation1']!),
               ),
             if (_model.rulesTabVISIBILITY)
               Container(
@@ -315,7 +347,8 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                   'Hello World',
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
-              ),
+              ).animateOnPageLoad(
+                  animationsMap['containerOnPageLoadAnimation2']!),
           ],
         ),
       ),
