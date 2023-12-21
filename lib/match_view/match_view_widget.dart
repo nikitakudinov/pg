@@ -101,7 +101,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                               flex: 2,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Container(
                                     width: 75.0,
@@ -135,12 +135,14 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                   Text(
                                     '${FFAppState().curentMatchData.first.matchRival1.teamTag}'
                                         .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.end,
                                     style:
                                         FlutterFlowTheme.of(context).titleLarge,
                                   ),
                                   Text(
                                     '${FFAppState().curentMatchData.first.matchRival1.teamName}'
                                         .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                   ),
@@ -182,7 +184,13 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [],
+                                    children: [
+                                      Text(
+                                        '${'${FFAppState().curentMatchData.first.matchDate}'}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -191,6 +199,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                               flex: 2,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     width: 75.0,
@@ -224,12 +233,14 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                   Text(
                                     '${FFAppState().curentMatchData.first.matchRival2.teamTag}'
                                         .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.start,
                                     style:
                                         FlutterFlowTheme.of(context).titleLarge,
                                   ),
                                   Text(
                                     '${FFAppState().curentMatchData.first.matchRival2.teamName}'
                                         .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                   ),
@@ -242,12 +253,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '${'${FFAppState().curentMatchData.first.matchDate}'}',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
+                        children: [],
                       ),
                     ],
                   ),
