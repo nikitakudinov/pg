@@ -457,7 +457,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 30.0, 0.0, 0.0),
+                                      10.0, 35.0, 0.0, 0.0),
                                   child: Container(
                                     width: 50.0,
                                     height: 50.0,
@@ -518,7 +518,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 30.0, 10.0, 0.0),
+                                      0.0, 35.0, 10.0, 0.0),
                                   child: Container(
                                     width: 50.0,
                                     height: 50.0,
