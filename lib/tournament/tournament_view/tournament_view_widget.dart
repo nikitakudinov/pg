@@ -106,7 +106,13 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            FaIcon(
+              FontAwesomeIcons.fileExport,
+              color: FlutterFlowTheme.of(context).secondaryText,
+              size: 24.0,
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),

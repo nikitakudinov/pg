@@ -17,4 +17,6 @@ export '/player/players/players_widget.dart' show PlayersWidget;
 export '/tournament/tournament_edite/tournament_edite_widget.dart'
     show TournamentEditeWidget;
 export '/match/matches/matches_widget.dart' show MatchesWidget;
-export '/match_view/match_view_widget.dart' show MatchViewWidget;
+export '/match/match_view/match_view_widget.dart' show MatchViewWidget;
+export '/match/match_report_add/match_report_add_widget.dart'
+    show MatchReportAddWidget;

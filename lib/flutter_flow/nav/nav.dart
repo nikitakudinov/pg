@@ -194,6 +194,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => MatchViewWidget(
             matchID: params.getParam('matchID', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'MATCH_REPORT_ADD',
+          path: '/matchReportAdd',
+          builder: (context, params) => MatchReportAddWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

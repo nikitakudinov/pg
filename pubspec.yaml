@@ -124,6 +124,34 @@ flutter:
     - assets/lottie_animations/
     - assets/rive_animations/
     - assets/pdfs/
+  fonts:
+    - family: RemixIcons
+      fonts:
+        - asset: assets/fonts/remix-icons.ttf
+    - family: HeroIconsSolid
+      fonts:
+        - asset: assets/fonts/hero-icons-solid.ttf
+    - family: HeroIconsOutline
+      fonts:
+        - asset: assets/fonts/hero-icons-outline.ttf
+    - family: FeatherIcons
+      fonts:
+        - asset: assets/fonts/feather-icons.ttf
+    - family: EvaIconsOutline
+      fonts:
+        - asset: assets/fonts/eva-icons-outline.ttf
+    - family: EvaIconsFill
+      fonts:
+        - asset: assets/fonts/eva-icons-fill.ttf
+    - family: CoolIconsDuocolor
+      fonts:
+        - asset: assets/fonts/cool-icons-duocolor.ttf
+    - family: CoolIconsDuotone
+      fonts:
+        - asset: assets/fonts/cool-icons-duotone.ttf
+    - family: CoolIconsLine
+      fonts:
+        - asset: assets/fonts/cool-icons-line.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
