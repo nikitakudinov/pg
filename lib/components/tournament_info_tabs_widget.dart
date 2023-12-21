@@ -64,50 +64,47 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: Visibility(
-                      visible: _model.infoTabVISIBILITY,
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            _model.infoTabVISIBILITY = true;
-                            _model.rulesTabVISIBILITY = false;
-                          });
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Icon(
-                              Icons.settings_outlined,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
-                            ),
-                            Text(
-                              'Основное',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                            if (valueOrDefault<bool>(
-                              _model.infoTabVISIBILITY,
-                              true,
-                            ))
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 5.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 1.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                  ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setState(() {
+                          _model.infoTabVISIBILITY = true;
+                          _model.rulesTabVISIBILITY = false;
+                        });
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Icon(
+                            Icons.settings_outlined,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                          Text(
+                            'Основное',
+                            style: FlutterFlowTheme.of(context).bodyLarge,
+                          ),
+                          if (valueOrDefault<bool>(
+                            _model.infoTabVISIBILITY,
+                            true,
+                          ))
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 5.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 1.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).primary,
                                 ),
                               ),
-                          ]
-                              .divide(SizedBox(height: 5.0))
-                              .addToStart(SizedBox(height: 10.0)),
-                        ),
+                            ),
+                        ]
+                            .divide(SizedBox(height: 5.0))
+                            .addToStart(SizedBox(height: 10.0)),
                       ),
                     ),
                   ),
@@ -117,50 +114,47 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: Visibility(
-                      visible: _model.infoTabVISIBILITY,
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            _model.infoTabVISIBILITY = false;
-                            _model.rulesTabVISIBILITY = true;
-                          });
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Icon(
-                              Icons.front_hand_outlined,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
-                            ),
-                            Text(
-                              'Правила и ограничения',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                            if (valueOrDefault<bool>(
-                              _model.rulesTabVISIBILITY,
-                              false,
-                            ))
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 5.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 1.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                  ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setState(() {
+                          _model.infoTabVISIBILITY = false;
+                          _model.rulesTabVISIBILITY = true;
+                        });
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Icon(
+                            Icons.front_hand_outlined,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                          Text(
+                            'Правила и ограничения',
+                            style: FlutterFlowTheme.of(context).bodyLarge,
+                          ),
+                          if (valueOrDefault<bool>(
+                            _model.rulesTabVISIBILITY,
+                            false,
+                          ))
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 5.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 1.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).primary,
                                 ),
                               ),
-                          ]
-                              .divide(SizedBox(height: 5.0))
-                              .addToStart(SizedBox(height: 10.0)),
-                        ),
+                            ),
+                        ]
+                            .divide(SizedBox(height: 5.0))
+                            .addToStart(SizedBox(height: 10.0)),
                       ),
                     ),
                   ),
@@ -328,6 +322,10 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
               Container(
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Text(
+                  'Hello World',
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
               ),
           ],
