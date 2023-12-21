@@ -457,7 +457,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
                               flex: 2,
@@ -531,7 +531,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 100.0, 0.0, 0.0),
+                                        0.0, 140.0, 0.0, 0.0),
                                     child: Container(
                                       width: 80.0,
                                       height: 50.0,
