@@ -736,16 +736,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             onPressed: () async {
                               await deleteSupabaseFileFromPublicUrl(
                                   _model.screenShot1VALUE);
-
-                              context.pushNamed(
-                                'MATCH_REPORT_ADD',
-                                queryParameters: {
-                                  'tournamentID': serializeParam(
-                                    widget.tournamentID,
-                                    ParamType.int,
-                                  ),
-                                }.withoutNulls,
-                              );
+                              setState(() {
+                                _model.screenShot1VALUE = '0';
+                              });
                             },
                             text: 'Удалить',
                             options: FFButtonOptions(
