@@ -232,6 +232,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               itemBuilder: (context, matchIndex) {
                                 final matchItem = match[matchIndex];
                                 return Container(
+                                  height: 150.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -295,7 +296,14 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelMedium,
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                        ),
                                                   ),
                                                 ],
                                               ),
@@ -409,7 +417,14 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelMedium,
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                        ),
                                                   ),
                                                 ],
                                               ),
