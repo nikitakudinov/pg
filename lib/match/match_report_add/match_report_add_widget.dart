@@ -1,6 +1,8 @@
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +11,12 @@ import 'match_report_add_model.dart';
 export 'match_report_add_model.dart';
 
 class MatchReportAddWidget extends StatefulWidget {
-  const MatchReportAddWidget({Key? key}) : super(key: key);
+  const MatchReportAddWidget({
+    Key? key,
+    required this.tournamentID,
+  }) : super(key: key);
+
+  final int? tournamentID;
 
   @override
   _MatchReportAddWidgetState createState() => _MatchReportAddWidgetState();
@@ -72,7 +79,101 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: FlutterFlowDropDown<String>(
+                              controller: _model.dropDownValueController1 ??=
+                                  FormFieldController<String>(null),
+                              options: ['1', '2', '3', '4', '5'],
+                              onChanged: (val) =>
+                                  setState(() => _model.dropDownValue1 = val),
+                              height: 40.0,
+                              textStyle:
+                                  FlutterFlowTheme.of(context).bodyMedium,
+                              hintText: 'РАУНД',
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).tertiary,
+                              borderWidth: 1.0,
+                              borderRadius: 8.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 4.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              isOverButton: true,
+                              isSearchable: false,
+                              isMultiSelect: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: FlutterFlowDropDown<String>(
+                              controller: _model.dropDownValueController2 ??=
+                                  FormFieldController<String>(null),
+                              options: [''],
+                              onChanged: (val) =>
+                                  setState(() => _model.dropDownValue2 = val),
+                              height: 40.0,
+                              textStyle:
+                                  FlutterFlowTheme.of(context).bodyMedium,
+                              hintText: 'ПАРА',
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).tertiary,
+                              borderWidth: 1.0,
+                              borderRadius: 8.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 4.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              isOverButton: true,
+                              isSearchable: false,
+                              isMultiSelect: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ]
+                      .divide(SizedBox(width: 10.0))
+                      .addToStart(SizedBox(width: 15.0))
+                      .addToEnd(SizedBox(width: 15.0)),
+                ),
+              ),
+            ],
           ),
         ),
       ),

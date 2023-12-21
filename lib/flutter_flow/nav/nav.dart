@@ -198,7 +198,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MATCH_REPORT_ADD',
           path: '/matchReportAdd',
-          builder: (context, params) => MatchReportAddWidget(),
+          builder: (context, params) => MatchReportAddWidget(
+            tournamentID: params.getParam('tournamentID', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

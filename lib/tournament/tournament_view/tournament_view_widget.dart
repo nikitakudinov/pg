@@ -107,10 +107,30 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                 ),
           ),
           actions: [
-            FaIcon(
-              FontAwesomeIcons.fileExport,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(
+                    'MATCH_REPORT_ADD',
+                    queryParameters: {
+                      'tournamentID': serializeParam(
+                        widget.tournamentID,
+                        ParamType.int,
+                      ),
+                    }.withoutNulls,
+                  );
+                },
+                child: Icon(
+                  FFIcons.karticleFill,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
+                ),
+              ),
             ),
           ],
           centerTitle: false,
