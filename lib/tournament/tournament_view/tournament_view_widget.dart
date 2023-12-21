@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
+import '/components/tournament_info_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -32,8 +33,7 @@ class TournamentViewWidget extends StatefulWidget {
   _TournamentViewWidgetState createState() => _TournamentViewWidgetState();
 }
 
-class _TournamentViewWidgetState extends State<TournamentViewWidget>
-    with TickerProviderStateMixin {
+class _TournamentViewWidgetState extends State<TournamentViewWidget> {
   late TournamentViewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -60,11 +60,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
       }
     });
 
-    _model.tabBarController = TabController(
-      vsync: this,
-      length: 2,
-      initialIndex: 0,
-    )..addListener(() => setState(() {}));
     _model.expandableController1 = ExpandableController(initialExpanded: false);
     _model.expandableController2 = ExpandableController(initialExpanded: false);
   }
@@ -247,239 +242,12 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                    borderRadius: BorderRadius.circular(5.0),
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Container(
-                      height: MediaQuery.sizeOf(context).height * 0.3,
-                      decoration: BoxDecoration(),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment(0.0, 0),
-                            child: TabBar(
-                              labelColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              unselectedLabelColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodySmall,
-                              unselectedLabelStyle: TextStyle(),
-                              indicatorColor:
-                                  FlutterFlowTheme.of(context).primary,
-                              padding: EdgeInsets.all(4.0),
-                              tabs: [
-                                Tab(
-                                  text: 'Основное',
-                                  icon: Icon(
-                                    Icons.info,
-                                  ),
-                                ),
-                                Tab(
-                                  text: 'Правила и ограничения',
-                                  icon: Icon(
-                                    Icons.back_hand_outlined,
-                                  ),
-                                ),
-                              ],
-                              controller: _model.tabBarController,
-                            ),
-                          ),
-                          Expanded(
-                            child: TabBarView(
-                              controller: _model.tabBarController,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              'Тип игры',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              'Раундов в матче',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              'Количество команд',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              'Период проведения',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              'Статус',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                          ].divide(SizedBox(height: 5.0)),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 10.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Container(
-                                              width: 2.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: Text(
-                                                ' ',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentGametype}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentRoundsInMatch.toString()}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentTeamsCount.toString()}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentStartDate} - ${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentEndDate}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                            Text(
-                                              '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentStatus}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                          ].divide(SizedBox(height: 5.0)),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  child: wrapWithModel(
+                    model: _model.tournamentInfoTabsModel,
+                    updateCallback: () => setState(() {}),
+                    child: TournamentInfoTabsWidget(),
                   ),
                 ),
                 Container(
