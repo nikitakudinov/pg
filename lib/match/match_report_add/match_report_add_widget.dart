@@ -80,7 +80,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: true,
           title: Text(
-            'Создать матч репорт',
+            widget.tournamentCreatorUID,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
