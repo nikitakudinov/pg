@@ -116,6 +116,22 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              _model.jsonMATCHdata1 =
+                                  await MatchGroup.matchbyidCall.call(
+                                matchID: matchesListItem.matchId,
+                              );
+                              if ((_model.jsonMATCHdata1?.succeeded ?? true)) {
+                                _model.dtMATCHdata1 = await actions.dtMATCH(
+                                  (_model.jsonMATCHdata1?.jsonBody ?? ''),
+                                );
+                                setState(() {
+                                  FFAppState().curentMatchData = _model
+                                      .dtMATCHdata1!
+                                      .toList()
+                                      .cast<MatchStruct>();
+                                });
+                              }
+
                               context.pushNamed(
                                 'MATCH_VIEW',
                                 queryParameters: {
@@ -125,6 +141,8 @@ class _MatchesWidgetState extends State<MatchesWidget> {
                                   ),
                                 }.withoutNulls,
                               );
+
+                              setState(() {});
                             },
                             child: Container(
                               decoration: BoxDecoration(

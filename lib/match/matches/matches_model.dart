@@ -20,6 +20,10 @@ class MatchesModel extends FlutterFlowModel<MatchesWidget> {
   ApiCallResponse? jsonMATCHESdata;
   // Stores action output result for [Custom Action - dtMATCH] action in MATCHES widget.
   List<MatchStruct>? dtMATCHdata;
+  // Stores action output result for [Backend Call - API (MATCHBYID)] action in Container widget.
+  ApiCallResponse? jsonMATCHdata1;
+  // Stores action output result for [Custom Action - dtMATCH] action in Container widget.
+  List<MatchStruct>? dtMATCHdata1;
 
   /// Initialization and disposal methods.
 

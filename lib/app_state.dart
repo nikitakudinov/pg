@@ -486,6 +486,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInTournamentMatches(int _index, MatchStruct _value) {
     _tournamentMatches.insert(_index, _value);
   }
+
+  List<MatchStruct> _curentMatchData = [];
+  List<MatchStruct> get curentMatchData => _curentMatchData;
+  set curentMatchData(List<MatchStruct> _value) {
+    _curentMatchData = _value;
+  }
+
+  void addToCurentMatchData(MatchStruct _value) {
+    _curentMatchData.add(_value);
+  }
+
+  void removeFromCurentMatchData(MatchStruct _value) {
+    _curentMatchData.remove(_value);
+  }
+
+  void removeAtIndexFromCurentMatchData(int _index) {
+    _curentMatchData.removeAt(_index);
+  }
+
+  void updateCurentMatchDataAtIndex(
+    int _index,
+    MatchStruct Function(MatchStruct) updateFn,
+  ) {
+    _curentMatchData[_index] = updateFn(_curentMatchData[_index]);
+  }
+
+  void insertAtIndexInCurentMatchData(int _index, MatchStruct _value) {
+    _curentMatchData.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
