@@ -77,7 +77,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: true,
           title: Text(
-            'Создать мать репорт',
+            'Создать матч репорт',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
@@ -1788,6 +1788,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FFButtonWidget(
                           onPressed: () {
@@ -1795,7 +1796,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                           },
                           text: 'ОТМЕНА',
                           options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.46,
+                            width: MediaQuery.sizeOf(context).width * 0.44,
                             height: 40.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
@@ -1817,12 +1818,58 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                           ),
                         ),
                         FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            await MatchesTable().update(
+                              data: {
+                                'match_date':
+                                    dateTimeFormat('d/M', getCurrentTimestamp),
+                                'match_status': 'На модерации',
+                                'match_rival1_wins': int.tryParse(
+                                    _model.rival1WinsController.text),
+                                'match_rival2_wins': int.tryParse(
+                                    _model.rival2WinsController.text),
+                                'match_screenshot1': _model.screenShot1VALUE,
+                                'match_screenshot2': _model.screenShot2VALUE,
+                                'match_screenshot3': _model.screenShot3VALUE,
+                                'match_screenshot4': _model.screenShot4VALUE,
+                                'match_screenshot5': _model.screenShot5VALUE,
+                              },
+                              matchingRows: (rows) => rows
+                                  .eq(
+                                    'match_for_tournament',
+                                    widget.tournamentID,
+                                  )
+                                  .eq(
+                                    'match_tournament_round',
+                                    functions
+                                        .stringTOinteger(_model.dropDownValue1),
+                                  )
+                                  .eq(
+                                    'match_tournament_pair',
+                                    functions
+                                        .stringTOinteger(_model.dropDownValue2),
+                                  ),
+                            );
+                            await NotificationsTable().insert({
+                              'notification_created_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'notification_from_tournament':
+                                  widget.tournamentID,
+                              'notification_to_player': FFAppState()
+                                  .tournamentMatches
+                                  .first
+                                  .matchForTournament
+                                  .tournamentCreator
+                                  .playerUid,
+                              'notification_type': 'Матч репорт',
+                              'notification_body':
+                                  'Матч сыгран.  Нобходимо подтвердить статус',
+                              'notification_category': 'Матч репорт',
+                            });
                           },
                           text: 'ОТПРАВИТЬ',
                           options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.46,
+                            width: MediaQuery.sizeOf(context).width * 0.44,
                             height: 40.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
