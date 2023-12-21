@@ -281,8 +281,8 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Участники турнира',
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineSmall,
                                 ),
                               ),
                             ],
@@ -471,16 +471,32 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                     child: ExpandableNotifier(
                       controller: _model.expandableController2,
                       child: ExpandablePanel(
-                        header: Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 0.0, 15.0),
-                            child: Text(
-                              'Турнирная сетка',
-                              style: FlutterFlowTheme.of(context).headlineLarge,
+                        header: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 0.0, 0.0),
+                              child: Icon(
+                                Icons.web_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
                             ),
-                          ),
+                            Container(
+                              decoration: BoxDecoration(),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 15.0, 0.0, 15.0),
+                                child: Text(
+                                  'Турнирная сетка',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         collapsed: Container(),
                         expanded: SingleChildScrollView(
