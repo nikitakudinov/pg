@@ -926,8 +926,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                               .where((e) =>
                                                   e.matchStatus ==
                                                   'Матч сыгран')
-                                              .toList()
-                                              .take(5)
                                               .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
