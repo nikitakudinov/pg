@@ -232,7 +232,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               itemBuilder: (context, matchIndex) {
                                 final matchItem = match[matchIndex];
                                 return Container(
-                                  height: 100.0,
+                                  height: 120.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
