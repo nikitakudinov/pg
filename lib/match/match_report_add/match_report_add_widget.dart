@@ -639,8 +639,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
                                   _model.screenShot1VALUE,
-                                  width: double.infinity,
-                                  height: 200.0,
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
                                   fit: BoxFit.cover,
                                 ),
                               ),
