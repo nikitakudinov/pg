@@ -124,7 +124,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                           ))
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
+                                  10.0, 5.0, 10.0, 0.0),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 2.0,
@@ -137,9 +137,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                 ),
                               ),
                             ),
-                        ]
-                            .divide(SizedBox(height: 5.0))
-                            .addToStart(SizedBox(height: 10.0)),
+                        ].addToStart(SizedBox(height: 10.0)),
                       ),
                     ),
                   ),
@@ -178,7 +176,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                           ))
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
+                                  10.0, 5.0, 10.0, 0.0),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 2.0,
@@ -191,9 +189,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                 ),
                               ),
                             ),
-                        ]
-                            .divide(SizedBox(height: 5.0))
-                            .addToStart(SizedBox(height: 10.0)),
+                        ].addToStart(SizedBox(height: 10.0)),
                       ),
                     ),
                   ),
