@@ -133,9 +133,10 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     ),
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival1.teamName}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium,
+                                    '${FFAppState().curentMatchData.first.matchRival1.teamName}'
+                                        .maybeHandleOverflow(maxChars: 20),
+                                    style:
+                                        FlutterFlowTheme.of(context).titleSmall,
                                   ),
                                 ],
                               ),
@@ -215,9 +216,10 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     ),
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival2.teamName}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium,
+                                    '${FFAppState().curentMatchData.first.matchRival2.teamName}'
+                                        .maybeHandleOverflow(maxChars: 20),
+                                    style:
+                                        FlutterFlowTheme.of(context).titleSmall,
                                   ),
                                 ],
                               ),
