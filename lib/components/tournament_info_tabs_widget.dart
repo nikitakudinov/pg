@@ -79,9 +79,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
     context.watch<FFAppState>();
 
     return Container(
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-      ),
+      decoration: BoxDecoration(),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
         child: Column(
@@ -92,9 +90,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
               children: [
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
+                    decoration: BoxDecoration(),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -144,9 +140,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                 ),
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
+                    decoration: BoxDecoration(),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -200,9 +194,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
+                  decoration: BoxDecoration(),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
@@ -336,9 +328,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
               ),
             if (_model.rulesTabVISIBILITY)
               Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
+                decoration: BoxDecoration(),
                 child: Text(
                   'Hello World',
                   style: FlutterFlowTheme.of(context).bodyMedium,

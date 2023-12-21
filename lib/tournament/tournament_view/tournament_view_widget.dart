@@ -242,7 +242,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: FlutterFlowTheme.of(context).secondary,
                   ),
                   child: wrapWithModel(
                     model: _model.tournamentInfoTabsModel,
