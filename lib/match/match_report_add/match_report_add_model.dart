@@ -1,10 +1,11 @@
 import '/backend/schema/structs/index.dart';
-import '/components/screen_shot_item_widget.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'match_report_add_widget.dart' show MatchReportAddWidget;
 import 'package:flutter/material.dart';
@@ -16,8 +17,6 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   ///  Local state fields for this page.
 
   String screenShot1VALUE = '0';
-
-  String screenShot2VALUE = '0';
 
   ///  State fields for stateful widgets in this page.
 
@@ -36,17 +35,14 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   FocusNode? rival2WinsFocusNode;
   TextEditingController? rival2WinsController;
   String? Function(BuildContext, String?)? rival2WinsControllerValidator;
-  // Model for screenShotItem component.
-  late ScreenShotItemModel screenShotItemModel1;
-  // Model for screenShotItem component.
-  late ScreenShotItemModel screenShotItemModel2;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    screenShotItemModel1 = createModel(context, () => ScreenShotItemModel());
-    screenShotItemModel2 = createModel(context, () => ScreenShotItemModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
@@ -55,9 +51,6 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
     rival2WinsFocusNode?.dispose();
     rival2WinsController?.dispose();
-
-    screenShotItemModel1.dispose();
-    screenShotItemModel2.dispose();
   }
 
   /// Action blocks are added here.
