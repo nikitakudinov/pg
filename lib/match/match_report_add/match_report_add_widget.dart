@@ -465,6 +465,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                         labelText: 'СЧЕТ',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelSmall,
+                                        alignLabelWithHint: true,
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium,
                                         enabledBorder: InputBorder.none,
