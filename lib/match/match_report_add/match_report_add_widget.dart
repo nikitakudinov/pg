@@ -258,7 +258,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/811/600',
+                                                  matchItem
+                                                      .matchRival1.teamLogo,
                                                   width: 75.0,
                                                   height: 75.0,
                                                   fit: BoxFit.cover,
@@ -266,7 +267,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Hello World',
+                                              matchItem.matchRival1.teamTag
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 20),
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
