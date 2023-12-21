@@ -21,6 +21,10 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue2;
   FormFieldController<String>? dropDownValueController2;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -28,6 +32,8 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.

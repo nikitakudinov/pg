@@ -33,6 +33,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -195,205 +198,339 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  child: Builder(
-                    builder: (context) {
-                      final match = FFAppState()
-                          .tournamentMatches
-                          .where((e) =>
-                              (e.matchTournamentRound ==
-                                  valueOrDefault<int>(
-                                    functions
-                                        .stringTOinteger(_model.dropDownValue1),
-                                    1,
-                                  )) &&
-                              (e.matchTournamentPair ==
-                                  valueOrDefault<int>(
-                                    functions
-                                        .stringTOinteger(_model.dropDownValue2),
-                                    1,
-                                  )))
-                          .toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: match.length,
-                        itemBuilder: (context, matchIndex) {
-                          final matchItem = match[matchIndex];
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                        child: Builder(
+                          builder: (context) {
+                            final match = FFAppState()
+                                .tournamentMatches
+                                .where((e) =>
+                                    (e.matchTournamentRound ==
+                                        valueOrDefault<int>(
+                                          functions.stringTOinteger(
+                                              _model.dropDownValue1),
+                                          1,
+                                        )) &&
+                                    (e.matchTournamentPair ==
+                                        valueOrDefault<int>(
+                                          functions.stringTOinteger(
+                                              _model.dropDownValue2),
+                                          1,
+                                        )))
+                                .toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: match.length,
+                              itemBuilder: (context, matchIndex) {
+                                final matchItem = match[matchIndex];
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              flex: 2,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
+                                                      child: Image.network(
+                                                        matchItem.matchRival1
+                                                            .teamLogo,
+                                                        width: 75.0,
+                                                        height: 75.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    matchItem
+                                                        .matchRival1.teamTag
+                                                        .maybeHandleOverflow(
+                                                            maxChars: 20),
+                                                    textAlign: TextAlign.end,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge,
+                                                  ),
+                                                  Text(
+                                                    matchItem
+                                                        .matchRival1.teamName
+                                                        .maybeHandleOverflow(
+                                                            maxChars: 20),
+                                                    textAlign: TextAlign.end,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 1,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 2,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    matchItem.matchForTournament
+                                                        .tournamentTag,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                  Text(
+                                                    'VS',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge,
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Container(
+                                                        width: 70.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 1,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 2,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
+                                                      child: Image.network(
+                                                        matchItem.matchRival2
+                                                            .teamLogo,
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    matchItem
+                                                        .matchRival2.teamTag
+                                                        .maybeHandleOverflow(
+                                                            maxChars: 20),
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge,
+                                                  ),
+                                                  Text(
+                                                    matchItem
+                                                        .matchRival2.teamName
+                                                        .maybeHandleOverflow(
+                                                            maxChars: 20),
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 10.0)),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [],
                             ),
+                          ),
+                          Expanded(
+                            flex: 1,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                child: Image.network(
-                                                  matchItem
-                                                      .matchRival1.teamLogo,
-                                                  width: 75.0,
-                                                  height: 75.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              matchItem.matchRival1.teamTag
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge,
-                                            ),
-                                            Text(
-                                              matchItem.matchRival1.teamName
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ),
-                                          ],
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController,
+                                    focusNode: _model.textFieldFocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Label here...',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
                                         ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
                                       ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              matchItem.matchForTournament
-                                                  .tournamentTag,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Text(
-                                              'VS',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Container(
-                                                  width: 70.0,
-                                                  decoration: BoxDecoration(),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
                                         ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
                                       ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                child: Image.network(
-                                                  matchItem
-                                                      .matchRival2.teamLogo,
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              matchItem.matchRival2.teamTag
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge,
-                                            ),
-                                            Text(
-                                              matchItem.matchRival2.teamName
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ),
-                                          ],
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
                                         ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
                                       ),
-                                    ].divide(SizedBox(width: 10.0)),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textControllerValidator
+                                        .asValidator(context),
                                   ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [],
                                 ),
                               ],
                             ),
-                          );
-                        },
-                      );
-                    },
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
             ],
