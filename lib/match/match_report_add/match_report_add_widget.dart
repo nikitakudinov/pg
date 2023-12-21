@@ -258,8 +258,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  matchItem
-                                                      .matchRival1.teamLogo,
+                                                  'https://picsum.photos/seed/811/600',
                                                   width: 75.0,
                                                   height: 75.0,
                                                   fit: BoxFit.cover,
@@ -267,18 +266,14 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               ),
                                             ),
                                             Text(
-                                              '${matchItem.matchRival1.teamTag}'
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
+                                              'Hello World',
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge,
                                             ),
                                             Text(
-                                              '${matchItem.matchRival1.teamName}'
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
+                                              'Hello World',
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -295,13 +290,13 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              '${matchItem.matchForTournament.tournamentTag}',
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
                                             Text(
-                                              '${matchItem.matchRival1Wins.toString()} - ${matchItem.matchRival2Wins.toString()}',
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineLarge,
@@ -318,7 +313,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                       .bodyMedium,
                                                 ),
                                                 Text(
-                                                  '${matchItem.matchTournamentRound.toString()}',
+                                                  'Hello World',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
@@ -337,7 +332,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
-                                                    '${matchItem.matchDate}',
+                                                    'Hello World',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
@@ -369,8 +364,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  matchItem
-                                                      .matchRival2.teamLogo,
+                                                  'https://picsum.photos/seed/811/600',
                                                   width: 50.0,
                                                   height: 50.0,
                                                   fit: BoxFit.cover,
@@ -378,18 +372,14 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                               ),
                                             ),
                                             Text(
-                                              '${matchItem.matchRival2.teamTag}'
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
+                                              'Hello World',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge,
                                             ),
                                             Text(
-                                              '${FFAppState().curentMatchData.first.matchRival2.teamName}'
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 20),
+                                              'Hello World',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
