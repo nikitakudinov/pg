@@ -342,14 +342,14 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                                         _model
                                                             .curentTeamDATA
                                                             .first
-                                                            .teamMatchWins,
+                                                            .teamMatchRoundWins,
                                                         0,
                                                       ) /
                                                       valueOrDefault<int>(
                                                         _model
                                                             .curentTeamDATA
                                                             .first
-                                                            .teamMatchLoses,
+                                                            .teamMatchRoundLoses,
                                                         0,
                                                       ))
                                                   .toString(),
