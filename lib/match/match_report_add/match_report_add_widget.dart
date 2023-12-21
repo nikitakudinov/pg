@@ -1,9 +1,12 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +34,25 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if ((_model.dropDownValue1 != null && _model.dropDownValue1 != '') &&
+          (_model.dropDownValue2 != null && _model.dropDownValue2 != '')) {
+        setState(() {
+          FFAppState().curentMatchData = FFAppState()
+              .tournamentMatches
+              .where((e) =>
+                  (e.matchTournamentRound ==
+                      functions.stringTOinteger(_model.dropDownValue1)) &&
+                  (e.matchTournamentPair ==
+                      functions.stringTOinteger(_model.dropDownValue2)))
+              .toList()
+              .toList()
+              .cast<MatchStruct>();
+        });
+      }
+    });
   }
 
   @override
@@ -183,6 +205,193 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                       .divide(SizedBox(width: 10.0))
                       .addToStart(SizedBox(width: 15.0))
                       .addToEnd(SizedBox(width: 15.0)),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Image.network(
+                                        FFAppState()
+                                                    .curentMatchData
+                                                    .first
+                                                    .matchRival1
+                                                    .teamName ==
+                                                'Не определен'
+                                            ? 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/unknowLogo.png'
+                                            : FFAppState()
+                                                .curentMatchData
+                                                .first
+                                                .matchRival1
+                                                .teamLogo,
+                                        width: 75.0,
+                                        height: 75.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    '${FFAppState().curentMatchData.first.matchRival1.teamTag}'
+                                        .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.end,
+                                    style:
+                                        FlutterFlowTheme.of(context).titleLarge,
+                                  ),
+                                  Text(
+                                    '${FFAppState().curentMatchData.first.matchRival1.teamName}'
+                                        .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '${FFAppState().curentMatchData.first.matchForTournament.tournamentTag}',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  Text(
+                                    '${FFAppState().curentMatchData.first.matchRival1Wins.toString()} - ${FFAppState().curentMatchData.first.matchRival2Wins.toString()}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineLarge,
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Раунд',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                      Text(
+                                        '${FFAppState().curentMatchData.first.matchTournamentRound.toString()}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 70.0,
+                                        decoration: BoxDecoration(),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          '${'${FFAppState().curentMatchData.first.matchDate}'}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Image.network(
+                                        FFAppState()
+                                                    .curentMatchData
+                                                    .first
+                                                    .matchRival2
+                                                    .teamName ==
+                                                'Не определен'
+                                            ? 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/unknowLogo.png'
+                                            : FFAppState()
+                                                .curentMatchData
+                                                .first
+                                                .matchRival2
+                                                .teamLogo,
+                                        width: 50.0,
+                                        height: 50.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    '${FFAppState().curentMatchData.first.matchRival2.teamTag}'
+                                        .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.start,
+                                    style:
+                                        FlutterFlowTheme.of(context).titleLarge,
+                                  ),
+                                  Text(
+                                    '${FFAppState().curentMatchData.first.matchRival2.teamName}'
+                                        .maybeHandleOverflow(maxChars: 20),
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ].divide(SizedBox(width: 10.0)),
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

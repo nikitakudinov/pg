@@ -21,3 +21,15 @@ int? newCustomFunction(List<int> iDSarray) {
   final index = random.nextInt(iDSarray.length);
   return iDSarray[index];
 }
+
+int? stringTOinteger(String? stringData) {
+  // covert string to integer
+  if (stringData == null) {
+    return null;
+  }
+  try {
+    return int.parse(stringData);
+  } catch (e) {
+    return null;
+  }
+}
