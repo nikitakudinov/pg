@@ -104,8 +104,8 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Container(
-                                    width: 75.0,
-                                    height: 75.0,
+                                    width: 50.0,
+                                    height: 60.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
