@@ -19,9 +19,12 @@ class MatchReportAddWidget extends StatefulWidget {
   const MatchReportAddWidget({
     Key? key,
     required this.tournamentID,
-  }) : super(key: key);
+    String? tournamentCreatorUID,
+  })  : this.tournamentCreatorUID = tournamentCreatorUID ?? '0',
+        super(key: key);
 
   final int? tournamentID;
+  final String tournamentCreatorUID;
 
   @override
   _MatchReportAddWidgetState createState() => _MatchReportAddWidgetState();

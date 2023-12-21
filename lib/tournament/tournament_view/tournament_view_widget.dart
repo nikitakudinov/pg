@@ -122,6 +122,15 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                         widget.tournamentID,
                         ParamType.int,
                       ),
+                      'tournamentCreatorUID': serializeParam(
+                        FFAppState()
+                            .tournaments
+                            .where((e) => e.tournamentId == widget.tournamentID)
+                            .toList()[0]
+                            .tournamentCreator
+                            .playerUid,
+                        ParamType.String,
+                      ),
                     }.withoutNulls,
                   );
                 },

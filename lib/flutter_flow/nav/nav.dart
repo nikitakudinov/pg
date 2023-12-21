@@ -199,6 +199,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/matchReportAdd',
           builder: (context, params) => MatchReportAddWidget(
             tournamentID: params.getParam('tournamentID', ParamType.int),
+            tournamentCreatorUID:
+                params.getParam('tournamentCreatorUID', ParamType.String),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
