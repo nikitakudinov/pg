@@ -277,8 +277,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    matchItem
-                                                        .matchRival1.teamTag
+                                                    '${matchItem.matchRival1.teamTag}'
                                                         .maybeHandleOverflow(
                                                             maxChars: 20),
                                                     textAlign: TextAlign.end,
@@ -287,8 +286,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                         .titleLarge,
                                                   ),
                                                   Text(
-                                                    matchItem
-                                                        .matchRival1.teamName
+                                                    '${matchItem.matchRival1.teamName}'
                                                         .maybeHandleOverflow(
                                                             maxChars: 20),
                                                     textAlign: TextAlign.end,
@@ -393,8 +391,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    matchItem
-                                                        .matchRival2.teamTag
+                                                    '${matchItem.matchRival2.teamTag}'
                                                         .maybeHandleOverflow(
                                                             maxChars: 20),
                                                     textAlign: TextAlign.start,
@@ -403,8 +400,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                         .titleLarge,
                                                   ),
                                                   Text(
-                                                    matchItem
-                                                        .matchRival2.teamName
+                                                    '${matchItem.matchRival2.teamName}'
                                                         .maybeHandleOverflow(
                                                             maxChars: 20),
                                                     textAlign: TextAlign.start,
@@ -448,6 +444,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
+                                  width: 50.0,
                                   height: 50.0,
                                   decoration: BoxDecoration(
                                     color:
@@ -455,17 +452,16 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(5.0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.textController,
                                       focusNode: _model.textFieldFocusNode,
-                                      autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'СЧЕТ',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelSmall,
-                                        alignLabelWithHint: true,
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium,
                                         enabledBorder: InputBorder.none,
@@ -475,7 +471,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
-                                      textAlign: TextAlign.start,
+                                      keyboardType: TextInputType.number,
                                       validator: _model.textControllerValidator
                                           .asValidator(context),
                                     ),
