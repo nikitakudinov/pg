@@ -1871,6 +1871,20 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               'notification_body':
                                   'Матч сыгран.  Нобходимо подтвердить статус',
                               'notification_category': 'Матч репорт',
+                              'notification_match_id': FFAppState()
+                                  .tournamentMatches
+                                  .where((e) =>
+                                      (e.matchTournamentRound ==
+                                          functions.stringTOinteger(e
+                                              .matchTournamentRound
+                                              .toString())) &&
+                                      (e.matchTournamentPair ==
+                                          functions.stringTOinteger(e
+                                              .matchTournamentPair
+                                              .toString())))
+                                  .toList()
+                                  .first
+                                  .matchId,
                             });
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
