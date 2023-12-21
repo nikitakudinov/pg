@@ -166,11 +166,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'testPage1000players',
-          path: '/testPage1000players',
+          name: 'PLAYERS',
+          path: '/players',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'testPage1000players')
-              : TestPage1000playersWidget(),
+              ? NavBarPage(initialPage: 'PLAYERS')
+              : PlayersWidget(),
         ),
         FFRoute(
           name: 'TOURNAMENT_EDITE',
@@ -187,6 +187,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'MATCHES')
               : MatchesWidget(),
+        ),
+        FFRoute(
+          name: 'MATCH_VIEW',
+          path: '/matchView',
+          builder: (context, params) => MatchViewWidget(
+            matchID: params.getParam('matchID', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

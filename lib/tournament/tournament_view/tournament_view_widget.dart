@@ -1,7 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
-import '/components/tournament_info_tabs_widget.dart';
+import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
+import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';

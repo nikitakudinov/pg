@@ -9,26 +9,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'test_page1000players_model.dart';
-export 'test_page1000players_model.dart';
+import 'players_model.dart';
+export 'players_model.dart';
 
-class TestPage1000playersWidget extends StatefulWidget {
-  const TestPage1000playersWidget({Key? key}) : super(key: key);
+class PlayersWidget extends StatefulWidget {
+  const PlayersWidget({Key? key}) : super(key: key);
 
   @override
-  _TestPage1000playersWidgetState createState() =>
-      _TestPage1000playersWidgetState();
+  _PlayersWidgetState createState() => _PlayersWidgetState();
 }
 
-class _TestPage1000playersWidgetState extends State<TestPage1000playersWidget> {
-  late TestPage1000playersModel _model;
+class _PlayersWidgetState extends State<PlayersWidget> {
+  late PlayersModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TestPage1000playersModel());
+    _model = createModel(context, () => PlayersModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
