@@ -261,7 +261,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                       controller: _model.expandableController1,
                       child: ExpandablePanel(
                         header: Container(
-                          height: 50.0,
+                          height: 60.0,
                           decoration: BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -485,6 +485,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget> {
                               ),
                             ),
                             Container(
+                              height: 60.0,
                               decoration: BoxDecoration(),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
