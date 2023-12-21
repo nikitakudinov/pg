@@ -188,6 +188,8 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                       Container(
                                         width: 70.0,
                                         decoration: BoxDecoration(),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           '${'${FFAppState().curentMatchData.first.matchDate}'}',
                                           style: FlutterFlowTheme.of(context)
