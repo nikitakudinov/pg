@@ -136,7 +136,19 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             child: FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController2 ??=
                                   FormFieldController<String>(null),
-                              options: [''],
+                              options: () {
+                                if (_model.dropDownValue1 == '1') {
+                                  return FFAppConstants.List16;
+                                } else if (_model.dropDownValue1 == '2') {
+                                  return FFAppConstants.List8;
+                                } else if (_model.dropDownValue1 == '3') {
+                                  return FFAppConstants.List4;
+                                } else if (_model.dropDownValue1 == '4') {
+                                  return FFAppConstants.List2;
+                                } else {
+                                  return FFAppConstants.List16;
+                                }
+                              }(),
                               onChanged: (val) =>
                                   setState(() => _model.dropDownValue2 = val),
                               height: 40.0,
