@@ -8,6 +8,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'match_report_add_widget.dart' show MatchReportAddWidget;
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -53,6 +54,9 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   FocusNode? rival2WinsFocusNode;
   TextEditingController? rival2WinsController;
   String? Function(BuildContext, String?)? rival2WinsControllerValidator;
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController;
+
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -89,6 +93,8 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
     rival2WinsFocusNode?.dispose();
     rival2WinsController?.dispose();
+
+    expandableController.dispose();
   }
 
   /// Action blocks are added here.
