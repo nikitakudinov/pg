@@ -1861,7 +1861,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                       e.tournamentId == widget.tournamentID)
                                   .toList()[0]
                                   .tournamentCreator
-                                  .playerUid,
+                                  .playerId
+                                  .toString(),
                               'notification_type': 'Матч репорт',
                               'notification_body':
                                   'Матч сыгран.  Нобходимо подтвердить статус',
