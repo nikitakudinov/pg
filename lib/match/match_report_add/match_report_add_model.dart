@@ -18,6 +18,8 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   String screenShot1VALUE = '0';
 
+  String screenShot2VALUE = '0';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -35,10 +37,15 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   FocusNode? rival2WinsFocusNode;
   TextEditingController? rival2WinsController;
   String? Function(BuildContext, String?)? rival2WinsControllerValidator;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl1 = '';
+
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl2 = '';
 
   /// Initialization and disposal methods.
 
