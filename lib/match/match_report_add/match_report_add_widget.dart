@@ -647,8 +647,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                           ),
                         ),
                       ),
-                      if (_model.screenShot1VALUE == null ||
-                          _model.screenShot1VALUE == '')
+                      if (_model.screenShot1VALUE != null &&
+                          _model.screenShot1VALUE != '')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 10.0),
@@ -730,8 +730,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             ),
                           ),
                         ),
-                      if (_model.screenShot1VALUE != null &&
-                          _model.screenShot1VALUE != '')
+                      if (_model.screenShot1VALUE == null ||
+                          _model.screenShot1VALUE == '')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 10.0),
