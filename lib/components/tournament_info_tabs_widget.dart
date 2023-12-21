@@ -181,6 +181,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           flex: 2,
