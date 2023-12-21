@@ -627,8 +627,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Visibility(
-                          visible: _model.screenShot1VALUE != null &&
-                              _model.screenShot1VALUE != '',
+                          visible: _model.screenShot1VALUE != '0',
                           child: Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Container(
@@ -647,8 +646,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                           ),
                         ),
                       ),
-                      if (_model.screenShot1VALUE != null &&
-                          _model.screenShot1VALUE != '')
+                      if (_model.screenShot1VALUE == '0')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 10.0),
@@ -730,8 +728,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             ),
                           ),
                         ),
-                      if (_model.screenShot1VALUE != null &&
-                          _model.screenShot1VALUE != '')
+                      if (_model.screenShot1VALUE != '0')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 10.0),
