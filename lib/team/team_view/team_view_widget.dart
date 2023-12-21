@@ -271,7 +271,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                             ),
                                           ),
                                           Text(
-                                            '122',
+                                            '${_model.curentTeamDATA.first.teamMatchesRoundsCount.toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge,
                                           ),
@@ -293,7 +293,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                             ),
                                           ),
                                           Text(
-                                            '60',
+                                            '${_model.curentTeamDATA.first.teamMatchRoundWins.toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge,
                                           ),
@@ -315,7 +315,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                             ),
                                           ),
                                           Text(
-                                            '62',
+                                            '${_model.curentTeamDATA.first.teamMatchRoundLoses.toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge,
                                           ),
@@ -337,7 +337,17 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                             ),
                                           ),
                                           Text(
-                                            '0,98',
+                                            (valueOrDefault<int>(
+                                                      _model.curentTeamDATA
+                                                          .first.teamMatchWins,
+                                                      0,
+                                                    ) /
+                                                    valueOrDefault<int>(
+                                                      _model.curentTeamDATA
+                                                          .first.teamMatchLoses,
+                                                      0,
+                                                    ))
+                                                .toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge,
                                           ),
@@ -365,7 +375,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                           ),
                                         ),
                                         Text(
-                                          '26',
+                                          '${_model.curentTeamDATA.first.teamMatchesCount.toString()}',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
                                         ),
@@ -386,7 +396,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                           ),
                                         ),
                                         Text(
-                                          '10',
+                                          '${_model.curentTeamDATA.first.teamMatchWins.toString()}',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
                                         ),
@@ -407,7 +417,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                                           ),
                                         ),
                                         Text(
-                                          '16',
+                                          '${_model.curentTeamDATA.first.teamMatchLoses.toString()}',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
                                         ),
