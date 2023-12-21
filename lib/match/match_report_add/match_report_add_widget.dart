@@ -472,7 +472,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 35.0, 0.0, 0.0),
                                     child: Container(
-                                      width: 70.0,
+                                      width: 100.0,
                                       height: 50.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -522,7 +522,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               ),
                             ),
                             Expanded(
-                              flex: 2,
+                              flex: 1,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [],
@@ -537,7 +537,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 35.0, 10.0, 0.0),
                                     child: Container(
-                                      width: 70.0,
+                                      width: 100.0,
                                       height: 50.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
