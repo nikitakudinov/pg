@@ -1,12 +1,10 @@
 import '/backend/schema/structs/index.dart';
-import '/components/date_picker_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,35 +34,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
 
-    _model.rival1WinsController1 ??= TextEditingController();
-    _model.rival1WinsFocusNode1 ??= FocusNode();
+    _model.rival1WinsController ??= TextEditingController();
+    _model.rival1WinsFocusNode ??= FocusNode();
 
-    _model.rival1WinsController2 ??= TextEditingController();
-    _model.rival1WinsFocusNode2 ??= FocusNode();
-    _model.rival1WinsFocusNode2!.addListener(
-      () async {
-        await showAlignedDialog(
-          context: context,
-          isGlobal: true,
-          avoidOverflow: false,
-          targetAnchor: AlignmentDirectional(0.0, 0.0)
-              .resolve(Directionality.of(context)),
-          followerAnchor: AlignmentDirectional(0.0, 0.0)
-              .resolve(Directionality.of(context)),
-          builder: (dialogContext) {
-            return Material(
-              color: Colors.transparent,
-              child: GestureDetector(
-                onTap: () => _model.unfocusNode.canRequestFocus
-                    ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                    : FocusScope.of(context).unfocus(),
-                child: DatePickerWidget(),
-              ),
-            );
-          },
-        ).then((value) => setState(() {}));
-      },
-    );
     _model.rival2WinsController ??= TextEditingController();
     _model.rival2WinsFocusNode ??= FocusNode();
   }
@@ -517,9 +489,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                   8.0, 0.0, 8.0, 0.0),
                                           child: TextFormField(
                                             controller:
-                                                _model.rival1WinsController1,
+                                                _model.rival1WinsController,
                                             focusNode:
-                                                _model.rival1WinsFocusNode1,
+                                                _model.rival1WinsFocusNode,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'СЧЕТ',
@@ -539,7 +511,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                 .bodyMedium,
                                             keyboardType: TextInputType.number,
                                             validator: _model
-                                                .rival1WinsController1Validator
+                                                .rival1WinsControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -553,62 +525,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               flex: 1,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 90.0, 0.0, 0.0),
-                                    child: Container(
-                                      width: 80.0,
-                                      height: 50.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) => Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 0.0),
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.rival1WinsController2,
-                                              focusNode:
-                                                  _model.rival1WinsFocusNode2,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText: 'ДАТА МАТЧА',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall,
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                errorBorder: InputBorder.none,
-                                                focusedErrorBorder:
-                                                    InputBorder.none,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              validator: _model
-                                                  .rival1WinsController2Validator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                children: [],
                               ),
                             ),
                             Expanded(
