@@ -935,7 +935,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                             return Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      15.0, 0.0, 15.0, 0.0),
+                                                      15.0, 5.0, 15.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   borderRadius:
@@ -946,21 +946,30 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          playedMatchesListItem
-                                                              .matchDate,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            playedMatchesListItem
+                                                                .matchDate,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                     Row(
                                                       mainAxisSize:
@@ -1009,7 +1018,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                 '${playedMatchesListItem.matchRival1Wins.toString()} - ${playedMatchesListItem.matchRival2Wins.toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMedium,
+                                                                    .titleLarge,
                                                               ),
                                                             ],
                                                           ),
