@@ -542,132 +542,156 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 15.0, 5.0),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(5.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        width: 35.0,
-                                                        height: 35.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
-                                                          child: Image.network(
-                                                            tournamentMembersItem
-                                                                .teamLogo,
-                                                            width: 35.0,
-                                                            height: 35.0,
-                                                            fit: BoxFit.cover,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'TEAM_VIEW',
+                                                  queryParameters: {
+                                                    'teamID': serializeParam(
+                                                      tournamentMembersItem
+                                                          .teamId,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          width: 35.0,
+                                                          height: 35.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            child:
+                                                                Image.network(
+                                                              tournamentMembersItem
+                                                                  .teamLogo,
+                                                              width: 35.0,
+                                                              height: 35.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              tournamentMembersItem
-                                                                  .teamTag,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                            Text(
-                                                              tournamentMembersItem
-                                                                  .teamName,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ].divide(SizedBox(
-                                                              width: 5.0)),
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 20.0,
-                                                                height: 12.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                tournamentMembersItem
+                                                                    .teamTag,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                              Text(
+                                                                tournamentMembersItem
+                                                                    .teamName,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ].divide(SizedBox(
+                                                                width: 5.0)),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
                                                                 child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              0.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    tournamentMembersItem
-                                                                        .teamFlag,
-                                                                    width: 20.0,
-                                                                    height:
-                                                                        12.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
+                                                                    Container(
+                                                                  width: 20.0,
+                                                                  height: 12.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            0.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      tournamentMembersItem
+                                                                          .teamFlag,
+                                                                      width:
+                                                                          20.0,
+                                                                      height:
+                                                                          12.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Text(
-                                                              tournamentMembersItem
-                                                                  .teamCountry,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                              Text(
+                                                                tournamentMembersItem
+                                                                    .teamCountry,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -967,15 +991,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
                                                                   .center,
-                                                          children: [
-                                                            Text(
-                                                              playedMatchesListItem
-                                                                  .matchDate,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodySmall,
-                                                            ),
-                                                          ],
+                                                          children: [],
                                                         ),
                                                       ),
                                                       Row(
@@ -1022,6 +1038,13 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
+                                                                Text(
+                                                                  playedMatchesListItem
+                                                                      .matchDate,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall,
+                                                                ),
                                                                 Text(
                                                                   '${playedMatchesListItem.matchRival1Wins.toString()} - ${playedMatchesListItem.matchRival2Wins.toString()}',
                                                                   style: FlutterFlowTheme.of(

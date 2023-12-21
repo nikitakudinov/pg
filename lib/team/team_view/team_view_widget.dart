@@ -1,9 +1,13 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +36,22 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TeamViewModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultf6b = await TeamGroup.listteambyidCall.call(
+        idList: widget.teamID.toString(),
+      );
+      if ((_model.apiResultf6b?.succeeded ?? true)) {
+        setState(() {
+          _model.curentTeamDATA =
+              (_model.apiResultf6b?.jsonBody ?? '') != null &&
+                      (_model.apiResultf6b?.jsonBody ?? '') != ''
+                  ? TeamStruct.fromMap((_model.apiResultf6b?.jsonBody ?? ''))
+                  : null;
+        });
+      }
+    });
   }
 
   @override
@@ -147,7 +167,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                               children: [
                                 Text(
                                   valueOrDefault<String>(
-                                    teamViewTeamsRow?.teamTag,
+                                    _model.curentTeamDATA?.teamTag,
                                     '0',
                                   ),
                                   style:

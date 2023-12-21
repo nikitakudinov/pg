@@ -51,4 +51,26 @@ class TeamsRow extends SupabaseDataRow {
 
   int get teamChatId => getField<int>('team_chat_id')!;
   set teamChatId(int value) => setField<int>('team_chat_id', value);
+
+  int? get teamMatchesCount => getField<int>('team_matches_count');
+  set teamMatchesCount(int? value) =>
+      setField<int>('team_matches_count', value);
+
+  int? get teamMatchWins => getField<int>('team_match_wins');
+  set teamMatchWins(int? value) => setField<int>('team_match_wins', value);
+
+  int? get teamMatchLoses => getField<int>('team_match_loses');
+  set teamMatchLoses(int? value) => setField<int>('team_match_loses', value);
+
+  int? get teamMatchesRoundsCount => getField<int>('team_matches_rounds_count');
+  set teamMatchesRoundsCount(int? value) =>
+      setField<int>('team_matches_rounds_count', value);
+
+  int? get teamMatchRoundWins => getField<int>('team_match_round_wins');
+  set teamMatchRoundWins(int? value) =>
+      setField<int>('team_match_round_wins', value);
+
+  int? get teamMatchRoundLoses => getField<int>('team_match_round_loses');
+  set teamMatchRoundLoses(int? value) =>
+      setField<int>('team_match_round_loses', value);
 }
