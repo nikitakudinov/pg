@@ -207,28 +207,46 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                       .addToEnd(SizedBox(width: 15.0)),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Container(
+              if ((_model.dropDownValue1 != null &&
+                      _model.dropDownValue1 != '') &&
+                  (_model.dropDownValue2 != null &&
+                      _model.dropDownValue2 != ''))
+                Container(
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(5.0),
                   ),
-                  child: Text(
-                    valueOrDefault<String>(
-                      FFAppState()
-                          .curentMatchData
-                          .first
-                          .matchRival1
-                          .teamCountry,
-                      '0',
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  child: Builder(
+                    builder: (context) {
+                      final match = FFAppState()
+                          .tournamentMatches
+                          .where((e) =>
+                              (e.matchTournamentRound ==
+                                  valueOrDefault<int>(
+                                    functions
+                                        .stringTOinteger(_model.dropDownValue1),
+                                    1,
+                                  )) &&
+                              (e.matchTournamentPair ==
+                                  valueOrDefault<int>(
+                                    functions
+                                        .stringTOinteger(_model.dropDownValue2),
+                                    1,
+                                  )))
+                          .toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: match.length,
+                        itemBuilder: (context, matchIndex) {
+                          final matchItem = match[matchIndex];
+                          return Container(
+                              width: 100, height: 100, color: Colors.green);
+                        },
+                      );
+                    },
                   ),
                 ),
-              ),
             ],
           ),
         ),
