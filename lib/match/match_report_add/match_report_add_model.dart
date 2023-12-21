@@ -22,9 +22,13 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   String? dropDownValue2;
   FormFieldController<String>? dropDownValueController2;
   // State field(s) for RIVAL1-WINS widget.
-  FocusNode? rival1WinsFocusNode;
-  TextEditingController? rival1WinsController;
-  String? Function(BuildContext, String?)? rival1WinsControllerValidator;
+  FocusNode? rival1WinsFocusNode1;
+  TextEditingController? rival1WinsController1;
+  String? Function(BuildContext, String?)? rival1WinsController1Validator;
+  // State field(s) for RIVAL1-WINS widget.
+  FocusNode? rival1WinsFocusNode2;
+  TextEditingController? rival1WinsController2;
+  String? Function(BuildContext, String?)? rival1WinsController2Validator;
   // State field(s) for RIVAL2-WINS widget.
   FocusNode? rival2WinsFocusNode;
   TextEditingController? rival2WinsController;
@@ -36,8 +40,11 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    rival1WinsFocusNode?.dispose();
-    rival1WinsController?.dispose();
+    rival1WinsFocusNode1?.dispose();
+    rival1WinsController1?.dispose();
+
+    rival1WinsFocusNode2?.dispose();
+    rival1WinsController2?.dispose();
 
     rival2WinsFocusNode?.dispose();
     rival2WinsController?.dispose();

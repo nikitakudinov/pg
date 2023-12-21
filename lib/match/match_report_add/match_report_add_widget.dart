@@ -34,8 +34,11 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
 
-    _model.rival1WinsController ??= TextEditingController();
-    _model.rival1WinsFocusNode ??= FocusNode();
+    _model.rival1WinsController1 ??= TextEditingController();
+    _model.rival1WinsFocusNode1 ??= FocusNode();
+
+    _model.rival1WinsController2 ??= TextEditingController();
+    _model.rival1WinsFocusNode2 ??= FocusNode();
 
     _model.rival2WinsController ??= TextEditingController();
     _model.rival2WinsFocusNode ??= FocusNode();
@@ -198,7 +201,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                   (_model.dropDownValue2 != null &&
                       _model.dropDownValue2 != ''))
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: Container(
                     decoration: BoxDecoration(),
                     child: Stack(
@@ -489,9 +492,9 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                   8.0, 0.0, 8.0, 0.0),
                                           child: TextFormField(
                                             controller:
-                                                _model.rival1WinsController,
+                                                _model.rival1WinsController1,
                                             focusNode:
-                                                _model.rival1WinsFocusNode,
+                                                _model.rival1WinsFocusNode1,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'СЧЕТ',
@@ -511,7 +514,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                 .bodyMedium,
                                             keyboardType: TextInputType.number,
                                             validator: _model
-                                                .rival1WinsControllerValidator
+                                                .rival1WinsController1Validator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -525,7 +528,58 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               flex: 1,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                children: [],
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 100.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 80.0,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 0.0, 8.0, 0.0),
+                                          child: TextFormField(
+                                            controller:
+                                                _model.rival1WinsController2,
+                                            focusNode:
+                                                _model.rival1WinsFocusNode2,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText: 'ДАТА МАТЧА',
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall,
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              enabledBorder: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
+                                              errorBorder: InputBorder.none,
+                                              focusedErrorBorder:
+                                                  InputBorder.none,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                            keyboardType: TextInputType.number,
+                                            validator: _model
+                                                .rival1WinsController2Validator
+                                                .asValidator(context),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Expanded(
