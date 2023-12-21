@@ -883,7 +883,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                         ),
                         collapsed: Container(),
                         expanded: Container(
-                          height: 200.0,
+                          height: 600.0,
                           decoration: BoxDecoration(),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -972,7 +972,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                   .matchDate,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .bodySmall,
                                                             ),
                                                           ],
                                                         ),
