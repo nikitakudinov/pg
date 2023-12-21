@@ -216,6 +216,10 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(5.0),
                   ),
+                  child: Text(
+                    FFAppState().curentMatchData.first.matchRival1.teamName,
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
                 ),
               ),
             ],
