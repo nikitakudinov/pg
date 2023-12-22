@@ -164,202 +164,214 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ],
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 10.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Container(
-                                              width: 45.0,
-                                              height: 45.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  () {
-                                                    if (notificationsListItem
-                                                            .notificationCategory ==
-                                                        'От команды') {
-                                                      return notificationsListItem
-                                                          .notificationFromTeam
-                                                          .teamLogo;
-                                                    } else if (notificationsListItem
-                                                            .notificationCategory ==
-                                                        'От игрока') {
-                                                      return notificationsListItem
-                                                          .notificationFromPlayer
-                                                          .playerAvatar;
-                                                    } else if (notificationsListItem
-                                                            .notificationCategory ==
-                                                        'От турнира') {
-                                                      return notificationsListItem
-                                                          .notificationFromTournament
-                                                          .tournamentLogo;
-                                                    } else {
-                                                      return '0';
-                                                    }
-                                                  }(),
-                                                  width: 45.0,
-                                                  height: 45.0,
-                                                  fit: BoxFit.cover,
+                                    if (notificationsListItem
+                                            .notificationType !=
+                                        'Матч репорт прошел модерацию')
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 10.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Container(
+                                                width: 45.0,
+                                                height: 45.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                 ),
-                                              ),
-                                            ),
-                                          ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                () {
-                                                  if (notificationsListItem
-                                                          .notificationCategory ==
-                                                      'От игрока') {
-                                                    return notificationsListItem
-                                                        .notificationFromPlayer
-                                                        .playerNickname;
-                                                  } else if (notificationsListItem
-                                                          .notificationCategory ==
-                                                      'От команды') {
-                                                    return notificationsListItem
-                                                        .notificationFromTeam
-                                                        .teamName;
-                                                  } else if (notificationsListItem
-                                                          .notificationCategory ==
-                                                      'От турнира') {
-                                                    return notificationsListItem
-                                                        .notificationFromTournament
-                                                        .tournamentName;
-                                                  } else {
-                                                    return '0';
-                                                  }
-                                                }(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium,
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Container(
-                                                      width: 20.0,
-                                                      height: 12.0,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.network(
-                                                          () {
-                                                            if (notificationsListItem
-                                                                    .notificationCategory ==
-                                                                'От игрока') {
-                                                              return notificationsListItem
-                                                                  .notificationFromPlayer
-                                                                  .playerFlag;
-                                                            } else if (notificationsListItem
-                                                                    .notificationCategory ==
-                                                                'От команды') {
-                                                              return notificationsListItem
-                                                                  .notificationFromTeam
-                                                                  .teamFlag;
-                                                            } else if (notificationsListItem
-                                                                    .notificationCategory ==
-                                                                'От турнира') {
-                                                              return notificationsListItem
-                                                                  .notificationFromTournament
-                                                                  .tournamentFlag;
-                                                            } else {
-                                                              return '0';
-                                                            }
-                                                          }(),
-                                                          width: 20.0,
-                                                          height: 12.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Text(
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
                                                     () {
                                                       if (notificationsListItem
-                                                              .notificationCategory ==
-                                                          'От игрока') {
-                                                        return notificationsListItem
-                                                            .notificationFromPlayer
-                                                            .playerCountrie;
-                                                      } else if (notificationsListItem
                                                               .notificationCategory ==
                                                           'От команды') {
                                                         return notificationsListItem
                                                             .notificationFromTeam
-                                                            .teamCountry;
+                                                            .teamLogo;
+                                                      } else if (notificationsListItem
+                                                              .notificationCategory ==
+                                                          'От игрока') {
+                                                        return notificationsListItem
+                                                            .notificationFromPlayer
+                                                            .playerAvatar;
                                                       } else if (notificationsListItem
                                                               .notificationCategory ==
                                                           'От турнира') {
                                                         return notificationsListItem
                                                             .notificationFromTournament
-                                                            .tournamentCountry;
+                                                            .tournamentLogo;
                                                       } else {
                                                         return '0';
                                                       }
                                                     }(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                decoration: BoxDecoration(),
-                                                child: Visibility(
-                                                  visible: notificationsListItem
-                                                          .notificationType !=
-                                                      'Матч репорт',
-                                                  child: Text(
-                                                    notificationsListItem
-                                                        .notificationBody,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
+                                                    width: 45.0,
+                                                    height: 45.0,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  () {
+                                                    if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От игрока') {
+                                                      return notificationsListItem
+                                                          .notificationFromPlayer
+                                                          .playerNickname;
+                                                    } else if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От команды') {
+                                                      return notificationsListItem
+                                                          .notificationFromTeam
+                                                          .teamName;
+                                                    } else if (notificationsListItem
+                                                            .notificationCategory ==
+                                                        'От турнира') {
+                                                      return notificationsListItem
+                                                          .notificationFromTournament
+                                                          .tournamentName;
+                                                    } else {
+                                                      return '0';
+                                                    }
+                                                  }(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium,
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                          child: Image.network(
+                                                            () {
+                                                              if (notificationsListItem
+                                                                      .notificationCategory ==
+                                                                  'От игрока') {
+                                                                return notificationsListItem
+                                                                    .notificationFromPlayer
+                                                                    .playerFlag;
+                                                              } else if (notificationsListItem
+                                                                      .notificationCategory ==
+                                                                  'От команды') {
+                                                                return notificationsListItem
+                                                                    .notificationFromTeam
+                                                                    .teamFlag;
+                                                              } else if (notificationsListItem
+                                                                      .notificationCategory ==
+                                                                  'От турнира') {
+                                                                return notificationsListItem
+                                                                    .notificationFromTournament
+                                                                    .tournamentFlag;
+                                                              } else {
+                                                                return '0';
+                                                              }
+                                                            }(),
+                                                            width: 20.0,
+                                                            height: 12.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      () {
+                                                        if (notificationsListItem
+                                                                .notificationCategory ==
+                                                            'От игрока') {
+                                                          return notificationsListItem
+                                                              .notificationFromPlayer
+                                                              .playerCountrie;
+                                                        } else if (notificationsListItem
+                                                                .notificationCategory ==
+                                                            'От команды') {
+                                                          return notificationsListItem
+                                                              .notificationFromTeam
+                                                              .teamCountry;
+                                                        } else if (notificationsListItem
+                                                                .notificationCategory ==
+                                                            'От турнира') {
+                                                          return notificationsListItem
+                                                              .notificationFromTournament
+                                                              .tournamentCountry;
+                                                        } else {
+                                                          return '0';
+                                                        }
+                                                      }(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 0.0, 0.0),
+                                                child: Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          1.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: Visibility(
+                                                    visible: notificationsListItem
+                                                            .notificationType !=
+                                                        'Матч репорт',
+                                                    child: Text(
+                                                      notificationsListItem
+                                                          .notificationBody,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 10.0),
@@ -384,191 +396,203 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ],
                                       ),
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                '${notificationsListItem.match.matchRival1.teamName}',
-                                                textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                              Text(
-                                                '${notificationsListItem.match.matchRival1.teamTag}',
-                                                textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.network(
-                                                    notificationsListItem.match
-                                                        .matchRival1.teamLogo,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Text(
-                                                  '${notificationsListItem.match.matchRival1Wins.toString()} - ${notificationsListItem.match.matchRival2Wins.toString()}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleLarge,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.network(
-                                                    notificationsListItem.match
-                                                        .matchRival2.teamLogo,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${notificationsListItem.match.matchRival2.teamName}',
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                              Text(
-                                                '${notificationsListItem.match.matchRival2.teamTag}',
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: Row(
+                                    if (notificationsListItem
+                                            .notificationType ==
+                                        'Матч репорт')
+                                      Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Expanded(
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.end,
                                               children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 10.0),
-                                                  child: Text(
-                                                    'Скриншоты',
-                                                    style: FlutterFlowTheme.of(
+                                                Text(
+                                                  '${notificationsListItem.match.matchRival1.teamName}',
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                                Text(
+                                                  '${notificationsListItem.match.matchRival1.teamTag}',
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Image.network(
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchRival1
+                                                          .teamLogo,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                 ),
-                                                ScreenshotsInNotificationWidget(
-                                                  key: Key(
-                                                      'Key0r5_${notificationsListIndex}_of_${notificationsList.length}'),
-                                                  parameter1:
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Text(
+                                                    '${notificationsListItem.match.matchRival1Wins.toString()} - ${notificationsListItem.match.matchRival2Wins.toString()}',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Image.network(
                                                       notificationsListItem
                                                           .match
-                                                          .matchScreenshot1,
-                                                  parameter2:
-                                                      notificationsListItem
-                                                          .match
-                                                          .matchScreenshot2,
-                                                  parameter3:
-                                                      notificationsListItem
-                                                          .match
-                                                          .matchScreenshot3,
-                                                  parameter4:
-                                                      notificationsListItem
-                                                          .match
-                                                          .matchScreenshot4,
-                                                  parameter5:
-                                                      notificationsListItem
-                                                          .match
-                                                          .matchScreenshot5,
+                                                          .matchRival2
+                                                          .teamLogo,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  '${notificationsListItem.match.matchRival2.teamName}',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                                Text(
+                                                  '${notificationsListItem.match.matchRival2.teamTag}',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
                                                 ),
                                               ],
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ),
+                                    if (notificationsListItem
+                                            .notificationType ==
+                                        'Матч репорт')
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 10.0),
+                                                    child: Text(
+                                                      'Скриншоты',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Cabin Condensed',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  ScreenshotsInNotificationWidget(
+                                                    key: Key(
+                                                        'Key0r5_${notificationsListIndex}_of_${notificationsList.length}'),
+                                                    parameter1:
+                                                        notificationsListItem
+                                                            .match
+                                                            .matchScreenshot1,
+                                                    parameter2:
+                                                        notificationsListItem
+                                                            .match
+                                                            .matchScreenshot2,
+                                                    parameter3:
+                                                        notificationsListItem
+                                                            .match
+                                                            .matchScreenshot3,
+                                                    parameter4:
+                                                        notificationsListItem
+                                                            .match
+                                                            .matchScreenshot4,
+                                                    parameter5:
+                                                        notificationsListItem
+                                                            .match
+                                                            .matchScreenshot5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
@@ -821,7 +845,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           .match
                                                           .matchReportedBy,
                                                   'notification_type':
-                                                      'Уведомление',
+                                                      'Матч репорт прошел модерацию',
                                                   'notification_body':
                                                       'Репорт прошел модерацию. Результаты  матча учтены в турнире.',
                                                   'notification_category':
