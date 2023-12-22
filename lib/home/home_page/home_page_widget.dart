@@ -1074,12 +1074,41 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchRival2Wins
-                                                            ? 0
+                                                            ? notificationsListItem
+                                                                .match
+                                                                .matchRival1
+                                                                .teamMatchWins
                                                             : (notificationsListItem
                                                                     .match
                                                                     .matchRival1
                                                                     .teamMatchWins +
                                                                 1),
+                                                        'team_match_loses': notificationsListItem
+                                                                    .match
+                                                                    .matchRival1Wins >
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchRival2Wins
+                                                            ? notificationsListItem
+                                                                .match
+                                                                .matchRival1
+                                                                .teamMatchLoses
+                                                            : (notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamMatchLoses +
+                                                                1),
+                                                        'team_matches_rounds_count':
+                                                            notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamMatchesRoundsCount +
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchRival1Wins +
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchRival2Wins,
                                                       },
                                                       matchingRows: (rows) =>
                                                           rows.eq(
