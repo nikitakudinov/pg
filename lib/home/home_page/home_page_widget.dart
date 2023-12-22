@@ -788,7 +788,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 } else if (notificationsListItem
                                                         .notificationType !=
                                                     'Матч репорт прошел модерацию') {
-                                                  return true;
+                                                  return false;
                                                 } else {
                                                   return false;
                                                 }
