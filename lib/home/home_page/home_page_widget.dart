@@ -158,9 +158,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       children: [
                                         Text(
                                           notificationsListItem
-                                              .notificationCreatedAt,
+                                              .notificationType,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .labelLarge,
                                         ),
                                       ],
                                     ),
@@ -372,7 +372,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               '${notificationsListItem.notificationBody}',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
+                                                      .titleSmall,
                                             ),
                                           ),
                                         ],
