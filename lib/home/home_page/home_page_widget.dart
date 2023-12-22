@@ -785,6 +785,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         .notificationCategory ==
                                                     'От турнира') {
                                                   return true;
+                                                } else if (notificationsListItem
+                                                        .notificationType !=
+                                                    'Матч репорт прошел модерацию') {
+                                                  return true;
                                                 } else {
                                                   return false;
                                                 }
