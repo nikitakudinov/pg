@@ -816,20 +816,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   'notification_created_at':
                                                       supaSerialize<DateTime>(
                                                           getCurrentTimestamp),
-                                                  'notification_from_tournament':
-                                                      notificationsListItem
-                                                          .match
-                                                          .matchForTournament
-                                                          .tournamentId,
                                                   'notification_to_player':
                                                       notificationsListItem
                                                           .match
                                                           .matchReportedBy,
                                                   'notification_type':
                                                       'Репорт прошел модерацию',
-                                                  'notification_body': '',
+                                                  'notification_body':
+                                                      'Репорт прошел модерацию',
                                                   'notification_category':
                                                       'От турнира',
+                                                  'notification_from_player':
+                                                      currentUserUid,
                                                 });
                                               },
                                               text: 'Матч зачтен',
