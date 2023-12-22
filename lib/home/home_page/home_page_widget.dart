@@ -369,6 +369,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           context)
                                                       .secondaryBackground,
                                                 ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    notificationsListItem.match
+                                                        .matchRival1.teamLogo,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
