@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/screenshots_in_notification_widget.dart';
@@ -9,6 +10,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1038,6 +1040,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               Expanded(
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
+                                                    // Репорт прошел модерацию.
                                                     await NotificationsTable()
                                                         .insert({
                                                       'notification_created_at':
@@ -1060,6 +1063,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           notificationsListItem
                                                               .match.matchId,
                                                     });
+                                                    // Обновление статов соперника 1
                                                     await TeamsTable().update(
                                                       data: {
                                                         'team_matches_count':
@@ -1153,6 +1157,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             .teamId,
                                                       ),
                                                     );
+                                                    // Обновление статов соперника 2
                                                     await TeamsTable().update(
                                                       data: {
                                                         'team_matches_count':
@@ -1246,6 +1251,109 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             .teamId,
                                                       ),
                                                     );
+                                                    _model.nextmatch =
+                                                        await MatchGroup
+                                                            .mATCHbyTORNandROUNDandPAIRCall
+                                                            .call(
+                                                      tournamentID:
+                                                          notificationsListItem
+                                                              .notificationFromTournament
+                                                              .tournamentId,
+                                                      pair: notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              11
+                                                          ? 6
+                                                          : 0,
+                                                      round: notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1
+                                                          ? 2
+                                                          : 0,
+                                                    );
+                                                    if ((_model.nextmatch
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(((MatchGroup
+                                                                        .mATCHbyTORNandROUNDandPAIRCall
+                                                                        .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ) as List)
+                                                                    .map<String>(
+                                                                        (s) => s
+                                                                            .toString())
+                                                                    .toList()![0])
+                                                                .toString()),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text('2'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    }
+
+                                                    await MatchesTable().update(
+                                                      data: {
+                                                        'match_rival1': notificationsListItem
+                                                                    .match
+                                                                    .matchRival1Wins >
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchRival2Wins
+                                                            ? notificationsListItem
+                                                                .match
+                                                                .matchRival1
+                                                                .teamId
+                                                            : notificationsListItem
+                                                                .match
+                                                                .matchRival2
+                                                                .teamId,
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eq(
+                                                        'match_id',
+                                                        MatchStruct.maybeFromMap(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''))
+                                                            ?.matchId,
+                                                      ),
+                                                    );
+
+                                                    setState(() {});
                                                   },
                                                   text: 'Матч зачтен',
                                                   options: FFButtonOptions(
