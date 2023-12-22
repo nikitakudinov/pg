@@ -10,7 +10,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1345,11 +1344,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       matchingRows: (rows) =>
                                                           rows.eq(
                                                         'match_id',
-                                                        MatchStruct.maybeFromMap(
-                                                                (_model.nextmatch
-                                                                        ?.jsonBody ??
-                                                                    ''))
-                                                            ?.matchId,
+                                                        MatchGroup
+                                                            .mATCHbyTORNandROUNDandPAIRCall
+                                                            .matchid(
+                                                          (_model.nextmatch
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )?[0],
                                                       ),
                                                     );
 
