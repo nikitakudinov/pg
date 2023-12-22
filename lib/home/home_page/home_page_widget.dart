@@ -343,7 +343,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 decoration: BoxDecoration(),
                                                 child: Visibility(
                                                   visible: notificationsListItem
-                                                          .notificationType ==
+                                                          .notificationType !=
                                                       'Матч репорт',
                                                   child: Text(
                                                     notificationsListItem
