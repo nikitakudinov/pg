@@ -821,13 +821,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           .match
                                                           .matchReportedBy,
                                                   'notification_type':
-                                                      'Репорт прошел модерацию',
+                                                      'Уведомление',
                                                   'notification_body':
-                                                      'Репорт прошел модерацию',
+                                                      'Репорт прошел модерацию. Результаты  матча учтены в турнире.',
                                                   'notification_category':
                                                       'От турнира',
                                                   'notification_from_player':
                                                       currentUserUid,
+                                                  'notification_match_id':
+                                                      notificationsListItem
+                                                          .match.matchId,
                                                 });
                                               },
                                               text: 'Матч зачтен',
