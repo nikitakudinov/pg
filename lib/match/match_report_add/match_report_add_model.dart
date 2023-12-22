@@ -41,12 +41,12 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for DropDown widget.
-  String? dropDownValue1;
-  FormFieldController<String>? dropDownValueController1;
-  // State field(s) for DropDown widget.
-  String? dropDownValue2;
-  FormFieldController<String>? dropDownValueController2;
+  // State field(s) for RAUND widget.
+  String? raundValue;
+  FormFieldController<String>? raundValueController;
+  // State field(s) for PAIR widget.
+  String? pairValue;
+  FormFieldController<String>? pairValueController;
   // State field(s) for RIVAL1-WINS widget.
   FocusNode? rival1WinsFocusNode;
   TextEditingController? rival1WinsController;

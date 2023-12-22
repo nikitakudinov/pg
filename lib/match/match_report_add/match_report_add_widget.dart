@@ -112,11 +112,11 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             Padding(
                               padding: EdgeInsets.all(5.0),
                               child: FlutterFlowDropDown<String>(
-                                controller: _model.dropDownValueController1 ??=
+                                controller: _model.raundValueController ??=
                                     FormFieldController<String>(null),
                                 options: ['1', '2', '3', '4', '5'],
                                 onChanged: (val) =>
-                                    setState(() => _model.dropDownValue1 = val),
+                                    setState(() => _model.raundValue = val),
                                 height: 40.0,
                                 textStyle:
                                     FlutterFlowTheme.of(context).bodyMedium,
@@ -152,23 +152,23 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                             Padding(
                               padding: EdgeInsets.all(5.0),
                               child: FlutterFlowDropDown<String>(
-                                controller: _model.dropDownValueController2 ??=
+                                controller: _model.pairValueController ??=
                                     FormFieldController<String>(null),
                                 options: () {
-                                  if (_model.dropDownValue1 == '1') {
+                                  if (_model.raundValue == '1') {
                                     return FFAppConstants.List16;
-                                  } else if (_model.dropDownValue1 == '2') {
+                                  } else if (_model.raundValue == '2') {
                                     return FFAppConstants.List8;
-                                  } else if (_model.dropDownValue1 == '3') {
+                                  } else if (_model.raundValue == '3') {
                                     return FFAppConstants.List4;
-                                  } else if (_model.dropDownValue1 == '4') {
+                                  } else if (_model.raundValue == '4') {
                                     return FFAppConstants.List2;
                                   } else {
                                     return FFAppConstants.List1;
                                   }
                                 }(),
                                 onChanged: (val) =>
-                                    setState(() => _model.dropDownValue2 = val),
+                                    setState(() => _model.pairValue = val),
                                 height: 40.0,
                                 textStyle:
                                     FlutterFlowTheme.of(context).bodyMedium,
@@ -203,10 +203,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                         .addToEnd(SizedBox(width: 15.0)),
                   ),
                 ),
-                if ((_model.dropDownValue1 != null &&
-                        _model.dropDownValue1 != '') &&
-                    (_model.dropDownValue2 != null &&
-                        _model.dropDownValue2 != ''))
+                if ((_model.raundValue != null && _model.raundValue != '') &&
+                    (_model.pairValue != null && _model.pairValue != ''))
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
@@ -225,13 +223,13 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                         (e.matchTournamentRound ==
                                             valueOrDefault<int>(
                                               functions.stringTOinteger(
-                                                  _model.dropDownValue1),
+                                                  _model.raundValue),
                                               1,
                                             )) &&
                                         (e.matchTournamentPair ==
                                             valueOrDefault<int>(
                                               functions.stringTOinteger(
-                                                  _model.dropDownValue2),
+                                                  _model.pairValue),
                                               1,
                                             )))
                                     .toList();
@@ -1846,12 +1844,11 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                   .eq(
                                     'match_tournament_round',
                                     functions
-                                        .stringTOinteger(_model.dropDownValue1),
+                                        .stringTOinteger(_model.raundValue),
                                   )
                                   .eq(
                                     'match_tournament_pair',
-                                    functions
-                                        .stringTOinteger(_model.dropDownValue2),
+                                    functions.stringTOinteger(_model.pairValue),
                                   ),
                             );
                             _model.tournamentData =
@@ -1875,15 +1872,12 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                   .tournamentMatches
                                   .where((e) =>
                                       (e.matchTournamentRound ==
-                                          functions.stringTOinteger(e
-                                              .matchTournamentRound
-                                              .toString())) &&
+                                          functions.stringTOinteger(
+                                              _model.raundValue)) &&
                                       (e.matchTournamentPair ==
-                                          functions.stringTOinteger(e
-                                              .matchTournamentPair
-                                              .toString())))
-                                  .toList()
-                                  .first
+                                          functions.stringTOinteger(
+                                              _model.pairValue)))
+                                  .toList()[0]
                                   .matchId,
                             });
                             ScaffoldMessenger.of(context).showSnackBar(
