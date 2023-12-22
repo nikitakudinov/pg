@@ -111,6 +111,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 setState(() {
                   FFAppState().authUserUpdated = '0';
                 });
+                setState(() {
+                  FFAppState().notofications = [];
+                });
 
                 context.goNamedAuth('LoginPage', context.mounted);
               },
