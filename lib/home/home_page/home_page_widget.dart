@@ -361,7 +361,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                notificationsListItem
+                                                    .match.matchRival1.teamName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                notificationsListItem
+                                                    .match.matchRival1.teamTag,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Container(
                                                 width: 50.0,
@@ -381,20 +404,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                notificationsListItem
-                                                    .match.matchRival1.teamName,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -423,20 +432,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Text(
-                                                notificationsListItem
-                                                    .match.matchRival1.teamName,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
                                               Container(
                                                 width: 50.0,
                                                 height: 50.0,
@@ -451,10 +446,33 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           8.0),
                                                   child: Image.network(
                                                     notificationsListItem.match
-                                                        .matchRival1.teamLogo,
+                                                        .matchRival2.teamLogo,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                notificationsListItem
+                                                    .match.matchRival2.teamName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                notificationsListItem
+                                                    .match.matchRival2.teamName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
