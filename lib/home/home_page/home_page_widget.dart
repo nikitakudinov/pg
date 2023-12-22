@@ -341,18 +341,39 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             .width *
                                                         1.0,
                                                 decoration: BoxDecoration(),
-                                                child: Text(
-                                                  notificationsListItem
-                                                      .notificationBody,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                child: Visibility(
+                                                  visible: notificationsListItem
+                                                          .notificationType ==
+                                                      'Матч репорт',
+                                                  child: Text(
+                                                    notificationsListItem
+                                                        .notificationBody,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Text(
+                                            '${notificationsListItem.notificationBody}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -364,16 +385,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Text(
-                                                notificationsListItem
-                                                    .match.matchRival1.teamName,
+                                                '${notificationsListItem.match.matchRival1.teamName}',
                                                 textAlign: TextAlign.end,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
                                               ),
                                               Text(
-                                                notificationsListItem
-                                                    .match.matchRival1.teamTag,
+                                                '${notificationsListItem.match.matchRival1.teamTag}',
                                                 textAlign: TextAlign.end,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -463,16 +482,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                notificationsListItem
-                                                    .match.matchRival2.teamName,
+                                                '${notificationsListItem.match.matchRival2.teamName}',
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
                                               ),
                                               Text(
-                                                notificationsListItem
-                                                    .match.matchRival2.teamTag,
+                                                '${notificationsListItem.match.matchRival2.teamTag}',
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
