@@ -1163,10 +1163,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 1,
                                                         'team_match_wins': notificationsListItem
                                                                     .match
-                                                                    .matchRival1Wins <=
+                                                                    .matchRival2Wins <=
                                                                 notificationsListItem
                                                                     .match
-                                                                    .matchRival2Wins
+                                                                    .matchRival1Wins
                                                             ? notificationsListItem
                                                                 .match
                                                                 .matchRival2
@@ -1178,10 +1178,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 1),
                                                         'team_match_loses': notificationsListItem
                                                                     .match
-                                                                    .matchRival1Wins >
+                                                                    .matchRival2Wins >
                                                                 notificationsListItem
                                                                     .match
-                                                                    .matchRival2Wins
+                                                                    .matchRival1Wins
                                                             ? notificationsListItem
                                                                 .match
                                                                 .matchRival2
