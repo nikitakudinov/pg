@@ -1870,7 +1870,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               'notification_type': 'Матч репорт',
                               'notification_body':
                                   'Матч сыгран.  Нобходимо подтвердить статус',
-                              'notification_category': 'Матч репорт',
+                              'notification_category': 'От турнира',
                               'notification_match_id': FFAppState()
                                   .tournamentMatches
                                   .where((e) =>
