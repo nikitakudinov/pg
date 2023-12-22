@@ -366,6 +366,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               Text(
                                                 notificationsListItem
                                                     .match.matchRival1.teamName,
+                                                textAlign: TextAlign.end,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
@@ -373,6 +374,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               Text(
                                                 notificationsListItem
                                                     .match.matchRival1.teamTag,
+                                                textAlign: TextAlign.end,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
@@ -469,7 +471,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               ),
                                               Text(
                                                 notificationsListItem
-                                                    .match.matchRival2.teamName,
+                                                    .match.matchRival2.teamTag,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
