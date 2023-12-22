@@ -1068,6 +1068,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .matchRival1
                                                                     .teamMatchesCount +
                                                                 1,
+                                                        'team_match_wins': notificationsListItem
+                                                                    .match
+                                                                    .matchRival1Wins <=
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchRival2Wins
+                                                            ? 0
+                                                            : (notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamMatchWins +
+                                                                1),
                                                       },
                                                       matchingRows: (rows) =>
                                                           rows.eq(
