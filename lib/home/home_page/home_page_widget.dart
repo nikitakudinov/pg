@@ -380,6 +380,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              Text(
+                                                notificationsListItem
+                                                    .match.matchRival1.teamName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         ),
