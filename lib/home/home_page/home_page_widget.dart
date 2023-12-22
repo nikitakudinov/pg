@@ -371,6 +371,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 15.0, 0.0),
                                             child: Container(
+                                              width: 300.0,
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 '${notificationsListItem.notificationBody}',
