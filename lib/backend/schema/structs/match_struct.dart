@@ -19,6 +19,11 @@ class MatchStruct extends BaseStruct {
     TournamentStruct? matchForTournament,
     int? matchRival1Wins,
     int? matchRival2Wins,
+    String? matchScreenshot1,
+    String? matchScreenshot2,
+    String? matchScreenshot3,
+    String? matchScreenshot4,
+    String? matchScreenshot5,
   })  : _matchId = matchId,
         _matchPlannedDate = matchPlannedDate,
         _matchDate = matchDate,
@@ -30,7 +35,12 @@ class MatchStruct extends BaseStruct {
         _matchRival2 = matchRival2,
         _matchForTournament = matchForTournament,
         _matchRival1Wins = matchRival1Wins,
-        _matchRival2Wins = matchRival2Wins;
+        _matchRival2Wins = matchRival2Wins,
+        _matchScreenshot1 = matchScreenshot1,
+        _matchScreenshot2 = matchScreenshot2,
+        _matchScreenshot3 = matchScreenshot3,
+        _matchScreenshot4 = matchScreenshot4,
+        _matchScreenshot5 = matchScreenshot5;
 
   // "match_id" field.
   int? _matchId;
@@ -120,6 +130,36 @@ class MatchStruct extends BaseStruct {
       _matchRival2Wins = matchRival2Wins + amount;
   bool hasMatchRival2Wins() => _matchRival2Wins != null;
 
+  // "match_screenshot1" field.
+  String? _matchScreenshot1;
+  String get matchScreenshot1 => _matchScreenshot1 ?? '';
+  set matchScreenshot1(String? val) => _matchScreenshot1 = val;
+  bool hasMatchScreenshot1() => _matchScreenshot1 != null;
+
+  // "match_screenshot2" field.
+  String? _matchScreenshot2;
+  String get matchScreenshot2 => _matchScreenshot2 ?? '';
+  set matchScreenshot2(String? val) => _matchScreenshot2 = val;
+  bool hasMatchScreenshot2() => _matchScreenshot2 != null;
+
+  // "match_screenshot3" field.
+  String? _matchScreenshot3;
+  String get matchScreenshot3 => _matchScreenshot3 ?? '';
+  set matchScreenshot3(String? val) => _matchScreenshot3 = val;
+  bool hasMatchScreenshot3() => _matchScreenshot3 != null;
+
+  // "match_screenshot4" field.
+  String? _matchScreenshot4;
+  String get matchScreenshot4 => _matchScreenshot4 ?? '';
+  set matchScreenshot4(String? val) => _matchScreenshot4 = val;
+  bool hasMatchScreenshot4() => _matchScreenshot4 != null;
+
+  // "match_screenshot5" field.
+  String? _matchScreenshot5;
+  String get matchScreenshot5 => _matchScreenshot5 ?? '';
+  set matchScreenshot5(String? val) => _matchScreenshot5 = val;
+  bool hasMatchScreenshot5() => _matchScreenshot5 != null;
+
   static MatchStruct fromMap(Map<String, dynamic> data) => MatchStruct(
         matchId: castToType<int>(data['match_id']),
         matchPlannedDate: data['match_planned_date'] as String?,
@@ -134,6 +174,11 @@ class MatchStruct extends BaseStruct {
             TournamentStruct.maybeFromMap(data['match_for_tournament']),
         matchRival1Wins: castToType<int>(data['match_rival1_wins']),
         matchRival2Wins: castToType<int>(data['match_rival2_wins']),
+        matchScreenshot1: data['match_screenshot1'] as String?,
+        matchScreenshot2: data['match_screenshot2'] as String?,
+        matchScreenshot3: data['match_screenshot3'] as String?,
+        matchScreenshot4: data['match_screenshot4'] as String?,
+        matchScreenshot5: data['match_screenshot5'] as String?,
       );
 
   static MatchStruct? maybeFromMap(dynamic data) =>
@@ -152,6 +197,11 @@ class MatchStruct extends BaseStruct {
         'match_for_tournament': _matchForTournament?.toMap(),
         'match_rival1_wins': _matchRival1Wins,
         'match_rival2_wins': _matchRival2Wins,
+        'match_screenshot1': _matchScreenshot1,
+        'match_screenshot2': _matchScreenshot2,
+        'match_screenshot3': _matchScreenshot3,
+        'match_screenshot4': _matchScreenshot4,
+        'match_screenshot5': _matchScreenshot5,
       }.withoutNulls;
 
   @override
@@ -203,6 +253,26 @@ class MatchStruct extends BaseStruct {
         'match_rival2_wins': serializeParam(
           _matchRival2Wins,
           ParamType.int,
+        ),
+        'match_screenshot1': serializeParam(
+          _matchScreenshot1,
+          ParamType.String,
+        ),
+        'match_screenshot2': serializeParam(
+          _matchScreenshot2,
+          ParamType.String,
+        ),
+        'match_screenshot3': serializeParam(
+          _matchScreenshot3,
+          ParamType.String,
+        ),
+        'match_screenshot4': serializeParam(
+          _matchScreenshot4,
+          ParamType.String,
+        ),
+        'match_screenshot5': serializeParam(
+          _matchScreenshot5,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -271,6 +341,31 @@ class MatchStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        matchScreenshot1: deserializeParam(
+          data['match_screenshot1'],
+          ParamType.String,
+          false,
+        ),
+        matchScreenshot2: deserializeParam(
+          data['match_screenshot2'],
+          ParamType.String,
+          false,
+        ),
+        matchScreenshot3: deserializeParam(
+          data['match_screenshot3'],
+          ParamType.String,
+          false,
+        ),
+        matchScreenshot4: deserializeParam(
+          data['match_screenshot4'],
+          ParamType.String,
+          false,
+        ),
+        matchScreenshot5: deserializeParam(
+          data['match_screenshot5'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -290,7 +385,12 @@ class MatchStruct extends BaseStruct {
         matchRival2 == other.matchRival2 &&
         matchForTournament == other.matchForTournament &&
         matchRival1Wins == other.matchRival1Wins &&
-        matchRival2Wins == other.matchRival2Wins;
+        matchRival2Wins == other.matchRival2Wins &&
+        matchScreenshot1 == other.matchScreenshot1 &&
+        matchScreenshot2 == other.matchScreenshot2 &&
+        matchScreenshot3 == other.matchScreenshot3 &&
+        matchScreenshot4 == other.matchScreenshot4 &&
+        matchScreenshot5 == other.matchScreenshot5;
   }
 
   @override
@@ -306,7 +406,12 @@ class MatchStruct extends BaseStruct {
         matchRival2,
         matchForTournament,
         matchRival1Wins,
-        matchRival2Wins
+        matchRival2Wins,
+        matchScreenshot1,
+        matchScreenshot2,
+        matchScreenshot3,
+        matchScreenshot4,
+        matchScreenshot5
       ]);
 }
 
@@ -323,6 +428,11 @@ MatchStruct createMatchStruct({
   TournamentStruct? matchForTournament,
   int? matchRival1Wins,
   int? matchRival2Wins,
+  String? matchScreenshot1,
+  String? matchScreenshot2,
+  String? matchScreenshot3,
+  String? matchScreenshot4,
+  String? matchScreenshot5,
 }) =>
     MatchStruct(
       matchId: matchId,
@@ -337,4 +447,9 @@ MatchStruct createMatchStruct({
       matchForTournament: matchForTournament ?? TournamentStruct(),
       matchRival1Wins: matchRival1Wins,
       matchRival2Wins: matchRival2Wins,
+      matchScreenshot1: matchScreenshot1,
+      matchScreenshot2: matchScreenshot2,
+      matchScreenshot3: matchScreenshot3,
+      matchScreenshot4: matchScreenshot4,
+      matchScreenshot5: matchScreenshot5,
     );
