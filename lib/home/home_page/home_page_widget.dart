@@ -1221,20 +1221,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .teamMatchRoundWins,
                                                         'team_match_round_loses': notificationsListItem
                                                                     .match
-                                                                    .matchRival1Wins <=
+                                                                    .matchRival2Wins <=
                                                                 notificationsListItem
                                                                     .match
-                                                                    .matchRival2Wins
+                                                                    .matchRival1Wins
                                                             ? (notificationsListItem
                                                                     .match
-                                                                    .matchRival1
+                                                                    .matchRival2
                                                                     .teamMatchRoundLoses +
                                                                 notificationsListItem
                                                                     .match
-                                                                    .matchRival1Wins)
+                                                                    .matchRival2Wins)
                                                             : notificationsListItem
                                                                 .match
-                                                                .matchRival1
+                                                                .matchRival2
                                                                 .teamMatchRoundLoses,
                                                       },
                                                       matchingRows: (rows) =>
