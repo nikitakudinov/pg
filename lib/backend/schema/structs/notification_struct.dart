@@ -16,6 +16,7 @@ class NotificationStruct extends BaseStruct {
     String? notificationToPlayer,
     String? notificationCategory,
     String? notificationCreatedAt,
+    MatchStruct? match,
   })  : _notificationId = notificationId,
         _notificationFromTeam = notificationFromTeam,
         _notificationFromPlayer = notificationFromPlayer,
@@ -24,7 +25,8 @@ class NotificationStruct extends BaseStruct {
         _notificationBody = notificationBody,
         _notificationToPlayer = notificationToPlayer,
         _notificationCategory = notificationCategory,
-        _notificationCreatedAt = notificationCreatedAt;
+        _notificationCreatedAt = notificationCreatedAt,
+        _match = match;
 
   // "notification_id" field.
   int? _notificationId;
@@ -92,6 +94,14 @@ class NotificationStruct extends BaseStruct {
   set notificationCreatedAt(String? val) => _notificationCreatedAt = val;
   bool hasNotificationCreatedAt() => _notificationCreatedAt != null;
 
+  // "match" field.
+  MatchStruct? _match;
+  MatchStruct get match => _match ?? MatchStruct();
+  set match(MatchStruct? val) => _match = val;
+  void updateMatch(Function(MatchStruct) updateFn) =>
+      updateFn(_match ??= MatchStruct());
+  bool hasMatch() => _match != null;
+
   static NotificationStruct fromMap(Map<String, dynamic> data) =>
       NotificationStruct(
         notificationId: castToType<int>(data['notification_id']),
@@ -106,6 +116,7 @@ class NotificationStruct extends BaseStruct {
         notificationToPlayer: data['notification_to_player'] as String?,
         notificationCategory: data['notification_category'] as String?,
         notificationCreatedAt: data['notification_created_at'] as String?,
+        match: MatchStruct.maybeFromMap(data['match']),
       );
 
   static NotificationStruct? maybeFromMap(dynamic data) => data is Map
@@ -122,6 +133,7 @@ class NotificationStruct extends BaseStruct {
         'notification_to_player': _notificationToPlayer,
         'notification_category': _notificationCategory,
         'notification_created_at': _notificationCreatedAt,
+        'match': _match?.toMap(),
       }.withoutNulls;
 
   @override
@@ -161,6 +173,10 @@ class NotificationStruct extends BaseStruct {
         'notification_created_at': serializeParam(
           _notificationCreatedAt,
           ParamType.String,
+        ),
+        'match': serializeParam(
+          _match,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -214,6 +230,12 @@ class NotificationStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        match: deserializeStructParam(
+          data['match'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: MatchStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -230,7 +252,8 @@ class NotificationStruct extends BaseStruct {
         notificationBody == other.notificationBody &&
         notificationToPlayer == other.notificationToPlayer &&
         notificationCategory == other.notificationCategory &&
-        notificationCreatedAt == other.notificationCreatedAt;
+        notificationCreatedAt == other.notificationCreatedAt &&
+        match == other.match;
   }
 
   @override
@@ -243,7 +266,8 @@ class NotificationStruct extends BaseStruct {
         notificationBody,
         notificationToPlayer,
         notificationCategory,
-        notificationCreatedAt
+        notificationCreatedAt,
+        match
       ]);
 }
 
@@ -257,6 +281,7 @@ NotificationStruct createNotificationStruct({
   String? notificationToPlayer,
   String? notificationCategory,
   String? notificationCreatedAt,
+  MatchStruct? match,
 }) =>
     NotificationStruct(
       notificationId: notificationId,
@@ -269,4 +294,5 @@ NotificationStruct createNotificationStruct({
       notificationToPlayer: notificationToPlayer,
       notificationCategory: notificationCategory,
       notificationCreatedAt: notificationCreatedAt,
+      match: match ?? MatchStruct(),
     );

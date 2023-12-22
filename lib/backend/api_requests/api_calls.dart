@@ -1963,7 +1963,7 @@ class GETuserNotificationsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETuserNotifications',
       apiUrl:
-          '${MessagingGroup.baseUrl}notifications?notification_to_player=eq.${authUser}&select=*,notification_from_player:players!notifications_notification_from_player_fkey(*),notification_from_team:teams(*),notification_from_tournament:tournaments(*)',
+          '${MessagingGroup.baseUrl}notifications?notification_to_player=eq.${authUser}&select=*,notification_from_player:players!notifications_notification_from_player_fkey(*),notification_from_team:teams(*),notification_from_tournament:tournaments(*),match:matches(*,match_rival1:matches_match_rival1_fkey(*),match_rival2:matches_match_rival2_fkey(*))',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
