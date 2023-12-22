@@ -69,35 +69,35 @@ class _ScreenshotsInNotificationWidgetState
               scrollDirection: Axis.horizontal,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
                     widget.parameter1!,
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
                     widget.parameter2!,
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
                     widget.parameter3!,
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
                     widget.parameter4!,
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
                     widget.parameter5!,
                     fit: BoxFit.cover,

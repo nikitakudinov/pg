@@ -510,20 +510,54 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Expanded(
-                                            child:
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 10.0),
+                                                  child: Text(
+                                                    'Скриншоты',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                  ),
+                                                ),
                                                 ScreenshotsInNotificationWidget(
-                                              key: Key(
-                                                  'Key0r5_${notificationsListIndex}_of_${notificationsList.length}'),
-                                              parameter1: notificationsListItem
-                                                  .match.matchScreenshot1,
-                                              parameter2: notificationsListItem
-                                                  .match.matchScreenshot2,
-                                              parameter3: notificationsListItem
-                                                  .match.matchScreenshot3,
-                                              parameter4: notificationsListItem
-                                                  .match.matchScreenshot4,
-                                              parameter5: notificationsListItem
-                                                  .match.matchScreenshot5,
+                                                  key: Key(
+                                                      'Key0r5_${notificationsListIndex}_of_${notificationsList.length}'),
+                                                  parameter1:
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchScreenshot1,
+                                                  parameter2:
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchScreenshot2,
+                                                  parameter3:
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchScreenshot3,
+                                                  parameter4:
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchScreenshot4,
+                                                  parameter5:
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchScreenshot5,
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],
