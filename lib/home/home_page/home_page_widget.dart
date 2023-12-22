@@ -396,9 +396,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ],
                                       ),
                                     ),
-                                    if (notificationsListItem
-                                            .notificationType ==
-                                        'Матч репорт')
+                                    if ((notificationsListItem
+                                                .notificationType ==
+                                            'Матч репорт') ||
+                                        (notificationsListItem
+                                                .notificationType ==
+                                            'Матч репорт прошел модерацию'))
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
