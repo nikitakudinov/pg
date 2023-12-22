@@ -1158,7 +1158,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         'team_matches_count':
                                                             notificationsListItem
                                                                     .match
-                                                                    .matchRival1
+                                                                    .matchRival2
                                                                     .teamMatchesCount +
                                                                 1,
                                                         'team_match_wins': notificationsListItem
@@ -1169,11 +1169,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .matchRival2Wins
                                                             ? notificationsListItem
                                                                 .match
-                                                                .matchRival1
+                                                                .matchRival2
                                                                 .teamMatchWins
                                                             : (notificationsListItem
                                                                     .match
-                                                                    .matchRival1
+                                                                    .matchRival2
                                                                     .teamMatchWins +
                                                                 1),
                                                         'team_match_loses': notificationsListItem
@@ -1184,21 +1184,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .matchRival2Wins
                                                             ? notificationsListItem
                                                                 .match
-                                                                .matchRival1
+                                                                .matchRival2
                                                                 .teamMatchLoses
                                                             : (notificationsListItem
                                                                     .match
-                                                                    .matchRival1
+                                                                    .matchRival2
                                                                     .teamMatchLoses +
                                                                 1),
                                                         'team_matches_rounds_count':
                                                             notificationsListItem
                                                                     .match
-                                                                    .matchRival1
+                                                                    .matchRival2
                                                                     .teamMatchesRoundsCount +
                                                                 notificationsListItem
                                                                     .match
-                                                                    .matchRival1Wins +
+                                                                    .matchRival2Wins +
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchRival2Wins,
@@ -1210,14 +1210,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .matchRival2Wins
                                                             ? (notificationsListItem
                                                                     .match
-                                                                    .matchRival1
+                                                                    .matchRival2
                                                                     .teamMatchRoundWins +
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchRival1Wins)
                                                             : notificationsListItem
                                                                 .match
-                                                                .matchRival1
+                                                                .matchRival2
                                                                 .teamMatchRoundWins,
                                                         'team_match_round_loses': notificationsListItem
                                                                     .match
