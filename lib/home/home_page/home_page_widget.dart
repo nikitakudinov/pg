@@ -1258,18 +1258,116 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           notificationsListItem
                                                               .notificationFromTournament
                                                               .tournamentId,
-                                                      pair: notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentPair ==
-                                                              11
-                                                          ? 6
-                                                          : 0,
-                                                      round: notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1
-                                                          ? 2
-                                                          : 0,
+                                                      pair: () {
+                                                        if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            1) {
+                                                          return 1;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            2) {
+                                                          return 1;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            3) {
+                                                          return 2;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            4) {
+                                                          return 2;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            5) {
+                                                          return 3;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            6) {
+                                                          return 3;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            7) {
+                                                          return 4;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            8) {
+                                                          return 4;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            9) {
+                                                          return 5;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            10) {
+                                                          return 5;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            11) {
+                                                          return 6;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            12) {
+                                                          return 6;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            13) {
+                                                          return 7;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            14) {
+                                                          return 7;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            15) {
+                                                          return 8;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentPair ==
+                                                            16) {
+                                                          return 8;
+                                                        } else {
+                                                          return 0;
+                                                        }
+                                                      }(),
+                                                      round: () {
+                                                        if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentRound ==
+                                                            1) {
+                                                          return 2;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentRound ==
+                                                            2) {
+                                                          return 3;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentRound ==
+                                                            3) {
+                                                          return 4;
+                                                        } else if (notificationsListItem
+                                                                .match
+                                                                .matchTournamentRound ==
+                                                            4) {
+                                                          return 5;
+                                                        } else {
+                                                          return 0;
+                                                        }
+                                                      }(),
                                                     );
                                                     if ((_model.nextmatch
                                                             ?.succeeded ??
