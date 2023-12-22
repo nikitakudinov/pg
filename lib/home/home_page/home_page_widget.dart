@@ -1060,6 +1060,24 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           notificationsListItem
                                                               .match.matchId,
                                                     });
+                                                    await TeamsTable().update(
+                                                      data: {
+                                                        'team_matches_count':
+                                                            notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamMatchesCount +
+                                                                1,
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eq(
+                                                        'team_id',
+                                                        notificationsListItem
+                                                            .match
+                                                            .matchRival1
+                                                            .teamId,
+                                                      ),
+                                                    );
                                                   },
                                                   text: 'Матч зачтен',
                                                   options: FFButtonOptions(
