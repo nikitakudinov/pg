@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
@@ -1835,6 +1836,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 'match_screenshot3': _model.screenShot3VALUE,
                                 'match_screenshot4': _model.screenShot4VALUE,
                                 'match_screenshot5': _model.screenShot5VALUE,
+                                'match_reported_by': currentUserUid,
                               },
                               matchingRows: (rows) => rows
                                   .eq(

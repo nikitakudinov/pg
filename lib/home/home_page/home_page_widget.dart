@@ -808,6 +808,63 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               ),
                                             ),
                                           ),
+                                          Expanded(
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                await NotificationsTable()
+                                                    .insert({
+                                                  'notification_created_at':
+                                                      supaSerialize<DateTime>(
+                                                          getCurrentTimestamp),
+                                                  'notification_from_tournament':
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchForTournament
+                                                          .tournamentId,
+                                                  'notification_to_player':
+                                                      notificationsListItem
+                                                          .match
+                                                          .matchReportedBy,
+                                                  'notification_type':
+                                                      'Репорт прошел модерацию',
+                                                  'notification_body': '',
+                                                  'notification_category':
+                                                      'От турнира',
+                                                });
+                                              },
+                                              text: 'Матч зачтен',
+                                              options: FFButtonOptions(
+                                                height: 30.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          color: Colors.white,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiary,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                              ),
+                                            ),
+                                          ),
                                         ].divide(SizedBox(width: 10.0)),
                                       ),
                                     ),

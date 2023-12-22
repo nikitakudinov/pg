@@ -73,4 +73,8 @@ class MatchesRow extends SupabaseDataRow {
   String? get matchScreenshot5 => getField<String>('match_screenshot5');
   set matchScreenshot5(String? value) =>
       setField<String>('match_screenshot5', value);
+
+  String? get matchReportedBy => getField<String>('match_reported_by');
+  set matchReportedBy(String? value) =>
+      setField<String>('match_reported_by', value);
 }
