@@ -197,6 +197,16 @@ Future upadateAuthUserDataValues(BuildContext context) async {
           ),
       );
     });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Данные игрока обновлены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 2400),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
   }
 }
 
