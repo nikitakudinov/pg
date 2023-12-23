@@ -1896,6 +1896,13 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     FlutterFlowTheme.of(context).secondary,
                               ),
                             );
+                            setState(() {
+                              FFAppState().tournamentMatches = [];
+                              FFAppState().tournaments = [];
+                              FFAppState().matches = [];
+                              FFAppState().curentMatchData = [];
+                            });
+                            setState(() {});
 
                             context.pushNamed('HomePage');
 
