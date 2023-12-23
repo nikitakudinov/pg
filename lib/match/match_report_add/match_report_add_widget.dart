@@ -1904,6 +1904,10 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               FFAppState().chats = [];
                               FFAppState().notofications = [];
                             });
+                            setState(() {
+                              _model.rival1WinsController?.clear();
+                              _model.rival2WinsController?.clear();
+                            });
 
                             context.pushNamed('HomePage');
 
