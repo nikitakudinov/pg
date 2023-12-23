@@ -1406,6 +1406,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1439,6 +1458,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       } else if (notificationsListItem
                                                               .match
@@ -1580,6 +1618,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1613,6 +1670,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       } else if (notificationsListItem
                                                               .match
@@ -1648,6 +1724,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1681,6 +1776,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       } else if (notificationsListItem
                                                               .match
@@ -1716,6 +1830,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1749,6 +1882,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       } else if (notificationsListItem
                                                               .match
@@ -1784,6 +1936,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1817,6 +1988,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       } else if (notificationsListItem
                                                               .match
@@ -1852,6 +2042,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1886,6 +2095,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             )?[0],
                                                           ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
@@ -1919,6 +2147,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       }
                                                     } else {
