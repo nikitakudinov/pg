@@ -2174,7 +2174,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         builder:
                                                             (alertDialogContext) {
                                                           return AlertDialog(
-                                                            title: Text('2'),
+                                                            title: Text(
+                                                                'Следующий патч не определен'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
