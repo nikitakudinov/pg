@@ -10,7 +10,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1422,50 +1421,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         },
                                                       );
                                                     }
-
-                                                    await MatchesTable().update(
-                                                      data: {
-                                                        'match_rival1': (notificationsListItem
-                                                                        .match
-                                                                        .matchTournamentPair ==
-                                                                    1) ||
-                                                                (notificationsListItem
-                                                                        .match
-                                                                        .matchTournamentPair ==
-                                                                    2)
-                                                            ? (notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId)
-                                                            : MatchStruct.maybeFromMap((_model
-                                                                        .nextmatch
-                                                                        ?.jsonBody ??
-                                                                    ''))
-                                                                ?.matchRival1
-                                                                ?.teamId,
-                                                      },
-                                                      matchingRows: (rows) =>
-                                                          rows.eq(
-                                                        'match_id',
-                                                        MatchGroup
-                                                            .mATCHbyTORNandROUNDandPAIRCall
-                                                            .matchid(
-                                                          (_model.nextmatch
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )?[0],
-                                                      ),
-                                                    );
 
                                                     setState(() {});
                                                   },
