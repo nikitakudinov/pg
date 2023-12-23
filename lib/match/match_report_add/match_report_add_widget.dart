@@ -1897,6 +1897,20 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               ),
                             );
 
+                            context.pushNamed(
+                              'TOURNAMENT_VIEW',
+                              queryParameters: {
+                                'tournamentID': serializeParam(
+                                  widget.tournamentID,
+                                  ParamType.int,
+                                ),
+                                'tournamentCreator': serializeParam(
+                                  widget.tournamentCreatorUID,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
+
                             setState(() {});
                           },
                           text: 'ОТПРАВИТЬ',
