@@ -231,6 +231,13 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                   'match_for_tournament': widget.tournamentId,
                   'match_status': 'Соперники не определены',
                 });
+                await MatchesTable().insert({
+                  'match_date': 'Дата матча не определена',
+                  'match_tournament_round': 5,
+                  'match_tournament_pair': 2,
+                  'match_for_tournament': widget.tournamentId,
+                  'match_status': 'Соперники не определены',
+                });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
