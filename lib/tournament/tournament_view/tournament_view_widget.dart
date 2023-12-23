@@ -872,8 +872,8 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                   iteamspacing: 110,
                                   paddingtop: 0,
                                   itemheight: 100,
-                                  pairFrom: 0,
-                                  pairTo: 8,
+                                  pairFrom: 1,
+                                  pairTo: 1,
                                 ),
                               ),
                               wrapWithModel(
@@ -896,8 +896,8 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                   iteamspacing: 110,
                                   paddingtop: 0,
                                   itemheight: 100,
-                                  pairFrom: 0,
-                                  pairTo: 8,
+                                  pairFrom: 2,
+                                  pairTo: 2,
                                 ),
                               ),
                               wrapWithModel(
