@@ -2333,11 +2333,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           .matchRival2Wins
                                                                   ? notificationsListItem
                                                                       .match
-                                                                      .matchRival2
+                                                                      .matchRival1
                                                                       .teamId
                                                                   : notificationsListItem
                                                                       .match
-                                                                      .matchRival1
+                                                                      .matchRival2
                                                                       .teamId,
                                                             },
                                                             matchingRows:
