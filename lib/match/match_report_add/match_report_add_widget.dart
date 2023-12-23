@@ -1902,7 +1902,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               FFAppState().matches = [];
                               FFAppState().curentMatchData = [];
                             });
-                            setState(() {});
 
                             context.pushNamed('HomePage');
 
