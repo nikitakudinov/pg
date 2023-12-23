@@ -2236,6 +2236,64 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             );
                                                           },
                                                         );
+                                                      } else if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              4)) {
+                                                        // 15
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       }
                                                     } else {
                                                       await showDialog(
