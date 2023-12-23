@@ -2365,11 +2365,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           );
                                                         }
 
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .removeAtIndexFromNotofications(
-                                                                  notificationsListIndex);
-                                                        });
                                                         await NotificationsTable()
                                                             .delete(
                                                           matchingRows:
