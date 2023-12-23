@@ -109,7 +109,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'TEAMS',
           path: '/teams',
-          builder: (context, params) => TeamsWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'TEAMS') : TeamsWidget(),
         ),
         FFRoute(
           name: 'TEAM_VIEW',
