@@ -2766,7 +2766,8 @@ class _TeamsWidgetState extends State<TeamsWidget>
                   padding: EdgeInsets.all(15.0),
                   child: Builder(
                     builder: (context) {
-                      final allTeamsList = FFAppState().allTEAMS.toList();
+                      final allTeamsList =
+                          FFAppState().allTEAMS.toList().take(50).toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         primary: false,
