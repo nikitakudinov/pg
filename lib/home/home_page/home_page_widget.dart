@@ -1481,7 +1481,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
-                                                          1) {
+                                                          3) {
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
