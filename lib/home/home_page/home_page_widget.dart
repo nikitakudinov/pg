@@ -2374,6 +2374,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .notificationId,
                                                           ),
                                                         );
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .removeAtIndexFromNotofications(
+                                                                  notificationsListIndex);
+                                                        });
                                                       } else {
                                                         await showDialog(
                                                           context: context,
