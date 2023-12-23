@@ -71,35 +71,50 @@ class _ScreenshotsInNotificationWidgetState
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
-                    widget.parameter1!,
+                    valueOrDefault<String>(
+                      widget.parameter1,
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
-                    widget.parameter2!,
+                    valueOrDefault<String>(
+                      widget.parameter2,
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
-                    widget.parameter3!,
+                    valueOrDefault<String>(
+                      widget.parameter3,
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
-                    widget.parameter4!,
+                    valueOrDefault<String>(
+                      widget.parameter4,
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3.0),
                   child: Image.network(
-                    widget.parameter5!,
+                    valueOrDefault<String>(
+                      widget.parameter5,
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
