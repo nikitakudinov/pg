@@ -1376,6 +1376,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           1) {
+                                                        // 1
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1429,6 +1430,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           2) {
+                                                        // 2
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1482,6 +1484,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           3) {
+                                                        // 3
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1535,6 +1538,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           4) {
+                                                        // 4
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1588,6 +1592,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           5) {
+                                                        // 5
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1641,6 +1646,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           6) {
+                                                        // 6
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1694,6 +1700,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           7) {
+                                                        // 7
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1747,6 +1754,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           8) {
+                                                        // 8
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1800,6 +1808,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           9) {
+                                                        // 9
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1853,6 +1862,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           10) {
+                                                        // 10
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1906,10 +1916,65 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           11) {
+                                                        // 11
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
                                                             'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          12) {
+                                                        // 12
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
                                                                         .match
                                                                         .matchRival1Wins >
                                                                     notificationsListItem
@@ -1959,10 +2024,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           13) {
+                                                        // 13
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
-                                                            'match_rival2': notificationsListItem
+                                                            'match_rival1': notificationsListItem
                                                                         .match
                                                                         .matchRival1Wins >
                                                                     notificationsListItem
@@ -2012,59 +2078,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .match
                                                               .matchTournamentPair ==
                                                           14) {
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          15) {
+                                                        // 14
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2117,11 +2131,66 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       } else if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
-                                                          16) {
+                                                          15) {
+                                                        // 15
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
                                                             'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Updated'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          16) {
+                                                        // 16
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
                                                                         .match
                                                                         .matchRival1Wins >
                                                                     notificationsListItem
