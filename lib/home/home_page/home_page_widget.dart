@@ -1036,1252 +1036,1301 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   ),
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    // Репорт прошел модерацию.
-                                                    await NotificationsTable()
-                                                        .insert({
-                                                      'notification_created_at':
-                                                          supaSerialize<
-                                                                  DateTime>(
-                                                              getCurrentTimestamp),
-                                                      'notification_to_player':
+                                              if (notificationsListItem
+                                                      .notificationType ==
+                                                  'Матч репорт')
+                                                Expanded(
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      // Репорт прошел модерацию.
+                                                      await NotificationsTable()
+                                                          .insert({
+                                                        'notification_created_at':
+                                                            supaSerialize<
+                                                                    DateTime>(
+                                                                getCurrentTimestamp),
+                                                        'notification_to_player':
+                                                            notificationsListItem
+                                                                .match
+                                                                .matchReportedBy,
+                                                        'notification_type':
+                                                            'Матч репорт прошел модерацию',
+                                                        'notification_body':
+                                                            'Репорт прошел модерацию. Результаты  матча учтены в турнире.',
+                                                        'notification_category':
+                                                            'От турнира',
+                                                        'notification_from_player':
+                                                            currentUserUid,
+                                                        'notification_match_id':
+                                                            notificationsListItem
+                                                                .match.matchId,
+                                                      });
+                                                      // Обновление статов соперника 1
+                                                      await TeamsTable().update(
+                                                        data: {
+                                                          'team_matches_count':
+                                                              notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamMatchesCount +
+                                                                  1,
+                                                          'team_match_wins': notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins <=
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins
+                                                              ? notificationsListItem
+                                                                  .match
+                                                                  .matchRival1
+                                                                  .teamMatchWins
+                                                              : (notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamMatchWins +
+                                                                  1),
+                                                          'team_match_loses': notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins >
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins
+                                                              ? notificationsListItem
+                                                                  .match
+                                                                  .matchRival1
+                                                                  .teamMatchLoses
+                                                              : (notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamMatchLoses +
+                                                                  1),
+                                                          'team_matches_rounds_count': notificationsListItem
+                                                                  .match
+                                                                  .matchRival1
+                                                                  .teamMatchesRoundsCount +
+                                                              notificationsListItem
+                                                                  .match
+                                                                  .matchRival1Wins +
+                                                              notificationsListItem
+                                                                  .match
+                                                                  .matchRival2Wins,
+                                                          'team_match_round_wins': notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins >
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins
+                                                              ? (notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamMatchRoundWins +
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins)
+                                                              : notificationsListItem
+                                                                  .match
+                                                                  .matchRival1
+                                                                  .teamMatchRoundWins,
+                                                          'team_match_round_loses': notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins <=
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins
+                                                              ? (notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamMatchRoundLoses +
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins)
+                                                              : notificationsListItem
+                                                                  .match
+                                                                  .matchRival1
+                                                                  .teamMatchRoundLoses,
+                                                        },
+                                                        matchingRows: (rows) =>
+                                                            rows.eq(
+                                                          'team_id',
                                                           notificationsListItem
                                                               .match
-                                                              .matchReportedBy,
-                                                      'notification_type':
-                                                          'Матч репорт прошел модерацию',
-                                                      'notification_body':
-                                                          'Репорт прошел модерацию. Результаты  матча учтены в турнире.',
-                                                      'notification_category':
-                                                          'От турнира',
-                                                      'notification_from_player':
-                                                          currentUserUid,
-                                                      'notification_match_id':
+                                                              .matchRival1
+                                                              .teamId,
+                                                        ),
+                                                      );
+                                                      // Обновление статов соперника 2
+                                                      await TeamsTable().update(
+                                                        data: {
+                                                          'team_matches_count':
+                                                              notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamMatchesCount +
+                                                                  1,
+                                                          'team_match_wins': notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins <=
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins
+                                                              ? notificationsListItem
+                                                                  .match
+                                                                  .matchRival2
+                                                                  .teamMatchWins
+                                                              : (notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamMatchWins +
+                                                                  1),
+                                                          'team_match_loses': notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins >
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins
+                                                              ? notificationsListItem
+                                                                  .match
+                                                                  .matchRival2
+                                                                  .teamMatchLoses
+                                                              : (notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamMatchLoses +
+                                                                  1),
+                                                          'team_matches_rounds_count': notificationsListItem
+                                                                  .match
+                                                                  .matchRival2
+                                                                  .teamMatchesRoundsCount +
+                                                              notificationsListItem
+                                                                  .match
+                                                                  .matchRival2Wins +
+                                                              notificationsListItem
+                                                                  .match
+                                                                  .matchRival1Wins,
+                                                          'team_match_round_wins': notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins >
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins
+                                                              ? (notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamMatchRoundWins +
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins)
+                                                              : notificationsListItem
+                                                                  .match
+                                                                  .matchRival2
+                                                                  .teamMatchRoundWins,
+                                                          'team_match_round_loses': notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins <=
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1Wins
+                                                              ? (notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamMatchRoundLoses +
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival2Wins)
+                                                              : notificationsListItem
+                                                                  .match
+                                                                  .matchRival2
+                                                                  .teamMatchRoundLoses,
+                                                        },
+                                                        matchingRows: (rows) =>
+                                                            rows.eq(
+                                                          'team_id',
                                                           notificationsListItem
-                                                              .match.matchId,
-                                                    });
-                                                    // Обновление статов соперника 1
-                                                    await TeamsTable().update(
-                                                      data: {
-                                                        'team_matches_count':
+                                                              .match
+                                                              .matchRival2
+                                                              .teamId,
+                                                        ),
+                                                      );
+                                                      _model.nextmatch =
+                                                          await MatchGroup
+                                                              .mATCHbyTORNandROUNDandPAIRCall
+                                                              .call(
+                                                        tournamentID:
                                                             notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamMatchesCount +
-                                                                1,
-                                                        'team_match_wins': notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins <=
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins
-                                                            ? notificationsListItem
-                                                                .match
-                                                                .matchRival1
-                                                                .teamMatchWins
-                                                            : (notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamMatchWins +
-                                                                1),
-                                                        'team_match_loses': notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins >
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins
-                                                            ? notificationsListItem
-                                                                .match
-                                                                .matchRival1
-                                                                .teamMatchLoses
-                                                            : (notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamMatchLoses +
-                                                                1),
-                                                        'team_matches_rounds_count':
-                                                            notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamMatchesRoundsCount +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins,
-                                                        'team_match_round_wins': notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins >
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins
-                                                            ? (notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamMatchRoundWins +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins)
-                                                            : notificationsListItem
-                                                                .match
-                                                                .matchRival1
-                                                                .teamMatchRoundWins,
-                                                        'team_match_round_loses': notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins <=
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins
-                                                            ? (notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamMatchRoundLoses +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins)
-                                                            : notificationsListItem
-                                                                .match
-                                                                .matchRival1
-                                                                .teamMatchRoundLoses,
-                                                      },
-                                                      matchingRows: (rows) =>
-                                                          rows.eq(
-                                                        'team_id',
-                                                        notificationsListItem
-                                                            .match
-                                                            .matchRival1
-                                                            .teamId,
-                                                      ),
-                                                    );
-                                                    // Обновление статов соперника 2
-                                                    await TeamsTable().update(
-                                                      data: {
-                                                        'team_matches_count':
-                                                            notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamMatchesCount +
-                                                                1,
-                                                        'team_match_wins': notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins <=
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins
-                                                            ? notificationsListItem
-                                                                .match
-                                                                .matchRival2
-                                                                .teamMatchWins
-                                                            : (notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamMatchWins +
-                                                                1),
-                                                        'team_match_loses': notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins >
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins
-                                                            ? notificationsListItem
-                                                                .match
-                                                                .matchRival2
-                                                                .teamMatchLoses
-                                                            : (notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamMatchLoses +
-                                                                1),
-                                                        'team_matches_rounds_count':
-                                                            notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamMatchesRoundsCount +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins,
-                                                        'team_match_round_wins': notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins >
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins
-                                                            ? (notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamMatchRoundWins +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins)
-                                                            : notificationsListItem
-                                                                .match
-                                                                .matchRival2
-                                                                .teamMatchRoundWins,
-                                                        'team_match_round_loses': notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins <=
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival1Wins
-                                                            ? (notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamMatchRoundLoses +
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchRival2Wins)
-                                                            : notificationsListItem
-                                                                .match
-                                                                .matchRival2
-                                                                .teamMatchRoundLoses,
-                                                      },
-                                                      matchingRows: (rows) =>
-                                                          rows.eq(
-                                                        'team_id',
-                                                        notificationsListItem
-                                                            .match
-                                                            .matchRival2
-                                                            .teamId,
-                                                      ),
-                                                    );
-                                                    _model.nextmatch =
-                                                        await MatchGroup
-                                                            .mATCHbyTORNandROUNDandPAIRCall
-                                                            .call(
-                                                      tournamentID:
-                                                          notificationsListItem
-                                                              .notificationFromTournament
-                                                              .tournamentId,
-                                                      pair: () {
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                        pair: () {
+                                                          if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              1) {
+                                                            return 1;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              2) {
+                                                            return 1;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              3) {
+                                                            return 2;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              4) {
+                                                            return 2;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              5) {
+                                                            return 3;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              6) {
+                                                            return 3;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              7) {
+                                                            return 4;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              8) {
+                                                            return 4;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              9) {
+                                                            return 5;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              10) {
+                                                            return 5;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              11) {
+                                                            return 6;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              12) {
+                                                            return 6;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              13) {
+                                                            return 7;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              14) {
+                                                            return 7;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              15) {
+                                                            return 8;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              16) {
+                                                            return 8;
+                                                          } else {
+                                                            return 0;
+                                                          }
+                                                        }(),
+                                                        round: () {
+                                                          if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) {
+                                                            return 2;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              2) {
+                                                            return 3;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              3) {
+                                                            return 4;
+                                                          } else if (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              4) {
+                                                            return 5;
+                                                          } else {
+                                                            return 0;
+                                                          }
+                                                        }(),
+                                                      );
+                                                      if ((_model.nextmatch
+                                                              ?.succeeded ??
+                                                          true)) {
                                                         if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             1) {
-                                                          return 1;
+                                                          // 1
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             2) {
-                                                          return 1;
+                                                          // 2
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             3) {
-                                                          return 2;
+                                                          // 3
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             4) {
-                                                          return 2;
+                                                          // 4
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             5) {
-                                                          return 3;
+                                                          // 5
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             6) {
-                                                          return 3;
+                                                          // 6
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             7) {
-                                                          return 4;
+                                                          // 7
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             8) {
-                                                          return 4;
+                                                          // 8
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             9) {
-                                                          return 5;
+                                                          // 9
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             10) {
-                                                          return 5;
+                                                          // 10
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             11) {
-                                                          return 6;
+                                                          // 11
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             12) {
-                                                          return 6;
+                                                          // 12
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             13) {
-                                                          return 7;
+                                                          // 13
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             14) {
-                                                          return 7;
+                                                          // 14
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             15) {
-                                                          return 8;
+                                                          // 15
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             16) {
-                                                          return 8;
-                                                        } else {
-                                                          return 0;
+                                                          // 16
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                        } else if ((notificationsListItem
+                                                                    .match
+                                                                    .matchTournamentPair ==
+                                                                1) &&
+                                                            (notificationsListItem
+                                                                    .match
+                                                                    .matchTournamentRound ==
+                                                                4)) {
+                                                          // 15
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Updated'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         }
-                                                      }(),
-                                                      round: () {
-                                                        if (notificationsListItem
-                                                                .match
-                                                                .matchTournamentRound ==
-                                                            1) {
-                                                          return 2;
-                                                        } else if (notificationsListItem
-                                                                .match
-                                                                .matchTournamentRound ==
-                                                            2) {
-                                                          return 3;
-                                                        } else if (notificationsListItem
-                                                                .match
-                                                                .matchTournamentRound ==
-                                                            3) {
-                                                          return 4;
-                                                        } else if (notificationsListItem
-                                                                .match
-                                                                .matchTournamentRound ==
-                                                            4) {
-                                                          return 5;
-                                                        } else {
-                                                          return 0;
-                                                        }
-                                                      }(),
-                                                    );
-                                                    if ((_model.nextmatch
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          1) {
-                                                        // 1
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
+
+                                                        await NotificationsTable()
+                                                            .delete(
                                                           matchingRows:
                                                               (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
+                                                            'notification_id',
+                                                            notificationsListItem
+                                                                .notificationId,
                                                           ),
                                                         );
+                                                      } else {
                                                         await showDialog(
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
                                                             return AlertDialog(
                                                               title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          2) {
-                                                        // 2
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          3) {
-                                                        // 3
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          4) {
-                                                        // 4
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          5) {
-                                                        // 5
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          6) {
-                                                        // 6
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          7) {
-                                                        // 7
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          8) {
-                                                        // 8
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          9) {
-                                                        // 9
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          10) {
-                                                        // 10
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          11) {
-                                                        // 11
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          12) {
-                                                        // 12
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          13) {
-                                                        // 13
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          14) {
-                                                        // 14
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          15) {
-                                                        // 15
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if (notificationsListItem
-                                                              .match
-                                                              .matchTournamentPair ==
-                                                          16) {
-                                                        // 16
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentPair ==
-                                                              1) &&
-                                                          (notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              4)) {
-                                                        // 15
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Updated'),
+                                                                  'Следующий патч не определен'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -2295,66 +2344,54 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           },
                                                         );
                                                       }
-                                                    } else {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Следующий патч не определен'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
-                                                    }
 
-                                                    setState(() {});
-                                                  },
-                                                  text: 'Матч зачтен',
-                                                  options: FFButtonOptions(
-                                                    height: 30.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .tertiary,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          color: Colors.white,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                      setState(() {});
+                                                    },
+                                                    text: 'Матч зачтен',
+                                                    options: FFButtonOptions(
+                                                      height: 30.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .tertiary,
-                                                      width: 1.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Cabin Condensed',
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
                                                   ),
                                                 ),
-                                              ),
                                             ].divide(SizedBox(width: 10.0)),
                                           ),
                                         ),
