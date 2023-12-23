@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -168,8 +169,10 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                               opacity: 0.5,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(
-                                  FFAppState()
+                                child: CachedNetworkImage(
+                                  fadeInDuration: Duration(milliseconds: 3000),
+                                  fadeOutDuration: Duration(milliseconds: 3000),
+                                  imageUrl: FFAppState()
                                       .tournaments
                                       .where((e) =>
                                           e.tournamentId == widget.tournamentID)
@@ -214,8 +217,12 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
-                                                child: Image.network(
-                                                  FFAppState()
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 3000),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 3000),
+                                                  imageUrl: FFAppState()
                                                       .tournaments
                                                       .where((e) =>
                                                           e.tournamentId ==
@@ -418,9 +425,18 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                     .circular(
                                                                         8.0),
                                                             child:
-                                                                Image.network(
-                                                              organizatorsListItem
-                                                                  .playerAvatar,
+                                                                CachedNetworkImage(
+                                                              fadeInDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          3000),
+                                                              fadeOutDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          3000),
+                                                              imageUrl:
+                                                                  organizatorsListItem
+                                                                      .playerAvatar,
                                                               width: 50.0,
                                                               height: 50.0,
                                                               fit: BoxFit.cover,
@@ -630,9 +646,18 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                     .circular(
                                                                         5.0),
                                                             child:
-                                                                Image.network(
-                                                              tournamentMembersItem
-                                                                  .teamLogo,
+                                                                CachedNetworkImage(
+                                                              fadeInDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          3000),
+                                                              fadeOutDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          3000),
+                                                              imageUrl:
+                                                                  tournamentMembersItem
+                                                                      .teamLogo,
                                                               width: 35.0,
                                                               height: 35.0,
                                                               fit: BoxFit.cover,
@@ -697,10 +722,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             0.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      tournamentMembersItem
-                                                                          .teamFlag,
+                                                                    child:
+                                                                        CachedNetworkImage(
+                                                                      fadeInDuration:
+                                                                          Duration(
+                                                                              milliseconds: 3000),
+                                                                      fadeOutDuration:
+                                                                          Duration(
+                                                                              milliseconds: 3000),
+                                                                      imageUrl:
+                                                                          tournamentMembersItem
+                                                                              .teamFlag,
                                                                       width:
                                                                           20.0,
                                                                       height:
@@ -1042,9 +1074,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                       BorderRadius
                                                                           .circular(
                                                                               5.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    playedMatchesListItem
+                                                                  child:
+                                                                      CachedNetworkImage(
+                                                                    fadeInDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    fadeOutDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    imageUrl: playedMatchesListItem
                                                                         .matchRival1
                                                                         .teamLogo,
                                                                     width: 50.0,
@@ -1098,9 +1138,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                       BorderRadius
                                                                           .circular(
                                                                               5.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    playedMatchesListItem
+                                                                  child:
+                                                                      CachedNetworkImage(
+                                                                    fadeInDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    fadeOutDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    imageUrl: playedMatchesListItem
                                                                         .matchRival2
                                                                         .teamLogo,
                                                                     width: 50.0,
@@ -1212,9 +1260,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                       BorderRadius
                                                                           .circular(
                                                                               5.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    planedMatchesListItem
+                                                                  child:
+                                                                      CachedNetworkImage(
+                                                                    fadeInDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    fadeOutDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    imageUrl: planedMatchesListItem
                                                                         .matchRival1
                                                                         .teamLogo,
                                                                     width: 50.0,
@@ -1261,9 +1317,17 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                                                       BorderRadius
                                                                           .circular(
                                                                               5.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    planedMatchesListItem
+                                                                  child:
+                                                                      CachedNetworkImage(
+                                                                    fadeInDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    fadeOutDuration:
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                3000),
+                                                                    imageUrl: planedMatchesListItem
                                                                         .matchRival2
                                                                         .teamLogo,
                                                                     width: 50.0,

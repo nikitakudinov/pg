@@ -288,7 +288,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     notificationsList[notificationsListIndex];
                                 return Container(
                                   decoration: BoxDecoration(
-                                    color: Color(0x6F000000),
+                                    color: Color(0xC5000000),
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                   child: Padding(

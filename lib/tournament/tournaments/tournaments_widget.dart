@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -200,8 +201,13 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(5.0),
-                                          child: Image.network(
-                                            tournamentsListItem.tournamentLogo,
+                                          child: CachedNetworkImage(
+                                            fadeInDuration:
+                                                Duration(milliseconds: 3000),
+                                            fadeOutDuration:
+                                                Duration(milliseconds: 3000),
+                                            imageUrl: tournamentsListItem
+                                                .tournamentLogo,
                                             width: 50.0,
                                             height: 50.0,
                                             fit: BoxFit.cover,
