@@ -51,6 +51,8 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel7;
   // Model for TOURNAMENTgridROUND component.
   late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel8;
+  // Model for TOURNAMENTgridROUND component.
+  late TOURNAMENTgridROUNDModel tOURNAMENTgridROUNDModel9;
   // State field(s) for Expandable widget.
   late ExpandableController expandableController4;
 
@@ -80,6 +82,8 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
         createModel(context, () => TOURNAMENTgridROUNDModel());
     tOURNAMENTgridROUNDModel8 =
         createModel(context, () => TOURNAMENTgridROUNDModel());
+    tOURNAMENTgridROUNDModel9 =
+        createModel(context, () => TOURNAMENTgridROUNDModel());
   }
 
   void dispose() {
@@ -96,6 +100,7 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
     tOURNAMENTgridROUNDModel6.dispose();
     tOURNAMENTgridROUNDModel7.dispose();
     tOURNAMENTgridROUNDModel8.dispose();
+    tOURNAMENTgridROUNDModel9.dispose();
     expandableController4.dispose();
     tabBarController?.dispose();
   }

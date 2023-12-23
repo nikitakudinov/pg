@@ -868,7 +868,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                 model: _model.tOURNAMENTgridROUNDModel4,
                                 updateCallback: () => setState(() {}),
                                 child: TOURNAMENTgridROUNDWidget(
-                                  round: 5,
+                                  round: 4,
                                   iteamspacing: 110,
                                   paddingtop: 0,
                                   itemheight: 100,
@@ -880,6 +880,30 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                 model: _model.tOURNAMENTgridROUNDModel5,
                                 updateCallback: () => setState(() {}),
                                 child: TOURNAMENTgridROUNDWidget(
+                                  round: 5,
+                                  iteamspacing: 5,
+                                  paddingtop: 0,
+                                  itemheight: 100,
+                                  pairFrom: 9,
+                                  pairTo: 16,
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.tOURNAMENTgridROUNDModel6,
+                                updateCallback: () => setState(() {}),
+                                child: TOURNAMENTgridROUNDWidget(
+                                  round: 4,
+                                  iteamspacing: 5,
+                                  paddingtop: 0,
+                                  itemheight: 100,
+                                  pairFrom: 9,
+                                  pairTo: 16,
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.tOURNAMENTgridROUNDModel7,
+                                updateCallback: () => setState(() {}),
+                                child: TOURNAMENTgridROUNDWidget(
                                   round: 3,
                                   iteamspacing: 320,
                                   paddingtop: 0,
@@ -889,7 +913,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                 ),
                               ),
                               wrapWithModel(
-                                model: _model.tOURNAMENTgridROUNDModel6,
+                                model: _model.tOURNAMENTgridROUNDModel8,
                                 updateCallback: () => setState(() {}),
                                 child: TOURNAMENTgridROUNDWidget(
                                   round: 2,
@@ -901,19 +925,7 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                 ),
                               ),
                               wrapWithModel(
-                                model: _model.tOURNAMENTgridROUNDModel7,
-                                updateCallback: () => setState(() {}),
-                                child: TOURNAMENTgridROUNDWidget(
-                                  round: 1,
-                                  iteamspacing: 5,
-                                  paddingtop: 0,
-                                  itemheight: 100,
-                                  pairFrom: 9,
-                                  pairTo: 16,
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.tOURNAMENTgridROUNDModel8,
+                                model: _model.tOURNAMENTgridROUNDModel9,
                                 updateCallback: () => setState(() {}),
                                 child: TOURNAMENTgridROUNDWidget(
                                   round: 1,
