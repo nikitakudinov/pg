@@ -893,11 +893,11 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
                                 updateCallback: () => setState(() {}),
                                 child: TOURNAMENTgridROUNDWidget(
                                   round: 4,
-                                  iteamspacing: 5,
+                                  iteamspacing: 110,
                                   paddingtop: 0,
                                   itemheight: 100,
-                                  pairFrom: 9,
-                                  pairTo: 16,
+                                  pairFrom: 0,
+                                  pairTo: 8,
                                 ),
                               ),
                               wrapWithModel(
