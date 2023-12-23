@@ -1372,35 +1372,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     if ((_model.nextmatch
                                                             ?.succeeded ??
                                                         true)) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(((MatchGroup
-                                                                        .mATCHbyTORNandROUNDandPAIRCall
-                                                                        .matchid(
-                                                              (_model.nextmatch
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ) as List)
-                                                                    .map<String>(
-                                                                        (s) => s
-                                                                            .toString())
-                                                                    .toList()![0])
-                                                                .toString()),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
                                                       if (notificationsListItem
                                                               .match
                                                               .matchTournamentPair ==
