@@ -1831,11 +1831,26 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                     _model.rival1WinsController.text),
                                 'match_rival2_wins': int.tryParse(
                                     _model.rival2WinsController.text),
-                                'match_screenshot1': _model.screenShot1VALUE,
-                                'match_screenshot2': _model.screenShot2VALUE,
-                                'match_screenshot3': _model.screenShot3VALUE,
-                                'match_screenshot4': _model.screenShot4VALUE,
-                                'match_screenshot5': _model.screenShot5VALUE,
+                                'match_screenshot1': valueOrDefault<String>(
+                                  _model.screenShot1VALUE,
+                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                ),
+                                'match_screenshot2': valueOrDefault<String>(
+                                  _model.screenShot2VALUE,
+                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                ),
+                                'match_screenshot3': valueOrDefault<String>(
+                                  _model.screenShot3VALUE,
+                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                ),
+                                'match_screenshot4': valueOrDefault<String>(
+                                  _model.screenShot4VALUE,
+                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                ),
+                                'match_screenshot5': valueOrDefault<String>(
+                                  _model.screenShot5VALUE,
+                                  'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                ),
                                 'match_reported_by': currentUserUid,
                               },
                               matchingRows: (rows) => rows
