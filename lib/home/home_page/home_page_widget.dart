@@ -2378,6 +2378,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           FFAppState()
                                                               .removeAtIndexFromNotofications(
                                                                   notificationsListIndex);
+                                                          FFAppState()
+                                                              .alertsCount = 0;
                                                         });
                                                       } else {
                                                         await showDialog(
