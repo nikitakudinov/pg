@@ -71,16 +71,6 @@ Future loadAuthUserChats(BuildContext context) async {
       FFAppState().AllAuthUsersChats =
           convertedChatsData!.toList().cast<ChatStruct>();
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Chats Uploaderd',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 1000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 

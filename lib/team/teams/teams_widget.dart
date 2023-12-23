@@ -51,11 +51,6 @@ class _TeamsWidgetState extends State<TeamsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => TeamsModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await action_blocks.loadAllTeamsDataToAppState(context);
-    });
   }
 
   @override
