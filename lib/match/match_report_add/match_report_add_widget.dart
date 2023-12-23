@@ -1901,6 +1901,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               FFAppState().tournaments = [];
                               FFAppState().matches = [];
                               FFAppState().curentMatchData = [];
+                              FFAppState().chats = [];
+                              FFAppState().notofications = [];
                             });
 
                             context.pushNamed('HomePage');
