@@ -1352,6 +1352,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .matchTournamentPair ==
                                                               16) {
                                                             return 8;
+                                                          } else if ((notificationsListItem
+                                                                      .match
+                                                                      .matchTournamentRound ==
+                                                                  4) &&
+                                                              (notificationsListItem
+                                                                      .match
+                                                                      .matchTournamentPair ==
+                                                                  1)) {
+                                                            return 2;
                                                           } else {
                                                             return 0;
                                                           }
@@ -2315,12 +2324,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           );
                                                         } else if ((notificationsListItem
                                                                     .match
-                                                                    .matchTournamentPair ==
-                                                                1) &&
+                                                                    .matchTournamentRound ==
+                                                                4) &&
                                                             (notificationsListItem
                                                                     .match
-                                                                    .matchTournamentRound ==
-                                                                4)) {
+                                                                    .matchTournamentPair ==
+                                                                1)) {
                                                           // 15
                                                           await MatchesTable()
                                                               .update(
