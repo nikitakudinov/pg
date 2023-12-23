@@ -1401,6 +1401,517 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           );
                                                         },
                                                       );
+                                                      if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          1) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          2) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          1) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          4) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          5) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          6) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          7) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          8) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          9) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          10) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          11) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          13) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          14) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          15) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      } else if (notificationsListItem
+                                                              .match
+                                                              .matchTournamentPair ==
+                                                          16) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1': notificationsListItem
+                                                                        .match
+                                                                        .matchRival1Wins >
+                                                                    notificationsListItem
+                                                                        .match
+                                                                        .matchRival2Wins
+                                                                ? notificationsListItem
+                                                                    .match
+                                                                    .matchRival1
+                                                                    .teamId
+                                                                : notificationsListItem
+                                                                    .match
+                                                                    .matchRival2
+                                                                    .teamId,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.nextmatch
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                      }
                                                     } else {
                                                       await showDialog(
                                                         context: context,
