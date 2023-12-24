@@ -410,7 +410,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                     );
                   },
                 ),
-              if (_model.byRoundActive)
+              if (_model.byMatchActive)
                 Builder(
                   builder: (context) {
                     final teamsList = widget.teams!
@@ -536,6 +536,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ВСЕГО',
+                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -557,6 +558,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ПОБЕД',
+                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -567,7 +569,11 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                       Text(
                                         '${teamsListItem.teamMatchWins.toString()}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Cabin Condensed',
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -578,6 +584,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ПОРАЖ.',
+                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -609,6 +616,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                                 .override(
                                                   fontFamily: 'Cabin Condensed',
                                                   fontSize: 10.0,
+                                                  letterSpacing: 1.0,
                                                 ),
                                           ),
                                           Text(
@@ -620,8 +628,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .accent1,
-                                                  fontSize: 8.0,
-                                                  lineHeight: 0.9,
+                                                  fontSize: 10.0,
                                                 ),
                                           ),
                                         ],
