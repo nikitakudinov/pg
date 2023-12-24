@@ -448,7 +448,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'ПОБЕД',
+                                  'ПО',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -479,7 +479,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'ПОРАЖЕНИЙ',
+                                  'ПРОИГРАНО',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(

@@ -290,7 +290,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ВСЕГО',
-                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -312,7 +311,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ПОБЕД',
-                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -323,11 +321,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                       Text(
                                         '${teamsListItem.teamMatchWins.toString()}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                            .bodyMedium,
                                       ),
                                     ],
                                   ),
@@ -338,7 +332,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ПОРАЖ.',
-                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -370,7 +363,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                                 .override(
                                                   fontFamily: 'Cabin Condensed',
                                                   fontSize: 10.0,
-                                                  letterSpacing: 1.0,
                                                 ),
                                           ),
                                           Text(
@@ -382,7 +374,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .accent1,
-                                                  fontSize: 10.0,
+                                                  fontSize: 8.0,
+                                                  lineHeight: 0.9,
                                                 ),
                                           ),
                                         ],
@@ -536,7 +529,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ВСЕГО',
-                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -545,7 +537,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                             ),
                                       ),
                                       Text(
-                                        '${teamsListItem.teamMatchesCount.toString()}',
+                                        '${teamsListItem.teamMatchesRoundsCount.toString()}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -558,7 +550,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ПОБЕД',
-                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -567,13 +558,9 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                             ),
                                       ),
                                       Text(
-                                        '${teamsListItem.teamMatchWins.toString()}',
+                                        '${teamsListItem.teamMatchRoundWins.toString()}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Cabin Condensed',
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                            .bodyMedium,
                                       ),
                                     ],
                                   ),
@@ -584,7 +571,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     children: [
                                       Text(
                                         'ПОРАЖ.',
-                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -593,7 +579,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                             ),
                                       ),
                                       Text(
-                                        '${teamsListItem.teamMatchLoses.toString()}',
+                                        '${teamsListItem.teamMatchRoundLoses.toString()}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -616,7 +602,6 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                                 .override(
                                                   fontFamily: 'Cabin Condensed',
                                                   fontSize: 10.0,
-                                                  letterSpacing: 1.0,
                                                 ),
                                           ),
                                           Text(
@@ -628,15 +613,16 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .accent1,
-                                                  fontSize: 10.0,
+                                                  fontSize: 8.0,
+                                                  lineHeight: 0.9,
                                                 ),
                                           ),
                                         ],
                                       ),
                                       Text(
                                         formatNumber(
-                                          teamsListItem.teamMatchWins /
-                                              teamsListItem.teamMatchLoses,
+                                          teamsListItem.teamMatchRoundWins /
+                                              teamsListItem.teamMatchRoundLoses,
                                           formatType: FormatType.custom,
                                           format: '#.#',
                                           locale: '',
