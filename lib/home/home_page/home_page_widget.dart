@@ -1273,20 +1273,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
-                                                            'match_rival1': notificationsListItem
-                                                                        .match
-                                                                        .matchRival1Wins >
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchRival2Wins
-                                                                ? notificationsListItem
-                                                                    .match
-                                                                    .matchRival1
-                                                                    .teamId
-                                                                : notificationsListItem
-                                                                    .match
-                                                                    .matchRival2
-                                                                    .teamId,
+                                                            'match_rival1':
+                                                                valueOrDefault<
+                                                                    int>(
+                                                              notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                              0,
+                                                            ),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows
