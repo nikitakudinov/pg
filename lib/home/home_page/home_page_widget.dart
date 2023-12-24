@@ -1282,10 +1282,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       notificationsListItem
                                                                           .match
                                                                           .matchRival2Wins
-                                                                  ? notificationsListItem
-                                                                      .match
-                                                                      .matchRival1
-                                                                      .teamId
+                                                                  ? 0
                                                                   : notificationsListItem
                                                                       .match
                                                                       .matchRival2
