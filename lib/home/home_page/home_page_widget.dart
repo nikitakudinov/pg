@@ -2376,7 +2376,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
-                                                                'Данные обновлены',
+                                                                '222222',
                                                                 style:
                                                                     TextStyle(
                                                                   color: FlutterFlowTheme.of(
