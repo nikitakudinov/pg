@@ -1461,72 +1461,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .secondary,
                                                             ),
                                                           );
-                                                          if ((notificationsListItem
-                                                                      .match
-                                                                      .matchTournamentRound ==
-                                                                  4) &&
-                                                              (notificationsListItem
-                                                                      .match
-                                                                      .matchTournamentPair ==
-                                                                  1)) {
-                                                            // 3
-                                                            await MatchesTable()
-                                                                .update(
-                                                              data: {
-                                                                'match_rival1': notificationsListItem.match.matchRival1Wins >
-                                                                        notificationsListItem
-                                                                            .match
-                                                                            .matchRival2Wins
-                                                                    ? notificationsListItem
-                                                                        .match
-                                                                        .matchRival2
-                                                                        .teamId
-                                                                    : notificationsListItem
-                                                                        .match
-                                                                        .matchRival1
-                                                                        .teamId,
-                                                              },
-                                                              matchingRows:
-                                                                  (rows) => rows
-                                                                      .eq(
-                                                                        'match_for_tournament',
-                                                                        notificationsListItem
-                                                                            .match
-                                                                            .matchForTournament
-                                                                            .tournamentId,
-                                                                      )
-                                                                      .eq(
-                                                                        'match_tournament_round',
-                                                                        5,
-                                                                      )
-                                                                      .eq(
-                                                                        'match_tournament_pair',
-                                                                        2,
-                                                                      ),
-                                                            );
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  '111111111111',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                  ),
-                                                                ),
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        500),
-                                                                backgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary,
-                                                              ),
-                                                            );
-                                                          }
                                                         } else if (notificationsListItem
                                                                 .match
                                                                 .matchTournamentPair ==
@@ -2343,6 +2277,68 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .match
                                                                 .matchTournamentPair ==
                                                             16) {
+                                                          // 16
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival2': notificationsListItem
+                                                                          .match
+                                                                          .matchRival1Wins >
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchRival2Wins
+                                                                  ? notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId
+                                                                  : notificationsListItem
+                                                                      .match
+                                                                      .matchRival2
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.nextmatch
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Данные обновлены',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                            ),
+                                                          );
+                                                        } else if ((notificationsListItem
+                                                                    .match
+                                                                    .matchTournamentRound ==
+                                                                4) &&
+                                                            (notificationsListItem
+                                                                    .match
+                                                                    .matchTournamentPair ==
+                                                                1)) {
                                                           // 16
                                                           await MatchesTable()
                                                               .update(
