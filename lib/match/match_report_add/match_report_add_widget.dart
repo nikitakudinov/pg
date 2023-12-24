@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -41,12 +42,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MatchReportAddModel());
-
-    _model.rival1WinsController ??= TextEditingController();
-    _model.rival1WinsFocusNode ??= FocusNode();
-
-    _model.rival2WinsController ??= TextEditingController();
-    _model.rival2WinsFocusNode ??= FocusNode();
 
     _model.expandableController = ExpandableController(initialExpanded: false);
   }
@@ -260,7 +255,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Expanded(
-                                                  flex: 2,
+                                                  flex: 3,
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -328,11 +323,100 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  flex: 1,
+                                                  flex: 2,
                                                   child: Column(
                                                     mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [],
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      FlutterFlowIconButton(
+                                                        borderRadius: 20.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 40.0,
+                                                        icon: Icon(
+                                                          Icons.add,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            _model.rival1wins =
+                                                                _model.rival1wins! +
+                                                                    1;
+                                                          });
+                                                        },
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        3.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    10.0),
+                                                            child: Text(
+                                                              '${valueOrDefault<String>(
+                                                                _model
+                                                                    .rival1wins
+                                                                    ?.toString(),
+                                                                '0',
+                                                              )}',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleLarge,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      FlutterFlowIconButton(
+                                                        borderRadius: 20.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 40.0,
+                                                        icon: Icon(
+                                                          Icons.add,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            _model.rival1wins =
+                                                                _model.rival1wins! +
+                                                                    -1;
+                                                          });
+                                                        },
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                                 Expanded(
@@ -345,9 +429,7 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                             .center,
                                                     children: [
                                                       Text(
-                                                        matchItem
-                                                            .matchForTournament
-                                                            .tournamentTag,
+                                                        '${matchItem.matchForTournament.tournamentTag}',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -389,15 +471,103 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  flex: 1,
+                                                  flex: 2,
                                                   child: Column(
                                                     mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [],
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 20.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 40.0,
+                                                        icon: Icon(
+                                                          Icons.add,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            _model.rival2wins =
+                                                                _model.rival2wins! +
+                                                                    1;
+                                                          });
+                                                        },
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        3.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    10.0),
+                                                            child: Text(
+                                                              '${_model.rival2wins?.toString()}',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleLarge,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 20.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 40.0,
+                                                        icon: Icon(
+                                                          Icons.add,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            _model.rival2wins =
+                                                                _model.rival2wins! +
+                                                                    -1;
+                                                          });
+                                                        },
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  flex: 2,
+                                                  flex: 3,
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -474,153 +644,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 );
                               },
                             ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 35.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 0.0),
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.rival1WinsController,
-                                              focusNode:
-                                                  _model.rival1WinsFocusNode,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText: 'СЧЕТ',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall,
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                errorBorder: InputBorder.none,
-                                                focusedErrorBorder:
-                                                    InputBorder.none,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              validator: _model
-                                                  .rival1WinsControllerValidator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 35.0, 10.0, 0.0),
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 0.0),
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.rival2WinsController,
-                                              focusNode:
-                                                  _model.rival2WinsFocusNode,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText: 'СЧЕТ',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall,
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                errorBorder: InputBorder.none,
-                                                focusedErrorBorder:
-                                                    InputBorder.none,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              validator: _model
-                                                  .rival2WinsControllerValidator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [],
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),
@@ -1827,10 +1850,8 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                 'match_date':
                                     dateTimeFormat('d/M', getCurrentTimestamp),
                                 'match_status': 'На модерации',
-                                'match_rival1_wins': int.tryParse(
-                                    _model.rival1WinsController.text),
-                                'match_rival2_wins': int.tryParse(
-                                    _model.rival2WinsController.text),
+                                'match_rival1_wins': _model.rival1wins,
+                                'match_rival2_wins': _model.rival2wins,
                                 'match_screenshot1': valueOrDefault<String>(
                                   _model.screenShot1VALUE,
                                   'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
@@ -1917,10 +1938,6 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                               FFAppState().matches = [];
                               FFAppState().curentMatchData = [];
                               FFAppState().chats = [];
-                            });
-                            setState(() {
-                              _model.rival1WinsController?.clear();
-                              _model.rival2WinsController?.clear();
                             });
 
                             context.pushNamed('HomePage');

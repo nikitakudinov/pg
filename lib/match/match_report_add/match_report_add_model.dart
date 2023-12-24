@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -39,6 +40,10 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   String screenShot10VALUE = 'false';
 
+  int? rival1wins = 0;
+
+  int? rival2wins = 0;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -48,14 +53,6 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   // State field(s) for PAIR widget.
   String? pairValue;
   FormFieldController<String>? pairValueController;
-  // State field(s) for RIVAL1-WINS widget.
-  FocusNode? rival1WinsFocusNode;
-  TextEditingController? rival1WinsController;
-  String? Function(BuildContext, String?)? rival1WinsControllerValidator;
-  // State field(s) for RIVAL2-WINS widget.
-  FocusNode? rival2WinsFocusNode;
-  TextEditingController? rival2WinsController;
-  String? Function(BuildContext, String?)? rival2WinsControllerValidator;
   // State field(s) for Expandable widget.
   late ExpandableController expandableController;
 
@@ -93,12 +90,6 @@ class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    rival1WinsFocusNode?.dispose();
-    rival1WinsController?.dispose();
-
-    rival2WinsFocusNode?.dispose();
-    rival2WinsController?.dispose();
-
     expandableController.dispose();
   }
 
