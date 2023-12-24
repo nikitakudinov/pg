@@ -10,6 +10,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class RatingTeamsTabsModel extends FlutterFlowModel<RatingTeamsTabsWidget> {
+  ///  Local state fields for this component.
+
+  bool byMatchActive = true;
+
+  bool byRoundActive = false;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
