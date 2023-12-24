@@ -96,7 +96,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
                           color: _model.byMatchActive == true
-                              ? FlutterFlowTheme.of(context).secondaryText
+                              ? Color(0x65F2C94C)
                               : FlutterFlowTheme.of(context).primaryBackground,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -128,15 +128,17 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
-                          color: _model.byRoundActive == true
-                              ? FlutterFlowTheme.of(context).secondaryText
+                          color: _model.byMatchActive == true
+                              ? Color(0x65F2C94C)
                               : FlutterFlowTheme.of(context).primaryBackground,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
                                 fontFamily: 'Cabin Condensed',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: _model.byMatchActive == true
+                                    ? FlutterFlowTheme.of(context).primaryText
+                                    : FlutterFlowTheme.of(context)
+                                        .secondaryText,
                                 fontSize: 10.0,
                               ),
                           elevation: 0.0,
