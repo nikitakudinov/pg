@@ -304,7 +304,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                       teamsListItem.teamMatchWins /
                                           teamsListItem.teamMatchLoses,
                                       formatType: FormatType.custom,
-                                      format: '1.1',
+                                      format: '#.#',
                                       locale: '',
                                     ),
                                     style: FlutterFlowTheme.of(context)
