@@ -136,55 +136,60 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   ),
                                 ),
                               ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${teamsListItem.teamTag}',
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
-                                ),
-                                if (MediaQuery.sizeOf(context).width >= 350.0)
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Text(
-                                    '${teamsListItem.teamName}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                    '${teamsListItem.teamTag}',
+                                    style:
+                                        FlutterFlowTheme.of(context).titleLarge,
                                   ),
-                                if (MediaQuery.sizeOf(context).width >= 350.0)
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 5.0, 0.0),
-                                        child: Container(
-                                          width: 20.0,
-                                          height: 12.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.network(
-                                              teamsListItem.teamFlag,
-                                              width: 20.0,
-                                              height: 12.0,
-                                              fit: BoxFit.cover,
+                                  if (MediaQuery.sizeOf(context).width >= 350.0)
+                                    Text(
+                                      '${teamsListItem.teamName}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                    ),
+                                  if (MediaQuery.sizeOf(context).width >= 350.0)
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 5.0, 0.0),
+                                          child: Container(
+                                            width: 20.0,
+                                            height: 12.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                teamsListItem.teamFlag,
+                                                width: 20.0,
+                                                height: 12.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      Text(
-                                        '${teamsListItem.teamCountry}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
-                                      ),
-                                    ],
-                                  ),
-                              ],
+                                        Text(
+                                          '${teamsListItem.teamCountry}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall,
+                                        ),
+                                      ],
+                                    ),
+                                ],
+                              ),
                             ),
                             Expanded(
                               child: Column(
