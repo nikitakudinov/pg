@@ -90,6 +90,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                   0,
                   15.0,
                 ),
+                primary: false,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemCount: teamsList.length,
