@@ -1361,6 +1361,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .matchTournamentPair ==
                                                                   1)) {
                                                             return 2;
+                                                          } else if ((notificationsListItem
+                                                                      .match
+                                                                      .matchTournamentRound ==
+                                                                  4) &&
+                                                              (notificationsListItem
+                                                                      .match
+                                                                      .matchTournamentPair ==
+                                                                  2)) {
+                                                            return 2;
                                                           } else {
                                                             return 0;
                                                           }
