@@ -81,7 +81,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
               final teamsList = widget.teams!
                   .where((e) => e.teamMatchesCount != 0)
                   .toList()
-                  .sortedList((e) => e.teamMatchWins.toString())
+                  .sortedList((e) => e.teamMatchWins)
                   .toList();
               return ListView.separated(
                 padding: EdgeInsets.fromLTRB(
@@ -90,6 +90,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                   0,
                   15.0,
                 ),
+                reverse: true,
                 primary: false,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
