@@ -1,6 +1,7 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,61 +48,108 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return SingleChildScrollView(
-      primary: false,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-            child: Row(
+    return Padding(
+      padding: EdgeInsets.all(15.0),
+      child: SingleChildScrollView(
+        primary: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(
-                  'Рейтинги',
-                  style: FlutterFlowTheme.of(context).titleMedium,
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Рейтинги',
+                        style: FlutterFlowTheme.of(context).titleMedium,
+                      ),
+                      Text(
+                        'По выйграным матчам',
+                        style: FlutterFlowTheme.of(context).labelSmall,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Матчи',
+                        options: FFButtonOptions(
+                          height: 25.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          iconPadding: EdgeInsets.all(0.0),
+                          color: Color(0x7B13151C),
+                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          borderSide: BorderSide(
+                            color: Color(0x7B13151C),
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Раунды',
+                        options: FFButtonOptions(
+                          height: 25.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          iconPadding: EdgeInsets.all(0.0),
+                          color: Color(0x7B13151C),
+                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
+                      ),
+                    ]
+                        .divide(SizedBox(width: 5.0))
+                        .addToStart(SizedBox(width: 10.0))
+                        .addToEnd(SizedBox(width: 10.0)),
+                  ),
                 ),
               ],
             ),
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  'По выйграным матчам',
-                  style: FlutterFlowTheme.of(context).labelSmall,
-                ),
-              ],
-            ),
-          ),
-          Builder(
-            builder: (context) {
-              final teamsList = widget.teams!
-                  .where((e) => e.teamMatchesCount != 0)
-                  .toList()
-                  .sortedList((e) => e.teamMatchWins)
-                  .toList();
-              return ListView.separated(
-                padding: EdgeInsets.fromLTRB(
-                  0,
-                  15.0,
-                  0,
-                  15.0,
-                ),
-                reverse: true,
-                primary: false,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: teamsList.length,
-                separatorBuilder: (_, __) => SizedBox(height: 5.0),
-                itemBuilder: (context, teamsListIndex) {
-                  final teamsListItem = teamsList[teamsListIndex];
-                  return Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                    child: Container(
+            Builder(
+              builder: (context) {
+                final teamsList = widget.teams!
+                    .where((e) => e.teamMatchesCount != 0)
+                    .toList()
+                    .sortedList((e) => e.teamMatchWins)
+                    .toList();
+                return ListView.separated(
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    15.0,
+                    0,
+                    15.0,
+                  ),
+                  reverse: true,
+                  primary: false,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: teamsList.length,
+                  separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                  itemBuilder: (context, teamsListIndex) {
+                    final teamsListItem = teamsList[teamsListIndex];
+                    return Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.circular(5.0),
@@ -306,13 +354,13 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                           ],
                         ),
                       ),
-                    ),
-                  );
-                },
-              );
-            },
-          ),
-        ],
+                    );
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
