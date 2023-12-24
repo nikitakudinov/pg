@@ -1306,6 +1306,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     1,
                                                                   ),
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Матч обновлен'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       }
                                                     },
                                                     text: 'Матч зачтен',
