@@ -207,12 +207,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   ),
                                   Text(
                                     '${teamsListItem.teamMatchesCount.toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Cabin Condensed',
-                                          fontSize: 10.0,
-                                        ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ],
                               ),
@@ -232,12 +228,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   ),
                                   Text(
                                     '${teamsListItem.teamMatchWins.toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Cabin Condensed',
-                                          fontSize: 10.0,
-                                        ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ],
                               ),
@@ -257,12 +249,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   ),
                                   Text(
                                     '${teamsListItem.teamMatchLoses.toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Cabin Condensed',
-                                          fontSize: 10.0,
-                                        ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ],
                               ),
@@ -294,7 +282,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .accent1,
-                                              fontSize: 10.0,
+                                              fontSize: 8.0,
+                                              lineHeight: 0.9,
                                             ),
                                       ),
                                     ],
