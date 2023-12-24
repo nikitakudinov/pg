@@ -108,9 +108,9 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                 .override(
                                   fontFamily: 'Cabin Condensed',
                                   color: _model.byMatchActive == true
-                                      ? FlutterFlowTheme.of(context).primaryText
+                                      ? FlutterFlowTheme.of(context).accent2
                                       : FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryText,
                                   fontSize: 10.0,
                                 ),
                             elevation: 0.0,
@@ -141,10 +141,10 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Cabin Condensed',
-                                  color: _model.byMatchActive == true
-                                      ? FlutterFlowTheme.of(context).primaryText
+                                  color: _model.byRoundActive == true
+                                      ? FlutterFlowTheme.of(context).accent2
                                       : FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryText,
                                   fontSize: 10.0,
                                 ),
                             elevation: 0.0,
