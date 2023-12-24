@@ -2762,317 +2762,313 @@ class _TeamsWidgetState extends State<TeamsWidget>
                     ),
                   ),
                 ),
-                SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 0.0, 15.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              'Рейтинги',
-                              style: FlutterFlowTheme.of(context).titleMedium,
-                            ),
-                          ],
-                        ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Рейтинги',
+                            style: FlutterFlowTheme.of(context).titleMedium,
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 0.0, 15.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              'По выйграным матчам',
-                              style: FlutterFlowTheme.of(context).labelSmall,
-                            ),
-                          ],
-                        ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'По выйграным матчам',
+                            style: FlutterFlowTheme.of(context).labelSmall,
+                          ),
+                        ],
                       ),
-                      Builder(
-                        builder: (context) {
-                          final teamsList = FFAppState()
-                              .allTEAMS
-                              .where((e) => e.teamMatchesCount != 0)
-                              .toList()
-                              .sortedList((e) => e.teamMatchWins)
-                              .toList();
-                          return ListView.separated(
-                            padding: EdgeInsets.fromLTRB(
-                              0,
-                              15.0,
-                              0,
-                              15.0,
-                            ),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: teamsList.length,
-                            separatorBuilder: (_, __) => SizedBox(height: 5.0),
-                            itemBuilder: (context, teamsListIndex) {
-                              final teamsListItem = teamsList[teamsListIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 15.0, 0.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        if (MediaQuery.sizeOf(context).width >=
-                                            350.0)
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 15.0, 0.0),
-                                            child: Container(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                child: CachedNetworkImage(
-                                                  fadeInDuration: Duration(
-                                                      milliseconds: 1400),
-                                                  fadeOutDuration: Duration(
-                                                      milliseconds: 1400),
-                                                  imageUrl:
-                                                      teamsListItem.teamLogo,
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                    ),
+                    Builder(
+                      builder: (context) {
+                        final teamsList = FFAppState()
+                            .allTEAMS
+                            .where((e) => e.teamMatchesCount != 0)
+                            .toList()
+                            .sortedList((e) => e.teamMatchWins)
+                            .toList();
+                        return ListView.separated(
+                          padding: EdgeInsets.fromLTRB(
+                            0,
+                            15.0,
+                            0,
+                            15.0,
+                          ),
+                          primary: false,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: teamsList.length,
+                          separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                          itemBuilder: (context, teamsListIndex) {
+                            final teamsListItem = teamsList[teamsListIndex];
+                            return Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 15.0, 0.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      if (MediaQuery.sizeOf(context).width >=
+                                          350.0)
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 15.0, 0.0),
+                                          child: Container(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration: Duration(
+                                                    milliseconds: 1400),
+                                                fadeOutDuration: Duration(
+                                                    milliseconds: 1400),
+                                                imageUrl:
+                                                    teamsListItem.teamLogo,
+                                                width: 50.0,
+                                                height: 50.0,
+                                                fit: BoxFit.cover,
                                               ),
                                             ),
                                           ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
+                                        ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${teamsListItem.teamTag}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge,
+                                          ),
+                                          if (MediaQuery.sizeOf(context)
+                                                  .width >=
+                                              350.0)
                                             Text(
-                                              '${teamsListItem.teamTag}',
+                                              '${teamsListItem.teamName}',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleLarge,
+                                                      .labelMedium,
                                             ),
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width >=
-                                                350.0)
-                                              Text(
-                                                '${teamsListItem.teamName}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                              ),
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width >=
-                                                350.0)
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Container(
-                                                      width: 20.0,
-                                                      height: 12.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.network(
-                                                          teamsListItem
-                                                              .teamFlag,
-                                                          width: 20.0,
-                                                          height: 12.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                          if (MediaQuery.sizeOf(context)
+                                                  .width >=
+                                              350.0)
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 5.0, 0.0),
+                                                  child: Container(
+                                                    width: 20.0,
+                                                    height: 12.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.network(
+                                                        teamsListItem.teamFlag,
+                                                        width: 20.0,
+                                                        height: 12.0,
+                                                        fit: BoxFit.cover,
                                                       ),
                                                     ),
                                                   ),
-                                                  Text(
-                                                    '${teamsListItem.teamCountry}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall,
-                                                  ),
-                                                ],
-                                              ),
+                                                ),
+                                                Text(
+                                                  '${teamsListItem.teamCountry}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall,
+                                                ),
+                                              ],
+                                            ),
+                                        ],
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'ВСЕГО',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              '${teamsListItem.teamMatchesCount.toString()}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
                                           ],
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'ВСЕГО',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                              Text(
-                                                '${teamsListItem.teamMatchesCount.toString()}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'ПОБЕД',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              '${teamsListItem.teamMatchWins.toString()}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                          ],
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'ПОБЕД',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                              Text(
-                                                '${teamsListItem.teamMatchWins.toString()}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'ПОРАЖ.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              '${teamsListItem.teamMatchLoses.toString()}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                          ],
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'ПОРАЖ.',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                              Text(
-                                                '${teamsListItem.teamMatchLoses.toString()}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'В/П',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                                ),
+                                                Text(
+                                                  'RATE',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        fontSize: 10.0,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              (teamsListItem.teamMatchWins /
+                                                      teamsListItem
+                                                          .teamMatchLoses)
+                                                  .toString(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                          ],
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'В/П',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    'RATE',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent1,
-                                                          fontSize: 10.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Text(
-                                                (teamsListItem.teamMatchWins /
-                                                        teamsListItem
-                                                            .teamMatchLoses)
-                                                    .toString(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
