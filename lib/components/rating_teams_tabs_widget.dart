@@ -96,7 +96,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
                           color: _model.byMatchActive == true
-                              ? Color(0x65F2C94C)
+                              ? Color(0xFF1D1409)
                               : FlutterFlowTheme.of(context).primaryBackground,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
