@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/auth_user_team_widget.dart';
 import '/components/custom_alert_dialog/custom_alert_dialog_widget.dart';
 import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
@@ -2227,6 +2228,18 @@ class _TeamsWidgetState extends State<TeamsWidget>
                       },
                     ),
                   ),
+                wrapWithModel(
+                  model: _model.authUserTeamModel,
+                  updateCallback: () => setState(() {}),
+                  child: AuthUserTeamWidget(
+                    parameter1: _model.teamActionsVISIBILITY,
+                    team: FFAppState()
+                        .allTEAMS
+                        .where((e) =>
+                            e.teamId == FFAppState().authPlayer.playerTeam)
+                        .toList()[0],
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.all(15.0),
                   child: Container(
@@ -2339,6 +2352,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                         'columnOnPageLoadAnimation']!),
                                   ),
                                 FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
                                   borderRadius: 20.0,
                                   borderWidth: 1.0,
                                   buttonSize: 40.0,
