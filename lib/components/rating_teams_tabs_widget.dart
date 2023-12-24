@@ -300,9 +300,13 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                     ],
                                   ),
                                   Text(
-                                    (teamsListItem.teamMatchWins /
-                                            teamsListItem.teamMatchLoses)
-                                        .toString(),
+                                    formatNumber(
+                                      teamsListItem.teamMatchWins /
+                                          teamsListItem.teamMatchLoses,
+                                      formatType: FormatType.custom,
+                                      format: '1.1',
+                                      locale: '',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
