@@ -2359,17 +2359,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .teamId,
                                                             },
                                                             matchingRows:
-                                                                (rows) =>
-                                                                    rows.eq(
-                                                              'match_id',
-                                                              MatchGroup
-                                                                  .mATCHbyTORNandROUNDandPAIRCall
-                                                                  .matchid(
-                                                                (_model.nextmatch
-                                                                        ?.jsonBody ??
-                                                                    ''),
-                                                              )?[0],
-                                                            ),
+                                                                (rows) => rows
+                                                                    .eq(
+                                                                      'match_tournament_round',
+                                                                      5,
+                                                                    )
+                                                                    .eq(
+                                                                      'match_tournament_pair',
+                                                                      2,
+                                                                    )
+                                                                    .eq(
+                                                                      'match_for_tournament',
+                                                                      notificationsListItem
+                                                                          .match
+                                                                          .matchForTournament
+                                                                          .tournamentId,
+                                                                    ),
                                                           );
                                                           ScaffoldMessenger.of(
                                                                   context)
