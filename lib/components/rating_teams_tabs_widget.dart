@@ -69,7 +69,9 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                         style: FlutterFlowTheme.of(context).titleMedium,
                       ),
                       Text(
-                        'По выйграным матчам',
+                        _model.byMatchActive
+                            ? 'По выйгравным матчам'
+                            : 'По выйгравным раундам',
                         style: FlutterFlowTheme.of(context).labelSmall,
                       ),
                     ],
@@ -93,7 +95,9 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: _model.byRoundActive == true
+                              ? FlutterFlowTheme.of(context).secondaryText
+                              : FlutterFlowTheme.of(context).primaryBackground,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
