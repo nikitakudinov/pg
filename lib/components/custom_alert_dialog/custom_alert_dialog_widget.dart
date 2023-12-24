@@ -92,8 +92,8 @@ class _CustomAlertDialogWidgetState extends State<CustomAlertDialogWidget> {
                 children: [
                   Expanded(
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        Navigator.pop(context);
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: 'Остаться',
                       options: FFButtonOptions(

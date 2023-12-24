@@ -152,7 +152,8 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                       child: Container(
                         width: 70.0,
                         height: 70.0,
@@ -177,14 +178,17 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            valueOrDefault<String>(
-                              widget.team?.teamName,
+                            '${valueOrDefault<String>(
+                              widget.team?.teamTag,
                               '0',
-                            ),
+                            )}',
                             style: FlutterFlowTheme.of(context).headlineMedium,
                           ),
                           Text(
-                            FFAppState().authPlayerTeam.teamName,
+                            '${valueOrDefault<String>(
+                              widget.team?.teamName,
+                              '0',
+                            )}',
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Row(
@@ -212,7 +216,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                 ),
                               ),
                               Text(
-                                FFAppState().authPlayerTeam.teamCountry,
+                                '${valueOrDefault<String>(
+                                  widget.team?.teamCountry,
+                                  '0',
+                                )}',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ],
