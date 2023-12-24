@@ -189,7 +189,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                               widget.team?.teamName,
                               '0',
                             )}',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context).labelMedium,
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
