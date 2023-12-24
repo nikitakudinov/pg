@@ -410,7 +410,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                     );
                   },
                 ),
-              if (_model.byMatchActive)
+              if (_model.byRoundActive)
                 Builder(
                   builder: (context) {
                     final teamsList = widget.teams!
