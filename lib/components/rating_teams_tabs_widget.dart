@@ -282,7 +282,9 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   ],
                                 ),
                                 Text(
-                                  'ПОРАЖ.',
+                                  (teamsListItem.teamMatchWins /
+                                          teamsListItem.teamMatchLoses)
+                                      .toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
