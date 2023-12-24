@@ -74,8 +74,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                         ),
                         Text(
                           _model.byMatchActive
-                              ? 'По выйгравным матчам'
-                              : 'По выйгравным раундам',
+                              ? 'По выйгранным матчам'
+                              : 'По выйгранным раундам',
                           style: FlutterFlowTheme.of(context).labelSmall,
                         ),
                       ],
