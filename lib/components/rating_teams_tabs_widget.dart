@@ -1,6 +1,7 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -118,8 +119,12 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                 ),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5.0),
-                                  child: Image.network(
-                                    teamsListItem.teamLogo,
+                                  child: CachedNetworkImage(
+                                    fadeInDuration:
+                                        Duration(milliseconds: 1400),
+                                    fadeOutDuration:
+                                        Duration(milliseconds: 1400),
+                                    imageUrl: teamsListItem.teamLogo,
                                     width: 50.0,
                                     height: 50.0,
                                     fit: BoxFit.cover,
