@@ -208,7 +208,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   Text(
                                     '${teamsListItem.teamMatchesCount.toString()}',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodySmall
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Cabin Condensed',
                                           fontSize: 10.0,
@@ -233,7 +233,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   Text(
                                     '${teamsListItem.teamMatchWins.toString()}',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodySmall
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Cabin Condensed',
                                           fontSize: 10.0,
@@ -258,7 +258,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                   Text(
                                     '${teamsListItem.teamMatchLoses.toString()}',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodySmall
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Cabin Condensed',
                                           fontSize: 10.0,
@@ -307,12 +307,8 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                       format: '#.#',
                                       locale: '',
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily: 'Cabin Condensed',
-                                          fontSize: 10.0,
-                                        ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ],
                               ),
