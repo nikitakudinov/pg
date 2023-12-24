@@ -426,7 +426,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '15',
+                                  '${valueOrDefault<String>(
+                                    widget.team?.teamMatchesCount?.toString(),
+                                    '0',
+                                  )}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -454,7 +457,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '9',
+                                  '${valueOrDefault<String>(
+                                    widget.team?.teamMatchWins?.toString(),
+                                    '0',
+                                  )}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -482,7 +488,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '6',
+                                  '${valueOrDefault<String>(
+                                    widget.team?.teamMatchLoses?.toString(),
+                                    '0',
+                                  )}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
