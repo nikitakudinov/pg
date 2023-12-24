@@ -95,7 +95,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
-                          color: _model.byRoundActive == true
+                          color: _model.byMatchActive == true
                               ? FlutterFlowTheme.of(context).secondaryText
                               : FlutterFlowTheme.of(context).primaryBackground,
                           textStyle: FlutterFlowTheme.of(context)
