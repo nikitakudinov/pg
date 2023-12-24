@@ -48,6 +48,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
     context.watch<FFAppState>();
 
     return SingleChildScrollView(
+      primary: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
