@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1160,6 +1161,42 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchRival1
                                                                   .teamMatchRoundLoses,
+                                                        },
+                                                        matchingRows: (rows) =>
+                                                            rows.eq(
+                                                          'team_id',
+                                                          notificationsListItem
+                                                              .match
+                                                              .matchRival1
+                                                              .teamId,
+                                                        ),
+                                                      );
+                                                      // Обновление статов соперника 1
+                                                      _model.updatedrival1 =
+                                                          await TeamGroup
+                                                              .listteambyidCall
+                                                              .call(
+                                                        idList:
+                                                            notificationsListItem
+                                                                .match
+                                                                .matchRival1
+                                                                .teamId
+                                                                .toString(),
+                                                      );
+                                                      // Обновление статов соперника 1
+                                                      await TeamsTable().update(
+                                                        data: {
+                                                          'team_WLmatches': TeamStruct
+                                                                      .maybeFromMap((_model
+                                                                              .updatedrival1
+                                                                              ?.jsonBody ??
+                                                                          ''))!
+                                                                  .teamMatchWins /
+                                                              TeamStruct.maybeFromMap((_model
+                                                                          .updatedrival1
+                                                                          ?.jsonBody ??
+                                                                      ''))!
+                                                                  .teamMatchLoses,
                                                         },
                                                         matchingRows: (rows) =>
                                                             rows.eq(

@@ -73,4 +73,7 @@ class TeamsRow extends SupabaseDataRow {
   int? get teamMatchRoundLoses => getField<int>('team_match_round_loses');
   set teamMatchRoundLoses(int? value) =>
       setField<int>('team_match_round_loses', value);
+
+  double? get teamWLmatches => getField<double>('team_WLmatches');
+  set teamWLmatches(double? value) => setField<double>('team_WLmatches', value);
 }

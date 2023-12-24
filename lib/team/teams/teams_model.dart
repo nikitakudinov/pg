@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/custom_alert_dialog/custom_alert_dialog_widget.dart';
+import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -30,13 +31,18 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
   ApiCallResponse? nextmatch;
+  // Model for ratingTeamsTabs component.
+  late RatingTeamsTabsModel ratingTeamsTabsModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    ratingTeamsTabsModel = createModel(context, () => RatingTeamsTabsModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
+    ratingTeamsTabsModel.dispose();
   }
 
   /// Action blocks are added here.
