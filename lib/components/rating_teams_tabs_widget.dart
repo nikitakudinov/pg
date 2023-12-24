@@ -296,6 +296,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                       format: '#.#',
                                       locale: '',
                                     ),
+                                    textAlign: TextAlign.center,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
