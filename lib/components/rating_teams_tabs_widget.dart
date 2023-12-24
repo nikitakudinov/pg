@@ -84,39 +84,56 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                         onPressed: () {
                           print('Button pressed ...');
                         },
-                        text: 'Матчи',
+                        text: 'МАТЧИ',
                         options: FFButtonOptions(
                           height: 25.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
-                          color: Color(0x7B13151C),
-                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Cabin Condensed',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 10.0,
+                              ),
+                          elevation: 0.0,
                           borderSide: BorderSide(
-                            color: Color(0x7B13151C),
-                            width: 1.0,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            width: 0.0,
                           ),
-                          borderRadius: BorderRadius.circular(3.0),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
                       FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
                         },
-                        text: 'Раунды',
+                        text: 'РАУНДЫ',
                         options: FFButtonOptions(
                           height: 25.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           iconPadding: EdgeInsets.all(0.0),
-                          color: Color(0x7B13151C),
-                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Cabin Condensed',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 10.0,
+                              ),
+                          elevation: 0.0,
                           borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            width: 1.0,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            width: 0.0,
                           ),
-                          borderRadius: BorderRadius.circular(3.0),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
                     ]
