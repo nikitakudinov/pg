@@ -67,97 +67,204 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
-                'В/П матчи',
+                'По выйграным матчам',
                 style: FlutterFlowTheme.of(context).labelSmall,
               ),
             ],
           ),
         ),
-        ListView(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(5.0),
+        Builder(
+          builder: (context) {
+            final teamsList = widget.teams!
+                .where((e) => e.teamMatchesCount != 0)
+                .toList()
+                .sortedList((e) => e.teamMatchWins)
+                .toList();
+            return ListView.separated(
+              padding: EdgeInsets.fromLTRB(
+                0,
+                15.0,
+                0,
+                15.0,
               ),
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                      child: Container(
-                        width: 80.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5.0),
-                          child: Image.network(
-                            'https://picsum.photos/seed/811/600',
-                            width: 80.0,
-                            height: 80.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: teamsList.length,
+              separatorBuilder: (_, __) => SizedBox(height: 5.0),
+              itemBuilder: (context, teamsListIndex) {
+                final teamsListItem = teamsList[teamsListIndex];
+                return Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(5.0),
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Hello World',
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                        Text(
-                          'Hello World',
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          if (MediaQuery.sizeOf(context).width >= 350.0)
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
+                                  0.0, 0.0, 15.0, 0.0),
                               child: Container(
-                                width: 20.0,
-                                height: 12.0,
+                                width: 50.0,
+                                height: 50.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
+                                  borderRadius: BorderRadius.circular(5.0),
                                   child: Image.network(
-                                    'https://picsum.photos/seed/728/600',
-                                    width: 20.0,
-                                    height: 12.0,
+                                    teamsListItem.teamLogo,
+                                    width: 50.0,
+                                    height: 50.0,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
                             ),
-                            Text(
-                              'Hello World',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${teamsListItem.teamTag}',
+                                style: FlutterFlowTheme.of(context).titleLarge,
+                              ),
+                              if (MediaQuery.sizeOf(context).width >= 350.0)
+                                Text(
+                                  '${teamsListItem.teamName}',
+                                  style:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                ),
+                              if (MediaQuery.sizeOf(context).width >= 350.0)
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Container(
+                                        width: 20.0,
+                                        height: 12.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            teamsListItem.teamFlag,
+                                            width: 20.0,
+                                            height: 12.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      '${teamsListItem.teamCountry}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall,
+                                    ),
+                                  ],
+                                ),
+                            ],
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'ВСЕГО',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'ПОБЕД',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'ПОРАЖ.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'В/П',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Cabin Condensed',
+                                            fontSize: 10.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      'RATE',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Cabin Condensed',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                            fontSize: 10.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+                  ),
+                );
+              },
+            );
+          },
         ),
       ],
     );
