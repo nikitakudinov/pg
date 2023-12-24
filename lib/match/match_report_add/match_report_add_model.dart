@@ -20,25 +20,35 @@ import 'package:provider/provider.dart';
 class MatchReportAddModel extends FlutterFlowModel<MatchReportAddWidget> {
   ///  Local state fields for this page.
 
-  String screenShot1VALUE = '0';
+  String screenShot1VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot2VALUE = '0';
+  String screenShot2VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot3VALUE = '0';
+  String screenShot3VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot4VALUE = '0';
+  String screenShot4VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot5VALUE = '0';
+  String screenShot5VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String? screenShot6VALUE = '0';
+  String? screenShot6VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot7VALUE = '0';
+  String screenShot7VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot8VALUE = '0';
+  String screenShot8VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot9VALUE = '0';
+  String screenShot9VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
-  String screenShot10VALUE = 'false';
+  String screenShot10VALUE =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
 
   int? rival1wins = 0;
 
