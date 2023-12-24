@@ -189,6 +189,15 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                         fontSize: 10.0,
                                       ),
                                 ),
+                                Text(
+                                  '${teamsListItem.teamMatchesCount.toString()}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
                               ],
                             ),
                           ),
@@ -205,6 +214,15 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                         fontSize: 10.0,
                                       ),
                                 ),
+                                Text(
+                                  '${teamsListItem.teamMatchWins.toString()}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
                               ],
                             ),
                           ),
@@ -214,6 +232,15 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                               children: [
                                 Text(
                                   'ПОРАЖ.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
+                                Text(
+                                  '${teamsListItem.teamMatchLoses.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -253,6 +280,15 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                                           ),
                                     ),
                                   ],
+                                ),
+                                Text(
+                                  'ПОРАЖ.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        fontSize: 10.0,
+                                      ),
                                 ),
                               ],
                             ),
