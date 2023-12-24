@@ -81,12 +81,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
               final teamsList = widget.teams!
                   .where((e) => e.teamMatchesCount != 0)
                   .toList()
-                  .sortedList((e) => formatNumber(
-                        e.teamMatchWins,
-                        formatType: FormatType.custom,
-                        format: '',
-                        locale: '',
-                      ))
+                  .sortedList((e) => e.teamMatchWins.toString())
                   .toList();
               return ListView.separated(
                 padding: EdgeInsets.fromLTRB(
