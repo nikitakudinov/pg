@@ -1873,6 +1873,34 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                   'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
                                 ),
                                 'match_reported_by': currentUserUid,
+                                'match_winner': _model.rival1wins! > _model.rival2wins!
+                                    ? FFAppState()
+                                        .tournamentMatches
+                                        .where((e) =>
+                                            (e.matchForTournament.tournamentId ==
+                                                widget.tournamentID) &&
+                                            (e.matchTournamentRound ==
+                                                functions.stringTOinteger(
+                                                    _model.raundValue)) &&
+                                            (e.matchTournamentPair ==
+                                                functions.stringTOinteger(
+                                                    _model.pairValue)))
+                                        .toList()[0]
+                                        .matchRival1
+                                        .teamId
+                                    : FFAppState()
+                                        .tournamentMatches
+                                        .where((e) =>
+                                            (e.matchForTournament.tournamentId ==
+                                                widget.tournamentID) &&
+                                            (e.matchTournamentRound ==
+                                                functions.stringTOinteger(
+                                                    _model.raundValue)) &&
+                                            (e.matchTournamentPair ==
+                                                functions.stringTOinteger(_model.pairValue)))
+                                        .toList()[0]
+                                        .matchRival2
+                                        .teamId,
                               },
                               matchingRows: (rows) => rows
                                   .eq(

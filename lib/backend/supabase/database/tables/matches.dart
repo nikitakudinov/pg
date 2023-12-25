@@ -77,4 +77,7 @@ class MatchesRow extends SupabaseDataRow {
   String? get matchReportedBy => getField<String>('match_reported_by');
   set matchReportedBy(String? value) =>
       setField<String>('match_reported_by', value);
+
+  int? get matchWinner => getField<int>('match_winner');
+  set matchWinner(int? value) => setField<int>('match_winner', value);
 }
