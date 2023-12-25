@@ -119,7 +119,7 @@ class _TestWidgetState extends State<TestWidget> {
                         .MAINDATA
                         .players
                         .toList()
-                        .take(150)
+                        .take(10)
                         .toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
@@ -149,7 +149,7 @@ class _TestWidgetState extends State<TestWidget> {
                 Builder(
                   builder: (context) {
                     final pLAYERSlist =
-                        FFAppState().MAINDATA.teams.toList().take(150).toList();
+                        FFAppState().MAINDATA.teams.toList().take(10).toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,
