@@ -80,4 +80,7 @@ class MatchesRow extends SupabaseDataRow {
 
   int? get matchWinner => getField<int>('match_winner');
   set matchWinner(int? value) => setField<int>('match_winner', value);
+
+  int? get matchLooser => getField<int>('match_looser');
+  set matchLooser(int? value) => setField<int>('match_looser', value);
 }

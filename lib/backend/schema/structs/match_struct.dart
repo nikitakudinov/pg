@@ -26,6 +26,7 @@ class MatchStruct extends BaseStruct {
     String? matchScreenshot5,
     String? matchReportedBy,
     int? matchWinner,
+    int? matchLooser,
   })  : _matchId = matchId,
         _matchPlannedDate = matchPlannedDate,
         _matchDate = matchDate,
@@ -44,7 +45,8 @@ class MatchStruct extends BaseStruct {
         _matchScreenshot4 = matchScreenshot4,
         _matchScreenshot5 = matchScreenshot5,
         _matchReportedBy = matchReportedBy,
-        _matchWinner = matchWinner;
+        _matchWinner = matchWinner,
+        _matchLooser = matchLooser;
 
   // "match_id" field.
   int? _matchId;
@@ -177,6 +179,13 @@ class MatchStruct extends BaseStruct {
   void incrementMatchWinner(int amount) => _matchWinner = matchWinner + amount;
   bool hasMatchWinner() => _matchWinner != null;
 
+  // "match_looser" field.
+  int? _matchLooser;
+  int get matchLooser => _matchLooser ?? 0;
+  set matchLooser(int? val) => _matchLooser = val;
+  void incrementMatchLooser(int amount) => _matchLooser = matchLooser + amount;
+  bool hasMatchLooser() => _matchLooser != null;
+
   static MatchStruct fromMap(Map<String, dynamic> data) => MatchStruct(
         matchId: castToType<int>(data['match_id']),
         matchPlannedDate: data['match_planned_date'] as String?,
@@ -198,6 +207,7 @@ class MatchStruct extends BaseStruct {
         matchScreenshot5: data['match_screenshot5'] as String?,
         matchReportedBy: data['match_reported_by'] as String?,
         matchWinner: castToType<int>(data['match_winner']),
+        matchLooser: castToType<int>(data['match_looser']),
       );
 
   static MatchStruct? maybeFromMap(dynamic data) =>
@@ -223,6 +233,7 @@ class MatchStruct extends BaseStruct {
         'match_screenshot5': _matchScreenshot5,
         'match_reported_by': _matchReportedBy,
         'match_winner': _matchWinner,
+        'match_looser': _matchLooser,
       }.withoutNulls;
 
   @override
@@ -301,6 +312,10 @@ class MatchStruct extends BaseStruct {
         ),
         'match_winner': serializeParam(
           _matchWinner,
+          ParamType.int,
+        ),
+        'match_looser': serializeParam(
+          _matchLooser,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -405,6 +420,11 @@ class MatchStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        matchLooser: deserializeParam(
+          data['match_looser'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -431,7 +451,8 @@ class MatchStruct extends BaseStruct {
         matchScreenshot4 == other.matchScreenshot4 &&
         matchScreenshot5 == other.matchScreenshot5 &&
         matchReportedBy == other.matchReportedBy &&
-        matchWinner == other.matchWinner;
+        matchWinner == other.matchWinner &&
+        matchLooser == other.matchLooser;
   }
 
   @override
@@ -454,7 +475,8 @@ class MatchStruct extends BaseStruct {
         matchScreenshot4,
         matchScreenshot5,
         matchReportedBy,
-        matchWinner
+        matchWinner,
+        matchLooser
       ]);
 }
 
@@ -478,6 +500,7 @@ MatchStruct createMatchStruct({
   String? matchScreenshot5,
   String? matchReportedBy,
   int? matchWinner,
+  int? matchLooser,
 }) =>
     MatchStruct(
       matchId: matchId,
@@ -499,4 +522,5 @@ MatchStruct createMatchStruct({
       matchScreenshot5: matchScreenshot5,
       matchReportedBy: matchReportedBy,
       matchWinner: matchWinner,
+      matchLooser: matchLooser,
     );
