@@ -109,83 +109,95 @@ class _TestWidgetState extends State<TestWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Builder(
-                  builder: (context) {
-                    final pLAYERSlist = FFAppState()
-                        .MAINDATA
-                        .players
-                        .toList()
-                        .take(10)
-                        .toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: pLAYERSlist.length,
-                      itemBuilder: (context, pLAYERSlistIndex) {
-                        final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
-                        return Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              pLAYERSlistItem.playerNickname,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                            Text(
-                              pLAYERSlistItem.playerTag,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                          ].divide(SizedBox(width: 10.0)),
-                        );
-                      },
-                    );
-                  },
-                ),
-                Builder(
-                  builder: (context) {
-                    final pLAYERSlist =
-                        FFAppState().MAINDATA.teams.toList().take(10).toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: pLAYERSlist.length,
-                      itemBuilder: (context, pLAYERSlistIndex) {
-                        final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
-                        return Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              pLAYERSlistItem.teamName,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                  ),
-                            ),
-                            Text(
-                              pLAYERSlistItem.teamTag,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                  ),
-                            ),
-                          ].divide(SizedBox(width: 10.0)),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ],
+          child: RefreshIndicator(
+            onRefresh: () async {
+              context.pushNamed('TEST');
+            },
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Builder(
+                    builder: (context) {
+                      final pLAYERSlist = FFAppState()
+                          .MAINDATA
+                          .players
+                          .toList()
+                          .take(10)
+                          .toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: pLAYERSlist.length,
+                        itemBuilder: (context, pLAYERSlistIndex) {
+                          final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                pLAYERSlistItem.playerNickname,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                              Text(
+                                pLAYERSlistItem.playerTag,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ].divide(SizedBox(width: 10.0)),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  Builder(
+                    builder: (context) {
+                      final pLAYERSlist = FFAppState()
+                          .MAINDATA
+                          .teams
+                          .toList()
+                          .take(10)
+                          .toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: pLAYERSlist.length,
+                        itemBuilder: (context, pLAYERSlistIndex) {
+                          final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                pLAYERSlistItem.teamName,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                    ),
+                              ),
+                              Text(
+                                pLAYERSlistItem.teamTag,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                    ),
+                              ),
+                            ].divide(SizedBox(width: 10.0)),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
