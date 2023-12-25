@@ -246,6 +246,23 @@ class _Test2WidgetState extends State<Test2Widget> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              300.0, 0.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.gridRoundModel12,
+                            updateCallback: () => setState(() {}),
+                            child: GridRoundWidget(
+                              round: 3,
+                              iteamspacing: 320,
+                              paddingtop: 115,
+                              itemheight: 110,
+                              pairFrom: 0,
+                              pairTo: 4,
+                              tournamentId: widget.tournamentId,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
