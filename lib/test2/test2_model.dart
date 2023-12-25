@@ -1,4 +1,4 @@
-import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_copy/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_copy_widget.dart';
+import '/components/grid_round/grid_round_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,19 +12,18 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for TOURNAMENTgridROUNDCopy component.
-  late TOURNAMENTgridROUNDCopyModel tOURNAMENTgridROUNDCopyModel;
+  // Model for GRID-ROUND component.
+  late GridRoundModel gridRoundModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    tOURNAMENTgridROUNDCopyModel =
-        createModel(context, () => TOURNAMENTgridROUNDCopyModel());
+    gridRoundModel = createModel(context, () => GridRoundModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
-    tOURNAMENTgridROUNDCopyModel.dispose();
+    gridRoundModel.dispose();
   }
 
   /// Action blocks are added here.

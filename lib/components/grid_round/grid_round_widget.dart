@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 't_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_copy_model.dart';
-export 't_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_copy_model.dart';
+import 'grid_round_model.dart';
+export 'grid_round_model.dart';
 
-class TOURNAMENTgridROUNDCopyWidget extends StatefulWidget {
-  const TOURNAMENTgridROUNDCopyWidget({
+class GridRoundWidget extends StatefulWidget {
+  const GridRoundWidget({
     Key? key,
     int? round,
     int? iteamspacing,
@@ -34,13 +34,11 @@ class TOURNAMENTgridROUNDCopyWidget extends StatefulWidget {
   final int tournamentId;
 
   @override
-  _TOURNAMENTgridROUNDCopyWidgetState createState() =>
-      _TOURNAMENTgridROUNDCopyWidgetState();
+  _GridRoundWidgetState createState() => _GridRoundWidgetState();
 }
 
-class _TOURNAMENTgridROUNDCopyWidgetState
-    extends State<TOURNAMENTgridROUNDCopyWidget> {
-  late TOURNAMENTgridROUNDCopyModel _model;
+class _GridRoundWidgetState extends State<GridRoundWidget> {
+  late GridRoundModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -51,7 +49,7 @@ class _TOURNAMENTgridROUNDCopyWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TOURNAMENTgridROUNDCopyModel());
+    _model = createModel(context, () => GridRoundModel());
   }
 
   @override

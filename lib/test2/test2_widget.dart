@@ -1,4 +1,4 @@
-import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_copy/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_copy_widget.dart';
+import '/components/grid_round/grid_round_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -85,15 +85,15 @@ class _Test2WidgetState extends State<Test2Widget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     wrapWithModel(
-                      model: _model.tOURNAMENTgridROUNDCopyModel,
+                      model: _model.gridRoundModel,
                       updateCallback: () => setState(() {}),
-                      child: TOURNAMENTgridROUNDCopyWidget(
+                      child: GridRoundWidget(
                         round: 1,
-                        iteamspacing: 0,
+                        iteamspacing: 5,
                         paddingtop: 5,
-                        itemheight: 110,
-                        pairFrom: 1,
-                        pairTo: 16,
+                        itemheight: 100,
+                        pairFrom: 0,
+                        pairTo: 8,
                         tournamentId: widget.tournamentId,
                       ),
                     ),
