@@ -129,7 +129,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                         model: _model.gridRoundModel4,
                         updateCallback: () => setState(() {}),
                         child: GridRoundWidget(
-                          round: 3,
+                          round: 4,
                           iteamspacing: 5,
                           paddingtop: 5,
                           itemheight: 100,
