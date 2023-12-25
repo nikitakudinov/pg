@@ -217,7 +217,7 @@ class _TestWidgetState extends State<TestWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed(
-                              'TOURNAMENTVIEW2',
+                              'TEST2',
                               queryParameters: {
                                 'tournamentId': serializeParam(
                                   tOURNAMENTSlistItem.tournamentId,
