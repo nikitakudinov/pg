@@ -212,29 +212,33 @@ class _Test2WidgetState extends State<Test2Widget> {
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     child: Stack(
                       children: [
-                        wrapWithModel(
-                          model: _model.gridRoundModel10,
-                          updateCallback: () => setState(() {}),
-                          child: GridRoundWidget(
-                            round: 1,
-                            iteamspacing: 110,
-                            paddingtop: 5,
-                            itemheight: 110,
-                            pairFrom: 0,
-                            pairTo: 8,
-                            tournamentId: widget.tournamentId,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.gridRoundModel10,
+                            updateCallback: () => setState(() {}),
+                            child: GridRoundWidget(
+                              round: 1,
+                              iteamspacing: 110,
+                              paddingtop: 5,
+                              itemheight: 110,
+                              pairFrom: 0,
+                              pairTo: 8,
+                              tournamentId: widget.tournamentId,
+                            ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              80.0, 0.0, 0.0, 0.0),
+                              150.0, 0.0, 0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.gridRoundModel11,
                             updateCallback: () => setState(() {}),
                             child: GridRoundWidget(
                               round: 2,
                               iteamspacing: 110,
-                              paddingtop: 110,
+                              paddingtop: 115,
                               itemheight: 110,
                               pairFrom: 0,
                               pairTo: 4,
