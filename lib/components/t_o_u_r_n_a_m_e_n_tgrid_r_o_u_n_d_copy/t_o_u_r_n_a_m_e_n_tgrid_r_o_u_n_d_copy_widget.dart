@@ -66,7 +66,7 @@ class _TOURNAMENTgridROUNDCopyWidgetState
     context.watch<FFAppState>();
 
     return Container(
-      width: 220.0,
+      width: 160.0,
       decoration: BoxDecoration(),
       child: SingleChildScrollView(
         child: Column(
@@ -136,7 +136,9 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                           : 'Матч состоится ${valueOrDefault<String>(
                                               roundItem.matchPlannedDate,
                                               '0',
-                                            )}',
+                                            )}'
+                                              .maybeHandleOverflow(
+                                                  maxChars: 15),
                                       style: FlutterFlowTheme.of(context)
                                           .bodySmall,
                                     ),
