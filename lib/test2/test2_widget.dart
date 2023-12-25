@@ -88,32 +88,40 @@ class _Test2WidgetState extends State<Test2Widget> {
                     children: [
                       Stack(
                         children: [
-                          wrapWithModel(
-                            model: _model.gridRoundModel1,
-                            updateCallback: () => setState(() {}),
-                            child: GridRoundWidget(
-                              round: 1,
-                              iteamspacing: 5,
-                              paddingtop: 5,
-                              itemheight: 110,
-                              pairFrom: 0,
-                              pairTo: 8,
-                              tournamentId: widget.tournamentId,
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 0.0, 0.0),
                             child: wrapWithModel(
-                              model: _model.gridRoundModel2,
+                              model: _model.gridRoundModel1,
                               updateCallback: () => setState(() {}),
                               child: GridRoundWidget(
-                                round: 2,
+                                round: 1,
                                 iteamspacing: 110,
                                 paddingtop: 5,
                                 itemheight: 110,
                                 pairFrom: 0,
-                                pairTo: 4,
+                                pairTo: 8,
                                 tournamentId: widget.tournamentId,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  115.0, 115.0, 0.0, 0.0),
+                              child: wrapWithModel(
+                                model: _model.gridRoundModel2,
+                                updateCallback: () => setState(() {}),
+                                child: GridRoundWidget(
+                                  round: 2,
+                                  iteamspacing: 110,
+                                  paddingtop: 5,
+                                  itemheight: 110,
+                                  pairFrom: 0,
+                                  pairTo: 4,
+                                  tournamentId: widget.tournamentId,
+                                ),
                               ),
                             ),
                           ),
