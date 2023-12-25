@@ -68,11 +68,14 @@ class _TestWidgetState extends State<TestWidget> {
       setState(() {
         FFAppState().updateMAINDATAStruct(
           (e) => e
-            ..authplayer = FFAppState()
-                .MAINDATA
-                .players
-                .where((e) => e.playerUid == currentUserUid)
-                .toList()[0],
+            ..authplayer = ((_model.jsonPLAYERS?.jsonBody ?? '')
+                    .toList()
+                    .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+                    .toList() as Iterable<PlayerStruct?>)
+                .withoutNulls
+                ?.where((e) => e.playerUid == currentUserUid)
+                .toList()
+                ?.first,
         );
       });
       await showDialog(
