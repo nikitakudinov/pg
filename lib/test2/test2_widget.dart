@@ -81,49 +81,65 @@ class _Test2WidgetState extends State<Test2Widget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    wrapWithModel(
-                      model: _model.gridRoundModel1,
-                      updateCallback: () => setState(() {}),
-                      child: GridRoundWidget(
-                        round: 1,
-                        iteamspacing: 5,
-                        paddingtop: 5,
-                        itemheight: 100,
-                        pairFrom: 0,
-                        pairTo: 8,
-                        tournamentId: widget.tournamentId,
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      wrapWithModel(
+                        model: _model.gridRoundModel1,
+                        updateCallback: () => setState(() {}),
+                        child: GridRoundWidget(
+                          round: 1,
+                          iteamspacing: 5,
+                          paddingtop: 5,
+                          itemheight: 100,
+                          pairFrom: 0,
+                          pairTo: 8,
+                          tournamentId: widget.tournamentId,
+                        ),
                       ),
-                    ),
-                    wrapWithModel(
-                      model: _model.gridRoundModel2,
-                      updateCallback: () => setState(() {}),
-                      child: GridRoundWidget(
-                        round: 2,
-                        iteamspacing: 5,
-                        paddingtop: 5,
-                        itemheight: 100,
-                        pairFrom: 0,
-                        pairTo: 4,
-                        tournamentId: widget.tournamentId,
+                      wrapWithModel(
+                        model: _model.gridRoundModel2,
+                        updateCallback: () => setState(() {}),
+                        child: GridRoundWidget(
+                          round: 2,
+                          iteamspacing: 5,
+                          paddingtop: 5,
+                          itemheight: 100,
+                          pairFrom: 0,
+                          pairTo: 4,
+                          tournamentId: widget.tournamentId,
+                        ),
                       ),
-                    ),
-                    wrapWithModel(
-                      model: _model.gridRoundModel3,
-                      updateCallback: () => setState(() {}),
-                      child: GridRoundWidget(
-                        round: 3,
-                        iteamspacing: 5,
-                        paddingtop: 5,
-                        itemheight: 100,
-                        pairFrom: 0,
-                        pairTo: 2,
-                        tournamentId: widget.tournamentId,
+                      wrapWithModel(
+                        model: _model.gridRoundModel3,
+                        updateCallback: () => setState(() {}),
+                        child: GridRoundWidget(
+                          round: 3,
+                          iteamspacing: 5,
+                          paddingtop: 5,
+                          itemheight: 100,
+                          pairFrom: 0,
+                          pairTo: 2,
+                          tournamentId: widget.tournamentId,
+                        ),
                       ),
-                    ),
-                  ],
+                      wrapWithModel(
+                        model: _model.gridRoundModel4,
+                        updateCallback: () => setState(() {}),
+                        child: GridRoundWidget(
+                          round: 3,
+                          iteamspacing: 5,
+                          paddingtop: 5,
+                          itemheight: 100,
+                          pairFrom: 0,
+                          pairTo: 1,
+                          tournamentId: widget.tournamentId,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
