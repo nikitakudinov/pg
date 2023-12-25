@@ -179,28 +179,24 @@ class _Test2WidgetState extends State<Test2Widget> {
                     children: [
                       Stack(
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 0.0, 0.0),
-                            child: wrapWithModel(
-                              model: _model.gridRoundModel8,
-                              updateCallback: () => setState(() {}),
-                              child: GridRoundWidget(
-                                round: 1,
-                                iteamspacing: 5,
-                                paddingtop: 5,
-                                itemheight: 110,
-                                pairFrom: 0,
-                                pairTo: 8,
-                                tournamentId: widget.tournamentId,
-                              ),
+                          wrapWithModel(
+                            model: _model.gridRoundModel8,
+                            updateCallback: () => setState(() {}),
+                            child: GridRoundWidget(
+                              round: 1,
+                              iteamspacing: 5,
+                              paddingtop: 5,
+                              itemheight: 110,
+                              pairFrom: 0,
+                              pairTo: 8,
+                              tournamentId: widget.tournamentId,
                             ),
                           ),
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  95.0, 0.0, 0.0, 0.0),
+                                  100.0, 0.0, 0.0, 0.0),
                               child: wrapWithModel(
                                 model: _model.gridRoundModel9,
                                 updateCallback: () => setState(() {}),
