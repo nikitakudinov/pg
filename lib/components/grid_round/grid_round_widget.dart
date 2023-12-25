@@ -95,7 +95,7 @@ class _GridRoundWidgetState extends State<GridRoundWidget> {
                           (e.matchForTournament.tournamentId ==
                               widget.tournamentId) &&
                           (e.matchTournamentRound == widget.round) &&
-                          (e.matchTournamentPair < widget.pairTo!) &&
+                          (e.matchTournamentPair <= widget.pairTo!) &&
                           (e.matchTournamentPair >= widget.pairFrom!))
                       .toList()
                       .sortedList((e) => e.matchTournamentPair)
