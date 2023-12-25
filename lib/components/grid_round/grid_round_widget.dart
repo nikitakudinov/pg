@@ -227,7 +227,11 @@ class _GridRoundWidgetState extends State<GridRoundWidget> {
                                           Text(
                                             '${roundItem.matchRival1Wins.toString()}',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'Cabin Condensed',
+                                                  fontWeight: FontWeight.w800,
+                                                ),
                                           ),
                                         ],
                                       ),
@@ -302,7 +306,13 @@ class _GridRoundWidgetState extends State<GridRoundWidget> {
                                                 '${roundItem.matchRival2Wins.toString()}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                        ),
                                               ),
                                             ],
                                           ),
