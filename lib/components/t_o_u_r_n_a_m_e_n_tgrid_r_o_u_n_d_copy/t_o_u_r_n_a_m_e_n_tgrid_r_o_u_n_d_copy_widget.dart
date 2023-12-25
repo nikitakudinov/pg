@@ -188,7 +188,13 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                               '${roundItem.matchRival1.teamTag}',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
                                             ),
                                             Text(
                                               '${roundItem.matchRival1.teamName}'
@@ -196,7 +202,12 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                                       maxChars: 10),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelSmall,
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        lineHeight: 0.8,
+                                                      ),
                                             ),
                                           ],
                                         ),
@@ -245,10 +256,29 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '${roundItem.matchRival2.teamName}',
+                                              '${roundItem.matchRival2.teamTag}',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
+                                            ),
+                                            Text(
+                                              '${roundItem.matchRival2.teamName}'
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 10),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        lineHeight: 0.8,
+                                                      ),
                                             ),
                                           ],
                                         ),
