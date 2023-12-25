@@ -34,6 +34,16 @@ class _TestWidgetState extends State<TestWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.jsonPLAYERS = await PlayerGroup.listplayersCall.call();
       _model.jsonTEAMS = await TeamGroup.listallteamsCall.call();
+      _model.jsonTOURNAMENTS = await TournamentGroup.tournamentsCall.call();
+      _model.jsonMATCHES = await MatchGroup.matchesCall.call();
+      _model.jsonCOUNTRIES = await CountryGroup.countriesCall.call();
+      _model.jsonNOTIFICATIONS =
+          await MessagingGroup.gETuserNotificationsCall.call(
+        authUser: currentUserUid,
+      );
+      _model.jsonCHATS = await MessagingGroup.getuserchatsCall.call(
+        authUser: currentUserUid,
+      );
       setState(() {
         FFAppState().updateMAINDATAStruct(
           (e) => e
@@ -48,6 +58,41 @@ class _TestWidgetState extends State<TestWidget> {
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
+                .toList()
+            ..authplayer = FFAppState()
+                .MAINDATA
+                .players
+                .where((e) => e.playerUid == currentUserUid)
+                .toList()[0]
+            ..tournaments = ((_model.jsonTOURNAMENTS?.jsonBody ?? '')
+                    .toList()
+                    .map<TournamentStruct?>(TournamentStruct.maybeFromMap)
+                    .toList() as Iterable<TournamentStruct?>)
+                .withoutNulls
+                .toList()
+            ..countries = ((_model.jsonCOUNTRIES?.jsonBody ?? '')
+                    .toList()
+                    .map<CountrieStruct?>(CountrieStruct.maybeFromMap)
+                    .toList() as Iterable<CountrieStruct?>)
+                .withoutNulls
+                .toList()
+            ..notifications = ((_model.jsonNOTIFICATIONS?.jsonBody ?? '')
+                    .toList()
+                    .map<NotificationStruct?>(NotificationStruct.maybeFromMap)
+                    .toList() as Iterable<NotificationStruct?>)
+                .withoutNulls
+                .toList()
+            ..matches = ((_model.jsonMATCHES?.jsonBody ?? '')
+                    .toList()
+                    .map<MatchStruct?>(MatchStruct.maybeFromMap)
+                    .toList() as Iterable<MatchStruct?>)
+                .withoutNulls
+                .toList()
+            ..chats = ((_model.jsonCHATS?.jsonBody ?? '')
+                    .toList()
+                    .map<ChatStruct?>(ChatStruct.maybeFromMap)
+                    .toList() as Iterable<ChatStruct?>)
+                .withoutNulls
                 .toList(),
         );
       });
@@ -55,31 +100,7 @@ class _TestWidgetState extends State<TestWidget> {
         context: context,
         builder: (alertDialogContext) {
           return AlertDialog(
-            title: Text('Каманды и игроки загружены'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
-      setState(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..authplayer = FFAppState()
-                .MAINDATA
-                .players
-                .where((e) => e.playerUid == currentUserUid)
-                .toList()[0],
-        );
-      });
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('Данные авторизованного пользователя обновлены'),
+            title: Text('Данные Обновлены'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(alertDialogContext),
