@@ -183,7 +183,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  160.0, 60.0, 0.0, 0.0),
+                                  165.0, 60.0, 0.0, 0.0),
                               child: wrapWithModel(
                                 model: _model.gridRoundModel8,
                                 updateCallback: () => setState(() {}),
@@ -201,7 +201,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                260.0, 340.0, 0.0, 0.0),
+                                260.0, 440.0, 0.0, 0.0),
                             child: wrapWithModel(
                               model: _model.gridRoundModel9,
                               updateCallback: () => setState(() {}),
