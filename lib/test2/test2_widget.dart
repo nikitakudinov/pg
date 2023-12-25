@@ -172,7 +172,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                           iteamspacing: 320,
                           paddingtop: 5,
                           itemheight: 110,
-                          pairFrom: 1,
+                          pairFrom: 3,
                           pairTo: 4,
                           tournamentId: widget.tournamentId,
                         ),
