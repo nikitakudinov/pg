@@ -515,6 +515,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInCurentMatchData(int _index, MatchStruct _value) {
     _curentMatchData.insert(_index, _value);
   }
+
+  List<TestStruct> _TEST = [];
+  List<TestStruct> get TEST => _TEST;
+  set TEST(List<TestStruct> _value) {
+    _TEST = _value;
+  }
+
+  void addToTEST(TestStruct _value) {
+    _TEST.add(_value);
+  }
+
+  void removeFromTEST(TestStruct _value) {
+    _TEST.remove(_value);
+  }
+
+  void removeAtIndexFromTEST(int _index) {
+    _TEST.removeAt(_index);
+  }
+
+  void updateTESTAtIndex(
+    int _index,
+    TestStruct Function(TestStruct) updateFn,
+  ) {
+    _TEST[_index] = updateFn(_TEST[_index]);
+  }
+
+  void insertAtIndexInTEST(int _index, TestStruct _value) {
+    _TEST.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

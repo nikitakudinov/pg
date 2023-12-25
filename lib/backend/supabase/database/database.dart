@@ -18,4 +18,5 @@ export 'tables/chats.dart';
 export 'tables/message_readed.dart';
 export 'tables/team_members.dart';
 export 'tables/notifications.dart';
+export 'tables/test.dart';
 export 'tables/matches.dart';

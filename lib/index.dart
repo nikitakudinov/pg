@@ -20,3 +20,4 @@ export '/match/matches/matches_widget.dart' show MatchesWidget;
 export '/match/match_view/match_view_widget.dart' show MatchViewWidget;
 export '/match/match_report_add/match_report_add_widget.dart'
     show MatchReportAddWidget;
+export '/test/test_widget.dart' show TestWidget;

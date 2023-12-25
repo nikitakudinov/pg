@@ -205,6 +205,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             tournamentCreatorUID:
                 params.getParam('tournamentCreatorUID', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'TEST',
+          path: '/test',
+          builder: (context, params) => TestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
