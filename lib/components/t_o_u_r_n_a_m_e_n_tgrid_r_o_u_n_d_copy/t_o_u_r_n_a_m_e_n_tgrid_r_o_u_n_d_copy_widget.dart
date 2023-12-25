@@ -206,7 +206,7 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                             Text(
                                               '${roundItem.matchRival1.teamName}'
                                                   .maybeHandleOverflow(
-                                                      maxChars: 10),
+                                                      maxChars: 25),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall
@@ -277,7 +277,7 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                             Text(
                                               '${roundItem.matchRival2.teamName}'
                                                   .maybeHandleOverflow(
-                                                      maxChars: 10),
+                                                      maxChars: 25),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall
