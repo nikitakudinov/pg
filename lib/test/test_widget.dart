@@ -31,18 +31,37 @@ class _TestWidgetState extends State<TestWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultnal = await PlayerGroup.testCall.call();
-      if ((_model.apiResultnal?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().TEST = ((_model.apiResultnal?.jsonBody ?? '')
-                  .toList()
-                  .map<TestStruct?>(TestStruct.maybeFromMap)
-                  .toList() as Iterable<TestStruct?>)
-              .withoutNulls
-              .toList()
-              .cast<TestStruct>();
-        });
-      }
+      _model.jsonPLAYERS = await PlayerGroup.listplayersCall.call();
+      _model.jsonTEAMS = await TeamGroup.listallteamsCall.call();
+      setState(() {
+        FFAppState().updateMAINDATAStruct(
+          (e) => e
+            ..players = ((_model.jsonPLAYERS?.jsonBody ?? '')
+                    .toList()
+                    .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+                    .toList() as Iterable<PlayerStruct?>)
+                .withoutNulls
+                .toList()
+            ..teams = ((_model.jsonTEAMS?.jsonBody ?? '')
+                    .toList()
+                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                    .toList() as Iterable<TeamStruct?>)
+                .withoutNulls
+                .toList(),
+        );
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'MainDatraUpdated',
+            style: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+            ),
+          ),
+          duration: Duration(milliseconds: 4000),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+        ),
+      );
     });
   }
 
@@ -95,23 +114,23 @@ class _TestWidgetState extends State<TestWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final testList = FFAppState().TEST.toList();
+                  final pLAYERSlist = FFAppState().MAINDATA.players.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: testList.length,
-                    itemBuilder: (context, testListIndex) {
-                      final testListItem = testList[testListIndex];
+                    itemCount: pLAYERSlist.length,
+                    itemBuilder: (context, pLAYERSlistIndex) {
+                      final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
                       return Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            testListItem.name,
+                            pLAYERSlistItem.playerNickname,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                           Text(
-                            testListItem.surname,
+                            pLAYERSlistItem.playerTag,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ].divide(SizedBox(width: 10.0)),

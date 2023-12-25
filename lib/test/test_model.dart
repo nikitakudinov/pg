@@ -15,8 +15,10 @@ class TestModel extends FlutterFlowModel<TestWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (TEST)] action in TEST widget.
-  ApiCallResponse? apiResultnal;
+  // Stores action output result for [Backend Call - API (LISTPLAYERS)] action in TEST widget.
+  ApiCallResponse? jsonPLAYERS;
+  // Stores action output result for [Backend Call - API (LISTALLTEAMS)] action in TEST widget.
+  ApiCallResponse? jsonTEAMS;
 
   /// Initialization and disposal methods.
 

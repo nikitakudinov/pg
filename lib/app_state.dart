@@ -516,33 +516,14 @@ class FFAppState extends ChangeNotifier {
     _curentMatchData.insert(_index, _value);
   }
 
-  List<TestStruct> _TEST = [];
-  List<TestStruct> get TEST => _TEST;
-  set TEST(List<TestStruct> _value) {
-    _TEST = _value;
+  MaindataStruct _MAINDATA = MaindataStruct();
+  MaindataStruct get MAINDATA => _MAINDATA;
+  set MAINDATA(MaindataStruct _value) {
+    _MAINDATA = _value;
   }
 
-  void addToTEST(TestStruct _value) {
-    _TEST.add(_value);
-  }
-
-  void removeFromTEST(TestStruct _value) {
-    _TEST.remove(_value);
-  }
-
-  void removeAtIndexFromTEST(int _index) {
-    _TEST.removeAt(_index);
-  }
-
-  void updateTESTAtIndex(
-    int _index,
-    TestStruct Function(TestStruct) updateFn,
-  ) {
-    _TEST[_index] = updateFn(_TEST[_index]);
-  }
-
-  void insertAtIndexInTEST(int _index, TestStruct _value) {
-    _TEST.insert(_index, _value);
+  void updateMAINDATAStruct(Function(MaindataStruct) updateFn) {
+    updateFn(_MAINDATA);
   }
 }
 
