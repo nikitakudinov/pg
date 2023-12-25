@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -47,7 +48,12 @@ class _TestWidgetState extends State<TestWidget> {
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
-                .toList(),
+                .toList()
+            ..authplayer = FFAppState()
+                .MAINDATA
+                .players
+                .where((e) => e.playerUid == currentUserUid)
+                .toList()[0],
         );
       });
       ScaffoldMessenger.of(context).showSnackBar(
@@ -195,6 +201,10 @@ class _TestWidgetState extends State<TestWidget> {
                         },
                       );
                     },
+                  ),
+                  Text(
+                    FFAppState().MAINDATA.authplayer.playerNickname,
+                    style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                 ],
               ),
