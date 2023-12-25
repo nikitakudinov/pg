@@ -115,7 +115,12 @@ class _TestWidgetState extends State<TestWidget> {
               children: [
                 Builder(
                   builder: (context) {
-                    final pLAYERSlist = FFAppState().MAINDATA.players.toList();
+                    final pLAYERSlist = FFAppState()
+                        .MAINDATA
+                        .players
+                        .toList()
+                        .take(150)
+                        .toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -142,7 +147,8 @@ class _TestWidgetState extends State<TestWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final pLAYERSlist = FFAppState().MAINDATA.teams.toList();
+                    final pLAYERSlist =
+                        FFAppState().MAINDATA.teams.toList().take(150).toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -155,11 +161,21 @@ class _TestWidgetState extends State<TestWidget> {
                           children: [
                             Text(
                               pLAYERSlistItem.teamName,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: FlutterFlowTheme.of(context).accent1,
+                                  ),
                             ),
                             Text(
                               pLAYERSlistItem.teamTag,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: FlutterFlowTheme.of(context).accent1,
+                                  ),
                             ),
                           ].divide(SizedBox(width: 10.0)),
                         );
