@@ -32,7 +32,7 @@ class PlayerGroup {
   static ListplayerbyteamCall listplayerbyteamCall = ListplayerbyteamCall();
   static ListplayersCall listplayersCall = ListplayersCall();
   static PlayersearchCall playersearchCall = PlayersearchCall();
-  static TestCall testCall = TestCall();
+  static UnicallCall unicallCall = UnicallCall();
 }
 
 class ListplayerbyuidCall {
@@ -818,11 +818,17 @@ class PlayersearchCall {
   }
 }
 
-class TestCall {
-  Future<ApiCallResponse> call() async {
+class UnicallCall {
+  Future<ApiCallResponse> call({
+    String? tablename = '',
+    String? operator = '',
+    String? filtervalue = '',
+    String? filterby = '',
+  }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'TEST',
-      apiUrl: '${PlayerGroup.baseUrl}test',
+      callName: 'UNICALL',
+      apiUrl:
+          '${PlayerGroup.baseUrl}${tablename}?${filterby}=${operator}.${filtervalue}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

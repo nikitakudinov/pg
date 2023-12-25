@@ -34,6 +34,12 @@ class _TestWidgetState extends State<TestWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.jsonPLAYERS = await PlayerGroup.listplayersCall.call();
       _model.jsonTEAMS = await TeamGroup.listallteamsCall.call();
+      _model.jsonAUTHUSERDATA = await PlayerGroup.unicallCall.call(
+        tablename: 'players',
+        operator: 'eq',
+        filterby: 'player_uid',
+        filtervalue: currentUserUid,
+      );
       setState(() {
         FFAppState().updateMAINDATAStruct(
           (e) => e
@@ -48,7 +54,9 @@ class _TestWidgetState extends State<TestWidget> {
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
-                .toList(),
+                .toList()
+            ..authplayer = PlayerStruct.maybeFromMap(
+                (_model.jsonAUTHUSERDATA?.jsonBody ?? '')),
         );
       });
       await showDialog(
@@ -74,8 +82,7 @@ class _TestWidgetState extends State<TestWidget> {
                     .toList() as Iterable<PlayerStruct?>)
                 .withoutNulls
                 ?.where((e) => e.playerUid == currentUserUid)
-                .toList()
-                ?.first,
+                .toList()?[0],
         );
       });
       await showDialog(
