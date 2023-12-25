@@ -77,28 +77,30 @@ class _Test2WidgetState extends State<Test2Widget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  wrapWithModel(
-                    model: _model.tOURNAMENTgridROUNDCopyModel,
-                    updateCallback: () => setState(() {}),
-                    child: TOURNAMENTgridROUNDCopyWidget(
-                      round: 1,
-                      iteamspacing: 0,
-                      paddingtop: 5,
-                      itemheight: 110,
-                      pairFrom: 1,
-                      pairTo: 16,
-                      tournamentId: widget.tournamentId,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    wrapWithModel(
+                      model: _model.tOURNAMENTgridROUNDCopyModel,
+                      updateCallback: () => setState(() {}),
+                      child: TOURNAMENTgridROUNDCopyWidget(
+                        round: 1,
+                        iteamspacing: 0,
+                        paddingtop: 5,
+                        itemheight: 110,
+                        pairFrom: 1,
+                        pairTo: 16,
+                        tournamentId: widget.tournamentId,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
