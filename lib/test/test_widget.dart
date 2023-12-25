@@ -224,17 +224,34 @@ class _TestWidgetState extends State<TestWidget> {
                       itemBuilder: (context, tOURNAMENTSlistIndex) {
                         final tOURNAMENTSlistItem =
                             tOURNAMENTSlist[tOURNAMENTSlistIndex];
-                        return VlistITEMWidget(
-                          key: Key(
-                              'Keyjqz_${tOURNAMENTSlistIndex}_of_${tOURNAMENTSlist.length}'),
-                          imageSize: 50,
-                          backgroundColor:
-                              FlutterFlowTheme.of(context).tertiary,
-                          title: tOURNAMENTSlistItem.tournamentTag,
-                          subtitle: tOURNAMENTSlistItem.tournamentName,
-                          country: tOURNAMENTSlistItem.tournamentCountry,
-                          flag: tOURNAMENTSlistItem.tournamentFlag,
-                          image: tOURNAMENTSlistItem.tournamentLogo,
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              'TOURNAMENTVIEW2',
+                              queryParameters: {
+                                'tournamentId': serializeParam(
+                                  tOURNAMENTSlistItem.tournamentId,
+                                  ParamType.int,
+                                ),
+                              }.withoutNulls,
+                            );
+                          },
+                          child: VlistITEMWidget(
+                            key: Key(
+                                'Keyjqz_${tOURNAMENTSlistIndex}_of_${tOURNAMENTSlist.length}'),
+                            imageSize: 50,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).tertiary,
+                            title: tOURNAMENTSlistItem.tournamentTag,
+                            subtitle: tOURNAMENTSlistItem.tournamentName,
+                            country: tOURNAMENTSlistItem.tournamentCountry,
+                            flag: tOURNAMENTSlistItem.tournamentFlag,
+                            image: tOURNAMENTSlistItem.tournamentLogo,
+                          ),
                         );
                       },
                     );
