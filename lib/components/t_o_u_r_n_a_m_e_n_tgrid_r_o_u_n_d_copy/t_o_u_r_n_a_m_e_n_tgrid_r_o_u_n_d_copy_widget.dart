@@ -138,9 +138,16 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                               '0',
                                             )}'
                                               .maybeHandleOverflow(
-                                                  maxChars: 15),
+                                              maxChars: 10,
+                                              replacement: '…',
+                                            ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodySmall,
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Cabin Condensed',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                          ),
                                     ),
                                   ),
                                 ),
