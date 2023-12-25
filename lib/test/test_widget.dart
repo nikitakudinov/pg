@@ -54,12 +54,7 @@ class _TestWidgetState extends State<TestWidget> {
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
-                .toList()
-            ..authplayer = FFAppState()
-                .MAINDATA
-                .players
-                .where((e) => e.playerUid == currentUserUid)
-                .toList()[0],
+                .toList(),
         );
       });
       await showDialog(
@@ -79,13 +74,11 @@ class _TestWidgetState extends State<TestWidget> {
       setState(() {
         FFAppState().updateMAINDATAStruct(
           (e) => e
-            ..authplayer = ((_model.jsonPLAYERS?.jsonBody ?? '')
-                    .toList()
-                    .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
-                    .toList() as Iterable<PlayerStruct?>)
-                .withoutNulls
-                ?.where((e) => e.playerUid == currentUserUid)
-                .toList()?[0],
+            ..authplayer = FFAppState()
+                .MAINDATA
+                .players
+                .where((e) => e.playerUid == currentUserUid)
+                .toList()[0],
         );
       });
       await showDialog(
