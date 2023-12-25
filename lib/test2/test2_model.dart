@@ -13,17 +13,21 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
 
   final unfocusNode = FocusNode();
   // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel;
+  late GridRoundModel gridRoundModel1;
+  // Model for GRID-ROUND component.
+  late GridRoundModel gridRoundModel2;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    gridRoundModel = createModel(context, () => GridRoundModel());
+    gridRoundModel1 = createModel(context, () => GridRoundModel());
+    gridRoundModel2 = createModel(context, () => GridRoundModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
-    gridRoundModel.dispose();
+    gridRoundModel1.dispose();
+    gridRoundModel2.dispose();
   }
 
   /// Action blocks are added here.

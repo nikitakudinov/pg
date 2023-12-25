@@ -85,7 +85,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     wrapWithModel(
-                      model: _model.gridRoundModel,
+                      model: _model.gridRoundModel1,
                       updateCallback: () => setState(() {}),
                       child: GridRoundWidget(
                         round: 1,
@@ -94,6 +94,19 @@ class _Test2WidgetState extends State<Test2Widget> {
                         itemheight: 100,
                         pairFrom: 0,
                         pairTo: 8,
+                        tournamentId: widget.tournamentId,
+                      ),
+                    ),
+                    wrapWithModel(
+                      model: _model.gridRoundModel2,
+                      updateCallback: () => setState(() {}),
+                      child: GridRoundWidget(
+                        round: 2,
+                        iteamspacing: 5,
+                        paddingtop: 5,
+                        itemheight: 100,
+                        pairFrom: 0,
+                        pairTo: 4,
                         tournamentId: widget.tournamentId,
                       ),
                     ),
