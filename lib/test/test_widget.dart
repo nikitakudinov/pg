@@ -234,7 +234,7 @@ class _TestWidgetState extends State<TestWidget> {
                           subtitle: tOURNAMENTSlistItem.tournamentName,
                           country: tOURNAMENTSlistItem.tournamentCountry,
                           flag: tOURNAMENTSlistItem.tournamentFlag,
-                          image: tOURNAMENTSlistItem.tournamentFlag,
+                          image: tOURNAMENTSlistItem.tournamentLogo,
                         );
                       },
                     );
