@@ -55,8 +55,11 @@ class _TestWidgetState extends State<TestWidget> {
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
                 .toList()
-            ..authplayer = PlayerStruct.maybeFromMap(
-                (_model.jsonAUTHUSERDATA?.jsonBody ?? '')),
+            ..authplayer = FFAppState()
+                .MAINDATA
+                .players
+                .where((e) => e.playerUid == currentUserUid)
+                .toList()[0],
         );
       });
       await showDialog(
