@@ -20,8 +20,6 @@ class TestModel extends FlutterFlowModel<TestWidget> {
   ApiCallResponse? jsonPLAYERS;
   // Stores action output result for [Backend Call - API (LISTALLTEAMS)] action in TEST widget.
   ApiCallResponse? jsonTEAMS;
-  // Stores action output result for [Backend Call - API (UNICALL)] action in TEST widget.
-  ApiCallResponse? jsonAUTHUSERDATA;
 
   /// Initialization and disposal methods.
 

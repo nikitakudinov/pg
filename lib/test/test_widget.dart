@@ -34,12 +34,6 @@ class _TestWidgetState extends State<TestWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.jsonPLAYERS = await PlayerGroup.listplayersCall.call();
       _model.jsonTEAMS = await TeamGroup.listallteamsCall.call();
-      _model.jsonAUTHUSERDATA = await PlayerGroup.unicallCall.call(
-        tablename: 'players',
-        operator: 'eq',
-        filterby: 'player_uid',
-        filtervalue: currentUserUid,
-      );
       setState(() {
         FFAppState().updateMAINDATAStruct(
           (e) => e
