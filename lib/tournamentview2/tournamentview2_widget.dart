@@ -77,48 +77,51 @@ class _Tournamentview2WidgetState extends State<Tournamentview2Widget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Builder(
-                builder: (context) {
-                  final round1 = FFAppState()
-                      .MAINDATA
-                      .matches
-                      .where((e) =>
-                          (e.matchForTournament.tournamentId ==
-                              widget.tournamentId) &&
-                          (e.matchTournamentRound == 1))
-                      .toList();
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: round1.length,
-                    itemBuilder: (context, round1Index) {
-                      final round1Item = round1[round1Index];
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            round1Item.matchForTournament.tournamentTag,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            round1Item.matchTournamentRound.toString(),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            round1Item.matchTournamentPair.toString(),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Builder(
+                  builder: (context) {
+                    final round1 = FFAppState()
+                        .MAINDATA
+                        .matches
+                        .where((e) =>
+                            (e.matchForTournament.tournamentId ==
+                                widget.tournamentId) &&
+                            (e.matchTournamentRound == 1))
+                        .toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      primary: false,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: round1.length,
+                      itemBuilder: (context, round1Index) {
+                        final round1Item = round1[round1Index];
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              round1Item.matchForTournament.tournamentTag,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              round1Item.matchTournamentRound.toString(),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              round1Item.matchTournamentPair.toString(),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
