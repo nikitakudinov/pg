@@ -123,6 +123,7 @@ class _TestWidgetState extends State<TestWidget> {
                         .toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: pLAYERSlist.length,
@@ -151,6 +152,7 @@ class _TestWidgetState extends State<TestWidget> {
                         FFAppState().MAINDATA.teams.toList().take(150).toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: pLAYERSlist.length,
