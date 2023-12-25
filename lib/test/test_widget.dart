@@ -114,7 +114,7 @@ class _TestWidgetState extends State<TestWidget> {
                             testListItem.surname,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
-                        ],
+                        ].divide(SizedBox(width: 10.0)),
                       );
                     },
                   );
