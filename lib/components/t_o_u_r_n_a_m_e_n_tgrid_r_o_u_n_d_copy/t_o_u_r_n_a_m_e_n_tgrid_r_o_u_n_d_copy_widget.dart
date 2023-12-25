@@ -132,7 +132,7 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                     decoration: BoxDecoration(),
                                     child: Text(
                                       roundItem.matchPlannedDate == '0'
-                                          ? 'Дата матча не запланирована'
+                                          ? '-.-.-'
                                           : 'Матч состоится ${valueOrDefault<String>(
                                               roundItem.matchPlannedDate,
                                               '0',
