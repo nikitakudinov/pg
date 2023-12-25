@@ -48,7 +48,26 @@ class _TestWidgetState extends State<TestWidget> {
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
-                .toList()
+                .toList(),
+        );
+      });
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('Каманды и игроки загружены'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
+      setState(() {
+        FFAppState().updateMAINDATAStruct(
+          (e) => e
             ..authplayer = FFAppState()
                 .MAINDATA
                 .players
@@ -56,6 +75,20 @@ class _TestWidgetState extends State<TestWidget> {
                 .toList()[0],
         );
       });
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('Данные авторизованного пользователя обновлены'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
