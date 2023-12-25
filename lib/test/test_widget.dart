@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -208,38 +209,32 @@ class _TestWidgetState extends State<TestWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final pLAYERSlist =
-                        FFAppState().MAINDATA.teams.toList().take(10).toList();
+                    final tOURNAMENTSlist = FFAppState()
+                        .MAINDATA
+                        .tournaments
+                        .toList()
+                        .take(10)
+                        .toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: pLAYERSlist.length,
-                      itemBuilder: (context, pLAYERSlistIndex) {
-                        final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
-                        return Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              pLAYERSlistItem.teamName,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                  ),
-                            ),
-                            Text(
-                              pLAYERSlistItem.teamTag,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                  ),
-                            ),
-                          ].divide(SizedBox(width: 10.0)),
+                      itemCount: tOURNAMENTSlist.length,
+                      itemBuilder: (context, tOURNAMENTSlistIndex) {
+                        final tOURNAMENTSlistItem =
+                            tOURNAMENTSlist[tOURNAMENTSlistIndex];
+                        return VlistITEMWidget(
+                          key: Key(
+                              'Keyjqz_${tOURNAMENTSlistIndex}_of_${tOURNAMENTSlist.length}'),
+                          imageSize: 50,
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).tertiary,
+                          title: tOURNAMENTSlistItem.tournamentTag,
+                          subtitle: tOURNAMENTSlistItem.tournamentName,
+                          country: tOURNAMENTSlistItem.tournamentCountry,
+                          flag: tOURNAMENTSlistItem.tournamentFlag,
+                          image: tOURNAMENTSlistItem.tournamentFlag,
                         );
                       },
                     );
