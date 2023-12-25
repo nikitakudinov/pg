@@ -81,7 +81,7 @@ class _VlistITEMWidgetState extends State<VlistITEMWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
                   child: Image.network(
-                    widget.flag,
+                    widget.image,
                     width: widget.imageSize.toDouble(),
                     height: widget.imageSize.toDouble(),
                     fit: BoxFit.cover,

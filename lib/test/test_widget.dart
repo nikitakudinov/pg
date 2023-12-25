@@ -97,20 +97,6 @@ class _TestWidgetState extends State<TestWidget> {
                 .toList(),
         );
       });
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('Данные Обновлены'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
