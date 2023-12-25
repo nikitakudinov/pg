@@ -109,37 +109,66 @@ class _TestWidgetState extends State<TestWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Builder(
-                builder: (context) {
-                  final pLAYERSlist = FFAppState().MAINDATA.players.toList();
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: pLAYERSlist.length,
-                    itemBuilder: (context, pLAYERSlistIndex) {
-                      final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            pLAYERSlistItem.playerNickname,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                          Text(
-                            pLAYERSlistItem.playerTag,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ].divide(SizedBox(width: 10.0)),
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Builder(
+                  builder: (context) {
+                    final pLAYERSlist = FFAppState().MAINDATA.players.toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: pLAYERSlist.length,
+                      itemBuilder: (context, pLAYERSlistIndex) {
+                        final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
+                        return Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              pLAYERSlistItem.playerNickname,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              pLAYERSlistItem.playerTag,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ].divide(SizedBox(width: 10.0)),
+                        );
+                      },
+                    );
+                  },
+                ),
+                Builder(
+                  builder: (context) {
+                    final pLAYERSlist = FFAppState().MAINDATA.teams.toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: pLAYERSlist.length,
+                      itemBuilder: (context, pLAYERSlistIndex) {
+                        final pLAYERSlistItem = pLAYERSlist[pLAYERSlistIndex];
+                        return Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              pLAYERSlistItem.teamName,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              pLAYERSlistItem.teamTag,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ].divide(SizedBox(width: 10.0)),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
