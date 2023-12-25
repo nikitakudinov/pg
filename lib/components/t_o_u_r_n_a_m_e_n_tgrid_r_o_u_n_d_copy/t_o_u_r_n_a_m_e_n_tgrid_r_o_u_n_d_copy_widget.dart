@@ -97,6 +97,8 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                           (e.matchForTournament.tournamentId ==
                               widget.tournamentId) &&
                           (e.matchTournamentRound == widget.round))
+                      .toList()
+                      .sortedList((e) => e.matchTournamentPair)
                       .toList();
                   return ListView.separated(
                     padding: EdgeInsets.zero,
