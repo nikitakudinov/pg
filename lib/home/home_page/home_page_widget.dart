@@ -143,7 +143,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   FFAppState().notofications = [];
                 });
 
-                context.goNamedAuth('TEST', context.mounted);
+                context.goNamedAuth('LoginPage', context.mounted);
               },
             ),
           ],
