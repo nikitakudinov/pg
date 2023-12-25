@@ -183,10 +183,18 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '${roundItem.matchRival1.teamName}',
+                                              '${roundItem.matchRival1.teamTag}',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .bodyLarge,
+                                            ),
+                                            Text(
+                                              '${roundItem.matchRival1.teamName}'
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 10),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall,
                                             ),
                                           ],
                                         ),
@@ -196,17 +204,10 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                roundItem.matchRival1Wins
-                                                    .toString(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
+                                          Text(
+                                            '${roundItem.matchRival1Wins.toString()}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
                                           ),
                                         ],
                                       ),
@@ -259,8 +260,7 @@ class _TOURNAMENTgridROUNDCopyWidgetState
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Text(
-                                                roundItem.matchRival2Wins
-                                                    .toString(),
+                                                '${roundItem.matchRival2Wins.toString()}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
