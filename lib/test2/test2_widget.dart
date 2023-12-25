@@ -234,7 +234,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                             child: GridRoundWidget(
                               round: 2,
                               iteamspacing: 110,
-                              paddingtop: 5,
+                              paddingtop: 110,
                               itemheight: 110,
                               pairFrom: 0,
                               pairTo: 4,
