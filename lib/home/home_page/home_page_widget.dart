@@ -1349,13 +1349,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .teamId,
                                                         ),
                                                       );
-                                                      if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
-                                                          (notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentPair ==
+                                                      if ((notificationsListItem.match.matchTournamentRound == 1) &&
+                                                          (notificationsListItem.match.matchTournamentPair ==
                                                               1)) {
                                                         // R1P1
                                                         _model.jsonR1P1 =
@@ -1380,6 +1375,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1414,10 +1413,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1445,6 +1441,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1482,10 +1482,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1513,6 +1510,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1547,10 +1548,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1578,6 +1576,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1615,10 +1617,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1646,6 +1645,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1683,10 +1686,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1714,6 +1714,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1748,10 +1752,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1779,6 +1780,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1813,10 +1818,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
-                                                      } else if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem
                                                                   .match
                                                                   .matchTournamentPair ==
@@ -1844,6 +1846,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
@@ -1858,6 +1864,141 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               )?[0],
                                                               0,
                                                             ),
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              9)) {
+                                                        // R1P9
+                                                        _model.jsonR1P9 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 5,
+                                                          round: 2,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonR1P9
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                      } else if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              10)) {
+                                                        // R1P10
+                                                        _model.jsonR1P10 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 5,
+                                                          round: 2,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonR1P10
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
                                                           ),
                                                         );
                                                         ScaffoldMessenger.of(
