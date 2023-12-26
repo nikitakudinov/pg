@@ -1084,8 +1084,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       FFAppState()
                                                           .removeAtIndexFromNotofications(
                                                               notificationsListIndex);
-                                                      FFAppState().alertsCount =
-                                                          0;
                                                     });
                                                   },
                                                   text: 'Ясно',
