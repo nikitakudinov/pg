@@ -291,8 +291,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await Clipboard.setData(
-                                        ClipboardData(text: ''));
+                                    await Clipboard.setData(ClipboardData(
+                                        text: getCurrentTimestamp.toString()));
                                   },
                                   child: Text(
                                     getCurrentTimestamp.toString(),
