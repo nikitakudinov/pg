@@ -1447,13 +1447,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P1
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
+                                                            valueOrDefault<int>(
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.jsonR1P2
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                              0,
+                                                            ),
                                                           ),
                                                         );
                                                         ScaffoldMessenger.of(
