@@ -117,7 +117,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             highlightColor: Colors.transparent,
             onTap: () async {
               _model.apiResult3lt = await MatchGroup.workCall.call(
-                time1: functions.timeNsecAgo(10)?.toString(),
+                time1: functions.timeNsecAgo(30)?.toString(),
               );
               if ((_model.apiResult3lt?.succeeded ?? true)) {
                 setState(() {
