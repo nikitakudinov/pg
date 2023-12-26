@@ -1351,21 +1351,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             .update(
                                                           data: {
                                                             'match_rival1':
-                                                                valueOrDefault<
-                                                                    int>(
-                                                              notificationsListItem
-                                                                          .match
-                                                                          .matchRival1Wins >
-                                                                      notificationsListItem
-                                                                          .match
-                                                                          .matchRival2Wins
-                                                                  ? 0
-                                                                  : notificationsListItem
-                                                                      .match
-                                                                      .matchRival2
-                                                                      .teamId,
-                                                              0,
-                                                            ),
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
                                                           },
                                                           matchingRows:
                                                               (rows) => rows
