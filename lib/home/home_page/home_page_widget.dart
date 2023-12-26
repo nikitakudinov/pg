@@ -139,6 +139,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       FFAppState().addToAllTEAMS(TeamStruct.maybeFromMap(
                           (_model.apiResult7s1?.jsonBody ?? ''))!);
                     });
+                    await showDialog(
+                      context: context,
+                      builder: (alertDialogContext) {
+                        return AlertDialog(
+                          title: Text('Обновлена команда'),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext),
+                              child: Text('Ok'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   }
                 }
               }
