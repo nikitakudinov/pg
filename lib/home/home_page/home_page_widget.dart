@@ -1354,8 +1354,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         tournamentID:
                                                             valueOrDefault<int>(
                                                           notificationsListItem
-                                                              .match
-                                                              .matchForTournament
+                                                              .notificationFromTournament
                                                               .tournamentId,
                                                           0,
                                                         ),
