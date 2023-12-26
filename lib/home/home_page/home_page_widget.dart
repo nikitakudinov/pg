@@ -285,10 +285,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ),
-                                Text(
-                                  FFAppState().authPlayerTeam.teamName,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await Clipboard.setData(
+                                        ClipboardData(text: ''));
+                                  },
+                                  child: Text(
+                                    getCurrentTimestamp.toString(),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
                                 ),
                                 Text(
                                   FFAppState().authPlayer.playerId.toString(),
