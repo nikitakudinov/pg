@@ -1406,7 +1406,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             ),
                                                             duration: Duration(
                                                                 milliseconds:
-                                                                    4000),
+                                                                    1000),
                                                             backgroundColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
