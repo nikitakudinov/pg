@@ -169,6 +169,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     'match_for_tournament': widget.tournamentId,
                     'match_status': 'Матч создан',
                     'match_date': 'Дата матча не определена',
+                    'match_planned_date': '-.-.- -:-',
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
