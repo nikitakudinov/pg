@@ -1355,39 +1355,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               1)) {
-                                                        _model.jsonNEXTMATCH =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .match
-                                                                .matchForTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          round: 2,
-                                                          pair: 1,
-                                                        );
                                                         await showDialog(
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
                                                             return AlertDialog(
-                                                              title: Text(((MatchGroup
-                                                                          .mATCHbyTORNandROUNDandPAIRCall
-                                                                          .matchid(
-                                                                (_model.jsonNEXTMATCH
-                                                                        ?.jsonBody ??
-                                                                    ''),
-                                                              ) as List)
-                                                                      .map<String>(
-                                                                          (s) =>
-                                                                              s.toString())
-                                                                      .toList()![0])
-                                                                  .toString()),
+                                                              title: Text('1'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1400,29 +1373,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             );
                                                           },
                                                         );
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival1':
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchWinner,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonNEXTMATCH
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
                                                       }
-
-                                                      setState(() {});
                                                     },
                                                     text: 'Матч зачтен',
                                                     options: FFButtonOptions(
