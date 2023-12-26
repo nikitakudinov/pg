@@ -1637,7 +1637,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
-                                                            'match_rival2':
+                                                            'match_rival1':
                                                                 notificationsListItem
                                                                     .match
                                                                     .matchWinner,
