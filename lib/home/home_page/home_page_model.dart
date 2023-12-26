@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -52,14 +53,19 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ApiCallResponse? jsonNEWMATCHEScount;
   // Stores action output result for [Backend Call - API (NEWMATCHES)] action in Icon widget.
   ApiCallResponse? apiResult7s1;
+  // Model for ratingTeamsTabs component.
+  late RatingTeamsTabsModel ratingTeamsTabsModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    ratingTeamsTabsModel = createModel(context, () => RatingTeamsTabsModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
+    ratingTeamsTabsModel.dispose();
   }
 
   /// Action blocks are added here.

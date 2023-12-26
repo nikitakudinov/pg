@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1441,6 +1442,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         ),
                       ),
                   ],
+                ),
+                wrapWithModel(
+                  model: _model.ratingTeamsTabsModel,
+                  updateCallback: () => setState(() {}),
+                  child: RatingTeamsTabsWidget(
+                    teams: FFAppState().allTEAMS,
+                  ),
                 ),
               ],
             ),
