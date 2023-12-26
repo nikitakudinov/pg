@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/screenshots_in_notification_widget.dart';
@@ -10,6 +11,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -114,9 +116,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              setState(() {
-                _model.test = functions.timeNsecAgo(65);
-              });
+              _model.apiResult3lt = await MatchGroup.workCall.call(
+                time1: functions.timeNsecAgo(10)?.toString(),
+              );
+              if ((_model.apiResult3lt?.succeeded ?? true)) {
+                setState(() {
+                  _model.test = ((_model.apiResult3lt?.jsonBody ?? '')
+                          .toList()
+                          .map<MatchStruct?>(MatchStruct.maybeFromMap)
+                          .toList() as Iterable<MatchStruct?>)
+                      .withoutNulls
+                      ?.length;
+                });
+              }
+
+              setState(() {});
             },
             child: Icon(
               Icons.settings_outlined,

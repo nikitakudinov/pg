@@ -1958,12 +1958,13 @@ class MatchbyidCall {
 
 class WorkCall {
   Future<ApiCallResponse> call({
-    String? time = '',
+    String? time1 = '',
+    String? time2 = '',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'WORK',
       apiUrl:
-          '${MatchGroup.baseUrl}matches?match_updateted_at=ov.${time}&select=*',
+          '${MatchGroup.baseUrl}matches?match_updateted_at=gt.${time1}&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1979,6 +1980,11 @@ class WorkCall {
       alwaysAllowBody: false,
     );
   }
+
+  int? count(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].count''',
+      ));
 }
 
 /// End MATCH Group Code
