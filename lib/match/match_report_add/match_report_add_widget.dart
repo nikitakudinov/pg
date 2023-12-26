@@ -1901,6 +1901,36 @@ class _MatchReportAddWidgetState extends State<MatchReportAddWidget> {
                                         .toList()[0]
                                         .matchRival2
                                         .teamId,
+                                'match_looser': _model.rival1wins! > _model.rival2wins!
+                                    ? FFAppState()
+                                        .tournamentMatches
+                                        .where((e) =>
+                                            (e.matchForTournament.tournamentId ==
+                                                widget.tournamentID) &&
+                                            (e.matchTournamentRound ==
+                                                functions.stringTOinteger(
+                                                    _model.raundValue)) &&
+                                            (e.matchTournamentPair ==
+                                                functions.stringTOinteger(
+                                                    _model.pairValue)))
+                                        .toList()[0]
+                                        .matchRival2
+                                        .teamId
+                                    : FFAppState()
+                                        .tournamentMatches
+                                        .where((e) =>
+                                            (e.matchForTournament.tournamentId ==
+                                                widget.tournamentID) &&
+                                            (e.matchTournamentRound ==
+                                                functions.stringTOinteger(
+                                                    _model.raundValue)) &&
+                                            (e.matchTournamentPair ==
+                                                functions.stringTOinteger(_model.pairValue)))
+                                        .toList()[0]
+                                        .matchRival1
+                                        .teamId,
+                                'match_updateted_at': supaSerialize<DateTime>(
+                                    getCurrentTimestamp),
                               },
                               matchingRows: (rows) => rows
                                   .eq(
