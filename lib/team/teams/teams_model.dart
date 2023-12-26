@@ -3,7 +3,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/auth_user_team_widget.dart';
-import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -30,20 +29,16 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   ApiCallResponse? nextmatch;
   // Model for authUserTeam component.
   late AuthUserTeamModel authUserTeamModel;
-  // Model for ratingTeamsTabs component.
-  late RatingTeamsTabsModel ratingTeamsTabsModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     authUserTeamModel = createModel(context, () => AuthUserTeamModel());
-    ratingTeamsTabsModel = createModel(context, () => RatingTeamsTabsModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     authUserTeamModel.dispose();
-    ratingTeamsTabsModel.dispose();
   }
 
   /// Action blocks are added here.
