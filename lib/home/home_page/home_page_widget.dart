@@ -1347,54 +1347,41 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .teamId,
                                                         ),
                                                       );
-                                                      if ((notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentRound ==
-                                                              1) &&
-                                                          (notificationsListItem
-                                                                  .match
-                                                                  .matchTournamentPair ==
-                                                              1)) {
+                                                      _model.apiResult9ak =
+                                                          await MatchGroup
+                                                              .mATCHbyTORNandROUNDandPAIRCall
+                                                              .call(
+                                                        tournamentID:
+                                                            notificationsListItem
+                                                                .match
+                                                                .matchForTournament
+                                                                .tournamentId,
+                                                        pair: 2,
+                                                        round: 1,
+                                                      );
+                                                      if ((_model.apiResult9ak
+                                                              ?.succeeded ??
+                                                          true)) {
                                                         await showDialog(
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
                                                             return AlertDialog(
-                                                              title: Text('1'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_winner': 100,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows
-                                                                  .eq(
-                                                                    'match_tournament_round',
-                                                                    2,
-                                                                  )
-                                                                  .eq(
-                                                                    'match_tournament_pair',
-                                                                    1,
-                                                                  ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text('2'),
+                                                              title: Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                ((MatchGroup.mATCHbyTORNandROUNDandPAIRCall
+                                                                            .matchid(
+                                                                  (_model.apiResult9ak
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                ) as List)
+                                                                        .map<String>((s) =>
+                                                                            s.toString())
+                                                                        .toList()?[0])
+                                                                    ?.toString(),
+                                                                '0',
+                                                              )),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1408,6 +1395,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           },
                                                         );
                                                       }
+
+                                                      setState(() {});
                                                     },
                                                     text: 'Матч зачтен',
                                                     options: FFButtonOptions(
