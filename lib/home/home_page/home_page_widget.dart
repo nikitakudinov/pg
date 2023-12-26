@@ -1373,6 +1373,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             );
                                                           },
                                                         );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_winner':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    1,
+                                                                  ),
+                                                        );
                                                       }
                                                     },
                                                     text: 'Матч зачтен',
