@@ -83,4 +83,8 @@ class MatchesRow extends SupabaseDataRow {
 
   int? get matchLooser => getField<int>('match_looser');
   set matchLooser(int? value) => setField<int>('match_looser', value);
+
+  DateTime? get matchUpdatetedAt => getField<DateTime>('match_updateted_at');
+  set matchUpdatetedAt(DateTime? value) =>
+      setField<DateTime>('match_updateted_at', value);
 }
