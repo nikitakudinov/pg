@@ -1360,10 +1360,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .mATCHbyTORNandROUNDandPAIRCall
                                                                 .call(
                                                           tournamentID:
-                                                              notificationsListItem
-                                                                  .match
-                                                                  .matchForTournament
-                                                                  .tournamentId,
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .match
+                                                                .matchForTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
                                                           round: 2,
                                                           pair: 1,
                                                         );
