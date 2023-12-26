@@ -77,6 +77,10 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ApiCallResponse? jsonR1P11;
   // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
   ApiCallResponse? jsonR1P12;
+  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
+  ApiCallResponse? jsonR1P13;
+  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
+  ApiCallResponse? jsonR1P14;
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
 
