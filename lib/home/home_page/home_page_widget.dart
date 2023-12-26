@@ -1367,6 +1367,35 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           round: 2,
                                                           pair: 1,
                                                         );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(((MatchGroup
+                                                                          .mATCHbyTORNandROUNDandPAIRCall
+                                                                          .matchid(
+                                                                (_model.jsonNEXTMATCH
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ) as List)
+                                                                      .map<String>(
+                                                                          (s) =>
+                                                                              s.toString())
+                                                                      .toList()![0])
+                                                                  .toString()),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1386,25 +1415,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ''),
                                                             )?[0],
                                                           ),
-                                                        );
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Матч обновлен'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
                                                         );
                                                       }
 
