@@ -1375,46 +1375,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         if ((_model.apiResult9ak
                                                                 ?.succeeded ??
                                                             true)) {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  ((MatchGroup.mATCHbyTORNandROUNDandPAIRCall
-                                                                              .matchid(
-                                                                    (_model.apiResult9ak
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                  ) as List)
-                                                                          .map<String>((s) =>
-                                                                              s.toString())
-                                                                          .toList()?[0])
-                                                                      ?.toString(),
-                                                                  '0',
-                                                                )),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
                                                           await MatchesTable()
                                                               .update(
                                                             data: {
                                                               'match_rival1':
                                                                   notificationsListItem
                                                                       .match
-                                                                      .matchRival1
-                                                                      .teamId,
+                                                                      .matchWinner,
                                                             },
                                                             matchingRows:
                                                                 (rows) =>
@@ -1428,38 +1395,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     ''),
                                                               )?[0],
                                                             ),
-                                                          );
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  ((MatchGroup.mATCHbyTORNandROUNDandPAIRCall
-                                                                              .matchid(
-                                                                    (_model.apiResult9ak
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                  ) as List)
-                                                                          .map<String>((s) =>
-                                                                              s.toString())
-                                                                          .toList()?[0])
-                                                                      ?.toString(),
-                                                                  '0',
-                                                                )),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
                                                           );
                                                         }
                                                       }
