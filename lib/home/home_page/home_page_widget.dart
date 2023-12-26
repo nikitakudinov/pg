@@ -1365,8 +1365,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .tournamentId,
                                                             0,
                                                           ),
-                                                          pair: 2,
-                                                          round: 1,
+                                                          pair: 1,
+                                                          round: 2,
                                                         );
                                                         if ((_model.apiResult9ak
                                                                 ?.succeeded ??
