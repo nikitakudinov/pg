@@ -1539,7 +1539,8 @@ class MatchGroup {
   static PlanedmatchbyteamidCall planedmatchbyteamidCall =
       PlanedmatchbyteamidCall();
   static MatchbyidCall matchbyidCall = MatchbyidCall();
-  static WorkCall workCall = WorkCall();
+  static NewmatchescountCall newmatchescountCall = NewmatchescountCall();
+  static NewmatchesCall newmatchesCall = NewmatchesCall();
 }
 
 class MatchesCall {
@@ -1956,15 +1957,44 @@ class MatchbyidCall {
   }
 }
 
-class WorkCall {
+class NewmatchescountCall {
   Future<ApiCallResponse> call({
-    String? time1 = '',
-    String? time2 = '',
+    String? time = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'WORK',
+      callName: 'NEWMATCHESCOUNT',
       apiUrl:
-          '${MatchGroup.baseUrl}matches?match_updateted_at=gt.${time1}&select=*',
+          '${MatchGroup.baseUrl}matches?match_updateted_at=gt.${time}&select=count',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? count(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].count''',
+      ));
+}
+
+class NewmatchesCall {
+  Future<ApiCallResponse> call({
+    String? time = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'NEWMATCHES',
+      apiUrl:
+          '${MatchGroup.baseUrl}matches?match_updateted_at=gt.${time}&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

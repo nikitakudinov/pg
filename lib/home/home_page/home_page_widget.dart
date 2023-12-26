@@ -116,18 +116,30 @@ class _HomePageWidgetState extends State<HomePageWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              _model.apiResult3lt = await MatchGroup.workCall.call(
-                time1: functions.timeNsecAgo(30)?.toString(),
+              _model.jsonNEWMATCHEScount =
+                  await MatchGroup.newmatchescountCall.call(
+                time: functions.timeNsecAgo(30)?.toString(),
               );
-              if ((_model.apiResult3lt?.succeeded ?? true)) {
-                setState(() {
-                  _model.test = ((_model.apiResult3lt?.jsonBody ?? '')
-                          .toList()
-                          .map<MatchStruct?>(MatchStruct.maybeFromMap)
-                          .toList() as Iterable<MatchStruct?>)
-                      .withoutNulls
-                      ?.length;
-                });
+              if ((_model.jsonNEWMATCHEScount?.succeeded ?? true)) {
+                if (MatchGroup.newmatchescountCall.count(
+                      (_model.jsonNEWMATCHEScount?.jsonBody ?? ''),
+                    ) !=
+                    0) {
+                  _model.apiResult7s1 = await MatchGroup.newmatchesCall.call(
+                    time: functions.timeNsecAgo(30)?.toString(),
+                  );
+                  if ((_model.apiResult7s1?.succeeded ?? true)) {
+                    setState(() {
+                      FFAppState().removeFromAllTEAMS(TeamStruct.maybeFromMap(
+                          (_model.apiResult7s1?.jsonBody ?? ''))!);
+                    });
+                    await Future.delayed(const Duration(milliseconds: 1));
+                    setState(() {
+                      FFAppState().addToAllTEAMS(TeamStruct.maybeFromMap(
+                          (_model.apiResult7s1?.jsonBody ?? ''))!);
+                    });
+                  }
+                }
               }
 
               setState(() {});
