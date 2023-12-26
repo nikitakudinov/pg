@@ -269,10 +269,10 @@ Future notificationsUpdater(BuildContext context) async {
   apiResultc64 = await MessagingGroup.gETNOTIFICATIONScountCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
-  if (MessagingGroup.gETNOTIFICATIONScountCall.count(
+  if (FFAppState().alertsCount !=
+      MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
-      ) !=
-      0) {
+      )) {
     FFAppState().update(() {
       FFAppState().alertsCount = MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
