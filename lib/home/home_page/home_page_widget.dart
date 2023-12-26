@@ -1357,7 +1357,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               1)) {
-                                                        _model.apiResult9ak =
+                                                        _model.jsonR1P1 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
                                                                 .call(
@@ -1386,7 +1386,71 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
                                                                 .matchid(
-                                                              (_model.apiResult9ak
+                                                              (_model.jsonR1P1
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                      } else if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              2)) {
+                                                        _model.jsonR1P2 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 1,
+                                                          round: 2,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonR1P1
                                                                       ?.jsonBody ??
                                                                   ''),
                                                             )?[0],
