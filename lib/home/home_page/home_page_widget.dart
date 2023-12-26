@@ -118,16 +118,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
             highlightColor: Colors.transparent,
             onTap: () async {
               _model.jsonNEWMATCHEScount =
-                  await MatchGroup.newmatchescountCall.call(
-                time: functions.timeNsecAgo(120)?.toString(),
+                  await TeamGroup.uPDATEDTEAMScountCall.call(
+                time: functions.timeNsecAgo(60)?.toString(),
               );
               if ((_model.jsonNEWMATCHEScount?.succeeded ?? true)) {
-                if (MatchGroup.newmatchescountCall.count(
+                if (TeamGroup.uPDATEDTEAMScountCall.count(
                       (_model.jsonNEWMATCHEScount?.jsonBody ?? ''),
                     ) !=
                     0) {
-                  _model.apiResult7s1 = await MatchGroup.newmatchesCall.call(
-                    time: functions.timeNsecAgo(60)?.toString(),
+                  _model.apiResult7s1 = await TeamGroup.updatedteamsCall.call(
+                    time: functions.timeNsecAgo(120)?.toString(),
                   );
                   if ((_model.apiResult7s1?.succeeded ?? true)) {
                     setState(() {
@@ -153,7 +153,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
           ),
           title: Text(
             valueOrDefault<String>(
-              MatchGroup.newmatchescountCall
+              TeamGroup.uPDATEDTEAMScountCall
                   .count(
                     (_model.jsonNEWMATCHEScount?.jsonBody ?? ''),
                   )

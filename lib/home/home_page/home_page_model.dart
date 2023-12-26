@@ -49,9 +49,9 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
-  // Stores action output result for [Backend Call - API (NEWMATCHESCOUNT)] action in Icon widget.
+  // Stores action output result for [Backend Call - API (UPDATEDTEAMScount)] action in Icon widget.
   ApiCallResponse? jsonNEWMATCHEScount;
-  // Stores action output result for [Backend Call - API (NEWMATCHES)] action in Icon widget.
+  // Stores action output result for [Backend Call - API (UPDATEDTEAMS)] action in Icon widget.
   ApiCallResponse? apiResult7s1;
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
