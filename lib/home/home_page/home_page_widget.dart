@@ -1372,31 +1372,45 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           pair: 1,
                                                           round: 2,
                                                         );
-                                                        if ((_model.apiResult9ak
-                                                                ?.succeeded ??
-                                                            true)) {
-                                                          await MatchesTable()
-                                                              .update(
-                                                            data: {
-                                                              'match_rival1':
-                                                                  notificationsListItem
-                                                                      .match
-                                                                      .matchWinner,
-                                                            },
-                                                            matchingRows:
-                                                                (rows) =>
-                                                                    rows.eq(
-                                                              'match_id',
-                                                              MatchGroup
-                                                                  .mATCHbyTORNandROUNDandPAIRCall
-                                                                  .matchid(
-                                                                (_model.apiResult9ak
-                                                                        ?.jsonBody ??
-                                                                    ''),
-                                                              )?[0],
-                                                            ),
-                                                          );
-                                                        }
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.apiResult9ak
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Данные обновлены'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       }
 
                                                       setState(() {});
