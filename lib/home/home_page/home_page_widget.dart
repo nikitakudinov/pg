@@ -1236,6 +1236,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchRival1
                                                                   .teamMatchRoundLoses,
+                                                          'team_updated_at':
+                                                              supaSerialize<
+                                                                      DateTime>(
+                                                                  getCurrentTimestamp),
                                                         },
                                                         matchingRows: (rows) =>
                                                             rows.eq(
@@ -1329,6 +1333,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchRival2
                                                                   .teamMatchRoundLoses,
+                                                          'team_updated_at':
+                                                              supaSerialize<
+                                                                      DateTime>(
+                                                                  getCurrentTimestamp),
                                                         },
                                                         matchingRows: (rows) =>
                                                             rows.eq(
