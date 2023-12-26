@@ -1678,6 +1678,70 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
+                                                      } else if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              6)) {
+                                                        _model.jsonR1P6 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 3,
+                                                          round: 2,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonR1P6
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
                                                       }
 
                                                       setState(() {});
