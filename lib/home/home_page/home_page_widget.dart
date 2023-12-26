@@ -139,7 +139,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             ),
           ),
           title: Text(
-            _model.test.toString(),
+            'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
