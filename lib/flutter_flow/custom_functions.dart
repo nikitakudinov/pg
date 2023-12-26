@@ -33,3 +33,11 @@ int? stringTOinteger(String? stringData) {
     return null;
   }
 }
+
+DateTime? timeNsecAgo(int? valueSeconds) {
+  // curent time valueSeconds ago
+  if (valueSeconds == null) return null;
+  final now = DateTime.now();
+  final duration = Duration(seconds: valueSeconds);
+  return now.subtract(duration);
+}

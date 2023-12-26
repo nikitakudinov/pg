@@ -1539,6 +1539,7 @@ class MatchGroup {
   static PlanedmatchbyteamidCall planedmatchbyteamidCall =
       PlanedmatchbyteamidCall();
   static MatchbyidCall matchbyidCall = MatchbyidCall();
+  static WorkCall workCall = WorkCall();
 }
 
 class MatchesCall {
@@ -1938,6 +1939,31 @@ class MatchbyidCall {
       callName: 'MATCHBYID',
       apiUrl:
           '${MatchGroup.baseUrl}matches?match_id=eq.${matchID}&select=*,match_rival1:teams!matches_match_rival1_fkey(*),match_rival2:teams!matches_match_rival2_fkey(*),match_for_tournament:tournaments(*)',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class WorkCall {
+  Future<ApiCallResponse> call({
+    String? time = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'WORK',
+      apiUrl:
+          '${MatchGroup.baseUrl}matches?match_updateted_at=ov.${time}&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
