@@ -119,7 +119,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             onTap: () async {
               _model.jsonNEWMATCHEScount =
                   await MatchGroup.newmatchescountCall.call(
-                time: functions.timeNsecAgo(30)?.toString(),
+                time: functions.timeNsecAgo(120)?.toString(),
               );
               if ((_model.jsonNEWMATCHEScount?.succeeded ?? true)) {
                 if (MatchGroup.newmatchescountCall.count(
