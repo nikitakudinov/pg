@@ -1357,6 +1357,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               1)) {
+                                                        // R1P1
                                                         _model.jsonR1P1 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
@@ -1421,6 +1422,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               2)) {
+                                                        // R1P2
                                                         _model.jsonR1P2 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
@@ -1488,6 +1490,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               3)) {
+                                                        // R1P3
                                                         _model.jsonR1P3 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
@@ -1552,6 +1555,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               4)) {
+                                                        // R1P4
                                                         _model.jsonR1P4 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
@@ -1619,6 +1623,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               5)) {
+                                                        // R1P5
                                                         _model.jsonR1P5 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
@@ -1686,6 +1691,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               6)) {
+                                                        // R1P6
                                                         _model.jsonR1P6 =
                                                             await MatchGroup
                                                                 .mATCHbyTORNandROUNDandPAIRCall
@@ -1716,6 +1722,136 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .mATCHbyTORNandROUNDandPAIRCall
                                                                 .matchid(
                                                               (_model.jsonR1P6
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                      } else if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              7)) {
+                                                        // R1P7
+                                                        _model.jsonR1P7 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 4,
+                                                          round: 2,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonR1P7
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                      } else if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              8)) {
+                                                        // R1P8
+                                                        _model.jsonR1P8 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 4,
+                                                          round: 2,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonR1P7
                                                                       ?.jsonBody ??
                                                                   ''),
                                                             )?[0],
