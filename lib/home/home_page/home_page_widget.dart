@@ -1084,6 +1084,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       FFAppState()
                                                           .removeAtIndexFromNotofications(
                                                               notificationsListIndex);
+                                                      FFAppState().alertsCount =
+                                                          FFAppState()
+                                                                  .alertsCount +
+                                                              -1;
                                                     });
                                                   },
                                                   text: 'Ясно',
@@ -1371,6 +1375,60 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         if ((_model.apiResult9ak
                                                                 ?.succeeded ??
                                                             true)) {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  ((MatchGroup.mATCHbyTORNandROUNDandPAIRCall
+                                                                              .matchid(
+                                                                    (_model.apiResult9ak
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                  ) as List)
+                                                                          .map<String>((s) =>
+                                                                              s.toString())
+                                                                          .toList()?[0])
+                                                                      ?.toString(),
+                                                                  '0',
+                                                                )),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                          await MatchesTable()
+                                                              .update(
+                                                            data: {
+                                                              'match_rival1':
+                                                                  notificationsListItem
+                                                                      .match
+                                                                      .matchRival1
+                                                                      .teamId,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'match_id',
+                                                              MatchGroup
+                                                                  .mATCHbyTORNandROUNDandPAIRCall
+                                                                  .matchid(
+                                                                (_model.apiResult9ak
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )?[0],
+                                                            ),
+                                                          );
                                                           await showDialog(
                                                             context: context,
                                                             builder:
