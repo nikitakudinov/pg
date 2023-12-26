@@ -126,7 +126,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     ) !=
                     0) {
                   _model.apiResult7s1 = await MatchGroup.newmatchesCall.call(
-                    time: functions.timeNsecAgo(30)?.toString(),
+                    time: functions.timeNsecAgo(60)?.toString(),
                   );
                   if ((_model.apiResult7s1?.succeeded ?? true)) {
                     setState(() {
