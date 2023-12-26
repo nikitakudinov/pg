@@ -170,6 +170,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                     'match_status': 'Матч создан',
                     'match_date': '-.-.- -:-',
                     'match_planned_date': '-.-.- -:-',
+                    'match_updateted_at':
+                        supaSerialize<DateTime>(getCurrentTimestamp),
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
@@ -182,11 +184,14 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 });
                 while (_model.curentLoopCount! <= FFAppConstants.pairs8) {
                   await MatchesTable().insert({
-                    'match_date': 'Дата матча не определена',
+                    'match_date': '-.-.- -:-',
                     'match_tournament_round': 2,
                     'match_tournament_pair': _model.curentLoopCount,
                     'match_for_tournament': widget.tournamentId,
                     'match_status': 'Соперники не определены',
+                    'match_updateted_at':
+                        supaSerialize<DateTime>(getCurrentTimestamp),
+                    'match_planned_date': '-.-.- -:-',
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
@@ -197,11 +202,14 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 });
                 while (_model.curentLoopCount! <= FFAppConstants.pairs4) {
                   await MatchesTable().insert({
-                    'match_date': 'Дата матча не определена',
+                    'match_date': '-.-.- -:-',
                     'match_tournament_round': 3,
                     'match_tournament_pair': _model.curentLoopCount,
                     'match_for_tournament': widget.tournamentId,
                     'match_status': 'Соперники не определены',
+                    'match_updateted_at':
+                        supaSerialize<DateTime>(getCurrentTimestamp),
+                    'match_planned_date': '-.-.- -:-',
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
@@ -212,11 +220,14 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                 });
                 while (_model.curentLoopCount! <= FFAppConstants.pairs2) {
                   await MatchesTable().insert({
-                    'match_date': 'Дата матча не определена',
+                    'match_date': '-.-.- -:-',
                     'match_tournament_round': 4,
                     'match_tournament_pair': _model.curentLoopCount,
                     'match_for_tournament': widget.tournamentId,
                     'match_status': 'Соперники не определены',
+                    'match_updateted_at':
+                        supaSerialize<DateTime>(getCurrentTimestamp),
+                    'match_planned_date': '-.-.- -:-',
                   });
                   setState(() {
                     _model.curentLoopCount = _model.curentLoopCount! + 1;
@@ -226,18 +237,24 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                   _model.curentLoopCount = 1;
                 });
                 await MatchesTable().insert({
-                  'match_date': 'Дата матча не определена',
+                  'match_date': '-.-.- -:-',
                   'match_tournament_round': 5,
                   'match_tournament_pair': _model.curentLoopCount,
                   'match_for_tournament': widget.tournamentId,
                   'match_status': 'Соперники не определены',
+                  'match_updateted_at':
+                      supaSerialize<DateTime>(getCurrentTimestamp),
+                  'match_planned_date': '-.-.- -:-',
                 });
                 await MatchesTable().insert({
-                  'match_date': 'Дата матча не определена',
+                  'match_date': '-.-.- -:-',
                   'match_tournament_round': 5,
                   'match_tournament_pair': 2,
                   'match_for_tournament': widget.tournamentId,
                   'match_status': 'Соперники не определены',
+                  'match_updateted_at':
+                      supaSerialize<DateTime>(getCurrentTimestamp),
+                  'match_planned_date': '-.-.- -:-',
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
