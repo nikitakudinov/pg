@@ -152,7 +152,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
             ),
           ),
           title: Text(
-            _model.test.toString(),
+            valueOrDefault<String>(
+              MatchGroup.newmatchescountCall
+                  .count(
+                    (_model.jsonNEWMATCHEScount?.jsonBody ?? ''),
+                  )
+                  .toString()
+                  ?.toString(),
+              '0',
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
