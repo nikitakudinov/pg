@@ -1351,11 +1351,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           await MatchGroup
                                                               .mATCHbyTORNandROUNDandPAIRCall
                                                               .call(
-                                                        tournamentID:
-                                                            notificationsListItem
-                                                                .match
-                                                                .matchForTournament
-                                                                .tournamentId,
+                                                        tournamentID: 14,
                                                         pair: 2,
                                                         round: 1,
                                                       );
