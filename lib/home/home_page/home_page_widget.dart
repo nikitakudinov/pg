@@ -125,7 +125,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             ),
           ),
           title: Text(
-            dateTimeFormat('M/d H:mm', _model.test),
+            dateTimeFormat('jms', _model.test),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
