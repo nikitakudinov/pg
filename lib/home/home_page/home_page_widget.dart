@@ -1347,55 +1347,65 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .teamId,
                                                         ),
                                                       );
-                                                      _model.apiResult9ak =
-                                                          await MatchGroup
-                                                              .mATCHbyTORNandROUNDandPAIRCall
-                                                              .call(
-                                                        tournamentID:
-                                                            valueOrDefault<int>(
-                                                          notificationsListItem
-                                                              .notificationFromTournament
-                                                              .tournamentId,
-                                                          0,
-                                                        ),
-                                                        pair: 2,
-                                                        round: 1,
-                                                      );
-                                                      if ((_model.apiResult9ak
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                ((MatchGroup.mATCHbyTORNandROUNDandPAIRCall
-                                                                            .matchid(
-                                                                  (_model.apiResult9ak
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ) as List)
-                                                                        .map<String>((s) =>
-                                                                            s.toString())
-                                                                        .toList()?[0])
-                                                                    ?.toString(),
-                                                                '0',
-                                                              )),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
+                                                      if ((notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentRound ==
+                                                              1) &&
+                                                          (notificationsListItem
+                                                                  .match
+                                                                  .matchTournamentPair ==
+                                                              1)) {
+                                                        _model.apiResult9ak =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 2,
+                                                          round: 1,
                                                         );
+                                                        if ((_model.apiResult9ak
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  ((MatchGroup.mATCHbyTORNandROUNDandPAIRCall
+                                                                              .matchid(
+                                                                    (_model.apiResult9ak
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                  ) as List)
+                                                                          .map<String>((s) =>
+                                                                              s.toString())
+                                                                          .toList()?[0])
+                                                                      ?.toString(),
+                                                                  '0',
+                                                                )),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                        }
                                                       }
 
                                                       setState(() {});
