@@ -1355,6 +1355,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               1)) {
+                                                        _model.jsonNEXTMATCH =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              notificationsListItem
+                                                                  .match
+                                                                  .matchForTournament
+                                                                  .tournamentId,
+                                                          round: 2,
+                                                          pair: 1,
+                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1364,22 +1376,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .matchWinner,
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows
-                                                                  .eq(
-                                                                    'match_for_tournament',
-                                                                    notificationsListItem
-                                                                        .match
-                                                                        .matchForTournament
-                                                                        .tournamentId,
-                                                                  )
-                                                                  .eq(
-                                                                    'match_tournament_round',
-                                                                    2,
-                                                                  )
-                                                                  .eq(
-                                                                    'match_tournament_pair',
-                                                                    1,
-                                                                  ),
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.jsonNEXTMATCH
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
                                                         );
                                                         await showDialog(
                                                           context: context,
@@ -1401,6 +1407,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           },
                                                         );
                                                       }
+
+                                                      setState(() {});
                                                     },
                                                     text: 'Матч зачтен',
                                                     options: FFButtonOptions(
