@@ -324,9 +324,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             supaSerialize<DateTime>(
                                                 getCurrentTimestamp),
                                       },
-                                      matchingRows: (rows) => rows.is_(
-                                        'team_updated_at',
-                                        null,
+                                      matchingRows: (rows) => rows.gt(
+                                        'team_id',
+                                        0,
                                       ),
                                     );
                                   },
