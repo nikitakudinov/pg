@@ -3141,22 +3141,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 4) && (notificationsListItem.match.matchTournamentPair == 1)) {
-                                                        // R4P1
-                                                        _model.r4p1 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 1,
-                                                          round: 5,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -3168,48 +3152,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 supaSerialize<
                                                                         DateTime>(
                                                                     getCurrentTimestamp),
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r4p1
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
-                                                        );
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Данные матча обновлены',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    1000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                          ),
-                                                        );
-                                                      } else if ((notificationsListItem.match.matchTournamentRound == 4) && (notificationsListItem.match.matchTournamentPair == 2)) {
-                                                        await MatchesTable()
-                                                            .update(
-                                                          data: {
-                                                            'match_rival2':
-                                                                notificationsListItem
-                                                                    .match
-                                                                    .matchWinner,
                                                           },
                                                           matchingRows:
                                                               (rows) => rows
@@ -3226,6 +3168,94 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .eq(
                                                                     'match_tournament_pair',
                                                                     1,
+                                                                  ),
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchLooser,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    5,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    2,
+                                                                  ),
+                                                        );
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 4) && (notificationsListItem.match.matchTournamentPair == 2)) {
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    5,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    1,
+                                                                  ),
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchLooser,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    5,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    2,
                                                                   ),
                                                         );
                                                       }
