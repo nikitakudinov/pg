@@ -2977,6 +2977,26 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       }
+
+                                                      await NotificationsTable()
+                                                          .delete(
+                                                        matchingRows: (rows) =>
+                                                            rows.eq(
+                                                          'notification_id',
+                                                          notificationsListItem
+                                                              .notificationId,
+                                                        ),
+                                                      );
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .removeAtIndexFromNotofications(
+                                                                notificationsListIndex);
+                                                        FFAppState()
+                                                                .alertsCount =
+                                                            FFAppState()
+                                                                    .alertsCount +
+                                                                -1;
+                                                      });
                                                     },
                                                     text: 'Матч зачтен',
                                                     options: FFButtonOptions(
