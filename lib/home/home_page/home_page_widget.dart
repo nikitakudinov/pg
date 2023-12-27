@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -279,9 +280,27 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         text: getCurrentTimestamp.toString()));
                                   },
                                   child: Text(
-                                    getCurrentTimestamp.toString(),
+                                    valueOrDefault<String>(
+                                      functions.timeNsecAgo(120)?.toString(),
+                                      '0',
+                                    ),
                                     style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                        FlutterFlowTheme.of(context).labelLarge,
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await Clipboard.setData(ClipboardData(
+                                        text: getCurrentTimestamp.toString()));
+                                  },
+                                  child: Text(
+                                    dateTimeFormat('jms', getCurrentTimestamp),
+                                    style:
+                                        FlutterFlowTheme.of(context).labelLarge,
                                   ),
                                 ),
                                 Text(
