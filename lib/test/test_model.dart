@@ -1,11 +1,10 @@
-import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
+import '/flutter_flow/instant_timer.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'test_widget.dart' show TestWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -17,20 +16,7 @@ class TestModel extends FlutterFlowModel<TestWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (LISTPLAYERS)] action in TEST widget.
-  ApiCallResponse? jsonPLAYERS;
-  // Stores action output result for [Backend Call - API (LISTALLTEAMS)] action in TEST widget.
-  ApiCallResponse? jsonTEAMS;
-  // Stores action output result for [Backend Call - API (TOURNAMENTS)] action in TEST widget.
-  ApiCallResponse? jsonTOURNAMENTS;
-  // Stores action output result for [Backend Call - API (MATCHES)] action in TEST widget.
-  ApiCallResponse? jsonMATCHES;
-  // Stores action output result for [Backend Call - API (COUNTRIES)] action in TEST widget.
-  ApiCallResponse? jsonCOUNTRIES;
-  // Stores action output result for [Backend Call - API (GETuserNotifications)] action in TEST widget.
-  ApiCallResponse? jsonNOTIFICATIONS;
-  // Stores action output result for [Backend Call - API (GETUSERCHATS)] action in TEST widget.
-  ApiCallResponse? jsonCHATS;
+  InstantTimer? instantTimer;
 
   /// Initialization and disposal methods.
 
@@ -38,6 +24,7 @@ class TestModel extends FlutterFlowModel<TestWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
   }
 
   /// Action blocks are added here.

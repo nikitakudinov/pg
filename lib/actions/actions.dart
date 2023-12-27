@@ -604,20 +604,130 @@ Future creatTournamentMatches32(
   });
 }
 
-Future teamsupdater(BuildContext context) async {
-  ApiCallResponse? apiResultqze;
+Future teamsloader(BuildContext context) async {
+  ApiCallResponse? apiResult8y5;
+  ApiCallResponse? apiResultu6j;
+  ApiCallResponse? apiResult8y5;
 
-  apiResultqze = await TeamGroup.uPDATEDTEAMScountCall.call(
-    time: functions.timeNsecAgo(60)?.toString(),
-  );
-  if ((apiResultqze?.succeeded ?? true)) {
-    FFAppState().update(() {
-      FFAppState().updateCOUNTERSStruct(
+  if (FFAppState().MAINDATA.teams.length == 0) {
+    apiResult8y5 = await TeamGroup.listallteamsCall.call();
+    if ((apiResult8y5?.succeeded ?? true)) {
+      FFAppState().updateMAINDATAStruct(
         (e) => e
-          ..teams = TeamGroup.uPDATEDTEAMScountCall.count(
-            (apiResultqze?.jsonBody ?? ''),
+          ..teams = ((apiResult8y5?.jsonBody ?? '')
+                  .toList()
+                  .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                  .toList() as Iterable<TeamStruct?>)
+              .withoutNulls
+              .toList(),
+      );
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('Все команды заружены'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  } else {
+    apiResultu6j = await TeamGroup.lISTALLTEAMScountCall.call();
+    if (FFAppState().MAINDATA.teams.length !=
+        TeamGroup.lISTALLTEAMScountCall.count(
+          (apiResultu6j?.jsonBody ?? ''),
+        )) {
+      apiResult8y5 = await TeamGroup.listallteamsCall.call();
+      if ((apiResult8y5?.succeeded ?? true)) {
+        FFAppState().updateMAINDATAStruct(
+          (e) => e
+            ..teams = ((apiResult8y5?.jsonBody ?? '')
+                    .toList()
+                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                    .toList() as Iterable<TeamStruct?>)
+                .withoutNulls
+                .toList(),
+        );
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Команды перезагружены'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
+  }
+}
+
+Future teamsupdater(BuildContext context) async {
+  ApiCallResponse? apiResult1le;
+  ApiCallResponse? apiResult59x;
+
+  apiResult1le = await TeamGroup.uPDATEDTEAMScountCall.call();
+  FFAppState().update(() {
+    FFAppState().updateCOUNTERSStruct(
+      (e) => e
+        ..updatedteams = TeamGroup.uPDATEDTEAMScountCall.count(
+          (apiResult1le?.jsonBody ?? ''),
+        ),
+    );
+  });
+  if (FFAppState().COUNTERS.updatedteams != 0) {
+    while (FFAppState().COUNTERS.updatedteams == 0) {
+      apiResult59x = await TeamGroup.updatedteamsCall.call(
+        time: functions.timeNsecAgo(5)?.toString(),
+      );
+      FFAppState().update(() {
+        FFAppState().updateMAINDATAStruct(
+          (e) => e
+            ..updateTeams(
+              (e) => e.remove(TeamStruct(
+                teamId: TeamStruct.maybeFromMap((apiResult59x?.jsonBody ?? ''))
+                    ?.teamId,
+              )),
+            ),
+        );
+      });
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..updateTeams(
+            (e) => e.add(((apiResult59x?.jsonBody ?? '')
+                    .toList()
+                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                    .toList() as Iterable<TeamStruct?>)
+                .withoutNulls[FFAppState().COUNTERS.updatedteams - 1]),
           ),
       );
-    });
+      FFAppState().updateCOUNTERSStruct(
+        (e) => e..incrementUpdatedteams(-1),
+      );
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('Команда Обновлена'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }

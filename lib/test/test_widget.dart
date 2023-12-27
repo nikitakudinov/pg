@@ -1,11 +1,10 @@
-import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
+import '/flutter_flow/instant_timer.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -33,81 +32,13 @@ class _TestWidgetState extends State<TestWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.jsonPLAYERS = await PlayerGroup.listplayersCall.call();
-      _model.jsonTEAMS = await TeamGroup.listallteamsCall.call();
-      _model.jsonTOURNAMENTS = await TournamentGroup.tournamentsCall.call();
-      _model.jsonMATCHES = await MatchGroup.matchesCall.call();
-      _model.jsonCOUNTRIES = await CountryGroup.countriesCall.call();
-      _model.jsonNOTIFICATIONS =
-          await MessagingGroup.gETuserNotificationsCall.call(
-        authUser: currentUserUid,
-      );
-      _model.jsonCHATS = await MessagingGroup.getuserchatsCall.call(
-        authUser: currentUserUid,
-      );
-      setState(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..players = ((_model.jsonPLAYERS?.jsonBody ?? '')
-                    .toList()
-                    .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
-                    .toList() as Iterable<PlayerStruct?>)
-                .withoutNulls
-                .toList()
-            ..teams = ((_model.jsonTEAMS?.jsonBody ?? '')
-                    .toList()
-                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
-                    .toList() as Iterable<TeamStruct?>)
-                .withoutNulls
-                .toList()
-            ..authplayer = FFAppState()
-                .MAINDATA
-                .players
-                .where((e) => e.playerUid == currentUserUid)
-                .toList()[0]
-            ..tournaments = ((_model.jsonTOURNAMENTS?.jsonBody ?? '')
-                    .toList()
-                    .map<TournamentStruct?>(TournamentStruct.maybeFromMap)
-                    .toList() as Iterable<TournamentStruct?>)
-                .withoutNulls
-                .toList()
-            ..countries = ((_model.jsonCOUNTRIES?.jsonBody ?? '')
-                    .toList()
-                    .map<CountrieStruct?>(CountrieStruct.maybeFromMap)
-                    .toList() as Iterable<CountrieStruct?>)
-                .withoutNulls
-                .toList()
-            ..notifications = ((_model.jsonNOTIFICATIONS?.jsonBody ?? '')
-                    .toList()
-                    .map<NotificationStruct?>(NotificationStruct.maybeFromMap)
-                    .toList() as Iterable<NotificationStruct?>)
-                .withoutNulls
-                .toList()
-            ..matches = ((_model.jsonMATCHES?.jsonBody ?? '')
-                    .toList()
-                    .map<MatchStruct?>(MatchStruct.maybeFromMap)
-                    .toList() as Iterable<MatchStruct?>)
-                .withoutNulls
-                .toList()
-            ..chats = ((_model.jsonCHATS?.jsonBody ?? '')
-                    .toList()
-                    .map<ChatStruct?>(ChatStruct.maybeFromMap)
-                    .toList() as Iterable<ChatStruct?>)
-                .withoutNulls
-                .toList(),
-        );
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'MainDatraUpdated',
-            style: TextStyle(
-              color: FlutterFlowTheme.of(context).primaryText,
-            ),
-          ),
-          duration: Duration(milliseconds: 4000),
-          backgroundColor: FlutterFlowTheme.of(context).secondary,
-        ),
+      await action_blocks.teamsloader(context);
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 5000),
+        callback: (timer) async {
+          await action_blocks.teamsupdater(context);
+        },
+        startImmediately: true,
       );
     });
   }

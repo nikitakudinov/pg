@@ -115,7 +115,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              await action_blocks.teamsupdater(context);
+              await action_blocks.teamsloader(context);
             },
             child: Icon(
               Icons.settings_outlined,

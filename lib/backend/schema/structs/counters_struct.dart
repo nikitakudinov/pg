@@ -10,9 +10,11 @@ class CountersStruct extends BaseStruct {
     int? notifications,
     int? messages,
     int? teams,
+    int? updatedteams,
   })  : _notifications = notifications,
         _messages = messages,
-        _teams = teams;
+        _teams = teams,
+        _updatedteams = updatedteams;
 
   // "NOTIFICATIONS" field.
   int? _notifications;
@@ -36,10 +38,19 @@ class CountersStruct extends BaseStruct {
   void incrementTeams(int amount) => _teams = teams + amount;
   bool hasTeams() => _teams != null;
 
+  // "UPDATEDTEAMS" field.
+  int? _updatedteams;
+  int get updatedteams => _updatedteams ?? 0;
+  set updatedteams(int? val) => _updatedteams = val;
+  void incrementUpdatedteams(int amount) =>
+      _updatedteams = updatedteams + amount;
+  bool hasUpdatedteams() => _updatedteams != null;
+
   static CountersStruct fromMap(Map<String, dynamic> data) => CountersStruct(
         notifications: castToType<int>(data['NOTIFICATIONS']),
         messages: castToType<int>(data['MESSAGES']),
         teams: castToType<int>(data['TEAMS']),
+        updatedteams: castToType<int>(data['UPDATEDTEAMS']),
       );
 
   static CountersStruct? maybeFromMap(dynamic data) =>
@@ -49,6 +60,7 @@ class CountersStruct extends BaseStruct {
         'NOTIFICATIONS': _notifications,
         'MESSAGES': _messages,
         'TEAMS': _teams,
+        'UPDATEDTEAMS': _updatedteams,
       }.withoutNulls;
 
   @override
@@ -63,6 +75,10 @@ class CountersStruct extends BaseStruct {
         ),
         'TEAMS': serializeParam(
           _teams,
+          ParamType.int,
+        ),
+        'UPDATEDTEAMS': serializeParam(
+          _updatedteams,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -84,6 +100,11 @@ class CountersStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        updatedteams: deserializeParam(
+          data['UPDATEDTEAMS'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -94,21 +115,24 @@ class CountersStruct extends BaseStruct {
     return other is CountersStruct &&
         notifications == other.notifications &&
         messages == other.messages &&
-        teams == other.teams;
+        teams == other.teams &&
+        updatedteams == other.updatedteams;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([notifications, messages, teams]);
+      const ListEquality().hash([notifications, messages, teams, updatedteams]);
 }
 
 CountersStruct createCountersStruct({
   int? notifications,
   int? messages,
   int? teams,
+  int? updatedteams,
 }) =>
     CountersStruct(
       notifications: notifications,
       messages: messages,
       teams: teams,
+      updatedteams: updatedteams,
     );
