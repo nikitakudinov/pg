@@ -1232,7 +1232,7 @@ class UPDATEDTEAMScountCall {
     return ApiManager.instance.makeApiCall(
       callName: 'UPDATEDTEAMScount',
       apiUrl:
-          '${TeamGroup.baseUrl}teams?team_updated_at=gt.${time}&select=count',
+          '${TeamGroup.baseUrl}teams?team_updated_at=lt.${time}&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
