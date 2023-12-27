@@ -3016,6 +3016,130 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .secondary,
                                                           ),
                                                         );
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 3) && (notificationsListItem.match.matchTournamentPair == 3)) {
+                                                        // R3P3
+                                                        _model.r3p3 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 3,
+                                                          round: 4,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival1':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.r3p3
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                      } else if ((notificationsListItem.match.matchTournamentRound == 3) && (notificationsListItem.match.matchTournamentPair == 4)) {
+                                                        // R3P4
+                                                        _model.r3p4 =
+                                                            await MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .call(
+                                                          tournamentID:
+                                                              valueOrDefault<
+                                                                  int>(
+                                                            notificationsListItem
+                                                                .notificationFromTournament
+                                                                .tournamentId,
+                                                            0,
+                                                          ),
+                                                          pair: 4,
+                                                          round: 4,
+                                                        );
+                                                        await MatchesTable()
+                                                            .update(
+                                                          data: {
+                                                            'match_rival2':
+                                                                notificationsListItem
+                                                                    .match
+                                                                    .matchWinner,
+                                                            'match_updateted_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'match_id',
+                                                            MatchGroup
+                                                                .mATCHbyTORNandROUNDandPAIRCall
+                                                                .matchid(
+                                                              (_model.r3p4
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )?[0],
+                                                          ),
+                                                        );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
                                                       }
 
                                                       setState(() {});
