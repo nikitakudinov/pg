@@ -1,5 +1,6 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'counters_struct.dart';
 export 'maindata_struct.dart';
 export 'chat_struct.dart';
 export 'chatmember_struct.dart';

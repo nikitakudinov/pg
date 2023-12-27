@@ -525,6 +525,16 @@ class FFAppState extends ChangeNotifier {
   void updateMAINDATAStruct(Function(MaindataStruct) updateFn) {
     updateFn(_MAINDATA);
   }
+
+  CountersStruct _COUNTERS = CountersStruct();
+  CountersStruct get COUNTERS => _COUNTERS;
+  set COUNTERS(CountersStruct _value) {
+    _COUNTERS = _value;
+  }
+
+  void updateCOUNTERSStruct(Function(CountersStruct) updateFn) {
+    updateFn(_COUNTERS);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -601,4 +602,22 @@ Future creatTournamentMatches32(
     'match_refery': 'не определен',
     'match_date': 'матч еще не состоялся',
   });
+}
+
+Future teamsupdater(BuildContext context) async {
+  ApiCallResponse? apiResultqze;
+
+  apiResultqze = await TeamGroup.uPDATEDTEAMScountCall.call(
+    time: functions.timeNsecAgo(30)?.toString(),
+  );
+  if ((apiResultqze?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateCOUNTERSStruct(
+        (e) => e
+          ..teams = TeamGroup.uPDATEDTEAMScountCall.count(
+            (apiResultqze?.jsonBody ?? ''),
+          ),
+      );
+    });
+  }
 }

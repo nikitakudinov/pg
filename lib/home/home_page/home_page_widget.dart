@@ -167,15 +167,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             ),
           ),
           title: Text(
-            valueOrDefault<String>(
-              TeamGroup.uPDATEDTEAMScountCall
-                  .count(
-                    (_model.jsonNEWMATCHEScount?.jsonBody ?? ''),
-                  )
-                  .toString()
-                  ?.toString(),
-              '0',
-            ),
+            FFAppState().COUNTERS.teams.toString(),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
