@@ -1374,7 +1374,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1429,7 +1429,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1484,7 +1484,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1539,7 +1539,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1594,7 +1594,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1649,7 +1649,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1704,7 +1704,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
@@ -1759,7 +1759,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_round',
-                                                                    1,
+                                                                    2,
                                                                   )
                                                                   .eq(
                                                                     'match_tournament_pair',
