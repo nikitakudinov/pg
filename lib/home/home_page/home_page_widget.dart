@@ -316,6 +316,40 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    await TeamsTable().update(
+                                      data: {
+                                        'team_updated_at':
+                                            supaSerialize<DateTime>(
+                                                getCurrentTimestamp),
+                                      },
+                                      matchingRows: (rows) => rows,
+                                    );
+                                  },
+                                  text: 'Обновить дату обновления',
+                                  options: FFButtonOptions(
+                                    height: 30.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          color: Colors.white,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
                               ],
                             ),
                           ],
