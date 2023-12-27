@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/rating_teams_tabs_widget.dart';
@@ -12,8 +11,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -117,48 +114,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              _model.jsonNEWMATCHEScount =
-                  await TeamGroup.uPDATEDTEAMScountCall.call(
-                time: functions.timeNsecAgo(60)?.toString(),
-              );
-              if ((_model.jsonNEWMATCHEScount?.succeeded ?? true)) {
-                if (TeamGroup.uPDATEDTEAMScountCall.count(
-                      (_model.jsonNEWMATCHEScount?.jsonBody ?? ''),
-                    ) !=
-                    0) {
-                  _model.apiResult7s1 = await TeamGroup.updatedteamsCall.call(
-                    time: functions.timeNsecAgo(120)?.toString(),
-                  );
-                  if ((_model.apiResult7s1?.succeeded ?? true)) {
-                    setState(() {
-                      FFAppState().removeFromAllTEAMS(TeamStruct.maybeFromMap(
-                          (_model.apiResult7s1?.jsonBody ?? ''))!);
-                    });
-                    await Future.delayed(const Duration(milliseconds: 1));
-                    setState(() {
-                      FFAppState().addToAllTEAMS(TeamStruct.maybeFromMap(
-                          (_model.apiResult7s1?.jsonBody ?? ''))!);
-                    });
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('Обновлена команда'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('Ok'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  }
-                }
-              }
-
-              setState(() {});
+              await action_blocks.teamsupdater(context);
             },
             child: Icon(
               Icons.settings_outlined,

@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/rating_teams_tabs_widget.dart';
@@ -12,8 +11,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -49,10 +46,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
-  // Stores action output result for [Backend Call - API (UPDATEDTEAMScount)] action in Icon widget.
-  ApiCallResponse? jsonNEWMATCHEScount;
-  // Stores action output result for [Backend Call - API (UPDATEDTEAMS)] action in Icon widget.
-  ApiCallResponse? apiResult7s1;
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
 
