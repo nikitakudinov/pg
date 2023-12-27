@@ -2968,7 +2968,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .tournamentId,
                                                             0,
                                                           ),
-                                                          pair: 2,
+                                                          pair: 1,
                                                           round: 4,
                                                         );
                                                         await MatchesTable()
@@ -3030,7 +3030,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .tournamentId,
                                                             0,
                                                           ),
-                                                          pair: 3,
+                                                          pair: 2,
                                                           round: 4,
                                                         );
                                                         await MatchesTable()
@@ -3092,7 +3092,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .tournamentId,
                                                             0,
                                                           ),
-                                                          pair: 4,
+                                                          pair: 2,
                                                           round: 4,
                                                         );
                                                         await MatchesTable()
