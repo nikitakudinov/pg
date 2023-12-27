@@ -1792,22 +1792,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               9)) {
-                                                        // R1P9
-                                                        _model.jsonR1P9 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 5,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1821,16 +1805,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P9
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    5,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -1858,22 +1847,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .match
                                                                   .matchTournamentPair ==
                                                               10)) {
-                                                        // R1P10
-                                                        _model.jsonR1P10 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 5,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1887,16 +1860,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P10
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    5,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -1921,22 +1899,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 1) &&
                                                           (notificationsListItem.match.matchTournamentPair == 11)) {
-                                                        // R1P11
-                                                        _model.jsonR1P11 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 6,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -1950,16 +1912,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P11
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    6,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -1983,22 +1950,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 1) && (notificationsListItem.match.matchTournamentPair == 12)) {
-                                                        // R1P12
-                                                        _model.jsonR1P12 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 6,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2012,16 +1963,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P12
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    6,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2045,22 +2001,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 1) && (notificationsListItem.match.matchTournamentPair == 13)) {
-                                                        // R1P13
-                                                        _model.jsonR1P13 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 7,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2074,16 +2014,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P13
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    7,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2107,22 +2052,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 1) && (notificationsListItem.match.matchTournamentPair == 14)) {
-                                                        // R1P14
-                                                        _model.jsonR1P14 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 7,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2136,16 +2065,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P14
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    7,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2169,22 +2103,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 1) && (notificationsListItem.match.matchTournamentPair == 15)) {
-                                                        // R1P15
-                                                        _model.jsonR1P15 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 8,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2198,16 +2116,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P15
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    8,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2231,22 +2154,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 1) && (notificationsListItem.match.matchTournamentPair == 16)) {
-                                                        // R1P16
-                                                        _model.jsonR1P16 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 8,
-                                                          round: 2,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2260,16 +2167,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.jsonR1P16
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    2,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    8,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2293,22 +2205,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 1)) {
-                                                        // R2P1
-                                                        _model.r2p1 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 1,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2322,16 +2218,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p1
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    1,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2355,22 +2256,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 2)) {
-                                                        // R2P2
-                                                        _model.r2p2 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 1,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2384,16 +2269,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p2
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    1,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2417,22 +2307,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 3)) {
-                                                        // R2P3
-                                                        _model.r2p3 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 2,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2446,16 +2320,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p3
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    2,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2479,22 +2358,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 4)) {
-                                                        // R2P4
-                                                        _model.r2p4 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 2,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2508,16 +2371,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p4
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    2,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2541,22 +2409,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 5)) {
-                                                        // R2P5
-                                                        _model.r2p5 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 3,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2570,16 +2422,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p5
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    3,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2603,22 +2460,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 6)) {
-                                                        // R2P6
-                                                        _model.r2p6 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 3,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2632,16 +2473,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p6
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    3,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2665,22 +2511,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 7)) {
-                                                        // R2P7
-                                                        _model.r2p7 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 4,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2694,16 +2524,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p7
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    4,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2727,22 +2562,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 2) && (notificationsListItem.match.matchTournamentPair == 8)) {
-                                                        // R2P8
-                                                        _model.r2p8 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 4,
-                                                          round: 3,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2756,16 +2575,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r2p8
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    3,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    4,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2789,22 +2613,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 3) && (notificationsListItem.match.matchTournamentPair == 1)) {
-                                                        // R3P1
-                                                        _model.r3p1 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 1,
-                                                          round: 4,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2818,20 +2626,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            valueOrDefault<int>(
-                                                              MatchGroup
-                                                                  .mATCHbyTORNandROUNDandPAIRCall
-                                                                  .matchid(
-                                                                    (_model.r3p1
-                                                                            ?.jsonBody ??
-                                                                        ''),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
                                                                   )
-                                                                  ?.first,
-                                                              0,
-                                                            ),
-                                                          ),
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    4,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    1,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2855,22 +2664,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 3) && (notificationsListItem.match.matchTournamentPair == 2)) {
-                                                        // R3P2
-                                                        _model.r3p2 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 1,
-                                                          round: 4,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2884,16 +2677,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r3p2
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    4,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    1,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2917,22 +2715,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 3) && (notificationsListItem.match.matchTournamentPair == 3)) {
-                                                        // R3P3
-                                                        _model.r3p3 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 2,
-                                                          round: 4,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -2946,16 +2728,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r3p3
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    4,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    2,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -2979,22 +2766,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           ),
                                                         );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 3) && (notificationsListItem.match.matchTournamentPair == 4)) {
-                                                        // R3P4
-                                                        _model.r3p4 =
-                                                            await MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .call(
-                                                          tournamentID:
-                                                              valueOrDefault<
-                                                                  int>(
-                                                            notificationsListItem
-                                                                .notificationFromTournament
-                                                                .tournamentId,
-                                                            0,
-                                                          ),
-                                                          pair: 2,
-                                                          round: 4,
-                                                        );
                                                         await MatchesTable()
                                                             .update(
                                                           data: {
@@ -3008,16 +2779,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     getCurrentTimestamp),
                                                           },
                                                           matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'match_id',
-                                                            MatchGroup
-                                                                .mATCHbyTORNandROUNDandPAIRCall
-                                                                .matchid(
-                                                              (_model.r3p4
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            )?[0],
-                                                          ),
+                                                              (rows) => rows
+                                                                  .eq(
+                                                                    'match_for_tournament',
+                                                                    notificationsListItem
+                                                                        .notificationFromTournament
+                                                                        .tournamentId,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_round',
+                                                                    4,
+                                                                  )
+                                                                  .eq(
+                                                                    'match_tournament_pair',
+                                                                    2,
+                                                                  ),
                                                         );
                                                         ScaffoldMessenger.of(
                                                                 context)
@@ -3099,6 +2875,27 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     2,
                                                                   ),
                                                         );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
                                                       } else if ((notificationsListItem.match.matchTournamentRound == 4) && (notificationsListItem.match.matchTournamentPair == 2)) {
                                                         await MatchesTable()
                                                             .update(
@@ -3158,9 +2955,28 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     2,
                                                                   ),
                                                         );
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Данные матча обновлены',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
                                                       }
-
-                                                      setState(() {});
                                                     },
                                                     text: 'Матч зачтен',
                                                     options: FFButtonOptions(

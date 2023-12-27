@@ -53,46 +53,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ApiCallResponse? jsonNEWMATCHEScount;
   // Stores action output result for [Backend Call - API (UPDATEDTEAMS)] action in Icon widget.
   ApiCallResponse? apiResult7s1;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P9;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P10;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P11;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P12;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P13;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P14;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P15;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? jsonR1P16;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p1;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p2;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p3;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p4;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p5;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p6;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p7;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r2p8;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r3p1;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r3p2;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r3p3;
-  // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
-  ApiCallResponse? r3p4;
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
 
