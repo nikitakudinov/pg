@@ -605,22 +605,24 @@ Future creatTournamentMatches32(
 }
 
 Future teamsloader(BuildContext context) async {
-  ApiCallResponse? apiResult8y5;
+  ApiCallResponse? apiResult8y51;
   ApiCallResponse? apiResultu6j;
-  ApiCallResponse? apiResult8y5;
+  ApiCallResponse? apiResult8y;
 
   if (FFAppState().MAINDATA.teams.length == 0) {
-    apiResult8y5 = await TeamGroup.listallteamsCall.call();
-    if ((apiResult8y5?.succeeded ?? true)) {
-      FFAppState().updateMAINDATAStruct(
-        (e) => e
-          ..teams = ((apiResult8y5?.jsonBody ?? '')
-                  .toList()
-                  .map<TeamStruct?>(TeamStruct.maybeFromMap)
-                  .toList() as Iterable<TeamStruct?>)
-              .withoutNulls
-              .toList(),
-      );
+    apiResult8y51 = await TeamGroup.listallteamsCall.call();
+    if ((apiResult8y51?.succeeded ?? true)) {
+      FFAppState().update(() {
+        FFAppState().updateMAINDATAStruct(
+          (e) => e
+            ..teams = ((apiResult8y51?.jsonBody ?? '')
+                    .toList()
+                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                    .toList() as Iterable<TeamStruct?>)
+                .withoutNulls
+                .toList(),
+        );
+      });
       await showDialog(
         context: context,
         builder: (alertDialogContext) {
@@ -642,11 +644,11 @@ Future teamsloader(BuildContext context) async {
         TeamGroup.lISTALLTEAMScountCall.count(
           (apiResultu6j?.jsonBody ?? ''),
         )) {
-      apiResult8y5 = await TeamGroup.listallteamsCall.call();
-      if ((apiResult8y5?.succeeded ?? true)) {
+      apiResult8y = await TeamGroup.listallteamsCall.call();
+      if ((apiResult8y51?.succeeded ?? true)) {
         FFAppState().updateMAINDATAStruct(
           (e) => e
-            ..teams = ((apiResult8y5?.jsonBody ?? '')
+            ..teams = ((apiResult8y51?.jsonBody ?? '')
                     .toList()
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
@@ -673,21 +675,21 @@ Future teamsloader(BuildContext context) async {
 }
 
 Future teamsupdater(BuildContext context) async {
-  ApiCallResponse? apiResult1le;
-  ApiCallResponse? apiResult59x;
+  ApiCallResponse? jsonUPDATERDTEAMScount;
+  ApiCallResponse? jsonUPDATEDTEAMS;
 
-  apiResult1le = await TeamGroup.uPDATEDTEAMScountCall.call();
+  jsonUPDATERDTEAMScount = await TeamGroup.uPDATEDTEAMScountCall.call();
   FFAppState().update(() {
     FFAppState().updateCOUNTERSStruct(
       (e) => e
         ..updatedteams = TeamGroup.uPDATEDTEAMScountCall.count(
-          (apiResult1le?.jsonBody ?? ''),
+          (jsonUPDATERDTEAMScount?.jsonBody ?? ''),
         ),
     );
   });
   if (FFAppState().COUNTERS.updatedteams != 0) {
     while (FFAppState().COUNTERS.updatedteams == 0) {
-      apiResult59x = await TeamGroup.updatedteamsCall.call(
+      jsonUPDATEDTEAMS = await TeamGroup.updatedteamsCall.call(
         time: functions.timeNsecAgo(5)?.toString(),
       );
       FFAppState().update(() {
@@ -695,8 +697,9 @@ Future teamsupdater(BuildContext context) async {
           (e) => e
             ..updateTeams(
               (e) => e.remove(TeamStruct(
-                teamId: TeamStruct.maybeFromMap((apiResult59x?.jsonBody ?? ''))
-                    ?.teamId,
+                teamId:
+                    TeamStruct.maybeFromMap((jsonUPDATEDTEAMS?.jsonBody ?? ''))
+                        ?.teamId,
               )),
             ),
         );
@@ -704,7 +707,7 @@ Future teamsupdater(BuildContext context) async {
       FFAppState().updateMAINDATAStruct(
         (e) => e
           ..updateTeams(
-            (e) => e.add(((apiResult59x?.jsonBody ?? '')
+            (e) => e.add(((jsonUPDATEDTEAMS?.jsonBody ?? '')
                     .toList()
                     .map<TeamStruct?>(TeamStruct.maybeFromMap)
                     .toList() as Iterable<TeamStruct?>)
