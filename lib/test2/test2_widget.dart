@@ -129,6 +129,7 @@ class _Test2WidgetState extends State<Test2Widget> {
         body: SafeArea(
           top: true,
           child: Stack(
+            alignment: AlignmentDirectional(0.0, -1.0),
             children: [
               RefreshIndicator(
                 onRefresh: () async {
