@@ -105,10 +105,14 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Icon(
-                            Icons.settings_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 15.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Icon(
+                              Icons.settings_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 15.0,
+                            ),
                           ),
                           Text(
                             'Основное',
@@ -159,10 +163,14 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Icon(
-                            Icons.front_hand_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 15.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Icon(
+                              Icons.front_hand_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 15.0,
+                            ),
                           ),
                           Text(
                             'Правила и ограничения',
