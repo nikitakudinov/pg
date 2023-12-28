@@ -1,4 +1,6 @@
+import '/backend/schema/structs/index.dart';
 import '/components/grid_round/grid_round_widget.dart';
+import '/components/loadingindicator_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -37,8 +39,18 @@ class _Test2WidgetState extends State<Test2Widget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().updateVISIBILITYStruct(
+          (e) => e..loadingIndicator = true,
+        );
+      });
       await action_blocks.matchesloader(context);
       setState(() {});
+      setState(() {
+        FFAppState().updateVISIBILITYStruct(
+          (e) => e..loadingIndicator = false,
+        );
+      });
     });
   }
 
@@ -85,7 +97,13 @@ class _Test2WidgetState extends State<Test2Widget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            wrapWithModel(
+              model: _model.loadingindicatorModel,
+              updateCallback: () => setState(() {}),
+              child: LoadingindicatorWidget(),
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),

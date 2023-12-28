@@ -1,6 +1,6 @@
 import '/backend/schema/structs/index.dart';
+import '/components/loadingindicator_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -8,7 +8,6 @@ import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_model.dart';
@@ -21,27 +20,10 @@ class TestWidget extends StatefulWidget {
   _TestWidgetState createState() => _TestWidgetState();
 }
 
-class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
+class _TestWidgetState extends State<TestWidget> {
   late TestModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'iconOnPageLoadAnimation': AnimationInfo(
-      loop: true,
-      reverse: true,
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        RotateEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 2500.ms,
-          begin: 0.0,
-          end: 2.0,
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -108,16 +90,10 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                 ),
           ),
           actions: [
-            Visibility(
-              visible: FFAppState().VISIBILITY.loadingIndicator,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                child: Icon(
-                  FFIcons.kloader5Fill,
-                  color: FlutterFlowTheme.of(context).success,
-                  size: 24.0,
-                ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
-              ),
+            wrapWithModel(
+              model: _model.loadingindicatorModel,
+              updateCallback: () => setState(() {}),
+              child: LoadingindicatorWidget(),
             ),
           ],
           centerTitle: false,
