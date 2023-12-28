@@ -83,7 +83,21 @@ class _Test2WidgetState extends State<Test2Widget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.pushNamed('TEST');
+            },
+            child: Icon(
+              FFIcons.karrowLeftSM,
+              color: FlutterFlowTheme.of(context).primaryText,
+              size: 24.0,
+            ),
+          ),
           title: Text(
             FFAppState()
                 .MAINDATA
