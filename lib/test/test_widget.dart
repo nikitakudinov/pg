@@ -61,7 +61,6 @@ class _TestWidgetState extends State<TestWidget> {
         }(),
       );
       await action_blocks.authplayerloader(context);
-      setState(() {});
       FFAppState().updateVISIBILITYStruct(
         (e) => e..loadingIndicator = false,
       );
@@ -268,7 +267,7 @@ class _TestWidgetState extends State<TestWidget> {
                                           FFAppState()
                                               .MAINDATA
                                               .authplayer
-                                              .playerNickname,
+                                              .playerTag,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
