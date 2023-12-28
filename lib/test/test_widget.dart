@@ -57,6 +57,8 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
           (e) => e..loadingIndicator = true,
         );
       });
+      await action_blocks.notificationsUpdater(context);
+      setState(() {});
       await action_blocks.teamsloader(context);
       await action_blocks.matchesloader(context);
       await action_blocks.tournamentsloader(context);
