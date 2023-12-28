@@ -715,9 +715,7 @@ Future teamsupdater(BuildContext context) async {
     }
     FFAppState().update(() {
       FFAppState().updateCOUNTERSStruct(
-        (e) => e
-          ..teamslastupdatetime = getCurrentTimestamp.toString()
-          ..updatedteams = 0,
+        (e) => e..updatedteams = 0,
       );
     });
   }
