@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'test_widget.dart' show TestWidget;
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ class TestModel extends FlutterFlowModel<TestWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  InstantTimer? instantTimer;
 
   /// Initialization and disposal methods.
 
@@ -22,7 +20,6 @@ class TestModel extends FlutterFlowModel<TestWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
   }
 
   /// Action blocks are added here.

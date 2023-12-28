@@ -605,77 +605,37 @@ Future creatTournamentMatches32(
 
 Future teamsloader(BuildContext context) async {
   ApiCallResponse? apiResult8y51;
-  ApiCallResponse? apiResultu6j;
-  ApiCallResponse? apiResult8y;
 
-  if (FFAppState().MAINDATA.teams.length == 0) {
-    apiResult8y51 = await TeamGroup.listallteamsCall.call();
-    if ((apiResult8y51?.succeeded ?? true)) {
-      FFAppState().update(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..teams = ((apiResult8y51?.jsonBody ?? '')
-                    .toList()
-                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
-                    .toList() as Iterable<TeamStruct?>)
-                .withoutNulls
-                .toList(),
-        );
-        FFAppState().updateCOUNTERSStruct(
-          (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
-        );
-      });
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('Все команды заружены'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
+  apiResult8y51 = await TeamGroup.listallteamsCall.call();
+  if ((apiResult8y51?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..teams = ((apiResult8y51?.jsonBody ?? '')
+                  .toList()
+                  .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                  .toList() as Iterable<TeamStruct?>)
+              .withoutNulls
+              .toList(),
       );
-    }
-  } else {
-    apiResultu6j = await TeamGroup.lISTALLTEAMScountCall.call();
-    if (FFAppState().MAINDATA.teams.length !=
-        TeamGroup.lISTALLTEAMScountCall.count(
-          (apiResultu6j?.jsonBody ?? ''),
-        )) {
-      apiResult8y = await TeamGroup.listallteamsCall.call();
-      if ((apiResult8y51?.succeeded ?? true)) {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..teams = ((apiResult8y51?.jsonBody ?? '')
-                    .toList()
-                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
-                    .toList() as Iterable<TeamStruct?>)
-                .withoutNulls
-                .toList(),
+      FFAppState().updateCOUNTERSStruct(
+        (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
+      );
+    });
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Все команды заружены'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
         );
-        FFAppState().updateCOUNTERSStruct(
-          (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
-        );
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('Команды перезагружены'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    }
+      },
+    );
   }
 }
 
