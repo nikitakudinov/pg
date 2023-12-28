@@ -72,7 +72,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 2000),
         callback: (timer) async {
-          await action_blocks.notificationsUpdater(context);
+          await action_blocks.notificationsupdater(context);
         },
         startImmediately: true,
       );

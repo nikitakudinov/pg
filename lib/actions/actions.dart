@@ -222,33 +222,24 @@ Future preloadDataOfHomePage(BuildContext context) async {
 
 Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
 
-Future notificationsUpdater(BuildContext context) async {
-  ApiCallResponse? apiResultc64;
+Future notificationsupdater(BuildContext context) async {
   ApiCallResponse? jsonNOTIFICATIONS;
 
-  apiResultc64 = await MessagingGroup.gETNOTIFICATIONScountCall.call(
-    authUser: FFAppState().authPlayer.playerUid,
+  jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
+    authUser: currentUserUid,
   );
-  if (FFAppState().MAINDATA.notifications.length !=
-      MessagingGroup.gETNOTIFICATIONScountCall.count(
-        (apiResultc64?.jsonBody ?? ''),
-      )) {
-    jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
-      authUser: currentUserUid,
-    );
-    if ((jsonNOTIFICATIONS?.succeeded ?? true)) {
-      FFAppState().update(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..notifications = ((jsonNOTIFICATIONS?.jsonBody ?? '')
-                    .toList()
-                    .map<NotificationStruct?>(NotificationStruct.maybeFromMap)
-                    .toList() as Iterable<NotificationStruct?>)
-                .withoutNulls
-                .toList(),
-        );
-      });
-    }
+  if ((jsonNOTIFICATIONS?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..notifications = ((jsonNOTIFICATIONS?.jsonBody ?? '')
+                  .toList()
+                  .map<NotificationStruct?>(NotificationStruct.maybeFromMap)
+                  .toList() as Iterable<NotificationStruct?>)
+              .withoutNulls
+              .toList(),
+      );
+    });
   }
 }
 
