@@ -141,31 +141,25 @@ class _TestWidgetState extends State<TestWidget> {
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(15.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 15.0, 0.0),
-                                      child: Container(
-                                        width: 80.0,
-                                        height: 80.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          child: Image.network(
-                                            FFAppState()
-                                                .AUTHPLAYER
-                                                .playerAvatar,
-                                            width: 80.0,
-                                            height: 80.0,
-                                            fit: BoxFit.cover,
-                                          ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 80.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                        child: Image.network(
+                                          FFAppState().AUTHPLAYER.playerAvatar,
+                                          width: 80.0,
+                                          height: 80.0,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
@@ -244,7 +238,7 @@ class _TestWidgetState extends State<TestWidget> {
                                         ),
                                       ],
                                     ),
-                                  ],
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                               ),
                             ),
