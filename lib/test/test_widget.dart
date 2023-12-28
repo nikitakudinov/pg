@@ -37,11 +37,6 @@ class _TestWidgetState extends State<TestWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().updateVISIBILITYStruct(
-          (e) => e..loadingIndicator = true,
-        );
-      });
       unawaited(
         () async {
           await action_blocks.teamsloader(context);
@@ -58,9 +53,6 @@ class _TestWidgetState extends State<TestWidget> {
         }(),
       );
       await action_blocks.authplayerloader(context);
-      FFAppState().updateVISIBILITYStruct(
-        (e) => e..loadingIndicator = false,
-      );
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 2000),
         callback: (timer) async {
