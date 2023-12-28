@@ -574,29 +574,25 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                     ),
-                                    child: Visibility(
-                                      visible: _model.screenshot1 != '0',
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: Visibility(
+                                          visible: _model.screenshot1 !=
+                                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                          child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: _model.screenshot1 !=
-                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                _model.screenshot1,
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.cover,
-                                              ),
+                                            child: Image.network(
+                                              _model.screenshot1,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -790,29 +786,25 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                     ),
-                                    child: Visibility(
-                                      visible: _model.screenshot2 != '0',
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: Visibility(
+                                          visible: _model.screenshot2 !=
+                                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                          child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: _model.screenshot2 !=
-                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                _model.screenshot2,
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.cover,
-                                              ),
+                                            child: Image.network(
+                                              _model.screenshot2,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -1006,29 +998,25 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                     ),
-                                    child: Visibility(
-                                      visible: _model.screenshot3 != '0',
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: Visibility(
+                                          visible: _model.screenshot3 !=
+                                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                          child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: _model.screenshot3 !=
-                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                _model.screenshot3,
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.cover,
-                                              ),
+                                            child: Image.network(
+                                              _model.screenshot3,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -1222,29 +1210,25 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                     ),
-                                    child: Visibility(
-                                      visible: _model.screenshot4 != '0',
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: Visibility(
+                                          visible: _model.screenshot4 !=
+                                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                          child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: _model.screenshot4 !=
-                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                _model.screenshot4,
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.cover,
-                                              ),
+                                            child: Image.network(
+                                              _model.screenshot4,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -1438,29 +1422,25 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                     ),
-                                    child: Visibility(
-                                      visible: _model.screenshot5 != '0',
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: Visibility(
+                                          visible: _model.screenshot5 !=
+                                              'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                          child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: _model.screenshot5 !=
-                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: Image.network(
-                                                _model.screenshot5,
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                fit: BoxFit.cover,
-                                              ),
+                                            child: Image.network(
+                                              _model.screenshot5,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
