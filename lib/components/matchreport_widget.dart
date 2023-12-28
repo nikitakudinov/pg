@@ -64,6 +64,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -189,6 +190,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                               .toList();
                           return ListView.builder(
                             padding: EdgeInsets.zero,
+                            primary: false,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             itemCount: match.length,
