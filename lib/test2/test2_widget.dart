@@ -61,10 +61,15 @@ class _Test2WidgetState extends State<Test2Widget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            FFAppState()
+                .MAINDATA
+                .tournaments
+                .where((e) => e.tournamentId == widget.tournamentId)
+                .toList()[0]
+                .tournamentTag,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
