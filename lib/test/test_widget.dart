@@ -28,14 +28,15 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
   final animationsMap = {
     'iconOnPageLoadAnimation': AnimationInfo(
       loop: true,
+      reverse: true,
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         RotateEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 1000.ms,
+          duration: 2500.ms,
           begin: 0.0,
-          end: 1.0,
+          end: 2.0,
         ),
       ],
     ),
