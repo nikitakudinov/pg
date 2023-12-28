@@ -676,28 +676,26 @@ Future tournamentsloader(BuildContext context) async {
 Future authplayerloader(BuildContext context) async {
   ApiCallResponse? jsonAUTRHPLAYER;
 
-  if (FFAppState().MAINDATA.authPlayer == null) {
-    jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
-      idList: currentUserUid,
-    );
-    if ((jsonAUTRHPLAYER?.succeeded ?? true)) {
-      FFAppState().update(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..authPlayer =
-                PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
-        );
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Данные пользователя загружены',
-            style: TextStyle(),
-          ),
-          duration: Duration(milliseconds: 1000),
-          backgroundColor: FlutterFlowTheme.of(context).secondary,
-        ),
+  jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
+    idList: currentUserUid,
+  );
+  if ((jsonAUTRHPLAYER?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..authPlayer =
+              PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
       );
-    }
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Данные пользователя загружены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 1000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
   }
 }
