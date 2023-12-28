@@ -603,7 +603,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       ),
                                     ),
                                   ),
-                                  if (_model.screenshot1 == '0')
+                                  if (_model.screenshot1 ==
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -818,7 +819,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       ),
                                     ),
                                   ),
-                                  if (_model.screenshot2 == '0')
+                                  if (_model.screenshot2 ==
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -1033,7 +1035,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       ),
                                     ),
                                   ),
-                                  if (_model.screenshot3 == '0')
+                                  if (_model.screenshot3 ==
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -1248,7 +1251,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       ),
                                     ),
                                   ),
-                                  if (_model.screenshot4 == '0')
+                                  if (_model.screenshot4 ==
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -1463,7 +1467,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                       ),
                                     ),
                                   ),
-                                  if (_model.screenshot5 == '0')
+                                  if (_model.screenshot5 ==
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
