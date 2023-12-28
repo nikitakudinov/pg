@@ -152,7 +152,13 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(5.0),
                                 child: Image.network(
-                                  FFAppState().MAINDATA.authPlayer.playerAvatar,
+                                  valueOrDefault<String>(
+                                    FFAppState()
+                                        .MAINDATA
+                                        .authPlayer
+                                        .playerAvatar,
+                                    '0',
+                                  ),
                                   width: 80.0,
                                   height: 80.0,
                                   fit: BoxFit.cover,
@@ -165,15 +171,24 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                FFAppState().MAINDATA.authPlayer.playerNickname,
+                                valueOrDefault<String>(
+                                  FFAppState()
+                                      .MAINDATA
+                                      .authPlayer
+                                      .playerNickname,
+                                  '0',
+                                ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Text(
-                                FFAppState()
-                                    .MAINDATA
-                                    .authPlayer
-                                    .playerTeamRole
-                                    .first,
+                                valueOrDefault<String>(
+                                  FFAppState()
+                                      .MAINDATA
+                                      .authPlayer
+                                      .playerTeamRole
+                                      .first,
+                                  '0',
+                                ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Row(
@@ -193,10 +208,13 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          FFAppState()
-                                              .MAINDATA
-                                              .authPlayer
-                                              .playerFlag,
+                                          valueOrDefault<String>(
+                                            FFAppState()
+                                                .MAINDATA
+                                                .authPlayer
+                                                .playerFlag,
+                                            '0',
+                                          ),
                                           width: 20.0,
                                           height: 12.0,
                                           fit: BoxFit.cover,
@@ -205,10 +223,13 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   Text(
-                                    FFAppState()
-                                        .MAINDATA
-                                        .authPlayer
-                                        .playerCountrie,
+                                    valueOrDefault<String>(
+                                      FFAppState()
+                                          .MAINDATA
+                                          .authPlayer
+                                          .playerCountrie,
+                                      '0',
+                                    ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
