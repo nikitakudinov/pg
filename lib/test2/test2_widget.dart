@@ -95,6 +95,10 @@ class _Test2WidgetState extends State<Test2Widget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              setState(() {
+                FFAppState().MAINDATA = MaindataStruct();
+              });
+
               context.pushNamed('TEST');
             },
             child: Icon(
