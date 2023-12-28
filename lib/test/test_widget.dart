@@ -175,7 +175,15 @@ class _TestWidgetState extends State<TestWidget> {
                                               FFAppState().AUTHPLAYER.playerTag,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                      ),
                                             ),
                                             Text(
                                               FFAppState()
@@ -183,7 +191,15 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .playerNickname,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleMedium,
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
                                         ),
