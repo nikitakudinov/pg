@@ -254,7 +254,7 @@ class _TestWidgetState extends State<TestWidget> {
                                         ),
                                       ],
                                     ),
-                                  ].divide(SizedBox(width: 5.0)),
+                                  ].divide(SizedBox(width: 10.0)),
                                 ),
                               ),
                             ),
