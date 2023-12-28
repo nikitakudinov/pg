@@ -291,6 +291,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     wrapWithModel(
                                       model: _model.gridRoundModel1,
