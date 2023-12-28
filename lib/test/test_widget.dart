@@ -332,16 +332,11 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      'TOURNAMENT_VIEW',
+                                      'TEST2',
                                       queryParameters: {
-                                        'tournamentID': serializeParam(
+                                        'tournamentId': serializeParam(
                                           tournamentsListItem.tournamentId,
                                           ParamType.int,
-                                        ),
-                                        'tournamentCreator': serializeParam(
-                                          tournamentsListItem
-                                              .tournamentCreator.playerUid,
-                                          ParamType.String,
                                         ),
                                       }.withoutNulls,
                                     );
