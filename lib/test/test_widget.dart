@@ -85,19 +85,22 @@ class _TestWidgetState extends State<TestWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                FFAppState().COUNTERS.teamslastupdatetime,
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-              Text(
-                FFAppState().COUNTERS.updatedteams.toString(),
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-            ],
+          child: Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  FFAppState().COUNTERS.teamslastupdatetime,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+                Text(
+                  FFAppState().COUNTERS.updatedteams.toString(),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+              ],
+            ),
           ),
         ),
       ),

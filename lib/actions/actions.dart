@@ -681,7 +681,6 @@ Future teamsloader(BuildContext context) async {
 
 Future teamsupdater(BuildContext context) async {
   ApiCallResponse? jsonUPDATERDTEAMScount;
-  ApiCallResponse? jsonUPDATEDTEAMS;
 
   jsonUPDATERDTEAMScount = await TeamGroup.uPDATEDTEAMScountCall.call(
     time: FFAppState().COUNTERS.teamslastupdatetime,
@@ -696,29 +695,11 @@ Future teamsupdater(BuildContext context) async {
   });
   if (FFAppState().COUNTERS.updatedteams != 0) {
     while (FFAppState().COUNTERS.updatedteams == 0) {
-      jsonUPDATEDTEAMS = await TeamGroup.updatedteamsCall.call(
-        time: FFAppState().COUNTERS.teamslastupdatetime,
-      );
-      FFAppState().update(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e
-            ..updateTeams(
-              (e) => e.add(((jsonUPDATEDTEAMS?.jsonBody ?? '')
-                      .toList()
-                      .map<TeamStruct?>(TeamStruct.maybeFromMap)
-                      .toList() as Iterable<TeamStruct?>)
-                  .withoutNulls[FFAppState().COUNTERS.updatedteams - 1]),
-            ),
-        );
-        FFAppState().updateCOUNTERSStruct(
-          (e) => e..incrementUpdatedteams(-1),
-        );
-      });
       await showDialog(
         context: context,
         builder: (alertDialogContext) {
           return AlertDialog(
-            title: Text('Команда Обновлена'),
+            title: Text((FFAppState().COUNTERS.updatedteams - 1).toString()),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(alertDialogContext),
@@ -728,10 +709,15 @@ Future teamsupdater(BuildContext context) async {
           );
         },
       );
+      FFAppState().updateCOUNTERSStruct(
+        (e) => e..incrementUpdatedteams(-1),
+      );
     }
     FFAppState().update(() {
       FFAppState().updateCOUNTERSStruct(
-        (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
+        (e) => e
+          ..teamslastupdatetime = getCurrentTimestamp.toString()
+          ..updatedteams = 0,
       );
     });
   }
