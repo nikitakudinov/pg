@@ -108,11 +108,15 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                           Icon(
                             Icons.settings_outlined,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                            size: 15.0,
                           ),
                           Text(
                             'Основное',
-                            style: FlutterFlowTheme.of(context).bodyLarge,
+                            style:
+                                FlutterFlowTheme.of(context).bodyLarge.override(
+                                      fontFamily: 'Cabin Condensed',
+                                      fontSize: 14.0,
+                                    ),
                           ),
                           if (valueOrDefault<bool>(
                             _model.infoTabVISIBILITY,
@@ -158,11 +162,15 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                           Icon(
                             Icons.front_hand_outlined,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                            size: 15.0,
                           ),
                           Text(
                             'Правила и ограничения',
-                            style: FlutterFlowTheme.of(context).bodyLarge,
+                            style:
+                                FlutterFlowTheme.of(context).bodyLarge.override(
+                                      fontFamily: 'Cabin Condensed',
+                                      fontSize: 14.0,
+                                    ),
                           ),
                           if (valueOrDefault<bool>(
                             _model.rulesTabVISIBILITY,
@@ -214,7 +222,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -224,7 +232,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -234,7 +242,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -244,7 +252,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -254,7 +262,7 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -329,10 +337,6 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
             if (_model.rulesTabVISIBILITY)
               Container(
                 decoration: BoxDecoration(),
-                child: Text(
-                  'Hello World',
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
               ).animateOnPageLoad(
                   animationsMap['containerOnPageLoadAnimation2']!),
           ],

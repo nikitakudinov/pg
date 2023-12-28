@@ -4,6 +4,7 @@ import '/backend/supabase/supabase.dart';
 import '/components/grid_round/grid_round_widget.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
+import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -195,6 +196,11 @@ class _Test2WidgetState extends State<Test2Widget> {
                                 .first
                                 .tournamentLogo,
                           ),
+                        ),
+                        wrapWithModel(
+                          model: _model.tournamentInfoTabsModel,
+                          updateCallback: () => setState(() {}),
+                          child: TournamentInfoTabsWidget(),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,

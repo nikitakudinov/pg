@@ -1,14 +1,11 @@
 import '/backend/schema/structs/index.dart';
 import '/components/loadingindicator_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'rating_teams_tabs_model.dart';
@@ -26,25 +23,8 @@ class RatingTeamsTabsWidget extends StatefulWidget {
   _RatingTeamsTabsWidgetState createState() => _RatingTeamsTabsWidgetState();
 }
 
-class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget>
-    with TickerProviderStateMixin {
+class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
   late RatingTeamsTabsModel _model;
-
-  final animationsMap = {
-    'listViewOnPageLoadAnimation': AnimationInfo(
-      reverse: true,
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -703,8 +683,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget>
                           ),
                         );
                       },
-                    ).animateOnPageLoad(
-                        animationsMap['listViewOnPageLoadAnimation']!);
+                    );
                   },
                 ),
             ],

@@ -4,6 +4,7 @@ import '/backend/supabase/supabase.dart';
 import '/components/grid_round/grid_round_widget.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
+import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -23,6 +24,8 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   final unfocusNode = FocusNode();
   // Model for VlistITEM component.
   late VlistITEMModel vlistITEMModel;
+  // Model for tournamentInfoTabs component.
+  late TournamentInfoTabsModel tournamentInfoTabsModel;
   // Model for GRID-ROUND component.
   late GridRoundModel gridRoundModel1;
   // Model for GRID-ROUND component.
@@ -46,6 +49,8 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
 
   void initState(BuildContext context) {
     vlistITEMModel = createModel(context, () => VlistITEMModel());
+    tournamentInfoTabsModel =
+        createModel(context, () => TournamentInfoTabsModel());
     gridRoundModel1 = createModel(context, () => GridRoundModel());
     gridRoundModel2 = createModel(context, () => GridRoundModel());
     gridRoundModel3 = createModel(context, () => GridRoundModel());
@@ -60,6 +65,7 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   void dispose() {
     unfocusNode.dispose();
     vlistITEMModel.dispose();
+    tournamentInfoTabsModel.dispose();
     gridRoundModel1.dispose();
     gridRoundModel2.dispose();
     gridRoundModel3.dispose();
