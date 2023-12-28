@@ -200,7 +200,9 @@ class _Test2WidgetState extends State<Test2Widget> {
                         wrapWithModel(
                           model: _model.tournamentInfoTabsModel,
                           updateCallback: () => setState(() {}),
-                          child: TournamentInfoTabsWidget(),
+                          child: TournamentInfoTabsWidget(
+                            tournamentID: widget.tournamentId,
+                          ),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
