@@ -199,10 +199,8 @@ class _Test2WidgetState extends State<Test2Widget> {
                           onPressed: () async {
                             await showModalBottomSheet(
                               isScrollControlled: true,
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).secondary,
-                              barrierColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               enableDrag: false,
                               context: context,
                               builder: (context) {
