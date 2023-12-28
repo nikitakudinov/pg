@@ -1,3 +1,5 @@
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -5,6 +7,7 @@ import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_model.dart';
@@ -17,10 +20,25 @@ class TestWidget extends StatefulWidget {
   _TestWidgetState createState() => _TestWidgetState();
 }
 
-class _TestWidgetState extends State<TestWidget> {
+class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
   late TestModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'iconOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        RotateEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 100.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -29,7 +47,18 @@ class _TestWidgetState extends State<TestWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().updateVISIBILITYStruct(
+          (e) => e..loadingIndicator = true,
+        );
+      });
       await action_blocks.teamsloader(context);
+      await action_blocks.matchesloader(context);
+      setState(() {
+        FFAppState().updateVISIBILITYStruct(
+          (e) => e..loadingIndicator = false,
+        );
+      });
     });
   }
 
@@ -61,7 +90,7 @@ class _TestWidgetState extends State<TestWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
             'Page Title',
@@ -71,7 +100,16 @@ class _TestWidgetState extends State<TestWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: Icon(
+                FFIcons.kloader2Line,
+                color: FlutterFlowTheme.of(context).success,
+                size: 24.0,
+              ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),

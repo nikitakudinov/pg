@@ -622,19 +622,15 @@ Future teamsloader(BuildContext context) async {
         (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
       );
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('Все команды заружены'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Команды заружены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 500),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
     );
   }
 }
@@ -671,5 +667,15 @@ Future matchesloader(BuildContext context) async {
               .toList(),
       );
     });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Матчи заружены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 500),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
   }
 }

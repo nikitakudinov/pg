@@ -535,6 +535,16 @@ class FFAppState extends ChangeNotifier {
   void updateCOUNTERSStruct(Function(CountersStruct) updateFn) {
     updateFn(_COUNTERS);
   }
+
+  VisibilityStruct _VISIBILITY = VisibilityStruct();
+  VisibilityStruct get VISIBILITY => _VISIBILITY;
+  set VISIBILITY(VisibilityStruct _value) {
+    _VISIBILITY = _value;
+  }
+
+  void updateVISIBILITYStruct(Function(VisibilityStruct) updateFn) {
+    updateFn(_VISIBILITY);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
