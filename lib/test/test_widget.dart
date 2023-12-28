@@ -153,13 +153,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(5.0),
                                 child: Image.network(
-                                  valueOrDefault<String>(
-                                    FFAppState()
-                                        .MAINDATA
-                                        .authPlayer
-                                        .playerAvatar,
-                                    '0',
-                                  ),
+                                  'https://picsum.photos/seed/811/600',
                                   width: 80.0,
                                   height: 80.0,
                                   fit: BoxFit.cover,
@@ -172,13 +166,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                valueOrDefault<String>(
-                                  FFAppState()
-                                      .MAINDATA
-                                      .authPlayer
-                                      .playerNickname,
-                                  '0',
-                                ),
+                                FFAppState().MAINDATA.authPlayer.playerNickname,
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Row(
@@ -198,13 +186,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          valueOrDefault<String>(
-                                            FFAppState()
-                                                .MAINDATA
-                                                .authPlayer
-                                                .playerFlag,
-                                            '0',
-                                          ),
+                                          'https://picsum.photos/seed/728/600',
                                           width: 20.0,
                                           height: 12.0,
                                           fit: BoxFit.cover,
@@ -213,13 +195,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   Text(
-                                    valueOrDefault<String>(
-                                      FFAppState()
-                                          .MAINDATA
-                                          .authPlayer
-                                          .playerCountrie,
-                                      '0',
-                                    ),
+                                    'Hello World',
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
