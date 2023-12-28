@@ -686,6 +686,9 @@ Future tournamentsloader(BuildContext context) async {
   jsonTOURNAMENTS = await TournamentGroup.tournamentsCall.call();
   if ((jsonTOURNAMENTS?.succeeded ?? true)) {
     FFAppState().update(() {
+      FFAppState().MAINDATA = MaindataStruct();
+    });
+    FFAppState().update(() {
       FFAppState().updateMAINDATAStruct(
         (e) => e
           ..tournaments = ((jsonTOURNAMENTS?.jsonBody ?? '')
