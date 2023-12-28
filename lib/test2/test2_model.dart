@@ -1,4 +1,5 @@
 import '/components/grid_round/grid_round_widget.dart';
+import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,6 +13,8 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Model for VlistITEM component.
+  late VlistITEMModel vlistITEMModel;
   // Model for GRID-ROUND component.
   late GridRoundModel gridRoundModel1;
   // Model for GRID-ROUND component.
@@ -34,6 +37,7 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    vlistITEMModel = createModel(context, () => VlistITEMModel());
     gridRoundModel1 = createModel(context, () => GridRoundModel());
     gridRoundModel2 = createModel(context, () => GridRoundModel());
     gridRoundModel3 = createModel(context, () => GridRoundModel());
@@ -47,6 +51,7 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
 
   void dispose() {
     unfocusNode.dispose();
+    vlistITEMModel.dispose();
     gridRoundModel1.dispose();
     gridRoundModel2.dispose();
     gridRoundModel3.dispose();

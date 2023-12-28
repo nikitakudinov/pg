@@ -1,4 +1,5 @@
 import '/components/grid_round/grid_round_widget.dart';
+import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -62,7 +63,7 @@ class _Test2WidgetState extends State<Test2Widget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           title: Text(
             FFAppState()
                 .MAINDATA
@@ -86,6 +87,49 @@ class _Test2WidgetState extends State<Test2Widget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                wrapWithModel(
+                  model: _model.vlistITEMModel,
+                  updateCallback: () => setState(() {}),
+                  updateOnChange: true,
+                  child: VlistITEMWidget(
+                    imageSize: 80,
+                    title: FFAppState()
+                        .MAINDATA
+                        .tournaments
+                        .where((e) => e.tournamentId == widget.tournamentId)
+                        .toList()
+                        .first
+                        .tournamentTag,
+                    subtitle: FFAppState()
+                        .MAINDATA
+                        .tournaments
+                        .where((e) => e.tournamentId == widget.tournamentId)
+                        .toList()
+                        .first
+                        .tournamentName,
+                    country: FFAppState()
+                        .MAINDATA
+                        .tournaments
+                        .where((e) => e.tournamentId == widget.tournamentId)
+                        .toList()
+                        .first
+                        .tournamentCountry,
+                    flag: FFAppState()
+                        .MAINDATA
+                        .tournaments
+                        .where((e) => e.tournamentId == widget.tournamentId)
+                        .toList()
+                        .first
+                        .tournamentFlag,
+                    image: FFAppState()
+                        .MAINDATA
+                        .tournaments
+                        .where((e) => e.tournamentId == widget.tournamentId)
+                        .toList()
+                        .first
+                        .tournamentLogo,
+                  ),
+                ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
