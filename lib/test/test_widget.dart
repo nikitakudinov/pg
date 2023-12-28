@@ -147,6 +147,11 @@ class _TestWidgetState extends State<TestWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  FFAppState().MAINDATA.authplayer.playerTag,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
@@ -257,14 +262,6 @@ class _TestWidgetState extends State<TestWidget> {
                                         ),
                                         Text(
                                           'Всего команд',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          FFAppState()
-                                              .MAINDATA
-                                              .authplayer
-                                              .playerTag,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
