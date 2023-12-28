@@ -132,115 +132,122 @@ class _TestWidgetState extends State<TestWidget> {
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 15.0, 0.0),
-                                    child: Container(
-                                      width: 80.0,
-                                      height: 80.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        child: Image.network(
-                                          FFAppState().AUTHPLAYER.playerAvatar,
-                                          width: 80.0,
-                                          height: 80.0,
-                                          fit: BoxFit.cover,
+                          if (FFAppState().AUTHPLAYER.playerNickname != null &&
+                              FFAppState().AUTHPLAYER.playerNickname != '')
+                            Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 15.0, 0.0),
+                                      child: Container(
+                                        width: 80.0,
+                                        height: 80.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          child: Image.network(
+                                            FFAppState()
+                                                .AUTHPLAYER
+                                                .playerAvatar,
+                                            width: 80.0,
+                                            height: 80.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            FFAppState().AUTHPLAYER.playerTag,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                          Text(
-                                            FFAppState()
-                                                .AUTHPLAYER
-                                                .playerNickname,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium,
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                      Text(
-                                        FFAppState()
-                                            .AUTHPLAYER
-                                            .playerTeamRole
-                                            .take(5)
-                                            .toList()
-                                            .first,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium,
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 5.0, 0.0),
-                                            child: Container(
-                                              width: 20.0,
-                                              height: 12.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  FFAppState()
-                                                      .AUTHPLAYER
-                                                      .playerFlag,
-                                                  width: 20.0,
-                                                  height: 12.0,
-                                                  fit: BoxFit.cover,
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              FFAppState().AUTHPLAYER.playerTag,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Text(
+                                              FFAppState()
+                                                  .AUTHPLAYER
+                                                  .playerNickname,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium,
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
+                                        Text(
+                                          FFAppState()
+                                              .AUTHPLAYER
+                                              .playerTeamRole
+                                              .take(5)
+                                              .toList()
+                                              .first,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium,
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              child: Container(
+                                                width: 20.0,
+                                                height: 12.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
+                                                    FFAppState()
+                                                        .AUTHPLAYER
+                                                        .playerFlag,
+                                                    width: 20.0,
+                                                    height: 12.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            FFAppState()
-                                                .AUTHPLAYER
-                                                .playerCountrie,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                            Text(
+                                              FFAppState()
+                                                  .AUTHPLAYER
+                                                  .playerCountrie,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
@@ -313,6 +320,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                 .tournamentName,
                                             country: tournamentsListItem
                                                 .tournamentCountry,
+                                            flag: tournamentsListItem
+                                                .tournamentFlag,
                                             image: tournamentsListItem
                                                 .tournamentLogo,
                                           ),
