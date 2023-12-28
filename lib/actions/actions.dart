@@ -633,12 +633,61 @@ Future authplayerloader(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().updateMAINDATAStruct(
         (e) => e
-          ..authplayer = ((jsonAUTRHPLAYER?.jsonBody ?? '')
-                  .toList()
-                  .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
-                  .toList() as Iterable<PlayerStruct?>)
-              .withoutNulls
-              .toList(),
+          ..updateAuthplayer(
+            (e) => e
+              ..playerCreatedAt = PlayerGroup.listplayerbyuidCall
+                  .playercreatedat(
+                    (jsonAUTRHPLAYER?.jsonBody ?? ''),
+                  )
+                  .toString()
+              ..playerNickname = PlayerGroup.listplayerbyuidCall
+                  .playernickname(
+                    (jsonAUTRHPLAYER?.jsonBody ?? ''),
+                  )
+                  .toString()
+              ..playerTag = PlayerGroup.listplayerbyuidCall
+                  .playertag(
+                    (jsonAUTRHPLAYER?.jsonBody ?? ''),
+                  )
+                  .toString()
+              ..playerFlag = PlayerGroup.listplayerbyuidCall.playerflag(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              )
+              ..playerCountrie = PlayerGroup.listplayerbyuidCall
+                  .playercountrie(
+                    (jsonAUTRHPLAYER?.jsonBody ?? ''),
+                  )
+                  .toString()
+              ..playerAvatar = PlayerGroup.listplayerbyuidCall.playeravatar(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              )
+              ..playerUid = PlayerGroup.listplayerbyuidCall
+                  .playeruid(
+                    (jsonAUTRHPLAYER?.jsonBody ?? ''),
+                  )
+                  .toString()
+              ..playerTeam = PlayerGroup.listplayerbyuidCall.playerteam(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              )
+              ..playerTeamLineup =
+                  PlayerGroup.listplayerbyuidCall.playerteamlineup(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              )
+              ..playerId = PlayerGroup.listplayerbyuidCall.playerid(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              )
+              ..playerTeamRole =
+                  (PlayerGroup.listplayerbyuidCall.playerteamrole(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              ) as List)
+                      .map<String>((s) => s.toString())
+                      .toList()!
+                      .toList()
+              ..playerOnline = PlayerGroup.listplayerbyuidCall.playeronline(
+                (jsonAUTRHPLAYER?.jsonBody ?? ''),
+              )
+              ..playerUpdateAt = getCurrentTimestamp.toString(),
+          ),
       );
     });
     ScaffoldMessenger.of(context).showSnackBar(

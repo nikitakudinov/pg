@@ -267,7 +267,7 @@ class _TestWidgetState extends State<TestWidget> {
                                         Text(
                                           FFAppState()
                                               .MAINDATA
-                                              .authplayer[0]
+                                              .authplayer
                                               .playerNickname,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
