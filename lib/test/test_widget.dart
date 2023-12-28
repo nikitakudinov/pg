@@ -334,6 +334,10 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .secondaryBackground,
+                                    title: tournamentsListItem.tournamentTag,
+                                    subtitle:
+                                        tournamentsListItem.tournamentName,
+                                    image: tournamentsListItem.tournamentLogo,
                                   ),
                                 );
                               },
