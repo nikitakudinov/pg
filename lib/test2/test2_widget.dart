@@ -95,7 +95,7 @@ class _Test2WidgetState extends State<Test2Widget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              context.pushNamed('TEST');
+              context.safePop();
             },
             child: Icon(
               FFIcons.karrowLeftSM,
