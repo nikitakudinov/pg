@@ -679,3 +679,32 @@ Future matchesloader(BuildContext context) async {
     );
   }
 }
+
+Future tournamentsloader(BuildContext context) async {
+  ApiCallResponse? jsonTOURNAMENTS;
+
+  jsonTOURNAMENTS = await TournamentGroup.tournamentsCall.call();
+  if ((jsonTOURNAMENTS?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..tournaments = ((jsonTOURNAMENTS?.jsonBody ?? '')
+                  .toList()
+                  .map<TournamentStruct?>(TournamentStruct.maybeFromMap)
+                  .toList() as Iterable<TournamentStruct?>)
+              .withoutNulls
+              .toList(),
+      );
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Турниры загружены',
+          style: TextStyle(),
+        ),
+        duration: Duration(milliseconds: 1000),
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
+      ),
+    );
+  }
+}
