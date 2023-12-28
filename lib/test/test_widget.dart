@@ -217,50 +217,74 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                    child: Row(
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Всего турниров',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                            Text(
-                              'Всего матчей',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                            Text(
-                              'Всего команд',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                          ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 0.0),
+                          child: Text(
+                            'Общая статистика',
+                            style: FlutterFlowTheme.of(context).titleMedium,
+                          ),
                         ),
-                        Column(
+                        Row(
                           mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              FFAppState()
-                                  .MAINDATA
-                                  .tournaments
-                                  .length
-                                  .toString(),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Всего турниров',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                                Text(
+                                  'Всего матчей',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                                Text(
+                                  'Всего команд',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ],
                             ),
-                            Text(
-                              FFAppState().MAINDATA.matches.length.toString(),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFAppState()
+                                      .MAINDATA
+                                      .tournaments
+                                      .length
+                                      .toString(),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                                Text(
+                                  FFAppState()
+                                      .MAINDATA
+                                      .matches
+                                      .length
+                                      .toString(),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                                Text(
+                                  FFAppState().MAINDATA.teams.length.toString(),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ],
                             ),
-                            Text(
-                              FFAppState().MAINDATA.teams.length.toString(),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                          ],
+                          ].divide(SizedBox(width: 15.0)),
                         ),
-                      ].divide(SizedBox(width: 15.0)),
+                      ],
                     ),
                   ),
                   Padding(
@@ -272,7 +296,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 15.0, 15.0, 0.0),
+                              0.0, 20.0, 0.0, 0.0),
                           child: Text(
                             'ТУРНИРЫ',
                             style: FlutterFlowTheme.of(context).titleLarge,
