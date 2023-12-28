@@ -75,12 +75,9 @@ Future loadAuthUserChats(BuildContext context) async {
 }
 
 Future upadateAuthUserDataValues(BuildContext context) async {
-  ApiCallResponse? jsonPlayerData;
   ApiCallResponse? jsonTeamData;
+  ApiCallResponse? jsonPlayerData;
 
-  jsonPlayerData = await PlayerGroup.listplayerbyuidCall.call(
-    idList: currentUserUid,
-  );
   jsonTeamData = await TeamGroup.listteambyidCall.call(
     idList: PlayerGroup.listplayerbyuidCall
         .playerteam(
@@ -89,60 +86,13 @@ Future upadateAuthUserDataValues(BuildContext context) async {
         .toString()
         ?.toString(),
   );
+  jsonPlayerData = await PlayerGroup.listplayerbyuidCall.call(
+    idList: currentUserUid,
+  );
   if ((jsonPlayerData?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().updateAuthPlayerStruct(
-        (e) => e
-          ..playerCreatedAt = PlayerGroup.listplayerbyuidCall
-              .playercreatedat(
-                (jsonPlayerData?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerNickname = PlayerGroup.listplayerbyuidCall
-              .playernickname(
-                (jsonPlayerData?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerTag = PlayerGroup.listplayerbyuidCall
-              .playertag(
-                (jsonPlayerData?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerFlag = PlayerGroup.listplayerbyuidCall.playerflag(
-            (jsonPlayerData?.jsonBody ?? ''),
-          )
-          ..playerCountrie = PlayerGroup.listplayerbyuidCall
-              .playercountrie(
-                (jsonPlayerData?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerAvatar = PlayerGroup.listplayerbyuidCall.playeravatar(
-            (jsonPlayerData?.jsonBody ?? ''),
-          )
-          ..playerUid = PlayerGroup.listplayerbyuidCall
-              .playeruid(
-                (jsonPlayerData?.jsonBody ?? ''),
-              )
-              .toString()
-          ..playerTeam = PlayerGroup.listplayerbyuidCall.playerteam(
-            (jsonPlayerData?.jsonBody ?? ''),
-          )
-          ..playerTeamLineup = PlayerGroup.listplayerbyuidCall.playerteamlineup(
-            (jsonPlayerData?.jsonBody ?? ''),
-          )
-          ..playerId = PlayerGroup.listplayerbyuidCall.playerid(
-            (jsonPlayerData?.jsonBody ?? ''),
-          )
-          ..playerTeamRole = (PlayerGroup.listplayerbyuidCall.playerteamrole(
-            (jsonPlayerData?.jsonBody ?? ''),
-          ) as List)
-              .map<String>((s) => s.toString())
-              .toList()!
-              .toList()
-          ..playerOnline = PlayerGroup.listplayerbyuidCall.playeronline(
-            (jsonPlayerData?.jsonBody ?? ''),
-          ),
-      );
+      FFAppState().authPlayer =
+          PlayerStruct.maybeFromMap((jsonPlayerData?.jsonBody ?? ''))!;
       FFAppState().updateAuthPlayerTeamStruct(
         (e) => e
           ..teamName = TeamGroup.listteambyidCall
