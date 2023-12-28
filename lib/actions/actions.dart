@@ -247,6 +247,12 @@ Future notificationsUpdater(BuildContext context) async {
                 .withoutNulls
                 .toList(),
         );
+        FFAppState().updateCOUNTERSStruct(
+          (e) => e
+            ..notifications = MessagingGroup.gETNOTIFICATIONScountCall.count(
+              (apiResultc64?.jsonBody ?? ''),
+            ),
+        );
       });
     }
   }
