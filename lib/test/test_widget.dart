@@ -1,3 +1,5 @@
+import '/backend/schema/structs/index.dart';
+import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -90,6 +92,38 @@ class _TestWidgetState extends State<TestWidget> {
                 Text(
                   FFAppState().COUNTERS.updatedteams.toString(),
                   style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+                Builder(
+                  builder: (context) {
+                    final teamsList =
+                        FFAppState().MAINDATA.teams.toList().take(50).toList();
+                    return ListView.separated(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: teamsList.length,
+                      separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                      itemBuilder: (context, teamsListIndex) {
+                        final teamsListItem = teamsList[teamsListIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 0.0),
+                          child: VlistITEMWidget(
+                            key: Key(
+                                'Keyn1m_${teamsListIndex}_of_${teamsList.length}'),
+                            imageSize: 50,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                            title: teamsListItem.teamTag,
+                            subtitle: teamsListItem.teamName,
+                            country: teamsListItem.teamCountry,
+                            flag: teamsListItem.teamFlag,
+                            image: teamsListItem.teamLogo,
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),
