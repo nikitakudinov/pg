@@ -56,7 +56,6 @@ class _TestWidgetState extends State<TestWidget> {
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           await action_blocks.notificationsupdater(context);
-          setState(() {});
         },
         startImmediately: true,
       );
