@@ -584,7 +584,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                                 BorderRadius.circular(5.0),
                                           ),
                                           child: Visibility(
-                                            visible: _model.screenshot1 ==
+                                            visible: _model.screenshot1 !=
                                                 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
                                             child: ClipRRect(
                                               borderRadius:
@@ -800,7 +800,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                                 BorderRadius.circular(5.0),
                                           ),
                                           child: Visibility(
-                                            visible: _model.screenshot2 ==
+                                            visible: _model.screenshot2 !=
                                                 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
                                             child: ClipRRect(
                                               borderRadius:
@@ -1016,7 +1016,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                                 BorderRadius.circular(5.0),
                                           ),
                                           child: Visibility(
-                                            visible: _model.screenshot3 ==
+                                            visible: _model.screenshot3 !=
                                                 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
                                             child: ClipRRect(
                                               borderRadius:
@@ -1232,7 +1232,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                                 BorderRadius.circular(5.0),
                                           ),
                                           child: Visibility(
-                                            visible: _model.screenshot4 ==
+                                            visible: _model.screenshot4 !=
                                                 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
                                             child: ClipRRect(
                                               borderRadius:
@@ -1448,7 +1448,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                                 BorderRadius.circular(5.0),
                                           ),
                                           child: Visibility(
-                                            visible: _model.screenshot5 ==
+                                            visible: _model.screenshot5 !=
                                                 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
                                             child: ClipRRect(
                                               borderRadius:
