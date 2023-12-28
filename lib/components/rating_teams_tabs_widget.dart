@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/loadingindicator_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -31,6 +32,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget>
 
   final animationsMap = {
     'listViewOnPageLoadAnimation': AnimationInfo(
+      reverse: true,
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
@@ -185,6 +187,19 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget>
                   ),
                 ],
               ),
+              if (FFAppState().MAINDATA.teams.length == 0)
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                    child: wrapWithModel(
+                      model: _model.loadingindicatorModel,
+                      updateCallback: () => setState(() {}),
+                      child: LoadingindicatorWidget(),
+                    ),
+                  ),
+                ),
               if (_model.byMatchActive)
                 Builder(
                   builder: (context) {
