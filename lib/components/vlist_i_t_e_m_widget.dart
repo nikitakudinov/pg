@@ -65,6 +65,7 @@ class _VlistITEMWidgetState extends State<VlistITEMWidget> {
 
     return Container(
       decoration: BoxDecoration(
+        color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(5.0),
       ),
       child: Padding(
@@ -72,23 +73,24 @@ class _VlistITEMWidgetState extends State<VlistITEMWidget> {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Container(
-                width: widget.imageSize.toDouble(),
-                height: widget.imageSize.toDouble(),
-                decoration: BoxDecoration(),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5.0),
-                  child: Image.network(
-                    widget.image,
-                    width: widget.imageSize.toDouble(),
-                    height: widget.imageSize.toDouble(),
-                    fit: BoxFit.cover,
+            if (widget.image != null && widget.image != '')
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                child: Container(
+                  width: widget.imageSize.toDouble(),
+                  height: widget.imageSize.toDouble(),
+                  decoration: BoxDecoration(),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5.0),
+                    child: Image.network(
+                      widget.image,
+                      width: widget.imageSize.toDouble(),
+                      height: widget.imageSize.toDouble(),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,40 +99,42 @@ class _VlistITEMWidgetState extends State<VlistITEMWidget> {
                   widget.title,
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
-                Text(
-                  widget.subtitle,
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                      child: Container(
-                        width: 20.0,
-                        height: 12.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.network(
-                            widget.flag,
-                            width: 20.0,
-                            height: 12.0,
-                            fit: BoxFit.cover,
+                if (widget.subtitle != null && widget.subtitle != '')
+                  Text(
+                    widget.subtitle,
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                if (widget.country != null && widget.country != '')
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                        child: Container(
+                          width: 20.0,
+                          height: 12.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0.0),
+                            child: Image.network(
+                              widget.flag,
+                              width: 20.0,
+                              height: 12.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Text(
-                      widget.country,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                  ],
-                ),
+                      Text(
+                        widget.country,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ],
+                  ),
               ],
             ),
           ],

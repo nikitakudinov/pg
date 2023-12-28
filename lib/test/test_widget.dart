@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -124,131 +125,226 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
         ),
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                if (FFAppState().MAINDATA.authPlayer != null)
-                  Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 15.0, 0.0),
-                            child: Container(
-                              width: 80.0,
-                              height: 80.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5.0),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/811/600',
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  if (FFAppState().MAINDATA.authPlayer != null)
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 15.0, 0.0),
+                                child: Container(
                                   width: 80.0,
                                   height: 80.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFAppState().MAINDATA.authPlayer.playerNickname,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 5.0, 0.0),
-                                    child: Container(
-                                      width: 20.0,
-                                      height: 12.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.network(
-                                          'https://picsum.photos/seed/728/600',
-                                          width: 20.0,
-                                          height: 12.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    child: Image.network(
+                                      'https://picsum.photos/seed/811/600',
+                                      width: 80.0,
+                                      height: 80.0,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
+                                ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Text(
-                                    'Hello World',
+                                    FFAppState()
+                                        .MAINDATA
+                                        .authPlayer
+                                        .playerNickname,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 5.0, 0.0),
+                                        child: Container(
+                                          width: 20.0,
+                                          height: 12.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              'https://picsum.photos/seed/728/600',
+                                              width: 20.0,
+                                              height: 12.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'Hello World',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Всего турниров',
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              'Всего матчей',
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              'Всего команд',
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              FFAppState()
+                                  .MAINDATA
+                                  .tournaments
+                                  .length
+                                  .toString(),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              FFAppState().MAINDATA.matches.length.toString(),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              FFAppState().MAINDATA.teams.length.toString(),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ],
+                        ),
+                      ].divide(SizedBox(width: 15.0)),
+                    ),
                   ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Column(
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Всего турниров',
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 15.0, 15.0, 0.0),
+                          child: Text(
+                            'ТУРНИРЫ',
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
                         ),
-                        Text(
-                          'Всего матчей',
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                        Text(
-                          'Всего команд',
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        Builder(
+                          builder: (context) {
+                            final tournamentsList = FFAppState()
+                                .MAINDATA
+                                .tournaments
+                                .toList()
+                                .take(3)
+                                .toList();
+                            return ListView.separated(
+                              padding: EdgeInsets.fromLTRB(
+                                0,
+                                15.0,
+                                0,
+                                0,
+                              ),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: tournamentsList.length,
+                              separatorBuilder: (_, __) =>
+                                  SizedBox(height: 5.0),
+                              itemBuilder: (context, tournamentsListIndex) {
+                                final tournamentsListItem =
+                                    tournamentsList[tournamentsListIndex];
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'TOURNAMENT_VIEW',
+                                      queryParameters: {
+                                        'tournamentID': serializeParam(
+                                          tournamentsListItem.tournamentId,
+                                          ParamType.int,
+                                        ),
+                                        'tournamentCreator': serializeParam(
+                                          tournamentsListItem
+                                              .tournamentCreator.playerUid,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: VlistITEMWidget(
+                                    key: Key(
+                                        'Keyfx4_${tournamentsListIndex}_of_${tournamentsList.length}'),
+                                    imageSize: 50,
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          FFAppState().MAINDATA.tournaments.length.toString(),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                        Text(
-                          FFAppState().MAINDATA.matches.length.toString(),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                        Text(
-                          FFAppState().MAINDATA.teams.length.toString(),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                      ],
-                    ),
-                  ].divide(SizedBox(width: 15.0)),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
