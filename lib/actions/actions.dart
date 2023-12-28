@@ -693,22 +693,4 @@ Future teamsupdater(BuildContext context) async {
         ),
     );
   });
-  if (FFAppState().COUNTERS.updatedteams != 0) {
-    while (FFAppState().COUNTERS.updatedteams == 0) {
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text((FFAppState().COUNTERS.updatedteams - 1).toString()),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
 }
