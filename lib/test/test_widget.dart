@@ -207,17 +207,46 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                Text(
-                  FFAppState().MAINDATA.teams.length.toString(),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
-                Text(
-                  FFAppState().MAINDATA.matches.length.toString(),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
-                Text(
-                  FFAppState().MAINDATA.tournaments.length.toString(),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Всего турниров',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          'Всего матчей',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          'Всего команд',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          FFAppState().MAINDATA.tournaments.length.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().MAINDATA.matches.length.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          FFAppState().MAINDATA.teams.length.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ].divide(SizedBox(width: 15.0)),
                 ),
               ],
             ),
