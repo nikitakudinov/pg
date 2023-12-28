@@ -583,15 +583,20 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              _model.screenshot1,
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              fit: BoxFit.cover,
+                                          child: Visibility(
+                                            visible: _model.screenshot1 ==
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                _model.screenshot1,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -706,7 +711,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (_model.screenshot1 != '0')
+                                  if (_model.screenshot1 !=
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -715,7 +721,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                           await deleteSupabaseFileFromPublicUrl(
                                               _model.screenshot1);
                                           setState(() {
-                                            _model.screenshot1 = '0';
+                                            _model.screenshot1 =
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
                                           });
                                         },
                                         text: 'Удалить',
@@ -791,15 +798,20 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              _model.screenshot2,
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              fit: BoxFit.cover,
+                                          child: Visibility(
+                                            visible: _model.screenshot2 ==
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                _model.screenshot2,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -914,7 +926,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (_model.screenshot2 != '0')
+                                  if (_model.screenshot2 !=
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -923,7 +936,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                           await deleteSupabaseFileFromPublicUrl(
                                               _model.screenshot2);
                                           setState(() {
-                                            _model.screenshot2 = '0';
+                                            _model.screenshot2 =
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
                                           });
                                         },
                                         text: 'Удалить',
@@ -999,15 +1013,20 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              _model.screenshot3,
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              fit: BoxFit.cover,
+                                          child: Visibility(
+                                            visible: _model.screenshot3 ==
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                _model.screenshot3,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1122,7 +1141,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (_model.screenshot3 != '0')
+                                  if (_model.screenshot3 !=
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -1131,7 +1151,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                           await deleteSupabaseFileFromPublicUrl(
                                               _model.screenshot3);
                                           setState(() {
-                                            _model.screenshot3 = '0';
+                                            _model.screenshot3 =
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
                                           });
                                         },
                                         text: 'Удалить',
@@ -1207,15 +1228,20 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              _model.screenshot4,
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              fit: BoxFit.cover,
+                                          child: Visibility(
+                                            visible: _model.screenshot4 ==
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                _model.screenshot4,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1330,7 +1356,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (_model.screenshot4 != '0')
+                                  if (_model.screenshot4 !=
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -1339,7 +1366,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                           await deleteSupabaseFileFromPublicUrl(
                                               _model.screenshot4);
                                           setState(() {
-                                            _model.screenshot4 = '0';
+                                            _model.screenshot4 =
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
                                           });
                                         },
                                         text: 'Удалить',
@@ -1415,15 +1443,20 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: Image.network(
-                                              _model.screenshot5,
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              fit: BoxFit.cover,
+                                          child: Visibility(
+                                            visible: _model.screenshot5 ==
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png',
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                _model.screenshot5,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1538,7 +1571,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (_model.screenshot5 != '0')
+                                  if (_model.screenshot5 !=
+                                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png')
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 10.0),
@@ -1547,7 +1581,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                           await deleteSupabaseFileFromPublicUrl(
                                               _model.screenshot5);
                                           setState(() {
-                                            _model.screenshot5 = '0';
+                                            _model.screenshot5 =
+                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/com.panzerdog.tacticool-featured.png';
                                           });
                                         },
                                         text: 'Удалить',
