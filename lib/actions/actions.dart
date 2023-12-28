@@ -631,11 +631,11 @@ Future authplayerloader(BuildContext context) async {
   );
   if ((jsonAUTRHPLAYER?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().updateMAINDATAStruct(
-        (e) => e
-          ..authplayer =
-              PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
-      );
+      FFAppState().AUTHPLAYER = ((jsonAUTRHPLAYER?.jsonBody ?? '')
+              .toList()
+              .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+              .toList() as Iterable<PlayerStruct?>)
+          .withoutNulls[0];
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
