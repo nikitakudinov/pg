@@ -1741,6 +1741,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                   .toList()?[0])
                               ?.matchId,
                         });
+                        Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -1754,11 +1755,6 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                                 FlutterFlowTheme.of(context).secondary,
                           ),
                         );
-                        setState(() {
-                          FFAppState().updateMAINDATAStruct(
-                            (e) => e..matches = [],
-                          );
-                        });
 
                         setState(() {});
                       },
