@@ -81,51 +81,57 @@ class _TestWidgetState extends State<TestWidget> {
           top: true,
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  FFAppState().COUNTERS.teamslastupdatetime,
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
-                Text(
-                  FFAppState().COUNTERS.updatedteams.toString(),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
-                Builder(
-                  builder: (context) {
-                    final teamsList =
-                        FFAppState().MAINDATA.teams.toList().take(50).toList();
-                    return ListView.separated(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: teamsList.length,
-                      separatorBuilder: (_, __) => SizedBox(height: 5.0),
-                      itemBuilder: (context, teamsListIndex) {
-                        final teamsListItem = teamsList[teamsListIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 15.0, 0.0),
-                          child: VlistITEMWidget(
-                            key: Key(
-                                'Keyn1m_${teamsListIndex}_of_${teamsList.length}'),
-                            imageSize: 50,
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                            title: teamsListItem.teamTag,
-                            subtitle: teamsListItem.teamName,
-                            country: teamsListItem.teamCountry,
-                            flag: teamsListItem.teamFlag,
-                            image: teamsListItem.teamLogo,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    FFAppState().COUNTERS.teamslastupdatetime,
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                  Text(
+                    FFAppState().COUNTERS.updatedteams.toString(),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                  Builder(
+                    builder: (context) {
+                      final teamsList = FFAppState()
+                          .MAINDATA
+                          .teams
+                          .toList()
+                          .take(50)
+                          .toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: teamsList.length,
+                        itemBuilder: (context, teamsListIndex) {
+                          final teamsListItem = teamsList[teamsListIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 0.0),
+                            child: VlistITEMWidget(
+                              key: Key(
+                                  'Keyn1m_${teamsListIndex}_of_${teamsList.length}'),
+                              imageSize: 50,
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                              title: teamsListItem.teamTag,
+                              subtitle: teamsListItem.teamName,
+                              country: teamsListItem.teamCountry,
+                              flag: teamsListItem.teamFlag,
+                              image: teamsListItem.teamLogo,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
