@@ -181,17 +181,6 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
-                              Text(
-                                valueOrDefault<String>(
-                                  FFAppState()
-                                      .MAINDATA
-                                      .authPlayer
-                                      .playerTeamRole
-                                      .first,
-                                  '0',
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
