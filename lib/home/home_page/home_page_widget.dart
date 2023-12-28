@@ -109,19 +109,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              await action_blocks.teamsloader(context);
-            },
-            child: Icon(
-              Icons.settings_outlined,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
-            ),
+          leading: Icon(
+            Icons.settings_outlined,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 24.0,
           ),
           title: Text(
             FFAppState().COUNTERS.teams.toString(),

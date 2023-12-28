@@ -11,10 +11,12 @@ class CountersStruct extends BaseStruct {
     int? messages,
     int? teams,
     int? updatedteams,
+    String? teamslastupdatetime,
   })  : _notifications = notifications,
         _messages = messages,
         _teams = teams,
-        _updatedteams = updatedteams;
+        _updatedteams = updatedteams,
+        _teamslastupdatetime = teamslastupdatetime;
 
   // "NOTIFICATIONS" field.
   int? _notifications;
@@ -46,11 +48,18 @@ class CountersStruct extends BaseStruct {
       _updatedteams = updatedteams + amount;
   bool hasUpdatedteams() => _updatedteams != null;
 
+  // "TEAMSLASTUPDATETIME" field.
+  String? _teamslastupdatetime;
+  String get teamslastupdatetime => _teamslastupdatetime ?? '';
+  set teamslastupdatetime(String? val) => _teamslastupdatetime = val;
+  bool hasTeamslastupdatetime() => _teamslastupdatetime != null;
+
   static CountersStruct fromMap(Map<String, dynamic> data) => CountersStruct(
         notifications: castToType<int>(data['NOTIFICATIONS']),
         messages: castToType<int>(data['MESSAGES']),
         teams: castToType<int>(data['TEAMS']),
         updatedteams: castToType<int>(data['UPDATEDTEAMS']),
+        teamslastupdatetime: data['TEAMSLASTUPDATETIME'] as String?,
       );
 
   static CountersStruct? maybeFromMap(dynamic data) =>
@@ -61,6 +70,7 @@ class CountersStruct extends BaseStruct {
         'MESSAGES': _messages,
         'TEAMS': _teams,
         'UPDATEDTEAMS': _updatedteams,
+        'TEAMSLASTUPDATETIME': _teamslastupdatetime,
       }.withoutNulls;
 
   @override
@@ -80,6 +90,10 @@ class CountersStruct extends BaseStruct {
         'UPDATEDTEAMS': serializeParam(
           _updatedteams,
           ParamType.int,
+        ),
+        'TEAMSLASTUPDATETIME': serializeParam(
+          _teamslastupdatetime,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -105,6 +119,11 @@ class CountersStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        teamslastupdatetime: deserializeParam(
+          data['TEAMSLASTUPDATETIME'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -116,12 +135,13 @@ class CountersStruct extends BaseStruct {
         notifications == other.notifications &&
         messages == other.messages &&
         teams == other.teams &&
-        updatedteams == other.updatedteams;
+        updatedteams == other.updatedteams &&
+        teamslastupdatetime == other.teamslastupdatetime;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([notifications, messages, teams, updatedteams]);
+  int get hashCode => const ListEquality().hash(
+      [notifications, messages, teams, updatedteams, teamslastupdatetime]);
 }
 
 CountersStruct createCountersStruct({
@@ -129,10 +149,12 @@ CountersStruct createCountersStruct({
   int? messages,
   int? teams,
   int? updatedteams,
+  String? teamslastupdatetime,
 }) =>
     CountersStruct(
       notifications: notifications,
       messages: messages,
       teams: teams,
       updatedteams: updatedteams,
+      teamslastupdatetime: teamslastupdatetime,
     );

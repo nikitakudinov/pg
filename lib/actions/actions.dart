@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -622,6 +621,9 @@ Future teamsloader(BuildContext context) async {
                 .withoutNulls
                 .toList(),
         );
+        FFAppState().updateCOUNTERSStruct(
+          (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
+        );
       });
       await showDialog(
         context: context,
@@ -654,6 +656,9 @@ Future teamsloader(BuildContext context) async {
                     .toList() as Iterable<TeamStruct?>)
                 .withoutNulls
                 .toList(),
+        );
+        FFAppState().updateCOUNTERSStruct(
+          (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
         );
         await showDialog(
           context: context,
@@ -690,33 +695,23 @@ Future teamsupdater(BuildContext context) async {
   if (FFAppState().COUNTERS.updatedteams != 0) {
     while (FFAppState().COUNTERS.updatedteams == 0) {
       jsonUPDATEDTEAMS = await TeamGroup.updatedteamsCall.call(
-        time: functions.timeNsecAgo(5)?.toString(),
+        time: FFAppState().COUNTERS.teamslastupdatetime,
       );
       FFAppState().update(() {
         FFAppState().updateMAINDATAStruct(
           (e) => e
             ..updateTeams(
-              (e) => e.remove(TeamStruct(
-                teamId:
-                    TeamStruct.maybeFromMap((jsonUPDATEDTEAMS?.jsonBody ?? ''))
-                        ?.teamId,
-              )),
+              (e) => e.add(((jsonUPDATEDTEAMS?.jsonBody ?? '')
+                      .toList()
+                      .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                      .toList() as Iterable<TeamStruct?>)
+                  .withoutNulls[FFAppState().COUNTERS.updatedteams - 1]),
             ),
         );
+        FFAppState().updateCOUNTERSStruct(
+          (e) => e..incrementUpdatedteams(-1),
+        );
       });
-      FFAppState().updateMAINDATAStruct(
-        (e) => e
-          ..updateTeams(
-            (e) => e.add(((jsonUPDATEDTEAMS?.jsonBody ?? '')
-                    .toList()
-                    .map<TeamStruct?>(TeamStruct.maybeFromMap)
-                    .toList() as Iterable<TeamStruct?>)
-                .withoutNulls[FFAppState().COUNTERS.updatedteams - 1]),
-          ),
-      );
-      FFAppState().updateCOUNTERSStruct(
-        (e) => e..incrementUpdatedteams(-1),
-      );
       await showDialog(
         context: context,
         builder: (alertDialogContext) {
