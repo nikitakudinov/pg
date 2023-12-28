@@ -102,13 +102,16 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                 ),
           ),
           actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Icon(
-                FFIcons.kloader2Line,
-                color: FlutterFlowTheme.of(context).success,
-                size: 24.0,
-              ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
+            Visibility(
+              visible: FFAppState().VISIBILITY.loadingIndicator,
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                child: Icon(
+                  FFIcons.kloader2Line,
+                  color: FlutterFlowTheme.of(context).success,
+                  size: 24.0,
+                ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
+              ),
             ),
           ],
           centerTitle: false,
