@@ -711,7 +711,6 @@ Future tournamentsloader(BuildContext context) async {
 
 Future authplayerloader(BuildContext context) async {
   ApiCallResponse? jsonAUTRHPLAYER;
-  ApiCallResponse? jsonAUTRHPLAYER;
 
   if (FFAppState().MAINDATA.authPlayer == null) {
     jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
@@ -738,46 +737,6 @@ Future authplayerloader(BuildContext context) async {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
         ),
       );
-    } else {
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('Данные пользователя не получены от сервера'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
     }
-  }
-  jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
-    idList: currentUserUid,
-  );
-  if ((jsonAUTRHPLAYER?.succeeded ?? true)) {
-    FFAppState().update(() {
-      FFAppState().updateMAINDATAStruct(
-        (e) => e
-          ..authPlayer = ((jsonAUTRHPLAYER?.jsonBody ?? '')
-                  .toList()
-                  .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
-                  .toList() as Iterable<PlayerStruct?>)
-              .withoutNulls?[0],
-      );
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Данные пользователя загружены',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 1000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
