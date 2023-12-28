@@ -118,7 +118,7 @@ class _Test2WidgetState extends State<Test2Widget> {
           ),
           actions: [
             Visibility(
-              visible: FFAppState().MAINDATA.teams.length != 0,
+              visible: FFAppState().MAINDATA.teams.length == 0,
               child: wrapWithModel(
                 model: _model.loadingindicatorModel,
                 updateCallback: () => setState(() {}),
