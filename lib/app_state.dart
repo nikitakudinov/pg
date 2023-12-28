@@ -545,6 +545,16 @@ class FFAppState extends ChangeNotifier {
   void updateVISIBILITYStruct(Function(VisibilityStruct) updateFn) {
     updateFn(_VISIBILITY);
   }
+
+  PlayerStruct _AUTHPLAYER = PlayerStruct();
+  PlayerStruct get AUTHPLAYER => _AUTHPLAYER;
+  set AUTHPLAYER(PlayerStruct _value) {
+    _AUTHPLAYER = _value;
+  }
+
+  void updateAUTHPLAYERStruct(Function(PlayerStruct) updateFn) {
+    updateFn(_AUTHPLAYER);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

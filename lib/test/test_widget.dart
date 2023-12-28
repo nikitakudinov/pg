@@ -140,7 +140,7 @@ class _TestWidgetState extends State<TestWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  FFAppState().MAINDATA.authplayer.playerTag,
+                                  FFAppState().AUTHPLAYER.playerNickname,
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
