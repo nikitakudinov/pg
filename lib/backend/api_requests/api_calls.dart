@@ -937,6 +937,7 @@ class TeamGroup {
   static TeambycreatorCall teambycreatorCall = TeambycreatorCall();
   static LISTALLTEAMScountCall lISTALLTEAMScountCall = LISTALLTEAMScountCall();
   static ListallteamsCall listallteamsCall = ListallteamsCall();
+  static LISTALLTEAMSCopyCall lISTALLTEAMSCopyCall = LISTALLTEAMSCopyCall();
   static UPDATEDTEAMScountCall uPDATEDTEAMScountCall = UPDATEDTEAMScountCall();
   static UpdatedteamsCall updatedteamsCall = UpdatedteamsCall();
 }
@@ -1157,6 +1158,80 @@ class ListallteamsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LISTALLTEAMS',
+      apiUrl: '${TeamGroup.baseUrl}teams?select=*',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+      );
+  List<String>? createdat(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].created_at''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? nickname(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].nickname''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? uid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].uid''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? email(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].email''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? tag(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].tag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class LISTALLTEAMSCopyCall {
+  Future<ApiCallResponse> call({
+    String? idList = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LISTALLTEAMS Copy',
       apiUrl: '${TeamGroup.baseUrl}teams?select=*',
       callType: ApiCallType.GET,
       headers: {

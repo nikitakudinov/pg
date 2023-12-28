@@ -13,6 +13,7 @@ export 'tables/ae_search_results.dart';
 export 'tables/tournaments.dart';
 export 'tables/message.dart';
 export 'tables/players.dart';
+export 'tables/teamsandmatches.dart';
 export 'tables/tournament_members.dart';
 export 'tables/chats.dart';
 export 'tables/message_readed.dart';

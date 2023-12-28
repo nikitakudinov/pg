@@ -1,4 +1,4 @@
-import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
