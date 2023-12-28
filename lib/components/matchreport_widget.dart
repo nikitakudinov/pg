@@ -1762,7 +1762,7 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                           FFAppState().chats = [];
                         });
 
-                        context.pushNamed('HomePage');
+                        context.pushNamed('TEST');
 
                         setState(() {});
                       },
