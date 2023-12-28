@@ -45,19 +45,16 @@ class _TestWidgetState extends State<TestWidget> {
       unawaited(
         () async {
           await action_blocks.teamsloader(context);
-          setState(() {});
         }(),
       );
       unawaited(
         () async {
           await action_blocks.matchesloader(context);
-          setState(() {});
         }(),
       );
       unawaited(
         () async {
           await action_blocks.tournamentsloader(context);
-          setState(() {});
         }(),
       );
       await action_blocks.authplayerloader(context);
