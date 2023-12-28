@@ -137,6 +137,10 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                     FFAppState().MAINDATA.matches.length.toString(),
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
+                  Text(
+                    FFAppState().MAINDATA.tournaments.length.toString(),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
                   ListView(
                     padding: EdgeInsets.zero,
                     primary: false,
