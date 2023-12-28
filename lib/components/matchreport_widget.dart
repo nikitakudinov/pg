@@ -1762,7 +1762,15 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                           FFAppState().chats = [];
                         });
 
-                        context.pushNamed('TEST');
+                        context.pushNamed(
+                          'TEST2',
+                          queryParameters: {
+                            'tournamentId': serializeParam(
+                              widget.tournamentId,
+                              ParamType.int,
+                            ),
+                          }.withoutNulls,
+                        );
 
                         setState(() {});
                       },
