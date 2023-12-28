@@ -195,7 +195,7 @@ class _TestWidgetState extends State<TestWidget> {
                                             .toList()
                                             .first,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .labelMedium,
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -311,6 +311,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                 .tournamentTag,
                                             subtitle: tournamentsListItem
                                                 .tournamentName,
+                                            country: tournamentsListItem
+                                                .tournamentCountry,
                                             image: tournamentsListItem
                                                 .tournamentLogo,
                                           ),
