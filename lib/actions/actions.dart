@@ -626,10 +626,11 @@ Future tournamentsloader(BuildContext context) async {
 Future authplayerloader(BuildContext context) async {
   ApiCallResponse? jsonAUTRHPLAYER;
 
-  jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
-    idList: currentUserUid,
-  );
-  if ((jsonAUTRHPLAYER?.succeeded ?? true)) {
+  if (!(FFAppState().AUTHPLAYER.playerNickname != null &&
+      FFAppState().AUTHPLAYER.playerNickname != '')) {
+    jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
+      idList: currentUserUid,
+    );
     FFAppState().update(() {
       FFAppState().AUTHPLAYER = ((jsonAUTRHPLAYER?.jsonBody ?? '')
               .toList()
