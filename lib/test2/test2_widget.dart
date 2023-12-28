@@ -492,7 +492,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                 ),
                 if (FFAppState().MAINDATA.notifications.length != 0)
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding: EdgeInsets.all(15.0),
                       child: Builder(
