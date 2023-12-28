@@ -157,7 +157,7 @@ class _TestWidgetState extends State<TestWidget> {
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                         child: Image.network(
-                                          'https://picsum.photos/seed/811/600',
+                                          FFAppState().AUTHPLAYER.playerAvatar,
                                           width: 80.0,
                                           height: 80.0,
                                           fit: BoxFit.cover,
@@ -188,7 +188,12 @@ class _TestWidgetState extends State<TestWidget> {
                                         ].divide(SizedBox(width: 5.0)),
                                       ),
                                       Text(
-                                        'Hello World',
+                                        FFAppState()
+                                            .AUTHPLAYER
+                                            .playerTeamRole
+                                            .take(5)
+                                            .toList()
+                                            .first,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -211,7 +216,9 @@ class _TestWidgetState extends State<TestWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/728/600',
+                                                  FFAppState()
+                                                      .AUTHPLAYER
+                                                      .playerFlag,
                                                   width: 20.0,
                                                   height: 12.0,
                                                   fit: BoxFit.cover,
@@ -220,7 +227,9 @@ class _TestWidgetState extends State<TestWidget> {
                                             ),
                                           ),
                                           Text(
-                                            'Hello World',
+                                            FFAppState()
+                                                .AUTHPLAYER
+                                                .playerCountrie,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
