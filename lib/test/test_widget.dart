@@ -169,7 +169,7 @@ class _TestWidgetState extends State<TestWidget> {
                                           child: Image.network(
                                             FFAppState()
                                                 .MAINDATA
-                                                .authplayer
+                                                .authPlayer
                                                 .playerAvatar,
                                             width: 80.0,
                                             height: 80.0,
@@ -187,7 +187,7 @@ class _TestWidgetState extends State<TestWidget> {
                                           FFAppState()
                                               .MAINDATA
                                               .authPlayer
-                                              .playerNickname,
+                                              .playerTag,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
@@ -210,7 +210,10 @@ class _TestWidgetState extends State<TestWidget> {
                                                       BorderRadius.circular(
                                                           0.0),
                                                   child: Image.network(
-                                                    'https://picsum.photos/seed/728/600',
+                                                    FFAppState()
+                                                        .MAINDATA
+                                                        .authPlayer
+                                                        .playerFlag,
                                                     width: 20.0,
                                                     height: 12.0,
                                                     fit: BoxFit.cover,
@@ -219,7 +222,10 @@ class _TestWidgetState extends State<TestWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Hello World',
+                                              FFAppState()
+                                                  .MAINDATA
+                                                  .authPlayer
+                                                  .playerCountrie,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,

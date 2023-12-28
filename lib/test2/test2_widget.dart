@@ -2,7 +2,6 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/grid_round/grid_round_widget.dart';
-import '/components/loadingindicator_widget.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
@@ -116,16 +115,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [
-            Visibility(
-              visible: FFAppState().MAINDATA.teams.length == 0,
-              child: wrapWithModel(
-                model: _model.loadingindicatorModel,
-                updateCallback: () => setState(() {}),
-                child: LoadingindicatorWidget(),
-              ),
-            ),
-          ],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),

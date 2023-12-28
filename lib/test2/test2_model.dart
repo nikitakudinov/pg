@@ -2,7 +2,6 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/grid_round/grid_round_widget.dart';
-import '/components/loadingindicator_widget.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
@@ -42,8 +41,6 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   late GridRoundModel gridRoundModel8;
   // Model for GRID-ROUND component.
   late GridRoundModel gridRoundModel9;
-  // Model for LOADINGINDICATOR component.
-  late LoadingindicatorModel loadingindicatorModel;
 
   /// Initialization and disposal methods.
 
@@ -58,7 +55,6 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
     gridRoundModel7 = createModel(context, () => GridRoundModel());
     gridRoundModel8 = createModel(context, () => GridRoundModel());
     gridRoundModel9 = createModel(context, () => GridRoundModel());
-    loadingindicatorModel = createModel(context, () => LoadingindicatorModel());
   }
 
   void dispose() {
@@ -73,7 +69,6 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
     gridRoundModel7.dispose();
     gridRoundModel8.dispose();
     gridRoundModel9.dispose();
-    loadingindicatorModel.dispose();
   }
 
   /// Action blocks are added here.
