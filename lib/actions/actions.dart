@@ -683,7 +683,9 @@ Future teamsupdater(BuildContext context) async {
   ApiCallResponse? jsonUPDATERDTEAMScount;
   ApiCallResponse? jsonUPDATEDTEAMS;
 
-  jsonUPDATERDTEAMScount = await TeamGroup.uPDATEDTEAMScountCall.call();
+  jsonUPDATERDTEAMScount = await TeamGroup.uPDATEDTEAMScountCall.call(
+    time: FFAppState().COUNTERS.teamslastupdatetime,
+  );
   FFAppState().update(() {
     FFAppState().updateCOUNTERSStruct(
       (e) => e
