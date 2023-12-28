@@ -128,7 +128,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  if (FFAppState().alertsCount != 0)
+                  if (FFAppState().COUNTERS.notifications != 0)
                     Padding(
                       padding: EdgeInsets.all(15.0),
                       child: Builder(
