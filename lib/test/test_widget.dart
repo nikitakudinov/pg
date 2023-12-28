@@ -53,7 +53,7 @@ class _TestWidgetState extends State<TestWidget> {
         (e) => e..loadingIndicator = false,
       );
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
+        duration: Duration(milliseconds: 2000),
         callback: (timer) async {
           await action_blocks.notificationsupdater(context);
         },
