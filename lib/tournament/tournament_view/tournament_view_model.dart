@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
-import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -24,8 +23,6 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   ApiCallResponse? jsonTOURNAMENTMATCHESdata;
   // Stores action output result for [Custom Action - dtMATCH] action in TOURNAMENT_VIEW widget.
   List<MatchStruct>? dtTOURNAMENTMATCHESdata;
-  // Model for tournamentInfoTabs component.
-  late TournamentInfoTabsModel tournamentInfoTabsModel;
   // State field(s) for Expandable widget.
   late ExpandableController expandableController1;
 
@@ -64,8 +61,6 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    tournamentInfoTabsModel =
-        createModel(context, () => TournamentInfoTabsModel());
     tOURNAMENTgridROUNDModel1 =
         createModel(context, () => TOURNAMENTgridROUNDModel());
     tOURNAMENTgridROUNDModel2 =
@@ -88,7 +83,6 @@ class TournamentViewModel extends FlutterFlowModel<TournamentViewWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    tournamentInfoTabsModel.dispose();
     expandableController1.dispose();
     expandableController2.dispose();
     expandableController3.dispose();

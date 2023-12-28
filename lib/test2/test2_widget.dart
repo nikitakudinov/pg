@@ -202,6 +202,12 @@ class _Test2WidgetState extends State<Test2Widget> {
                           updateCallback: () => setState(() {}),
                           child: TournamentInfoTabsWidget(
                             tournamentID: widget.tournamentId,
+                            tournamentData: FFAppState()
+                                .MAINDATA
+                                .tournaments
+                                .where((e) =>
+                                    e.tournamentId == widget.tournamentId)
+                                .toList()[0],
                           ),
                         ),
                         Row(

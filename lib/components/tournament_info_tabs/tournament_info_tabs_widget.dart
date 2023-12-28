@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,10 +15,12 @@ class TournamentInfoTabsWidget extends StatefulWidget {
   const TournamentInfoTabsWidget({
     Key? key,
     int? tournamentID,
+    required this.tournamentData,
   })  : this.tournamentID = tournamentID ?? 0,
         super(key: key);
 
   final int tournamentID;
+  final TournamentStruct? tournamentData;
 
   @override
   _TournamentInfoTabsWidgetState createState() =>
@@ -284,52 +287,52 @@ class _TournamentInfoTabsWidgetState extends State<TournamentInfoTabsWidget>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentGametype}',
+                                '${widget.tournamentData?.tournamentGametype}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                               Text(
-                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentRoundsInMatch.toString()}',
+                                '${widget.tournamentData?.tournamentRoundsInMatch?.toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                               Text(
-                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentRoundsInMatch.toString()}',
+                                '${widget.tournamentData?.tournamentTeamsCount?.toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                               Text(
-                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentStartDate} - ${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentEndDate}',
+                                '${widget.tournamentData?.tournamentStartDate} - ${widget.tournamentData?.tournamentEndDate}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                               Text(
-                                '${FFAppState().tournaments.where((e) => e.tournamentId == widget.tournamentID).toList()[0].tournamentStatus}',
+                                '${widget.tournamentData?.tournamentStatus}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Cabin Condensed',
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
