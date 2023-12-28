@@ -229,17 +229,10 @@ Future notificationsUpdater(BuildContext context) async {
   apiResultc64 = await MessagingGroup.gETNOTIFICATIONScountCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
-  if (FFAppState().COUNTERS.notifications ==
+  if (FFAppState().MAINDATA.notifications.length !=
       MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
       )) {
-    FFAppState().updateCOUNTERSStruct(
-      (e) => e
-        ..notifications = MessagingGroup.gETNOTIFICATIONScountCall.count(
-          (apiResultc64?.jsonBody ?? ''),
-        ),
-    );
-  } else {
     jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
       authUser: currentUserUid,
     );
