@@ -264,6 +264,14 @@ class _TestWidgetState extends State<TestWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
+                                        Text(
+                                          FFAppState()
+                                              .MAINDATA
+                                              .authplayer[0]
+                                              .playerNickname,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Column(
