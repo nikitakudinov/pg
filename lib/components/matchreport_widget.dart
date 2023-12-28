@@ -66,103 +66,106 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: FlutterFlowDropDown<String>(
-                          controller: _model.raundValueController ??=
-                              FormFieldController<String>(null),
-                          options: ['1', '2', '3', '4', '5'],
-                          onChanged: (val) =>
-                              setState(() => _model.raundValue = val),
-                          height: 40.0,
-                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
-                          hintText: 'РАУНД',
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: FlutterFlowDropDown<String>(
+                            controller: _model.raundValueController ??=
+                                FormFieldController<String>(null),
+                            options: ['1', '2', '3', '4', '5'],
+                            onChanged: (val) =>
+                                setState(() => _model.raundValue = val),
+                            height: 40.0,
+                            textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintText: 'РАУНД',
+                            icon: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 2.0,
+                            borderColor: FlutterFlowTheme.of(context).tertiary,
+                            borderWidth: 1.0,
+                            borderRadius: 8.0,
+                            margin: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 4.0, 16.0, 4.0),
+                            hidesUnderline: true,
+                            isOverButton: true,
+                            isSearchable: false,
+                            isMultiSelect: false,
                           ),
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 2.0,
-                          borderColor: FlutterFlowTheme.of(context).tertiary,
-                          borderWidth: 1.0,
-                          borderRadius: 8.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 4.0, 16.0, 4.0),
-                          hidesUnderline: true,
-                          isOverButton: true,
-                          isSearchable: false,
-                          isMultiSelect: false,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: FlutterFlowDropDown<String>(
-                          controller: _model.pairValueController ??=
-                              FormFieldController<String>(null),
-                          options: () {
-                            if (_model.raundValue == '1') {
-                              return FFAppConstants.List16;
-                            } else if (_model.raundValue == '2') {
-                              return FFAppConstants.List8;
-                            } else if (_model.raundValue == '3') {
-                              return FFAppConstants.List4;
-                            } else if (_model.raundValue == '4') {
-                              return FFAppConstants.List2;
-                            } else {
-                              return FFAppConstants.List1;
-                            }
-                          }(),
-                          onChanged: (val) =>
-                              setState(() => _model.pairValue = val),
-                          height: 40.0,
-                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
-                          hintText: 'ПАРА',
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: FlutterFlowDropDown<String>(
+                            controller: _model.pairValueController ??=
+                                FormFieldController<String>(null),
+                            options: () {
+                              if (_model.raundValue == '1') {
+                                return FFAppConstants.List16;
+                              } else if (_model.raundValue == '2') {
+                                return FFAppConstants.List8;
+                              } else if (_model.raundValue == '3') {
+                                return FFAppConstants.List4;
+                              } else if (_model.raundValue == '4') {
+                                return FFAppConstants.List2;
+                              } else {
+                                return FFAppConstants.List1;
+                              }
+                            }(),
+                            onChanged: (val) =>
+                                setState(() => _model.pairValue = val),
+                            height: 40.0,
+                            textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintText: 'ПАРА',
+                            icon: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 2.0,
+                            borderColor: FlutterFlowTheme.of(context).tertiary,
+                            borderWidth: 1.0,
+                            borderRadius: 8.0,
+                            margin: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 4.0, 16.0, 4.0),
+                            hidesUnderline: true,
+                            isOverButton: true,
+                            isSearchable: false,
+                            isMultiSelect: false,
                           ),
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 2.0,
-                          borderColor: FlutterFlowTheme.of(context).tertiary,
-                          borderWidth: 1.0,
-                          borderRadius: 8.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 4.0, 16.0, 4.0),
-                          hidesUnderline: true,
-                          isOverButton: true,
-                          isSearchable: false,
-                          isMultiSelect: false,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ]
-                  .divide(SizedBox(width: 10.0))
-                  .addToStart(SizedBox(width: 15.0))
-                  .addToEnd(SizedBox(width: 15.0)),
+                ]
+                    .divide(SizedBox(width: 10.0))
+                    .addToStart(SizedBox(width: 15.0))
+                    .addToEnd(SizedBox(width: 15.0)),
+              ),
             ),
           ),
           if ((_model.raundValue != null && _model.raundValue != '') &&
