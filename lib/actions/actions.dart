@@ -533,16 +533,6 @@ Future teamsloader(BuildContext context) async {
         (e) => e..teamslastupdatetime = getCurrentTimestamp.toString(),
       );
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Команды заружены',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 500),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 
@@ -578,16 +568,6 @@ Future matchesloader(BuildContext context) async {
               .toList(),
       );
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Матчи заружены',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 500),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 
@@ -610,16 +590,6 @@ Future tournamentsloader(BuildContext context) async {
               .toList(),
       );
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Турниры загружены',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 1000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 
@@ -638,15 +608,5 @@ Future authplayerloader(BuildContext context) async {
               .toList() as Iterable<PlayerStruct?>)
           .withoutNulls[0];
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Данные пользователя загружены',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 1000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
