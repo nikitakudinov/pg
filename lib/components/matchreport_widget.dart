@@ -1534,8 +1534,8 @@ class _MatchreportWidgetState extends State<MatchreportWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      Navigator.pop(context);
                     },
                     text: 'ОТМЕНА',
                     options: FFButtonOptions(
