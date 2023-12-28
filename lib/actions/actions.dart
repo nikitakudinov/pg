@@ -210,48 +210,7 @@ Future upadateAuthUserDataValues(BuildContext context) async {
   }
 }
 
-Future loadAuthUserNotifications(BuildContext context) async {
-  ApiCallResponse? apiResultfyh;
-  List<NotificationStruct>? notificationsData;
-
-  apiResultfyh = await MessagingGroup.gETuserNotificationsCall.call(
-    authUser: FFAppState().authPlayer.playerUid,
-  );
-  if ((apiResultfyh?.succeeded ?? true)) {
-    notificationsData = await actions.dtNOTIFICATION(
-      (apiResultfyh?.jsonBody ?? ''),
-    );
-    FFAppState().update(() {
-      FFAppState().notofications =
-          notificationsData!.toList().cast<NotificationStruct>();
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Notifications Updated',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 1000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
-  } else {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('Api call dont works!'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
+Future loadAuthUserNotifications(BuildContext context) async {}
 
 Future preloadDataOfHomePage(BuildContext context) async {
   await action_blocks.authPlayerUpdater(context);
@@ -265,20 +224,31 @@ Future sandMessageFromUserToTeamAdmins(BuildContext context) async {}
 
 Future notificationsUpdater(BuildContext context) async {
   ApiCallResponse? apiResultc64;
+  ApiCallResponse? jsonNOTIFICATIONS;
 
   apiResultc64 = await MessagingGroup.gETNOTIFICATIONScountCall.call(
     authUser: FFAppState().authPlayer.playerUid,
   );
-  if (FFAppState().alertsCount !=
+  if (FFAppState().COUNTERS.notifications !=
       MessagingGroup.gETNOTIFICATIONScountCall.count(
         (apiResultc64?.jsonBody ?? ''),
       )) {
-    FFAppState().update(() {
-      FFAppState().alertsCount = MessagingGroup.gETNOTIFICATIONScountCall.count(
-        (apiResultc64?.jsonBody ?? ''),
-      )!;
-    });
-    await action_blocks.loadAuthUserNotifications(context);
+    jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
+      authUser: currentUserUid,
+    );
+    if ((jsonNOTIFICATIONS?.succeeded ?? true)) {
+      FFAppState().update(() {
+        FFAppState().updateMAINDATAStruct(
+          (e) => e
+            ..notifications = ((jsonNOTIFICATIONS?.jsonBody ?? '')
+                    .toList()
+                    .map<NotificationStruct?>(NotificationStruct.maybeFromMap)
+                    .toList() as Iterable<NotificationStruct?>)
+                .withoutNulls
+                .toList(),
+        );
+      });
+    }
   }
 }
 
