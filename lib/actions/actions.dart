@@ -654,3 +654,22 @@ Future teamsupdater(BuildContext context) async {
     );
   });
 }
+
+Future matchesloader(BuildContext context) async {
+  ApiCallResponse? jsonMATCHES;
+
+  jsonMATCHES = await MatchGroup.matchesCall.call();
+  if ((jsonMATCHES?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..matches = ((jsonMATCHES?.jsonBody ?? '')
+                  .toList()
+                  .map<MatchStruct?>(MatchStruct.maybeFromMap)
+                  .toList() as Iterable<MatchStruct?>)
+              .withoutNulls
+              .toList(),
+      );
+    });
+  }
+}

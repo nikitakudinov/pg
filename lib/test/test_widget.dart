@@ -1,5 +1,3 @@
-import '/backend/supabase/supabase.dart';
-import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -87,64 +85,19 @@ class _TestWidgetState extends State<TestWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    FFAppState().COUNTERS.teamslastupdatetime,
+                    FFAppState().MAINDATA.teams.length.toString(),
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                   Text(
-                    FFAppState().COUNTERS.updatedteams.toString(),
+                    FFAppState().MAINDATA.matches.length.toString(),
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
-                  FutureBuilder<List<TeamsandmatchesRow>>(
-                    future: TeamsandmatchesTable().queryRows(
-                      queryFn: (q) => q,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      List<TeamsandmatchesRow> listViewTeamsandmatchesRowList =
-                          snapshot.data!;
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        primary: false,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewTeamsandmatchesRowList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewTeamsandmatchesRow =
-                              listViewTeamsandmatchesRowList[listViewIndex];
-                          return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: VlistITEMWidget(
-                              key: Key(
-                                  'Keyn1m_${listViewIndex}_of_${listViewTeamsandmatchesRowList.length}'),
-                              imageSize: 50,
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).secondary,
-                              title: listViewTeamsandmatchesRow.teamName,
-                              subtitle: listViewTeamsandmatchesRow.teamTag,
-                              country: listViewTeamsandmatchesRow
-                                  .teamMatchesCount
-                                  ?.toString(),
-                              flag: listViewTeamsandmatchesRow.teamLogo,
-                              image: listViewTeamsandmatchesRow.teamLogo,
-                            ),
-                          );
-                        },
-                      );
-                    },
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    primary: false,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [],
                   ),
                 ],
               ),
