@@ -58,6 +58,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
       await action_blocks.matchesloader(context);
       await action_blocks.tournamentsloader(context);
       setState(() {});
+      await action_blocks.authplayerloader(context);
       setState(() {
         FFAppState().updateVISIBILITYStruct(
           (e) => e..loadingIndicator = false,
@@ -122,34 +123,114 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
         ),
         body: SafeArea(
           top: true,
-          child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    FFAppState().MAINDATA.teams.length.toString(),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.circular(5.0),
                   ),
-                  Text(
-                    FFAppState().MAINDATA.matches.length.toString(),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 15.0, 0.0),
+                          child: Container(
+                            width: 80.0,
+                            height: 80.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5.0),
+                              child: Image.network(
+                                FFAppState().MAINDATA.authPlayer.playerAvatar,
+                                width: 80.0,
+                                height: 80.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              FFAppState().MAINDATA.authPlayer.playerNickname,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Text(
+                              FFAppState()
+                                  .MAINDATA
+                                  .authPlayer
+                                  .playerTeamRole
+                                  .first,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 5.0, 0.0),
+                                  child: Container(
+                                    width: 20.0,
+                                    height: 12.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.network(
+                                        FFAppState()
+                                            .MAINDATA
+                                            .authPlayer
+                                            .playerFlag,
+                                        width: 20.0,
+                                        height: 12.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  FFAppState()
+                                      .MAINDATA
+                                      .authPlayer
+                                      .playerCountrie,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(
-                    FFAppState().MAINDATA.tournaments.length.toString(),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                  ),
-                  ListView(
-                    padding: EdgeInsets.zero,
-                    primary: false,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [],
-                  ),
-                ],
-              ),
+                ),
+                Text(
+                  FFAppState().MAINDATA.teams.length.toString(),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+                Text(
+                  FFAppState().MAINDATA.matches.length.toString(),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+                Text(
+                  FFAppState().MAINDATA.tournaments.length.toString(),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+              ],
             ),
           ),
         ),

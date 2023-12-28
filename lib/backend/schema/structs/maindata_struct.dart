@@ -15,6 +15,7 @@ class MaindataStruct extends BaseStruct {
     List<ChatStruct>? chats,
     List<TournamentStruct>? tournaments,
     List<CountrieStruct>? countries,
+    PlayerStruct? authPlayer,
   })  : _players = players,
         _teams = teams,
         _authplayer = authplayer,
@@ -22,7 +23,8 @@ class MaindataStruct extends BaseStruct {
         _notifications = notifications,
         _chats = chats,
         _tournaments = tournaments,
-        _countries = countries;
+        _countries = countries,
+        _authPlayer = authPlayer;
 
   // "PLAYERS" field.
   List<PlayerStruct>? _players;
@@ -88,6 +90,14 @@ class MaindataStruct extends BaseStruct {
       updateFn(_countries ??= []);
   bool hasCountries() => _countries != null;
 
+  // "AUTH-PLAYER" field.
+  PlayerStruct? _authPlayer;
+  PlayerStruct get authPlayer => _authPlayer ?? PlayerStruct();
+  set authPlayer(PlayerStruct? val) => _authPlayer = val;
+  void updateAuthPlayer(Function(PlayerStruct) updateFn) =>
+      updateFn(_authPlayer ??= PlayerStruct());
+  bool hasAuthPlayer() => _authPlayer != null;
+
   static MaindataStruct fromMap(Map<String, dynamic> data) => MaindataStruct(
         players: getStructList(
           data['PLAYERS'],
@@ -118,6 +128,7 @@ class MaindataStruct extends BaseStruct {
           data['COUNTRIES'],
           CountrieStruct.fromMap,
         ),
+        authPlayer: PlayerStruct.maybeFromMap(data['AUTH-PLAYER']),
       );
 
   static MaindataStruct? maybeFromMap(dynamic data) =>
@@ -132,6 +143,7 @@ class MaindataStruct extends BaseStruct {
         'CHATS': _chats?.map((e) => e.toMap()).toList(),
         'TOURNAMENTS': _tournaments?.map((e) => e.toMap()).toList(),
         'COUNTRIES': _countries?.map((e) => e.toMap()).toList(),
+        'AUTH-PLAYER': _authPlayer?.toMap(),
       }.withoutNulls;
 
   @override
@@ -174,6 +186,10 @@ class MaindataStruct extends BaseStruct {
           _countries,
           ParamType.DataStruct,
           true,
+        ),
+        'AUTH-PLAYER': serializeParam(
+          _authPlayer,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -227,6 +243,12 @@ class MaindataStruct extends BaseStruct {
           true,
           structBuilder: CountrieStruct.fromSerializableMap,
         ),
+        authPlayer: deserializeStructParam(
+          data['AUTH-PLAYER'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: PlayerStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -243,7 +265,8 @@ class MaindataStruct extends BaseStruct {
         listEquality.equals(notifications, other.notifications) &&
         listEquality.equals(chats, other.chats) &&
         listEquality.equals(tournaments, other.tournaments) &&
-        listEquality.equals(countries, other.countries);
+        listEquality.equals(countries, other.countries) &&
+        authPlayer == other.authPlayer;
   }
 
   @override
@@ -255,13 +278,16 @@ class MaindataStruct extends BaseStruct {
         notifications,
         chats,
         tournaments,
-        countries
+        countries,
+        authPlayer
       ]);
 }
 
 MaindataStruct createMaindataStruct({
   PlayerStruct? authplayer,
+  PlayerStruct? authPlayer,
 }) =>
     MaindataStruct(
       authplayer: authplayer ?? PlayerStruct(),
+      authPlayer: authPlayer ?? PlayerStruct(),
     );
