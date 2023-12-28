@@ -61,9 +61,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
       await action_blocks.teamsloader(context);
       await action_blocks.matchesloader(context);
       await action_blocks.tournamentsloader(context);
-      setState(() {});
       await action_blocks.authplayerloader(context);
-      setState(() {});
       setState(() {
         FFAppState().updateVISIBILITYStruct(
           (e) => e..loadingIndicator = false,
@@ -73,6 +71,7 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           await action_blocks.notificationsupdater(context);
+          setState(() {});
         },
         startImmediately: true,
       );
@@ -827,12 +826,13 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                                   );
                                                   setState(() {
                                                     FFAppState()
-                                                        .removeAtIndexFromNotofications(
-                                                            notificationsListIndex);
-                                                    FFAppState().alertsCount =
-                                                        FFAppState()
-                                                                .alertsCount +
-                                                            -1;
+                                                        .updateMAINDATAStruct(
+                                                      (e) => e
+                                                        ..updateNotifications(
+                                                          (e) => e.removeAt(
+                                                              notificationsListIndex),
+                                                        ),
+                                                    );
                                                   });
                                                 },
                                                 text: 'Ясно',
@@ -2729,12 +2729,13 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
                                                     );
                                                     setState(() {
                                                       FFAppState()
-                                                          .removeAtIndexFromNotofications(
-                                                              notificationsListIndex);
-                                                      FFAppState().alertsCount =
-                                                          FFAppState()
-                                                                  .alertsCount +
-                                                              -1;
+                                                          .updateMAINDATAStruct(
+                                                        (e) => e
+                                                          ..updateNotifications(
+                                                            (e) => e.removeAt(
+                                                                notificationsListIndex),
+                                                          ),
+                                                      );
                                                     });
                                                   },
                                                   text: 'Матч зачтен',
