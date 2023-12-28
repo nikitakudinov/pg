@@ -59,9 +59,13 @@ class _TestWidgetState extends State<TestWidget> with TickerProviderStateMixin {
         );
       });
       await action_blocks.teamsloader(context);
+      setState(() {});
       await action_blocks.matchesloader(context);
+      setState(() {});
       await action_blocks.tournamentsloader(context);
+      setState(() {});
       await action_blocks.authplayerloader(context);
+      setState(() {});
       setState(() {
         FFAppState().updateVISIBILITYStruct(
           (e) => e..loadingIndicator = false,
