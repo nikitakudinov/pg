@@ -483,7 +483,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                               'player_uid': currentUserUid,
                             });
 
-                            context.goNamedAuth('HomePage', context.mounted);
+                            context.goNamedAuth('TEST', context.mounted);
                           },
                           text: 'Регистрация',
                           options: FFButtonOptions(
