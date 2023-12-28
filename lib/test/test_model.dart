@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/loadingindicator_widget.dart';
+import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -22,18 +23,22 @@ class TestModel extends FlutterFlowModel<TestWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
+  // Model for ratingTeamsTabs component.
+  late RatingTeamsTabsModel ratingTeamsTabsModel;
   // Model for LOADINGINDICATOR component.
   late LoadingindicatorModel loadingindicatorModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    ratingTeamsTabsModel = createModel(context, () => RatingTeamsTabsModel());
     loadingindicatorModel = createModel(context, () => LoadingindicatorModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
+    ratingTeamsTabsModel.dispose();
     loadingindicatorModel.dispose();
   }
 
