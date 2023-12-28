@@ -3,7 +3,9 @@ import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +34,12 @@ class _Test2WidgetState extends State<Test2Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => Test2Model());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.teamsloader(context);
+      setState(() {});
+    });
   }
 
   @override
