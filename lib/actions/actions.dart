@@ -709,11 +709,6 @@ Future teamsupdater(BuildContext context) async {
           );
         },
       );
-      FFAppState().update(() {
-        FFAppState().updateCOUNTERSStruct(
-          (e) => e..incrementUpdatedteams(-1),
-        );
-      });
     }
   }
 }
