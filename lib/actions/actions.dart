@@ -683,12 +683,12 @@ Future authplayerloader(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().updateMAINDATAStruct(
         (e) => e
-          ..updateAuthPlayer(
-            (e) => e
-              ..playerNickname =
-                  PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? ''))
-                      ?.playerNickname,
-          ),
+          ..authplayer = ((jsonAUTRHPLAYER?.jsonBody ?? '')
+                  .toList()
+                  .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+                  .toList() as Iterable<PlayerStruct?>)
+              .withoutNulls
+              .toList(),
       );
     });
     ScaffoldMessenger.of(context).showSnackBar(

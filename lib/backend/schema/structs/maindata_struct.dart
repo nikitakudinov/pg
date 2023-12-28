@@ -9,22 +9,20 @@ class MaindataStruct extends BaseStruct {
   MaindataStruct({
     List<PlayerStruct>? players,
     List<TeamStruct>? teams,
-    PlayerStruct? authplayer,
     List<MatchStruct>? matches,
     List<NotificationStruct>? notifications,
     List<ChatStruct>? chats,
     List<TournamentStruct>? tournaments,
     List<CountrieStruct>? countries,
-    PlayerStruct? authPlayer,
+    List<PlayerStruct>? authplayer,
   })  : _players = players,
         _teams = teams,
-        _authplayer = authplayer,
         _matches = matches,
         _notifications = notifications,
         _chats = chats,
         _tournaments = tournaments,
         _countries = countries,
-        _authPlayer = authPlayer;
+        _authplayer = authplayer;
 
   // "PLAYERS" field.
   List<PlayerStruct>? _players;
@@ -41,14 +39,6 @@ class MaindataStruct extends BaseStruct {
   void updateTeams(Function(List<TeamStruct>) updateFn) =>
       updateFn(_teams ??= []);
   bool hasTeams() => _teams != null;
-
-  // "AUTHPLAYER" field.
-  PlayerStruct? _authplayer;
-  PlayerStruct get authplayer => _authplayer ?? PlayerStruct();
-  set authplayer(PlayerStruct? val) => _authplayer = val;
-  void updateAuthplayer(Function(PlayerStruct) updateFn) =>
-      updateFn(_authplayer ??= PlayerStruct());
-  bool hasAuthplayer() => _authplayer != null;
 
   // "MATCHES" field.
   List<MatchStruct>? _matches;
@@ -90,13 +80,13 @@ class MaindataStruct extends BaseStruct {
       updateFn(_countries ??= []);
   bool hasCountries() => _countries != null;
 
-  // "AUTH-PLAYER" field.
-  PlayerStruct? _authPlayer;
-  PlayerStruct get authPlayer => _authPlayer ?? PlayerStruct();
-  set authPlayer(PlayerStruct? val) => _authPlayer = val;
-  void updateAuthPlayer(Function(PlayerStruct) updateFn) =>
-      updateFn(_authPlayer ??= PlayerStruct());
-  bool hasAuthPlayer() => _authPlayer != null;
+  // "AUTHPLAYER" field.
+  List<PlayerStruct>? _authplayer;
+  List<PlayerStruct> get authplayer => _authplayer ?? const [];
+  set authplayer(List<PlayerStruct>? val) => _authplayer = val;
+  void updateAuthplayer(Function(List<PlayerStruct>) updateFn) =>
+      updateFn(_authplayer ??= []);
+  bool hasAuthplayer() => _authplayer != null;
 
   static MaindataStruct fromMap(Map<String, dynamic> data) => MaindataStruct(
         players: getStructList(
@@ -107,7 +97,6 @@ class MaindataStruct extends BaseStruct {
           data['TEAMS'],
           TeamStruct.fromMap,
         ),
-        authplayer: PlayerStruct.maybeFromMap(data['AUTHPLAYER']),
         matches: getStructList(
           data['MATCHES'],
           MatchStruct.fromMap,
@@ -128,7 +117,10 @@ class MaindataStruct extends BaseStruct {
           data['COUNTRIES'],
           CountrieStruct.fromMap,
         ),
-        authPlayer: PlayerStruct.maybeFromMap(data['AUTH-PLAYER']),
+        authplayer: getStructList(
+          data['AUTHPLAYER'],
+          PlayerStruct.fromMap,
+        ),
       );
 
   static MaindataStruct? maybeFromMap(dynamic data) =>
@@ -137,13 +129,12 @@ class MaindataStruct extends BaseStruct {
   Map<String, dynamic> toMap() => {
         'PLAYERS': _players?.map((e) => e.toMap()).toList(),
         'TEAMS': _teams?.map((e) => e.toMap()).toList(),
-        'AUTHPLAYER': _authplayer?.toMap(),
         'MATCHES': _matches?.map((e) => e.toMap()).toList(),
         'NOTIFICATIONS': _notifications?.map((e) => e.toMap()).toList(),
         'CHATS': _chats?.map((e) => e.toMap()).toList(),
         'TOURNAMENTS': _tournaments?.map((e) => e.toMap()).toList(),
         'COUNTRIES': _countries?.map((e) => e.toMap()).toList(),
-        'AUTH-PLAYER': _authPlayer?.toMap(),
+        'AUTHPLAYER': _authplayer?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -157,10 +148,6 @@ class MaindataStruct extends BaseStruct {
           _teams,
           ParamType.DataStruct,
           true,
-        ),
-        'AUTHPLAYER': serializeParam(
-          _authplayer,
-          ParamType.DataStruct,
         ),
         'MATCHES': serializeParam(
           _matches,
@@ -187,9 +174,10 @@ class MaindataStruct extends BaseStruct {
           ParamType.DataStruct,
           true,
         ),
-        'AUTH-PLAYER': serializeParam(
-          _authPlayer,
+        'AUTHPLAYER': serializeParam(
+          _authplayer,
           ParamType.DataStruct,
+          true,
         ),
       }.withoutNulls;
 
@@ -206,12 +194,6 @@ class MaindataStruct extends BaseStruct {
           ParamType.DataStruct,
           true,
           structBuilder: TeamStruct.fromSerializableMap,
-        ),
-        authplayer: deserializeStructParam(
-          data['AUTHPLAYER'],
-          ParamType.DataStruct,
-          false,
-          structBuilder: PlayerStruct.fromSerializableMap,
         ),
         matches: deserializeStructParam<MatchStruct>(
           data['MATCHES'],
@@ -243,10 +225,10 @@ class MaindataStruct extends BaseStruct {
           true,
           structBuilder: CountrieStruct.fromSerializableMap,
         ),
-        authPlayer: deserializeStructParam(
-          data['AUTH-PLAYER'],
+        authplayer: deserializeStructParam<PlayerStruct>(
+          data['AUTHPLAYER'],
           ParamType.DataStruct,
-          false,
+          true,
           structBuilder: PlayerStruct.fromSerializableMap,
         ),
       );
@@ -260,34 +242,25 @@ class MaindataStruct extends BaseStruct {
     return other is MaindataStruct &&
         listEquality.equals(players, other.players) &&
         listEquality.equals(teams, other.teams) &&
-        authplayer == other.authplayer &&
         listEquality.equals(matches, other.matches) &&
         listEquality.equals(notifications, other.notifications) &&
         listEquality.equals(chats, other.chats) &&
         listEquality.equals(tournaments, other.tournaments) &&
         listEquality.equals(countries, other.countries) &&
-        authPlayer == other.authPlayer;
+        listEquality.equals(authplayer, other.authplayer);
   }
 
   @override
   int get hashCode => const ListEquality().hash([
         players,
         teams,
-        authplayer,
         matches,
         notifications,
         chats,
         tournaments,
         countries,
-        authPlayer
+        authplayer
       ]);
 }
 
-MaindataStruct createMaindataStruct({
-  PlayerStruct? authplayer,
-  PlayerStruct? authPlayer,
-}) =>
-    MaindataStruct(
-      authplayer: authplayer ?? PlayerStruct(),
-      authPlayer: authPlayer ?? PlayerStruct(),
-    );
+MaindataStruct createMaindataStruct() => MaindataStruct();

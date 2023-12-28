@@ -144,7 +144,7 @@ class _TestWidgetState extends State<TestWidget> {
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          if (FFAppState().MAINDATA.authPlayer != null)
+                          if (FFAppState().MAINDATA.authplayer.first != null)
                             Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
@@ -172,7 +172,8 @@ class _TestWidgetState extends State<TestWidget> {
                                           child: Image.network(
                                             FFAppState()
                                                 .MAINDATA
-                                                .authPlayer
+                                                .authplayer
+                                                .first
                                                 .playerAvatar,
                                             width: 80.0,
                                             height: 80.0,
@@ -189,7 +190,8 @@ class _TestWidgetState extends State<TestWidget> {
                                         Text(
                                           FFAppState()
                                               .MAINDATA
-                                              .authPlayer
+                                              .authplayer
+                                              .first
                                               .playerNickname,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
@@ -215,7 +217,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                   child: Image.network(
                                                     FFAppState()
                                                         .MAINDATA
-                                                        .authPlayer
+                                                        .authplayer
+                                                        .first
                                                         .playerFlag,
                                                     width: 20.0,
                                                     height: 12.0,
@@ -227,7 +230,8 @@ class _TestWidgetState extends State<TestWidget> {
                                             Text(
                                               FFAppState()
                                                   .MAINDATA
-                                                  .authPlayer
+                                                  .authplayer
+                                                  .first
                                                   .playerCountrie,
                                               style:
                                                   FlutterFlowTheme.of(context)
