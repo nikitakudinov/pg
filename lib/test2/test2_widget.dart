@@ -117,10 +117,13 @@ class _Test2WidgetState extends State<Test2Widget> {
                 ),
           ),
           actions: [
-            wrapWithModel(
-              model: _model.loadingindicatorModel,
-              updateCallback: () => setState(() {}),
-              child: LoadingindicatorWidget(),
+            Visibility(
+              visible: FFAppState().MAINDATA.teams.length != 0,
+              child: wrapWithModel(
+                model: _model.loadingindicatorModel,
+                updateCallback: () => setState(() {}),
+                child: LoadingindicatorWidget(),
+              ),
             ),
           ],
           centerTitle: false,

@@ -61,16 +61,13 @@ class _LoadingindicatorWidgetState extends State<LoadingindicatorWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Visibility(
-      visible: FFAppState().VISIBILITY.loadingIndicator,
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-        child: Icon(
-          FFIcons.kloader5Fill,
-          color: FlutterFlowTheme.of(context).success,
-          size: 24.0,
-        ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
-      ),
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+      child: Icon(
+        FFIcons.kloader5Fill,
+        color: FlutterFlowTheme.of(context).success,
+        size: 24.0,
+      ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
     );
   }
 }

@@ -254,7 +254,7 @@ class _TestWidgetState extends State<TestWidget> {
                                         .MAINDATA
                                         .tournaments
                                         .toList()
-                                        .take(3)
+                                        .take(1)
                                         .toList();
                                     return ListView.separated(
                                       padding: EdgeInsets.fromLTRB(
@@ -263,6 +263,7 @@ class _TestWidgetState extends State<TestWidget> {
                                         0,
                                         0,
                                       ),
+                                      primary: false,
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: tournamentsList.length,
