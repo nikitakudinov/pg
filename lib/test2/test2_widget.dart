@@ -316,7 +316,9 @@ class _Test2WidgetState extends State<Test2Widget> {
                           ],
                         ),
                       ),
-                    ].divide(SizedBox(height: 10.0)),
+                    ]
+                        .divide(SizedBox(height: 10.0))
+                        .addToStart(SizedBox(height: 15.0)),
                   ),
                 ),
               ],
