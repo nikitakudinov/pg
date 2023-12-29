@@ -270,6 +270,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 FFAppState().AUTHPLAYER.playerTeam,
                                 0,
                               ),
+                              teamData: FFAppState()
+                                  .MAINDATA
+                                  .teams
+                                  .where((e) =>
+                                      e.teamId ==
+                                      FFAppState().AUTHPLAYER.playerTeam)
+                                  .toList()[0],
                             ),
                           ),
                           Padding(
