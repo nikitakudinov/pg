@@ -2225,6 +2225,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                     child: SingleChildScrollView(
+                      primary: false,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2237,173 +2238,198 @@ class _TeamsWidgetState extends State<TeamsWidget>
                               style: FlutterFlowTheme.of(context).titleLarge,
                             ),
                           ),
-                          Builder(
-                            builder: (context) {
-                              final teamsList = FFAppState()
-                                  .MAINDATA
-                                  .teams
-                                  .where((e) => e.teamRecruitment == true)
-                                  .toList()
-                                  .take(5)
-                                  .toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: teamsList.length,
-                                itemBuilder: (context, teamsListIndex) {
-                                  final teamsListItem =
-                                      teamsList[teamsListIndex];
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(5.0),
-                                          topRight: Radius.circular(5.0),
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              'TEAM_EDITE',
-                                              queryParameters: {
-                                                'teamId': serializeParam(
-                                                  teamsListItem.teamId,
-                                                  ParamType.int,
-                                                ),
-                                                'teamIndex': serializeParam(
-                                                  teamsListIndex,
-                                                  ParamType.int,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 15.0, 0.0),
-                                                child: Container(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                    child: Image.network(
-                                                      teamsListItem.teamLogo,
+                          Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Builder(
+                              builder: (context) {
+                                final teamsList = FFAppState()
+                                    .MAINDATA
+                                    .teams
+                                    .where((e) => e.teamRecruitment == true)
+                                    .toList()
+                                    .take(5)
+                                    .toList();
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: teamsList.length,
+                                  itemBuilder: (context, teamsListIndex) {
+                                    final teamsListItem =
+                                        teamsList[teamsListIndex];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'TEAM_EDITE',
+                                                  queryParameters: {
+                                                    'teamId': serializeParam(
+                                                      teamsListItem.teamId,
+                                                      ParamType.int,
+                                                    ),
+                                                    'teamIndex': serializeParam(
+                                                      teamsListIndex,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                15.0, 0.0),
+                                                    child: Container(
                                                       width: 50.0,
                                                       height: 50.0,
-                                                      fit: BoxFit.cover,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                        child: Image.network(
+                                                          teamsListItem
+                                                              .teamLogo,
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ),
-                                              Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      '${teamsListItem.teamTag}',
-                                                      'TAG',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      '${teamsListItem.teamName}',
-                                                      'Team name',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                  Row(
+                                                  Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 20.0,
-                                                          height: 12.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                          ),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0.0),
-                                                            child:
-                                                                Image.network(
-                                                              teamsListItem
-                                                                  .teamFlag,
-                                                              width: 20.0,
-                                                              height: 12.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
+                                                      Text(
+                                                        valueOrDefault<String>(
+                                                          '${teamsListItem.teamTag}',
+                                                          'TAG',
                                                         ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .titleMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Cabin Condensed',
+                                                              lineHeight: 1.0,
+                                                            ),
                                                       ),
                                                       Text(
                                                         valueOrDefault<String>(
-                                                          '${teamsListItem.teamCountry}',
-                                                          'Страна',
+                                                          '${teamsListItem.teamName}',
+                                                          'Team name',
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Cabin Condensed',
+                                                              lineHeight: 1.0,
+                                                            ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: 20.0,
+                                                              height: 12.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                              ),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  teamsListItem
+                                                                      .teamFlag,
+                                                                  width: 20.0,
+                                                                  height: 12.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              '${teamsListItem.teamCountry}',
+                                                              'Страна',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall,
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
                                                 ],
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                                        Container(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  1.0,
+                                          height: 1.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),
