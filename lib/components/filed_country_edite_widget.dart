@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -148,8 +149,12 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                     ),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
-                                      child: Image.network(
-                                        countriesListItem.flagLinkH24,
+                                      child: CachedNetworkImage(
+                                        fadeInDuration:
+                                            Duration(milliseconds: 3000),
+                                        fadeOutDuration:
+                                            Duration(milliseconds: 3000),
+                                        imageUrl: countriesListItem.flagLinkH24,
                                         width: 30.0,
                                         height: 20.0,
                                         fit: BoxFit.cover,
