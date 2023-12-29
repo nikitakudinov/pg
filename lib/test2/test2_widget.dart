@@ -5,6 +5,7 @@ import '/components/grid_round/grid_round_widget.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
+import '/components/tournamentgrid_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -464,6 +465,24 @@ class _Test2WidgetState extends State<Test2Widget> {
                             ]
                                 .divide(SizedBox(height: 10.0))
                                 .addToStart(SizedBox(height: 15.0)),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 0.0),
+                            child: wrapWithModel(
+                              model: _model.tournamentgridModel,
+                              updateCallback: () => setState(() {}),
+                              child: TournamentgridWidget(
+                                title: 'Турнирная сетка',
+                                tournamentId: widget.tournamentId,
+                              ),
+                            ),
                           ),
                         ),
                       ],

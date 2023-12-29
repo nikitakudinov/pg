@@ -58,9 +58,12 @@ class _TournamentgridWidgetState extends State<TournamentgridWidget> {
       child: ExpandableNotifier(
         controller: _model.expandableController,
         child: ExpandablePanel(
-          header: Text(
-            widget.title,
-            style: FlutterFlowTheme.of(context).headlineSmall,
+          header: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            child: Text(
+              widget.title,
+              style: FlutterFlowTheme.of(context).headlineSmall,
+            ),
           ),
           collapsed: Container(),
           expanded: Padding(
