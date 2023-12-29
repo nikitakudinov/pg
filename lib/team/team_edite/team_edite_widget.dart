@@ -198,7 +198,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   : FocusScope.of(context)
                                                       .unfocus(),
                                               child: Container(
-                                                height: 100.0,
+                                                height: 160.0,
                                                 child: FiledediteWidget(
                                                   field: 'Название команды',
                                                   initValue:
