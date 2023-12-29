@@ -165,6 +165,16 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                               }(),
                             );
                             Navigator.pop(context);
+
+                            context.goNamed(
+                              'TEAM_EDITE',
+                              queryParameters: {
+                                'teamId': serializeParam(
+                                  widget.dataId,
+                                  ParamType.int,
+                                ),
+                              }.withoutNulls,
+                            );
                           } else if (widget.field == 'Тег команды') {
                             await TeamsTable().update(
                               data: {
@@ -175,7 +185,24 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
+                            unawaited(
+                              () async {
+                                await action_blocks.teamsupdater(context);
+                                setState(() {});
+                              }(),
+                            );
                             Navigator.pop(context);
+                            Navigator.pop(context);
+
+                            context.goNamed(
+                              'TEAM_EDITE',
+                              queryParameters: {
+                                'teamId': serializeParam(
+                                  widget.dataId,
+                                  ParamType.int,
+                                ),
+                              }.withoutNulls,
+                            );
                           }
                         },
                         text: 'СОХРАНИТЬ',

@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/filed_country_edite_widget.dart';
 import '/components/filededite_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -351,21 +352,63 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 5.0, 5.0),
-                                    child: Text(
-                                      'ИЗМЕНИТЬ',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Cabin Condensed',
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent1,
-                                            fontSize: 10.0,
-                                          ),
+                                Builder(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await showAlignedDialog(
+                                        context: context,
+                                        isGlobal: true,
+                                        avoidOverflow: false,
+                                        targetAnchor:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        followerAnchor:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        builder: (dialogContext) {
+                                          return Material(
+                                            color: Colors.transparent,
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: FiledCountryEditeWidget(
+                                                field: 'Страна',
+                                                dataId: widget.teamId,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 5.0, 5.0, 5.0),
+                                        child: Text(
+                                          'ИЗМЕНИТЬ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Cabin Condensed',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                fontSize: 10.0,
+                                              ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
