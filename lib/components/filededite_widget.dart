@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,11 +18,13 @@ class FiledediteWidget extends StatefulWidget {
     required this.field,
     this.initValue,
     required this.dataId,
+    this.datIndex,
   }) : super(key: key);
 
   final String? field;
   final String? initValue;
   final int? dataId;
+  final int? datIndex;
 
   @override
   _FiledediteWidgetState createState() => _FiledediteWidgetState();
@@ -158,6 +161,11 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
+                            setState(() {
+                              FFAppState().updateMAINDATAStruct(
+                                (e) => e..teams = [],
+                              );
+                            });
                             unawaited(
                               () async {
                                 await action_blocks.teamsloader(context);
@@ -175,6 +183,11 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
+                            setState(() {
+                              FFAppState().updateMAINDATAStruct(
+                                (e) => e..teams = [],
+                              );
+                            });
                             unawaited(
                               () async {
                                 await action_blocks.teamsloader(context);

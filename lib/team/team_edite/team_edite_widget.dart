@@ -288,6 +288,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 initValue:
                                                     _model.teamData?.teamName,
                                                 dataId: widget.teamId,
+                                                datIndex: 0,
                                               ),
                                             ),
                                           );
