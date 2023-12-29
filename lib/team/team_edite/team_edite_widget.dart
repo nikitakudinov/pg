@@ -198,9 +198,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                   : FocusScope.of(context)
                                                       .unfocus(),
                                               child: FiledediteWidget(
-                                                field: 'Название команды',
+                                                field: 'Тег команды',
                                                 initValue:
-                                                    _model.teamData?.teamName,
+                                                    _model.teamData?.teamTag,
                                                 dataId: widget.teamId,
                                               ),
                                             ),
@@ -245,21 +245,65 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                   style:
                                       FlutterFlowTheme.of(context).titleMedium,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 5.0, 5.0),
-                                    child: Text(
-                                      'ИЗМЕНИТЬ',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Cabin Condensed',
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent1,
-                                            fontSize: 10.0,
-                                          ),
+                                Builder(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await showAlignedDialog(
+                                        context: context,
+                                        isGlobal: true,
+                                        avoidOverflow: false,
+                                        targetAnchor:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        followerAnchor:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        builder: (dialogContext) {
+                                          return Material(
+                                            color: Colors.transparent,
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: FiledediteWidget(
+                                                field: 'Название команды',
+                                                initValue:
+                                                    _model.teamData?.teamName,
+                                                dataId: widget.teamId,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 5.0, 5.0, 5.0),
+                                        child: Text(
+                                          'ИЗМЕНИТЬ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Cabin Condensed',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                fontSize: 10.0,
+                                              ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
