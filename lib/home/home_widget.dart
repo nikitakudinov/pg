@@ -263,6 +263,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           wrapWithModel(
                             model: _model.authUserTeamModel,
                             updateCallback: () => setState(() {}),
+                            updateOnChange: true,
                             child: AuthUserTeamWidget(
                               parameter1: false,
                               teamId: FFAppState().AUTHPLAYER.playerTeam,
