@@ -16,12 +16,10 @@ class FiledCountryEditeWidget extends StatefulWidget {
   const FiledCountryEditeWidget({
     Key? key,
     required this.field,
-    this.initValue,
     required this.dataId,
   }) : super(key: key);
 
   final String? field;
-  final String? initValue;
   final int? dataId;
 
   @override
@@ -80,7 +78,7 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                       widget.field,
                       'Изменяемое поле',
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).titleMedium,
                   ),
                 ),
                 Padding(
