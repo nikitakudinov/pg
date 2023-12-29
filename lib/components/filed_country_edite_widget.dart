@@ -117,6 +117,7 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                         final countriesListItem =
                             countriesList[countriesListIndex];
                         return Container(
+                          height: 30.0,
                           decoration: BoxDecoration(),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -182,7 +183,7 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                       'Название страны',
                                     ),
                                     style:
-                                        FlutterFlowTheme.of(context).titleSmall,
+                                        FlutterFlowTheme.of(context).bodyLarge,
                                   ),
                                 ),
                               ].divide(SizedBox(width: 5.0)),
