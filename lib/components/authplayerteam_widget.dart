@@ -66,6 +66,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: Container(
+        height: 300.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(5.0),
@@ -73,6 +74,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.all(10.0),
@@ -144,7 +146,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 80.0, 0.0, 80.0),
+                            0.0, 25.0, 0.0, 25.0),
                         child: wrapWithModel(
                           model: _model.loadingindicatorModel,
                           updateCallback: () => setState(() {}),
