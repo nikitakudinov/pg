@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -47,13 +48,19 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.teamData = FFAppState()
-            .MAINDATA
-            .teams
-            .where((e) => e.teamId == widget.teamId)
-            .toList()[0];
-      });
+      _model.instantTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 2000),
+        callback: (timer) async {
+          setState(() {
+            _model.teamData = FFAppState()
+                .MAINDATA
+                .teams
+                .where((e) => e.teamId == widget.teamId)
+                .toList()[0];
+          });
+        },
+        startImmediately: true,
+      );
     });
 
     _model.textController ??= TextEditingController();

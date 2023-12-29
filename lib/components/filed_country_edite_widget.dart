@@ -78,7 +78,10 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                       widget.field,
                       'Изменяемое поле',
                     ),
-                    style: FlutterFlowTheme.of(context).titleMedium,
+                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                          fontFamily: 'Cabin Condensed',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
                   ),
                 ),
                 Padding(
@@ -122,17 +125,6 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                     setState(() {});
                                   }(),
                                 );
-
-                                context.goNamed(
-                                  'TEAM_EDITE',
-                                  queryParameters: {
-                                    'teamId': serializeParam(
-                                      widget.dataId,
-                                      ParamType.int,
-                                    ),
-                                  }.withoutNulls,
-                                );
-
                                 Navigator.pop(context);
                               },
                               child: Row(

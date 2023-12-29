@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'team_edite_widget.dart' show TeamEditeWidget;
@@ -75,6 +76,7 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   NotificationsRow? addNotification1;
   // State field(s) for TextField widget.
@@ -96,6 +98,7 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
