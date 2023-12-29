@@ -265,16 +265,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             updateCallback: () => setState(() {}),
                             child: AuthUserTeamWidget(
                               parameter1: false,
-                              teamData: FFAppState()
-                                  .MAINDATA
-                                  .teams
-                                  .where((e) =>
-                                      e.teamId ==
-                                      valueOrDefault<int>(
-                                        FFAppState().AUTHPLAYER.playerTeam,
-                                        0,
-                                      ))
-                                  .toList()[0],
+                              teamId: FFAppState().AUTHPLAYER.playerTeam,
                             ),
                           ),
                           Padding(

@@ -1,4 +1,3 @@
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -18,12 +17,13 @@ class AuthUserTeamWidget extends StatefulWidget {
   const AuthUserTeamWidget({
     Key? key,
     bool? parameter1,
-    required this.teamData,
+    int? teamId,
   })  : this.parameter1 = parameter1 ?? false,
+        this.teamId = teamId ?? 0,
         super(key: key);
 
   final bool parameter1;
-  final TeamStruct? teamData;
+  final int teamId;
 
   @override
   _AuthUserTeamWidgetState createState() => _AuthUserTeamWidgetState();
@@ -163,7 +163,12 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.0),
                           child: Image.network(
-                            widget.teamData!.teamLogo,
+                            FFAppState()
+                                .MAINDATA
+                                .teams
+                                .where((e) => e.teamId == widget.teamId)
+                                .toList()[0]
+                                .teamLogo,
                             width: 70.0,
                             height: 70.0,
                             fit: BoxFit.cover,
@@ -178,11 +183,11 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${widget.teamData?.teamTag}',
+                            '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
                             style: FlutterFlowTheme.of(context).headlineMedium,
                           ),
                           Text(
-                            '${widget.teamData?.teamName}',
+                            '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamName}',
                             style: FlutterFlowTheme.of(context).labelMedium,
                           ),
                           Row(
@@ -201,7 +206,13 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0.0),
                                     child: Image.network(
-                                      widget.teamData!.teamFlag,
+                                      FFAppState()
+                                          .MAINDATA
+                                          .teams
+                                          .where(
+                                              (e) => e.teamId == widget.teamId)
+                                          .toList()[0]
+                                          .teamFlag,
                                       width: 20.0,
                                       height: 12.0,
                                       fit: BoxFit.cover,
@@ -210,7 +221,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                 ),
                               ),
                               Text(
-                                '${widget.teamData?.teamCountry}',
+                                '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamCountry}',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ],
@@ -417,7 +428,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '${widget.teamData?.teamMatchesCount?.toString()}',
+                                  '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchesCount.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -445,7 +456,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '${widget.teamData?.teamMatchWins?.toString()}',
+                                  '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchWins.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -473,7 +484,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '${widget.teamData?.teamMatchRoundLoses?.toString()}',
+                                  '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchLoses.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
