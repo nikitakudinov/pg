@@ -96,9 +96,7 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                       focusNode: _model.textFieldFocusNode,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: widget.field,
                         labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintText: widget.initValue,
                         hintStyle: FlutterFlowTheme.of(context).labelMedium,
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
