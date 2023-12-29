@@ -66,7 +66,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: Container(
-        height: 300.0,
+        height: 330.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(5.0),
@@ -77,7 +77,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(15.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,25 +140,28 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
               if (FFAppState().MAINDATA.teams.length == 0)
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 25.0, 0.0, 25.0),
-                        child: wrapWithModel(
-                          model: _model.loadingindicatorModel,
-                          updateCallback: () => setState(() {}),
-                          child: LoadingindicatorWidget(),
+                  child: Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 25.0, 0.0, 25.0),
+                          child: wrapWithModel(
+                            model: _model.loadingindicatorModel,
+                            updateCallback: () => setState(() {}),
+                            child: LoadingindicatorWidget(),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,7 +311,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                 ),
               if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
