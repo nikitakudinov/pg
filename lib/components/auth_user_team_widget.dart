@@ -187,12 +187,15 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5.0),
                             child: Image.network(
-                              FFAppState()
-                                  .MAINDATA
-                                  .teams
-                                  .where((e) => e.teamId == widget.teamId)
-                                  .toList()[0]
-                                  .teamLogo,
+                              valueOrDefault<String>(
+                                FFAppState()
+                                    .MAINDATA
+                                    .teams
+                                    .where((e) => e.teamId == widget.teamId)
+                                    .toList()[0]
+                                    .teamLogo,
+                                '0',
+                              ),
                               width: 70.0,
                               height: 70.0,
                               fit: BoxFit.cover,
@@ -207,12 +210,26 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${widget.teamData?.teamTag}',
+                              valueOrDefault<String>(
+                                '${valueOrDefault<String>(
+                                  FFAppState()
+                                      .MAINDATA
+                                      .teams
+                                      .where((e) => e.teamId == widget.teamId)
+                                      .toList()[0]
+                                      .teamTag,
+                                  '0',
+                                )}',
+                                '0',
+                              ),
                               style:
                                   FlutterFlowTheme.of(context).headlineMedium,
                             ),
                             Text(
-                              '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamName}',
+                              valueOrDefault<String>(
+                                '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamName}',
+                                '0',
+                              ),
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                             Row(
@@ -246,7 +263,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                   ),
                                 ),
                                 Text(
-                                  '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamCountry}',
+                                  valueOrDefault<String>(
+                                    '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamCountry}',
+                                    '0',
+                                  ),
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
@@ -460,7 +480,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                         ),
                                   ),
                                   Text(
-                                    '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchesCount.toString()}',
+                                    valueOrDefault<String>(
+                                      '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchesCount.toString()}',
+                                      '0',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -489,7 +512,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                         ),
                                   ),
                                   Text(
-                                    '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchWins.toString()}',
+                                    valueOrDefault<String>(
+                                      '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchWins.toString()}',
+                                      '0',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -518,7 +544,10 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                         ),
                                   ),
                                   Text(
-                                    '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchLoses.toString()}',
+                                    valueOrDefault<String>(
+                                      '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchLoses.toString()}',
+                                      '0',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
