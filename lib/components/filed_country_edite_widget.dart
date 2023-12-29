@@ -167,7 +167,7 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                           .secondaryBackground,
                                     ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderRadius: BorderRadius.circular(0.0),
                                       child: Image.network(
                                         countriesListItem.flagLink48x36,
                                         width: 30.0,
