@@ -1,7 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/grid_round/grid_round_widget.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
@@ -27,24 +26,6 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
   late VlistITEMModel vlistITEMModel;
   // Model for tournamentInfoTabs component.
   late TournamentInfoTabsModel tournamentInfoTabsModel;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel1;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel2;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel3;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel4;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel5;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel6;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel7;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel8;
-  // Model for GRID-ROUND component.
-  late GridRoundModel gridRoundModel9;
   // Model for TOURNAMENTGRID component.
   late TournamentgridModel tournamentgridModel;
 
@@ -54,15 +35,6 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
     vlistITEMModel = createModel(context, () => VlistITEMModel());
     tournamentInfoTabsModel =
         createModel(context, () => TournamentInfoTabsModel());
-    gridRoundModel1 = createModel(context, () => GridRoundModel());
-    gridRoundModel2 = createModel(context, () => GridRoundModel());
-    gridRoundModel3 = createModel(context, () => GridRoundModel());
-    gridRoundModel4 = createModel(context, () => GridRoundModel());
-    gridRoundModel5 = createModel(context, () => GridRoundModel());
-    gridRoundModel6 = createModel(context, () => GridRoundModel());
-    gridRoundModel7 = createModel(context, () => GridRoundModel());
-    gridRoundModel8 = createModel(context, () => GridRoundModel());
-    gridRoundModel9 = createModel(context, () => GridRoundModel());
     tournamentgridModel = createModel(context, () => TournamentgridModel());
   }
 
@@ -70,15 +42,6 @@ class Test2Model extends FlutterFlowModel<Test2Widget> {
     unfocusNode.dispose();
     vlistITEMModel.dispose();
     tournamentInfoTabsModel.dispose();
-    gridRoundModel1.dispose();
-    gridRoundModel2.dispose();
-    gridRoundModel3.dispose();
-    gridRoundModel4.dispose();
-    gridRoundModel5.dispose();
-    gridRoundModel6.dispose();
-    gridRoundModel7.dispose();
-    gridRoundModel8.dispose();
-    gridRoundModel9.dispose();
     tournamentgridModel.dispose();
   }
 
