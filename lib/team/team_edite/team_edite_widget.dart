@@ -54,12 +54,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
             .where((e) => e.teamId == widget.teamId)
             .toList()[0];
       });
-      _model.jsonCOUNTRIES = await CountryGroup.countriesCall.call();
-      setState(() {
-        FFAppState().updateMAINDATAStruct(
-          (e) => e..countries = FFAppState().MAINDATA.countries.toList(),
-        );
-      });
     });
 
     _model.textController ??= TextEditingController();

@@ -52,7 +52,7 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
         _model.tournamentLogo =
             FFAppState().tournaments[widget.tournamentIndedx].tournamentLogo;
       });
-      await action_blocks.dowloadAllCountrieToAppState(context);
+      await action_blocks.countriesloader(context);
       setState(() {});
     });
 

@@ -36,20 +36,19 @@ Future loadAllTeamsDataToAppState(BuildContext context) async {
   }
 }
 
-Future dowloadAllCountrieToAppState(BuildContext context) async {
-  ApiCallResponse? allCountrieJsonData;
-  List<CountrieStruct>? convertedCountriesData;
+Future countriesloader(BuildContext context) async {
+  ApiCallResponse? jsonCOUNTRIES;
 
-  allCountrieJsonData = await CountryGroup.countriesCall.call();
-  if ((allCountrieJsonData?.succeeded ?? true)) {
-    convertedCountriesData = await actions.dtCOUNTRIE(
-      (allCountrieJsonData?.jsonBody ?? ''),
-    );
-    FFAppState().update(() {
-      FFAppState().allCountries =
-          convertedCountriesData!.toList().cast<CountrieStruct>();
-    });
-  }
+  jsonCOUNTRIES = await CountryGroup.countriesCall.call();
+  FFAppState().updateMAINDATAStruct(
+    (e) => e
+      ..countries = ((jsonCOUNTRIES?.jsonBody ?? '')
+              .toList()
+              .map<CountrieStruct?>(CountrieStruct.maybeFromMap)
+              .toList() as Iterable<CountrieStruct?>)
+          .withoutNulls
+          .toList(),
+  );
 }
 
 Future loadAuthUserChats(BuildContext context) async {
