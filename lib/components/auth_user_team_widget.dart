@@ -18,12 +18,12 @@ class AuthUserTeamWidget extends StatefulWidget {
   const AuthUserTeamWidget({
     Key? key,
     bool? parameter1,
-    required this.team,
+    required this.teamData,
   })  : this.parameter1 = parameter1 ?? false,
         super(key: key);
 
   final bool parameter1;
-  final TeamStruct? team;
+  final TeamStruct? teamData;
 
   @override
   _AuthUserTeamWidgetState createState() => _AuthUserTeamWidgetState();
@@ -163,7 +163,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.0),
                           child: Image.network(
-                            FFAppState().authPlayerTeam.teamLogo,
+                            widget.teamData!.teamLogo,
                             width: 70.0,
                             height: 70.0,
                             fit: BoxFit.cover,
@@ -178,17 +178,11 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${valueOrDefault<String>(
-                              widget.team?.teamTag,
-                              '0',
-                            )}',
+                            '${widget.teamData?.teamTag}',
                             style: FlutterFlowTheme.of(context).headlineMedium,
                           ),
                           Text(
-                            '${valueOrDefault<String>(
-                              widget.team?.teamName,
-                              '0',
-                            )}',
+                            '${widget.teamData?.teamName}',
                             style: FlutterFlowTheme.of(context).labelMedium,
                           ),
                           Row(
@@ -207,7 +201,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0.0),
                                     child: Image.network(
-                                      FFAppState().authPlayerTeam.teamFlag,
+                                      widget.teamData!.teamFlag,
                                       width: 20.0,
                                       height: 12.0,
                                       fit: BoxFit.cover,
@@ -216,10 +210,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                 ),
                               ),
                               Text(
-                                '${valueOrDefault<String>(
-                                  widget.team?.teamCountry,
-                                  '0',
-                                )}',
+                                '${widget.teamData?.teamCountry}',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ],
@@ -426,10 +417,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '${valueOrDefault<String>(
-                                    widget.team?.teamMatchesCount?.toString(),
-                                    '0',
-                                  )}',
+                                  '${widget.teamData?.teamMatchesCount?.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -448,7 +436,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'ПО',
+                                  'ПОБЕДЫ',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -457,10 +445,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '${valueOrDefault<String>(
-                                    widget.team?.teamMatchWins?.toString(),
-                                    '0',
-                                  )}',
+                                  '${widget.teamData?.teamMatchWins?.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -479,7 +464,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'ПРОИГРАНО',
+                                  'ПОРАЖЕНИЯ',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -488,10 +473,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       ),
                                 ),
                                 Text(
-                                  '${valueOrDefault<String>(
-                                    widget.team?.teamMatchLoses?.toString(),
-                                    '0',
-                                  )}',
+                                  '${widget.teamData?.teamMatchRoundLoses?.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(

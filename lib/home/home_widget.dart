@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/auth_user_team_widget.dart';
 import '/components/loadingindicator_widget.dart';
 import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
@@ -259,6 +260,23 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                               ),
                             ),
+                          wrapWithModel(
+                            model: _model.authUserTeamModel,
+                            updateCallback: () => setState(() {}),
+                            child: AuthUserTeamWidget(
+                              parameter1: false,
+                              teamData: FFAppState()
+                                  .MAINDATA
+                                  .teams
+                                  .where((e) =>
+                                      e.teamId ==
+                                      valueOrDefault<int>(
+                                        FFAppState().AUTHPLAYER.playerTeam,
+                                        0,
+                                      ))
+                                  .toList()[0],
+                            ),
+                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),

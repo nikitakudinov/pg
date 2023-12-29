@@ -2217,10 +2217,15 @@ class _TeamsWidgetState extends State<TeamsWidget>
                   updateCallback: () => setState(() {}),
                   child: AuthUserTeamWidget(
                     parameter1: _model.teamActionsVISIBILITY,
-                    team: FFAppState()
-                        .allTEAMS
+                    teamData: FFAppState()
+                        .MAINDATA
+                        .teams
                         .where((e) =>
-                            e.teamId == FFAppState().authPlayer.playerTeam)
+                            e.teamId ==
+                            valueOrDefault<int>(
+                              FFAppState().AUTHPLAYER.playerTeam,
+                              0,
+                            ))
                         .toList()[0],
                   ),
                 ),
