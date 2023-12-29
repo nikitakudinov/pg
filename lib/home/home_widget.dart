@@ -39,15 +39,11 @@ class _HomeWidgetState extends State<HomeWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await action_blocks.authplayerloader(context);
-      await action_blocks.teamsloader(context);
-      setState(() {
-        FFAppState().AUTHPLAYERTEAM = FFAppState()
-            .MAINDATA
-            .teams
-            .where((e) => e.teamId == FFAppState().AUTHPLAYER.playerTeam)
-            .toList()[0];
-      });
+      unawaited(
+        () async {
+          await action_blocks.authplayerloader(context);
+        }(),
+      );
       unawaited(
         () async {
           await action_blocks.matchesloader(context);
@@ -58,6 +54,14 @@ class _HomeWidgetState extends State<HomeWidget> {
           await action_blocks.tournamentsloader(context);
         }(),
       );
+      await action_blocks.teamsloader(context);
+      setState(() {
+        FFAppState().AUTHPLAYERTEAM = FFAppState()
+            .MAINDATA
+            .teams
+            .where((e) => e.teamId == FFAppState().AUTHPLAYER.playerTeam)
+            .toList()[0];
+      });
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 2000),
         callback: (timer) async {
