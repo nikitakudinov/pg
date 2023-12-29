@@ -63,13 +63,12 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Container(
-          height: 150.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: BorderRadius.circular(5.0),
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
