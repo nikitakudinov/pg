@@ -147,7 +147,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 25.0, 0.0, 25.0),
+                              0.0, 45.0, 0.0, 15.0),
                           child: wrapWithModel(
                             model: _model.loadingindicatorModel,
                             updateCallback: () => setState(() {}),
