@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,7 +45,7 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
     super.initState();
     _model = createModel(context, () => FiledediteModel());
 
-    _model.textController ??= TextEditingController(text: widget.initValue);
+    _model.textController ??= TextEditingController(text: _model.value);
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -99,6 +100,15 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                     child: TextFormField(
                       controller: _model.textController,
                       focusNode: _model.textFieldFocusNode,
+                      onChanged: (_) => EasyDebounce.debounce(
+                        '_model.textController',
+                        Duration(milliseconds: 2000),
+                        () async {
+                          setState(() {
+                            _model.value = _model.textController.text;
+                          });
+                        },
+                      ),
                       obscureText: false,
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).labelMedium,
