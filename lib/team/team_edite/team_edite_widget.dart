@@ -197,14 +197,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: Container(
-                                                height: 160.0,
-                                                child: FiledediteWidget(
-                                                  field: 'Название команды',
-                                                  initValue:
-                                                      _model.teamData?.teamName,
-                                                  dataId: widget.teamId,
-                                                ),
+                                              child: FiledediteWidget(
+                                                field: 'Название команды',
+                                                initValue:
+                                                    _model.teamData?.teamName,
+                                                dataId: widget.teamId,
                                               ),
                                             ),
                                           );
