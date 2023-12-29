@@ -2,7 +2,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -158,12 +157,8 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
-                            unawaited(
-                              () async {
-                                await action_blocks.teamsupdater(context);
-                                setState(() {});
-                              }(),
-                            );
+                            await action_blocks.teamsupdater(context);
+                            setState(() {});
                             Navigator.pop(context);
 
                             context.goNamed(
@@ -185,12 +180,8 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
-                            unawaited(
-                              () async {
-                                await action_blocks.teamsupdater(context);
-                                setState(() {});
-                              }(),
-                            );
+                            await action_blocks.teamsupdater(context);
+                            setState(() {});
                             Navigator.pop(context);
                             Navigator.pop(context);
 
