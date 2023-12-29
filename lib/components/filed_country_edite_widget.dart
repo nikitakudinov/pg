@@ -90,6 +90,7 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                           FFAppState().MAINDATA.countries.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: countriesList.length,
