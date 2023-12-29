@@ -260,26 +260,28 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                               ),
                             ),
-                          if (FFAppState().MAINDATA.teams.length != 0)
-                            wrapWithModel(
-                              model: _model.authUserTeamModel,
-                              updateCallback: () => setState(() {}),
-                              updateOnChange: true,
-                              child: AuthUserTeamWidget(
-                                parameter1: false,
-                                teamId: valueOrDefault<int>(
-                                  FFAppState().AUTHPLAYER.playerTeam,
-                                  0,
-                                ),
-                                teamData: FFAppState()
-                                    .MAINDATA
-                                    .teams
-                                    .where((e) =>
-                                        e.teamId ==
-                                        FFAppState().AUTHPLAYER.playerTeam)
-                                    .toList()[0],
+                          wrapWithModel(
+                            model: _model.authUserTeamModel,
+                            updateCallback: () => setState(() {}),
+                            updateOnChange: true,
+                            child: AuthUserTeamWidget(
+                              parameter1: false,
+                              teamId: valueOrDefault<int>(
+                                FFAppState().AUTHPLAYER.playerTeam,
+                                0,
                               ),
+                              teamData: FFAppState()
+                                  .MAINDATA
+                                  .teams
+                                  .where((e) =>
+                                      e.teamId ==
+                                      valueOrDefault<int>(
+                                        FFAppState().AUTHPLAYER.playerTeam,
+                                        0,
+                                      ))
+                                  .toList()[0],
                             ),
+                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),

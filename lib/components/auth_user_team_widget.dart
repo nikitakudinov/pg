@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/loadingindicator_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -148,7 +149,26 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                   ],
                 ),
               ),
-              if (widget.teamData != null)
+              if (FFAppState().MAINDATA.teams.length == 0)
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 80.0, 0.0, 80.0),
+                        child: wrapWithModel(
+                          model: _model.loadingindicatorModel,
+                          updateCallback: () => setState(() {}),
+                          child: LoadingindicatorWidget(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                   child: Row(
@@ -300,7 +320,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                     ].divide(SizedBox(width: 10.0)),
                   ),
                 ),
-              if (widget.teamData != null)
+              if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Row(
