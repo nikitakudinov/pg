@@ -137,7 +137,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                   ],
                 ),
               ),
-              if (FFAppState().AUTHPLAYERTEAM == null)
+              if (FFAppState().MAINDATA.teams.length == 0)
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Row(
@@ -156,7 +156,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                     ],
                   ),
                 ),
-              if (FFAppState().AUTHPLAYERTEAM != null)
+              if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                   child: Row(
@@ -306,7 +306,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                     ].divide(SizedBox(width: 10.0)),
                   ),
                 ),
-              if (FFAppState().AUTHPLAYERTEAM != null)
+              if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Row(
