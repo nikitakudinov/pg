@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/filed_country_edite_widget.dart';
 import '/components/filededite_widget.dart';
+import '/components/teamediteheader_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -77,6 +78,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
+  // Model for TEAMEDITEHEADER component.
+  late TeamediteheaderModel teamediteheaderModel;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   NotificationsRow? addNotification1;
   // State field(s) for TextField widget.
@@ -94,11 +97,14 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    teamediteheaderModel = createModel(context, () => TeamediteheaderModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
+    teamediteheaderModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/filed_country_edite_widget.dart';
 import '/components/filededite_widget.dart';
+import '/components/teamediteheader_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -49,7 +50,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           setState(() {
             _model.teamData = FFAppState()
@@ -288,7 +289,6 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                                 initValue:
                                                     _model.teamData?.teamName,
                                                 dataId: widget.teamId,
-                                                datIndex: 0,
                                               ),
                                             ),
                                           );
@@ -428,6 +428,13 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                           .addToStart(SizedBox(width: 15.0))
                           .addToEnd(SizedBox(width: 15.0)),
                     ),
+                  ),
+                ),
+                wrapWithModel(
+                  model: _model.teamediteheaderModel,
+                  updateCallback: () => setState(() {}),
+                  child: TeamediteheaderWidget(
+                    teamId: widget.teamId,
                   ),
                 ),
                 Padding(

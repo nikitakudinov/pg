@@ -1,11 +1,9 @@
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,13 +17,11 @@ class FiledediteWidget extends StatefulWidget {
     required this.field,
     this.initValue,
     required this.dataId,
-    this.datIndex,
   }) : super(key: key);
 
   final String? field;
   final String? initValue;
   final int? dataId;
-  final int? datIndex;
 
   @override
   _FiledediteWidgetState createState() => _FiledediteWidgetState();
@@ -45,7 +41,7 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
     super.initState();
     _model = createModel(context, () => FiledediteModel());
 
-    _model.textController ??= TextEditingController(text: _model.value);
+    _model.textController ??= TextEditingController(text: widget.initValue);
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -100,15 +96,6 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                     child: TextFormField(
                       controller: _model.textController,
                       focusNode: _model.textFieldFocusNode,
-                      onChanged: (_) => EasyDebounce.debounce(
-                        '_model.textController',
-                        Duration(milliseconds: 2000),
-                        () async {
-                          setState(() {
-                            _model.value = _model.textController.text;
-                          });
-                        },
-                      ),
                       obscureText: false,
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -171,11 +158,6 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
-                            setState(() {
-                              FFAppState().updateMAINDATAStruct(
-                                (e) => e..teams = [],
-                              );
-                            });
                             unawaited(
                               () async {
                                 await action_blocks.teamsloader(context);
@@ -193,11 +175,6 @@ class _FiledediteWidgetState extends State<FiledediteWidget> {
                                 widget.dataId,
                               ),
                             );
-                            setState(() {
-                              FFAppState().updateMAINDATAStruct(
-                                (e) => e..teams = [],
-                              );
-                            });
                             unawaited(
                               () async {
                                 await action_blocks.teamsloader(context);
