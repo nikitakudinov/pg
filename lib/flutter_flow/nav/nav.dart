@@ -207,15 +207,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'TEST',
-          path: '/test',
+          name: 'HOME',
+          path: '/home',
           builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'TEST') : TestWidget(),
+              params.isEmpty ? NavBarPage(initialPage: 'HOME') : HomeWidget(),
         ),
         FFRoute(
-          name: 'TEST2',
-          path: '/test2',
-          builder: (context, params) => Test2Widget(
+          name: 'TOURNAMENT_VIEW2',
+          path: '/tournamentView2',
+          builder: (context, params) => TournamentView2Widget(
             tournamentId: params.getParam('tournamentId', ParamType.int),
           ),
         )

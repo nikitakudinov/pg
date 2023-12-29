@@ -20,5 +20,6 @@ export '/match/matches/matches_widget.dart' show MatchesWidget;
 export '/match/match_view/match_view_widget.dart' show MatchViewWidget;
 export '/match/match_report_add/match_report_add_widget.dart'
     show MatchReportAddWidget;
-export '/test/test_widget.dart' show TestWidget;
-export '/test2/test2_widget.dart' show Test2Widget;
+export '/home/home_widget.dart' show HomeWidget;
+export '/tournament_view2/tournament_view2_widget.dart'
+    show TournamentView2Widget;

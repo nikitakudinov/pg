@@ -16,11 +16,11 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'test2_model.dart';
-export 'test2_model.dart';
+import 'tournament_view2_model.dart';
+export 'tournament_view2_model.dart';
 
-class Test2Widget extends StatefulWidget {
-  const Test2Widget({
+class TournamentView2Widget extends StatefulWidget {
+  const TournamentView2Widget({
     Key? key,
     int? tournamentId,
   })  : this.tournamentId = tournamentId ?? 0,
@@ -29,18 +29,18 @@ class Test2Widget extends StatefulWidget {
   final int tournamentId;
 
   @override
-  _Test2WidgetState createState() => _Test2WidgetState();
+  _TournamentView2WidgetState createState() => _TournamentView2WidgetState();
 }
 
-class _Test2WidgetState extends State<Test2Widget> {
-  late Test2Model _model;
+class _TournamentView2WidgetState extends State<TournamentView2Widget> {
+  late TournamentView2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Test2Model());
+    _model = createModel(context, () => TournamentView2Model());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -239,7 +239,7 @@ class _Test2WidgetState extends State<Test2Widget> {
                                           child: Container(
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
-                                                0.5,
+                                                0.75,
                                             child: MatchreportWidget(
                                               tournamentmatches: FFAppState()
                                                   .MAINDATA
@@ -329,12 +329,15 @@ class _Test2WidgetState extends State<Test2Widget> {
                               final notificationsListItem =
                                   notificationsList[notificationsListIndex];
                               return Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 550.0,
+                                ),
                                 decoration: BoxDecoration(
                                   color: Color(0xC5000000),
                                   borderRadius: BorderRadius.circular(5.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(10.0),
+                                  padding: EdgeInsets.all(15.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:

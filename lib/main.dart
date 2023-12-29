@@ -107,7 +107,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'TEST';
+  String _currentPageName = 'HOME';
   late Widget? _currentPage;
 
   @override
@@ -126,7 +126,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'CHATS': ChatsWidget(),
       'PLAYERS': PlayersWidget(),
       'MATCHES': MatchesWidget(),
-      'TEST': TestWidget(),
+      'HOME': HomeWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 

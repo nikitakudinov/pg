@@ -16,25 +16,25 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'test_model.dart';
-export 'test_model.dart';
+import 'home_model.dart';
+export 'home_model.dart';
 
-class TestWidget extends StatefulWidget {
-  const TestWidget({Key? key}) : super(key: key);
+class HomeWidget extends StatefulWidget {
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
-  _TestWidgetState createState() => _TestWidgetState();
+  _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _TestWidgetState extends State<TestWidget> {
-  late TestModel _model;
+class _HomeWidgetState extends State<HomeWidget> {
+  late HomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TestModel());
+    _model = createModel(context, () => HomeModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -308,7 +308,7 @@ class _TestWidgetState extends State<TestWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.pushNamed(
-                                              'TEST2',
+                                              'TOURNAMENT_VIEW2',
                                               queryParameters: {
                                                 'tournamentId': serializeParam(
                                                   tournamentsListItem
@@ -458,6 +458,9 @@ class _TestWidgetState extends State<TestWidget> {
                                         notificationsList[
                                             notificationsListIndex];
                                     return Container(
+                                      constraints: BoxConstraints(
+                                        maxWidth: 550.0,
+                                      ),
                                       decoration: BoxDecoration(
                                         color: Color(0xC5000000),
                                         borderRadius:

@@ -208,7 +208,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               FFAppState().authUserUpdated = '0';
                             });
 
-                            context.goNamedAuth('TEST', context.mounted);
+                            context.goNamedAuth('HOME', context.mounted);
                           },
                           text: 'Войти',
                           options: FFButtonOptions(
@@ -258,7 +258,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             await action_blocks
                                 .upadateAuthUserDataValues(context);
 
-                            context.goNamedAuth('TEST', context.mounted);
+                            context.goNamedAuth('HOME', context.mounted);
                           },
                           text: 'Войти как VORTEX',
                           options: FFButtonOptions(
@@ -309,7 +309,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               FFAppState().authUserUpdated = '0';
                             });
 
-                            context.goNamedAuth('TEST', context.mounted);
+                            context.goNamedAuth('HOME', context.mounted);
                           },
                           text: 'Войти как RIMO',
                           options: FFButtonOptions(
