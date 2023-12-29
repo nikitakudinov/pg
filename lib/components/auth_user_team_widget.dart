@@ -220,7 +220,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                       .teamTag,
                                   '0',
                                 )}',
-                                '0',
+                                'TAG',
                               ),
                               style:
                                   FlutterFlowTheme.of(context).headlineMedium,
@@ -228,7 +228,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                             Text(
                               valueOrDefault<String>(
                                 '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamName}',
-                                '0',
+                                'Team Name',
                               ),
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
@@ -248,13 +248,16 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: Image.network(
-                                        FFAppState()
-                                            .MAINDATA
-                                            .teams
-                                            .where((e) =>
-                                                e.teamId == widget.teamId)
-                                            .toList()[0]
-                                            .teamFlag,
+                                        valueOrDefault<String>(
+                                          FFAppState()
+                                              .MAINDATA
+                                              .teams
+                                              .where((e) =>
+                                                  e.teamId == widget.teamId)
+                                              .toList()[0]
+                                              .teamFlag,
+                                          '0',
+                                        ),
                                         width: 20.0,
                                         height: 12.0,
                                         fit: BoxFit.cover,
@@ -265,7 +268,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                 Text(
                                   valueOrDefault<String>(
                                     '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamCountry}',
-                                    '0',
+                                    'Country',
                                   ),
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
