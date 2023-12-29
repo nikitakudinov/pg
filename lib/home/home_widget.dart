@@ -266,7 +266,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                             updateOnChange: true,
                             child: AuthUserTeamWidget(
                               parameter1: false,
-                              teamId: FFAppState().AUTHPLAYER.playerTeam,
+                              teamId: valueOrDefault<int>(
+                                FFAppState().AUTHPLAYER.playerTeam,
+                                0,
+                              ),
                             ),
                           ),
                           Padding(
