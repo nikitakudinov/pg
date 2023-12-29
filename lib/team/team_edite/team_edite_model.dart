@@ -75,6 +75,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (COUNTRIES)] action in TEAM_EDITE widget.
+  ApiCallResponse? jsonCOUNTRIES;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   NotificationsRow? addNotification1;
   // State field(s) for TextField widget.

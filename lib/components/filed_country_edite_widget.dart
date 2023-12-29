@@ -1,13 +1,10 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,24 +41,6 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FiledCountryEditeModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.jsonCOUNTRIES = await CountryGroup.countriesCall.call();
-      if ((_model.jsonCOUNTRIES?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().updateMAINDATAStruct(
-            (e) => e
-              ..countries = ((_model.jsonCOUNTRIES?.jsonBody ?? '')
-                      .toList()
-                      .map<CountrieStruct?>(CountrieStruct.maybeFromMap)
-                      .toList() as Iterable<CountrieStruct?>)
-                  .withoutNulls
-                  .toList(),
-          );
-        });
-      }
-    });
   }
 
   @override
@@ -169,7 +148,7 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: Image.network(
-                                        countriesListItem.flagLink48x36,
+                                        countriesListItem.flagLinkH24,
                                         width: 30.0,
                                         height: 20.0,
                                         fit: BoxFit.cover,
