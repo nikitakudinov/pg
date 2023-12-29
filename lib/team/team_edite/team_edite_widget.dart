@@ -49,7 +49,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 2000),
+        duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           setState(() {
             _model.teamData = FFAppState()
