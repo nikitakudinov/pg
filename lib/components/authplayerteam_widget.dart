@@ -66,7 +66,6 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: Container(
-        height: 330.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(5.0),
