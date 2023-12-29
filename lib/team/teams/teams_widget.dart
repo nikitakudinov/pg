@@ -2251,7 +2251,7 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                     .teams
                                     .where((e) => e.teamRecruitment == true)
                                     .toList()
-                                    .take(5)
+                                    .take(50)
                                     .toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
