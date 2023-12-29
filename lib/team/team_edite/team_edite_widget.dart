@@ -329,7 +329,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             ),
                           ],
                         ),
-                      ],
+                      ]
+                          .addToStart(SizedBox(width: 15.0))
+                          .addToEnd(SizedBox(width: 15.0)),
                     ),
                   ),
                 ),
