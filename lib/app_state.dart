@@ -555,6 +555,16 @@ class FFAppState extends ChangeNotifier {
   void updateAUTHPLAYERStruct(Function(PlayerStruct) updateFn) {
     updateFn(_AUTHPLAYER);
   }
+
+  TeamStruct _AUTHPLAYERTEAM = TeamStruct();
+  TeamStruct get AUTHPLAYERTEAM => _AUTHPLAYERTEAM;
+  set AUTHPLAYERTEAM(TeamStruct _value) {
+    _AUTHPLAYERTEAM = _value;
+  }
+
+  void updateAUTHPLAYERTEAMStruct(Function(TeamStruct) updateFn) {
+    updateFn(_AUTHPLAYERTEAM);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

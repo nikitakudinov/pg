@@ -1,7 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/auth_user_team_widget.dart';
+import '/components/authplayerteam_widget.dart';
 import '/components/loadingindicator_widget.dart';
 import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
@@ -24,8 +24,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
-  // Model for authUserTeam component.
-  late AuthUserTeamModel authUserTeamModel;
+  // Model for AUTHPLAYERTEAM component.
+  late AuthplayerteamModel authplayerteamModel;
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
   // Model for LOADINGINDICATOR component.
@@ -34,7 +34,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    authUserTeamModel = createModel(context, () => AuthUserTeamModel());
+    authplayerteamModel = createModel(context, () => AuthplayerteamModel());
     ratingTeamsTabsModel = createModel(context, () => RatingTeamsTabsModel());
     loadingindicatorModel = createModel(context, () => LoadingindicatorModel());
   }
@@ -42,7 +42,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
-    authUserTeamModel.dispose();
+    authplayerteamModel.dispose();
     ratingTeamsTabsModel.dispose();
     loadingindicatorModel.dispose();
   }

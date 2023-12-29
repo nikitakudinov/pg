@@ -1,7 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/auth_user_team_widget.dart';
+import '/components/authplayerteam_widget.dart';
 import '/components/loadingindicator_widget.dart';
 import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
@@ -39,11 +39,15 @@ class _HomeWidgetState extends State<HomeWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      unawaited(
-        () async {
-          await action_blocks.teamsloader(context);
-        }(),
-      );
+      await action_blocks.authplayerloader(context);
+      await action_blocks.teamsloader(context);
+      setState(() {
+        FFAppState().AUTHPLAYERTEAM = FFAppState()
+            .MAINDATA
+            .teams
+            .where((e) => e.teamId == FFAppState().AUTHPLAYER.playerTeam)
+            .toList()[0];
+      });
       unawaited(
         () async {
           await action_blocks.matchesloader(context);
@@ -54,7 +58,6 @@ class _HomeWidgetState extends State<HomeWidget> {
           await action_blocks.tournamentsloader(context);
         }(),
       );
-      await action_blocks.authplayerloader(context);
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 2000),
         callback: (timer) async {
@@ -261,26 +264,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ),
                             ),
                           wrapWithModel(
-                            model: _model.authUserTeamModel,
+                            model: _model.authplayerteamModel,
                             updateCallback: () => setState(() {}),
                             updateOnChange: true,
-                            child: AuthUserTeamWidget(
-                              parameter1: false,
-                              teamId: valueOrDefault<int>(
-                                FFAppState().AUTHPLAYER.playerTeam,
-                                0,
-                              ),
-                              teamData: FFAppState()
-                                  .MAINDATA
-                                  .teams
-                                  .where((e) =>
-                                      e.teamId ==
-                                      valueOrDefault<int>(
-                                        FFAppState().AUTHPLAYER.playerTeam,
-                                        0,
-                                      ))
-                                  .toList()[0],
-                            ),
+                            child: AuthplayerteamWidget(),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

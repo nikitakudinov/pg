@@ -2,7 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/auth_user_team_widget.dart';
+import '/components/authplayerteam_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -2213,12 +2213,9 @@ class _TeamsWidgetState extends State<TeamsWidget>
                     ),
                   ),
                 wrapWithModel(
-                  model: _model.authUserTeamModel,
+                  model: _model.authplayerteamModel,
                   updateCallback: () => setState(() {}),
-                  child: AuthUserTeamWidget(
-                    parameter1: _model.teamActionsVISIBILITY,
-                    teamId: FFAppState().AUTHPLAYER.playerTeam,
-                  ),
+                  child: AuthplayerteamWidget(),
                 ),
                 Container(
                   decoration: BoxDecoration(

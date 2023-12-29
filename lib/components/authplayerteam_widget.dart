@@ -1,4 +1,3 @@
-import '/backend/schema/structs/index.dart';
 import '/components/loadingindicator_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -12,30 +11,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'auth_user_team_model.dart';
-export 'auth_user_team_model.dart';
+import 'authplayerteam_model.dart';
+export 'authplayerteam_model.dart';
 
-class AuthUserTeamWidget extends StatefulWidget {
-  const AuthUserTeamWidget({
-    Key? key,
-    bool? parameter1,
-    int? teamId,
-    this.teamData,
-  })  : this.parameter1 = parameter1 ?? false,
-        this.teamId = teamId ?? 0,
-        super(key: key);
-
-  final bool parameter1;
-  final int teamId;
-  final TeamStruct? teamData;
+class AuthplayerteamWidget extends StatefulWidget {
+  const AuthplayerteamWidget({Key? key}) : super(key: key);
 
   @override
-  _AuthUserTeamWidgetState createState() => _AuthUserTeamWidgetState();
+  _AuthplayerteamWidgetState createState() => _AuthplayerteamWidgetState();
 }
 
-class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
+class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
     with TickerProviderStateMixin {
-  late AuthUserTeamModel _model;
+  late AuthplayerteamModel _model;
 
   final animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
@@ -61,7 +49,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AuthUserTeamModel());
+    _model = createModel(context, () => AuthplayerteamModel());
   }
 
   @override
@@ -96,43 +84,41 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                       'Ваша команда',
                       style: FlutterFlowTheme.of(context).titleMedium,
                     ),
-                    if (widget.parameter1)
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
-                              },
-                              text: 'Выйти из команды',
-                              icon: Icon(
-                                Icons.person_remove_sharp,
-                                size: 15.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: 140.0,
-                                height: 30.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(4.0),
-                              ),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: 'Выйти из команды',
+                            icon: Icon(
+                              Icons.person_remove_sharp,
+                              size: 15.0,
                             ),
-                          ].divide(SizedBox(height: 5.0)),
-                        ).animateOnPageLoad(
-                            animationsMap['columnOnPageLoadAnimation']!),
-                      ),
+                            options: FFButtonOptions(
+                              width: 140.0,
+                              height: 30.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).tertiary,
+                              textStyle: FlutterFlowTheme.of(context).bodySmall,
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(4.0),
+                            ),
+                          ),
+                        ].divide(SizedBox(height: 5.0)),
+                      ).animateOnPageLoad(
+                          animationsMap['columnOnPageLoadAnimation']!),
+                    ),
                     FlutterFlowIconButton(
                       borderRadius: 20.0,
                       borderWidth: 1.0,
@@ -149,7 +135,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                   ],
                 ),
               ),
-              if (FFAppState().MAINDATA.teams.length == 0)
+              if (FFAppState().AUTHPLAYERTEAM == null)
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Row(
@@ -168,7 +154,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                     ],
                   ),
                 ),
-              if (FFAppState().MAINDATA.teams.length != 0)
+              if (FFAppState().AUTHPLAYERTEAM != null)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                   child: Row(
@@ -187,15 +173,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5.0),
                             child: Image.network(
-                              valueOrDefault<String>(
-                                FFAppState()
-                                    .MAINDATA
-                                    .teams
-                                    .where((e) => e.teamId == widget.teamId)
-                                    .toList()[0]
-                                    .teamLogo,
-                                '0',
-                              ),
+                              FFAppState().AUTHPLAYERTEAM.teamLogo,
                               width: 70.0,
                               height: 70.0,
                               fit: BoxFit.cover,
@@ -211,15 +189,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                           children: [
                             Text(
                               valueOrDefault<String>(
-                                '${valueOrDefault<String>(
-                                  FFAppState()
-                                      .MAINDATA
-                                      .teams
-                                      .where((e) => e.teamId == widget.teamId)
-                                      .toList()[0]
-                                      .teamTag,
-                                  '0',
-                                )}',
+                                '${FFAppState().AUTHPLAYERTEAM.teamTag}',
                                 'TAG',
                               ),
                               style:
@@ -227,7 +197,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamName}',
+                                '${FFAppState().AUTHPLAYERTEAM.teamName}',
                                 'Team Name',
                               ),
                               style: FlutterFlowTheme.of(context).labelMedium,
@@ -248,16 +218,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: Image.network(
-                                        valueOrDefault<String>(
-                                          FFAppState()
-                                              .MAINDATA
-                                              .teams
-                                              .where((e) =>
-                                                  e.teamId == widget.teamId)
-                                              .toList()[0]
-                                              .teamFlag,
-                                          '0',
-                                        ),
+                                        FFAppState().AUTHPLAYERTEAM.teamFlag,
                                         width: 20.0,
                                         height: 12.0,
                                         fit: BoxFit.cover,
@@ -267,7 +228,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                 ),
                                 Text(
                                   valueOrDefault<String>(
-                                    '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamCountry}',
+                                    '${FFAppState().AUTHPLAYERTEAM.teamCountry}',
                                     'Country',
                                   ),
                                   style:
@@ -343,7 +304,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                     ].divide(SizedBox(width: 10.0)),
                   ),
                 ),
-              if (FFAppState().MAINDATA.teams.length != 0)
+              if (FFAppState().AUTHPLAYERTEAM != null)
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Row(
@@ -484,7 +445,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                   ),
                                   Text(
                                     valueOrDefault<String>(
-                                      '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchesCount.toString()}',
+                                      '${FFAppState().AUTHPLAYERTEAM.teamMatchesCount.toString()}',
                                       '0',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -515,10 +476,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                         ),
                                   ),
                                   Text(
-                                    valueOrDefault<String>(
-                                      '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchWins.toString()}',
-                                      '0',
-                                    ),
+                                    '${FFAppState().AUTHPLAYERTEAM.teamMatchWins.toString()}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -548,7 +506,7 @@ class _AuthUserTeamWidgetState extends State<AuthUserTeamWidget>
                                   ),
                                   Text(
                                     valueOrDefault<String>(
-                                      '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamMatchLoses.toString()}',
+                                      '${FFAppState().AUTHPLAYERTEAM.teamMatchLoses.toString()}',
                                       '0',
                                     ),
                                     style: FlutterFlowTheme.of(context)
