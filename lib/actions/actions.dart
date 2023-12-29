@@ -596,17 +596,14 @@ Future tournamentsloader(BuildContext context) async {
 Future authplayerloader(BuildContext context) async {
   ApiCallResponse? jsonAUTRHPLAYER;
 
-  if (!(FFAppState().AUTHPLAYER.playerNickname != null &&
-      FFAppState().AUTHPLAYER.playerNickname != '')) {
-    jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
-      idList: currentUserUid,
-    );
-    FFAppState().update(() {
-      FFAppState().AUTHPLAYER = ((jsonAUTRHPLAYER?.jsonBody ?? '')
-              .toList()
-              .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
-              .toList() as Iterable<PlayerStruct?>)
-          .withoutNulls[0];
-    });
-  }
+  jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
+    idList: currentUserUid,
+  );
+  FFAppState().update(() {
+    FFAppState().AUTHPLAYER = ((jsonAUTRHPLAYER?.jsonBody ?? '')
+            .toList()
+            .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+            .toList() as Iterable<PlayerStruct?>)
+        .withoutNulls[0];
+  });
 }
