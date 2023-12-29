@@ -151,9 +151,9 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: CachedNetworkImage(
                                         fadeInDuration:
-                                            Duration(milliseconds: 3000),
+                                            Duration(milliseconds: 500),
                                         fadeOutDuration:
-                                            Duration(milliseconds: 3000),
+                                            Duration(milliseconds: 500),
                                         imageUrl: countriesListItem.flagLinkH24,
                                         width: 30.0,
                                         height: 20.0,
