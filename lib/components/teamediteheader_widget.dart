@@ -139,7 +139,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    if (_model.fieldVISIBILITY)
+                    if (_model.tagfieldVISIBILITY)
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -158,7 +158,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 setState(() {
-                                  _model.fieldVISIBILITY = false;
+                                  _model.tagfieldVISIBILITY = false;
                                   _model.editeButtonVISIBILITY = false;
                                   _model.tagediteboxVISIBILITY = true;
                                 });
@@ -278,7 +278,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                               .teamsloader(context);
                                           setState(() {});
                                           setState(() {
-                                            _model.fieldVISIBILITY = true;
+                                            _model.tagfieldVISIBILITY = true;
                                             _model.editeButtonVISIBILITY = true;
                                             _model.tagediteboxVISIBILITY =
                                                 false;
@@ -335,7 +335,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    if (_model.fieldVISIBILITY)
+                    if (_model.tagfieldVISIBILITY)
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -354,9 +354,10 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 setState(() {
-                                  _model.fieldVISIBILITY = false;
+                                  _model.tagfieldVISIBILITY = false;
                                   _model.editeButtonVISIBILITY = false;
                                   _model.nameediteboxVISIBILITY = true;
+                                  _model.namefieldVISIBILITY = true;
                                 });
                               },
                               child: Container(
@@ -483,7 +484,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                               .teamsloader(context);
                                           setState(() {});
                                           setState(() {
-                                            _model.fieldVISIBILITY = true;
+                                            _model.tagfieldVISIBILITY = true;
                                             _model.editeButtonVISIBILITY = true;
                                             _model.nameediteboxVISIBILITY =
                                                 false;

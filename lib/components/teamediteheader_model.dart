@@ -27,7 +27,7 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
 
   String logo = 'false';
 
-  bool fieldVISIBILITY = true;
+  bool tagfieldVISIBILITY = true;
 
   bool editeboxVISIBILITY = false;
 
@@ -36,6 +36,8 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
   bool tagediteboxVISIBILITY = false;
 
   bool nameediteboxVISIBILITY = false;
+
+  bool namefieldVISIBILITY = true;
 
   ///  State fields for stateful widgets in this component.
 
