@@ -159,26 +159,29 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                       width: 100.0,
                       height: 32.0,
                       decoration: BoxDecoration(),
-                      child: TextFormField(
-                        controller: _model.textController,
-                        focusNode: _model.textFieldFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
-                          filled: true,
-                          fillColor: FlutterFlowTheme.of(context).tertiary,
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.textController,
+                          focusNode: _model.textFieldFocusNode,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context).tertiary,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    fontSize: 12.0,
+                                  ),
+                          validator: _model.textControllerValidator
+                              .asValidator(context),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Cabin Condensed',
-                              fontSize: 12.0,
-                            ),
-                        validator:
-                            _model.textControllerValidator.asValidator(context),
                       ),
                     ),
                   ].divide(SizedBox(width: 15.0)),
