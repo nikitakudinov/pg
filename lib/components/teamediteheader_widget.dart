@@ -77,7 +77,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
       });
     });
 
-    _model.fieldTagController ??= TextEditingController(text: '${_model.tag}');
+    _model.fieldTagController ??= TextEditingController();
     _model.fieldTagFocusNode ??= FocusNode();
   }
 
@@ -221,7 +221,6 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: _model.tag,
                                       enabledBorder: InputBorder.none,
                                       focusedBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
@@ -260,21 +259,25 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                       _model.tag =
                                           _model.fieldTagController.text;
                                     });
-                                    await TeamsTable().update(
-                                      data: {
-                                        'team_tag': _model.tag,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'team_id',
-                                        widget.teamId,
-                                      ),
-                                    );
-                                    unawaited(
-                                      () async {
-                                        await action_blocks
-                                            .teamsloader(context);
-                                      }(),
-                                    );
+                                    if (!(_model.fieldTagController.text !=
+                                            null &&
+                                        _model.fieldTagController.text != '')) {
+                                      await TeamsTable().update(
+                                        data: {
+                                          'team_tag': _model.tag,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'team_id',
+                                          widget.teamId,
+                                        ),
+                                      );
+                                      unawaited(
+                                        () async {
+                                          await action_blocks
+                                              .teamsloader(context);
+                                        }(),
+                                      );
+                                    }
 
                                     setState(() {});
                                   },
