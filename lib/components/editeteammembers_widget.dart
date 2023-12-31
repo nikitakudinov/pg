@@ -399,6 +399,10 @@ class _EditeteammembersWidgetState extends State<EditeteammembersWidget> {
                                   });
                                   setState(() {
                                     _model.callMemberVISIBILITY = false;
+                                    _model.messageTextVISIBILITY = false;
+                                    _model.playerdataVISIBILITY = false;
+                                    _model.searchVISIBILITY = false;
+                                    _model.buttonsVISIBILITY = false;
                                   });
 
                                   setState(() {});
