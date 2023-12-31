@@ -196,8 +196,11 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
-                              width: 150.0,
                               height: 32.0,
+                              constraints: BoxConstraints(
+                                minWidth: 80.0,
+                                maxWidth: 150.0,
+                              ),
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 borderRadius: BorderRadius.only(
@@ -218,6 +221,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
+                                      hintText: _model.tag,
                                       enabledBorder: InputBorder.none,
                                       focusedBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
@@ -282,7 +286,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   options: FFButtonOptions(
                                     height: 32.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        30.0, 0.0, 0.0, 0.0),
+                                        35.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color:
