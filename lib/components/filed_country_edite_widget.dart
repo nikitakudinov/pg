@@ -121,7 +121,9 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                 await action_blocks.teamsloader(context);
                                 setState(() {});
                                 Navigator.pop(context);
-
+                                if (Navigator.of(context).canPop()) {
+                                  context.pop();
+                                }
                                 context.pushNamed(
                                   'TEAM_EDITE',
                                   queryParameters: {
