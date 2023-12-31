@@ -334,6 +334,45 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           ),
                         ),
                       ),
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+
+                            final user = await authManager.signInWithEmail(
+                              context,
+                              '3@3.ru',
+                              '123123',
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            context.goNamedAuth('HOME', context.mounted);
+                          },
+                          text: 'Войти как samara',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0x79D4E7E5),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
