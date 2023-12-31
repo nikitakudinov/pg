@@ -205,7 +205,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                               errorBorder: InputBorder.none,
                               focusedErrorBorder: InputBorder.none,
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 0.0, 5.0, 5.0),
+                                  10.0, 0.0, 10.0, 15.0),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                             validator: _model.textControllerValidator
