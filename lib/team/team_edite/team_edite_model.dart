@@ -1,10 +1,8 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/team_members_widget.dart';
+import '/components/editeteammembers_widget.dart';
 import '/components/teamediteheader_widget.dart';
-import '/components/vlist_i_t_e_m_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -78,6 +76,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   InstantTimer? instantTimer;
   // Model for TEAMEDITEHEADER component.
   late TeamediteheaderModel teamediteheaderModel;
+  // Model for EDITETEAMMEMBERS component.
+  late EditeteammembersModel editeteammembersModel;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -87,12 +87,14 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   void initState(BuildContext context) {
     teamediteheaderModel = createModel(context, () => TeamediteheaderModel());
+    editeteammembersModel = createModel(context, () => EditeteammembersModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
     teamediteheaderModel.dispose();
+    editeteammembersModel.dispose();
   }
 
   /// Action blocks are added here.

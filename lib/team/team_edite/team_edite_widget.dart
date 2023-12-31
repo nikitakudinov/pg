@@ -1,9 +1,7 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/team_members_widget.dart';
+import '/components/editeteammembers_widget.dart';
 import '/components/teamediteheader_widget.dart';
-import '/components/vlist_i_t_e_m_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -116,119 +114,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                     teamId: widget.teamId,
                   ),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: Text(
-                                'Состав',
-                                style: FlutterFlowTheme.of(context).titleMedium,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 10.0, 0.0),
-                              child: FlutterFlowIconButton(
-                                borderColor:
-                                    FlutterFlowTheme.of(context).tertiary,
-                                borderRadius: 3.0,
-                                buttonSize: 25.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).tertiary,
-                                icon: Icon(
-                                  Icons.add,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 10.0,
-                                ),
-                                onPressed: () async {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: TeamMembersWidget(),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        Builder(
-                          builder: (context) {
-                            final teamMemberList = FFAppState()
-                                .MAINDATA
-                                .players
-                                .where((e) => e.playerTeam == widget.teamId)
-                                .toList();
-                            return ListView.separated(
-                              padding: EdgeInsets.fromLTRB(
-                                0,
-                                10.0,
-                                0,
-                                10.0,
-                              ),
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: teamMemberList.length,
-                              separatorBuilder: (_, __) =>
-                                  SizedBox(height: 5.0),
-                              itemBuilder: (context, teamMemberListIndex) {
-                                final teamMemberListItem =
-                                    teamMemberList[teamMemberListIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 15.0, 0.0),
-                                  child: VlistITEMWidget(
-                                    key: Key(
-                                        'Key6kx_${teamMemberListIndex}_of_${teamMemberList.length}'),
-                                    imageSize: 45,
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                    title: teamMemberListItem.playerNickname,
-                                    subtitle:
-                                        teamMemberListItem.playerTeamRole.first,
-                                    country: teamMemberListItem.playerCountrie,
-                                    flag: teamMemberListItem.playerFlag,
-                                    image: teamMemberListItem.playerAvatar,
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                wrapWithModel(
+                  model: _model.editeteammembersModel,
+                  updateCallback: () => setState(() {}),
+                  child: EditeteammembersWidget(
+                    teamId: widget.teamId,
                   ),
                 ),
                 Padding(
