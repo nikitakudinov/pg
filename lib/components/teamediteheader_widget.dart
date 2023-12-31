@@ -4,7 +4,6 @@ import '/components/filededite_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -265,13 +264,9 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                               widget.teamId,
                                             ),
                                           );
-                                          unawaited(
-                                            () async {
-                                              await action_blocks
-                                                  .teamsloader(context);
-                                              setState(() {});
-                                            }(),
-                                          );
+                                          await action_blocks
+                                              .teamsloader(context);
+                                          setState(() {});
                                           setState(() {
                                             _model.fieldVISIBILITY = true;
                                             _model.editeboxVISIBILITY = false;
