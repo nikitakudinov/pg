@@ -79,6 +79,9 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
 
     _model.fieldTagController ??= TextEditingController();
     _model.fieldTagFocusNode ??= FocusNode();
+
+    _model.fieldNameController ??= TextEditingController();
+    _model.fieldNameFocusNode ??= FocusNode();
   }
 
   @override
@@ -156,8 +159,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               onTap: () async {
                                 setState(() {
                                   _model.fieldVISIBILITY = false;
-                                  _model.editeboxVISIBILITY = true;
                                   _model.editeButtonVISIBILITY = false;
+                                  _model.tagediteboxVISIBILITY = true;
                                 });
                               },
                               child: Container(
@@ -181,7 +184,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                             ),
                         ],
                       ),
-                    if (_model.editeboxVISIBILITY)
+                    if (_model.tagediteboxVISIBILITY)
                       Container(
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).tertiary,
@@ -277,8 +280,9 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                           );
                                           setState(() {
                                             _model.fieldVISIBILITY = true;
-                                            _model.editeboxVISIBILITY = false;
                                             _model.editeButtonVISIBILITY = true;
+                                            _model.tagediteboxVISIBILITY =
+                                                false;
                                           });
                                           await action_blocks
                                               .teamsloader(context);
@@ -292,6 +296,205 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                     color: _model.fieldTagController.text ==
                                                 null ||
                                             _model.fieldTagController.text == ''
+                                        ? FlutterFlowTheme.of(context).accent1
+                                        : FlutterFlowTheme.of(context).accent2,
+                                    size: 20.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 32.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        35.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(0.0),
+                                      bottomRight: Radius.circular(5.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(5.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ].divide(SizedBox(width: 15.0)),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    if (_model.fieldVISIBILITY)
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            valueOrDefault<String>(
+                              '${_model.tag}',
+                              'Название команды',
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                          if (_model.editeButtonVISIBILITY)
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setState(() {
+                                  _model.fieldVISIBILITY = false;
+                                  _model.editeButtonVISIBILITY = false;
+                                  _model.nameediteboxVISIBILITY = true;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 5.0, 5.0, 5.0),
+                                  child: Text(
+                                    'ИЗМЕНИТЬ',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                          fontSize: 10.0,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    if (_model.nameediteboxVISIBILITY)
+                      Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(5.0),
+                            bottomRight: Radius.circular(5.0),
+                            topLeft: Radius.circular(5.0),
+                            topRight: Radius.circular(5.0),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              height: 32.0,
+                              constraints: BoxConstraints(
+                                minWidth: 80.0,
+                                maxWidth: 150.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).tertiary,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(5.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(5.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                              ),
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 0.0, 0.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.fieldNameController,
+                                    focusNode: _model.fieldNameFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.fieldNameController',
+                                      Duration(milliseconds: 2000),
+                                      () async {
+                                        setState(() {
+                                          _model.name =
+                                              _model.fieldNameController.text;
+                                        });
+                                      },
+                                    ),
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                      filled: true,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              10.0, 0.0, 10.0, 15.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          fontSize: 12.0,
+                                        ),
+                                    validator: _model
+                                        .fieldNameControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 5.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: (_model.fieldNameController.text ==
+                                              null ||
+                                          _model.fieldNameController.text == '')
+                                      ? null
+                                      : () async {
+                                          await TeamsTable().update(
+                                            data: {
+                                              'team_name': _model.name,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'team_id',
+                                              widget.teamId,
+                                            ),
+                                          );
+                                          setState(() {
+                                            _model.fieldVISIBILITY = true;
+                                            _model.editeButtonVISIBILITY = true;
+                                            _model.nameediteboxVISIBILITY =
+                                                false;
+                                          });
+                                          await action_blocks
+                                              .teamsloader(context);
+                                          setState(() {});
+
+                                          setState(() {});
+                                        },
+                                  text: '',
+                                  icon: Icon(
+                                    FFIcons.keditPencilLine01,
+                                    color: _model.fieldNameController.text ==
+                                                null ||
+                                            _model.fieldNameController.text ==
+                                                ''
                                         ? FlutterFlowTheme.of(context).accent1
                                         : FlutterFlowTheme.of(context).accent2,
                                     size: 20.0,

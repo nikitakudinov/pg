@@ -33,6 +33,10 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
 
   bool editeButtonVISIBILITY = true;
 
+  bool tagediteboxVISIBILITY = false;
+
+  bool nameediteboxVISIBILITY = false;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for FIELD-TAG widget.
@@ -41,6 +45,12 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
   String? Function(BuildContext, String?)? fieldTagControllerValidator;
   // Stores action output result for [Backend Call - Update Row] action in Button widget.
   List<TeamsRow>? apiResulti3p;
+  // State field(s) for FIELD-NAME widget.
+  FocusNode? fieldNameFocusNode;
+  TextEditingController? fieldNameController;
+  String? Function(BuildContext, String?)? fieldNameControllerValidator;
+  // Stores action output result for [Backend Call - Update Row] action in Button widget.
+  List<TeamsRow>? updateName;
 
   /// Initialization and disposal methods.
 
@@ -49,6 +59,9 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
   void dispose() {
     fieldTagFocusNode?.dispose();
     fieldTagController?.dispose();
+
+    fieldNameFocusNode?.dispose();
+    fieldNameController?.dispose();
   }
 
   /// Action blocks are added here.
