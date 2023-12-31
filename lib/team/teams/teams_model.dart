@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
 import 'teams_widget.dart' show TeamsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -26,7 +25,6 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  InstantTimer? instantTimer;
   // Stores action output result for [Backend Call - API (MATCHbyTORNandROUNDandPAIR)] action in Button widget.
   ApiCallResponse? nextmatch;
   // Model for AUTHPLAYERTEAM component.
@@ -40,7 +38,6 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
     authplayerteamModel.dispose();
   }
 
