@@ -252,9 +252,13 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                     0.0, 0.0, 5.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    if (!(_model.fieldTagController.text !=
+                                    if (_model.fieldTagController.text !=
                                             null &&
-                                        _model.fieldTagController.text != '')) {
+                                        _model.fieldTagController.text != '') {
+                                      setState(() {
+                                        _model.tag = _model.tag;
+                                      });
+                                    } else {
                                       unawaited(
                                         () async {
                                           await TeamsTable().update(
@@ -275,6 +279,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                         }(),
                                       );
                                     }
+
                                     setState(() {
                                       _model.fieldVISIBILITY = true;
                                       _model.editeboxVISIBILITY = false;
