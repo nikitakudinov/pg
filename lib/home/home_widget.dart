@@ -491,7 +491,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             BorderRadius.circular(5.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(10.0),
+                                        padding: EdgeInsets.all(15.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
