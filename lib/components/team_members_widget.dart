@@ -98,8 +98,11 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                   borderRadius: BorderRadius.circular(5.0),
                                   child: Image.network(
                                     valueOrDefault<String>(
-                                      _model.player?.playerAvatar,
-                                      '0',
+                                      PlayerStruct.maybeFromMap(
+                                              (_model.apiResultxwd?.jsonBody ??
+                                                  ''))
+                                          ?.playerAvatar,
+                                      'Avatar',
                                     ),
                                     width: 60.0,
                                     height: 60.0,
@@ -117,16 +120,28 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                   children: [
                                     Text(
                                       valueOrDefault<String>(
-                                        '${_model.player?.playerTag}',
-                                        'tag',
+                                        '${valueOrDefault<String>(
+                                          PlayerStruct.maybeFromMap((_model
+                                                      .apiResultxwd?.jsonBody ??
+                                                  ''))
+                                              ?.playerTag,
+                                          'TAG',
+                                        )}',
+                                        'TAG',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        '${_model.player?.playerNickname}',
-                                        'nickname',
+                                        '${valueOrDefault<String>(
+                                          PlayerStruct.maybeFromMap((_model
+                                                      .apiResultxwd?.jsonBody ??
+                                                  ''))
+                                              ?.playerNickname,
+                                          'nickname',
+                                        )}',
+                                        'Nickname',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall,
@@ -150,7 +165,14 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                           borderRadius:
                                               BorderRadius.circular(0.0),
                                           child: Image.network(
-                                            _model.player!.playerAvatar,
+                                            valueOrDefault<String>(
+                                              PlayerStruct.maybeFromMap((_model
+                                                          .apiResultxwd
+                                                          ?.jsonBody ??
+                                                      ''))
+                                                  ?.playerFlag,
+                                              'flag',
+                                            ),
                                             width: 20.0,
                                             height: 12.0,
                                             fit: BoxFit.cover,
@@ -160,8 +182,14 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        '${_model.player?.playerCountrie}',
-                                        'countrie',
+                                        '${valueOrDefault<String>(
+                                          PlayerStruct.maybeFromMap((_model
+                                                      .apiResultxwd?.jsonBody ??
+                                                  ''))
+                                              ?.playerCountrie,
+                                          'Country',
+                                        )}',
+                                        'Country',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
