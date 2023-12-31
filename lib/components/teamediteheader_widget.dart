@@ -261,26 +261,31 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 5.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: () async {
-                                    setState(() {
-                                      _model.fieldVISIBILITY = true;
-                                      _model.editeboxVISIBILITY = false;
-                                      _model.editeButtonVISIBILITY = true;
-                                    });
-                                    await TeamsTable().update(
-                                      data: {
-                                        'team_tag': _model.tag,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'team_id',
-                                        widget.teamId,
-                                      ),
-                                    );
-                                    await action_blocks.teamsloader(context);
-                                    setState(() {});
+                                  onPressed: (_model.fieldTagController.text !=
+                                              null &&
+                                          _model.fieldTagController.text != '')
+                                      ? null
+                                      : () async {
+                                          setState(() {
+                                            _model.fieldVISIBILITY = true;
+                                            _model.editeboxVISIBILITY = false;
+                                            _model.editeButtonVISIBILITY = true;
+                                          });
+                                          await TeamsTable().update(
+                                            data: {
+                                              'team_tag': _model.tag,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'team_id',
+                                              widget.teamId,
+                                            ),
+                                          );
+                                          await action_blocks
+                                              .teamsloader(context);
+                                          setState(() {});
 
-                                    setState(() {});
-                                  },
+                                          setState(() {});
+                                        },
                                   text: '',
                                   icon: Icon(
                                     FFIcons.keditPencilLine01,
