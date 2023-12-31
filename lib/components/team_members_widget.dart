@@ -1,5 +1,7 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -309,8 +311,31 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                     ),
                     Expanded(
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          _model.addNotification1 =
+                              await NotificationsTable().insert({
+                            'notification_created_at':
+                                supaSerialize<DateTime>(getCurrentTimestamp),
+                            'notification_from_team':
+                                FFAppState().AUTHPLAYER.playerTeam,
+                            'notification_to_player': FFAppState()
+                                .MAINDATA
+                                .players
+                                .where((e) =>
+                                    e.playerId ==
+                                    functions.stringTOinteger(
+                                        _model.textController.text))
+                                .toList()[0]
+                                .playerUid,
+                            'notification_from_player': currentUserUid,
+                            'notification_type': 'Приглашение в команду',
+                            'notification_body':
+                                'Команда ${FFAppState().AUTHPLAYERTEAM.teamName}  предлагает вступить в ее ряды.',
+                            'notification_category': 'От команды',
+                          });
+                          Navigator.pop(context);
+
+                          setState(() {});
                         },
                         text: 'Да',
                         options: FFButtonOptions(
