@@ -406,7 +406,6 @@ class _EditeteammembersWidgetState extends State<EditeteammembersWidget> {
                                     setState(() {
                                       _model.callMemberVISIBILITY = false;
                                     });
-                                    Navigator.pop(context);
 
                                     setState(() {});
                                   },
