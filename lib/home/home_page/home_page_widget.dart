@@ -573,22 +573,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     ),
                                                   ],
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          1.0,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                    ),
-                                                  ),
-                                                ),
                                               ],
                                             ),
                                           ),
@@ -880,7 +864,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         'notification_type':
                                                             'Отказ на предложение',
                                                         'notification_body':
-                                                            'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
+                                                            FFAppState()
+                                                                .AUTHPLAYER
+                                                                .playerNickname,
                                                         'notification_category':
                                                             'От игрока',
                                                       });
@@ -972,7 +958,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 getCurrentTimestamp),
                                                         'notification_from_player':
                                                             FFAppState()
-                                                                .authPlayer
+                                                                .AUTHPLAYER
                                                                 .playerUid,
                                                         'notification_to_player':
                                                             notificationsListItem
@@ -981,7 +967,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         'notification_type':
                                                             'Принял заявку вступления в клан',
                                                         'notification_body':
-                                                            'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                                            'Игрок ${FFAppState().AUTHPLAYER.playerNickname}приянял приглашение вступить в команду.',
                                                         'notification_category':
                                                             'От игрока',
                                                       });
