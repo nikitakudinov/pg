@@ -497,12 +497,12 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                               .teamsloader(context);
                                           setState(() {});
                                           setState(() {
-                                            _model.tagfieldVISIBILITY = true;
                                             _model.editeButtonVISIBILITY = true;
                                             _model.nameediteboxVISIBILITY =
                                                 false;
                                             _model.name =
                                                 _model.fieldNameController.text;
+                                            _model.namefieldVISIBILITY = true;
                                           });
 
                                           setState(() {});
