@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -97,13 +98,15 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5.0),
                                   child: Image.network(
-                                    valueOrDefault<String>(
-                                      PlayerStruct.maybeFromMap(
-                                              (_model.apiResultxwd?.jsonBody ??
-                                                  ''))
-                                          ?.playerAvatar,
-                                      'Avatar',
-                                    ),
+                                    FFAppState()
+                                        .MAINDATA
+                                        .players
+                                        .where((e) =>
+                                            e.playerId ==
+                                            functions.stringTOinteger(
+                                                _model.textController.text))
+                                        .toList()[0]
+                                        .playerAvatar,
                                     width: 60.0,
                                     height: 60.0,
                                     fit: BoxFit.cover,
@@ -120,13 +123,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                   children: [
                                     Text(
                                       valueOrDefault<String>(
-                                        '${valueOrDefault<String>(
-                                          PlayerStruct.maybeFromMap((_model
-                                                      .apiResultxwd?.jsonBody ??
-                                                  ''))
-                                              ?.playerTag,
-                                          'TAG',
-                                        )}',
+                                        '${FFAppState().MAINDATA.players.where((e) => e.playerId == functions.stringTOinteger(_model.textController.text)).toList()[0].playerTag}',
                                         'TAG',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -134,13 +131,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        '${valueOrDefault<String>(
-                                          PlayerStruct.maybeFromMap((_model
-                                                      .apiResultxwd?.jsonBody ??
-                                                  ''))
-                                              ?.playerNickname,
-                                          'nickname',
-                                        )}',
+                                        '${FFAppState().MAINDATA.players.where((e) => e.playerId == functions.stringTOinteger(_model.textController.text)).toList()[0].playerNickname}',
                                         'Nickname',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -165,14 +156,16 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                           borderRadius:
                                               BorderRadius.circular(0.0),
                                           child: Image.network(
-                                            valueOrDefault<String>(
-                                              PlayerStruct.maybeFromMap((_model
-                                                          .apiResultxwd
-                                                          ?.jsonBody ??
-                                                      ''))
-                                                  ?.playerFlag,
-                                              'flag',
-                                            ),
+                                            FFAppState()
+                                                .MAINDATA
+                                                .players
+                                                .where((e) =>
+                                                    e.playerId ==
+                                                    functions.stringTOinteger(
+                                                        _model.textController
+                                                            .text))
+                                                .toList()[0]
+                                                .playerFlag,
                                             width: 20.0,
                                             height: 12.0,
                                             fit: BoxFit.cover,
@@ -182,13 +175,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        '${valueOrDefault<String>(
-                                          PlayerStruct.maybeFromMap((_model
-                                                      .apiResultxwd?.jsonBody ??
-                                                  ''))
-                                              ?.playerCountrie,
-                                          'Country',
-                                        )}',
+                                        '${FFAppState().MAINDATA.players.where((e) => e.playerId == functions.stringTOinteger(_model.textController.text)).toList()[0].playerCountrie}',
                                         'Country',
                                       ),
                                       style: FlutterFlowTheme.of(context)

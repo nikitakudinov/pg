@@ -390,27 +390,21 @@ Future singlChatUpdater(
 }
 
 Future loadALLplayers(BuildContext context) async {
-  ApiCallResponse? jSONallPLAYERSdata;
-  List<PlayerStruct>? dtPLAYERdata;
+  ApiCallResponse? jsonPLAYERS;
 
-  jSONallPLAYERSdata = await PlayerGroup.listplayersCall.call();
-  if ((jSONallPLAYERSdata?.succeeded ?? true)) {
-    dtPLAYERdata = await actions.dtPLAYER(
-      (jSONallPLAYERSdata?.jsonBody ?? ''),
-    );
+  jsonPLAYERS = await PlayerGroup.listplayersCall.call();
+  if ((jsonPLAYERS?.succeeded ?? true)) {
     FFAppState().update(() {
-      FFAppState().players = dtPLAYERdata!.toList().cast<PlayerStruct>();
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..players = ((jsonPLAYERS?.jsonBody ?? '')
+                  .toList()
+                  .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+                  .toList() as Iterable<PlayerStruct?>)
+              .withoutNulls
+              .toList(),
+      );
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'В память загружено ${FFAppState().players.length.toString()}профилей игроков',
-          style: TextStyle(),
-        ),
-        duration: Duration(milliseconds: 4000),
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
-      ),
-    );
   }
 }
 

@@ -59,6 +59,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           await action_blocks.countriesloader(context);
         }(),
       );
+      await action_blocks.loadALLplayers(context);
       await action_blocks.teamsloader(context);
       setState(() {
         FFAppState().AUTHPLAYERTEAM = FFAppState()
