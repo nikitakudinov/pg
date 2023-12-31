@@ -90,6 +90,7 @@ class _EditeteammembersWidgetState extends State<EditeteammembersWidget> {
                   onPressed: () async {
                     setState(() {
                       _model.callMemberVISIBILITY = true;
+                      _model.searchVISIBILITY = true;
                     });
                   },
                 ),
