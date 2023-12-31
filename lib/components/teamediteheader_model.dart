@@ -24,6 +24,10 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
 
   String logo = 'false';
 
+  bool fieldVISIBILITY = true;
+
+  bool editeboxVISIBILITY = false;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

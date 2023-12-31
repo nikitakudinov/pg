@@ -143,20 +143,33 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                           ),
                           style: FlutterFlowTheme.of(context).titleLarge,
                         ),
-                        Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
-                            child: Text(
-                              'ИЗМЕНИТЬ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    fontSize: 10.0,
-                                  ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              _model.fieldVISIBILITY = false;
+                              _model.editeboxVISIBILITY = true;
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 5.0, 5.0, 5.0),
+                              child: Text(
+                                'ИЗМЕНИТЬ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      fontSize: 10.0,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
@@ -212,8 +225,11 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                             ),
                           ),
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              setState(() {
+                                _model.fieldVISIBILITY = true;
+                                _model.editeboxVISIBILITY = false;
+                              });
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(
