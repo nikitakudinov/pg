@@ -990,6 +990,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           currentUserUid,
                                                         ),
                                                       );
+                                                      unawaited(
+                                                        () async {
+                                                          await action_blocks
+                                                              .loadALLplayers(
+                                                                  context);
+                                                        }(),
+                                                      );
                                                     },
                                                     text: 'Вступить',
                                                     options: FFButtonOptions(
