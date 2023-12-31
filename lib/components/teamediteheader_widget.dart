@@ -256,23 +256,20 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                           _model.fieldTagController.text == '')
                                       ? null
                                       : () async {
-                                          unawaited(
-                                            () async {
-                                              await TeamsTable().update(
-                                                data: {
-                                                  'team_tag': _model.tag,
-                                                },
-                                                matchingRows: (rows) => rows.eq(
-                                                  'team_id',
-                                                  widget.teamId,
-                                                ),
-                                              );
-                                            }(),
+                                          await TeamsTable().update(
+                                            data: {
+                                              'team_tag': _model.tag,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'team_id',
+                                              widget.teamId,
+                                            ),
                                           );
                                           unawaited(
                                             () async {
                                               await action_blocks
                                                   .teamsloader(context);
+                                              setState(() {});
                                             }(),
                                           );
                                           setState(() {
@@ -320,9 +317,6 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                       topLeft: Radius.circular(0.0),
                                       topRight: Radius.circular(5.0),
                                     ),
-                                    disabledTextColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
                                   ),
                                 ),
                               ),
