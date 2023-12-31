@@ -294,6 +294,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   text: '',
                                   icon: Icon(
                                     FFIcons.keditPencilLine01,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 20.0,
                                   ),
                                   options: FFButtonOptions(
@@ -311,7 +312,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                           color: Colors.white,
                                         ),
                                     borderSide: BorderSide(
-                                      color: Colors.transparent,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.only(
