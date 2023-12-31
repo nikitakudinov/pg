@@ -1089,48 +1089,80 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     Expanded(
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          await NotificationsTable()
-                                                              .insert({
-                                                            'notification_created_at':
-                                                                supaSerialize<
-                                                                        DateTime>(
-                                                                    getCurrentTimestamp),
-                                                            'notification_from_player':
-                                                                FFAppState()
-                                                                    .AUTHPLAYER
-                                                                    .playerUid,
-                                                            'notification_to_player':
-                                                                notificationsListItem
-                                                                    .notificationFromPlayer
-                                                                    .playerUid,
-                                                            'notification_type':
-                                                                'Принял заявку вступления в клан',
-                                                            'notification_body':
-                                                                'Игрок ${FFAppState().AUTHPLAYER.playerNickname}приянял приглашение вступить в команду.',
-                                                            'notification_category':
-                                                                'От игрока',
-                                                          });
-                                                          await PlayersTable()
-                                                              .update(
-                                                            data: {
-                                                              'player_team':
-                                                                  notificationsListItem
-                                                                      .notificationFromTeam
-                                                                      .teamId,
-                                                              'player_team_role':
-                                                                  [
-                                                                'Рядовой боец'
-                                                              ],
-                                                              'player_team_lineup':
-                                                                  false,
-                                                            },
-                                                            matchingRows:
-                                                                (rows) =>
-                                                                    rows.eq(
-                                                              'player_uid',
-                                                              currentUserUid,
-                                                            ),
+                                                          unawaited(
+                                                            () async {
+                                                              await NotificationsTable()
+                                                                  .insert({
+                                                                'notification_created_at':
+                                                                    supaSerialize<
+                                                                            DateTime>(
+                                                                        getCurrentTimestamp),
+                                                                'notification_from_player':
+                                                                    FFAppState()
+                                                                        .AUTHPLAYER
+                                                                        .playerUid,
+                                                                'notification_to_player':
+                                                                    notificationsListItem
+                                                                        .notificationFromPlayer
+                                                                        .playerUid,
+                                                                'notification_type':
+                                                                    'Принял заявку вступления в клан',
+                                                                'notification_body':
+                                                                    'Игрок ${FFAppState().AUTHPLAYER.playerNickname}приянял приглашение вступить в команду.',
+                                                                'notification_category':
+                                                                    'От игрока',
+                                                              });
+                                                            }(),
                                                           );
+                                                          unawaited(
+                                                            () async {
+                                                              await PlayersTable()
+                                                                  .update(
+                                                                data: {
+                                                                  'player_team':
+                                                                      notificationsListItem
+                                                                          .notificationFromTeam
+                                                                          .teamId,
+                                                                  'player_team_role':
+                                                                      [
+                                                                    'Рядовой боец'
+                                                                  ],
+                                                                  'player_team_lineup':
+                                                                      false,
+                                                                },
+                                                                matchingRows:
+                                                                    (rows) =>
+                                                                        rows.eq(
+                                                                  'player_uid',
+                                                                  currentUserUid,
+                                                                ),
+                                                              );
+                                                            }(),
+                                                          );
+                                                          unawaited(
+                                                            () async {
+                                                              await NotificationsTable()
+                                                                  .delete(
+                                                                matchingRows:
+                                                                    (rows) =>
+                                                                        rows.eq(
+                                                                  'notification_id',
+                                                                  notificationsListItem
+                                                                      .notificationId,
+                                                                ),
+                                                              );
+                                                            }(),
+                                                          );
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .updateMAINDATAStruct(
+                                                              (e) => e
+                                                                ..updateNotifications(
+                                                                  (e) => e.remove(
+                                                                      notificationsListItem),
+                                                                ),
+                                                            );
+                                                          });
                                                           unawaited(
                                                             () async {
                                                               await action_blocks
