@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -217,6 +218,16 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   child: TextFormField(
                                     controller: _model.fieldTagController,
                                     focusNode: _model.fieldTagFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.fieldTagController',
+                                      Duration(milliseconds: 2000),
+                                      () async {
+                                        setState(() {
+                                          _model.tag =
+                                              _model.fieldTagController.text;
+                                        });
+                                      },
+                                    ),
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -250,33 +261,28 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 5.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: (_model.fieldTagController.text ==
-                                              null ||
-                                          _model.fieldTagController.text == '')
-                                      ? null
-                                      : () async {
-                                          await TeamsTable().update(
-                                            data: {
-                                              'team_tag': _model.tag,
-                                            },
-                                            matchingRows: (rows) => rows.eq(
-                                              'team_id',
-                                              widget.teamId,
-                                            ),
-                                          );
-                                          await action_blocks
-                                              .teamsloader(context);
-                                          setState(() {});
-                                          setState(() {
-                                            _model.fieldVISIBILITY = true;
-                                            _model.editeboxVISIBILITY = false;
-                                            _model.editeButtonVISIBILITY = true;
-                                            _model.tag =
-                                                _model.fieldTagController.text;
-                                          });
+                                  onPressed: () async {
+                                    await TeamsTable().update(
+                                      data: {
+                                        'team_tag': _model.tag,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'team_id',
+                                        widget.teamId,
+                                      ),
+                                    );
+                                    await action_blocks.teamsloader(context);
+                                    setState(() {});
+                                    setState(() {
+                                      _model.fieldVISIBILITY = true;
+                                      _model.editeboxVISIBILITY = false;
+                                      _model.editeButtonVISIBILITY = true;
+                                      _model.tag =
+                                          _model.fieldTagController.text;
+                                    });
 
-                                          setState(() {});
-                                        },
+                                    setState(() {});
+                                  },
                                   text: '',
                                   icon: Icon(
                                     FFIcons.keditPencilLine01,
