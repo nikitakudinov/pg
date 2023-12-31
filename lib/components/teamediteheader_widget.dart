@@ -335,7 +335,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    if (_model.tagfieldVISIBILITY)
+                    if (_model.namefieldVISIBILITY)
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
