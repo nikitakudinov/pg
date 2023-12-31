@@ -256,18 +256,14 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                       _model.tag =
                                           _model.fieldTagController.text;
                                     });
-                                    unawaited(
-                                      () async {
-                                        await TeamsTable().update(
-                                          data: {
-                                            'team_tag': _model.tag,
-                                          },
-                                          matchingRows: (rows) => rows.eq(
-                                            'team_id',
-                                            widget.teamId,
-                                          ),
-                                        );
-                                      }(),
+                                    await TeamsTable().update(
+                                      data: {
+                                        'team_tag': _model.tag,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'team_id',
+                                        widget.teamId,
+                                      ),
                                     );
                                     unawaited(
                                       () async {
