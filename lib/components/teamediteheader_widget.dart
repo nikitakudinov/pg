@@ -366,7 +366,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 setState(() {
-                                  _model.tagfieldVISIBILITY = false;
+                                  _model.tagfieldVISIBILITY = true;
                                   _model.editeButtonVISIBILITY = false;
                                   _model.nameediteboxVISIBILITY = true;
                                   _model.namefieldVISIBILITY = false;
