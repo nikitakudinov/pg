@@ -299,52 +299,54 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                       ),
                       style: FlutterFlowTheme.of(context).titleMedium,
                     ),
-                    Builder(
-                      builder: (context) => InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await showAlignedDialog(
-                            context: context,
-                            isGlobal: true,
-                            avoidOverflow: false,
-                            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            builder: (dialogContext) {
-                              return Material(
-                                color: Colors.transparent,
-                                child: FiledediteWidget(
-                                  field: 'Название команды',
-                                  initValue: _model.name,
-                                  dataId: widget.teamId!,
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
-                            child: Text(
-                              'ИЗМЕНИТЬ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    fontSize: 10.0,
+                    if (_model.editeButtonVISIBILITY)
+                      Builder(
+                        builder: (context) => InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: FiledediteWidget(
+                                    field: 'Название команды',
+                                    initValue: _model.name,
+                                    dataId: widget.teamId!,
                                   ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 5.0, 5.0, 5.0),
+                              child: Text(
+                                'ИЗМЕНИТЬ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      fontSize: 10.0,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                   ].divide(SizedBox(width: 15.0)),
                 ),
                 Row(
@@ -379,51 +381,53 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                     ),
-                    Builder(
-                      builder: (context) => InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await showAlignedDialog(
-                            context: context,
-                            isGlobal: true,
-                            avoidOverflow: false,
-                            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            builder: (dialogContext) {
-                              return Material(
-                                color: Colors.transparent,
-                                child: FiledCountryEditeWidget(
-                                  field: 'Страна',
-                                  dataId: widget.teamId!,
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
-                            child: Text(
-                              'ИЗМЕНИТЬ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    fontSize: 10.0,
+                    if (_model.editeButtonVISIBILITY)
+                      Builder(
+                        builder: (context) => InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: FiledCountryEditeWidget(
+                                    field: 'Страна',
+                                    dataId: widget.teamId!,
                                   ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 5.0, 5.0, 5.0),
+                              child: Text(
+                                'ИЗМЕНИТЬ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Cabin Condensed',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      fontSize: 10.0,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ],
