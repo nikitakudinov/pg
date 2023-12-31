@@ -165,9 +165,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: 'Тег команды',
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           errorBorder: InputBorder.none,
