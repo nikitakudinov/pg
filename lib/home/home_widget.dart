@@ -701,38 +701,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  1.0,
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Visibility(
-                                                            visible: notificationsListItem
-                                                                    .notificationType !=
-                                                                'Матч репорт',
-                                                            child: Text(
-                                                              notificationsListItem
-                                                                  .notificationBody,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -1129,7 +1097,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     getCurrentTimestamp),
                                                             'notification_from_player':
                                                                 FFAppState()
-                                                                    .authPlayer
+                                                                    .AUTHPLAYER
                                                                     .playerUid,
                                                             'notification_to_player':
                                                                 notificationsListItem
@@ -1138,7 +1106,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             'notification_type':
                                                                 'Принял заявку вступления в клан',
                                                             'notification_body':
-                                                                'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                                                'Игрок ${FFAppState().AUTHPLAYER.playerNickname}приянял приглашение вступить в команду.',
                                                             'notification_category':
                                                                 'От игрока',
                                                           });
@@ -1162,6 +1130,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               'player_uid',
                                                               currentUserUid,
                                                             ),
+                                                          );
+                                                          unawaited(
+                                                            () async {
+                                                              await action_blocks
+                                                                  .loadALLplayers(
+                                                                      context);
+                                                            }(),
                                                           );
                                                         },
                                                         text: 'Вступить',
