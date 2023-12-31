@@ -475,12 +475,6 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                             ),
                                           );
                                           setState(() {
-                                            _model.fieldVISIBILITY = true;
-                                            _model.editeButtonVISIBILITY = true;
-                                            _model.nameediteboxVISIBILITY =
-                                                false;
-                                          });
-                                          setState(() {
                                             FFAppState().updateMAINDATAStruct(
                                               (e) => e..teams = [],
                                             );
@@ -488,6 +482,14 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                           await action_blocks
                                               .teamsloader(context);
                                           setState(() {});
+                                          setState(() {
+                                            _model.fieldVISIBILITY = true;
+                                            _model.editeButtonVISIBILITY = true;
+                                            _model.nameediteboxVISIBILITY =
+                                                false;
+                                            _model.name =
+                                                _model.fieldNameController.text;
+                                          });
 
                                           setState(() {});
                                         },
