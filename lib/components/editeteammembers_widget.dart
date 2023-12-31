@@ -305,7 +305,12 @@ class _EditeteammembersWidgetState extends State<EditeteammembersWidget> {
                                     );
                                     if ((_model.apiResultxwd?.succeeded ??
                                         true)) {
-                                      setState(() {});
+                                      setState(() {
+                                        _model.messageTextVISIBILITY = true;
+                                        _model.playerdataVISIBILITY = true;
+                                        _model.searchVISIBILITY = false;
+                                        _model.buttonsVISIBILITY = true;
+                                      });
                                     }
 
                                     setState(() {});
