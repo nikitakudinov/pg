@@ -60,7 +60,8 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
         child: Padding(
           padding: EdgeInsets.all(15.0),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (_model.messagetextVISIBILITY)
@@ -230,49 +231,44 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            _model.apiResultxwd =
-                                await PlayerGroup.listplayerbyidCall.call(
-                              idList: _model.textController.text,
-                            );
-                            if ((_model.apiResultxwd?.succeeded ?? true)) {
-                              setState(() {
-                                _model.messagetextVISIBILITY = true;
-                                _model.playerdataVISIBILITY = true;
-                                _model.searchVISIBILITY = false;
-                                _model.buttonsVISIBILITY = true;
-                                _model.player = PlayerStruct.maybeFromMap(
-                                    (_model.apiResultxwd?.jsonBody ?? ''));
-                              });
-                            }
+                      FFButtonWidget(
+                        onPressed: () async {
+                          _model.apiResultxwd =
+                              await PlayerGroup.listplayerbyidCall.call(
+                            idList: _model.textController.text,
+                          );
+                          if ((_model.apiResultxwd?.succeeded ?? true)) {
+                            setState(() {
+                              _model.messagetextVISIBILITY = true;
+                              _model.playerdataVISIBILITY = true;
+                              _model.searchVISIBILITY = false;
+                              _model.buttonsVISIBILITY = true;
+                              _model.player = PlayerStruct.maybeFromMap(
+                                  (_model.apiResultxwd?.jsonBody ?? ''));
+                            });
+                          }
 
-                            setState(() {});
-                          },
-                          text: 'Найти',
-                          options: FFButtonOptions(
-                            height: 30.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).tertiary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(3.0),
+                          setState(() {});
+                        },
+                        text: 'Найти',
+                        options: FFButtonOptions(
+                          height: 30.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
                           ),
+                          borderRadius: BorderRadius.circular(3.0),
                         ),
                       ),
                     ].divide(SizedBox(width: 5.0)),
