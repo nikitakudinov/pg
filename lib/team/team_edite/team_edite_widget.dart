@@ -188,7 +188,13 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                 .where((e) => e.playerTeam == widget.teamId)
                                 .toList();
                             return ListView.separated(
-                              padding: EdgeInsets.zero,
+                              padding: EdgeInsets.fromLTRB(
+                                0,
+                                10.0,
+                                0,
+                                10.0,
+                              ),
+                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: teamMemberList.length,
@@ -208,6 +214,8 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                         FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                     title: teamMemberListItem.playerNickname,
+                                    subtitle:
+                                        teamMemberListItem.playerTeamRole.first,
                                     country: teamMemberListItem.playerCountrie,
                                     flag: teamMemberListItem.playerFlag,
                                     image: teamMemberListItem.playerAvatar,
