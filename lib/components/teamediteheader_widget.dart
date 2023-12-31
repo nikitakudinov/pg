@@ -174,7 +174,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context).tertiary,
                             contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 10.0),
+                                0.0, 0.0, 0.0, 15.0),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
