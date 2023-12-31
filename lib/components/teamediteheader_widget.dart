@@ -468,7 +468,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                       : () async {
                                           await TeamsTable().update(
                                             data: {
-                                              'team_name': _model.name,
+                                              'team_name': _model
+                                                  .fieldNameController.text,
                                             },
                                             matchingRows: (rows) => rows.eq(
                                               'team_id',
