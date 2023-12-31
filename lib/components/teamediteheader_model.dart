@@ -32,18 +32,18 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for FIELD-TAG widget.
+  FocusNode? fieldTagFocusNode;
+  TextEditingController? fieldTagController;
+  String? Function(BuildContext, String?)? fieldTagControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    fieldTagFocusNode?.dispose();
+    fieldTagController?.dispose();
   }
 
   /// Action blocks are added here.

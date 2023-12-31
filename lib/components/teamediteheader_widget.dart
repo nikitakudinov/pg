@@ -74,8 +74,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
       });
     });
 
-    _model.textController ??= TextEditingController(text: _model.tag);
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.fieldTagController ??= TextEditingController(text: _model.tag);
+    _model.fieldTagFocusNode ??= FocusNode();
   }
 
   @override
@@ -210,8 +210,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.textController,
-                                    focusNode: _model.textFieldFocusNode,
+                                    controller: _model.fieldTagController,
+                                    focusNode: _model.fieldTagFocusNode,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -232,7 +232,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                           fontFamily: 'Cabin Condensed',
                                           fontSize: 12.0,
                                         ),
-                                    validator: _model.textControllerValidator
+                                    validator: _model
+                                        .fieldTagControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
