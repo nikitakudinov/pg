@@ -72,6 +72,9 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
             .teamLogo;
       });
     });
+
+    _model.textController ??= TextEditingController(text: _model.tag);
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -136,50 +139,47 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                       ),
                       style: FlutterFlowTheme.of(context).titleLarge,
                     ),
-                    Builder(
-                      builder: (context) => InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await showAlignedDialog(
-                            context: context,
-                            isGlobal: true,
-                            avoidOverflow: false,
-                            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            builder: (dialogContext) {
-                              return Material(
-                                color: Colors.transparent,
-                                child: FiledediteWidget(
-                                  field: 'Тег команды',
-                                  initValue: _model.tag,
-                                  dataId: widget.teamId!,
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
-                            child: Text(
-                              'ИЗМЕНИТЬ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
+                    Container(
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                        child: Text(
+                          'ИЗМЕНИТЬ',
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Cabin Condensed',
                                     color: FlutterFlowTheme.of(context).accent1,
                                     fontSize: 10.0,
                                   ),
-                            ),
-                          ),
                         ),
+                      ),
+                    ),
+                    Container(
+                      width: 200.0,
+                      decoration: BoxDecoration(),
+                      child: TextFormField(
+                        controller: _model.textController,
+                        focusNode: _model.textFieldFocusNode,
+                        autofocus: true,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Тег команды',
+                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
+                          filled: true,
+                          fillColor: FlutterFlowTheme.of(context).tertiary,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Cabin Condensed',
+                              fontSize: 12.0,
+                            ),
+                        validator:
+                            _model.textControllerValidator.asValidator(context),
                       ),
                     ),
                   ].divide(SizedBox(width: 15.0)),
