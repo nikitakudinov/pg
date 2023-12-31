@@ -78,6 +78,8 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   InstantTimer? instantTimer;
   // Model for TEAMEDITEHEADER component.
   late TeamediteheaderModel teamediteheaderModel;
+  // Model for TEAM-MEMBERS component.
+  late TeamMembersModel teamMembersModel;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   NotificationsRow? addNotification1;
   // State field(s) for TextField widget.
@@ -97,12 +99,14 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   void initState(BuildContext context) {
     teamediteheaderModel = createModel(context, () => TeamediteheaderModel());
+    teamMembersModel = createModel(context, () => TeamMembersModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
     teamediteheaderModel.dispose();
+    teamMembersModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

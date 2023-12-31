@@ -185,6 +185,11 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                             ),
                           ],
                         ),
+                        wrapWithModel(
+                          model: _model.teamMembersModel,
+                          updateCallback: () => setState(() {}),
+                          child: TeamMembersWidget(),
+                        ),
                         Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Container(
