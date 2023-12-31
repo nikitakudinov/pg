@@ -11,11 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'team_members_model.dart';
-export 'team_members_model.dart';
+import 'call_member_model.dart';
+export 'call_member_model.dart';
 
-class TeamMembersWidget extends StatefulWidget {
-  const TeamMembersWidget({
+class CallMemberWidget extends StatefulWidget {
+  const CallMemberWidget({
     Key? key,
     bool? bodyVisibility,
   })  : this.bodyVisibility = bodyVisibility ?? false,
@@ -24,11 +24,11 @@ class TeamMembersWidget extends StatefulWidget {
   final bool bodyVisibility;
 
   @override
-  _TeamMembersWidgetState createState() => _TeamMembersWidgetState();
+  _CallMemberWidgetState createState() => _CallMemberWidgetState();
 }
 
-class _TeamMembersWidgetState extends State<TeamMembersWidget> {
-  late TeamMembersModel _model;
+class _CallMemberWidgetState extends State<CallMemberWidget> {
+  late CallMemberModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -39,7 +39,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TeamMembersModel());
+    _model = createModel(context, () => CallMemberModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();

@@ -7,13 +7,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'team_members_widget.dart' show TeamMembersWidget;
+import 'call_member_widget.dart' show CallMemberWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TeamMembersModel extends FlutterFlowModel<TeamMembersWidget> {
+class CallMemberModel extends FlutterFlowModel<CallMemberWidget> {
   ///  Local state fields for this component.
 
   PlayerStruct? player;
