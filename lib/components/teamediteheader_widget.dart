@@ -221,16 +221,6 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   child: TextFormField(
                                     controller: _model.fieldTagController,
                                     focusNode: _model.fieldTagFocusNode,
-                                    onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.fieldTagController',
-                                      Duration(milliseconds: 2000),
-                                      () async {
-                                        setState(() {
-                                          _model.tag =
-                                              _model.fieldTagController.text;
-                                        });
-                                      },
-                                    ),
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -271,7 +261,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                       : () async {
                                           await TeamsTable().update(
                                             data: {
-                                              'team_tag': _model.tag,
+                                              'team_tag': _model
+                                                  .fieldTagController.text,
                                             },
                                             matchingRows: (rows) => rows.eq(
                                               'team_id',
