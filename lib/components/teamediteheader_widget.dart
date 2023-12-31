@@ -238,40 +238,48 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  setState(() {
-                                    _model.fieldVISIBILITY = true;
-                                    _model.editeboxVISIBILITY = false;
-                                    _model.editeButtonVISIBILITY = true;
-                                  });
-                                },
-                                text: 'Сохранить',
-                                options: FFButtonOptions(
-                                  height: 32.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Cabin Condensed',
-                                        color: Colors.white,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 5.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    setState(() {
+                                      _model.fieldVISIBILITY = true;
+                                      _model.editeboxVISIBILITY = false;
+                                      _model.editeButtonVISIBILITY = true;
+                                    });
+                                  },
+                                  text: '',
+                                  icon: Icon(
+                                    FFIcons.keditPencilLine01,
+                                    size: 20.0,
                                   ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(0.0),
-                                    bottomRight: Radius.circular(5.0),
-                                    topLeft: Radius.circular(0.0),
-                                    topRight: Radius.circular(5.0),
+                                  options: FFButtonOptions(
+                                    height: 32.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        30.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(0.0),
+                                      bottomRight: Radius.circular(5.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(5.0),
+                                    ),
                                   ),
                                 ),
                               ),
