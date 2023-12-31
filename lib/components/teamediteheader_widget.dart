@@ -133,28 +133,34 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
-                      valueOrDefault<String>(
-                        '${_model.tag}',
-                        'TAG',
-                      ),
-                      style: FlutterFlowTheme.of(context).titleLarge,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                        child: Text(
-                          'ИЗМЕНИТЬ',
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          valueOrDefault<String>(
+                            '${_model.tag}',
+                            'TAG',
+                          ),
+                          style: FlutterFlowTheme.of(context).titleLarge,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 5.0, 5.0, 5.0),
+                            child: Text(
+                              'ИЗМЕНИТЬ',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
                                     fontFamily: 'Cabin Condensed',
                                     color: FlutterFlowTheme.of(context).accent1,
                                     fontSize: 10.0,
                                   ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                     Container(
                       decoration: BoxDecoration(
