@@ -224,7 +224,6 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                     );
                     if ((_model.apiResultxwd?.succeeded ?? true)) {
                       setState(() {
-                        _model.player = _model.player;
                         _model.messagetextVISIBILITY = true;
                         _model.playerdataVISIBILITY = true;
                         _model.searchVISIBILITY = false;
