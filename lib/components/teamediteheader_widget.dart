@@ -77,10 +77,10 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
       });
     });
 
-    _model.fieldTagController ??= TextEditingController();
+    _model.fieldTagController ??= TextEditingController(text: _model.tag);
     _model.fieldTagFocusNode ??= FocusNode();
 
-    _model.fieldNameController ??= TextEditingController();
+    _model.fieldNameController ??= TextEditingController(text: _model.name);
     _model.fieldNameFocusNode ??= FocusNode();
   }
 
