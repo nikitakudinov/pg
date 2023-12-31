@@ -77,10 +77,22 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
       });
     });
 
-    _model.fieldTagController ??= TextEditingController(text: _model.tag);
+    _model.fieldTagController ??= TextEditingController(
+        text: FFAppState()
+            .MAINDATA
+            .teams
+            .where((e) => e.teamId == widget.teamId)
+            .toList()[0]
+            .teamTag);
     _model.fieldTagFocusNode ??= FocusNode();
 
-    _model.fieldNameController ??= TextEditingController(text: _model.name);
+    _model.fieldNameController ??= TextEditingController(
+        text: FFAppState()
+            .MAINDATA
+            .teams
+            .where((e) => e.teamId == widget.teamId)
+            .toList()[0]
+            .teamName);
     _model.fieldNameFocusNode ??= FocusNode();
   }
 
