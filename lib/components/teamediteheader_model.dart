@@ -1,8 +1,11 @@
+import '/backend/supabase/supabase.dart';
 import '/components/filed_country_edite_widget.dart';
 import '/components/filededite_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import 'teamediteheader_widget.dart' show TeamediteheaderWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +39,8 @@ class TeamediteheaderModel extends FlutterFlowModel<TeamediteheaderWidget> {
   FocusNode? fieldTagFocusNode;
   TextEditingController? fieldTagController;
   String? Function(BuildContext, String?)? fieldTagControllerValidator;
+  // Stores action output result for [Backend Call - Update Row] action in Button widget.
+  List<TeamsRow>? apiResulti3p;
 
   /// Initialization and disposal methods.
 

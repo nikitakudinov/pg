@@ -1,8 +1,11 @@
+import '/backend/supabase/supabase.dart';
 import '/components/filed_country_edite_widget.dart';
 import '/components/filededite_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -250,7 +253,30 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                       _model.fieldVISIBILITY = true;
                                       _model.editeboxVISIBILITY = false;
                                       _model.editeButtonVISIBILITY = true;
+                                      _model.tag =
+                                          _model.fieldTagController.text;
                                     });
+                                    unawaited(
+                                      () async {
+                                        await TeamsTable().update(
+                                          data: {
+                                            'team_tag': _model.tag,
+                                          },
+                                          matchingRows: (rows) => rows.eq(
+                                            'team_id',
+                                            widget.teamId,
+                                          ),
+                                        );
+                                      }(),
+                                    );
+                                    unawaited(
+                                      () async {
+                                        await action_blocks
+                                            .teamsloader(context);
+                                      }(),
+                                    );
+
+                                    setState(() {});
                                   },
                                   text: '',
                                   icon: Icon(
