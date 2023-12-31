@@ -282,6 +282,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                             _model.editeButtonVISIBILITY = true;
                                             _model.tagediteboxVISIBILITY =
                                                 false;
+                                            _model.tag =
+                                                _model.fieldTagController.text;
                                           });
 
                                           setState(() {});
