@@ -1,4 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
@@ -78,18 +77,6 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   InstantTimer? instantTimer;
   // Model for TEAMEDITEHEADER component.
   late TeamediteheaderModel teamediteheaderModel;
-  // Model for TEAM-MEMBERS component.
-  late TeamMembersModel teamMembersModel;
-  // Stores action output result for [Backend Call - Insert Row] action in Button widget.
-  NotificationsRow? addNotification1;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (LISTPLAYERBYID)] action in Button widget.
-  ApiCallResponse? apiResultxwd;
-  // Stores action output result for [Custom Action - dtPLAYER] action in Button widget.
-  List<PlayerStruct>? searchedPlayerData;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -99,16 +86,12 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
 
   void initState(BuildContext context) {
     teamediteheaderModel = createModel(context, () => TeamediteheaderModel());
-    teamMembersModel = createModel(context, () => TeamMembersModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer?.cancel();
     teamediteheaderModel.dispose();
-    teamMembersModel.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
   }
 
   /// Action blocks are added here.
