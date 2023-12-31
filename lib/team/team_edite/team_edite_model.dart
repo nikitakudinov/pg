@@ -1,13 +1,11 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/components/editeteammembers_widget.dart';
 import '/components/teamediteheader_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
-import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'team_edite_widget.dart' show TeamEditeWidget;
 import 'package:flutter/material.dart';
@@ -78,10 +76,6 @@ class TeamEditeModel extends FlutterFlowModel<TeamEditeWidget> {
   late TeamediteheaderModel teamediteheaderModel;
   // Model for EDITETEAMMEMBERS component.
   late EditeteammembersModel editeteammembersModel;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
 
   /// Initialization and disposal methods.
 
