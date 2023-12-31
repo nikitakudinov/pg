@@ -256,7 +256,9 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                             null &&
                                         _model.fieldTagController.text != '') {
                                       setState(() {
-                                        _model.tag = _model.tag;
+                                        _model.fieldVISIBILITY = true;
+                                        _model.editeboxVISIBILITY = false;
+                                        _model.editeButtonVISIBILITY = true;
                                       });
                                     } else {
                                       unawaited(
@@ -278,15 +280,14 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                               .teamsloader(context);
                                         }(),
                                       );
+                                      setState(() {
+                                        _model.fieldVISIBILITY = true;
+                                        _model.editeboxVISIBILITY = false;
+                                        _model.editeButtonVISIBILITY = true;
+                                        _model.tag =
+                                            _model.fieldTagController.text;
+                                      });
                                     }
-
-                                    setState(() {
-                                      _model.fieldVISIBILITY = true;
-                                      _model.editeboxVISIBILITY = false;
-                                      _model.editeButtonVISIBILITY = true;
-                                      _model.tag =
-                                          _model.fieldTagController.text;
-                                    });
 
                                     setState(() {});
                                   },
