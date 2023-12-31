@@ -2,6 +2,7 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/team_members_widget.dart';
 import '/components/teamediteheader_widget.dart';
+import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -178,6 +179,36 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                               ),
                             ),
                           ],
+                        ),
+                        Builder(
+                          builder: (context) {
+                            final teamMemberList = FFAppState()
+                                .MAINDATA
+                                .players
+                                .where((e) => e.playerTeam == widget.teamId)
+                                .toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: teamMemberList.length,
+                              itemBuilder: (context, teamMemberListIndex) {
+                                final teamMemberListItem =
+                                    teamMemberList[teamMemberListIndex];
+                                return VlistITEMWidget(
+                                  key: Key(
+                                      'Key6kx_${teamMemberListIndex}_of_${teamMemberList.length}'),
+                                  imageSize: 45,
+                                  backgroundColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  title: teamMemberListItem.playerNickname,
+                                  country: teamMemberListItem.playerCountrie,
+                                  flag: teamMemberListItem.playerFlag,
+                                  image: teamMemberListItem.playerAvatar,
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),
