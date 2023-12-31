@@ -288,6 +288,11 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   text: '',
                                   icon: Icon(
                                     FFIcons.keditPencilLine01,
+                                    color: _model.fieldTagController.text ==
+                                                null ||
+                                            _model.fieldTagController.text == ''
+                                        ? FlutterFlowTheme.of(context).accent1
+                                        : FlutterFlowTheme.of(context).accent2,
                                     size: 20.0,
                                   ),
                                   options: FFButtonOptions(
