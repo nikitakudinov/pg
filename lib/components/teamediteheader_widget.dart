@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/filed_country_edite_widget.dart';
 import '/components/filededite_widget.dart';
@@ -284,6 +285,11 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                             _model.tagediteboxVISIBILITY =
                                                 false;
                                           });
+                                          setState(() {
+                                            FFAppState().updateMAINDATAStruct(
+                                              (e) => e..teams = [],
+                                            );
+                                          });
                                           await action_blocks
                                               .teamsloader(context);
                                           setState(() {});
@@ -343,7 +349,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              '${_model.tag}',
+                              '${_model.name}',
                               'Название команды',
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
@@ -481,6 +487,11 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                             _model.editeButtonVISIBILITY = true;
                                             _model.nameediteboxVISIBILITY =
                                                 false;
+                                          });
+                                          setState(() {
+                                            FFAppState().updateMAINDATAStruct(
+                                              (e) => e..teams = [],
+                                            );
                                           });
                                           await action_blocks
                                               .teamsloader(context);
