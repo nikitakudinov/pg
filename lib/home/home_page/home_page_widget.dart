@@ -586,19 +586,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           1.0,
                                                       decoration:
                                                           BoxDecoration(),
-                                                      child: Visibility(
-                                                        visible:
-                                                            notificationsListItem
-                                                                    .notificationType !=
-                                                                'Матч репорт',
-                                                        child: Text(
-                                                          notificationsListItem
-                                                              .notificationBody,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ),
                                                     ),
                                                   ),
                                                 ),
