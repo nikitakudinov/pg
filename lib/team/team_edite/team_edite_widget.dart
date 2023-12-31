@@ -156,7 +156,9 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                 onPressed: () async {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                     enableDrag: false,
                                     context: context,
                                     builder: (context) {
