@@ -2,7 +2,6 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -119,13 +118,19 @@ class _FiledCountryEditeWidgetState extends State<FiledCountryEditeWidget> {
                                     widget.dataId,
                                   ),
                                 );
-                                unawaited(
-                                  () async {
-                                    await action_blocks.teamsloader(context);
-                                    setState(() {});
-                                  }(),
-                                );
+                                await action_blocks.teamsloader(context);
+                                setState(() {});
                                 Navigator.pop(context);
+
+                                context.pushNamed(
+                                  'TEAM_EDITE',
+                                  queryParameters: {
+                                    'teamId': serializeParam(
+                                      widget.dataId,
+                                      ParamType.int,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
