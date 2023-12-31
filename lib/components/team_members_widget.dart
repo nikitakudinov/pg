@@ -51,7 +51,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
       padding: EdgeInsets.all(15.0),
       child: Container(
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Padding(
@@ -185,91 +185,81 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                       Expanded(
                         child: Container(
                           height: 30.0,
-                          decoration: BoxDecoration(),
-                          child: TextFormField(
-                            controller: _model.textController,
-                            focusNode: _model.textFieldFocusNode,
-                            autofocus: true,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: '#UID игрока',
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 0.0, 5.0, 0.0),
+                            child: TextFormField(
+                              controller: _model.textController,
+                              focusNode: _model.textFieldFocusNode,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: '#UID игрока',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                focusedErrorBorder: InputBorder.none,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    5.0, 0.0, 5.0, 0.0),
                               ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              errorBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              focusedErrorBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              validator: _model.textControllerValidator
+                                  .asValidator(context),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            validator: _model.textControllerValidator
-                                .asValidator(context),
                           ),
                         ),
                       ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          _model.apiResultxwd =
-                              await PlayerGroup.listplayerbyidCall.call(
-                            idList: _model.textController.text,
-                          );
-                          if ((_model.apiResultxwd?.succeeded ?? true)) {
-                            setState(() {
-                              _model.messagetextVISIBILITY = true;
-                              _model.playerdataVISIBILITY = true;
-                              _model.searchVISIBILITY = false;
-                              _model.buttonsVISIBILITY = true;
-                              _model.player = PlayerStruct.maybeFromMap(
-                                  (_model.apiResultxwd?.jsonBody ?? ''));
-                            });
-                          }
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            _model.apiResultxwd =
+                                await PlayerGroup.listplayerbyidCall.call(
+                              idList: _model.textController.text,
+                            );
+                            if ((_model.apiResultxwd?.succeeded ?? true)) {
+                              setState(() {
+                                _model.messagetextVISIBILITY = true;
+                                _model.playerdataVISIBILITY = true;
+                                _model.searchVISIBILITY = false;
+                                _model.buttonsVISIBILITY = true;
+                                _model.player = PlayerStruct.maybeFromMap(
+                                    (_model.apiResultxwd?.jsonBody ?? ''));
+                              });
+                            }
 
-                          setState(() {});
-                        },
-                        text: 'Найти',
-                        options: FFButtonOptions(
-                          height: 30.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: Colors.white,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                            setState(() {});
+                          },
+                          text: 'Найти',
+                          options: FFButtonOptions(
+                            height: 30.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(3.0),
                           ),
-                          borderRadius: BorderRadius.circular(3.0),
                         ),
                       ),
                     ].divide(SizedBox(width: 5.0)),
