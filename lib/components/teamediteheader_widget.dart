@@ -156,7 +156,8 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                       ),
                     ),
                     Container(
-                      width: 200.0,
+                      width: 100.0,
+                      height: 32.0,
                       decoration: BoxDecoration(),
                       child: TextFormField(
                         controller: _model.textController,
