@@ -369,7 +369,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                                   _model.tagfieldVISIBILITY = false;
                                   _model.editeButtonVISIBILITY = false;
                                   _model.nameediteboxVISIBILITY = true;
-                                  _model.namefieldVISIBILITY = true;
+                                  _model.namefieldVISIBILITY = false;
                                 });
                               },
                               child: Container(
