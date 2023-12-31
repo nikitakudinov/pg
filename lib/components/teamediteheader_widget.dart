@@ -182,7 +182,12 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                       Container(
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).tertiary,
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(5.0),
+                            bottomRight: Radius.circular(5.0),
+                            topLeft: Radius.circular(5.0),
+                            topRight: Radius.circular(5.0),
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -191,6 +196,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               width: 150.0,
                               height: 32.0,
                               decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).tertiary,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(5.0),
                                   bottomRight: Radius.circular(0.0),
@@ -200,65 +206,73 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               ),
                               child: Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.textController,
-                                  focusNode: _model.textFieldFocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                    filled: true,
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 10.0, 15.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 0.0, 0.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController,
+                                    focusNode: _model.textFieldFocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                      filled: true,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              10.0, 0.0, 10.0, 15.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Cabin Condensed',
+                                          fontSize: 12.0,
+                                        ),
+                                    validator: _model.textControllerValidator
+                                        .asValidator(context),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Cabin Condensed',
-                                        fontSize: 12.0,
-                                      ),
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
                                 ),
                               ),
                             ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                setState(() {
-                                  _model.fieldVISIBILITY = true;
-                                  _model.editeboxVISIBILITY = false;
-                                  _model.editeButtonVISIBILITY = true;
-                                });
-                              },
-                              text: 'Сохранить',
-                              options: FFButtonOptions(
-                                height: 32.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Cabin Condensed',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(0.0),
-                                  bottomRight: Radius.circular(5.0),
-                                  topLeft: Radius.circular(0.0),
-                                  topRight: Radius.circular(5.0),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  setState(() {
+                                    _model.fieldVISIBILITY = true;
+                                    _model.editeboxVISIBILITY = false;
+                                    _model.editeButtonVISIBILITY = true;
+                                  });
+                                },
+                                text: 'Сохранить',
+                                options: FFButtonOptions(
+                                  height: 32.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        color: Colors.white,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(5.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(5.0),
+                                  ),
                                 ),
                               ),
                             ),
