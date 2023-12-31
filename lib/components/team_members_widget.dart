@@ -195,9 +195,9 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: '#UID игрока',
                               labelStyle:
                                   FlutterFlowTheme.of(context).labelMedium,
+                              hintText: '#UID игрока',
                               hintStyle:
                                   FlutterFlowTheme.of(context).labelMedium,
                               enabledBorder: InputBorder.none,
