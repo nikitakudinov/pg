@@ -187,24 +187,31 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                                 .players
                                 .where((e) => e.playerTeam == widget.teamId)
                                 .toList();
-                            return ListView.builder(
+                            return ListView.separated(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: teamMemberList.length,
+                              separatorBuilder: (_, __) =>
+                                  SizedBox(height: 5.0),
                               itemBuilder: (context, teamMemberListIndex) {
                                 final teamMemberListItem =
                                     teamMemberList[teamMemberListIndex];
-                                return VlistITEMWidget(
-                                  key: Key(
-                                      'Key6kx_${teamMemberListIndex}_of_${teamMemberList.length}'),
-                                  imageSize: 45,
-                                  backgroundColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  title: teamMemberListItem.playerNickname,
-                                  country: teamMemberListItem.playerCountrie,
-                                  flag: teamMemberListItem.playerFlag,
-                                  image: teamMemberListItem.playerAvatar,
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: VlistITEMWidget(
+                                    key: Key(
+                                        'Key6kx_${teamMemberListIndex}_of_${teamMemberList.length}'),
+                                    imageSize: 45,
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                    title: teamMemberListItem.playerNickname,
+                                    country: teamMemberListItem.playerCountrie,
+                                    flag: teamMemberListItem.playerFlag,
+                                    image: teamMemberListItem.playerAvatar,
+                                  ),
                                 );
                               },
                             );
