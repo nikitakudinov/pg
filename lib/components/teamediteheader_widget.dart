@@ -1,7 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/filed_country_edite_widget.dart';
-import '/components/filededite_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -352,7 +351,7 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               '${_model.name}',
                               'Название команды',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context).titleMedium,
                           ),
                           if (_model.editeButtonVISIBILITY)
                             InkWell(
@@ -540,66 +539,6 @@ class _TeamediteheaderWidgetState extends State<TeamediteheaderWidget> {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                  ].divide(SizedBox(width: 15.0)),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        '${_model.name}',
-                        'Team name',
-                      ),
-                      style: FlutterFlowTheme.of(context).titleMedium,
-                    ),
-                    if (_model.editeButtonVISIBILITY)
-                      Builder(
-                        builder: (context) => InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await showAlignedDialog(
-                              context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
-                                  child: FiledediteWidget(
-                                    field: 'Название команды',
-                                    initValue: _model.name,
-                                    dataId: widget.teamId!,
-                                  ),
-                                );
-                              },
-                            ).then((value) => setState(() {}));
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 5.0, 5.0, 5.0),
-                              child: Text(
-                                'ИЗМЕНИТЬ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .override(
-                                      fontFamily: 'Cabin Condensed',
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      fontSize: 10.0,
-                                    ),
-                              ),
-                            ),
-                          ),
                         ),
                       ),
                   ].divide(SizedBox(width: 15.0)),
