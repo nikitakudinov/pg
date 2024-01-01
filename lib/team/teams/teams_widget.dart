@@ -2249,7 +2249,9 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                 final teamsList = FFAppState()
                                     .MAINDATA
                                     .teams
-                                    .where((e) => e.teamRecruitment == true)
+                                    .where((e) =>
+                                        (e.teamRecruitment == true) &&
+                                        (e.teamId != 0))
                                     .toList()
                                     .take(50)
                                     .toList();
