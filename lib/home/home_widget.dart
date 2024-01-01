@@ -213,7 +213,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       .titleMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Cabin Condensed',
+                                                            'Source Sans Pro',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
