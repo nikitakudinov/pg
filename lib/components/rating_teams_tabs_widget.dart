@@ -449,14 +449,10 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                           highlightColor: Colors.transparent,
                           onLongPress: () async {
                             context.pushNamed(
-                              'TEAM_EDITE',
+                              'TEAM_VIEW',
                               queryParameters: {
-                                'teamId': serializeParam(
-                                  teamsListItem.teamId,
-                                  ParamType.int,
-                                ),
-                                'teamIndex': serializeParam(
-                                  teamsListIndex,
+                                'teamID': serializeParam(
+                                  0,
                                   ParamType.int,
                                 ),
                               }.withoutNulls,
