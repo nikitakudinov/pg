@@ -85,8 +85,8 @@ class _TeamViewHeaderWidgetState extends State<TeamViewHeaderWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                  width: 80.0,
-                  height: 80.0,
+                  width: 60.0,
+                  height: 60.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(5.0),
@@ -100,8 +100,8 @@ class _TeamViewHeaderWidgetState extends State<TeamViewHeaderWidget> {
                           .where((e) => e.teamId == widget.teamId)
                           .toList()[0]
                           .teamLogo,
-                      width: 80.0,
-                      height: 80.0,
+                      width: 60.0,
+                      height: 60.0,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -111,12 +111,36 @@ class _TeamViewHeaderWidgetState extends State<TeamViewHeaderWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      valueOrDefault<String>(
-                        '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
-                        'ТЕГ',
-                      ),
-                      style: FlutterFlowTheme.of(context).headlineLarge,
+                    Stack(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
+                              'ТЕГ',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .headlineLarge
+                                .override(
+                                  fontFamily: 'Roboto Condensed',
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  fontSize: 36.0,
+                                ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
+                              'ТЕГ',
+                            ),
+                            style: FlutterFlowTheme.of(context).headlineLarge,
+                          ),
+                        ),
+                      ],
                     ),
                     Text(
                       valueOrDefault<String>(
@@ -165,7 +189,7 @@ class _TeamViewHeaderWidgetState extends State<TeamViewHeaderWidget> {
                     ),
                   ],
                 ),
-              ].divide(SizedBox(width: 10.0)),
+              ].divide(SizedBox(width: 10.0)).addToStart(SizedBox(width: 15.0)),
             ),
           ),
         ),
