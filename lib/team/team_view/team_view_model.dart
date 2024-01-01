@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/components/team_view_header_widget.dart';
+import '/components/team_view_members_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -27,16 +28,20 @@ class TeamViewModel extends FlutterFlowModel<TeamViewWidget> {
   final unfocusNode = FocusNode();
   // Model for TEAM-VIEW-HEADER component.
   late TeamViewHeaderModel teamViewHeaderModel;
+  // Model for TEAM-VIEW-MEMBERS component.
+  late TeamViewMembersModel teamViewMembersModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     teamViewHeaderModel = createModel(context, () => TeamViewHeaderModel());
+    teamViewMembersModel = createModel(context, () => TeamViewMembersModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     teamViewHeaderModel.dispose();
+    teamViewMembersModel.dispose();
   }
 
   /// Action blocks are added here.

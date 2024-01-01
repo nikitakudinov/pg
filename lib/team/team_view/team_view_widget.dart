@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/components/team_view_header_widget.dart';
+import '/components/team_view_members_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -86,6 +87,18 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                 updateCallback: () => setState(() {}),
                 child: TeamViewHeaderWidget(
                   teamId: widget.teamID,
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.teamViewMembersModel,
+                    updateCallback: () => setState(() {}),
+                    child: TeamViewMembersWidget(
+                      teamId: widget.teamID,
+                    ),
+                  ),
                 ),
               ),
             ],
