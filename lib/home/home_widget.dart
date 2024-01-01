@@ -281,12 +281,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                               ),
                             ),
-                          wrapWithModel(
-                            model: _model.authplayerteamModel,
-                            updateCallback: () => setState(() {}),
-                            updateOnChange: true,
-                            child: AuthplayerteamWidget(),
-                          ),
+                          if (FFAppState().AUTHPLAYER.playerTeam != 0)
+                            wrapWithModel(
+                              model: _model.authplayerteamModel,
+                              updateCallback: () => setState(() {}),
+                              updateOnChange: true,
+                              child: AuthplayerteamWidget(),
+                            ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
