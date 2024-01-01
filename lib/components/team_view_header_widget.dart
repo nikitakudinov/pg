@@ -51,17 +51,26 @@ class _TeamViewHeaderWidgetState extends State<TeamViewHeaderWidget> {
           width: MediaQuery.sizeOf(context).width * 1.0,
           height: 200.0,
           decoration: BoxDecoration(),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-              FFAppState()
-                  .MAINDATA
-                  .teams
-                  .where((e) => e.teamId == widget.teamId)
-                  .toList()[0]
-                  .teamHeader,
-              height: 200.0,
-              fit: BoxFit.cover,
+          child: Visibility(
+            visible: FFAppState()
+                    .MAINDATA
+                    .teams
+                    .where((e) => e.teamId == widget.teamId)
+                    .toList()[0]
+                    .teamHeader !=
+                '0',
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                FFAppState()
+                    .MAINDATA
+                    .teams
+                    .where((e) => e.teamId == widget.teamId)
+                    .toList()[0]
+                    .teamHeader,
+                height: 200.0,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
