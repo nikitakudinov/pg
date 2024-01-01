@@ -2280,6 +2280,17 @@ class _TeamsWidgetState extends State<TeamsWidget>
                                                   Colors.transparent,
                                               onTap: () async {
                                                 context.pushNamed(
+                                                  'TEAM_VIEW',
+                                                  queryParameters: {
+                                                    'teamID': serializeParam(
+                                                      teamsListItem.teamId,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              onLongPress: () async {
+                                                context.pushNamed(
                                                   'TEAM_EDITE',
                                                   queryParameters: {
                                                     'teamId': serializeParam(
