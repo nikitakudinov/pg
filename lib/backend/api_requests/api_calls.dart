@@ -52,7 +52,7 @@ class ListplayerbyuidCall {
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
-      decodeUtf8: false,
+      decodeUtf8: true,
       cache: false,
       alwaysAllowBody: false,
     );
