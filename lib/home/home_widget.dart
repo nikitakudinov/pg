@@ -190,20 +190,25 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              FFAppState().AUTHPLAYER.playerTag,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                      ),
-                                            ),
+                                            if (FFAppState()
+                                                    .AUTHPLAYER
+                                                    .playerTeam !=
+                                                0)
+                                              Text(
+                                                FFAppState()
+                                                    .AUTHPLAYER
+                                                    .playerTag,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                    ),
+                                              ),
                                             Text(
                                               FFAppState()
                                                   .AUTHPLAYER
@@ -212,7 +217,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
