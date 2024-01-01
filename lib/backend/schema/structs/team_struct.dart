@@ -26,6 +26,7 @@ class TeamStruct extends BaseStruct {
     int? teamMatchRoundWins,
     int? teamMatchRoundLoses,
     double? teamWLmatches,
+    String? teamHeader,
   })  : _teamCreatedAt = teamCreatedAt,
         _teamUpdatedAt = teamUpdatedAt,
         _teamName = teamName,
@@ -44,7 +45,8 @@ class TeamStruct extends BaseStruct {
         _teamMatchesRoundsCount = teamMatchesRoundsCount,
         _teamMatchRoundWins = teamMatchRoundWins,
         _teamMatchRoundLoses = teamMatchRoundLoses,
-        _teamWLmatches = teamWLmatches;
+        _teamWLmatches = teamWLmatches,
+        _teamHeader = teamHeader;
 
   // "team_created_at" field.
   String? _teamCreatedAt;
@@ -176,6 +178,12 @@ class TeamStruct extends BaseStruct {
       _teamWLmatches = teamWLmatches + amount;
   bool hasTeamWLmatches() => _teamWLmatches != null;
 
+  // "team_header" field.
+  String? _teamHeader;
+  String get teamHeader => _teamHeader ?? '';
+  set teamHeader(String? val) => _teamHeader = val;
+  bool hasTeamHeader() => _teamHeader != null;
+
   static TeamStruct fromMap(Map<String, dynamic> data) => TeamStruct(
         teamCreatedAt: data['team_created_at'] as String?,
         teamUpdatedAt: data['team_updated_at'] as String?,
@@ -197,6 +205,7 @@ class TeamStruct extends BaseStruct {
         teamMatchRoundWins: castToType<int>(data['team_match_round_wins']),
         teamMatchRoundLoses: castToType<int>(data['team_match_round_loses']),
         teamWLmatches: castToType<double>(data['team_WLmatches']),
+        teamHeader: data['team_header'] as String?,
       );
 
   static TeamStruct? maybeFromMap(dynamic data) =>
@@ -222,6 +231,7 @@ class TeamStruct extends BaseStruct {
         'team_match_round_wins': _teamMatchRoundWins,
         'team_match_round_loses': _teamMatchRoundLoses,
         'team_WLmatches': _teamWLmatches,
+        'team_header': _teamHeader,
       }.withoutNulls;
 
   @override
@@ -301,6 +311,10 @@ class TeamStruct extends BaseStruct {
         'team_WLmatches': serializeParam(
           _teamWLmatches,
           ParamType.double,
+        ),
+        'team_header': serializeParam(
+          _teamHeader,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -401,6 +415,11 @@ class TeamStruct extends BaseStruct {
           ParamType.double,
           false,
         ),
+        teamHeader: deserializeParam(
+          data['team_header'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -427,7 +446,8 @@ class TeamStruct extends BaseStruct {
         teamMatchesRoundsCount == other.teamMatchesRoundsCount &&
         teamMatchRoundWins == other.teamMatchRoundWins &&
         teamMatchRoundLoses == other.teamMatchRoundLoses &&
-        teamWLmatches == other.teamWLmatches;
+        teamWLmatches == other.teamWLmatches &&
+        teamHeader == other.teamHeader;
   }
 
   @override
@@ -450,7 +470,8 @@ class TeamStruct extends BaseStruct {
         teamMatchesRoundsCount,
         teamMatchRoundWins,
         teamMatchRoundLoses,
-        teamWLmatches
+        teamWLmatches,
+        teamHeader
       ]);
 }
 
@@ -474,6 +495,7 @@ TeamStruct createTeamStruct({
   int? teamMatchRoundWins,
   int? teamMatchRoundLoses,
   double? teamWLmatches,
+  String? teamHeader,
 }) =>
     TeamStruct(
       teamCreatedAt: teamCreatedAt,
@@ -495,4 +517,5 @@ TeamStruct createTeamStruct({
       teamMatchRoundWins: teamMatchRoundWins,
       teamMatchRoundLoses: teamMatchRoundLoses,
       teamWLmatches: teamWLmatches,
+      teamHeader: teamHeader,
     );

@@ -76,4 +76,7 @@ class TeamsRow extends SupabaseDataRow {
 
   double? get teamWLmatches => getField<double>('team_WLmatches');
   set teamWLmatches(double? value) => setField<double>('team_WLmatches', value);
+
+  String? get teamHeader => getField<String>('team_header');
+  set teamHeader(String? value) => setField<String>('team_header', value);
 }
