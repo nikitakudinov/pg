@@ -111,43 +111,22 @@ class _TeamViewHeaderWidgetState extends State<TeamViewHeaderWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Stack(
+                    Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
-                              'ТЕГ',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: 'Roboto Condensed',
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  fontSize: 36.0,
-                                ),
-                          ),
+                      child: Text(
+                        valueOrDefault<String>(
+                          '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
+                          'ТЕГ',
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamTag}',
-                              'ТЕГ',
-                            ),
-                            style: FlutterFlowTheme.of(context).headlineLarge,
-                          ),
-                        ),
-                      ],
+                        style: FlutterFlowTheme.of(context).headlineMedium,
+                      ),
                     ),
                     Text(
                       valueOrDefault<String>(
                         '${FFAppState().MAINDATA.teams.where((e) => e.teamId == widget.teamId).toList()[0].teamName}',
                         'Название команды',
                       ),
-                      style: FlutterFlowTheme.of(context).labelLarge,
+                      style: FlutterFlowTheme.of(context).labelMedium,
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
