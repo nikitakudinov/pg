@@ -56,7 +56,10 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
             child: Text(
               'Состав',
-              style: FlutterFlowTheme.of(context).titleLarge,
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    fontFamily: 'Roboto Condensed',
+                    color: FlutterFlowTheme.of(context).primaryText,
+                  ),
             ),
           ),
           Builder(
