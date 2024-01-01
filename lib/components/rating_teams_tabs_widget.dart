@@ -452,7 +452,7 @@ class _RatingTeamsTabsWidgetState extends State<RatingTeamsTabsWidget> {
                               'TEAM_VIEW',
                               queryParameters: {
                                 'teamID': serializeParam(
-                                  0,
+                                  teamsListItem.teamId,
                                   ParamType.int,
                                 ),
                               }.withoutNulls,
