@@ -208,17 +208,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               FFAppState()
                                                   .AUTHPLAYER
                                                   .playerNickname,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Cabin Condensed',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    fontFamily: 'Source Sans 3',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
                                         ),
