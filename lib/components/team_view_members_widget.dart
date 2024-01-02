@@ -52,7 +52,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
         Align(
           alignment: AlignmentDirectional(-1.0, 0.0),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 0.0, 10.0),
             child: Text(
               'Состав команды',
               style: FlutterFlowTheme.of(context).titleLarge,
@@ -67,17 +67,12 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                 .where((e) => e.playerTeam == widget.teamId)
                 .toList();
             return ListView.separated(
-              padding: EdgeInsets.fromLTRB(
-                0,
-                15.0,
-                0,
-                15.0,
-              ),
+              padding: EdgeInsets.zero,
               primary: false,
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               itemCount: members.length,
-              separatorBuilder: (_, __) => SizedBox(height: 10.0),
+              separatorBuilder: (_, __) => SizedBox(height: 5.0),
               itemBuilder: (context, membersIndex) {
                 final membersItem = members[membersIndex];
                 return Padding(
@@ -168,8 +163,8 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                         ),
                       ]
                           .divide(SizedBox(width: 10.0))
-                          .addToStart(SizedBox(width: 15.0))
-                          .addToEnd(SizedBox(width: 15.0)),
+                          .addToStart(SizedBox(width: 10.0))
+                          .addToEnd(SizedBox(width: 10.0)),
                     ),
                   ),
                 );
