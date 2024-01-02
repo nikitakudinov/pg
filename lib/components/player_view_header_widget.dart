@@ -143,8 +143,8 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
             ),
           ]
               .divide(SizedBox(width: 10.0))
-              .addToStart(SizedBox(width: 10.0))
-              .addToEnd(SizedBox(width: 10.0)),
+              .addToStart(SizedBox(width: 20.0))
+              .addToEnd(SizedBox(width: 20.0)),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import '/components/player_view_header_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,7 +15,7 @@ class PlayerViewWidget extends StatefulWidget {
     required this.playerId,
   }) : super(key: key);
 
-  final String? playerId;
+  final int? playerId;
 
   @override
   _PlayerViewWidgetState createState() => _PlayerViewWidgetState();
@@ -62,7 +63,7 @@ class _PlayerViewWidgetState extends State<PlayerViewWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'Профиль игрока',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
@@ -77,7 +78,15 @@ class _PlayerViewWidgetState extends State<PlayerViewWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              wrapWithModel(
+                model: _model.playerViewHeaderModel,
+                updateCallback: () => setState(() {}),
+                child: PlayerViewHeaderWidget(
+                  playerId: widget.playerId!,
+                ),
+              ),
+            ],
           ),
         ),
       ),

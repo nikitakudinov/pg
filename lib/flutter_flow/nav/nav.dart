@@ -223,7 +223,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'PLAYER-VIEW',
           path: '/playerView',
           builder: (context, params) => PlayerViewWidget(
-            playerId: params.getParam('playerId', ParamType.String),
+            playerId: params.getParam('playerId', ParamType.int),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -120,8 +120,8 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                 'PLAYER-VIEW',
                                 queryParameters: {
                                   'playerId': serializeParam(
-                                    membersItem.playerId.toString(),
-                                    ParamType.String,
+                                    membersItem.playerId,
+                                    ParamType.int,
                                   ),
                                 }.withoutNulls,
                               );
