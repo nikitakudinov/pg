@@ -62,7 +62,7 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
                 borderRadius: BorderRadius.circular(5.0),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(0.0),
+                borderRadius: BorderRadius.circular(5.0),
                 child: Image.network(
                   FFAppState()
                       .MAINDATA
@@ -110,13 +110,13 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      width: 24.0,
-                      height: 16.0,
+                      width: 20.0,
+                      height: 14.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondary,
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(0.0),
                         child: Image.network(
                           FFAppState()
                               .MAINDATA
@@ -124,8 +124,8 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
                               .where((e) => e.playerId == widget.playerId)
                               .toList()[0]
                               .playerFlag,
-                          width: 24.0,
-                          height: 16.0,
+                          width: 20.0,
+                          height: 14.0,
                           fit: BoxFit.cover,
                         ),
                       ),
