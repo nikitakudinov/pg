@@ -198,7 +198,7 @@ class _NavBarPageState extends State<NavBarPage> {
               FFIcons.kterminal,
               size: 24.0,
             ),
-            label: 'TEST',
+            label: 'HOME',
             tooltip: '',
           )
         ],
