@@ -1178,6 +1178,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   ],
                                                                   'player_team_lineup':
                                                                       false,
+                                                                  'player_tag':
+                                                                      notificationsListItem
+                                                                          .notificationFromTeam
+                                                                          .teamTag,
                                                                 },
                                                                 matchingRows:
                                                                     (rows) =>
