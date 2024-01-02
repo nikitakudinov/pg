@@ -89,7 +89,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 5.0),
+                              0.0, 10.0, 0.0, 10.0),
                           child: Container(
                             width: 50.0,
                             height: 50.0,
@@ -194,8 +194,8 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                         ),
                       ]
                           .divide(SizedBox(width: 10.0))
-                          .addToStart(SizedBox(width: 5.0))
-                          .addToEnd(SizedBox(width: 5.0)),
+                          .addToStart(SizedBox(width: 10.0))
+                          .addToEnd(SizedBox(width: 10.0)),
                     ),
                   ),
                 );
