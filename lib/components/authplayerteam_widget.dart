@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -102,12 +103,15 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                                     'player_team_joined_at':
                                         getCurrentTimestamp.toString(),
                                     'player_team_lineup': false,
+                                    'player_tag': 'вне команды',
                                   },
                                   matchingRows: (rows) => rows.eq(
                                     'player_uid',
                                     currentUserUid,
                                   ),
                                 );
+                                await action_blocks.loadALLplayers(context);
+                                setState(() {});
                                 setState(() {
                                   _model.teamActionslistVISIBILITY = false;
                                 });
