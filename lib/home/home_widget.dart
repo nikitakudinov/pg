@@ -1219,6 +1219,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       context);
                                                             }(),
                                                           );
+
+                                                          context.pushNamed(
+                                                              'HOME');
                                                         },
                                                         text: 'Вступить',
                                                         options:
