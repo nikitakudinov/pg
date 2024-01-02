@@ -6,6 +6,7 @@ import '/components/loadingindicator_widget.dart';
 import '/components/rating_teams_tabs_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -116,13 +117,33 @@ class _HomeWidgetState extends State<HomeWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
-          title: Text(
-            'Page Title',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto Condensed',
-                  color: Colors.white,
-                  fontSize: 22.0,
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Page Title',
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Roboto Condensed',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                    ),
+              ),
+              FlutterFlowIconButton(
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.security_update_outlined,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
                 ),
+                onPressed: () async {
+                  await launchURL(
+                      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/updateApp.apk?t=2024-01-02T10%3A10%3A48.382Z');
+                },
+              ),
+            ],
           ),
           actions: [
             Visibility(
