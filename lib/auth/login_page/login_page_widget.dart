@@ -106,8 +106,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         focusedErrorBorder: InputBorder.none,
                         filled: true,
                         fillColor: FlutterFlowTheme.of(context).tertiary,
-                        contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 10.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
                       validator:
@@ -137,6 +137,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         focusedErrorBorder: InputBorder.none,
                         filled: true,
                         fillColor: FlutterFlowTheme.of(context).tertiary,
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 10.0),
                         suffixIcon: InkWell(
                           onTap: () => setState(
                             () => _model.passwordVisibility =
@@ -158,7 +160,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 15.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -207,6 +209,38 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       ),
                     ],
                   ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          context.pushNamed('RegisterPage');
+                        },
+                        text: 'Регистрация',
+                        options: FFButtonOptions(
+                          height: 32.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 15.0),
@@ -347,38 +381,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       ),
                     ].divide(SizedBox(width: 10.0)),
                   ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed('RegisterPage');
-                        },
-                        text: 'Регистрация',
-                        options: FFButtonOptions(
-                          height: 32.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Cabin Condensed',
-                                    color: Colors.white,
-                                  ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ].divide(SizedBox(height: 5.0)),
             ),
