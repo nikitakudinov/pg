@@ -341,6 +341,9 @@ class _CallMemberWidgetState extends State<CallMemberWidget> {
                                   'Команда ${FFAppState().AUTHPLAYERTEAM.teamName}  предлагает вступить в ее ряды.',
                               'notification_category': 'От команды',
                             });
+                            setState(() {
+                              _model.player = null;
+                            });
                             Navigator.pop(context);
 
                             setState(() {});
