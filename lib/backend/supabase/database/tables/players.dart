@@ -59,8 +59,7 @@ class PlayersRow extends SupabaseDataRow {
   set playerUpdateAt(DateTime? value) =>
       setField<DateTime>('player_update_at', value);
 
-  DateTime? get playerTeamJoinedAt =>
-      getField<DateTime>('player_team_joined_at');
-  set playerTeamJoinedAt(DateTime? value) =>
-      setField<DateTime>('player_team_joined_at', value);
+  String? get playerTeamJoinedAt => getField<String>('player_team_joined_at');
+  set playerTeamJoinedAt(String? value) =>
+      setField<String>('player_team_joined_at', value);
 }
