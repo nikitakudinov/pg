@@ -14,6 +14,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AuthplayerteamModel extends FlutterFlowModel<AuthplayerteamWidget> {
+  ///  Local state fields for this component.
+
+  bool teamActionslistVISIBILITY = false;
+
   ///  State fields for stateful widgets in this component.
 
   // Model for LOADINGINDICATOR component.

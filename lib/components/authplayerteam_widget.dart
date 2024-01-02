@@ -85,41 +85,45 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                       'Ваша команда',
                       style: FlutterFlowTheme.of(context).titleMedium,
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
-                            text: 'Выйти из команды',
-                            icon: Icon(
-                              Icons.person_remove_sharp,
-                              size: 15.0,
-                            ),
-                            options: FFButtonOptions(
-                              width: 140.0,
-                              height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).tertiary,
-                              textStyle: FlutterFlowTheme.of(context).bodySmall,
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                    if (_model.teamActionslistVISIBILITY)
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            FFButtonWidget(
+                              onPressed: () async {
+                                setState(() {
+                                  _model.teamActionslistVISIBILITY = false;
+                                });
+                              },
+                              text: 'Выйти из команды',
+                              icon: Icon(
+                                Icons.person_remove_sharp,
+                                size: 15.0,
                               ),
-                              borderRadius: BorderRadius.circular(4.0),
+                              options: FFButtonOptions(
+                                width: 140.0,
+                                height: 30.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).tertiary,
+                                textStyle:
+                                    FlutterFlowTheme.of(context).bodySmall,
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
                             ),
-                          ),
-                        ].divide(SizedBox(height: 5.0)),
-                      ).animateOnPageLoad(
-                          animationsMap['columnOnPageLoadAnimation']!),
-                    ),
+                          ].divide(SizedBox(height: 5.0)),
+                        ).animateOnPageLoad(
+                            animationsMap['columnOnPageLoadAnimation']!),
+                      ),
                     FlutterFlowIconButton(
                       borderRadius: 20.0,
                       borderWidth: 1.0,
@@ -129,8 +133,10 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                         color: FlutterFlowTheme.of(context).primaryText,
                         size: 18.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        setState(() {
+                          _model.teamActionslistVISIBILITY = true;
+                        });
                       },
                     ),
                   ],
@@ -243,71 +249,67 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           ],
                         ),
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 5.0),
-                            child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
-                              },
-                              text: 'В чат команды',
-                              icon: Icon(
-                                Icons.groups,
-                                size: 15.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: 140.0,
-                                height: 30.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(4.0),
-                              ),
-                            ),
-                          ),
-                          FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
-                            text: 'В чат с лидером',
-                            icon: FaIcon(
-                              FontAwesomeIcons.chessKing,
-                              size: 15.0,
-                            ),
-                            options: FFButtonOptions(
-                              width: 140.0,
-                              height: 30.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).tertiary,
-                              textStyle: FlutterFlowTheme.of(context).bodySmall,
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                          ),
-                        ],
-                      ),
                     ].divide(SizedBox(width: 10.0)),
                   ),
                 ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    text: 'В чат команды',
+                    icon: Icon(
+                      Icons.groups,
+                      size: 15.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: 140.0,
+                      height: 30.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      textStyle: FlutterFlowTheme.of(context).bodySmall,
+                      elevation: 3.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    text: 'В чат с лидером',
+                    icon: FaIcon(
+                      FontAwesomeIcons.chessKing,
+                      size: 15.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: 140.0,
+                      height: 30.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      textStyle: FlutterFlowTheme.of(context).bodySmall,
+                      elevation: 3.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                  ),
+                ].divide(SizedBox(width: 10.0)),
+              ),
               if (FFAppState().MAINDATA.teams.length != 0)
                 Padding(
                   padding: EdgeInsets.all(15.0),
@@ -319,12 +321,16 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: Text(
-                                'ТУРНИРЫ',
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  'ТУРНИРЫ',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context).bodyLarge,
+                                ),
                               ),
                             ),
                             Padding(
@@ -422,12 +428,15 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: Text(
-                                'МАТЧИ',
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  'МАТЧИ',
+                                  style: FlutterFlowTheme.of(context).bodyLarge,
+                                ),
                               ),
                             ),
                             Padding(
