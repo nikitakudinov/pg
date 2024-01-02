@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/loadingindicator_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -93,6 +95,19 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
+                                await PlayersTable().update(
+                                  data: {
+                                    'player_team': 0,
+                                    'player_team_role': ['Вне команды'],
+                                    'player_team_joined_at':
+                                        getCurrentTimestamp.toString(),
+                                    'player_team_lineup': false,
+                                  },
+                                  matchingRows: (rows) => rows.eq(
+                                    'player_uid',
+                                    currentUserUid,
+                                  ),
+                                );
                                 setState(() {
                                   _model.teamActionslistVISIBILITY = false;
                                 });
