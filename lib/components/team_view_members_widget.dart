@@ -57,89 +57,108 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
               .toList();
           return ListView.separated(
             padding: EdgeInsets.fromLTRB(
-              15.0,
               0,
               15.0,
               0,
+              15.0,
             ),
-            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
             itemCount: members.length,
-            separatorBuilder: (_, __) => SizedBox(width: 10.0),
+            separatorBuilder: (_, __) => SizedBox(height: 10.0),
             itemBuilder: (context, membersIndex) {
               final membersItem = members[membersIndex];
-              return Container(
-                width: 100.0,
-                decoration: BoxDecoration(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 65.0,
-                      height: 65.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          membersItem.playerAvatar,
-                          width: 65.0,
-                          height: 65.0,
-                          fit: BoxFit.cover,
+              return Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                child: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Container(
+                        width: 65.0,
+                        height: 65.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            membersItem.playerAvatar,
+                            width: 65.0,
+                            height: 65.0,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        '${membersItem.playerNickname}',
-                        'Никнейм',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        '${membersItem.playerTeamRole.first}',
-                        'Роль',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Cabin Condensed',
-                            color: FlutterFlowTheme.of(context).primary,
-                          ),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 22.0,
-                          height: 14.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: Image.network(
-                              membersItem.playerFlag,
-                              width: 22.0,
-                              height: 14.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(),
-                          child: Text(
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
                             valueOrDefault<String>(
-                              '${membersItem.playerCountrie}',
-                              'Страна',
+                              '${membersItem.playerNickname}',
+                              'Никнейм',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context).bodyLarge,
                           ),
-                        ),
-                      ].divide(SizedBox(width: 5.0)),
-                    ),
-                  ],
+                          Text(
+                            valueOrDefault<String>(
+                              '${membersItem.playerTeamRole.first}',
+                              'Роль',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: 22.0,
+                                height: 14.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  child: Image.network(
+                                    membersItem.playerFlag,
+                                    width: 22.0,
+                                    height: 14.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    '${membersItem.playerCountrie}',
+                                    'Страна',
+                                  ),
+                                  style: FlutterFlowTheme.of(context).bodySmall,
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 5.0)),
+                          ),
+                        ],
+                      ),
+                    ]
+                        .divide(SizedBox(width: 10.0))
+                        .addToStart(SizedBox(width: 15.0))
+                        .addToEnd(SizedBox(width: 15.0)),
+                  ),
                 ),
               );
             },
