@@ -195,10 +195,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              FFIcons.kterminal,
+              FFIcons.khome,
               size: 24.0,
             ),
-            label: 'HOME',
+            label: 'главная',
             tooltip: '',
           )
         ],
