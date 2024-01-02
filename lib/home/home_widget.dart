@@ -1216,13 +1216,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 ),
                                                             );
                                                           });
-                                                          unawaited(
-                                                            () async {
-                                                              await action_blocks
-                                                                  .loadALLplayers(
-                                                                      context);
-                                                            }(),
-                                                          );
 
                                                           context.pushNamed(
                                                               'HOME');
