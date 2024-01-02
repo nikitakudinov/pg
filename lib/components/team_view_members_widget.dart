@@ -171,8 +171,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                         ),
                         Expanded(
                           child: Text(
-                            dateTimeFormat(
-                                'relative', membersItem.playerTeamJoinedAt!),
+                            membersItem.playerTeamJoinedAt,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),

@@ -41,3 +41,15 @@ DateTime? timeNsecAgo(int? valueSeconds) {
   final duration = Duration(seconds: valueSeconds);
   return now.subtract(duration);
 }
+
+DateTime? stringDateToDateTime(String? dateString) {
+  // convert dateString to DateTime type
+  if (dateString == null) {
+    return null;
+  }
+  try {
+    return DateTime.parse(dateString);
+  } catch (e) {
+    return null;
+  }
+}
