@@ -62,7 +62,7 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
                 borderRadius: BorderRadius.circular(5.0),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(0.0),
                 child: Image.network(
                   FFAppState()
                       .MAINDATA
