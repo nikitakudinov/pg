@@ -112,6 +112,11 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                                 );
                                 await action_blocks.loadALLplayers(context);
                                 setState(() {});
+                                if (Navigator.of(context).canPop()) {
+                                  context.pop();
+                                }
+                                context.pushNamed('HOME');
+
                                 setState(() {
                                   _model.teamActionslistVISIBILITY = false;
                                 });
