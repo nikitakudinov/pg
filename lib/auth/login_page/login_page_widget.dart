@@ -85,6 +85,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  height: 32.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).tertiary,
                     borderRadius: BorderRadius.circular(5.0),
@@ -115,6 +116,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                 ),
                 Container(
+                  height: 32.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).tertiary,
                     borderRadius: BorderRadius.circular(5.0),
