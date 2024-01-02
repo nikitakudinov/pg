@@ -14,6 +14,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -120,19 +121,24 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': HomePageWidget(),
       'TEAMS': TeamsWidget(),
       'TOURNAMENTS': TournamentsWidget(),
-      'CHATS': ChatsWidget(),
-      'PLAYERS': PlayersWidget(),
       'MATCHES': MatchesWidget(),
       'HOME': HomeWidget(),
+      'CHATS': ChatsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
+    final MediaQueryData queryData = MediaQuery.of(context);
+
     return Scaffold(
-      body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
+      body: MediaQuery(
+          data: queryData
+              .removeViewInsets(removeBottom: true)
+              .removeViewPadding(removeBottom: true),
+          child: _currentPage ?? tabs[_currentPageName]!),
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
           _currentPage = null;
@@ -141,65 +147,133 @@ class _NavBarPageState extends State<NavBarPage> {
         backgroundColor: FlutterFlowTheme.of(context).secondary,
         selectedItemColor: FlutterFlowTheme.of(context).primary,
         unselectedItemColor: Color(0x61F2C94C),
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24.0,
+        selectedBackgroundColor: Color(0x00000000),
+        borderRadius: 8.0,
+        itemBorderRadius: 8.0,
+        margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        width: double.infinity,
+        elevation: 0.0,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FFIcons.kteamLine,
+                  color: currentIndex == 0
+                      ? FlutterFlowTheme.of(context).primary
+                      : Color(0x61F2C94C),
+                  size: 24.0,
+                ),
+                Text(
+                  'Команды',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? FlutterFlowTheme.of(context).primary
+                        : Color(0x61F2C94C),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Главная',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FFIcons.kteamLine,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.groups,
+                  color: currentIndex == 1
+                      ? FlutterFlowTheme.of(context).primary
+                      : Color(0x61F2C94C),
+                  size: 24.0,
+                ),
+                Text(
+                  'Турниры',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 1
+                        ? FlutterFlowTheme.of(context).primary
+                        : Color(0x61F2C94C),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Команды',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.groups,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FontAwesomeIcons.gamepad,
+                  color: currentIndex == 2
+                      ? FlutterFlowTheme.of(context).primary
+                      : Color(0x61F2C94C),
+                  size: 24.0,
+                ),
+                Text(
+                  'Матчи',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? FlutterFlowTheme.of(context).primary
+                        : Color(0x61F2C94C),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Турниры',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.chat_bubble,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FFIcons.khome,
+                  color: currentIndex == 3
+                      ? FlutterFlowTheme.of(context).primary
+                      : Color(0x61F2C94C),
+                  size: 24.0,
+                ),
+                Text(
+                  'главная',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).primary
+                        : Color(0x61F2C94C),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Сообщения',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.restore,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.chat_bubble,
+                  color: currentIndex == 4
+                      ? FlutterFlowTheme.of(context).primary
+                      : Color(0x61F2C94C),
+                  size: 24.0,
+                ),
+                Text(
+                  'Сообщения',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 4
+                        ? FlutterFlowTheme.of(context).primary
+                        : Color(0x61F2C94C),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'ТЕСТ',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.gamepad,
-              size: 24.0,
-            ),
-            label: 'Матчи',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FFIcons.khome,
-              size: 24.0,
-            ),
-            label: 'главная',
-            tooltip: '',
           )
         ],
       ),

@@ -84,105 +84,75 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 15.0),
-                  child: TextFormField(
-                    controller: _model.emailController,
-                    focusNode: _model.emailFocusNode,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      labelText: 'Электронная почта',
-                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
+                Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: TextFormField(
+                      controller: _model.emailController,
+                      focusNode: _model.emailFocusNode,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Электронная почта',
+                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                        filled: true,
+                        fillColor: FlutterFlowTheme.of(context).tertiary,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).primary,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      validator:
+                          _model.emailControllerValidator.asValidator(context),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator:
-                        _model.emailControllerValidator.asValidator(context),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                  child: TextFormField(
-                    controller: _model.passwordController,
-                    focusNode: _model.passwordFocusNode,
-                    obscureText: !_model.passwordVisibility,
-                    decoration: InputDecoration(
-                      labelText: 'Пароль',
-                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).primary,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      suffixIcon: InkWell(
-                        onTap: () => setState(
-                          () => _model.passwordVisibility =
-                              !_model.passwordVisibility,
-                        ),
-                        focusNode: FocusNode(skipTraversal: true),
-                        child: Icon(
-                          _model.passwordVisibility
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          size: 22,
+                Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: TextFormField(
+                      controller: _model.passwordController,
+                      focusNode: _model.passwordFocusNode,
+                      obscureText: !_model.passwordVisibility,
+                      decoration: InputDecoration(
+                        labelText: 'Пароль',
+                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                        filled: true,
+                        fillColor: FlutterFlowTheme.of(context).tertiary,
+                        suffixIcon: InkWell(
+                          onTap: () => setState(
+                            () => _model.passwordVisibility =
+                                !_model.passwordVisibility,
+                          ),
+                          focusNode: FocusNode(skipTraversal: true),
+                          child: Icon(
+                            _model.passwordVisibility
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            size: 22,
+                          ),
                         ),
                       ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      validator: _model.passwordControllerValidator
+                          .asValidator(context),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator:
-                        _model.passwordControllerValidator.asValidator(context),
                   ),
                 ),
                 Padding(
@@ -212,24 +182,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           },
                           text: 'Войти',
                           options: FFButtonOptions(
-                            height: 40.0,
+                            height: 32.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Cabin Condensed',
                                   color: Colors.white,
                                 ),
-                            elevation: 3.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ),
@@ -262,24 +232,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           },
                           text: 'Войти как VORTEX',
                           options: FFButtonOptions(
-                            height: 40.0,
+                            height: 32.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0x79D4E7E5),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Cabin Condensed',
                                   color: Colors.white,
                                 ),
-                            elevation: 3.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ),
@@ -313,24 +283,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           },
                           text: 'Войти как RIMO',
                           options: FFButtonOptions(
-                            height: 40.0,
+                            height: 32.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0x79D4E7E5),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Cabin Condensed',
                                   color: Colors.white,
                                 ),
-                            elevation: 3.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ),
@@ -352,28 +322,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           },
                           text: 'Войти как samara',
                           options: FFButtonOptions(
-                            height: 40.0,
+                            height: 32.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0x79D4E7E5),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Cabin Condensed',
                                   color: Colors.white,
                                 ),
-                            elevation: 3.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ),
-                    ],
+                    ].divide(SizedBox(width: 10.0)),
                   ),
                 ),
                 Row(
@@ -386,29 +356,29 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         },
                         text: 'Регистрация',
                         options: FFButtonOptions(
-                          height: 40.0,
+                          height: 32.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Cabin Condensed',
                                     color: Colors.white,
                                   ),
-                          elevation: 3.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
                     ),
                   ],
                 ),
-              ],
+              ].divide(SizedBox(height: 5.0)),
             ),
           ),
         ),

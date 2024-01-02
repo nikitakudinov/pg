@@ -447,7 +447,7 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                             ),
                           );
 
-                          context.pushNamed('HomePage');
+                          context.pushNamed('HOME');
 
                           setState(() {});
                         },

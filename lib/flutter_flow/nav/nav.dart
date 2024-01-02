@@ -90,13 +90,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomePage')
-              : HomePageWidget(),
-        ),
-        FFRoute(
           name: 'LoginPage',
           path: '/loginPage',
           builder: (context, params) => LoginPageWidget(),
@@ -170,9 +163,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'PLAYERS',
           path: '/players',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'PLAYERS')
-              : PlayersWidget(),
+          builder: (context, params) => PlayersWidget(),
         ),
         FFRoute(
           name: 'TOURNAMENT_EDITE',
