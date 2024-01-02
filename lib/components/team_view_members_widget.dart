@@ -100,9 +100,12 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                     Text(
                       valueOrDefault<String>(
                         '${membersItem.playerTeamRole.first}',
-                        'Никнейм',
+                        'Роль',
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Cabin Condensed',
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
