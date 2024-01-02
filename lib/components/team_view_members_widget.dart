@@ -83,10 +83,9 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                 return Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                   child: Container(
-                    width: 100.0,
                     height: 100.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: FlutterFlowTheme.of(context).secondary,
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: Row(
