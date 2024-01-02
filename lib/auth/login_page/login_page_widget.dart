@@ -107,7 +107,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         filled: true,
                         fillColor: FlutterFlowTheme.of(context).tertiary,
                         contentPadding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 10.0),
+                            10.0, 0.0, 10.0, 15.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
                       validator:
@@ -138,7 +138,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         filled: true,
                         fillColor: FlutterFlowTheme.of(context).tertiary,
                         contentPadding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 10.0),
+                            10.0, 0.0, 10.0, 15.0),
                         suffixIcon: InkWell(
                           onTap: () => setState(
                             () => _model.passwordVisibility =
