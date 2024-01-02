@@ -143,6 +143,29 @@ class _HomeWidgetState extends State<HomeWidget> {
                       'https://supabase.proplayclub.ru/storage/v1/object/public/playground/updateApp.apk?t=2024-01-02T10%3A10%3A48.382Z');
                 },
               ),
+              FlutterFlowIconButton(
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  FFIcons.klogIn,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  GoRouter.of(context).prepareAuthEvent();
+                  await authManager.signOut();
+                  GoRouter.of(context).clearRedirectLocation();
+
+                  setState(() {
+                    FFAppState().MAINDATA = MaindataStruct();
+                    FFAppState().AUTHPLAYER = PlayerStruct();
+                    FFAppState().AUTHPLAYERTEAM = TeamStruct();
+                  });
+
+                  context.goNamedAuth('LoginPage', context.mounted);
+                },
+              ),
             ],
           ),
           actions: [
