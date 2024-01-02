@@ -243,143 +243,129 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 15.0),
-                  child: Row(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                  child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
+                      FFButtonWidget(
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
 
-                            final user = await authManager.signInWithEmail(
-                              context,
-                              '1@1.ru',
-                              '123123',
-                            );
-                            if (user == null) {
-                              return;
-                            }
+                          final user = await authManager.signInWithEmail(
+                            context,
+                            '4@4.ru',
+                            '123123',
+                          );
+                          if (user == null) {
+                            return;
+                          }
 
-                            await action_blocks
-                                .upadateAuthUserDataValues(context);
+                          await action_blocks
+                              .upadateAuthUserDataValues(context);
 
-                            context.goNamedAuth('HOME', context.mounted);
-                          },
-                          text: 'Войти как VORTEX',
-                          options: FFButtonOptions(
-                            height: 32.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
+                          context.goNamedAuth('HOME', context.mounted);
+                        },
+                        text: 'DIRTY ANTON',
+                        options: FFButtonOptions(
+                          width: 150.0,
+                          height: 32.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
                           ),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
+                      FFButtonWidget(
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
 
-                            final user = await authManager.signInWithEmail(
-                              context,
-                              '2@2.ru',
-                              '123123',
-                            );
-                            if (user == null) {
-                              return;
-                            }
+                          final user = await authManager.signInWithEmail(
+                            context,
+                            '2@2.ru',
+                            '123123',
+                          );
+                          if (user == null) {
+                            return;
+                          }
 
-                            setState(() {
-                              FFAppState().authUserUpdated = '0';
-                            });
+                          setState(() {
+                            FFAppState().authUserUpdated = '0';
+                          });
 
-                            context.goNamedAuth('HOME', context.mounted);
-                          },
-                          text: 'Войти как RIMO',
-                          options: FFButtonOptions(
-                            height: 32.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
+                          context.goNamedAuth('HOME', context.mounted);
+                        },
+                        text: 'RIMO',
+                        options: FFButtonOptions(
+                          width: 150.0,
+                          height: 32.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
                           ),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
+                      FFButtonWidget(
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
 
-                            final user = await authManager.signInWithEmail(
-                              context,
-                              '3@3.ru',
-                              '123123',
-                            );
-                            if (user == null) {
-                              return;
-                            }
+                          final user = await authManager.signInWithEmail(
+                            context,
+                            '3@3.ru',
+                            '123123',
+                          );
+                          if (user == null) {
+                            return;
+                          }
 
-                            context.goNamedAuth('HOME', context.mounted);
-                          },
-                          text: 'Войти как samara',
-                          options: FFButtonOptions(
-                            height: 32.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Cabin Condensed',
-                                  color: Colors.white,
-                                ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
+                          context.goNamedAuth('HOME', context.mounted);
+                        },
+                        text: 'samara',
+                        options: FFButtonOptions(
+                          width: 150.0,
+                          height: 32.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Cabin Condensed',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
                           ),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
-                    ].divide(SizedBox(width: 10.0)),
+                    ].divide(SizedBox(height: 5.0)),
                   ),
                 ),
               ].divide(SizedBox(height: 5.0)),
