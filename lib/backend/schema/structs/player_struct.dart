@@ -20,7 +20,7 @@ class PlayerStruct extends BaseStruct {
     List<String>? playerTeamRole,
     bool? playerOnline,
     String? playerUpdateAt,
-    String? playerTeamJoinedAt,
+    DateTime? playerTeamJoinedAt,
   })  : _playerCreatedAt = playerCreatedAt,
         _playerNickname = playerNickname,
         _playerTag = playerTag,
@@ -119,9 +119,9 @@ class PlayerStruct extends BaseStruct {
   bool hasPlayerUpdateAt() => _playerUpdateAt != null;
 
   // "player_team_joined_at" field.
-  String? _playerTeamJoinedAt;
-  String get playerTeamJoinedAt => _playerTeamJoinedAt ?? '';
-  set playerTeamJoinedAt(String? val) => _playerTeamJoinedAt = val;
+  DateTime? _playerTeamJoinedAt;
+  DateTime? get playerTeamJoinedAt => _playerTeamJoinedAt;
+  set playerTeamJoinedAt(DateTime? val) => _playerTeamJoinedAt = val;
   bool hasPlayerTeamJoinedAt() => _playerTeamJoinedAt != null;
 
   static PlayerStruct fromMap(Map<String, dynamic> data) => PlayerStruct(
@@ -138,7 +138,7 @@ class PlayerStruct extends BaseStruct {
         playerTeamRole: getDataList(data['player_team_role']),
         playerOnline: data['player_online'] as bool?,
         playerUpdateAt: data['player_update_at'] as String?,
-        playerTeamJoinedAt: data['player_team_joined_at'] as String?,
+        playerTeamJoinedAt: data['player_team_joined_at'] as DateTime?,
       );
 
   static PlayerStruct? maybeFromMap(dynamic data) =>
@@ -218,7 +218,7 @@ class PlayerStruct extends BaseStruct {
         ),
         'player_team_joined_at': serializeParam(
           _playerTeamJoinedAt,
-          ParamType.String,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -291,7 +291,7 @@ class PlayerStruct extends BaseStruct {
         ),
         playerTeamJoinedAt: deserializeParam(
           data['player_team_joined_at'],
-          ParamType.String,
+          ParamType.DateTime,
           false,
         ),
       );
@@ -351,7 +351,7 @@ PlayerStruct createPlayerStruct({
   int? playerId,
   bool? playerOnline,
   String? playerUpdateAt,
-  String? playerTeamJoinedAt,
+  DateTime? playerTeamJoinedAt,
 }) =>
     PlayerStruct(
       playerCreatedAt: playerCreatedAt,
