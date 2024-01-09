@@ -2192,7 +2192,8 @@ class ChatsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'CHATS',
-      apiUrl: '${MessagingGroup.baseUrl}chats?chat_members=cs.${authplayerUID}',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authplayerUID}}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -2209,27 +2210,31 @@ class ChatsCall {
     );
   }
 
-  dynamic chatid(dynamic response) => getJsonField(
+  int? chatid(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].chat_id''',
-      );
-  dynamic chatupdatedat(dynamic response) => getJsonField(
+      ));
+  String? chatupdatedat(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].chat_updated_at''',
-      );
-  List? chatmembers(dynamic response) => getJsonField(
+      ));
+  List<String>? chatmembers(dynamic response) => (getJsonField(
         response,
         r'''$[:].chat_members''',
         true,
-      ) as List?;
-  dynamic chatlastmessage(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  String? chatlastmessage(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$[:].chat_last_message''',
-      );
-  dynamic chatofteam(dynamic response) => getJsonField(
+      ));
+  int? chatofteam(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$[:].chat_of_team''',
-      );
+      ));
   dynamic chatcountofmembers(dynamic response) => getJsonField(
         response,
         r'''$[:].chat_count_of_members''',

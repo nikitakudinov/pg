@@ -154,7 +154,18 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                         child: Image.network(
-                                          'https://picsum.photos/seed/811/600',
+                                          FFAppState()
+                                              .MAINDATA
+                                              .players
+                                              .where((e) =>
+                                                  e.playerUid ==
+                                                  chatsListDataItem.chatMembers
+                                                      .where((e) =>
+                                                          e != currentUserUid)
+                                                      .toList()
+                                                      .first)
+                                              .toList()[0]
+                                              .playerAvatar,
                                           width: 80.0,
                                           height: 80.0,
                                           fit: BoxFit.cover,
