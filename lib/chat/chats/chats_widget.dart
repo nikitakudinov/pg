@@ -144,8 +144,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 15.0, 0.0),
                                     child: Container(
-                                      width: 80.0,
-                                      height: 80.0,
+                                      width: 50.0,
+                                      height: 50.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -166,8 +166,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                       .first)
                                               .toList()[0]
                                               .playerAvatar,
-                                          width: 80.0,
-                                          height: 80.0,
+                                          width: 50.0,
+                                          height: 0.0,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -217,48 +217,20 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                     .toList()[0]
                                                     .playerNickname,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Cabin Condensed',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiary,
+                                                ),
                                           ),
                                           Text(
                                             chatsListItem.chatLastMessage,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 5.0, 0.0),
-                                            child: Container(
-                                              width: 20.0,
-                                              height: 12.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/728/600',
-                                                  width: 20.0,
-                                                  height: 12.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Text(
-                                            'Hello World',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ],
+                                        ].divide(SizedBox(width: 5.0)),
                                       ),
                                     ],
                                   ),
