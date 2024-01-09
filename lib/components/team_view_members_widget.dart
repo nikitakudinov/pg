@@ -234,6 +234,22 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                   ),
                                 }.withoutNulls,
                               );
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('1'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             }
                           },
                         ),
