@@ -179,14 +179,52 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        chatsListItem.chatLastMessage,
+                                        FFAppState()
+                                            .MAINDATA
+                                            .players
+                                            .where((e) =>
+                                                e.playerUid ==
+                                                chatsListItem.chatMembers
+                                                    .where((e) =>
+                                                        e != currentUserUid)
+                                                    .toList()
+                                                    .first)
+                                            .toList()[0]
+                                            .playerNickname,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
-                                      Text(
-                                        'Hello World',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            chatsListItem
+                                                        .chatLastMessageSander ==
+                                                    currentUserUid
+                                                ? 'Вы:'
+                                                : FFAppState()
+                                                    .MAINDATA
+                                                    .players
+                                                    .where((e) =>
+                                                        e.playerUid ==
+                                                        chatsListItem
+                                                            .chatMembers
+                                                            .where((e) =>
+                                                                e !=
+                                                                currentUserUid)
+                                                            .toList()
+                                                            .first)
+                                                    .toList()[0]
+                                                    .playerNickname,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          Text(
+                                            chatsListItem.chatLastMessage,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ],
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
