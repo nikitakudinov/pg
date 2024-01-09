@@ -206,8 +206,35 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24.0,
                           ),
-                          onPressed: () {
-                            print('MESSAGE pressed ...');
+                          onPressed: () async {
+                            if (FFAppState()
+                                    .MAINDATA
+                                    .chats
+                                    .where((e) =>
+                                        e.chatMembers
+                                            .contains(membersItem.playerUid) ==
+                                        true)
+                                    .toList()
+                                    .length >
+                                0) {
+                              context.pushNamed(
+                                'CHAT',
+                                queryParameters: {
+                                  'chatID': serializeParam(
+                                    FFAppState()
+                                        .MAINDATA
+                                        .chats
+                                        .where((e) =>
+                                            e.chatMembers.contains(
+                                                membersItem.playerUid) ==
+                                            true)
+                                        .toList()[0]
+                                        .chatId,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            }
                           },
                         ),
                       ]
