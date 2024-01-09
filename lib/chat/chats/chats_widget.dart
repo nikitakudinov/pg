@@ -99,149 +99,167 @@ class _ChatsWidgetState extends State<ChatsWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Builder(
-                  builder: (context) {
-                    final chatsList = FFAppState().MAINDATA.chats.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: chatsList.length,
-                      itemBuilder: (context, chatsListIndex) {
-                        final chatsListItem = chatsList[chatsListIndex];
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'CHAT',
-                              queryParameters: {
-                                'chatID': serializeParam(
-                                  chatsListItem.chatId,
-                                  ParamType.int,
-                                ),
-                                'chatIndex': serializeParam(
-                                  chatsListIndex,
-                                  ParamType.int,
-                                ),
-                              }.withoutNulls,
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 15.0, 0.0),
-                                    child: Container(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        child: Image.network(
-                                          FFAppState()
-                                              .MAINDATA
-                                              .players
-                                              .where((e) =>
-                                                  e.playerUid ==
-                                                  chatsListItem.chatMembers
-                                                      .where((e) =>
-                                                          e != currentUserUid)
-                                                      .toList()
-                                                      .first)
-                                              .toList()[0]
-                                              .playerAvatar,
-                                          width: 50.0,
-                                          height: 0.0,
-                                          fit: BoxFit.cover,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                  child: Builder(
+                    builder: (context) {
+                      final chatsList = FFAppState().MAINDATA.chats.toList();
+                      return ListView.separated(
+                        padding: EdgeInsets.fromLTRB(
+                          0,
+                          15.0,
+                          0,
+                          15.0,
+                        ),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: chatsList.length,
+                        separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                        itemBuilder: (context, chatsListIndex) {
+                          final chatsListItem = chatsList[chatsListIndex];
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'CHAT',
+                                queryParameters: {
+                                  'chatID': serializeParam(
+                                    chatsListItem.chatId,
+                                    ParamType.int,
+                                  ),
+                                  'chatIndex': serializeParam(
+                                    chatsListIndex,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 15.0, 0.0),
+                                      child: Container(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          child: Image.network(
+                                            FFAppState()
+                                                .MAINDATA
+                                                .players
+                                                .where((e) =>
+                                                    e.playerUid ==
+                                                    chatsListItem.chatMembers
+                                                        .where((e) =>
+                                                            e != currentUserUid)
+                                                        .toList()
+                                                        .first)
+                                                .toList()[0]
+                                                .playerAvatar,
+                                            width: 50.0,
+                                            height: 0.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        FFAppState()
-                                            .MAINDATA
-                                            .players
-                                            .where((e) =>
-                                                e.playerUid ==
-                                                chatsListItem.chatMembers
-                                                    .where((e) =>
-                                                        e != currentUserUid)
-                                                    .toList()
-                                                    .first)
-                                            .toList()[0]
-                                            .playerNickname,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                      Row(
+                                    Expanded(
+                                      child: Column(
                                         mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            chatsListItem
-                                                        .chatLastMessageSander ==
-                                                    currentUserUid
-                                                ? 'Вы:'
-                                                : FFAppState()
-                                                    .MAINDATA
-                                                    .players
-                                                    .where((e) =>
-                                                        e.playerUid ==
-                                                        chatsListItem
-                                                            .chatMembers
-                                                            .where((e) =>
-                                                                e !=
-                                                                currentUserUid)
-                                                            .toList()
-                                                            .first)
-                                                    .toList()[0]
-                                                    .playerNickname,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Cabin Condensed',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiary,
-                                                ),
-                                          ),
-                                          Text(
-                                            chatsListItem.chatLastMessage,
+                                            FFAppState()
+                                                .MAINDATA
+                                                .players
+                                                .where((e) =>
+                                                    e.playerUid ==
+                                                    chatsListItem.chatMembers
+                                                        .where((e) =>
+                                                            e != currentUserUid)
+                                                        .toList()
+                                                        .first)
+                                                .toList()[0]
+                                                .playerNickname,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
-                                        ].divide(SizedBox(width: 5.0)),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                chatsListItem
+                                                            .chatLastMessageSander ==
+                                                        currentUserUid
+                                                    ? 'Вы:'
+                                                    : FFAppState()
+                                                        .MAINDATA
+                                                        .players
+                                                        .where((e) =>
+                                                            e.playerUid ==
+                                                            chatsListItem
+                                                                .chatLastMessageSander)
+                                                        .toList()[0]
+                                                        .playerNickname,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Cabin Condensed',
+                                                          color:
+                                                              Color(0xFF7C7D7F),
+                                                        ),
+                                              ),
+                                              Text(
+                                                chatsListItem.chatLastMessage,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ].divide(SizedBox(width: 5.0)),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          chatsListItem.chatUpdatedAt,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    );
-                  },
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
