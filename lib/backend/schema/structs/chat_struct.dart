@@ -12,13 +12,13 @@ class ChatStruct extends BaseStruct {
     String? chatLastMessage,
     int? chatOfTeam,
     String? chatChattype,
-    List<PlayerStruct>? members,
+    List<String>? chatMembers,
   })  : _chatId = chatId,
         _chatUpdatedAt = chatUpdatedAt,
         _chatLastMessage = chatLastMessage,
         _chatOfTeam = chatOfTeam,
         _chatChattype = chatChattype,
-        _members = members;
+        _chatMembers = chatMembers;
 
   // "chat_id" field.
   int? _chatId;
@@ -52,13 +52,13 @@ class ChatStruct extends BaseStruct {
   set chatChattype(String? val) => _chatChattype = val;
   bool hasChatChattype() => _chatChattype != null;
 
-  // "members" field.
-  List<PlayerStruct>? _members;
-  List<PlayerStruct> get members => _members ?? const [];
-  set members(List<PlayerStruct>? val) => _members = val;
-  void updateMembers(Function(List<PlayerStruct>) updateFn) =>
-      updateFn(_members ??= []);
-  bool hasMembers() => _members != null;
+  // "chat_members" field.
+  List<String>? _chatMembers;
+  List<String> get chatMembers => _chatMembers ?? const [];
+  set chatMembers(List<String>? val) => _chatMembers = val;
+  void updateChatMembers(Function(List<String>) updateFn) =>
+      updateFn(_chatMembers ??= []);
+  bool hasChatMembers() => _chatMembers != null;
 
   static ChatStruct fromMap(Map<String, dynamic> data) => ChatStruct(
         chatId: castToType<int>(data['chat_id']),
@@ -66,10 +66,7 @@ class ChatStruct extends BaseStruct {
         chatLastMessage: data['chat_last_message'] as String?,
         chatOfTeam: castToType<int>(data['chat_of_team']),
         chatChattype: data['chat_chattype'] as String?,
-        members: getStructList(
-          data['members'],
-          PlayerStruct.fromMap,
-        ),
+        chatMembers: getDataList(data['chat_members']),
       );
 
   static ChatStruct? maybeFromMap(dynamic data) =>
@@ -81,7 +78,7 @@ class ChatStruct extends BaseStruct {
         'chat_last_message': _chatLastMessage,
         'chat_of_team': _chatOfTeam,
         'chat_chattype': _chatChattype,
-        'members': _members?.map((e) => e.toMap()).toList(),
+        'chat_members': _chatMembers,
       }.withoutNulls;
 
   @override
@@ -106,9 +103,9 @@ class ChatStruct extends BaseStruct {
           _chatChattype,
           ParamType.String,
         ),
-        'members': serializeParam(
-          _members,
-          ParamType.DataStruct,
+        'chat_members': serializeParam(
+          _chatMembers,
+          ParamType.String,
           true,
         ),
       }.withoutNulls;
@@ -140,11 +137,10 @@ class ChatStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        members: deserializeStructParam<PlayerStruct>(
-          data['members'],
-          ParamType.DataStruct,
+        chatMembers: deserializeParam<String>(
+          data['chat_members'],
+          ParamType.String,
           true,
-          structBuilder: PlayerStruct.fromSerializableMap,
         ),
       );
 
@@ -160,7 +156,7 @@ class ChatStruct extends BaseStruct {
         chatLastMessage == other.chatLastMessage &&
         chatOfTeam == other.chatOfTeam &&
         chatChattype == other.chatChattype &&
-        listEquality.equals(members, other.members);
+        listEquality.equals(chatMembers, other.chatMembers);
   }
 
   @override
@@ -170,7 +166,7 @@ class ChatStruct extends BaseStruct {
         chatLastMessage,
         chatOfTeam,
         chatChattype,
-        members
+        chatMembers
       ]);
 }
 
