@@ -215,7 +215,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                             .contains(membersItem.playerUid) ==
                                         true)
                                     .toList()
-                                    .length <
+                                    .length >
                                 0) {
                               context.pushNamed(
                                 'CHAT',
