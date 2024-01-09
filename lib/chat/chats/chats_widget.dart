@@ -245,7 +245,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
-                                          chatsListItem.chatUpdatedAt,
+                                          'Hello World',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
