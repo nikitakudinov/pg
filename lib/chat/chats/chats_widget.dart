@@ -4,7 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -32,19 +32,20 @@ class _ChatsWidgetState extends State<ChatsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResult3cp = await MessagingGroup.getchatsCall.call(
-        authUser: currentUserUid,
+      _model.apiResult3cp = await MessagingGroup.chatsCall.call(
+        authplayerUID: currentUserUid,
       );
       if ((_model.apiResult3cp?.succeeded ?? true)) {
-        _model.dtCHATSdata = await actions.dtCHAT(
-          MessagingGroup.getchatsCall
-              .chats(
-                (_model.apiResult3cp?.jsonBody ?? ''),
-              )
-              ?.toList(),
-        );
         setState(() {
-          FFAppState().chats = _model.dtCHATSdata!.toList().cast<ChatStruct>();
+          FFAppState().updateMAINDATAStruct(
+            (e) => e
+              ..chats = ((_model.apiResult3cp?.jsonBody ?? '')
+                      .toList()
+                      .map<ChatStruct?>(ChatStruct.maybeFromMap)
+                      .toList() as Iterable<ChatStruct?>)
+                  .withoutNulls
+                  .toList(),
+          );
         });
       }
     });
