@@ -100,15 +100,14 @@ class _ChatsWidgetState extends State<ChatsWidget> {
               children: [
                 Builder(
                   builder: (context) {
-                    final chatsListData = FFAppState().chats.toList();
+                    final chatsList = FFAppState().MAINDATA.chats.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: chatsListData.length,
-                      itemBuilder: (context, chatsListDataIndex) {
-                        final chatsListDataItem =
-                            chatsListData[chatsListDataIndex];
+                      itemCount: chatsList.length,
+                      itemBuilder: (context, chatsListIndex) {
+                        final chatsListItem = chatsList[chatsListIndex];
                         return InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -119,11 +118,11 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                               'CHAT',
                               queryParameters: {
                                 'chatID': serializeParam(
-                                  chatsListDataItem.chatId,
+                                  chatsListItem.chatId,
                                   ParamType.int,
                                 ),
                                 'chatIndex': serializeParam(
-                                  chatsListDataIndex,
+                                  chatsListIndex,
                                   ParamType.int,
                                 ),
                               }.withoutNulls,
@@ -159,7 +158,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                               .players
                                               .where((e) =>
                                                   e.playerUid ==
-                                                  chatsListDataItem.chatMembers
+                                                  chatsListItem.chatMembers
                                                       .where((e) =>
                                                           e != currentUserUid)
                                                       .toList()
@@ -179,7 +178,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        chatsListDataItem.chatLastMessage,
+                                        chatsListItem.chatLastMessage,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
