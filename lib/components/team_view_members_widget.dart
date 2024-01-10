@@ -240,7 +240,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                 'chat_last_message': '',
                                 'chat_chattype': 'Диалог',
                                 'chat_members': _model.chatMembersArray,
-                                'chat_last_message_sander': '0',
+                                'chat_last_message_sander': currentUserUid,
                               });
                               _model.apiResulta02 = await MessagingGroup
                                   .getchatbymembersCall
