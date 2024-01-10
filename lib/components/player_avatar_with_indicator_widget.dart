@@ -47,7 +47,6 @@ class _PlayerAvatarWithIndicatorWidgetState
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
         },
         startImmediately: true,
       );
