@@ -95,7 +95,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                             key: Key(
                                 'Key6eb_${membersIndex}_of_${members.length}'),
                             imagePath: membersItem.playerAvatar,
-                            isOnline: membersItem.playerOnline,
+                            playerUID: membersItem.playerUid,
                           ),
                         ),
                         Expanded(
