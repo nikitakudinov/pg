@@ -237,7 +237,8 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                               await ChatsTable().insert({
                                 'chat_updated_at': supaSerialize<DateTime>(
                                     getCurrentTimestamp),
-                                'chat_last_message': '',
+                                'chat_last_message':
+                                    'В данном чате нет сообщений',
                                 'chat_chattype': 'Диалог',
                                 'chat_members': _model.chatMembersArray,
                                 'chat_last_message_sander': currentUserUid,

@@ -600,3 +600,39 @@ Future authplayerloader(BuildContext context) async {
         .withoutNulls[0];
   });
 }
+
+Future chatsloader(BuildContext context) async {
+  ApiCallResponse? apiResult3cp;
+
+  apiResult3cp = await MessagingGroup.chatsCall.call(
+    authplayerUID: currentUserUid,
+  );
+  if ((apiResult3cp?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..chats = ((apiResult3cp?.jsonBody ?? '')
+                  .toList()
+                  .map<ChatStruct?>(ChatStruct.maybeFromMap)
+                  .toList() as Iterable<ChatStruct?>)
+              .withoutNulls
+              .toList(),
+      );
+    });
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Ошибка загрузки чатов'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}

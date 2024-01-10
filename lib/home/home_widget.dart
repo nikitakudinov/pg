@@ -45,6 +45,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           await action_blocks.authplayerloader(context);
         }(),
       );
+      await action_blocks.chatsloader(context);
       unawaited(
         () async {
           await action_blocks.matchesloader(context);
