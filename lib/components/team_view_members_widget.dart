@@ -246,7 +246,8 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                               _model.apiResulta02 = await MessagingGroup
                                   .getchatbymembersCall
                                   .call(
-                                chatMembersArrayList: _model.chatMembersArray,
+                                chatMembersArray: functions.arrayToString(
+                                    _model.chatMembersArray.toList()),
                               );
                               if ((_model.apiResulta02?.succeeded ?? true)) {
                                 context.pushNamed(

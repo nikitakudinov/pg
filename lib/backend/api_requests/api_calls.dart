@@ -2491,14 +2491,12 @@ class GetchatbyidCall {
 
 class GetchatbymembersCall {
   Future<ApiCallResponse> call({
-    List<String>? chatMembersArrayList,
+    String? chatMembersArray = '',
   }) async {
-    final chatMembersArray = _serializeList(chatMembersArrayList);
-
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATBYMEMBERS',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_members=eq.${chatMembersArray}',
+          '${MessagingGroup.baseUrl}chats?chat_members=eq.{${chatMembersArray}}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

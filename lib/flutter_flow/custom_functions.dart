@@ -53,3 +53,8 @@ DateTime? stringDateToDateTime(String? dateString) {
     return null;
   }
 }
+
+String? arrayToString(List<String> array) {
+  // convert array to string
+  return array.join(',');
+}
