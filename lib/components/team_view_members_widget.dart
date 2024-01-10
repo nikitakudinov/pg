@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/player_avatar_with_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -90,23 +91,11 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 10.0),
-                          child: Container(
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                membersItem.playerAvatar,
-                                width: 50.0,
-                                height: 50.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                          child: PlayerAvatarWithIndicatorWidget(
+                            key: Key(
+                                'Key6eb_${membersIndex}_of_${members.length}'),
+                            imagePath: membersItem.playerAvatar,
+                            isOnline: membersItem.playerOnline,
                           ),
                         ),
                         Expanded(

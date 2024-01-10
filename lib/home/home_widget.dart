@@ -81,6 +81,15 @@ class _HomeWidgetState extends State<HomeWidget> {
               await action_blocks.notificationsupdater(context);
             }(),
           );
+          await PlayersTable().update(
+            data: {
+              'player_online': true,
+            },
+            matchingRows: (rows) => rows.eq(
+              'player_uid',
+              currentUserUid,
+            ),
+          );
         },
         startImmediately: true,
       );

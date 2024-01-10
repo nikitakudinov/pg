@@ -1,16 +1,14 @@
-import '/backend/schema/structs/index.dart';
-import '/components/player_avatar_with_indicator_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import 'team_view_members_widget.dart' show TeamViewMembersWidget;
+import 'player_avatar_with_indicator_widget.dart'
+    show PlayerAvatarWithIndicatorWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TeamViewMembersModel extends FlutterFlowModel<TeamViewMembersWidget> {
+class PlayerAvatarWithIndicatorModel
+    extends FlutterFlowModel<PlayerAvatarWithIndicatorWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
