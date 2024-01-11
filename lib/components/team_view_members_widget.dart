@@ -1,7 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/components/player_avatar_with_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -199,68 +198,46 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            if (FFAppState()
-                                    .MAINDATA
-                                    .chats
-                                    .where((e) =>
-                                        e.chatMembers
-                                            .contains(membersItem.playerUid) ==
-                                        true)
-                                    .toList()
-                                    .length >
-                                0) {
-                              context.pushNamed(
-                                'CHAT',
-                                queryParameters: {
-                                  'chatID': serializeParam(
-                                    FFAppState()
-                                        .MAINDATA
-                                        .chats
-                                        .where((e) =>
-                                            e.chatMembers.contains(
-                                                membersItem.playerUid) ==
-                                            true)
-                                        .toList()[0]
-                                        .chatId,
-                                    ParamType.int,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            } else {
-                              setState(() {
-                                _model.addToChatMembersArray(currentUserUid);
-                              });
-                              setState(() {
-                                _model.addToChatMembersArray(
-                                    membersItem.playerUid);
-                              });
-                              await ChatsTable().insert({
-                                'chat_updated_at': supaSerialize<DateTime>(
-                                    getCurrentTimestamp),
-                                'chat_last_message':
-                                    'В данном чате нет сообщений',
-                                'chat_chattype': 'Диалог',
-                                'chat_members': _model.chatMembersArray,
-                                'chat_last_message_sander': currentUserUid,
-                              });
-                              _model.apiResulta02 = await MessagingGroup
-                                  .getchatbymembersCall
-                                  .call(
-                                chatMembersArray: functions.arrayToString(
-                                    _model.chatMembersArray.toList()),
-                              );
-                              if ((_model.apiResulta02?.succeeded ?? true)) {
-                                context.pushNamed(
-                                  'CHAT',
-                                  queryParameters: {
-                                    'chatID': serializeParam(
-                                      MessagingGroup.getchatbymembersCall
-                                          .chatid(
-                                        (_model.apiResulta02?.jsonBody ?? ''),
-                                      ),
-                                      ParamType.int,
-                                    ),
-                                  }.withoutNulls,
+                            _model.apiResulttaz =
+                                await MessagingGroup.getchatsCall.call(
+                              authUser: currentUserUid,
+                            );
+                            if ((_model.apiResulttaz?.succeeded ?? true)) {
+                              if (MessagingGroup.getchatsCall
+                                  .chatsplayersplayeruid(
+                                    (_model.apiResulttaz?.jsonBody ?? ''),
+                                  )!
+                                  .contains(membersItem.playerUid)) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('1'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('2'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 );
                               }
                             }
