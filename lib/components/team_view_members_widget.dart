@@ -202,44 +202,6 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                 await MessagingGroup.getchatsCall.call(
                               authUser: currentUserUid,
                             );
-                            if ((_model.apiResulttaz?.succeeded ?? true)) {
-                              if (getJsonField(
-                                (_model.apiResulttaz?.jsonBody ?? ''),
-                                r'''$[:].chats.chat_members[:].player_uid''',
-                              )) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('1'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('2'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-                            }
 
                             setState(() {});
                           },
