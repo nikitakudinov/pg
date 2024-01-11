@@ -2189,12 +2189,12 @@ class MessagingGroup {
 
 class ChatsCall {
   Future<ApiCallResponse> call({
-    String? authplayerUID = '',
+    String? authUser = '',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'CHATS',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authplayerUID}}',
+          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

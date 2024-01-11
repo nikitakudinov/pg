@@ -604,7 +604,7 @@ Future authplayerloader(BuildContext context) async {
 Future chatsloader(BuildContext context) async {
   ApiCallResponse? apiResult3cp;
 
-  apiResult3cp = await MessagingGroup.getchatsCall.call(
+  apiResult3cp = await MessagingGroup.chatsCall.call(
     authUser: currentUserUid,
   );
   if ((apiResult3cp?.succeeded ?? true)) {
