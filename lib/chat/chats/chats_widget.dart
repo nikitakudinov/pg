@@ -149,7 +149,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                         .where((e) =>
                                                             e != currentUserUid)
                                                         .toList()
-                                                        .first)
+                                                        .first
+                                                        .playerUid)
                                                 .toList()[0]
                                                 .playerAvatar,
                                             width: 50.0,
@@ -175,7 +176,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                         .where((e) =>
                                                             e != currentUserUid)
                                                         .toList()
-                                                        .first)
+                                                        .first
+                                                        .playerUid)
                                                 .toList()[0]
                                                 .playerNickname,
                                             style: FlutterFlowTheme.of(context)

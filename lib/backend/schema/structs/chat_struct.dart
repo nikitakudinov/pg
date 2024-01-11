@@ -12,15 +12,15 @@ class ChatStruct extends BaseStruct {
     String? chatLastMessage,
     int? chatOfTeam,
     String? chatChattype,
-    List<String>? chatMembers,
     String? chatLastMessageSander,
+    List<PlayerStruct>? chatMembers,
   })  : _chatId = chatId,
         _chatUpdatedAt = chatUpdatedAt,
         _chatLastMessage = chatLastMessage,
         _chatOfTeam = chatOfTeam,
         _chatChattype = chatChattype,
-        _chatMembers = chatMembers,
-        _chatLastMessageSander = chatLastMessageSander;
+        _chatLastMessageSander = chatLastMessageSander,
+        _chatMembers = chatMembers;
 
   // "chat_id" field.
   int? _chatId;
@@ -54,19 +54,19 @@ class ChatStruct extends BaseStruct {
   set chatChattype(String? val) => _chatChattype = val;
   bool hasChatChattype() => _chatChattype != null;
 
-  // "chat_members" field.
-  List<String>? _chatMembers;
-  List<String> get chatMembers => _chatMembers ?? const [];
-  set chatMembers(List<String>? val) => _chatMembers = val;
-  void updateChatMembers(Function(List<String>) updateFn) =>
-      updateFn(_chatMembers ??= []);
-  bool hasChatMembers() => _chatMembers != null;
-
   // "chat_last_message_sander" field.
   String? _chatLastMessageSander;
   String get chatLastMessageSander => _chatLastMessageSander ?? '';
   set chatLastMessageSander(String? val) => _chatLastMessageSander = val;
   bool hasChatLastMessageSander() => _chatLastMessageSander != null;
+
+  // "chat_members" field.
+  List<PlayerStruct>? _chatMembers;
+  List<PlayerStruct> get chatMembers => _chatMembers ?? const [];
+  set chatMembers(List<PlayerStruct>? val) => _chatMembers = val;
+  void updateChatMembers(Function(List<PlayerStruct>) updateFn) =>
+      updateFn(_chatMembers ??= []);
+  bool hasChatMembers() => _chatMembers != null;
 
   static ChatStruct fromMap(Map<String, dynamic> data) => ChatStruct(
         chatId: castToType<int>(data['chat_id']),
@@ -74,8 +74,11 @@ class ChatStruct extends BaseStruct {
         chatLastMessage: data['chat_last_message'] as String?,
         chatOfTeam: castToType<int>(data['chat_of_team']),
         chatChattype: data['chat_chattype'] as String?,
-        chatMembers: getDataList(data['chat_members']),
         chatLastMessageSander: data['chat_last_message_sander'] as String?,
+        chatMembers: getStructList(
+          data['chat_members'],
+          PlayerStruct.fromMap,
+        ),
       );
 
   static ChatStruct? maybeFromMap(dynamic data) =>
@@ -87,8 +90,8 @@ class ChatStruct extends BaseStruct {
         'chat_last_message': _chatLastMessage,
         'chat_of_team': _chatOfTeam,
         'chat_chattype': _chatChattype,
-        'chat_members': _chatMembers,
         'chat_last_message_sander': _chatLastMessageSander,
+        'chat_members': _chatMembers?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -113,14 +116,14 @@ class ChatStruct extends BaseStruct {
           _chatChattype,
           ParamType.String,
         ),
-        'chat_members': serializeParam(
-          _chatMembers,
-          ParamType.String,
-          true,
-        ),
         'chat_last_message_sander': serializeParam(
           _chatLastMessageSander,
           ParamType.String,
+        ),
+        'chat_members': serializeParam(
+          _chatMembers,
+          ParamType.DataStruct,
+          true,
         ),
       }.withoutNulls;
 
@@ -151,15 +154,16 @@ class ChatStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        chatMembers: deserializeParam<String>(
-          data['chat_members'],
-          ParamType.String,
-          true,
-        ),
         chatLastMessageSander: deserializeParam(
           data['chat_last_message_sander'],
           ParamType.String,
           false,
+        ),
+        chatMembers: deserializeStructParam<PlayerStruct>(
+          data['chat_members'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: PlayerStruct.fromSerializableMap,
         ),
       );
 
@@ -175,8 +179,8 @@ class ChatStruct extends BaseStruct {
         chatLastMessage == other.chatLastMessage &&
         chatOfTeam == other.chatOfTeam &&
         chatChattype == other.chatChattype &&
-        listEquality.equals(chatMembers, other.chatMembers) &&
-        chatLastMessageSander == other.chatLastMessageSander;
+        chatLastMessageSander == other.chatLastMessageSander &&
+        listEquality.equals(chatMembers, other.chatMembers);
   }
 
   @override
@@ -186,8 +190,8 @@ class ChatStruct extends BaseStruct {
         chatLastMessage,
         chatOfTeam,
         chatChattype,
-        chatMembers,
-        chatLastMessageSander
+        chatLastMessageSander,
+        chatMembers
       ]);
 }
 
