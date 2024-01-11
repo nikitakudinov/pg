@@ -470,6 +470,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
+                                        Text(
+                                          'Всего чатов',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Column(
