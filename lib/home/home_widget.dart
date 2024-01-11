@@ -504,6 +504,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
+                                        Text(
+                                          FFAppState()
+                                              .MAINDATA
+                                              .chats
+                                              .length
+                                              .toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ].divide(SizedBox(width: 15.0)),
