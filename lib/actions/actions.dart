@@ -604,8 +604,8 @@ Future authplayerloader(BuildContext context) async {
 Future chatsloader(BuildContext context) async {
   ApiCallResponse? apiResult3cp;
 
-  apiResult3cp = await MessagingGroup.chatsCall.call(
-    authplayerUID: currentUserUid,
+  apiResult3cp = await MessagingGroup.getchatsCall.call(
+    authUser: currentUserUid,
   );
   if ((apiResult3cp?.succeeded ?? true)) {
     FFAppState().update(() {
