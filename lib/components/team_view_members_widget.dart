@@ -203,11 +203,10 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                               authUser: currentUserUid,
                             );
                             if ((_model.apiResulttaz?.succeeded ?? true)) {
-                              if (MessagingGroup.getchatsCall
-                                  .chatsplayersplayeruid(
-                                    (_model.apiResulttaz?.jsonBody ?? ''),
-                                  )!
-                                  .contains(membersItem.playerUid)) {
+                              if (getJsonField(
+                                (_model.apiResulttaz?.jsonBody ?? ''),
+                                r'''$[:].chats.chat_members[:].player_uid''',
+                              )) {
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {

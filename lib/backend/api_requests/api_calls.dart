@@ -2209,15 +2209,11 @@ class GetchatsCall {
     );
   }
 
-  List<String>? chatsplayersplayeruid(dynamic response) => (getJsonField(
+  String? chatschatmembersplayeruid(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$[:].chats.players[:].player_uid''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
+        r'''$[:].chats.chat_members[:].player_uid''',
+      ));
 }
 
 class GETuserNotificationsCall {

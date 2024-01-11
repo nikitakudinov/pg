@@ -213,30 +213,33 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Text(
-                                                chatsListItem
-                                                            .chatLastMessageSander ==
-                                                        currentUserUid
-                                                    ? 'Вы:'
-                                                    : FFAppState()
-                                                        .MAINDATA
-                                                        .players
-                                                        .where((e) =>
-                                                            e.playerUid ==
-                                                            chatsListItem
-                                                                .chatLastMessageSander)
-                                                        .toList()[0]
-                                                        .playerNickname,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Cabin Condensed',
-                                                          color:
-                                                              Color(0xFF7C7D7F),
-                                                        ),
-                                              ),
+                                              if (chatsListItem
+                                                      .chatLastMessageSander !=
+                                                  '0')
+                                                Text(
+                                                  chatsListItem
+                                                              .chatLastMessageSander ==
+                                                          currentUserUid
+                                                      ? 'Вы:'
+                                                      : FFAppState()
+                                                          .MAINDATA
+                                                          .players
+                                                          .where((e) =>
+                                                              e.playerUid ==
+                                                              chatsListItem
+                                                                  .chatLastMessageSander)
+                                                          .toList()[0]
+                                                          .playerNickname,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Cabin Condensed',
+                                                        color:
+                                                            Color(0xFF7C7D7F),
+                                                      ),
+                                                ),
                                               Text(
                                                 chatsListItem.chatLastMessage,
                                                 style:
