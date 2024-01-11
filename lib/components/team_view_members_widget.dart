@@ -202,6 +202,43 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                 await MessagingGroup.getchatsCall.call(
                               authUser: currentUserUid,
                             );
+                            if (MessagingGroup.getchatsCall
+                                .chatschatmembersplayeruid(
+                                  (_model.apiResulttaz?.jsonBody ?? ''),
+                                )!
+                                .contains(membersItem.playerUid)) {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('1'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('2'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
 
                             setState(() {});
                           },
