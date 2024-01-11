@@ -47,11 +47,6 @@ class _HomeWidgetState extends State<HomeWidget> {
       );
       unawaited(
         () async {
-          await action_blocks.chatsloader(context);
-        }(),
-      );
-      unawaited(
-        () async {
           await action_blocks.matchesloader(context);
         }(),
       );
