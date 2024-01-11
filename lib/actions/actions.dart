@@ -611,7 +611,11 @@ Future chatsloader(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().updateMAINDATAStruct(
         (e) => e
-          ..chats = ((apiResult3cp?.jsonBody ?? '')
+          ..chats = (getJsonField(
+            (apiResult3cp?.jsonBody ?? ''),
+            r'''$[:].chats''',
+            true,
+          )!
                   .toList()
                   .map<ChatStruct?>(ChatStruct.maybeFromMap)
                   .toList() as Iterable<ChatStruct?>)
