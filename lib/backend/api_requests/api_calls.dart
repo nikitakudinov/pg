@@ -2339,12 +2339,12 @@ class GETNOTIFICATIONScountCall {
 
 class GetchatbyidCall {
   Future<ApiCallResponse> call({
-    String? chatID = '',
+    int? chatID,
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATBYID',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_id=eq.${chatID}&select=*,members:players(*)',
+          '${MessagingGroup.baseUrl}chats?chat_id=cs.(${chatID})&select=*,members:players(*)',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -2802,7 +2802,7 @@ class GetuserchatsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETUSERCHATS',
       apiUrl:
-          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*,members:players(*))',
+          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*,chat_members:players(*))',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

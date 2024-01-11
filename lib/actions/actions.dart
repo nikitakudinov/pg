@@ -335,7 +335,7 @@ Future singlChatUpdater(
   ApiCallResponse? apiResultmyf;
 
   apiResult7br = await MessagingGroup.getchatbyidCall.call(
-    chatID: chatId?.toString(),
+    chatID: chatId,
   );
   if ((apiResult7br?.succeeded ?? true)) {
     await showDialog(
@@ -368,7 +368,7 @@ Future singlChatUpdater(
       },
     );
     apiResultmyf = await MessagingGroup.getchatbyidCall.call(
-      chatID: chatId?.toString(),
+      chatID: chatId,
     );
     FFAppState().update(() {
       FFAppState().updateAllAuthUsersChatsAtIndex(
