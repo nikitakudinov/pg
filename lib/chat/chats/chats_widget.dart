@@ -33,7 +33,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResulthok = await MessagingGroup.getuserchatsCall.call(
+      _model.apiResulthok = await MessagingGroup.getchatsCall.call(
         authUser: currentUserUid,
       );
       if ((_model.apiResulthok?.succeeded ?? true)) {
