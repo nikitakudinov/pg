@@ -208,20 +208,21 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                   (_model.apiResultr6w?.jsonBody ?? ''),
                                 ) ==
                                 1) {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('true'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
+                              context.pushNamed(
+                                'CHAT',
+                                queryParameters: {
+                                  'chatID': serializeParam(
+                                    FFAppState()
+                                        .MAINDATA
+                                        .chats
+                                        .where((e) => e.chatMembers
+                                            .contains(membersItem.playerUid))
+                                        .toList()
+                                        .first
+                                        .chatId,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
                               );
                             } else {
                               await showDialog(
