@@ -30,7 +30,7 @@ class _TestWidgetState extends State<TestWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.supaRealtime(
-        'teams',
+        'test_tenant',
         () async {
           await showDialog(
             context: context,
