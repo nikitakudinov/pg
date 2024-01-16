@@ -23,4 +23,3 @@ export '/home/home_widget.dart' show HomeWidget;
 export '/tournament_view2/tournament_view2_widget.dart'
     show TournamentView2Widget;
 export '/player_view/player_view_widget.dart' show PlayerViewWidget;
-export '/test/test_widget.dart' show TestWidget;
