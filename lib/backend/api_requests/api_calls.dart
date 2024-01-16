@@ -2171,13 +2171,10 @@ class MessagingGroup {
   static GETNOTIFICATIONScountCall gETNOTIFICATIONScountCall =
       GETNOTIFICATIONScountCall();
   static GetchatbyidCall getchatbyidCall = GetchatbyidCall();
+  static GetchatbymembersCall getchatbymembersCall = GetchatbymembersCall();
+  static GETCHATBYMEMBERScountCall gETCHATBYMEMBERScountCall =
+      GETCHATBYMEMBERScountCall();
   static GetchatmessagesCall getchatmessagesCall = GetchatmessagesCall();
-  static GetallundreadedchatmessagesCall getallundreadedchatmessagesCall =
-      GetallundreadedchatmessagesCall();
-  static GEToneUNDREADEDCHATMESSAGESCall gEToneUNDREADEDCHATMESSAGESCall =
-      GEToneUNDREADEDCHATMESSAGESCall();
-  static GETUNDREADEDCHATMESSAGEScountCall gETUNDREADEDCHATMESSAGEScountCall =
-      GETUNDREADEDCHATMESSAGEScountCall();
   static GETCHATMESSAGEScountCall gETCHATMESSAGEScountCall =
       GETCHATMESSAGEScountCall();
   static GetuserchatsCall getuserchatsCall = GetuserchatsCall();
@@ -2426,6 +2423,314 @@ class GetchatbyidCall {
           .toList();
 }
 
+class GetchatbymembersCall {
+  Future<ApiCallResponse> call({
+    String? uid1 = '',
+    String? uid2 = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETCHATBYMEMBERS',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${uid1}}&chat_members=cs.{${uid2}}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? chatid(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].chat_id''',
+      ));
+  String? chatupdatedat(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].chat_updated_at''',
+      ));
+  List<String>? chatmembers(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].chat_members''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  String? chatlastmessage(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].chat_last_message''',
+      ));
+  int? chatofteam(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].chat_of_team''',
+      ));
+  List? members(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members''',
+        true,
+      ) as List?;
+  List<String>? membersplayercreatedat(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_created_at''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayernickname(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_nickname''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayertag(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_tag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayerflag(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_flag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayercountrie(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_countrie''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayeravatar(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_avatar''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayeruid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_uid''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<int>? membersplayerteam(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_team''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List? membersplayerteamrole(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_team_role''',
+        true,
+      ) as List?;
+  List<bool>? membersplayerteamlineup(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_team_lineup''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<int>? membersplayerid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+}
+
+class GETCHATBYMEMBERScountCall {
+  Future<ApiCallResponse> call({
+    String? uid1 = '',
+    String? uid2 = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETCHATBYMEMBERScount',
+      apiUrl:
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${uid1}}&chat_members=cs.{${uid2}}&select=count',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? chatid(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].chat_id''',
+      ));
+  String? chatupdatedat(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].chat_updated_at''',
+      ));
+  List<String>? chatmembers(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].chat_members''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  String? chatlastmessage(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].chat_last_message''',
+      ));
+  int? chatofteam(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].chat_of_team''',
+      ));
+  List? members(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members''',
+        true,
+      ) as List?;
+  List<String>? membersplayercreatedat(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_created_at''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayernickname(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_nickname''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayertag(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_tag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayerflag(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_flag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayercountrie(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_countrie''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayeravatar(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_avatar''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? membersplayeruid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_uid''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<int>? membersplayerteam(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_team''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List? membersplayerteamrole(dynamic response) => getJsonField(
+        response,
+        r'''$[:].members[:].player_team_role''',
+        true,
+      ) as List?;
+  List<bool>? membersplayerteamlineup(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_team_lineup''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<int>? membersplayerid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].members[:].player_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  int? count(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].count''',
+      ));
+}
+
 class GetchatmessagesCall {
   Future<ApiCallResponse> call({
     String? chatId = '',
@@ -2435,99 +2740,6 @@ class GetchatmessagesCall {
       callName: 'GETCHATMESSAGES',
       apiUrl:
           '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId})&select=*,message_readed(*)',
-      callType: ApiCallType.GET,
-      headers: {
-        'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-        'Authorization':
-            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  int? count(dynamic response) => castToType<int>(getJsonField(
-        response,
-        r'''$[:].count''',
-      ));
-}
-
-class GetallundreadedchatmessagesCall {
-  Future<ApiCallResponse> call({
-    String? chatId = '',
-    String? authUserUID = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'GETALLUNDREADEDCHATMESSAGES',
-      apiUrl:
-          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=*,message_readed(*)',
-      callType: ApiCallType.GET,
-      headers: {
-        'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-        'Authorization':
-            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  int? count(dynamic response) => castToType<int>(getJsonField(
-        response,
-        r'''$[:].count''',
-      ));
-}
-
-class GEToneUNDREADEDCHATMESSAGESCall {
-  Future<ApiCallResponse> call({
-    String? chatId = '',
-    String? authUserUID = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'GEToneUNDREADEDCHATMESSAGES',
-      apiUrl:
-          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=*,message_readed(*)&limit=1',
-      callType: ApiCallType.GET,
-      headers: {
-        'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-        'Authorization':
-            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  int? count(dynamic response) => castToType<int>(getJsonField(
-        response,
-        r'''$[:].count''',
-      ));
-}
-
-class GETUNDREADEDCHATMESSAGEScountCall {
-  Future<ApiCallResponse> call({
-    String? chatId = '',
-    String? authUserUID = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'GETUNDREADEDCHATMESSAGEScount',
-      apiUrl:
-          '${MessagingGroup.baseUrl}message?and=(message_chat.eq.${chatId},message_readedBy.not.cs.{${authUserUID}})&select=count',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

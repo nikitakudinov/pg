@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/player_avatar_with_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -195,8 +197,51 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24.0,
                           ),
-                          onPressed: () {
-                            print('MESSAGE pressed ...');
+                          onPressed: () async {
+                            _model.apiResultr6w = await MessagingGroup
+                                .gETCHATBYMEMBERScountCall
+                                .call(
+                              uid1: currentUserUid,
+                              uid2: membersItem.playerUid,
+                            );
+                            if (MessagingGroup.gETCHATBYMEMBERScountCall.count(
+                                  (_model.apiResultr6w?.jsonBody ?? ''),
+                                ) ==
+                                1) {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('true'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('false'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+
+                            setState(() {});
                           },
                         ),
                       ]
