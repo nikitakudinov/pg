@@ -1,5 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/player_avatar_with_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -24,11 +22,6 @@ class TeamViewMembersModel extends FlutterFlowModel<TeamViewMembersWidget> {
       chatMembersArray.insert(index, item);
   void updateChatMembersArrayAtIndex(int index, Function(String) updateFn) =>
       chatMembersArray[index] = updateFn(chatMembersArray[index]);
-
-  ///  State fields for stateful widgets in this component.
-
-  // Stores action output result for [Backend Call - API (GETCHATS)] action in MESSAGE widget.
-  ApiCallResponse? apiResulttaz;
 
   /// Initialization and disposal methods.
 

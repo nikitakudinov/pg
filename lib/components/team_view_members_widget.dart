@@ -1,5 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/player_avatar_with_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -197,50 +195,8 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24.0,
                           ),
-                          onPressed: () async {
-                            _model.apiResulttaz =
-                                await MessagingGroup.getchatsCall.call(
-                              authUser: currentUserUid,
-                            );
-                            if (MessagingGroup.getchatsCall
-                                .chatschatmembersplayeruid(
-                                  (_model.apiResulttaz?.jsonBody ?? ''),
-                                )!
-                                .contains(membersItem.playerUid)) {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('1'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            } else {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('2'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            }
-
-                            setState(() {});
+                          onPressed: () {
+                            print('MESSAGE pressed ...');
                           },
                         ),
                       ]

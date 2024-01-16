@@ -406,11 +406,10 @@ class _TeamAddWidgetState extends State<TeamAddWidget> {
                           });
                           _model.createdchat =
                               await MessagingGroup.chatbyteamidCall.call(
-                            idList: (TeamGroup.teambycreatorCall.teamid(
-                              (_model.createdteam?.jsonBody ?? ''),
-                            ) as List)
-                                .map<String>((s) => s.toString())
-                                .toList()
+                            idList: TeamGroup.teambycreatorCall
+                                .teamid(
+                                  (_model.createdteam?.jsonBody ?? ''),
+                                )
                                 ?.first
                                 ?.toString(),
                           );

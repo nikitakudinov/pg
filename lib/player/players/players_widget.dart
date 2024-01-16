@@ -2,7 +2,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/actions/actions.dart' as action_blocks;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -97,13 +96,7 @@ class _PlayersWidgetState extends State<PlayersWidget> {
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.textController',
                           Duration(milliseconds: 2000),
-                          () async {
-                            await action_blocks.loadSearchResults1(
-                              context,
-                              searchText: _model.textController.text,
-                            );
-                            setState(() {});
-                          },
+                          () => setState(() {}),
                         ),
                         obscureText: false,
                         decoration: InputDecoration(
@@ -153,11 +146,6 @@ class _PlayersWidgetState extends State<PlayersWidget> {
                               ? InkWell(
                                   onTap: () async {
                                     _model.textController?.clear();
-                                    await action_blocks.loadSearchResults1(
-                                      context,
-                                      searchText: _model.textController.text,
-                                    );
-                                    setState(() {});
                                     setState(() {});
                                   },
                                   child: Icon(

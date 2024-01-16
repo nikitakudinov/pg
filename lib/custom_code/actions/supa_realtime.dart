@@ -10,11 +10,21 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<List<MatchStruct>> dtMATCH(List<dynamic>? jsonArray) async {
-  // Add your function code here!.
-  List<MatchStruct> listOfStruct = [];
-  for (var item in jsonArray!) {
-    listOfStruct.add(MatchStruct.fromMap(item));
-  }
-  return listOfStruct;
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Future<void> supaRealtime(
+  String? tableName,
+  Future<dynamic> Function() reloadAction,
+) async {
+  final supabase = SupaFlow.client;
+  String table = tableName ?? '*';
+  final channel = supabase.channel('public:' + table);
+  channel.on(
+    RealtimeListenTypes.postgresChanges,
+    ChannelFilter(event: '*', schema: 'public', table: table),
+    (payload, [ref]) {
+      reloadAction();
+      print('Reloaded.');
+    },
+  ).subscribe();
 }

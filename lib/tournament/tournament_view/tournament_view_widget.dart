@@ -1,14 +1,11 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d/t_o_u_r_n_a_m_e_n_tgrid_r_o_u_n_d_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,23 +38,6 @@ class _TournamentViewWidgetState extends State<TournamentViewWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => TournamentViewModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.jsonTOURNAMENTMATCHESdata =
-          await MatchGroup.tournamentmatchesCall.call(
-        tournamentID: widget.tournamentID,
-      );
-      if ((_model.jsonTOURNAMENTMATCHESdata?.succeeded ?? true)) {
-        _model.dtTOURNAMENTMATCHESdata = await actions.dtMATCH(
-          (_model.jsonTOURNAMENTMATCHESdata?.jsonBody ?? ''),
-        );
-        setState(() {
-          FFAppState().tournamentMatches =
-              _model.dtTOURNAMENTMATCHESdata!.toList().cast<MatchStruct>();
-        });
-      }
-    });
 
     _model.expandableController1 = ExpandableController(initialExpanded: false);
     _model.expandableController2 = ExpandableController(initialExpanded: false);
