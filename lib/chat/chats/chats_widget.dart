@@ -42,7 +42,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
             (e) => e
               ..chats = (getJsonField(
                 (_model.apiResulthok?.jsonBody ?? ''),
-                r'''$[:].chats''',
+                r'''$''',
                 true,
               )!
                       .toList()
