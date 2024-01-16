@@ -1,9 +1,7 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -32,11 +30,8 @@ class _TestWidgetState extends State<TestWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.supaRealtime(
-        'test_tenant',
-        () async {
-          setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
-        },
+        'test',
+        () async {},
       );
     });
   }
@@ -88,48 +83,16 @@ class _TestWidgetState extends State<TestWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              FutureBuilder<List<TestTenantRow>>(
-                future: (_model.requestCompleter ??=
-                        Completer<List<TestTenantRow>>()
-                          ..complete(TestTenantTable().queryRows(
-                            queryFn: (q) => q,
-                          )))
-                    .future,
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                  List<TestTenantRow> listViewTestTenantRowList =
-                      snapshot.data!;
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: listViewTestTenantRowList.length,
-                    itemBuilder: (context, listViewIndex) {
-                      final listViewTestTenantRow =
-                          listViewTestTenantRowList[listViewIndex];
-                      return Text(
-                        valueOrDefault<String>(
-                          listViewTestTenantRow.details,
-                          '0',
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      );
-                    },
-                  );
-                },
+              ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                children: [
+                  Text(
+                    'Hello World',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                ],
               ),
             ],
           ),
