@@ -31,7 +31,22 @@ class _TestWidgetState extends State<TestWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.supaRealtime(
         'test',
-        () async {},
+        () async {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text('1'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
       );
     });
   }
