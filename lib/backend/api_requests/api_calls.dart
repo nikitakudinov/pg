@@ -2588,8 +2588,7 @@ class GetuserchatsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETUSERCHATS',
-      apiUrl:
-          '${MessagingGroup.baseUrl}chat_members?player_uid=eq.${authUser}&select=chats(*,chat_members:players(*))',
+      apiUrl: '${MessagingGroup.baseUrl}chats?chat_members=cs.{${authUser}}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
