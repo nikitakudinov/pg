@@ -52,7 +52,7 @@ Future onlineStatesUpdater(BuildContext context) async {
     },
     matchingRows: (rows) => rows.eq(
       'player_uid',
-      FFAppState().authPlayer.playerUid,
+      currentUserUid,
     ),
   );
 }
