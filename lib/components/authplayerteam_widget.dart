@@ -322,7 +322,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                   children: [
                     Text(
                       'Игроки онлайн',
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).titleSmall,
                     ),
                     Builder(
                       builder: (context) {
@@ -342,9 +342,39 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                             final authPlayerTeamMembersOnlineItem =
                                 authPlayerTeamMembersOnline[
                                     authPlayerTeamMembersOnlineIndex];
-                            return Text(
-                              authPlayerTeamMembersOnlineItem.playerNickname,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            return Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.circle_sharp,
+                                  color: FlutterFlowTheme.of(context).success,
+                                  size: 8.0,
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'PLAYER-VIEW',
+                                      queryParameters: {
+                                        'playerId': serializeParam(
+                                          authPlayerTeamMembersOnlineItem
+                                              .playerId,
+                                          ParamType.int,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Text(
+                                    authPlayerTeamMembersOnlineItem
+                                        .playerNickname,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 3.0)),
                             );
                           })
                                   .divide(SizedBox(width: 5.0))
