@@ -45,7 +45,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await _model.listViewController?.animateTo(
-        _model.listViewController!.position.maxScrollExtent,
+        0,
         duration: Duration(milliseconds: 100),
         curve: Curves.ease,
       );
@@ -534,8 +534,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                               ),
                             );
                             await _model.listViewController?.animateTo(
-                              _model
-                                  .listViewController!.position.maxScrollExtent,
+                              0,
                               duration: Duration(milliseconds: 100),
                               curve: Curves.ease,
                             );
