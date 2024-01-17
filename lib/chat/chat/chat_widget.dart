@@ -237,8 +237,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                             ),
                                             Container(
                                               decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                                color: messagesItem
+                                                            .messageSander ==
+                                                        currentUserUid
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary
+                                                    : FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryBackground,
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
