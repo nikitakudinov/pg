@@ -45,8 +45,12 @@ class _ChatWidgetState extends State<ChatWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
-          setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
+          setState(() => _model.requestCompleter2 = null);
+          await _model.waitForRequestCompleted2();
+          setState(() => _model.requestCompleter1 = null);
+          await _model.waitForRequestCompleted1();
+          setState(() => _model.requestCompleter3 = null);
+          await _model.waitForRequestCompleted3();
           await _model.columnController?.animateTo(
             _model.columnController!.position.maxScrollExtent,
             duration: Duration(milliseconds: 100),
@@ -82,7 +86,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<List<MessageRow>>(
-      future: (_model.requestCompleter ??= Completer<List<MessageRow>>()
+      future: (_model.requestCompleter2 ??= Completer<List<MessageRow>>()
             ..complete(MessageTable().queryRows(
               queryFn: (q) => q
                   .eq(
@@ -138,12 +142,15 @@ class _ChatWidgetState extends State<ChatWidget> {
                 },
               ),
               title: FutureBuilder<List<ChatsRow>>(
-                future: ChatsTable().querySingleRow(
-                  queryFn: (q) => q.eq(
-                    'chat_id',
-                    widget.chatID,
-                  ),
-                ),
+                future:
+                    (_model.requestCompleter1 ??= Completer<List<ChatsRow>>()
+                          ..complete(ChatsTable().querySingleRow(
+                            queryFn: (q) => q.eq(
+                              'chat_id',
+                              widget.chatID,
+                            ),
+                          )))
+                        .future,
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -218,24 +225,48 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 .playerNickname,
                             style: FlutterFlowTheme.of(context).titleSmall,
                           ),
-                          Text(
-                            FFAppState()
-                                        .MAINDATA
-                                        .players
-                                        .where((e) =>
-                                            e.playerUid ==
-                                            rowChatsRow?.chatMembers
-                                                ?.where(
-                                                    (e) => e != currentUserUid)
-                                                .toList()
-                                                ?.first)
-                                        .toList()
-                                        .first
-                                        .playerOnline ==
-                                    true
-                                ? 'Онлайн'
-                                : 'Был в сети ${dateTimeFormat('H:mm', functions.stringDateToDateTime(FFAppState().MAINDATA.players.where((e) => e.playerUid == rowChatsRow?.chatMembers?.where((e) => e != currentUserUid).toList()?.first).toList().first.playerUpdateAt))}',
-                            style: FlutterFlowTheme.of(context).labelSmall,
+                          FutureBuilder<List<PlayersRow>>(
+                            future: (_model.requestCompleter3 ??=
+                                    Completer<List<PlayersRow>>()
+                                      ..complete(PlayersTable().querySingleRow(
+                                        queryFn: (q) => q.eq(
+                                          'player_uid',
+                                          rowChatsRow?.chatMembers
+                                              ?.where(
+                                                  (e) => e != currentUserUid)
+                                              .toList()
+                                              ?.first,
+                                        ),
+                                      )))
+                                .future,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<PlayersRow> textPlayersRowList =
+                                  snapshot.data!;
+                              final textPlayersRow =
+                                  textPlayersRowList.isNotEmpty
+                                      ? textPlayersRowList.first
+                                      : null;
+                              return Text(
+                                textPlayersRow!.playerOnline
+                                    ? 'Онлайн'
+                                    : 'Был в сети ${dateTimeFormat('H:mm', functions.stringDateToDateTime(textPlayersRow?.playerUpdateAt?.toString()))}',
+                                style: FlutterFlowTheme.of(context).labelSmall,
+                              );
+                            },
                           ),
                         ],
                       ),
