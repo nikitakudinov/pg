@@ -338,40 +338,50 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 15.0, 0.0),
-                                              child: Container(
-                                                width: 45.0,
-                                                height: 45.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                  child: Image.network(
-                                                    FFAppState()
-                                                        .MAINDATA
-                                                        .players
-                                                        .where((e) =>
-                                                            e.playerUid ==
-                                                            messagesItem
-                                                                .messageSander)
-                                                        .toList()
-                                                        .first
-                                                        .playerAvatar,
-                                                    width: 45.0,
-                                                    height: 5.0,
-                                                    fit: BoxFit.cover,
+                                            if (FFAppState()
+                                                    .MAINDATA
+                                                    .chats
+                                                    .where((e) =>
+                                                        e.chatId ==
+                                                        widget.chatID)
+                                                    .toList()
+                                                    .first
+                                                    .chatChattype !=
+                                                'Диалог')
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 15.0, 0.0),
+                                                child: Container(
+                                                  width: 45.0,
+                                                  height: 45.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                    child: Image.network(
+                                                      FFAppState()
+                                                          .MAINDATA
+                                                          .players
+                                                          .where((e) =>
+                                                              e.playerUid ==
+                                                              messagesItem
+                                                                  .messageSander)
+                                                          .toList()
+                                                          .first
+                                                          .playerAvatar,
+                                                      width: 45.0,
+                                                      height: 5.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
                                             Container(
                                               decoration: BoxDecoration(
                                                 color: messagesItem
