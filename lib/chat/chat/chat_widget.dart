@@ -332,11 +332,11 @@ class _ChatWidgetState extends State<ChatWidget> {
                               'message_sanded_at':
                                   supaSerialize<DateTime>(getCurrentTimestamp),
                               'message_sander':
-                                  FFAppState().authPlayer.playerNickname,
+                                  FFAppState().AUTHPLAYER.playerUid,
                               'message_body': _model.textController.text,
                               'message_chat': widget.chatID,
                               'message_sander_avatar':
-                                  FFAppState().authPlayer.playerAvatar,
+                                  FFAppState().AUTHPLAYER.playerAvatar,
                               'message_type': 'Cообщение в чате',
                             });
                             await ChatsTable().update(
@@ -344,6 +344,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 'chat_updated_at': supaSerialize<DateTime>(
                                     getCurrentTimestamp),
                                 'chat_last_message': _model.textController.text,
+                                'chat_last_message_sander': '',
                               },
                               matchingRows: (rows) => rows.eq(
                                 'chat_id',
