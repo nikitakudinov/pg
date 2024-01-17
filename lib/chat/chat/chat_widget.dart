@@ -344,7 +344,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 'chat_updated_at': supaSerialize<DateTime>(
                                     getCurrentTimestamp),
                                 'chat_last_message': _model.textController.text,
-                                'chat_last_message_sander': '',
+                                'chat_last_message_sander':
+                                    FFAppState().AUTHPLAYER.playerUid,
                               },
                               matchingRows: (rows) => rows.eq(
                                 'chat_id',

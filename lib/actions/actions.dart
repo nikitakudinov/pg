@@ -170,3 +170,28 @@ Future authplayerloader(BuildContext context) async {
         .withoutNulls[0];
   });
 }
+
+Future chatsloader(BuildContext context) async {
+  ApiCallResponse? apiResulthok;
+
+  apiResulthok = await MessagingGroup.getuserchatsCall.call(
+    authUser: currentUserUid,
+  );
+  if ((apiResulthok?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateMAINDATAStruct(
+        (e) => e
+          ..chats = (getJsonField(
+            (apiResulthok?.jsonBody ?? ''),
+            r'''$''',
+            true,
+          )!
+                  .toList()
+                  .map<ChatStruct?>(ChatStruct.maybeFromMap)
+                  .toList() as Iterable<ChatStruct?>)
+              .withoutNulls
+              .toList(),
+      );
+    });
+  }
+}
