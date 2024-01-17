@@ -44,6 +44,11 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await _model.listViewController?.animateTo(
+        _model.listViewController!.position.maxScrollExtent,
+        duration: Duration(milliseconds: 100),
+        curve: Curves.ease,
+      );
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
