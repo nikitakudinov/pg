@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -218,7 +219,22 @@ class _ChatWidgetState extends State<ChatWidget> {
                             style: FlutterFlowTheme.of(context).titleSmall,
                           ),
                           Text(
-                            'Hello World',
+                            FFAppState()
+                                        .MAINDATA
+                                        .players
+                                        .where((e) =>
+                                            e.playerUid ==
+                                            rowChatsRow?.chatMembers
+                                                ?.where(
+                                                    (e) => e != currentUserUid)
+                                                .toList()
+                                                ?.first)
+                                        .toList()
+                                        .first
+                                        .playerOnline ==
+                                    true
+                                ? 'Онлайн'
+                                : 'Был в сети ${dateTimeFormat('H:mm', functions.stringDateToDateTime(FFAppState().MAINDATA.players.where((e) => e.playerUid == rowChatsRow?.chatMembers?.where((e) => e != currentUserUid).toList()?.first).toList().first.playerUpdateAt))}',
                             style: FlutterFlowTheme.of(context).labelSmall,
                           ),
                         ],
