@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
+import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -42,30 +43,36 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await _model.listViewController?.animateTo(
-        0,
-        duration: Duration(milliseconds: 100),
-        curve: Curves.ease,
-      );
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
+        duration: Duration(milliseconds: 30000),
         callback: (timer) async {
-          await PlayersTable().update(
-            data: {
-              'player_online': true,
-              'player_update_at': supaSerialize<DateTime>(getCurrentTimestamp),
-            },
-            matchingRows: (rows) => rows.eq(
-              'player_uid',
-              currentUserUid,
-            ),
+          unawaited(
+            () async {
+              await PlayersTable().update(
+                data: {
+                  'player_online': true,
+                  'player_update_at':
+                      supaSerialize<DateTime>(getCurrentTimestamp),
+                },
+                matchingRows: (rows) => rows.eq(
+                  'player_uid',
+                  currentUserUid,
+                ),
+              );
+            }(),
           );
-          setState(() => _model.requestCompleter2 = null);
-          await _model.waitForRequestCompleted2();
-          setState(() => _model.requestCompleter1 = null);
-          await _model.waitForRequestCompleted1();
-          setState(() => _model.requestCompleter3 = null);
-          await _model.waitForRequestCompleted3();
+          _model.instantTimer2 = InstantTimer.periodic(
+            duration: Duration(milliseconds: 1000),
+            callback: (timer) async {
+              setState(() => _model.requestCompleter2 = null);
+              await _model.waitForRequestCompleted2();
+              setState(() => _model.requestCompleter1 = null);
+              await _model.waitForRequestCompleted1();
+              setState(() => _model.requestCompleter3 = null);
+              await _model.waitForRequestCompleted3();
+            },
+            startImmediately: true,
+          );
         },
         startImmediately: true,
       );
