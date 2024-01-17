@@ -47,11 +47,6 @@ class _HomeWidgetState extends State<HomeWidget> {
       );
       unawaited(
         () async {
-          await action_blocks.chatsloader(context);
-        }(),
-      );
-      unawaited(
-        () async {
           await action_blocks.matchesloader(context);
         }(),
       );
@@ -68,6 +63,11 @@ class _HomeWidgetState extends State<HomeWidget> {
       unawaited(
         () async {
           await action_blocks.loadALLplayers(context);
+        }(),
+      );
+      unawaited(
+        () async {
+          await action_blocks.chatsloader(context);
         }(),
       );
       await action_blocks.teamsloader(context);
