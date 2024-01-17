@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
-import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'chat_widget.dart' show ChatWidget;
 import 'dart:async';
@@ -37,7 +36,6 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  InstantTimer? instantTimer;
   InstantTimer? instantTimer2;
   Completer<List<MessageRow>>? requestCompleter2;
   Completer<List<ChatsRow>>? requestCompleter1;
@@ -60,7 +58,6 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    instantTimer?.cancel();
     instantTimer2?.cancel();
     columnController?.dispose();
     listViewController?.dispose();
