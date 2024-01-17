@@ -89,6 +89,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           await PlayersTable().update(
             data: {
               'player_online': true,
+              'player_update_at': supaSerialize<DateTime>(getCurrentTimestamp),
             },
             matchingRows: (rows) => rows.eq(
               'player_uid',
