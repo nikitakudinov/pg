@@ -424,8 +424,8 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                       ),
                     ),
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        context.pushNamed('RTPAGE');
                       },
                       text: 'В чат с лидером',
                       icon: FaIcon(

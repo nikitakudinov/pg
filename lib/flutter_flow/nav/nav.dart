@@ -216,6 +216,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PlayerViewWidget(
             playerId: params.getParam('playerId', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'RTPAGE',
+          path: '/rtpage',
+          builder: (context, params) => RtpageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
