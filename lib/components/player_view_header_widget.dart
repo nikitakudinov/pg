@@ -80,12 +80,28 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  valueOrDefault<String>(
-                    '${FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerNickname}',
-                    'Никнейм',
-                  ),
-                  style: FlutterFlowTheme.of(context).titleMedium,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      valueOrDefault<String>(
+                        '${FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerTag}',
+                        'ТЕГ',
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Roboto Condensed',
+                                color: FlutterFlowTheme.of(context).info,
+                              ),
+                    ),
+                    Text(
+                      valueOrDefault<String>(
+                        '${FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerNickname}',
+                        'Никнейм',
+                      ),
+                      style: FlutterFlowTheme.of(context).titleMedium,
+                    ),
+                  ],
                 ),
                 InkWell(
                   splashColor: Colors.transparent,
