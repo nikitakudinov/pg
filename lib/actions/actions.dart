@@ -178,6 +178,9 @@ Future chatsloader(BuildContext context) async {
     authUser: currentUserUid,
   );
   if ((apiResulthok?.succeeded ?? true)) {
+    FFAppState().updateMAINDATAStruct(
+      (e) => e..chats = [],
+    );
     FFAppState().update(() {
       FFAppState().updateMAINDATAStruct(
         (e) => e
@@ -193,5 +196,20 @@ Future chatsloader(BuildContext context) async {
               .toList(),
       );
     });
+  } else {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Нет данных с сервера'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
