@@ -317,7 +317,9 @@ class _ChatWidgetState extends State<ChatWidget> {
                         children: [
                           Builder(
                             builder: (context) {
-                              final messages = chatMessageRowList.toList();
+                              final messages = chatMessageRowList
+                                  .sortedList((e) => e.messageSandedAt)
+                                  .toList();
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
