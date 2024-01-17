@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class _ChatWidgetState extends State<ChatWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
+          await action_blocks.onlineStatesUpdater(context);
           setState(() => _model.requestCompleter2 = null);
           await _model.waitForRequestCompleted2();
           setState(() => _model.requestCompleter1 = null);
