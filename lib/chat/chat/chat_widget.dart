@@ -136,47 +136,46 @@ class _ChatWidgetState extends State<ChatWidget> {
                   context.pushNamed('CHATS');
                 },
               ),
-              title: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Column(
+              title: FutureBuilder<List<ChatsRow>>(
+                future: ChatsTable().querySingleRow(
+                  queryFn: (q) => q.eq(
+                    'chat_id',
+                    widget.chatID,
+                  ),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  List<ChatsRow> rowChatsRowList = snapshot.data!;
+                  final rowChatsRow =
+                      rowChatsRowList.isNotEmpty ? rowChatsRowList.first : null;
+                  return Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: 30.0,
-                        height: 30.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: FutureBuilder<List<ChatsRow>>(
-                          future: ChatsTable().querySingleRow(
-                            queryFn: (q) => q.eq(
-                              'chat_id',
-                              widget.chatID,
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 30.0,
+                            height: 30.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<ChatsRow> imageChatsRowList = snapshot.data!;
-                            final imageChatsRow = imageChatsRowList.isNotEmpty
-                                ? imageChatsRowList.first
-                                : null;
-                            return ClipRRect(
+                            child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Image.network(
                                 FFAppState()
@@ -184,7 +183,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     .players
                                     .where((e) =>
                                         e.playerUid ==
-                                        imageChatsRow?.chatMembers
+                                        rowChatsRow?.chatMembers
                                             ?.where((e) => e != currentUserUid)
                                             .toList()
                                             ?.first)
@@ -195,27 +194,38 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 height: 30.0,
                                 fit: BoxFit.cover,
                               ),
-                            );
-                          },
-                        ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hello World',
-                        style: FlutterFlowTheme.of(context).titleSmall,
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            FFAppState()
+                                .MAINDATA
+                                .players
+                                .where((e) =>
+                                    e.playerUid ==
+                                    rowChatsRow?.chatMembers
+                                        ?.where((e) => e != currentUserUid)
+                                        .toList()
+                                        ?.first)
+                                .toList()
+                                .first
+                                .playerNickname,
+                            style: FlutterFlowTheme.of(context).titleSmall,
+                          ),
+                          Text(
+                            'Hello World',
+                            style: FlutterFlowTheme.of(context).labelSmall,
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Hello World',
-                        style: FlutterFlowTheme.of(context).labelSmall,
-                      ),
-                    ],
-                  ),
-                ].divide(SizedBox(width: 10.0)),
+                    ].divide(SizedBox(width: 10.0)),
+                  );
+                },
               ),
               actions: [
                 Padding(
