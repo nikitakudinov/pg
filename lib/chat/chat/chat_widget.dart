@@ -45,12 +45,14 @@ class _ChatWidgetState extends State<ChatWidget> {
       _model.instantTimer2 = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
-          setState(() => _model.requestCompleter2 = null);
-          await _model.waitForRequestCompleted2();
-          setState(() => _model.requestCompleter1 = null);
-          await _model.waitForRequestCompleted1();
           setState(() => _model.requestCompleter3 = null);
           await _model.waitForRequestCompleted3();
+          setState(() => _model.requestCompleter1 = null);
+          await _model.waitForRequestCompleted1();
+          setState(() => _model.requestCompleter2 = null);
+          await _model.waitForRequestCompleted2();
+          setState(() => _model.requestCompleter4 = null);
+          await _model.waitForRequestCompleted4();
         },
         startImmediately: true,
       );
@@ -81,7 +83,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<List<MessageRow>>(
-      future: (_model.requestCompleter2 ??= Completer<List<MessageRow>>()
+      future: (_model.requestCompleter3 ??= Completer<List<MessageRow>>()
             ..complete(MessageTable().queryRows(
               queryFn: (q) => q
                   .eq(
@@ -138,7 +140,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               ),
               title: FutureBuilder<List<ChatsRow>>(
                 future:
-                    (_model.requestCompleter1 ??= Completer<List<ChatsRow>>()
+                    (_model.requestCompleter2 ??= Completer<List<ChatsRow>>()
                           ..complete(ChatsTable().querySingleRow(
                             queryFn: (q) => q.eq(
                               'chat_id',
@@ -221,7 +223,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                             style: FlutterFlowTheme.of(context).titleSmall,
                           ),
                           FutureBuilder<List<PlayersRow>>(
-                            future: (_model.requestCompleter3 ??=
+                            future: (_model.requestCompleter4 ??=
                                     Completer<List<PlayersRow>>()
                                       ..complete(PlayersTable().querySingleRow(
                                         queryFn: (q) => q.eq(
@@ -303,18 +305,43 @@ class _ChatWidgetState extends State<ChatWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Builder(
-                            builder: (context) {
-                              final messages = chatMessageRowList
-                                  .sortedList((e) => e.messageSandedAt)
-                                  .toList();
+                          FutureBuilder<List<MessageRow>>(
+                            future: (_model.requestCompleter1 ??=
+                                    Completer<List<MessageRow>>()
+                                      ..complete(MessageTable().queryRows(
+                                        queryFn: (q) => q
+                                            .eq(
+                                              'message_chat',
+                                              widget.chatID,
+                                            )
+                                            .order('message_sanded_at'),
+                                      )))
+                                .future,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<MessageRow> listViewMessageRowList =
+                                  snapshot.data!;
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                itemCount: messages.length,
-                                itemBuilder: (context, messagesIndex) {
-                                  final messagesItem = messages[messagesIndex];
+                                itemCount: listViewMessageRowList.length,
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewMessageRow =
+                                      listViewMessageRowList[listViewIndex];
                                   return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 10.0, 15.0, 0.0),
@@ -360,7 +387,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                           .players
                                                           .where((e) =>
                                                               e.playerUid ==
-                                                              messagesItem
+                                                              listViewMessageRow
                                                                   .messageSander)
                                                           .toList()
                                                           .first
@@ -374,7 +401,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                               ),
                                             Container(
                                               decoration: BoxDecoration(
-                                                color: messagesItem
+                                                color: listViewMessageRow
                                                             .messageSander ==
                                                         currentUserUid
                                                     ? FlutterFlowTheme.of(
@@ -400,7 +427,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                   .players
                                                                   .where((e) =>
                                                                       e.playerUid ==
-                                                                      messagesItem
+                                                                      listViewMessageRow
                                                                           .messageSander)
                                                                   .toList()
                                                                   .first
@@ -412,7 +439,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                               .players
                                                               .where((e) =>
                                                                   e.playerUid ==
-                                                                  messagesItem
+                                                                  listViewMessageRow
                                                                       .messageSander)
                                                               .toList()
                                                               .first
@@ -431,7 +458,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                           BoxDecoration(),
                                                       child: Text(
                                                         valueOrDefault<String>(
-                                                          messagesItem
+                                                          listViewMessageRow
                                                               .messageBody,
                                                           '0',
                                                         ),
