@@ -48,6 +48,7 @@ Future onlineStatesUpdater(BuildContext context) async {
   await PlayersTable().update(
     data: {
       'player_online': true,
+      'player_update_at': supaSerialize<DateTime>(getCurrentTimestamp),
     },
     matchingRows: (rows) => rows.eq(
       'player_uid',
