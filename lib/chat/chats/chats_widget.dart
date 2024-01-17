@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -33,6 +34,16 @@ class _ChatsWidgetState extends State<ChatsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await action_blocks.chatsloader(context);
+      await PlayersTable().update(
+        data: {
+          'player_online': true,
+          'player_update_at': supaSerialize<DateTime>(getCurrentTimestamp),
+        },
+        matchingRows: (rows) => rows.eq(
+          'player_uid',
+          currentUserUid,
+        ),
+      );
     });
   }
 
