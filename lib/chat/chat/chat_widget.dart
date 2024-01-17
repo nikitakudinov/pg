@@ -58,11 +58,6 @@ class _ChatWidgetState extends State<ChatWidget> {
           await _model.waitForRequestCompleted1();
           setState(() => _model.requestCompleter3 = null);
           await _model.waitForRequestCompleted3();
-          await _model.columnController?.animateTo(
-            _model.columnController!.position.maxScrollExtent,
-            duration: Duration(milliseconds: 100),
-            curve: Curves.ease,
-          );
         },
         startImmediately: true,
       );
@@ -532,6 +527,12 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 'chat_id',
                                 widget.chatID,
                               ),
+                            );
+                            await _model.listViewController?.animateTo(
+                              _model
+                                  .listViewController!.position.maxScrollExtent,
+                              duration: Duration(milliseconds: 100),
+                              curve: Curves.ease,
                             );
                             setState(() {
                               _model.textController?.clear();
