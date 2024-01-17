@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -192,8 +193,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         15.0, 10.0, 15.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                       ),
@@ -236,43 +235,72 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFAppState()
-                                                      .MAINDATA
-                                                      .players
-                                                      .where((e) =>
-                                                          e.playerUid ==
-                                                          messagesItem
-                                                              .messageSander)
-                                                      .toList()
-                                                      .first
-                                                      .playerNickname,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleSmall,
-                                                ),
-                                                Container(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      FFAppState()
+                                                                  .MAINDATA
+                                                                  .players
+                                                                  .where((e) =>
+                                                                      e.playerUid ==
+                                                                      messagesItem
+                                                                          .messageSander)
+                                                                  .toList()
+                                                                  .first
+                                                                  .playerUid ==
+                                                              currentUserUid
+                                                          ? 'Вы'
+                                                          : FFAppState()
+                                                              .MAINDATA
+                                                              .players
+                                                              .where((e) =>
+                                                                  e.playerUid ==
+                                                                  messagesItem
+                                                                      .messageSander)
+                                                              .toList()
+                                                              .first
+                                                              .playerNickname,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall,
+                                                    ),
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
                                                               .width *
                                                           0.6,
-                                                  decoration: BoxDecoration(),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      messagesItem.messageBody,
-                                                      '0',
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          messagesItem
+                                                              .messageBody,
+                                                          '0',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ],
                                         ),
