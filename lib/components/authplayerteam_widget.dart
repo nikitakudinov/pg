@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/loadingindicator_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -233,67 +234,129 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                         ),
                         Expanded(
                           flex: 2,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                valueOrDefault<String>(
-                                  '${FFAppState().AUTHPLAYERTEAM.teamTag}',
-                                  'TAG',
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'TEAM_VIEW',
+                                queryParameters: {
+                                  'teamID': serializeParam(
+                                    FFAppState().AUTHPLAYERTEAM.teamId,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  valueOrDefault<String>(
+                                    '${FFAppState().AUTHPLAYERTEAM.teamTag}',
+                                    'TAG',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium,
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).headlineMedium,
-                              ),
-                              Text(
-                                valueOrDefault<String>(
-                                  '${FFAppState().AUTHPLAYERTEAM.teamName}',
-                                  'Team Name',
+                                Text(
+                                  valueOrDefault<String>(
+                                    '${FFAppState().AUTHPLAYERTEAM.teamName}',
+                                    'Team Name',
+                                  ),
+                                  style:
+                                      FlutterFlowTheme.of(context).labelMedium,
                                 ),
-                                style: FlutterFlowTheme.of(context).labelMedium,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 5.0, 0.0),
-                                    child: Container(
-                                      width: 20.0,
-                                      height: 12.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.network(
-                                          FFAppState().AUTHPLAYERTEAM.teamFlag,
-                                          width: 20.0,
-                                          height: 12.0,
-                                          fit: BoxFit.cover,
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Container(
+                                        width: 20.0,
+                                        height: 12.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            FFAppState()
+                                                .AUTHPLAYERTEAM
+                                                .teamFlag,
+                                            width: 20.0,
+                                            height: 12.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Text(
-                                    valueOrDefault<String>(
-                                      '${FFAppState().AUTHPLAYERTEAM.teamCountry}',
-                                      'Country',
+                                    Text(
+                                      valueOrDefault<String>(
+                                        '${FFAppState().AUTHPLAYERTEAM.teamCountry}',
+                                        'Country',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ].divide(SizedBox(width: 10.0)),
                     ),
                   ),
                 ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Игроки онлайн',
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    Builder(
+                      builder: (context) {
+                        final authPlayerTeamMembersOnline = FFAppState()
+                            .MAINDATA
+                            .players
+                            .where((e) =>
+                                (e.playerTeam ==
+                                    FFAppState().AUTHPLAYERTEAM.teamId) &&
+                                (e.playerOnline == true))
+                            .toList();
+                        return Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children:
+                              List.generate(authPlayerTeamMembersOnline.length,
+                                      (authPlayerTeamMembersOnlineIndex) {
+                            final authPlayerTeamMembersOnlineItem =
+                                authPlayerTeamMembersOnline[
+                                    authPlayerTeamMembersOnlineIndex];
+                            return Text(
+                              authPlayerTeamMembersOnlineItem.playerNickname,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            );
+                          })
+                                  .divide(SizedBox(width: 5.0))
+                                  .addToStart(SizedBox(width: 10.0)),
+                        );
+                      },
+                    ),
+                  ]
+                      .addToStart(SizedBox(width: 15.0))
+                      .addToEnd(SizedBox(width: 15.0)),
+                ),
+              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: Row(
