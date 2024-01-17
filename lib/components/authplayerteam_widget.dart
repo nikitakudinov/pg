@@ -345,10 +345,14 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                             return Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Icon(
-                                  Icons.circle_sharp,
-                                  color: FlutterFlowTheme.of(context).success,
-                                  size: 8.0,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 3.0, 0.0, 0.0),
+                                  child: Icon(
+                                    Icons.circle_sharp,
+                                    color: FlutterFlowTheme.of(context).success,
+                                    size: 8.0,
+                                  ),
                                 ),
                                 InkWell(
                                   splashColor: Colors.transparent,

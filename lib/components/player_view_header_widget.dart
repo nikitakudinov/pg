@@ -87,24 +87,47 @@ class _PlayerViewHeaderWidgetState extends State<PlayerViewHeaderWidget> {
                   ),
                   style: FlutterFlowTheme.of(context).titleMedium,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        '${FFAppState().MAINDATA.teams.where((e) => e.teamId == FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerTeam).toList()[0].teamTag}',
-                        'ТЕГ',
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed(
+                      'TEAM_VIEW',
+                      queryParameters: {
+                        'teamID': serializeParam(
+                          FFAppState()
+                              .MAINDATA
+                              .players
+                              .where((e) => e.playerId == widget.playerId)
+                              .toList()
+                              .first
+                              .playerTeam,
+                          ParamType.int,
+                        ),
+                      }.withoutNulls,
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        valueOrDefault<String>(
+                          '${FFAppState().MAINDATA.teams.where((e) => e.teamId == FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerTeam).toList()[0].teamTag}',
+                          'ТЕГ',
+                        ),
+                        style: FlutterFlowTheme.of(context).labelMedium,
                       ),
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        '${FFAppState().MAINDATA.teams.where((e) => e.teamId == FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerTeam).toList()[0].teamName}',
-                        'ТЕГ',
+                      Text(
+                        valueOrDefault<String>(
+                          '${FFAppState().MAINDATA.teams.where((e) => e.teamId == FFAppState().MAINDATA.players.where((e) => e.playerId == widget.playerId).toList()[0].playerTeam).toList()[0].teamName}',
+                          'ТЕГ',
+                        ),
+                        style: FlutterFlowTheme.of(context).labelSmall,
                       ),
-                      style: FlutterFlowTheme.of(context).labelSmall,
-                    ),
-                  ].divide(SizedBox(width: 5.0)),
+                    ].divide(SizedBox(width: 5.0)),
+                  ),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
