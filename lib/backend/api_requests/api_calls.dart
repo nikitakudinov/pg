@@ -2431,7 +2431,7 @@ class GetchatbymembersCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATBYMEMBERS',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${uid1}}&chat_members=cs.{${uid2}}',
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${uid1}}&chat_members=cs.{${uid2}}&chat_chattype=eq.Диалог',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -2583,7 +2583,7 @@ class GETCHATBYMEMBERScountCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATBYMEMBERScount',
       apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${uid1}}&chat_members=cs.{${uid2}}&select=count',
+          '${MessagingGroup.baseUrl}chats?chat_members=cs.{${uid1}}&chat_members=cs.{${uid2}}&select=count&chat_chattype=eq.Диалог',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

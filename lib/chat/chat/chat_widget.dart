@@ -219,8 +219,16 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       BorderRadius.circular(
                                                           5.0),
                                                   child: Image.network(
-                                                    messagesItem
-                                                        .messageSanderAvatar!,
+                                                    FFAppState()
+                                                        .MAINDATA
+                                                        .players
+                                                        .where((e) =>
+                                                            e.playerUid ==
+                                                            messagesItem
+                                                                .messageSander)
+                                                        .toList()
+                                                        .first
+                                                        .playerAvatar,
                                                     width: 45.0,
                                                     height: 5.0,
                                                     fit: BoxFit.cover,
@@ -234,10 +242,16 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  valueOrDefault<String>(
-                                                    messagesItem.messageSander,
-                                                    '0',
-                                                  ),
+                                                  FFAppState()
+                                                      .MAINDATA
+                                                      .players
+                                                      .where((e) =>
+                                                          e.playerUid ==
+                                                          messagesItem
+                                                              .messageSander)
+                                                      .toList()
+                                                      .first
+                                                      .playerNickname,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .titleSmall,
