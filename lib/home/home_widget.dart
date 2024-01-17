@@ -257,16 +257,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 FFAppState()
                                                     .AUTHPLAYER
                                                     .playerTag,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Open Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .alternate,
-                                                    ),
+                                                        ),
                                               ),
                                             Text(
                                               FFAppState()
@@ -276,7 +275,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .override(
-                                                        fontFamily: 'Open Sans',
+                                                        fontFamily: 'Roboto',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
