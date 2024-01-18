@@ -115,7 +115,8 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
               ),
               child: Builder(
                 builder: (context) {
-                  final allCountriesList = FFAppState().allCountries.toList();
+                  final allCountriesList =
+                      FFAppState().MAINDATA.countries.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
