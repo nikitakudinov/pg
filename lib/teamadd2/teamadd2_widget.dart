@@ -13,25 +13,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'teamadd_model.dart';
-export 'teamadd_model.dart';
+import 'teamadd2_model.dart';
+export 'teamadd2_model.dart';
 
-class TeamaddWidget extends StatefulWidget {
-  const TeamaddWidget({Key? key}) : super(key: key);
+class Teamadd2Widget extends StatefulWidget {
+  const Teamadd2Widget({Key? key}) : super(key: key);
 
   @override
-  _TeamaddWidgetState createState() => _TeamaddWidgetState();
+  _Teamadd2WidgetState createState() => _Teamadd2WidgetState();
 }
 
-class _TeamaddWidgetState extends State<TeamaddWidget> {
-  late TeamaddModel _model;
+class _Teamadd2WidgetState extends State<Teamadd2Widget> {
+  late Teamadd2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TeamaddModel());
+    _model = createModel(context, () => Teamadd2Model());
 
     _model.teamNameController ??= TextEditingController();
     _model.teamNameFocusNode ??= FocusNode();

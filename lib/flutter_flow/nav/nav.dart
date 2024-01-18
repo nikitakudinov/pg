@@ -223,9 +223,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RtpageWidget(),
         ),
         FFRoute(
-          name: 'TEAMADD',
-          path: '/teamadd',
-          builder: (context, params) => TeamaddWidget(),
+          name: 'TEAMADD2',
+          path: '/teamadd2',
+          builder: (context, params) => Teamadd2Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

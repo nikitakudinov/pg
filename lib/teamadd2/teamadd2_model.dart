@@ -9,13 +9,13 @@ import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/backend/schema/structs/index.dart';
-import 'teamadd_widget.dart' show TeamaddWidget;
+import 'teamadd2_widget.dart' show Teamadd2Widget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TeamaddModel extends FlutterFlowModel<TeamaddWidget> {
+class Teamadd2Model extends FlutterFlowModel<Teamadd2Widget> {
   ///  Local state fields for this page.
 
   String teamLogoPath = 'false';

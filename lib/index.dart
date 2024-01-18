@@ -24,4 +24,4 @@ export '/tournament_view2/tournament_view2_widget.dart'
     show TournamentView2Widget;
 export '/player_view/player_view_widget.dart' show PlayerViewWidget;
 export '/rtpage/rtpage_widget.dart' show RtpageWidget;
-export '/teamadd/teamadd_widget.dart' show TeamaddWidget;
+export '/teamadd2/teamadd2_widget.dart' show Teamadd2Widget;
