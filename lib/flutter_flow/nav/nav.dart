@@ -221,6 +221,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'RTPAGE',
           path: '/rtpage',
           builder: (context, params) => RtpageWidget(),
+        ),
+        FFRoute(
+          name: 'TEAMADD',
+          path: '/teamadd',
+          builder: (context, params) => TeamaddWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

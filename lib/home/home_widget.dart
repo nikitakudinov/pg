@@ -163,6 +163,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                 borderWidth: 1.0,
                 buttonSize: 40.0,
                 icon: Icon(
+                  FFIcons.kuserAdd,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  context.pushNamed('TEAMADD');
+                },
+              ),
+              FlutterFlowIconButton(
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
                   FFIcons.klogIn,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
