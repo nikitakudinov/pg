@@ -460,9 +460,11 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                     getCurrentTimestamp),
                                 'chat_last_message':
                                     getCurrentTimestamp.toString(),
-                                'chat_of_team': TeamStruct.maybeFromMap(
-                                        (_model.apiResultvmq?.jsonBody ?? ''))
-                                    ?.teamId,
+                                'chat_of_team': TeamGroup.teambycreatorCall
+                                    .teamid(
+                                      (_model.apiResultvmq?.jsonBody ?? ''),
+                                    )
+                                    ?.first,
                                 'chat_chattype': 'Чат команды',
                                 'chat_last_message_sander': '0',
                                 'chat_members': _model.chatMembersArray,
@@ -489,10 +491,11 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               if ((_model.apiResult1qc?.succeeded ?? true)) {
                                 await TeamsTable().update(
                                   data: {
-                                    'team_chat_id': ChatStruct.maybeFromMap(
-                                            (_model.apiResult1qc?.jsonBody ??
-                                                ''))
-                                        ?.chatId,
+                                    'team_chat_id': MessagingGroup
+                                        .getchatbymembersCall
+                                        .chatid(
+                                      (_model.apiResult1qc?.jsonBody ?? ''),
+                                    ),
                                   },
                                   matchingRows: (rows) => rows.eq(
                                     'team_id',
