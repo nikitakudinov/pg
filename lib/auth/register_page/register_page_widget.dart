@@ -481,6 +481,12 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                                   _model.countryPickerModel.selectedCountry,
                               'player_avatar': _model.uploadedFileUrl,
                               'player_uid': currentUserUid,
+                              'player_team': 0,
+                              'player_team_lineup': false,
+                              'player_team_role': ['Вне команды'],
+                              'player_online': true,
+                              'player_update_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
                             });
 
                             context.goNamedAuth('HOME', context.mounted);
