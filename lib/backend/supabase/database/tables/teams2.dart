@@ -1,21 +1,21 @@
 import '../database.dart';
 
-class TeamsTable extends SupabaseTable<TeamsRow> {
+class Teams2Table extends SupabaseTable<Teams2Row> {
   @override
-  String get tableName => 'teams';
+  String get tableName => 'teams2';
 
   @override
-  TeamsRow createRow(Map<String, dynamic> data) => TeamsRow(data);
+  Teams2Row createRow(Map<String, dynamic> data) => Teams2Row(data);
 }
 
-class TeamsRow extends SupabaseDataRow {
-  TeamsRow(Map<String, dynamic> data) : super(data);
+class Teams2Row extends SupabaseDataRow {
+  Teams2Row(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => TeamsTable();
+  SupabaseTable get table => Teams2Table();
 
-  DateTime get teamCreatedAt => getField<DateTime>('team_created_at')!;
-  set teamCreatedAt(DateTime value) =>
+  DateTime? get teamCreatedAt => getField<DateTime>('team_created_at');
+  set teamCreatedAt(DateTime? value) =>
       setField<DateTime>('team_created_at', value);
 
   DateTime? get teamUpdatedAt => getField<DateTime>('team_updated_at');
@@ -74,8 +74,8 @@ class TeamsRow extends SupabaseDataRow {
   set teamMatchRoundLoses(int? value) =>
       setField<int>('team_match_round_loses', value);
 
-  double? get teamWLmatches => getField<double>('team_WLmatches');
-  set teamWLmatches(double? value) => setField<double>('team_WLmatches', value);
+  int? get teamWLmatches => getField<int>('team_WLmatches');
+  set teamWLmatches(int? value) => setField<int>('team_WLmatches', value);
 
   String? get teamHeader => getField<String>('team_header');
   set teamHeader(String? value) => setField<String>('team_header', value);

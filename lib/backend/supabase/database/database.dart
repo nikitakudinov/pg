@@ -8,6 +8,7 @@ export 'table.dart';
 export 'tables/chat_members.dart';
 export 'tables/tournament_organizators.dart';
 export 'tables/countries.dart';
+export 'tables/teams2.dart';
 export 'tables/teams.dart';
 export 'tables/tournaments.dart';
 export 'tables/message.dart';

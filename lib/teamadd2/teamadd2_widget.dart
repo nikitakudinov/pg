@@ -422,7 +422,7 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                       Expanded(
                         child: FFButtonWidget(
                           onPressed: () async {
-                            await TeamsTable().insert({
+                            await Teams2Table().insert({
                               'team_created_at':
                                   supaSerialize<DateTime>(getCurrentTimestamp),
                               'team_updated_at':
@@ -443,7 +443,7 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               'team_matches_rounds_count': 0,
                               'team_match_round_wins': 0,
                               'team_match_round_loses': 0,
-                              'team_WLmatches': 0.0,
+                              'team_WLmatches': 0,
                               'team_header': '0',
                               'team_chat_id': 0,
                             });
