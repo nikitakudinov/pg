@@ -1101,26 +1101,46 @@ class TeambycreatorCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
-  List? teamupdatedat(dynamic response) => getJsonField(
+  List<String>? teamupdatedat(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_updated_at''',
         true,
-      ) as List?;
-  List? teamcreator(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? teamcreator(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_creator''',
         true,
-      ) as List?;
-  List? teamrecruitment(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? teamrecruitment(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_recruitment''',
         true,
-      ) as List?;
-  List? teamstatus(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? teamstatus(dynamic response) => (getJsonField(
         response,
         r'''$[:].team_status''',
         true,
-      ) as List?;
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  int? teamchatid(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].team_chat_id''',
+      ));
 }
 
 class LISTALLTEAMScountCall {

@@ -469,9 +469,11 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               });
                               await PlayersTable().update(
                                 data: {
-                                  'player_team': TeamStruct.maybeFromMap(
-                                          (_model.apiResultvmq?.jsonBody ?? ''))
-                                      ?.teamId,
+                                  'player_team': TeamGroup.teambycreatorCall
+                                      .teamid(
+                                        (_model.apiResultvmq?.jsonBody ?? ''),
+                                      )
+                                      ?.first,
                                 },
                                 matchingRows: (rows) => rows.eq(
                                   'player_uid',
