@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -498,10 +497,11 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                   },
                                   matchingRows: (rows) => rows.eq(
                                     'team_id',
-                                    TeamStruct.maybeFromMap(
-                                            (_model.apiResultvmq?.jsonBody ??
-                                                ''))
-                                        ?.teamId,
+                                    TeamGroup.teambycreatorCall
+                                        .teamid(
+                                          (_model.apiResultvmq?.jsonBody ?? ''),
+                                        )
+                                        ?.first,
                                   ),
                                 );
                                 unawaited(
