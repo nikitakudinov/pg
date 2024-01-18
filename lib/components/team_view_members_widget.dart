@@ -6,6 +6,7 @@ import '/components/player_avatar_with_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -242,6 +243,7 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                                 'chat_last_message_sander': '0',
                                 'chat_members': _model.chatMembersArray,
                               });
+                              await action_blocks.chatsloader(context);
                               _model.apiResultido = await MessagingGroup
                                   .getchatbymembersCall
                                   .call(
