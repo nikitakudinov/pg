@@ -18,7 +18,8 @@ import 'package:provider/provider.dart';
 class Teamadd2Model extends FlutterFlowModel<Teamadd2Widget> {
   ///  Local state fields for this page.
 
-  String teamLogoPath = 'false';
+  String teamLogoPath =
+      'https://supabase.proplayclub.ru/storage/v1/object/public/playground/image-7XR1sw6U--transformed.png';
 
   List<String> chatMembersArray = [''];
   void addToChatMembersArray(String item) => chatMembersArray.add(item);
