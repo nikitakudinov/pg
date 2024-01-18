@@ -1,14 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'dart:async';
-import '/actions/actions.dart' as action_blocks;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -447,118 +443,6 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               'team_header': '0',
                               'team_chat_id': 0,
                             });
-                            _model.apiResultvmq =
-                                await TeamGroup.teambycreatorCall.call(
-                              idList: currentUserUid,
-                            );
-                            if ((_model.apiResultvmq?.succeeded ?? true)) {
-                              await ChatsTable().insert({
-                                'chat_updated_at': supaSerialize<DateTime>(
-                                    getCurrentTimestamp),
-                                'chat_last_message':
-                                    getCurrentTimestamp.toString(),
-                                'chat_of_team': TeamGroup.teambycreatorCall
-                                    .teamid(
-                                      (_model.apiResultvmq?.jsonBody ?? ''),
-                                    )
-                                    ?.first,
-                                'chat_chattype': 'Чат команды',
-                                'chat_last_message_sander': '0',
-                                'chat_members':
-                                    functions.stringToArray(currentUserUid),
-                              });
-                              await PlayersTable().update(
-                                data: {
-                                  'player_team': TeamGroup.teambycreatorCall
-                                      .teamid(
-                                        (_model.apiResultvmq?.jsonBody ?? ''),
-                                      )
-                                      ?.first,
-                                },
-                                matchingRows: (rows) => rows.eq(
-                                  'player_uid',
-                                  currentUserUid,
-                                ),
-                              );
-                              _model.apiResult1qc = await MessagingGroup
-                                  .getchatbymembersCall
-                                  .call(
-                                uid1: currentUserUid,
-                                uid2: currentUserUid,
-                              );
-                              if ((_model.apiResult1qc?.succeeded ?? true)) {
-                                await TeamsTable().update(
-                                  data: {
-                                    'team_chat_id': MessagingGroup
-                                        .getchatbymembersCall
-                                        .chatid(
-                                      (_model.apiResult1qc?.jsonBody ?? ''),
-                                    ),
-                                  },
-                                  matchingRows: (rows) => rows.eq(
-                                    'team_id',
-                                    TeamGroup.teambycreatorCall
-                                        .teamid(
-                                          (_model.apiResultvmq?.jsonBody ?? ''),
-                                        )
-                                        ?.first,
-                                  ),
-                                );
-                                unawaited(
-                                  () async {
-                                    await action_blocks.loadALLplayers(context);
-                                  }(),
-                                );
-                                unawaited(
-                                  () async {
-                                    await action_blocks
-                                        .authplayerloader(context);
-                                  }(),
-                                );
-                                unawaited(
-                                  () async {
-                                    await action_blocks.teamsloader(context);
-                                  }(),
-                                );
-                                unawaited(
-                                  () async {
-                                    await action_blocks.chatsloader(context);
-                                  }(),
-                                );
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Команда создана',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              }
-                            } else {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('1'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            }
-
-                            setState(() {});
                           },
                           text: 'СОЗДАТЬ',
                           options: FFButtonOptions(

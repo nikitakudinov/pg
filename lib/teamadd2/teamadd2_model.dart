@@ -1,14 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'dart:async';
-import '/actions/actions.dart' as action_blocks;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'teamadd2_widget.dart' show Teamadd2Widget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,10 +45,6 @@ class Teamadd2Model extends FlutterFlowModel<Teamadd2Widget> {
   String? Function(BuildContext, String?)? teamTagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (TEAMBYCREATOR)] action in Button widget.
-  ApiCallResponse? apiResultvmq;
-  // Stores action output result for [Backend Call - API (GETCHATBYMEMBERS)] action in Button widget.
-  ApiCallResponse? apiResult1qc;
 
   /// Initialization and disposal methods.
 
