@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'teamadd2_widget.dart' show Teamadd2Widget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

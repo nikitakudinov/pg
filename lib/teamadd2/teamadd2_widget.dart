@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -452,9 +453,6 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               idList: currentUserUid,
                             );
                             if ((_model.apiResultvmq?.succeeded ?? true)) {
-                              setState(() {
-                                _model.addToChatMembersArray(currentUserUid);
-                              });
                               await ChatsTable().insert({
                                 'chat_updated_at': supaSerialize<DateTime>(
                                     getCurrentTimestamp),
@@ -467,7 +465,8 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                     ?.first,
                                 'chat_chattype': 'Чат команды',
                                 'chat_last_message_sander': '0',
-                                'chat_members': _model.chatMembersArray,
+                                'chat_members':
+                                    functions.stringToArray(currentUserUid),
                               });
                               await PlayersTable().update(
                                 data: {

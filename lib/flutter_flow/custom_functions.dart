@@ -58,3 +58,12 @@ String? arrayToString(List<String> array) {
   // convert array to string
   return array.join(',');
 }
+
+List<String> stringToArray(String? stringValue) {
+  // stringValue to Array
+  if (stringValue == null) {
+    return [];
+  } else {
+    return stringValue.split(',');
+  }
+}
