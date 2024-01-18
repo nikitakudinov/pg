@@ -350,9 +350,11 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                     child: wrapWithModel(
                                       model: _model.countryPickerModel,
                                       updateCallback: () => setState(() {}),
+                                      updateOnChange: true,
                                       child: CountryPickerWidget(
                                         selectedCountry: 'Не выбрано',
-                                        selectedFlag: '0',
+                                        selectedFlag:
+                                            'https://supabase.proplayclub.ru/storage/v1/object/public/playground/ANARCHY.jpg',
                                       ),
                                     ),
                                   ),
