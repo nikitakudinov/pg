@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -473,18 +475,39 @@ class _TeamaddWidgetState extends State<TeamaddWidget> {
                                       ?.teamId,
                                 ),
                               );
-
-                              context.pushNamed(
-                                'TEAM_EDITE',
-                                queryParameters: {
-                                  'teamId': serializeParam(
-                                    TeamStruct.maybeFromMap(
-                                            (_model.apiResultvmq?.jsonBody ??
-                                                ''))
-                                        ?.teamId,
-                                    ParamType.int,
+                              unawaited(
+                                () async {
+                                  await action_blocks.loadALLplayers(context);
+                                }(),
+                              );
+                              unawaited(
+                                () async {
+                                  await action_blocks.authplayerloader(context);
+                                }(),
+                              );
+                              unawaited(
+                                () async {
+                                  await action_blocks.teamsloader(context);
+                                }(),
+                              );
+                              unawaited(
+                                () async {
+                                  await action_blocks.chatsloader(context);
+                                }(),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Команда создана',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
                                   ),
-                                }.withoutNulls,
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
                               );
                             }
                           }
