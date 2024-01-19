@@ -86,7 +86,6 @@ class _TournamentViewMembersWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: Row(
