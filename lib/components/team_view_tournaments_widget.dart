@@ -47,12 +47,9 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
-              child: Text(
-                'Учавствует в турнирах',
-                style: FlutterFlowTheme.of(context).titleMedium,
-              ),
+            Text(
+              'Учавствует в турнирах',
+              style: FlutterFlowTheme.of(context).titleMedium,
             ),
           ].addToStart(SizedBox(width: 15.0)).addToEnd(SizedBox(width: 15.0)),
         ),
