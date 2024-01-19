@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future countriesloader(BuildContext context) async {
   ApiCallResponse? jsonCOUNTRIES;
@@ -213,4 +214,89 @@ Future chatsloader(BuildContext context) async {
       },
     );
   }
+}
+
+Future maindataloader(BuildContext context) async {
+  ApiCallResponse? jsonAUTRHPLAYER;
+  ApiCallResponse? jsonTEAMS;
+  ApiCallResponse? jsonCOUNTRIES;
+  ApiCallResponse? jsonPLAYERS;
+  ApiCallResponse? jsonTOURNAMENTS;
+  ApiCallResponse? jsonMATCHES;
+  ApiCallResponse? jsonCHATS;
+  ApiCallResponse? jsonNOTIFICATIONS;
+
+  jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
+    idList: currentUserUid,
+  );
+  jsonTEAMS = await TeamGroup.listallteamsCall.call();
+  jsonCOUNTRIES = await CountryGroup.countriesCall.call();
+  jsonPLAYERS = await PlayerGroup.listplayersCall.call();
+  jsonTOURNAMENTS = await TournamentGroup.tournamentsCall.call();
+  jsonMATCHES = await MatchGroup.matchesCall.call();
+  jsonCHATS = await MessagingGroup.getuserchatsCall.call(
+    authUser: currentUserUid,
+  );
+  jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
+    authUser: currentUserUid,
+  );
+  FFAppState().update(() {
+    FFAppState().updateMAINDATAStruct(
+      (e) => e
+        ..players = ((jsonPLAYERS?.jsonBody ?? '')
+                .toList()
+                .map<PlayerStruct?>(PlayerStruct.maybeFromMap)
+                .toList() as Iterable<PlayerStruct?>)
+            .withoutNulls
+            .toList()
+        ..teams = ((jsonTEAMS?.jsonBody ?? '')
+                .toList()
+                .map<TeamStruct?>(TeamStruct.maybeFromMap)
+                .toList() as Iterable<TeamStruct?>)
+            .withoutNulls
+            .toList()
+        ..matches = ((jsonMATCHES?.jsonBody ?? '')
+                .toList()
+                .map<MatchStruct?>(MatchStruct.maybeFromMap)
+                .toList() as Iterable<MatchStruct?>)
+            .withoutNulls
+            .toList()
+        ..tournaments = ((jsonTOURNAMENTS?.jsonBody ?? '')
+                .toList()
+                .map<TournamentStruct?>(TournamentStruct.maybeFromMap)
+                .toList() as Iterable<TournamentStruct?>)
+            .withoutNulls
+            .toList()
+        ..countries = ((jsonCOUNTRIES?.jsonBody ?? '')
+                .toList()
+                .map<CountrieStruct?>(CountrieStruct.maybeFromMap)
+                .toList() as Iterable<CountrieStruct?>)
+            .withoutNulls
+            .toList()
+        ..chats = ((jsonCHATS?.jsonBody ?? '')
+                .toList()
+                .map<ChatStruct?>(ChatStruct.maybeFromMap)
+                .toList() as Iterable<ChatStruct?>)
+            .withoutNulls
+            .toList()
+        ..notifications = ((jsonNOTIFICATIONS?.jsonBody ?? '')
+                .toList()
+                .map<NotificationStruct?>(NotificationStruct.maybeFromMap)
+                .toList() as Iterable<NotificationStruct?>)
+            .withoutNulls
+            .toList()
+        ..authplayer =
+            PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
+    );
+  });
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        'Данные загружены',
+        style: TextStyle(),
+      ),
+      duration: Duration(milliseconds: 4000),
+      backgroundColor: FlutterFlowTheme.of(context).secondary,
+    ),
+  );
 }
