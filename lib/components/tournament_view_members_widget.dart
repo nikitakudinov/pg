@@ -67,11 +67,17 @@ class _TournamentViewMembersWidgetState
                 .tournamentMembers
                 .where((e) => e.tournamentId == widget.tournamentId)
                 .toList();
-            return ListView.builder(
-              padding: EdgeInsets.zero,
+            return ListView.separated(
+              padding: EdgeInsets.fromLTRB(
+                0,
+                10.0,
+                0,
+                10.0,
+              ),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               itemCount: tournamentMembersRow.length,
+              separatorBuilder: (_, __) => SizedBox(height: 5.0),
               itemBuilder: (context, tournamentMembersRowIndex) {
                 final tournamentMembersRowItem =
                     tournamentMembersRow[tournamentMembersRowIndex];
@@ -130,7 +136,7 @@ class _TournamentViewMembersWidgetState
                                     .toList()
                                     .first
                                     .teamTag,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context).titleMedium,
                               ),
                               Text(
                                 FFAppState()
