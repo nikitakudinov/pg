@@ -9,7 +9,12 @@ import 'team_view_tournaments_model.dart';
 export 'team_view_tournaments_model.dart';
 
 class TeamViewTournamentsWidget extends StatefulWidget {
-  const TeamViewTournamentsWidget({Key? key}) : super(key: key);
+  const TeamViewTournamentsWidget({
+    Key? key,
+    required this.teamId,
+  }) : super(key: key);
+
+  final int? teamId;
 
   @override
   _TeamViewTournamentsWidgetState createState() =>
@@ -127,7 +132,11 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
         ),
         Builder(
           builder: (context) {
-            final active = FFAppState().MAINDATA.tournaments.toList();
+            final active = FFAppState()
+                .MAINDATA
+                .tournaments
+                .where((e) => e.tournamentMembersId.contains(widget.teamId))
+                .toList();
             return ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
@@ -136,7 +145,7 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
               itemBuilder: (context, activeIndex) {
                 final activeItem = active[activeIndex];
                 return Text(
-                  'Hello World',
+                  activeItem.tournamentName,
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 );
               },

@@ -135,7 +135,9 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
               wrapWithModel(
                 model: _model.teamViewTournamentsModel,
                 updateCallback: () => setState(() {}),
-                child: TeamViewTournamentsWidget(),
+                child: TeamViewTournamentsWidget(
+                  teamId: widget.teamID,
+                ),
               ),
             ],
           ),
