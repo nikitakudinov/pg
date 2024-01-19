@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -441,10 +440,11 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
-                                    title: Text(TeamStruct.maybeFromMap(
-                                            (_model.apiResultze2?.jsonBody ??
-                                                ''))!
-                                        .teamName),
+                                    title: Text(TeamGroup.teambycreatorCall
+                                        .teamnam(
+                                          (_model.apiResultze2?.jsonBody ?? ''),
+                                        )!
+                                        .first),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
