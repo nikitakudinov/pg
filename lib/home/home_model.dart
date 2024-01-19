@@ -31,6 +31,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
   // Stores action output result for [Backend Call - API (GETCHATBYID)] action in Button widget.
+  ApiCallResponse? jsonTEAMCHATold;
+  // Stores action output result for [Backend Call - API (GETCHATBYID)] action in Button widget.
   ApiCallResponse? jsonTEAMCHAT;
   // Model for LOADINGINDICATOR component.
   late LoadingindicatorModel loadingindicatorModel;

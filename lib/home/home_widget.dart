@@ -1153,60 +1153,129 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     Expanded(
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          unawaited(
-                                                            () async {
-                                                              await NotificationsTable()
-                                                                  .insert({
-                                                                'notification_created_at':
-                                                                    supaSerialize<
-                                                                            DateTime>(
-                                                                        getCurrentTimestamp),
-                                                                'notification_from_player':
-                                                                    FFAppState()
-                                                                        .AUTHPLAYER
-                                                                        .playerUid,
-                                                                'notification_to_player':
-                                                                    notificationsListItem
-                                                                        .notificationFromPlayer
-                                                                        .playerUid,
-                                                                'notification_type':
-                                                                    'Принял заявку вступления в клан',
-                                                                'notification_body':
-                                                                    'Игрок ${FFAppState().AUTHPLAYER.playerNickname}приянял приглашение вступить в команду.',
-                                                                'notification_category':
-                                                                    'От игрока',
-                                                              });
-                                                            }(),
+                                                          await NotificationsTable()
+                                                              .insert({
+                                                            'notification_created_at':
+                                                                supaSerialize<
+                                                                        DateTime>(
+                                                                    getCurrentTimestamp),
+                                                            'notification_from_player':
+                                                                FFAppState()
+                                                                    .AUTHPLAYER
+                                                                    .playerUid,
+                                                            'notification_to_player':
+                                                                notificationsListItem
+                                                                    .notificationFromPlayer
+                                                                    .playerUid,
+                                                            'notification_type':
+                                                                'Принял заявку вступления в клан',
+                                                            'notification_body':
+                                                                'Игрок ${FFAppState().AUTHPLAYER.playerNickname}приянял приглашение вступить в команду.',
+                                                            'notification_category':
+                                                                'От игрока',
+                                                          });
+                                                          await MessageTable()
+                                                              .insert({
+                                                            'message_sander':
+                                                                '0',
+                                                            'message_body':
+                                                                'Игрок ${FFAppState().AUTHPLAYER.playerNickname}покинул команду',
+                                                            'message_chat':
+                                                                FFAppState()
+                                                                    .AUTHPLAYERTEAM
+                                                                    .teamChatId,
+                                                            'message_sander_avatar':
+                                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/playerAvatars/Iconarchive-Robot-Avatar-Blue-2-Robot-Avatar.512.png',
+                                                            'message_type':
+                                                                'Сообщение бота',
+                                                          });
+                                                          await MessageTable()
+                                                              .insert({
+                                                            'message_sander':
+                                                                '0',
+                                                            'message_body':
+                                                                'Игрок ${FFAppState().AUTHPLAYER.playerNickname}чступил в команду команду',
+                                                            'message_chat':
+                                                                notificationsListItem
+                                                                    .notificationFromTeam
+                                                                    .teamChatId,
+                                                            'message_sander_avatar':
+                                                                'https://supabase.proplayclub.ru/storage/v1/object/public/playground/playerAvatars/Iconarchive-Robot-Avatar-Blue-2-Robot-Avatar.512.png',
+                                                            'message_type':
+                                                                'Сообщение бота',
+                                                          });
+                                                          await PlayersTable()
+                                                              .update(
+                                                            data: {
+                                                              'player_team':
+                                                                  notificationsListItem
+                                                                      .notificationFromTeam
+                                                                      .teamId,
+                                                              'player_team_role':
+                                                                  [
+                                                                'Рядовой боец'
+                                                              ],
+                                                              'player_team_lineup':
+                                                                  false,
+                                                              'player_tag':
+                                                                  notificationsListItem
+                                                                      .notificationFromTeam
+                                                                      .teamTag,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'player_uid',
+                                                              currentUserUid,
+                                                            ),
                                                           );
-                                                          unawaited(
-                                                            () async {
-                                                              await PlayersTable()
-                                                                  .update(
-                                                                data: {
-                                                                  'player_team':
-                                                                      notificationsListItem
-                                                                          .notificationFromTeam
-                                                                          .teamId,
-                                                                  'player_team_role':
-                                                                      [
-                                                                    'Рядовой боец'
-                                                                  ],
-                                                                  'player_team_lineup':
-                                                                      false,
-                                                                  'player_tag':
-                                                                      notificationsListItem
-                                                                          .notificationFromTeam
-                                                                          .teamTag,
-                                                                },
-                                                                matchingRows:
-                                                                    (rows) =>
-                                                                        rows.eq(
-                                                                  'player_uid',
-                                                                  currentUserUid,
-                                                                ),
-                                                              );
-                                                            }(),
+                                                          _model.jsonTEAMCHATold =
+                                                              await MessagingGroup
+                                                                  .getchatbyidCall
+                                                                  .call(
+                                                            chatID: FFAppState()
+                                                                .AUTHPLAYERTEAM
+                                                                .teamChatId,
                                                           );
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .STRINGARRAY =
+                                                                MessagingGroup
+                                                                    .getchatbyidCall
+                                                                    .chatmembers(
+                                                                      (_model.jsonTEAMCHATold
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )!
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
+                                                          });
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .removeFromSTRINGARRAY(
+                                                                    currentUserUid);
+                                                          });
+                                                          await ChatsTable()
+                                                              .update(
+                                                            data: {
+                                                              'chat_members':
+                                                                  FFAppState()
+                                                                      .STRINGARRAY,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'chat_id',
+                                                              FFAppState()
+                                                                  .AUTHPLAYERTEAM
+                                                                  .teamChatId,
+                                                            ),
+                                                          );
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .STRINGARRAY = [];
+                                                          });
                                                           _model.jsonTEAMCHAT =
                                                               await MessagingGroup
                                                                   .getchatbyidCall
@@ -1254,19 +1323,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               ),
                                                             ),
                                                           );
-                                                          unawaited(
-                                                            () async {
-                                                              await NotificationsTable()
-                                                                  .delete(
-                                                                matchingRows:
-                                                                    (rows) =>
-                                                                        rows.eq(
-                                                                  'notification_id',
-                                                                  notificationsListItem
-                                                                      .notificationId,
-                                                                ),
-                                                              );
-                                                            }(),
+                                                          await NotificationsTable()
+                                                              .delete(
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'notification_id',
+                                                              notificationsListItem
+                                                                  .notificationId,
+                                                            ),
                                                           );
                                                           setState(() {
                                                             FFAppState()
