@@ -13,6 +13,7 @@ class MaindataStruct extends BaseStruct {
     List<NotificationStruct>? notifications,
     List<ChatStruct>? chats,
     List<TournamentStruct>? tournaments,
+    List<TournamentMemberStruct>? tournamentMembers,
     List<CountrieStruct>? countries,
     PlayerStruct? authplayer,
   })  : _players = players,
@@ -21,6 +22,7 @@ class MaindataStruct extends BaseStruct {
         _notifications = notifications,
         _chats = chats,
         _tournaments = tournaments,
+        _tournamentMembers = tournamentMembers,
         _countries = countries,
         _authplayer = authplayer;
 
@@ -72,6 +74,17 @@ class MaindataStruct extends BaseStruct {
       updateFn(_tournaments ??= []);
   bool hasTournaments() => _tournaments != null;
 
+  // "tournament_members" field.
+  List<TournamentMemberStruct>? _tournamentMembers;
+  List<TournamentMemberStruct> get tournamentMembers =>
+      _tournamentMembers ?? const [];
+  set tournamentMembers(List<TournamentMemberStruct>? val) =>
+      _tournamentMembers = val;
+  void updateTournamentMembers(
+          Function(List<TournamentMemberStruct>) updateFn) =>
+      updateFn(_tournamentMembers ??= []);
+  bool hasTournamentMembers() => _tournamentMembers != null;
+
   // "COUNTRIES" field.
   List<CountrieStruct>? _countries;
   List<CountrieStruct> get countries => _countries ?? const [];
@@ -113,6 +126,10 @@ class MaindataStruct extends BaseStruct {
           data['TOURNAMENTS'],
           TournamentStruct.fromMap,
         ),
+        tournamentMembers: getStructList(
+          data['tournament_members'],
+          TournamentMemberStruct.fromMap,
+        ),
         countries: getStructList(
           data['COUNTRIES'],
           CountrieStruct.fromMap,
@@ -130,6 +147,8 @@ class MaindataStruct extends BaseStruct {
         'NOTIFICATIONS': _notifications?.map((e) => e.toMap()).toList(),
         'CHATS': _chats?.map((e) => e.toMap()).toList(),
         'TOURNAMENTS': _tournaments?.map((e) => e.toMap()).toList(),
+        'tournament_members':
+            _tournamentMembers?.map((e) => e.toMap()).toList(),
         'COUNTRIES': _countries?.map((e) => e.toMap()).toList(),
         'AUTHPLAYER': _authplayer?.toMap(),
       }.withoutNulls;
@@ -163,6 +182,11 @@ class MaindataStruct extends BaseStruct {
         ),
         'TOURNAMENTS': serializeParam(
           _tournaments,
+          ParamType.DataStruct,
+          true,
+        ),
+        'tournament_members': serializeParam(
+          _tournamentMembers,
           ParamType.DataStruct,
           true,
         ),
@@ -215,6 +239,12 @@ class MaindataStruct extends BaseStruct {
           true,
           structBuilder: TournamentStruct.fromSerializableMap,
         ),
+        tournamentMembers: deserializeStructParam<TournamentMemberStruct>(
+          data['tournament_members'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: TournamentMemberStruct.fromSerializableMap,
+        ),
         countries: deserializeStructParam<CountrieStruct>(
           data['COUNTRIES'],
           ParamType.DataStruct,
@@ -242,6 +272,7 @@ class MaindataStruct extends BaseStruct {
         listEquality.equals(notifications, other.notifications) &&
         listEquality.equals(chats, other.chats) &&
         listEquality.equals(tournaments, other.tournaments) &&
+        listEquality.equals(tournamentMembers, other.tournamentMembers) &&
         listEquality.equals(countries, other.countries) &&
         authplayer == other.authplayer;
   }
@@ -254,6 +285,7 @@ class MaindataStruct extends BaseStruct {
         notifications,
         chats,
         tournaments,
+        tournamentMembers,
         countries,
         authplayer
       ]);

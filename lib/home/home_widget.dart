@@ -462,6 +462,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
+                                        Text(
+                                          'chat_members',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Column(
@@ -500,6 +505,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           FFAppState()
                                               .MAINDATA
                                               .chats
+                                              .length
+                                              .toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          FFAppState()
+                                              .MAINDATA
+                                              .tournamentMembers
                                               .length
                                               .toString(),
                                           style: FlutterFlowTheme.of(context)

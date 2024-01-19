@@ -223,6 +223,7 @@ Future maindataloader(BuildContext context) async {
   ApiCallResponse? jsonTOURNAMENTS;
   ApiCallResponse? jsonMATCHES;
   ApiCallResponse? jsonCHATS;
+  ApiCallResponse? jsonTOURNAMENSTMEMBERS;
   ApiCallResponse? jsonNOTIFICATIONS;
 
   jsonAUTRHPLAYER = await PlayerGroup.listplayerbyuidCall.call(
@@ -236,6 +237,7 @@ Future maindataloader(BuildContext context) async {
   jsonCHATS = await MessagingGroup.getuserchatsCall.call(
     authUser: currentUserUid,
   );
+  jsonTOURNAMENSTMEMBERS = await TournamentGroup.tOURNAMENTMEMBERallCall.call();
   jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
     authUser: currentUserUid,
   );
@@ -286,7 +288,14 @@ Future maindataloader(BuildContext context) async {
             .withoutNulls
             .toList()
         ..authplayer =
-            PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
+            PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? ''))
+        ..tournamentMembers = ((jsonTOURNAMENSTMEMBERS?.jsonBody ?? '')
+                .toList()
+                .map<TournamentMemberStruct?>(
+                    TournamentMemberStruct.maybeFromMap)
+                .toList() as Iterable<TournamentMemberStruct?>)
+            .withoutNulls
+            .toList(),
     );
   });
 }

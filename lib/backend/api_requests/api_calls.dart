@@ -1398,6 +1398,8 @@ class TournamentGroup {
   static TournamenorganizatorsCall tournamenorganizatorsCall =
       TournamenorganizatorsCall();
   static TournamentmembersCall tournamentmembersCall = TournamentmembersCall();
+  static TOURNAMENTMEMBERallCall tOURNAMENTMEMBERallCall =
+      TOURNAMENTMEMBERallCall();
   static TournamentmembersbyteamCall tournamentmembersbyteamCall =
       TournamentmembersbyteamCall();
 }
@@ -1616,6 +1618,67 @@ class TournamentmembersCall {
         r'''$[:].teams.team_id''',
         true,
       ) as List?;
+}
+
+class TOURNAMENTMEMBERallCall {
+  Future<ApiCallResponse> call({
+    String? tournamentID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TOURNAMENTMEMBERall',
+      apiUrl: '${TournamentGroup.baseUrl}tournament_members?',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<int>? id(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? createdat(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].created_at''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<int>? teamid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].team_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<int>? tournamentid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].tournament_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
 class TournamentmembersbyteamCall {
