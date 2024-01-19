@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'teamadd2_widget.dart' show Teamadd2Widget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,7 +48,7 @@ class Teamadd2Model extends FlutterFlowModel<Teamadd2Widget> {
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (TEAMBYCREATOR)] action in Button widget.
-  ApiCallResponse? apiResultze2;
+  ApiCallResponse? jsonTEAM;
 
   /// Initialization and disposal methods.
 

@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -431,31 +432,23 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               'team_recruitment': true,
                               'team_status': 'Актив',
                             });
-                            _model.apiResultze2 =
+                            _model.jsonTEAM =
                                 await TeamGroup.teambycreatorCall.call(
                               idList: currentUserUid,
                             );
-                            if ((_model.apiResultze2?.succeeded ?? true)) {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text(TeamGroup.teambycreatorCall
-                                        .teamnam(
-                                          (_model.apiResultze2?.jsonBody ?? ''),
-                                        )!
-                                        .first),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            }
+                            await ChatsTable().insert({
+                              'chat_last_message':
+                                  'В этом чате пока нет сообщений',
+                              'chat_of_team': TeamGroup.teambycreatorCall
+                                  .teamid(
+                                    (_model.jsonTEAM?.jsonBody ?? ''),
+                                  )
+                                  ?.first,
+                              'chat_chattype': 'Чат команды',
+                              'chat_last_message_sander': '0',
+                              'chat_members':
+                                  functions.stringToArray(currentUserUid),
+                            });
 
                             setState(() {});
                           },
