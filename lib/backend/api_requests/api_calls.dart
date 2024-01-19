@@ -2298,8 +2298,7 @@ class GetchatbyidCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GETCHATBYID',
-      apiUrl:
-          '${MessagingGroup.baseUrl}chats?chat_id=eq.${chatID}&select=*,members:players(*)',
+      apiUrl: '${MessagingGroup.baseUrl}chats?chat_id=eq.${chatID}&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -2341,106 +2340,15 @@ class GetchatbyidCall {
         response,
         r'''$[:].chat_of_team''',
       ));
-  List? members(dynamic response) => getJsonField(
+  String? chatchattype(dynamic response) => castToType<String>(getJsonField(
         response,
-        r'''$[:].members''',
-        true,
-      ) as List?;
-  List<String>? membersplayercreatedat(dynamic response) => (getJsonField(
+        r'''$[:].chat_chattype''',
+      ));
+  String? chatlastmessagesander(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$[:].members[:].player_created_at''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<String>? membersplayernickname(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_nickname''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<String>? membersplayertag(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_tag''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<String>? membersplayerflag(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_flag''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<String>? membersplayercountrie(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_countrie''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<String>? membersplayeravatar(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_avatar''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<String>? membersplayeruid(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_uid''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<int>? membersplayerteam(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_team''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  List? membersplayerteamrole(dynamic response) => getJsonField(
-        response,
-        r'''$[:].members[:].player_team_role''',
-        true,
-      ) as List?;
-  List<bool>? membersplayerteamlineup(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_team_lineup''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<bool>(x))
-          .withoutNulls
-          .toList();
-  List<int>? membersplayerid(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].members[:].player_id''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
+        r'''$[:].chat_last_message_sander''',
+      ));
 }
 
 class GetchatbymembersCall {
