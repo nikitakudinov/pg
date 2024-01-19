@@ -282,6 +282,17 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                                 }.withoutNulls,
                               );
                             },
+                            onLongPress: () async {
+                              context.pushNamed(
+                                'TEAM_EDITE',
+                                queryParameters: {
+                                  'teamId': serializeParam(
+                                    FFAppState().AUTHPLAYER.playerTeam,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
