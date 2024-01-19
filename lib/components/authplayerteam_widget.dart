@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/loadingindicator_widget.dart';
@@ -97,6 +98,35 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
+                                _model.jsonTEAMCHAT =
+                                    await MessagingGroup.getchatbyidCall.call(
+                                  chatID:
+                                      FFAppState().AUTHPLAYERTEAM.teamChatId,
+                                );
+                                setState(() {
+                                  FFAppState().STRINGARRAY = MessagingGroup
+                                      .getchatbyidCall
+                                      .chatmembers(
+                                        (_model.jsonTEAMCHAT?.jsonBody ?? ''),
+                                      )!
+                                      .toList()
+                                      .cast<String>();
+                                });
+                                setState(() {
+                                  FFAppState()
+                                      .removeFromSTRINGARRAY(currentUserUid);
+                                });
+                                await ChatsTable().update(
+                                  data: {
+                                    'chat_members': FFAppState().STRINGARRAY,
+                                  },
+                                  matchingRows: (rows) => rows.eq(
+                                    'chat_id',
+                                    MessagingGroup.getchatbyidCall.chatid(
+                                      (_model.jsonTEAMCHAT?.jsonBody ?? ''),
+                                    ),
+                                  ),
+                                );
                                 await PlayersTable().update(
                                   data: {
                                     'player_team': 0,
@@ -119,8 +149,13 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                                 context.pushNamed('HOME');
 
                                 setState(() {
+                                  FFAppState().STRINGARRAY = [];
+                                });
+                                setState(() {
                                   _model.teamActionslistVISIBILITY = false;
                                 });
+
+                                setState(() {});
                               },
                               text: 'Выйти из команды',
                               icon: Icon(
