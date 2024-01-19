@@ -648,8 +648,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             await MessageTable().insert({
-                              'message_sanded_at':
-                                  supaSerialize<DateTime>(getCurrentTimestamp),
                               'message_sander':
                                   FFAppState().AUTHPLAYER.playerUid,
                               'message_body': _model.textController.text,
