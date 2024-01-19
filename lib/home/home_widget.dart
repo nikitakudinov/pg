@@ -43,6 +43,14 @@ class _HomeWidgetState extends State<HomeWidget> {
       await action_blocks.authplayerloader(context);
       await action_blocks.maindataloader(context);
       setState(() {});
+      setState(() {
+        FFAppState().AUTHPLAYERTEAM = FFAppState()
+            .MAINDATA
+            .teams
+            .where((e) => e.teamId == FFAppState().AUTHPLAYER.playerTeam)
+            .toList()
+            .first;
+      });
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 2000),
         callback: (timer) async {
