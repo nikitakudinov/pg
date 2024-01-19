@@ -96,7 +96,7 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
@@ -117,6 +117,45 @@ class _TeamEditeWidgetState extends State<TeamEditeWidget> {
                   updateCallback: () => setState(() {}),
                   child: EditeteammembersWidget(
                     teamId: widget.teamId,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            context.pushNamed('HOME');
+                          },
+                          text: 'СОХРАНИТЬ',
+                          options: FFButtonOptions(
+                            height: 30.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Cabin Condensed',
+                                  color: Color(0xFF5C676E),
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).tertiary,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(3.0),
+                          ),
+                        ),
+                      ),
+                    ]
+                        .addToStart(SizedBox(width: 15.0))
+                        .addToEnd(SizedBox(width: 15.0)),
                   ),
                 ),
               ],
