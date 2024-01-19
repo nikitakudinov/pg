@@ -403,7 +403,7 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           'CHAT',
                           queryParameters: {
                             'chatID': serializeParam(
-                              0,
+                              FFAppState().AUTHPLAYERTEAM.teamChatId,
                               ParamType.int,
                             ),
                           }.withoutNulls,
