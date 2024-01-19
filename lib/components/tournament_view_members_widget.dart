@@ -88,99 +88,38 @@ class _TournamentViewMembersWidgetState
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 15.0, 0.0),
-                          child: Container(
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'TEAM_VIEW',
+                          queryParameters: {
+                            'teamID': serializeParam(
+                              tournamentMembersRowItem.teamId,
+                              ParamType.int,
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: Image.network(
-                                FFAppState()
-                                    .MAINDATA
-                                    .teams
-                                    .where((e) =>
-                                        e.teamId ==
-                                        tournamentMembersRowItem.teamId)
-                                    .toList()
-                                    .first
-                                    .teamLogo,
-                                width: 50.0,
-                                height: 50.0,
-                                fit: BoxFit.cover,
+                          }.withoutNulls,
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 15.0, 0.0),
+                            child: Container(
+                              width: 50.0,
+                              height: 50.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              FFAppState()
-                                  .MAINDATA
-                                  .teams
-                                  .where((e) =>
-                                      e.teamId ==
-                                      tournamentMembersRowItem.teamId)
-                                  .toList()
-                                  .first
-                                  .teamTag,
-                              style: FlutterFlowTheme.of(context).titleMedium,
-                            ),
-                            Text(
-                              FFAppState()
-                                  .MAINDATA
-                                  .teams
-                                  .where((e) =>
-                                      e.teamId ==
-                                      tournamentMembersRowItem.teamId)
-                                  .toList()
-                                  .first
-                                  .teamName,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Container(
-                                    width: 20.0,
-                                    height: 12.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      child: Image.network(
-                                        FFAppState()
-                                            .MAINDATA
-                                            .teams
-                                            .where((e) =>
-                                                e.teamId ==
-                                                tournamentMembersRowItem.teamId)
-                                            .toList()
-                                            .first
-                                            .teamFlag,
-                                        width: 20.0,
-                                        height: 12.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Text(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: Image.network(
                                   FFAppState()
                                       .MAINDATA
                                       .teams
@@ -189,15 +128,95 @@ class _TournamentViewMembersWidgetState
                                           tournamentMembersRowItem.teamId)
                                       .toList()
                                       .first
-                                      .teamCountry,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      .teamLogo,
+                                  width: 50.0,
+                                  height: 50.0,
+                                  fit: BoxFit.cover,
                                 ),
-                              ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                FFAppState()
+                                    .MAINDATA
+                                    .teams
+                                    .where((e) =>
+                                        e.teamId ==
+                                        tournamentMembersRowItem.teamId)
+                                    .toList()
+                                    .first
+                                    .teamTag,
+                                style: FlutterFlowTheme.of(context).titleMedium,
+                              ),
+                              Text(
+                                FFAppState()
+                                    .MAINDATA
+                                    .teams
+                                    .where((e) =>
+                                        e.teamId ==
+                                        tournamentMembersRowItem.teamId)
+                                    .toList()
+                                    .first
+                                    .teamName,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Container(
+                                      width: 20.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: Image.network(
+                                          FFAppState()
+                                              .MAINDATA
+                                              .teams
+                                              .where((e) =>
+                                                  e.teamId ==
+                                                  tournamentMembersRowItem
+                                                      .teamId)
+                                              .toList()
+                                              .first
+                                              .teamFlag,
+                                          width: 20.0,
+                                          height: 12.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    FFAppState()
+                                        .MAINDATA
+                                        .teams
+                                        .where((e) =>
+                                            e.teamId ==
+                                            tournamentMembersRowItem.teamId)
+                                        .toList()
+                                        .first
+                                        .teamCountry,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
