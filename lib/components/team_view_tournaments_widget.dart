@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'teamviewtournaments_model.dart';
-export 'teamviewtournaments_model.dart';
+import 'team_view_tournaments_model.dart';
+export 'team_view_tournaments_model.dart';
 
-class TeamviewtournamentsWidget extends StatefulWidget {
-  const TeamviewtournamentsWidget({Key? key}) : super(key: key);
+class TeamViewTournamentsWidget extends StatefulWidget {
+  const TeamViewTournamentsWidget({Key? key}) : super(key: key);
 
   @override
-  _TeamviewtournamentsWidgetState createState() =>
-      _TeamviewtournamentsWidgetState();
+  _TeamViewTournamentsWidgetState createState() =>
+      _TeamViewTournamentsWidgetState();
 }
 
-class _TeamviewtournamentsWidgetState extends State<TeamviewtournamentsWidget> {
-  late TeamviewtournamentsModel _model;
+class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
+  late TeamViewTournamentsModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -27,7 +27,7 @@ class _TeamviewtournamentsWidgetState extends State<TeamviewtournamentsWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TeamviewtournamentsModel());
+    _model = createModel(context, () => TeamViewTournamentsModel());
   }
 
   @override

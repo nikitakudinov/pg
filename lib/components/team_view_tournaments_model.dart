@@ -1,13 +1,13 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'teamviewtournaments_widget.dart' show TeamviewtournamentsWidget;
+import 'team_view_tournaments_widget.dart' show TeamViewTournamentsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TeamviewtournamentsModel
-    extends FlutterFlowModel<TeamviewtournamentsWidget> {
+class TeamViewTournamentsModel
+    extends FlutterFlowModel<TeamViewTournamentsWidget> {
   ///  Local state fields for this component.
 
   bool activeVISIBILITY = true;
