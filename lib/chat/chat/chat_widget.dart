@@ -659,8 +659,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                             });
                             await ChatsTable().update(
                               data: {
-                                'chat_updated_at': supaSerialize<DateTime>(
-                                    getCurrentTimestamp),
                                 'chat_last_message': _model.textController.text,
                                 'chat_last_message_sander':
                                     FFAppState().AUTHPLAYER.playerUid,
