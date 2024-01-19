@@ -130,82 +130,160 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
             ].divide(SizedBox(width: 50.0)),
           ),
         ),
-        Builder(
-          builder: (context) {
-            final active = FFAppState()
-                .MAINDATA
-                .tournaments
-                .where((e) => e.tournamentMembersId.contains(widget.teamId))
-                .toList();
-            return ListView.separated(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemCount: active.length,
-              separatorBuilder: (_, __) => SizedBox(height: 5.0),
-              itemBuilder: (context, activeIndex) {
-                final activeItem = active[activeIndex];
-                return Visibility(
-                  visible: activeItem.tournamentStatus == 'Активный',
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 15.0, 0.0),
-                              child: Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  child: Image.network(
-                                    activeItem.tournamentLogo,
-                                    width: 45.0,
-                                    height: 5.0,
-                                    fit: BoxFit.cover,
+        if (_model.activeVISIBILITY)
+          Builder(
+            builder: (context) {
+              final active = FFAppState()
+                  .MAINDATA
+                  .tournaments
+                  .where((e) => e.tournamentMembersId.contains(widget.teamId))
+                  .toList();
+              return ListView.separated(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: active.length,
+                separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                itemBuilder: (context, activeIndex) {
+                  final activeItem = active[activeIndex];
+                  return Visibility(
+                    visible: activeItem.tournamentStatus == 'Активный',
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 15.0, 0.0),
+                                child: Container(
+                                  width: 45.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    child: Image.network(
+                                      activeItem.tournamentLogo,
+                                      width: 45.0,
+                                      height: 5.0,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  activeItem.tournamentTag,
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
-                                ),
-                                Text(
-                                  activeItem.tournamentName,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                              ],
-                            ),
-                          ],
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    activeItem.tournamentTag,
+                                    style:
+                                        FlutterFlowTheme.of(context).titleLarge,
+                                  ),
+                                  Text(
+                                    activeItem.tournamentName,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
-            );
-          },
-        ),
+                  );
+                },
+              );
+            },
+          ),
+        if (_model.comlitedVISIBILITY)
+          Builder(
+            builder: (context) {
+              final active = FFAppState()
+                  .MAINDATA
+                  .tournaments
+                  .where((e) => e.tournamentMembersId.contains(widget.teamId))
+                  .toList();
+              return ListView.separated(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: active.length,
+                separatorBuilder: (_, __) => SizedBox(height: 5.0),
+                itemBuilder: (context, activeIndex) {
+                  final activeItem = active[activeIndex];
+                  return Visibility(
+                    visible: activeItem.tournamentStatus == 'Завершен',
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 15.0, 0.0),
+                                child: Container(
+                                  width: 45.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    child: Image.network(
+                                      activeItem.tournamentLogo,
+                                      width: 45.0,
+                                      height: 5.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    activeItem.tournamentTag,
+                                    style:
+                                        FlutterFlowTheme.of(context).titleLarge,
+                                  ),
+                                  Text(
+                                    activeItem.tournamentName,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
       ].addToStart(SizedBox(height: 15.0)),
     );
   }
