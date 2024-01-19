@@ -398,8 +398,16 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        context.pushNamed(
+                          'CHAT',
+                          queryParameters: {
+                            'chatID': serializeParam(
+                              0,
+                              ParamType.int,
+                            ),
+                          }.withoutNulls,
+                        );
                       },
                       text: 'В чат команды',
                       icon: Icon(
