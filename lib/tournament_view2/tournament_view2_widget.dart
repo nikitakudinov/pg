@@ -5,6 +5,7 @@ import '/backend/supabase/supabase.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
+import '/components/tournament_view_members_widget.dart';
 import '/components/tournamentgrid_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -146,7 +147,7 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                   child: SingleChildScrollView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         wrapWithModel(
                           model: _model.vlistITEMModel,
@@ -360,6 +361,19 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                                 title: 'Турнирная сетка',
                                 tournamentId: widget.tournamentId,
                               ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: wrapWithModel(
+                            model: _model.tournamentViewMembersModel,
+                            updateCallback: () => setState(() {}),
+                            child: TournamentViewMembersWidget(
+                              tournamentId: widget.tournamentId,
                             ),
                           ),
                         ),

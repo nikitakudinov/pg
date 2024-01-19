@@ -5,6 +5,7 @@ import '/backend/supabase/supabase.dart';
 import '/components/matchreport_widget.dart';
 import '/components/screenshots_in_notification_widget.dart';
 import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
+import '/components/tournament_view_members_widget.dart';
 import '/components/tournamentgrid_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -33,6 +34,8 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
   List<TournamentsRow>? apiResultaev;
   // Model for TOURNAMENTGRID component.
   late TournamentgridModel tournamentgridModel;
+  // Model for TOURNAMENT-VIEW-MEMBERS component.
+  late TournamentViewMembersModel tournamentViewMembersModel;
 
   /// Initialization and disposal methods.
 
@@ -41,6 +44,8 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
     tournamentInfoTabsModel =
         createModel(context, () => TournamentInfoTabsModel());
     tournamentgridModel = createModel(context, () => TournamentgridModel());
+    tournamentViewMembersModel =
+        createModel(context, () => TournamentViewMembersModel());
   }
 
   void dispose() {
@@ -48,6 +53,7 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
     vlistITEMModel.dispose();
     tournamentInfoTabsModel.dispose();
     tournamentgridModel.dispose();
+    tournamentViewMembersModel.dispose();
   }
 
   /// Action blocks are added here.

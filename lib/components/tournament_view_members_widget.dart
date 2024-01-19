@@ -49,7 +49,7 @@ class _TournamentViewMembersWidgetState
     context.watch<FFAppState>();
 
     return Column(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           mainAxisSize: MainAxisSize.max,
@@ -93,7 +93,14 @@ class _TournamentViewMembersWidgetState
                 final listViewTournamentMembersRow =
                     listViewTournamentMembersRowList[listViewIndex];
                 return Text(
-                  listViewTournamentMembersRow.teamId.toString(),
+                  FFAppState()
+                      .MAINDATA
+                      .teams
+                      .where((e) =>
+                          e.teamId == listViewTournamentMembersRow.teamId)
+                      .toList()
+                      .first
+                      .teamName,
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 );
               },
