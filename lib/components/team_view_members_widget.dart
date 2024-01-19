@@ -190,85 +190,87 @@ class _TeamViewMembersWidgetState extends State<TeamViewMembersWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),
-                        FlutterFlowIconButton(
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 40.0,
-                          icon: Icon(
-                            FFIcons.kmessageCircleOutline,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            _model.apiResultr6w = await MessagingGroup
-                                .gETCHATBYMEMBERScountCall
-                                .call(
-                              uid1: currentUserUid,
-                              uid2: membersItem.playerUid,
-                            );
-                            if (MessagingGroup.gETCHATBYMEMBERScountCall.count(
-                                  (_model.apiResultr6w?.jsonBody ?? ''),
-                                ) ==
-                                1) {
-                              context.pushNamed(
-                                'CHAT',
-                                queryParameters: {
-                                  'chatID': serializeParam(
-                                    FFAppState()
-                                        .MAINDATA
-                                        .chats
-                                        .where((e) => e.chatMembers
-                                            .contains(membersItem.playerUid))
-                                        .toList()
-                                        .first
-                                        .chatId,
-                                    ParamType.int,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            } else {
-                              setState(() {
-                                _model.addToChatMembersArray(currentUserUid);
-                              });
-                              setState(() {
-                                _model.addToChatMembersArray(
-                                    membersItem.playerUid);
-                              });
-                              await ChatsTable().insert({
-                                'chat_updated_at': supaSerialize<DateTime>(
-                                    getCurrentTimestamp),
-                                'chat_last_message':
-                                    getCurrentTimestamp.toString(),
-                                'chat_chattype': 'Диалог',
-                                'chat_last_message_sander': '0',
-                                'chat_members': _model.chatMembersArray,
-                              });
-                              await action_blocks.chatsloader(context);
-                              _model.apiResultido = await MessagingGroup
-                                  .getchatbymembersCall
+                        if (membersItem.playerUid != currentUserUid)
+                          FlutterFlowIconButton(
+                            borderRadius: 20.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              FFIcons.kmessageCircleOutline,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24.0,
+                            ),
+                            onPressed: () async {
+                              _model.apiResultr6w = await MessagingGroup
+                                  .gETCHATBYMEMBERScountCall
                                   .call(
                                 uid1: currentUserUid,
                                 uid2: membersItem.playerUid,
                               );
-                              if ((_model.apiResultido?.succeeded ?? true)) {
+                              if (MessagingGroup.gETCHATBYMEMBERScountCall
+                                      .count(
+                                    (_model.apiResultr6w?.jsonBody ?? ''),
+                                  ) ==
+                                  1) {
                                 context.pushNamed(
                                   'CHAT',
                                   queryParameters: {
                                     'chatID': serializeParam(
-                                      MessagingGroup.getchatbymembersCall
-                                          .chatid(
-                                        (_model.apiResultido?.jsonBody ?? ''),
-                                      ),
+                                      FFAppState()
+                                          .MAINDATA
+                                          .chats
+                                          .where((e) => e.chatMembers
+                                              .contains(membersItem.playerUid))
+                                          .toList()
+                                          .first
+                                          .chatId,
                                       ParamType.int,
                                     ),
                                   }.withoutNulls,
                                 );
+                              } else {
+                                setState(() {
+                                  _model.addToChatMembersArray(currentUserUid);
+                                });
+                                setState(() {
+                                  _model.addToChatMembersArray(
+                                      membersItem.playerUid);
+                                });
+                                await ChatsTable().insert({
+                                  'chat_updated_at': supaSerialize<DateTime>(
+                                      getCurrentTimestamp),
+                                  'chat_last_message':
+                                      getCurrentTimestamp.toString(),
+                                  'chat_chattype': 'Диалог',
+                                  'chat_last_message_sander': '0',
+                                  'chat_members': _model.chatMembersArray,
+                                });
+                                await action_blocks.chatsloader(context);
+                                _model.apiResultido = await MessagingGroup
+                                    .getchatbymembersCall
+                                    .call(
+                                  uid1: currentUserUid,
+                                  uid2: membersItem.playerUid,
+                                );
+                                if ((_model.apiResultido?.succeeded ?? true)) {
+                                  context.pushNamed(
+                                    'CHAT',
+                                    queryParameters: {
+                                      'chatID': serializeParam(
+                                        MessagingGroup.getchatbymembersCall
+                                            .chatid(
+                                          (_model.apiResultido?.jsonBody ?? ''),
+                                        ),
+                                        ParamType.int,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                }
                               }
-                            }
 
-                            setState(() {});
-                          },
-                        ),
+                              setState(() {});
+                            },
+                          ),
                       ]
                           .divide(SizedBox(width: 10.0))
                           .addToStart(SizedBox(width: 10.0))
