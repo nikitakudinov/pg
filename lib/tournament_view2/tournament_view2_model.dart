@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/matchreport_widget.dart';
@@ -26,6 +27,10 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
   late VlistITEMModel vlistITEMModel;
   // Model for tournamentInfoTabs component.
   late TournamentInfoTabsModel tournamentInfoTabsModel;
+  // Stores action output result for [Backend Call - API (TOURNAMENTMEMBERS)] action in Button widget.
+  ApiCallResponse? apiResultzr9;
+  // Stores action output result for [Backend Call - Update Row] action in Button widget.
+  List<TournamentsRow>? apiResultaev;
   // Model for TOURNAMENTGRID component.
   late TournamentgridModel tournamentgridModel;
 

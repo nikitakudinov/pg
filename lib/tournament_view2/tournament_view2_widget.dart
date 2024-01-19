@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/matchreport_widget.dart';
@@ -258,6 +259,63 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                                   ).then((value) => safeSetState(() {}));
                                 },
                                 text: 'Матч репорт',
+                                icon: FaIcon(
+                                  FontAwesomeIcons.fileExport,
+                                  size: 15.0,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 30.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Cabin Condensed',
+                                        color: Colors.white,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  _model.apiResultzr9 = await TournamentGroup
+                                      .tournamentmembersCall
+                                      .call(
+                                    tournamentID:
+                                        widget.tournamentId.toString(),
+                                  );
+                                  await TournamentsTable().update(
+                                    data: {
+                                      'tournament_members-id': TournamentGroup
+                                          .tournamentmembersCall
+                                          .teamsteamid(
+                                            (_model.apiResultzr9?.jsonBody ??
+                                                ''),
+                                          )
+                                          ?.cast<int>(),
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'tournament_id',
+                                      widget.tournamentId,
+                                    ),
+                                  );
+
+                                  setState(() {});
+                                },
+                                text: 'Оьбновить',
                                 icon: FaIcon(
                                   FontAwesomeIcons.fileExport,
                                   size: 15.0,
