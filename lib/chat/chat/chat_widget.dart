@@ -45,14 +45,14 @@ class _ChatWidgetState extends State<ChatWidget> {
       _model.instantTimer2 = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
-          setState(() => _model.requestCompleter3 = null);
-          await _model.waitForRequestCompleted3();
+          setState(() => _model.requestCompleter2 = null);
+          await _model.waitForRequestCompleted2();
           setState(() => _model.requestCompleter1 = null);
           await _model.waitForRequestCompleted1();
           setState(() => _model.requestCompleter2 = null);
           await _model.waitForRequestCompleted2();
-          setState(() => _model.requestCompleter4 = null);
-          await _model.waitForRequestCompleted4();
+          setState(() => _model.requestCompleter3 = null);
+          await _model.waitForRequestCompleted3();
         },
         startImmediately: true,
       );
@@ -83,7 +83,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<List<MessageRow>>(
-      future: (_model.requestCompleter3 ??= Completer<List<MessageRow>>()
+      future: (_model.requestCompleter2 ??= Completer<List<MessageRow>>()
             ..complete(MessageTable().queryRows(
               queryFn: (q) => q
                   .eq(
@@ -138,151 +138,259 @@ class _ChatWidgetState extends State<ChatWidget> {
                   context.pushNamed('CHATS');
                 },
               ),
-              title: Visibility(
-                visible: FFAppState()
-                        .MAINDATA
-                        .chats
-                        .where((e) => e.chatId == widget.chatID)
-                        .toList()
-                        .first
-                        .chatChattype ==
-                    'Диалог',
-                child: FutureBuilder<List<ChatsRow>>(
-                  future:
-                      (_model.requestCompleter2 ??= Completer<List<ChatsRow>>()
-                            ..complete(ChatsTable().querySingleRow(
-                              queryFn: (q) => q.eq(
-                                'chat_id',
-                                widget.chatID,
-                              ),
-                            )))
-                          .future,
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
+              title: FutureBuilder<List<ChatsRow>>(
+                future: ChatsTable().querySingleRow(
+                  queryFn: (q) => q.eq(
+                    'chat_id',
+                    widget.chatID,
+                  ),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
                           ),
                         ),
-                      );
-                    }
-                    List<ChatsRow> rowChatsRowList = snapshot.data!;
-                    final rowChatsRow = rowChatsRowList.isNotEmpty
-                        ? rowChatsRowList.first
-                        : null;
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Column(
+                      ),
+                    );
+                  }
+                  List<ChatsRow> columnChatsRowList = snapshot.data!;
+                  final columnChatsRow = columnChatsRowList.isNotEmpty
+                      ? columnChatsRowList.first
+                      : null;
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      if (FFAppState()
+                              .MAINDATA
+                              .chats
+                              .where((e) => e.chatId == widget.chatID)
+                              .toList()
+                              .first
+                              .chatChattype ==
+                          'Диалог')
+                        Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
-                              width: 30.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Image.network(
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: 30.0,
+                                  height: 30.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    child: Image.network(
+                                      FFAppState()
+                                          .MAINDATA
+                                          .players
+                                          .where((e) =>
+                                              e.playerUid ==
+                                              columnChatsRow?.chatMembers
+                                                  ?.where((e) =>
+                                                      e != currentUserUid)
+                                                  .toList()
+                                                  ?.first)
+                                          .toList()
+                                          .first
+                                          .playerAvatar,
+                                      width: 30.0,
+                                      height: 30.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
                                   FFAppState()
                                       .MAINDATA
                                       .players
                                       .where((e) =>
                                           e.playerUid ==
-                                          rowChatsRow?.chatMembers
+                                          columnChatsRow?.chatMembers
                                               ?.where(
                                                   (e) => e != currentUserUid)
                                               .toList()
                                               ?.first)
                                       .toList()
                                       .first
-                                      .playerAvatar,
+                                      .playerNickname,
+                                  style:
+                                      FlutterFlowTheme.of(context).titleSmall,
+                                ),
+                                FutureBuilder<List<PlayersRow>>(
+                                  future: (_model.requestCompleter3 ??=
+                                          Completer<List<PlayersRow>>()
+                                            ..complete(
+                                                PlayersTable().querySingleRow(
+                                              queryFn: (q) => q.eq(
+                                                'player_uid',
+                                                columnChatsRow?.chatMembers
+                                                    ?.where((e) =>
+                                                        e != currentUserUid)
+                                                    .toList()
+                                                    ?.first,
+                                              ),
+                                            )))
+                                      .future,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<PlayersRow> textPlayersRowList =
+                                        snapshot.data!;
+                                    final textPlayersRow =
+                                        textPlayersRowList.isNotEmpty
+                                            ? textPlayersRowList.first
+                                            : null;
+                                    return Text(
+                                      textPlayersRow!.playerOnline
+                                          ? 'Онлайн'
+                                          : 'Был в сети ${dateTimeFormat('H:mm', functions.stringDateToDateTime(textPlayersRow?.playerUpdateAt?.toString()))}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall,
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ].divide(SizedBox(width: 10.0)),
+                        ),
+                      if (FFAppState()
+                              .MAINDATA
+                              .chats
+                              .where((e) => e.chatId == widget.chatID)
+                              .toList()
+                              .first
+                              .chatChattype ==
+                          'Чат команды')
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
                                   width: 30.0,
                                   height: 30.0,
-                                  fit: BoxFit.cover,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    child: Image.network(
+                                      FFAppState()
+                                          .MAINDATA
+                                          .teams
+                                          .where((e) =>
+                                              e.teamId ==
+                                              columnChatsRow?.chatOfTeam)
+                                          .toList()
+                                          .first
+                                          .teamLogo,
+                                      width: 30.0,
+                                      height: 30.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              FFAppState()
-                                  .MAINDATA
-                                  .players
-                                  .where((e) =>
-                                      e.playerUid ==
-                                      rowChatsRow?.chatMembers
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Чат команды',
+                                  style:
+                                      FlutterFlowTheme.of(context).titleSmall,
+                                ),
+                                FutureBuilder<List<PlayersRow>>(
+                                  future: PlayersTable().querySingleRow(
+                                    queryFn: (q) => q.eq(
+                                      'player_uid',
+                                      columnChatsRow?.chatMembers
                                           ?.where((e) => e != currentUserUid)
                                           .toList()
-                                          ?.first)
-                                  .toList()
-                                  .first
-                                  .playerNickname,
-                              style: FlutterFlowTheme.of(context).titleSmall,
-                            ),
-                            FutureBuilder<List<PlayersRow>>(
-                              future: (_model.requestCompleter4 ??= Completer<
-                                      List<PlayersRow>>()
-                                    ..complete(PlayersTable().querySingleRow(
-                                      queryFn: (q) => q.eq(
-                                        'player_uid',
-                                        rowChatsRow?.chatMembers
-                                            ?.where((e) => e != currentUserUid)
-                                            .toList()
-                                            ?.first,
-                                      ),
-                                    )))
-                                  .future,
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
+                                          ?.first,
                                     ),
-                                  );
-                                }
-                                List<PlayersRow> textPlayersRowList =
-                                    snapshot.data!;
-                                final textPlayersRow =
-                                    textPlayersRowList.isNotEmpty
-                                        ? textPlayersRowList.first
-                                        : null;
-                                return Text(
-                                  textPlayersRow!.playerOnline
-                                      ? 'Онлайн'
-                                      : 'Был в сети ${dateTimeFormat('H:mm', functions.stringDateToDateTime(textPlayersRow?.playerUpdateAt?.toString()))}',
-                                  style:
-                                      FlutterFlowTheme.of(context).labelSmall,
-                                );
-                              },
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<PlayersRow> textPlayersRowList =
+                                        snapshot.data!;
+                                    final textPlayersRow =
+                                        textPlayersRowList.isNotEmpty
+                                            ? textPlayersRowList.first
+                                            : null;
+                                    return Text(
+                                      FFAppState()
+                                          .MAINDATA
+                                          .teams
+                                          .where((e) =>
+                                              e.teamId ==
+                                              columnChatsRow?.chatOfTeam)
+                                          .toList()
+                                          .first
+                                          .teamName,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall,
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
-                          ],
+                          ].divide(SizedBox(width: 10.0)),
                         ),
-                      ].divide(SizedBox(width: 10.0)),
-                    );
-                  },
-                ),
+                    ],
+                  );
+                },
               ),
               actions: [
                 Padding(

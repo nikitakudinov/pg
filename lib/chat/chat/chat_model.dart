@@ -37,10 +37,9 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer2;
-  Completer<List<MessageRow>>? requestCompleter3;
+  Completer<List<MessageRow>>? requestCompleter2;
   Completer<List<MessageRow>>? requestCompleter1;
-  Completer<List<ChatsRow>>? requestCompleter2;
-  Completer<List<PlayersRow>>? requestCompleter4;
+  Completer<List<PlayersRow>>? requestCompleter3;
   // State field(s) for Column widget.
   ScrollController? columnController;
   // State field(s) for ListView widget.
@@ -70,7 +69,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   /// Additional helper methods are added here.
 
-  Future waitForRequestCompleted3({
+  Future waitForRequestCompleted2({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -78,7 +77,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter3?.isCompleted ?? false;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }
@@ -100,7 +99,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
     }
   }
 
-  Future waitForRequestCompleted2({
+  Future waitForRequestCompleted3({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -108,22 +107,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter2?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
-  Future waitForRequestCompleted4({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter4?.isCompleted ?? false;
+      final requestComplete = requestCompleter3?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }
