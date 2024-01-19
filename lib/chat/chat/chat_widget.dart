@@ -453,17 +453,17 @@ class _ChatWidgetState extends State<ChatWidget> {
                                   ),
                                 );
                               }
-                              List<MessageRow> listViewMessageRowList =
+                              List<MessageRow> messagesMessageRowList =
                                   snapshot.data!;
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 reverse: true,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                itemCount: listViewMessageRowList.length,
-                                itemBuilder: (context, listViewIndex) {
-                                  final listViewMessageRow =
-                                      listViewMessageRowList[listViewIndex];
+                                itemCount: messagesMessageRowList.length,
+                                itemBuilder: (context, messagesIndex) {
+                                  final messagesMessageRow =
+                                      messagesMessageRowList[messagesIndex];
                                   return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 10.0, 15.0, 0.0),
@@ -509,7 +509,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                           .players
                                                           .where((e) =>
                                                               e.playerUid ==
-                                                              listViewMessageRow
+                                                              messagesMessageRow
                                                                   .messageSander)
                                                           .toList()
                                                           .first
@@ -523,7 +523,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                               ),
                                             Container(
                                               decoration: BoxDecoration(
-                                                color: listViewMessageRow
+                                                color: messagesMessageRow
                                                             .messageSander ==
                                                         currentUserUid
                                                     ? FlutterFlowTheme.of(
@@ -549,7 +549,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                   .players
                                                                   .where((e) =>
                                                                       e.playerUid ==
-                                                                      listViewMessageRow
+                                                                      messagesMessageRow
                                                                           .messageSander)
                                                                   .toList()
                                                                   .first
@@ -561,7 +561,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                               .players
                                                               .where((e) =>
                                                                   e.playerUid ==
-                                                                  listViewMessageRow
+                                                                  messagesMessageRow
                                                                       .messageSander)
                                                               .toList()
                                                               .first
@@ -580,7 +580,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                           BoxDecoration(),
                                                       child: Text(
                                                         valueOrDefault<String>(
-                                                          listViewMessageRow
+                                                          messagesMessageRow
                                                               .messageBody,
                                                           '0',
                                                         ),
@@ -600,7 +600,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     ),
                                   );
                                 },
-                                controller: _model.listViewController,
+                                controller: _model.messages,
                               );
                             },
                           ),
@@ -668,8 +668,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 widget.chatID,
                               ),
                             );
-                            await _model.listViewController?.animateTo(
-                              0,
+                            await _model.messages?.animateTo(
+                              _model.messages!.position.maxScrollExtent,
                               duration: Duration(milliseconds: 100),
                               curve: Curves.ease,
                             );

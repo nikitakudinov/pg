@@ -42,8 +42,8 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   Completer<List<PlayersRow>>? requestCompleter3;
   // State field(s) for Column widget.
   ScrollController? columnController;
-  // State field(s) for ListView widget.
-  ScrollController? listViewController;
+  // State field(s) for MESSAGES widget.
+  ScrollController? messages;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -53,14 +53,14 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   void initState(BuildContext context) {
     columnController = ScrollController();
-    listViewController = ScrollController();
+    messages = ScrollController();
   }
 
   void dispose() {
     unfocusNode.dispose();
     instantTimer2?.cancel();
     columnController?.dispose();
-    listViewController?.dispose();
+    messages?.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
