@@ -138,15 +138,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : TournamentsWidget(),
         ),
         FFRoute(
-          name: 'TOURNAMENT_VIEW',
-          path: '/tournamentView',
-          builder: (context, params) => TournamentViewWidget(
-            tournamentID: params.getParam('tournamentID', ParamType.int),
-            tournamentCreator:
-                params.getParam('tournamentCreator', ParamType.String),
-          ),
-        ),
-        FFRoute(
           name: 'CHATS',
           path: '/chats',
           builder: (context, params) =>

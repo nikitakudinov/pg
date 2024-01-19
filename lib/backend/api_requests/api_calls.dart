@@ -1398,8 +1398,8 @@ class TournamentGroup {
   static TournamenorganizatorsCall tournamenorganizatorsCall =
       TournamenorganizatorsCall();
   static TournamentmembersCall tournamentmembersCall = TournamentmembersCall();
-  static TournamentmembersaCall tournamentmembersaCall =
-      TournamentmembersaCall();
+  static TournamentmembersbyteamCall tournamentmembersbyteamCall =
+      TournamentmembersbyteamCall();
 }
 
 class TournamentbycreatorCall {
@@ -1618,13 +1618,14 @@ class TournamentmembersCall {
       ) as List?;
 }
 
-class TournamentmembersaCall {
+class TournamentmembersbyteamCall {
   Future<ApiCallResponse> call({
-    String? tournamentID = '',
+    int? teamId,
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'TOURNAMENTMEMBERSA',
-      apiUrl: '${TournamentGroup.baseUrl}tournaments?select=teams(*)',
+      callName: 'TOURNAMENTMEMBERSBYTEAM',
+      apiUrl:
+          '${TournamentGroup.baseUrl}tournament_members?team_id=eq.${teamId}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1641,7 +1642,7 @@ class TournamentmembersaCall {
     );
   }
 
-  List<int>? id(dynamic response) => (getJsonField(
+  List<int>? tournamentid(dynamic response) => (getJsonField(
         response,
         r'''$[:].tournament_id''',
         true,
@@ -1650,30 +1651,18 @@ class TournamentmembersaCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
-  dynamic createdat(dynamic response) => getJsonField(
+  int? id(dynamic response) => castToType<int>(getJsonField(
         response,
-        r'''$[:].tournament_created_at''',
-      );
-  dynamic name(dynamic response) => getJsonField(
+        r'''$[:].id''',
+      ));
+  String? createdat(dynamic response) => castToType<String>(getJsonField(
         response,
-        r'''$[:].tournament_name''',
-      );
-  dynamic tag(dynamic response) => getJsonField(
+        r'''$[:].created_at''',
+      ));
+  int? teamid(dynamic response) => castToType<int>(getJsonField(
         response,
-        r'''$[:].tournament_tag''',
-      );
-  dynamic flag(dynamic response) => getJsonField(
-        response,
-        r'''$[:].tournament_flag''',
-      );
-  dynamic country(dynamic response) => getJsonField(
-        response,
-        r'''$[:].tournament_country''',
-      );
-  dynamic creator(dynamic response) => getJsonField(
-        response,
-        r'''$[:].tournament_creator''',
-      );
+        r'''$[:].team_id''',
+      ));
 }
 
 /// End TOURNAMENT Group Code

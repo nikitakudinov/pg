@@ -16,7 +16,6 @@ class TournamentStruct extends BaseStruct {
     String? tournamentCountry,
     String? tournamentStatus,
     PlayerStruct? tournamentCreator,
-    List<TeamStruct>? tournamentMembers,
     String? tournamentHeaderImage,
     String? tournamentStartDate,
     String? tournamentEndDate,
@@ -24,6 +23,7 @@ class TournamentStruct extends BaseStruct {
     int? tournamentRoundsInMatch,
     int? tournamentTeamsCount,
     List<PlayerStruct>? tournamentOrganizators,
+    List<int>? tournamentMembersId,
   })  : _tournamentId = tournamentId,
         _tournamentCreatedAt = tournamentCreatedAt,
         _tournamentName = tournamentName,
@@ -33,14 +33,14 @@ class TournamentStruct extends BaseStruct {
         _tournamentCountry = tournamentCountry,
         _tournamentStatus = tournamentStatus,
         _tournamentCreator = tournamentCreator,
-        _tournamentMembers = tournamentMembers,
         _tournamentHeaderImage = tournamentHeaderImage,
         _tournamentStartDate = tournamentStartDate,
         _tournamentEndDate = tournamentEndDate,
         _tournamentGametype = tournamentGametype,
         _tournamentRoundsInMatch = tournamentRoundsInMatch,
         _tournamentTeamsCount = tournamentTeamsCount,
-        _tournamentOrganizators = tournamentOrganizators;
+        _tournamentOrganizators = tournamentOrganizators,
+        _tournamentMembersId = tournamentMembersId;
 
   // "tournament_id" field.
   int? _tournamentId;
@@ -100,14 +100,6 @@ class TournamentStruct extends BaseStruct {
       updateFn(_tournamentCreator ??= PlayerStruct());
   bool hasTournamentCreator() => _tournamentCreator != null;
 
-  // "tournament_members" field.
-  List<TeamStruct>? _tournamentMembers;
-  List<TeamStruct> get tournamentMembers => _tournamentMembers ?? const [];
-  set tournamentMembers(List<TeamStruct>? val) => _tournamentMembers = val;
-  void updateTournamentMembers(Function(List<TeamStruct>) updateFn) =>
-      updateFn(_tournamentMembers ??= []);
-  bool hasTournamentMembers() => _tournamentMembers != null;
-
   // "tournament_header_image" field.
   String? _tournamentHeaderImage;
   String get tournamentHeaderImage => _tournamentHeaderImage ?? '';
@@ -158,6 +150,14 @@ class TournamentStruct extends BaseStruct {
       updateFn(_tournamentOrganizators ??= []);
   bool hasTournamentOrganizators() => _tournamentOrganizators != null;
 
+  // "tournament_members-id" field.
+  List<int>? _tournamentMembersId;
+  List<int> get tournamentMembersId => _tournamentMembersId ?? const [];
+  set tournamentMembersId(List<int>? val) => _tournamentMembersId = val;
+  void updateTournamentMembersId(Function(List<int>) updateFn) =>
+      updateFn(_tournamentMembersId ??= []);
+  bool hasTournamentMembersId() => _tournamentMembersId != null;
+
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         tournamentId: castToType<int>(data['tournament_id']),
@@ -170,10 +170,6 @@ class TournamentStruct extends BaseStruct {
         tournamentStatus: data['tournament_status'] as String?,
         tournamentCreator:
             PlayerStruct.maybeFromMap(data['tournament_creator']),
-        tournamentMembers: getStructList(
-          data['tournament_members'],
-          TeamStruct.fromMap,
-        ),
         tournamentHeaderImage: data['tournament_header_image'] as String?,
         tournamentStartDate: data['tournament_start_date'] as String?,
         tournamentEndDate: data['tournament_end_date'] as String?,
@@ -185,6 +181,7 @@ class TournamentStruct extends BaseStruct {
           data['tournament_organizators'],
           PlayerStruct.fromMap,
         ),
+        tournamentMembersId: getDataList(data['tournament_members-id']),
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) => data is Map
@@ -201,8 +198,6 @@ class TournamentStruct extends BaseStruct {
         'tournament_country': _tournamentCountry,
         'tournament_status': _tournamentStatus,
         'tournament_creator': _tournamentCreator?.toMap(),
-        'tournament_members':
-            _tournamentMembers?.map((e) => e.toMap()).toList(),
         'tournament_header_image': _tournamentHeaderImage,
         'tournament_start_date': _tournamentStartDate,
         'tournament_end_date': _tournamentEndDate,
@@ -211,6 +206,7 @@ class TournamentStruct extends BaseStruct {
         'tournament_teams_count': _tournamentTeamsCount,
         'tournament_organizators':
             _tournamentOrganizators?.map((e) => e.toMap()).toList(),
+        'tournament_members-id': _tournamentMembersId,
       }.withoutNulls;
 
   @override
@@ -251,11 +247,6 @@ class TournamentStruct extends BaseStruct {
           _tournamentCreator,
           ParamType.DataStruct,
         ),
-        'tournament_members': serializeParam(
-          _tournamentMembers,
-          ParamType.DataStruct,
-          true,
-        ),
         'tournament_header_image': serializeParam(
           _tournamentHeaderImage,
           ParamType.String,
@@ -283,6 +274,11 @@ class TournamentStruct extends BaseStruct {
         'tournament_organizators': serializeParam(
           _tournamentOrganizators,
           ParamType.DataStruct,
+          true,
+        ),
+        'tournament_members-id': serializeParam(
+          _tournamentMembersId,
+          ParamType.int,
           true,
         ),
       }.withoutNulls;
@@ -335,12 +331,6 @@ class TournamentStruct extends BaseStruct {
           false,
           structBuilder: PlayerStruct.fromSerializableMap,
         ),
-        tournamentMembers: deserializeStructParam<TeamStruct>(
-          data['tournament_members'],
-          ParamType.DataStruct,
-          true,
-          structBuilder: TeamStruct.fromSerializableMap,
-        ),
         tournamentHeaderImage: deserializeParam(
           data['tournament_header_image'],
           ParamType.String,
@@ -377,6 +367,11 @@ class TournamentStruct extends BaseStruct {
           true,
           structBuilder: PlayerStruct.fromSerializableMap,
         ),
+        tournamentMembersId: deserializeParam<int>(
+          data['tournament_members-id'],
+          ParamType.int,
+          true,
+        ),
       );
 
   @override
@@ -395,7 +390,6 @@ class TournamentStruct extends BaseStruct {
         tournamentCountry == other.tournamentCountry &&
         tournamentStatus == other.tournamentStatus &&
         tournamentCreator == other.tournamentCreator &&
-        listEquality.equals(tournamentMembers, other.tournamentMembers) &&
         tournamentHeaderImage == other.tournamentHeaderImage &&
         tournamentStartDate == other.tournamentStartDate &&
         tournamentEndDate == other.tournamentEndDate &&
@@ -403,7 +397,8 @@ class TournamentStruct extends BaseStruct {
         tournamentRoundsInMatch == other.tournamentRoundsInMatch &&
         tournamentTeamsCount == other.tournamentTeamsCount &&
         listEquality.equals(
-            tournamentOrganizators, other.tournamentOrganizators);
+            tournamentOrganizators, other.tournamentOrganizators) &&
+        listEquality.equals(tournamentMembersId, other.tournamentMembersId);
   }
 
   @override
@@ -417,14 +412,14 @@ class TournamentStruct extends BaseStruct {
         tournamentCountry,
         tournamentStatus,
         tournamentCreator,
-        tournamentMembers,
         tournamentHeaderImage,
         tournamentStartDate,
         tournamentEndDate,
         tournamentGametype,
         tournamentRoundsInMatch,
         tournamentTeamsCount,
-        tournamentOrganizators
+        tournamentOrganizators,
+        tournamentMembersId
       ]);
 }
 

@@ -74,4 +74,9 @@ class TournamentsRow extends SupabaseDataRow {
       getField<int>('tournament_rounds_in_match');
   set tournamentRoundsInMatch(int? value) =>
       setField<int>('tournament_rounds_in_match', value);
+
+  List<int> get tournamentMembersId =>
+      getListField<int>('tournament_members-id');
+  set tournamentMembersId(List<int>? value) =>
+      setListField<int>('tournament_members-id', value);
 }

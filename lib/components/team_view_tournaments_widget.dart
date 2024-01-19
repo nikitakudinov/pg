@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -124,11 +125,23 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
             ].divide(SizedBox(width: 50.0)),
           ),
         ),
-        ListView(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          children: [],
+        Builder(
+          builder: (context) {
+            final active = FFAppState().MAINDATA.tournaments.toList();
+            return ListView.builder(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: active.length,
+              itemBuilder: (context, activeIndex) {
+                final activeItem = active[activeIndex];
+                return Text(
+                  'Hello World',
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                );
+              },
+            );
+          },
         ),
       ].addToStart(SizedBox(height: 15.0)),
     );

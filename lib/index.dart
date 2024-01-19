@@ -8,8 +8,6 @@ export '/team/team_edite/team_edite_widget.dart' show TeamEditeWidget;
 export '/tournament/tournament_add/tournament_add_widget.dart'
     show TournamentAddWidget;
 export '/tournament/tournaments/tournaments_widget.dart' show TournamentsWidget;
-export '/tournament/tournament_view/tournament_view_widget.dart'
-    show TournamentViewWidget;
 export '/chat/chats/chats_widget.dart' show ChatsWidget;
 export '/chat/chat/chat_widget.dart' show ChatWidget;
 export '/player/players/players_widget.dart' show PlayersWidget;
