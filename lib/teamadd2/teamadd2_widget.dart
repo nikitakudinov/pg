@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -474,8 +475,21 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                     ?.first,
                               ),
                             );
+                            await action_blocks.maindataloader(context);
 
-                            context.pushNamed('HOME');
+                            context.pushNamed(
+                              'TEAM_EDITE',
+                              queryParameters: {
+                                'teamId': serializeParam(
+                                  TeamGroup.teambycreatorCall
+                                      .teamid(
+                                        (_model.jsonTEAM?.jsonBody ?? ''),
+                                      )
+                                      ?.first,
+                                  ParamType.int,
+                                ),
+                              }.withoutNulls,
+                            );
 
                             setState(() {});
                           },
