@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'teamadd2_widget.dart' show Teamadd2Widget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

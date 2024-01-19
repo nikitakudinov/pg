@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -437,6 +436,15 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                 await TeamGroup.teambycreatorCall.call(
                               idList: currentUserUid,
                             );
+                            setState(() {
+                              _model.chatMembersArray = [''];
+                            });
+                            setState(() {
+                              _model.addToChatMembersArray('0');
+                            });
+                            setState(() {
+                              _model.addToChatMembersArray(currentUserUid);
+                            });
                             await ChatsTable().insert({
                               'chat_last_message':
                                   'В этом чате пока нет сообщений',
@@ -447,8 +455,7 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                   ?.first,
                               'chat_chattype': 'Чат команды',
                               'chat_last_message_sander': '0',
-                              'chat_members':
-                                  functions.stringToArray(currentUserUid),
+                              'chat_members': _model.chatMembersArray,
                             });
                             _model.jsonCHAT =
                                 await MessagingGroup.chatbyteamidCall.call(
