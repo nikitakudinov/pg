@@ -449,6 +449,33 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               'chat_members':
                                   functions.stringToArray(currentUserUid),
                             });
+                            _model.jsonCHAT =
+                                await MessagingGroup.chatbyteamidCall.call(
+                              idList: TeamGroup.teambycreatorCall
+                                  .teamid(
+                                    (_model.jsonTEAM?.jsonBody ?? ''),
+                                  )
+                                  ?.first
+                                  ?.toString(),
+                            );
+                            await TeamsTable().update(
+                              data: {
+                                'team_chat_id':
+                                    MessagingGroup.chatbyteamidCall.chatid(
+                                  (_model.jsonCHAT?.jsonBody ?? ''),
+                                ),
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'team_id',
+                                TeamGroup.teambycreatorCall
+                                    .teamid(
+                                      (_model.jsonTEAM?.jsonBody ?? ''),
+                                    )
+                                    ?.first,
+                              ),
+                            );
+
+                            context.pushNamed('HOME');
 
                             setState(() {});
                           },
