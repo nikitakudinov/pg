@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -417,9 +418,17 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                       Expanded(
                         child: FFButtonWidget(
                           onPressed: () async {
-                            await Teams2Table().insert({
-                              'team_created_at':
-                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                            await TeamsTable().insert({
+                              'team_name': _model.teamNameController.text,
+                              'team_tag': _model.teamTagController.text,
+                              'team_flag':
+                                  _model.countryPickerModel.selectedFlag,
+                              'team_country':
+                                  _model.countryPickerModel.selectedCountry,
+                              'team_creator': currentUserUid,
+                              'team_logo': _model.teamLogoPath,
+                              'team_recruitment': true,
+                              'team_status': 'Актив',
                             });
                           },
                           text: 'СОЗДАТЬ',
