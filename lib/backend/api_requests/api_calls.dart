@@ -1398,10 +1398,10 @@ class TournamentGroup {
   static TournamenorganizatorsCall tournamenorganizatorsCall =
       TournamenorganizatorsCall();
   static TournamentmembersCall tournamentmembersCall = TournamentmembersCall();
-  static TOURNAMENTMEMBERallCall tOURNAMENTMEMBERallCall =
-      TOURNAMENTMEMBERallCall();
   static TournamentmembersbyteamCall tournamentmembersbyteamCall =
       TournamentmembersbyteamCall();
+  static TournamentmembersbytournamentCall tournamentmembersbytournamentCall =
+      TournamentmembersbytournamentCall();
 }
 
 class TournamentbycreatorCall {
@@ -1620,13 +1620,14 @@ class TournamentmembersCall {
       ) as List?;
 }
 
-class TOURNAMENTMEMBERallCall {
+class TournamentmembersbyteamCall {
   Future<ApiCallResponse> call({
-    String? tournamentID = '',
+    int? teamId,
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'TOURNAMENTMEMBERall',
-      apiUrl: '${TournamentGroup.baseUrl}tournament_members?',
+      callName: 'TOURNAMENTMEMBERSBYTEAM',
+      apiUrl:
+          '${TournamentGroup.baseUrl}tournament_members?team_id=eq.${teamId}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -1643,33 +1644,6 @@ class TOURNAMENTMEMBERallCall {
     );
   }
 
-  List<int>? id(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].id''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  List<String>? createdat(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].created_at''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  List<int>? teamid(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].team_id''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
   List<int>? tournamentid(dynamic response) => (getJsonField(
         response,
         r'''$[:].tournament_id''',
@@ -1679,16 +1653,28 @@ class TOURNAMENTMEMBERallCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
+  int? id(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].id''',
+      ));
+  String? createdat(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].created_at''',
+      ));
+  int? teamid(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].team_id''',
+      ));
 }
 
-class TournamentmembersbyteamCall {
+class TournamentmembersbytournamentCall {
   Future<ApiCallResponse> call({
-    int? teamId,
+    int? tournamentId,
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'TOURNAMENTMEMBERSBYTEAM',
+      callName: 'TOURNAMENTMEMBERSBYTOURNAMENT',
       apiUrl:
-          '${TournamentGroup.baseUrl}tournament_members?team_id=eq.${teamId}',
+          '${TournamentGroup.baseUrl}tournament_members?tournament_id=eq.${tournamentId}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

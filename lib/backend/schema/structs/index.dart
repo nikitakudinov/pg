@@ -15,5 +15,4 @@ export 'player_struct.dart';
 export 'player_uid_struct.dart';
 export 'team_struct.dart';
 export 'tournament_struct.dart';
-export 'tournament_member_struct.dart';
 export 'user_struct.dart';

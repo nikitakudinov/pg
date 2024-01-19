@@ -1,4 +1,4 @@
-import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -60,13 +60,30 @@ class _TournamentViewMembersWidgetState
             ),
           ].addToStart(SizedBox(width: 15.0)).addToEnd(SizedBox(width: 15.0)),
         ),
-        Builder(
-          builder: (context) {
-            final tournamentMembersRow = FFAppState()
-                .MAINDATA
-                .tournamentMembers
-                .where((e) => e.tournamentId == widget.tournamentId)
-                .toList();
+        FutureBuilder<List<TournamentMembersRow>>(
+          future: TournamentMembersTable().queryRows(
+            queryFn: (q) => q.eq(
+              'tournament_id',
+              widget.tournamentId,
+            ),
+          ),
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      FlutterFlowTheme.of(context).primary,
+                    ),
+                  ),
+                ),
+              );
+            }
+            List<TournamentMembersRow> listViewTournamentMembersRowList =
+                snapshot.data!;
             return ListView.separated(
               padding: EdgeInsets.fromLTRB(
                 0,
@@ -77,11 +94,11 @@ class _TournamentViewMembersWidgetState
               primary: false,
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              itemCount: tournamentMembersRow.length,
+              itemCount: listViewTournamentMembersRowList.length,
               separatorBuilder: (_, __) => SizedBox(height: 5.0),
-              itemBuilder: (context, tournamentMembersRowIndex) {
-                final tournamentMembersRowItem =
-                    tournamentMembersRow[tournamentMembersRowIndex];
+              itemBuilder: (context, listViewIndex) {
+                final listViewTournamentMembersRow =
+                    listViewTournamentMembersRowList[listViewIndex];
                 return Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                   child: Container(
@@ -98,7 +115,7 @@ class _TournamentViewMembersWidgetState
                           'TEAM_VIEW',
                           queryParameters: {
                             'teamID': serializeParam(
-                              tournamentMembersRowItem.teamId,
+                              listViewTournamentMembersRow.teamId,
                               ParamType.int,
                             ),
                           }.withoutNulls,
@@ -125,7 +142,7 @@ class _TournamentViewMembersWidgetState
                                       .teams
                                       .where((e) =>
                                           e.teamId ==
-                                          tournamentMembersRowItem.teamId)
+                                          listViewTournamentMembersRow.teamId)
                                       .toList()
                                       .first
                                       .teamLogo,
@@ -146,22 +163,14 @@ class _TournamentViewMembersWidgetState
                                     .teams
                                     .where((e) =>
                                         e.teamId ==
-                                        tournamentMembersRowItem.teamId)
+                                        listViewTournamentMembersRow.teamId)
                                     .toList()
                                     .first
                                     .teamTag,
                                 style: FlutterFlowTheme.of(context).titleMedium,
                               ),
                               Text(
-                                FFAppState()
-                                    .MAINDATA
-                                    .teams
-                                    .where((e) =>
-                                        e.teamId ==
-                                        tournamentMembersRowItem.teamId)
-                                    .toList()
-                                    .first
-                                    .teamName,
+                                'Hello World',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Row(
@@ -181,16 +190,7 @@ class _TournamentViewMembersWidgetState
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          FFAppState()
-                                              .MAINDATA
-                                              .teams
-                                              .where((e) =>
-                                                  e.teamId ==
-                                                  tournamentMembersRowItem
-                                                      .teamId)
-                                              .toList()
-                                              .first
-                                              .teamFlag,
+                                          'https://picsum.photos/seed/728/600',
                                           width: 20.0,
                                           height: 12.0,
                                           fit: BoxFit.cover,
@@ -199,15 +199,7 @@ class _TournamentViewMembersWidgetState
                                     ),
                                   ),
                                   Text(
-                                    FFAppState()
-                                        .MAINDATA
-                                        .teams
-                                        .where((e) =>
-                                            e.teamId ==
-                                            tournamentMembersRowItem.teamId)
-                                        .toList()
-                                        .first
-                                        .teamCountry,
+                                    'Hello World',
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
