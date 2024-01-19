@@ -463,7 +463,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               .bodyMedium,
                                         ),
                                         Text(
-                                          'chat_members',
+                                          'TOURNAMNT_members',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
