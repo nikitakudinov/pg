@@ -65,13 +65,13 @@ class _HomeWidgetState extends State<HomeWidget> {
           await action_blocks.loadALLplayers(context);
         }(),
       );
+      await action_blocks.teamsloader(context);
+      setState(() {});
       unawaited(
         () async {
           await action_blocks.chatsloader(context);
         }(),
       );
-      await action_blocks.teamsloader(context);
-      setState(() {});
       setState(() {
         FFAppState().AUTHPLAYERTEAM = FFAppState()
             .MAINDATA
