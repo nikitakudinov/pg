@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 Future countriesloader(BuildContext context) async {
   ApiCallResponse? jsonCOUNTRIES;
@@ -290,14 +289,4 @@ Future maindataloader(BuildContext context) async {
             PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
     );
   });
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(
-        'Данные загружены',
-        style: TextStyle(),
-      ),
-      duration: Duration(milliseconds: 4000),
-      backgroundColor: FlutterFlowTheme.of(context).secondary,
-    ),
-  );
 }
