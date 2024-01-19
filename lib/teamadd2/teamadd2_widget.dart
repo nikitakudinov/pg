@@ -437,10 +437,7 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                               idList: currentUserUid,
                             );
                             setState(() {
-                              _model.chatMembersArray = [''];
-                            });
-                            setState(() {
-                              _model.addToChatMembersArray('0');
+                              _model.chatMembersArray = ['0'];
                             });
                             setState(() {
                               _model.addToChatMembersArray(currentUserUid);

@@ -19,7 +19,7 @@ class Teamadd2Model extends FlutterFlowModel<Teamadd2Widget> {
   String teamLogoPath =
       'https://supabase.proplayclub.ru/storage/v1/object/public/playground/image-7XR1sw6U--transformed.png';
 
-  List<String> chatMembersArray = [''];
+  List<String> chatMembersArray = ['0'];
   void addToChatMembersArray(String item) => chatMembersArray.add(item);
   void removeFromChatMembersArray(String item) => chatMembersArray.remove(item);
   void removeAtIndexFromChatMembersArray(int index) =>
