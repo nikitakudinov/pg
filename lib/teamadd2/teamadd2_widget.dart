@@ -479,6 +479,21 @@ class _Teamadd2WidgetState extends State<Teamadd2Widget> {
                                     ?.first,
                               ),
                             );
+                            await PlayersTable().update(
+                              data: {
+                                'player_team': TeamGroup.teambycreatorCall
+                                    .teamid(
+                                      (_model.jsonTEAM?.jsonBody ?? ''),
+                                    )
+                                    ?.first,
+                                'player_tag': _model.teamTagController.text,
+                                'player_team_role': ['Основатель'],
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'player_uid',
+                                currentUserUid,
+                              ),
+                            );
                             await action_blocks.maindataloader(context);
 
                             context.pushNamed(
