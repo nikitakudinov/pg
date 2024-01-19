@@ -170,7 +170,15 @@ class _TournamentViewMembersWidgetState
                                 style: FlutterFlowTheme.of(context).titleMedium,
                               ),
                               Text(
-                                'Hello World',
+                                FFAppState()
+                                    .MAINDATA
+                                    .teams
+                                    .where((e) =>
+                                        e.teamId ==
+                                        listViewTournamentMembersRow.teamId)
+                                    .toList()
+                                    .first
+                                    .teamName,
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Row(
@@ -190,7 +198,16 @@ class _TournamentViewMembersWidgetState
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          'https://picsum.photos/seed/728/600',
+                                          FFAppState()
+                                              .MAINDATA
+                                              .teams
+                                              .where((e) =>
+                                                  e.teamId ==
+                                                  listViewTournamentMembersRow
+                                                      .teamId)
+                                              .toList()
+                                              .first
+                                              .teamFlag,
                                           width: 20.0,
                                           height: 12.0,
                                           fit: BoxFit.cover,
@@ -199,7 +216,15 @@ class _TournamentViewMembersWidgetState
                                     ),
                                   ),
                                   Text(
-                                    'Hello World',
+                                    FFAppState()
+                                        .MAINDATA
+                                        .teams
+                                        .where((e) =>
+                                            e.teamId ==
+                                            listViewTournamentMembersRow.teamId)
+                                        .toList()
+                                        .first
+                                        .teamCountry,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
