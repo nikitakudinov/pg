@@ -355,7 +355,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         .MAINDATA
                                         .tournaments
                                         .toList()
-                                        .take(1)
+                                        .take(5)
                                         .toList();
                                     return ListView.separated(
                                       padding: EdgeInsets.fromLTRB(
