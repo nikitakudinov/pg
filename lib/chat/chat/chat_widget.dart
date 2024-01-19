@@ -457,6 +457,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                   snapshot.data!;
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
+                                reverse: true,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewMessageRowList.length,
