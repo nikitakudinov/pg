@@ -288,8 +288,6 @@ Future maindataloader(BuildContext context) async {
         ..authplayer =
             PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? '')),
     );
-    FFAppState().AUTHPLAYER =
-        PlayerStruct.maybeFromMap((jsonAUTRHPLAYER?.jsonBody ?? ''))!;
   });
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
