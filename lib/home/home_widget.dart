@@ -71,6 +71,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         }(),
       );
       await action_blocks.teamsloader(context);
+      setState(() {});
       setState(() {
         FFAppState().AUTHPLAYERTEAM = FFAppState()
             .MAINDATA
