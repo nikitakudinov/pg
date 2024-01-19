@@ -1277,6 +1277,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       notificationsListItem),
                                                                 ),
                                                             );
+                                                            FFAppState()
+                                                                .STRINGARRAY = [];
                                                           });
 
                                                           context.pushNamed(
