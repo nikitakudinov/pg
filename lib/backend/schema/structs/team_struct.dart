@@ -27,6 +27,7 @@ class TeamStruct extends BaseStruct {
     int? teamMatchRoundLoses,
     double? teamWLmatches,
     String? teamHeader,
+    String? updatedAt,
   })  : _teamCreatedAt = teamCreatedAt,
         _teamUpdatedAt = teamUpdatedAt,
         _teamName = teamName,
@@ -46,7 +47,8 @@ class TeamStruct extends BaseStruct {
         _teamMatchRoundWins = teamMatchRoundWins,
         _teamMatchRoundLoses = teamMatchRoundLoses,
         _teamWLmatches = teamWLmatches,
-        _teamHeader = teamHeader;
+        _teamHeader = teamHeader,
+        _updatedAt = updatedAt;
 
   // "team_created_at" field.
   String? _teamCreatedAt;
@@ -184,6 +186,12 @@ class TeamStruct extends BaseStruct {
   set teamHeader(String? val) => _teamHeader = val;
   bool hasTeamHeader() => _teamHeader != null;
 
+  // "updated_at" field.
+  String? _updatedAt;
+  String get updatedAt => _updatedAt ?? '';
+  set updatedAt(String? val) => _updatedAt = val;
+  bool hasUpdatedAt() => _updatedAt != null;
+
   static TeamStruct fromMap(Map<String, dynamic> data) => TeamStruct(
         teamCreatedAt: data['team_created_at'] as String?,
         teamUpdatedAt: data['team_updated_at'] as String?,
@@ -206,6 +214,7 @@ class TeamStruct extends BaseStruct {
         teamMatchRoundLoses: castToType<int>(data['team_match_round_loses']),
         teamWLmatches: castToType<double>(data['team_WLmatches']),
         teamHeader: data['team_header'] as String?,
+        updatedAt: data['updated_at'] as String?,
       );
 
   static TeamStruct? maybeFromMap(dynamic data) =>
@@ -232,6 +241,7 @@ class TeamStruct extends BaseStruct {
         'team_match_round_loses': _teamMatchRoundLoses,
         'team_WLmatches': _teamWLmatches,
         'team_header': _teamHeader,
+        'updated_at': _updatedAt,
       }.withoutNulls;
 
   @override
@@ -314,6 +324,10 @@ class TeamStruct extends BaseStruct {
         ),
         'team_header': serializeParam(
           _teamHeader,
+          ParamType.String,
+        ),
+        'updated_at': serializeParam(
+          _updatedAt,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -420,6 +434,11 @@ class TeamStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        updatedAt: deserializeParam(
+          data['updated_at'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -447,7 +466,8 @@ class TeamStruct extends BaseStruct {
         teamMatchRoundWins == other.teamMatchRoundWins &&
         teamMatchRoundLoses == other.teamMatchRoundLoses &&
         teamWLmatches == other.teamWLmatches &&
-        teamHeader == other.teamHeader;
+        teamHeader == other.teamHeader &&
+        updatedAt == other.updatedAt;
   }
 
   @override
@@ -471,7 +491,8 @@ class TeamStruct extends BaseStruct {
         teamMatchRoundWins,
         teamMatchRoundLoses,
         teamWLmatches,
-        teamHeader
+        teamHeader,
+        updatedAt
       ]);
 }
 
@@ -496,6 +517,7 @@ TeamStruct createTeamStruct({
   int? teamMatchRoundLoses,
   double? teamWLmatches,
   String? teamHeader,
+  String? updatedAt,
 }) =>
     TeamStruct(
       teamCreatedAt: teamCreatedAt,
@@ -518,4 +540,5 @@ TeamStruct createTeamStruct({
       teamMatchRoundLoses: teamMatchRoundLoses,
       teamWLmatches: teamWLmatches,
       teamHeader: teamHeader,
+      updatedAt: updatedAt,
     );
