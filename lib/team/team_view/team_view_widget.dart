@@ -116,7 +116,7 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
         body: SafeArea(
           top: true,
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               wrapWithModel(
                 model: _model.teamViewHeaderModel,
@@ -125,21 +125,17 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                   teamId: widget.teamID,
                 ),
               ),
-              Expanded(
-                child: wrapWithModel(
-                  model: _model.teamViewMembersModel,
-                  updateCallback: () => setState(() {}),
-                  child: TeamViewMembersWidget(
-                    teamId: widget.teamID,
-                  ),
+              wrapWithModel(
+                model: _model.teamViewMembersModel,
+                updateCallback: () => setState(() {}),
+                child: TeamViewMembersWidget(
+                  teamId: widget.teamID,
                 ),
               ),
-              Expanded(
-                child: wrapWithModel(
-                  model: _model.teamViewTournamentsModel,
-                  updateCallback: () => setState(() {}),
-                  child: TeamViewTournamentsWidget(),
-                ),
+              wrapWithModel(
+                model: _model.teamViewTournamentsModel,
+                updateCallback: () => setState(() {}),
+                child: TeamViewTournamentsWidget(),
               ),
             ],
           ),

@@ -49,7 +49,7 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
           children: [
             Text(
               'Учавствует в турнирах',
-              style: FlutterFlowTheme.of(context).titleMedium,
+              style: FlutterFlowTheme.of(context).titleLarge,
             ),
           ].addToStart(SizedBox(width: 15.0)).addToEnd(SizedBox(width: 15.0)),
         ),
