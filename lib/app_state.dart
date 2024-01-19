@@ -565,6 +565,35 @@ class FFAppState extends ChangeNotifier {
   void updateAUTHPLAYERTEAMStruct(Function(TeamStruct) updateFn) {
     updateFn(_AUTHPLAYERTEAM);
   }
+
+  List<String> _STRINGARRAY = [];
+  List<String> get STRINGARRAY => _STRINGARRAY;
+  set STRINGARRAY(List<String> _value) {
+    _STRINGARRAY = _value;
+  }
+
+  void addToSTRINGARRAY(String _value) {
+    _STRINGARRAY.add(_value);
+  }
+
+  void removeFromSTRINGARRAY(String _value) {
+    _STRINGARRAY.remove(_value);
+  }
+
+  void removeAtIndexFromSTRINGARRAY(int _index) {
+    _STRINGARRAY.removeAt(_index);
+  }
+
+  void updateSTRINGARRAYAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _STRINGARRAY[_index] = updateFn(_STRINGARRAY[_index]);
+  }
+
+  void insertAtIndexInSTRINGARRAY(int _index, String _value) {
+    _STRINGARRAY.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

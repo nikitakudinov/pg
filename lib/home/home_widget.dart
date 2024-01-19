@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/authplayerteam_widget.dart';
@@ -1206,6 +1207,53 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               );
                                                             }(),
                                                           );
+                                                          _model.jsonTEAMCHAT =
+                                                              await MessagingGroup
+                                                                  .getchatbyidCall
+                                                                  .call(
+                                                            chatID: notificationsListItem
+                                                                .notificationFromTeam
+                                                                .teamChatId,
+                                                          );
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .STRINGARRAY =
+                                                                MessagingGroup
+                                                                    .getchatbyidCall
+                                                                    .chatmembers(
+                                                                      (_model.jsonTEAMCHAT
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )!
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
+                                                          });
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .addToSTRINGARRAY(
+                                                                    currentUserUid);
+                                                          });
+                                                          await ChatsTable()
+                                                              .update(
+                                                            data: {
+                                                              'chat_members':
+                                                                  FFAppState()
+                                                                      .STRINGARRAY,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'chat_id',
+                                                              MessagingGroup
+                                                                  .getchatbyidCall
+                                                                  .chatid(
+                                                                (_model.jsonTEAMCHAT
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ),
+                                                            ),
+                                                          );
                                                           unawaited(
                                                             () async {
                                                               await NotificationsTable()
@@ -1233,6 +1281,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
                                                           context.pushNamed(
                                                               'HOME');
+
+                                                          setState(() {});
                                                         },
                                                         text: 'Вступить',
                                                         options:

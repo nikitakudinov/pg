@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/authplayerteam_widget.dart';
@@ -29,6 +30,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   late AuthplayerteamModel authplayerteamModel;
   // Model for ratingTeamsTabs component.
   late RatingTeamsTabsModel ratingTeamsTabsModel;
+  // Stores action output result for [Backend Call - API (GETCHATBYID)] action in Button widget.
+  ApiCallResponse? jsonTEAMCHAT;
   // Model for LOADINGINDICATOR component.
   late LoadingindicatorModel loadingindicatorModel;
 
