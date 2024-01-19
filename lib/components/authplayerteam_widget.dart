@@ -95,88 +95,90 @@ class _AuthplayerteamWidgetState extends State<AuthplayerteamWidget>
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                _model.jsonTEAMCHAT =
-                                    await MessagingGroup.getchatbyidCall.call(
-                                  chatID:
-                                      FFAppState().AUTHPLAYERTEAM.teamChatId,
-                                );
-                                setState(() {
-                                  FFAppState().STRINGARRAY = MessagingGroup
-                                      .getchatbyidCall
-                                      .chatmembers(
+                            if (FFAppState().AUTHPLAYER.playerTeamRole.first !=
+                                'Основатель')
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  _model.jsonTEAMCHAT =
+                                      await MessagingGroup.getchatbyidCall.call(
+                                    chatID:
+                                        FFAppState().AUTHPLAYERTEAM.teamChatId,
+                                  );
+                                  setState(() {
+                                    FFAppState().STRINGARRAY = MessagingGroup
+                                        .getchatbyidCall
+                                        .chatmembers(
+                                          (_model.jsonTEAMCHAT?.jsonBody ?? ''),
+                                        )!
+                                        .toList()
+                                        .cast<String>();
+                                  });
+                                  setState(() {
+                                    FFAppState()
+                                        .removeFromSTRINGARRAY(currentUserUid);
+                                  });
+                                  await ChatsTable().update(
+                                    data: {
+                                      'chat_members': FFAppState().STRINGARRAY,
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'chat_id',
+                                      MessagingGroup.getchatbyidCall.chatid(
                                         (_model.jsonTEAMCHAT?.jsonBody ?? ''),
-                                      )!
-                                      .toList()
-                                      .cast<String>();
-                                });
-                                setState(() {
-                                  FFAppState()
-                                      .removeFromSTRINGARRAY(currentUserUid);
-                                });
-                                await ChatsTable().update(
-                                  data: {
-                                    'chat_members': FFAppState().STRINGARRAY,
-                                  },
-                                  matchingRows: (rows) => rows.eq(
-                                    'chat_id',
-                                    MessagingGroup.getchatbyidCall.chatid(
-                                      (_model.jsonTEAMCHAT?.jsonBody ?? ''),
+                                      ),
                                     ),
-                                  ),
-                                );
-                                await PlayersTable().update(
-                                  data: {
-                                    'player_team': 0,
-                                    'player_team_role': ['Вне команды'],
-                                    'player_team_joined_at':
-                                        getCurrentTimestamp.toString(),
-                                    'player_team_lineup': false,
-                                    'player_tag': 'вне команды',
-                                  },
-                                  matchingRows: (rows) => rows.eq(
-                                    'player_uid',
-                                    currentUserUid,
-                                  ),
-                                );
-                                if (Navigator.of(context).canPop()) {
-                                  context.pop();
-                                }
-                                context.pushNamed('HOME');
+                                  );
+                                  await PlayersTable().update(
+                                    data: {
+                                      'player_team': 0,
+                                      'player_team_role': ['Вне команды'],
+                                      'player_team_joined_at':
+                                          getCurrentTimestamp.toString(),
+                                      'player_team_lineup': false,
+                                      'player_tag': 'вне команды',
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'player_uid',
+                                      currentUserUid,
+                                    ),
+                                  );
+                                  if (Navigator.of(context).canPop()) {
+                                    context.pop();
+                                  }
+                                  context.pushNamed('HOME');
 
-                                setState(() {
-                                  FFAppState().STRINGARRAY = [];
-                                });
-                                setState(() {
-                                  _model.teamActionslistVISIBILITY = false;
-                                });
+                                  setState(() {
+                                    FFAppState().STRINGARRAY = [];
+                                  });
+                                  setState(() {
+                                    _model.teamActionslistVISIBILITY = false;
+                                  });
 
-                                setState(() {});
-                              },
-                              text: 'Выйти из команды',
-                              icon: Icon(
-                                Icons.person_remove_sharp,
-                                size: 15.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: 140.0,
-                                height: 30.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                  setState(() {});
+                                },
+                                text: 'Выйти из команды',
+                                icon: Icon(
+                                  Icons.person_remove_sharp,
+                                  size: 15.0,
                                 ),
-                                borderRadius: BorderRadius.circular(4.0),
+                                options: FFButtonOptions(
+                                  width: 140.0,
+                                  height: 30.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).bodySmall,
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(4.0),
+                                ),
                               ),
-                            ),
                           ].divide(SizedBox(height: 5.0)),
                         ).animateOnPageLoad(
                             animationsMap['columnOnPageLoadAnimation']!),
