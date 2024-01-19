@@ -133,11 +133,6 @@ class _TeamViewWidgetState extends State<TeamViewWidget> {
                   ),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-              ),
             ],
           ),
         ),
