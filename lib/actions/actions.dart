@@ -240,6 +240,7 @@ Future maindataloader(BuildContext context) async {
   jsonNOTIFICATIONS = await MessagingGroup.gETuserNotificationsCall.call(
     authUser: currentUserUid,
   );
+  FFAppState().MAINDATA = MaindataStruct();
   FFAppState().update(() {
     FFAppState().updateMAINDATAStruct(
       (e) => e
