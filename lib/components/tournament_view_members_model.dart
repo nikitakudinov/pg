@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'tournament_view_members_widget.dart' show TournamentViewMembersWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,8 @@ class TournamentViewMembersModel
   ///  Local state fields for this component.
 
   bool listVISIBILITY = false;
+
+  int pageNumber = 1;
 
   /// Initialization and disposal methods.
 
