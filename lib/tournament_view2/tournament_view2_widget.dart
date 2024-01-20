@@ -378,13 +378,22 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                             ),
                           ),
                         ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              'Организаторы турнира',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context).titleLarge,
+                            ),
+                          ]
+                              .addToStart(SizedBox(width: 15.0))
+                              .addToEnd(SizedBox(width: 15.0)),
+                        ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
+                          decoration: BoxDecoration(),
                           child: wrapWithModel(
                             model: _model.tournamentvieworganizatorsModel,
                             updateCallback: () => setState(() {}),
