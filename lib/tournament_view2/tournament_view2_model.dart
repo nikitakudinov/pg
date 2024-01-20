@@ -7,6 +7,7 @@ import '/components/screenshots_in_notification_widget.dart';
 import '/components/tournament_info_tabs/tournament_info_tabs_widget.dart';
 import '/components/tournament_view_members_widget.dart';
 import '/components/tournamentgrid_widget.dart';
+import '/components/tournamentvieworganizators_widget.dart';
 import '/components/vlist_i_t_e_m_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -36,6 +37,8 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
   late TournamentgridModel tournamentgridModel;
   // Model for TOURNAMENT-VIEW-MEMBERS component.
   late TournamentViewMembersModel tournamentViewMembersModel;
+  // Model for TOURNAMENTVIEWORGANIZATORS component.
+  late TournamentvieworganizatorsModel tournamentvieworganizatorsModel;
 
   /// Initialization and disposal methods.
 
@@ -46,6 +49,8 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
     tournamentgridModel = createModel(context, () => TournamentgridModel());
     tournamentViewMembersModel =
         createModel(context, () => TournamentViewMembersModel());
+    tournamentvieworganizatorsModel =
+        createModel(context, () => TournamentvieworganizatorsModel());
   }
 
   void dispose() {
@@ -54,6 +59,7 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
     tournamentInfoTabsModel.dispose();
     tournamentgridModel.dispose();
     tournamentViewMembersModel.dispose();
+    tournamentvieworganizatorsModel.dispose();
   }
 
   /// Action blocks are added here.
