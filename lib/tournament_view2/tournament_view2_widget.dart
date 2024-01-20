@@ -366,8 +366,8 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                           ),
                           child: wrapWithModel(
                             model: _model.tournamentViewMembersModel,
