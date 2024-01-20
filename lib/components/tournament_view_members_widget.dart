@@ -65,9 +65,12 @@ class _TournamentViewMembersWidgetState
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text(
-                'Участники турнира',
-                style: FlutterFlowTheme.of(context).titleLarge,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                child: Text(
+                  'Участники турнира',
+                  style: FlutterFlowTheme.of(context).titleLarge,
+                ),
               ),
             ].addToStart(SizedBox(width: 15.0)).addToEnd(SizedBox(width: 15.0)),
           ),
@@ -271,87 +274,92 @@ class _TournamentViewMembersWidgetState
             ),
           ),
         ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FFButtonWidget(
-              onPressed: () async {
-                setState(() {
-                  _model.pageNumber = _model.pageNumber + -1;
-                });
-              },
-              text: '',
-              icon: Icon(
-                FFIcons.karrowLeftMD,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 10.0,
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FFButtonWidget(
+                onPressed: () async {
+                  setState(() {
+                    _model.pageNumber = _model.pageNumber + -1;
+                  });
+                },
+                text: '',
+                icon: Icon(
+                  FFIcons.karrowLeftMD,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 10.0,
+                ),
+                options: FFButtonOptions(
+                  width: 30.0,
+                  height: 30.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Cabin Condensed',
+                        color: Colors.white,
+                      ),
+                  elevation: 3.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
               ),
-              options: FFButtonOptions(
+              Container(
                 width: 30.0,
                 height: 30.0,
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Cabin Condensed',
-                      color: Colors.white,
-                    ),
-                elevation: 3.0,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-            ),
-            Container(
-              width: 30.0,
-              height: 30.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Text(
-                valueOrDefault<String>(
-                  '${_model.pageNumber.toString()}',
-                  '1',
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Text(
+                  valueOrDefault<String>(
+                    '${_model.pageNumber.toString()}',
+                    '1',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium,
               ),
-            ),
-            FFButtonWidget(
-              onPressed: () async {
-                setState(() {
-                  _model.pageNumber = _model.pageNumber + 1;
-                });
-              },
-              text: '',
-              icon: Icon(
-                FFIcons.karrowRightMD,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 10.0,
-              ),
-              options: FFButtonOptions(
-                width: 30.0,
-                height: 30.0,
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Cabin Condensed',
-                      color: Colors.white,
-                    ),
-                elevation: 3.0,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
+              FFButtonWidget(
+                onPressed: () async {
+                  setState(() {
+                    _model.pageNumber = _model.pageNumber + 1;
+                  });
+                },
+                text: '',
+                icon: Icon(
+                  FFIcons.karrowRightMD,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 10.0,
                 ),
-                borderRadius: BorderRadius.circular(5.0),
+                options: FFButtonOptions(
+                  width: 30.0,
+                  height: 30.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Cabin Condensed',
+                        color: Colors.white,
+                      ),
+                  elevation: 3.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
               ),
-            ),
-          ].divide(SizedBox(width: 5.0)),
+            ].divide(SizedBox(width: 5.0)),
+          ),
         ),
       ].addToStart(SizedBox(height: 15.0)).addToEnd(SizedBox(height: 15.0)),
     );
