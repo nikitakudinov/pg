@@ -73,7 +73,6 @@ class _TournamentViewMembersWidgetState
           ),
         ),
         Container(
-          width: MediaQuery.sizeOf(context).width * 1.0,
           decoration: BoxDecoration(),
           child: Visibility(
             visible: _model.listVISIBILITY,
