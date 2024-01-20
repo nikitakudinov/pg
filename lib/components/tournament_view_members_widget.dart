@@ -228,7 +228,9 @@ class _TournamentViewMembersWidgetState
                             ),
                           ],
                         ),
-                      ],
+                      ]
+                          .addToStart(SizedBox(width: 15.0))
+                          .addToEnd(SizedBox(width: 15.0)),
                     ),
                   );
                 },
