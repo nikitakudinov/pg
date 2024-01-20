@@ -114,7 +114,16 @@ class _TournamentvieworganizatorsWidgetState
                             'PLAYER-VIEW',
                             queryParameters: {
                               'playerId': serializeParam(
-                                0,
+                                FFAppState()
+                                    .MAINDATA
+                                    .players
+                                    .where((e) =>
+                                        e.playerUid ==
+                                        listViewTournamentOrganizatorsRow
+                                            .playerUid)
+                                    .toList()
+                                    .first
+                                    .playerId,
                                 ParamType.int,
                               ),
                             }.withoutNulls,
