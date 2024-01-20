@@ -76,24 +76,54 @@ class _TournamentvieworganizatorsWidgetState
               }
               List<TournamentOrganizatorsRow>
                   listViewTournamentOrganizatorsRowList = snapshot.data!;
-              return ListView.builder(
+              return ListView.separated(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
                 itemCount: listViewTournamentOrganizatorsRowList.length,
+                separatorBuilder: (_, __) => SizedBox(width: 15.0),
                 itemBuilder: (context, listViewIndex) {
                   final listViewTournamentOrganizatorsRow =
                       listViewTournamentOrganizatorsRowList[listViewIndex];
-                  return Text(
-                    FFAppState()
-                        .MAINDATA
-                        .players
-                        .where((e) =>
-                            e.playerUid ==
-                            listViewTournamentOrganizatorsRow.playerUid)
-                        .toList()
-                        .first
-                        .playerNickname,
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: 65.0,
+                        height: 65.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            'https://picsum.photos/seed/150/600',
+                            width: 65.0,
+                            height: 65.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            valueOrDefault<String>(
+                              '${FFAppState().MAINDATA.teams.where((e) => e.teamId == FFAppState().MAINDATA.players.where((e) => e.playerUid == listViewTournamentOrganizatorsRow.playerUid).toList().first.playerTeam).toList().first.teamTag}',
+                              'TAG',
+                            ),
+                            style: FlutterFlowTheme.of(context).titleMedium,
+                          ),
+                          Text(
+                            valueOrDefault<String>(
+                              '${FFAppState().MAINDATA.players.where((e) => e.playerUid == listViewTournamentOrganizatorsRow.playerUid).toList().first.playerNickname}',
+                              'Никнейм',
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ].divide(SizedBox(width: 3.0)),
+                      ),
+                    ],
                   );
                 },
               );
