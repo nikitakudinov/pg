@@ -213,6 +213,34 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                                 .toList()[0],
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 15.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Организаторы турнира',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context).titleLarge,
+                              ),
+                            ]
+                                .addToStart(SizedBox(width: 15.0))
+                                .addToEnd(SizedBox(width: 15.0)),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(),
+                          child: wrapWithModel(
+                            model: _model.tournamentvieworganizatorsModel,
+                            updateCallback: () => setState(() {}),
+                            child: TournamentvieworganizatorsWidget(
+                              tournamentId: widget.tournamentId,
+                            ),
+                          ),
+                        ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -374,30 +402,6 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                             model: _model.tournamentViewMembersModel,
                             updateCallback: () => setState(() {}),
                             child: TournamentViewMembersWidget(
-                              tournamentId: widget.tournamentId,
-                            ),
-                          ),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              'Организаторы турнира',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context).titleLarge,
-                            ),
-                          ]
-                              .addToStart(SizedBox(width: 15.0))
-                              .addToEnd(SizedBox(width: 15.0)),
-                        ),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(),
-                          child: wrapWithModel(
-                            model: _model.tournamentvieworganizatorsModel,
-                            updateCallback: () => setState(() {}),
-                            child: TournamentvieworganizatorsWidget(
                               tournamentId: widget.tournamentId,
                             ),
                           ),

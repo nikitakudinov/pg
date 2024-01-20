@@ -29,6 +29,8 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
   late VlistITEMModel vlistITEMModel;
   // Model for tournamentInfoTabs component.
   late TournamentInfoTabsModel tournamentInfoTabsModel;
+  // Model for TOURNAMENTVIEWORGANIZATORS component.
+  late TournamentvieworganizatorsModel tournamentvieworganizatorsModel;
   // Stores action output result for [Backend Call - API (TOURNAMENTMEMBERS)] action in Button widget.
   ApiCallResponse? apiResultzr9;
   // Stores action output result for [Backend Call - Update Row] action in Button widget.
@@ -37,8 +39,6 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
   late TournamentgridModel tournamentgridModel;
   // Model for TOURNAMENT-VIEW-MEMBERS component.
   late TournamentViewMembersModel tournamentViewMembersModel;
-  // Model for TOURNAMENTVIEWORGANIZATORS component.
-  late TournamentvieworganizatorsModel tournamentvieworganizatorsModel;
 
   /// Initialization and disposal methods.
 
@@ -46,20 +46,20 @@ class TournamentView2Model extends FlutterFlowModel<TournamentView2Widget> {
     vlistITEMModel = createModel(context, () => VlistITEMModel());
     tournamentInfoTabsModel =
         createModel(context, () => TournamentInfoTabsModel());
+    tournamentvieworganizatorsModel =
+        createModel(context, () => TournamentvieworganizatorsModel());
     tournamentgridModel = createModel(context, () => TournamentgridModel());
     tournamentViewMembersModel =
         createModel(context, () => TournamentViewMembersModel());
-    tournamentvieworganizatorsModel =
-        createModel(context, () => TournamentvieworganizatorsModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     vlistITEMModel.dispose();
     tournamentInfoTabsModel.dispose();
+    tournamentvieworganizatorsModel.dispose();
     tournamentgridModel.dispose();
     tournamentViewMembersModel.dispose();
-    tournamentvieworganizatorsModel.dispose();
   }
 
   /// Action blocks are added here.
