@@ -52,7 +52,7 @@ class _TournamentvieworganizatorsWidgetState
       width: MediaQuery.sizeOf(context).width * 1.0,
       decoration: BoxDecoration(),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FutureBuilder<List<TournamentOrganizatorsRow>>(
