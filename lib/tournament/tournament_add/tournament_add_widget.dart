@@ -398,8 +398,6 @@ class _TournamentAddWidgetState extends State<TournamentAddWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           await TournamentsTable().insert({
-                            'tournament_created_at':
-                                supaSerialize<DateTime>(getCurrentTimestamp),
                             'tournament_name':
                                 _model.tournamentNameController.text,
                             'tournament_tag':

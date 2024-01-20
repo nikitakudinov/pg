@@ -1,4 +1,4 @@
-import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -131,100 +131,50 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
           ),
         ),
         if (_model.activeVISIBILITY)
-          Builder(
-            builder: (context) {
-              final active = FFAppState()
-                  .MAINDATA
-                  .tournaments
-                  .where((e) => e.tournamentMembersId.contains(widget.teamId))
-                  .toList();
-              return ListView.separated(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: active.length,
-                separatorBuilder: (_, __) => SizedBox(height: 5.0),
-                itemBuilder: (context, activeIndex) {
-                  final activeItem = active[activeIndex];
-                  return Visibility(
-                    visible: activeItem.tournamentStatus == 'Активный',
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 15.0, 0.0),
-                                child: Container(
-                                  width: 45.0,
-                                  height: 45.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    child: Image.network(
-                                      activeItem.tournamentLogo,
-                                      width: 45.0,
-                                      height: 5.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    activeItem.tournamentTag,
-                                    style:
-                                        FlutterFlowTheme.of(context).titleLarge,
-                                  ),
-                                  Text(
-                                    activeItem.tournamentName,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+          FutureBuilder<List<TournamentMembersRow>>(
+            future: TournamentMembersTable().queryRows(
+              queryFn: (q) => q.eq(
+                'team_id',
+                widget.teamId,
+              ),
+            ),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
                       ),
                     ),
-                  );
-                },
-              );
-            },
-          ),
-        if (_model.comlitedVISIBILITY)
-          Builder(
-            builder: (context) {
-              final active = FFAppState()
-                  .MAINDATA
-                  .tournaments
-                  .where((e) => e.tournamentMembersId.contains(widget.teamId))
-                  .toList();
+                  ),
+                );
+              }
+              List<TournamentMembersRow> activeTournamentMembersRowList =
+                  snapshot.data!;
               return ListView.separated(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
-                itemCount: active.length,
+                itemCount: activeTournamentMembersRowList.length,
                 separatorBuilder: (_, __) => SizedBox(height: 5.0),
                 itemBuilder: (context, activeIndex) {
-                  final activeItem = active[activeIndex];
+                  final activeTournamentMembersRow =
+                      activeTournamentMembersRowList[activeIndex];
                   return Visibility(
-                    visible: activeItem.tournamentStatus == 'Завершен',
+                    visible: FFAppState()
+                            .MAINDATA
+                            .tournaments
+                            .where((e) =>
+                                e.tournamentId ==
+                                activeTournamentMembersRow.tournamentId)
+                            .toList()
+                            .first
+                            .tournamentStatus ==
+                        'Активный',
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
@@ -250,7 +200,16 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(5.0),
                                     child: Image.network(
-                                      activeItem.tournamentLogo,
+                                      FFAppState()
+                                          .MAINDATA
+                                          .tournaments
+                                          .where((e) =>
+                                              e.tournamentId ==
+                                              activeTournamentMembersRow
+                                                  .tournamentId)
+                                          .toList()
+                                          .first
+                                          .tournamentLogo,
                                       width: 45.0,
                                       height: 5.0,
                                       fit: BoxFit.cover,
@@ -263,12 +222,30 @@ class _TeamViewTournamentsWidgetState extends State<TeamViewTournamentsWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    activeItem.tournamentTag,
+                                    FFAppState()
+                                        .MAINDATA
+                                        .tournaments
+                                        .where((e) =>
+                                            e.tournamentId ==
+                                            activeTournamentMembersRow
+                                                .tournamentId)
+                                        .toList()
+                                        .first
+                                        .tournamentTag,
                                     style:
                                         FlutterFlowTheme.of(context).titleLarge,
                                   ),
                                   Text(
-                                    activeItem.tournamentName,
+                                    FFAppState()
+                                        .MAINDATA
+                                        .tournaments
+                                        .where((e) =>
+                                            e.tournamentId ==
+                                            activeTournamentMembersRow
+                                                .tournamentId)
+                                        .toList()
+                                        .first
+                                        .tournamentName,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
