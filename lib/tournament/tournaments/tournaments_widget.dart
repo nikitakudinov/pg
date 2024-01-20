@@ -3,8 +3,10 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +29,29 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TournamentsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.supaRealtime(
+        'tournaments',
+        () async {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text('Work'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+      );
+    });
   }
 
   @override
@@ -94,7 +119,8 @@ class _TournamentsWidgetState extends State<TournamentsWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
                 child: Builder(
                   builder: (context) {
-                    final tournamentsList = FFAppState().tournaments.toList();
+                    final tournamentsList =
+                        FFAppState().MAINDATA.tournaments.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
