@@ -9,6 +9,10 @@ import 'package:provider/provider.dart';
 
 class TournamentViewMembersModel
     extends FlutterFlowModel<TournamentViewMembersWidget> {
+  ///  Local state fields for this component.
+
+  bool listVISIBILITY = false;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
