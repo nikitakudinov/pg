@@ -93,11 +93,20 @@ class _TournamentvieworganizatorsWidgetState
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
-                            'https://picsum.photos/seed/150/600',
+                            FFAppState()
+                                .MAINDATA
+                                .players
+                                .where((e) =>
+                                    e.playerUid ==
+                                    listViewTournamentOrganizatorsRow.playerUid)
+                                .toList()
+                                .first
+                                .playerAvatar,
                             width: 65.0,
                             height: 65.0,
                             fit: BoxFit.cover,
