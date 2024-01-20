@@ -100,18 +100,12 @@ class _TournamentViewMembersWidgetState
                 }
                 List<TournamentMembersRow> listViewTournamentMembersRowList =
                     snapshot.data!;
-                return ListView.separated(
-                  padding: EdgeInsets.fromLTRB(
-                    0,
-                    10.0,
-                    0,
-                    10.0,
-                  ),
+                return ListView.builder(
+                  padding: EdgeInsets.zero,
                   primary: false,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemCount: listViewTournamentMembersRowList.length,
-                  separatorBuilder: (_, __) => SizedBox(height: 5.0),
                   itemBuilder: (context, listViewIndex) {
                     final listViewTournamentMembersRow =
                         listViewTournamentMembersRowList[listViewIndex];
