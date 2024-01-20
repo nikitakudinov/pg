@@ -331,7 +331,7 @@ class _TournamentViewMembersWidgetState
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                 ),
-                if (_model.pageNumber <= 7)
+                if (_model.pageNumber <= 6)
                   FFButtonWidget(
                     onPressed: () async {
                       setState(() {
