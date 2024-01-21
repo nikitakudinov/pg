@@ -10,7 +10,6 @@ export '/tournament/tournament_add/tournament_add_widget.dart'
 export '/tournament/tournaments/tournaments_widget.dart' show TournamentsWidget;
 export '/chat/chats/chats_widget.dart' show ChatsWidget;
 export '/chat/chat/chat_widget.dart' show ChatWidget;
-export '/player/players/players_widget.dart' show PlayersWidget;
 export '/tournament/tournament_edite/tournament_edite_widget.dart'
     show TournamentEditeWidget;
 export '/match/matches/matches_widget.dart' show MatchesWidget;

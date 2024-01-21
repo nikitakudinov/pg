@@ -965,40 +965,8 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                                             }())
                                               Expanded(
                                                 child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    await NotificationsTable()
-                                                        .insert({
-                                                      'notification_created_at':
-                                                          supaSerialize<
-                                                                  DateTime>(
-                                                              getCurrentTimestamp),
-                                                      'notification_from_player':
-                                                          currentUserUid,
-                                                      'notification_to_player':
-                                                          notificationsListItem
-                                                              .notificationFromPlayer
-                                                              .playerUid,
-                                                      'notification_type':
-                                                          'Отказ на предложение',
-                                                      'notification_body':
-                                                          'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
-                                                      'notification_category':
-                                                          'От игрока',
-                                                    });
-                                                    await NotificationsTable()
-                                                        .delete(
-                                                      matchingRows: (rows) =>
-                                                          rows.eq(
-                                                        'notification_id',
-                                                        notificationsListItem
-                                                            .notificationId,
-                                                      ),
-                                                    );
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .removeFromNotofications(
-                                                              notificationsListItem);
-                                                    });
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
                                                   },
                                                   text: 'Отказаться',
                                                   options: FFButtonOptions(
@@ -1064,7 +1032,7 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                                                               getCurrentTimestamp),
                                                       'notification_from_player':
                                                           FFAppState()
-                                                              .authPlayer
+                                                              .AUTHPLAYER
                                                               .playerUid,
                                                       'notification_to_player':
                                                           notificationsListItem
@@ -1073,7 +1041,7 @@ class _TournamentView2WidgetState extends State<TournamentView2Widget> {
                                                       'notification_type':
                                                           'Принял заявку вступления в клан',
                                                       'notification_body':
-                                                          'Игрок ${FFAppState().authPlayer.playerNickname}приянял приглашение вступить в команду.',
+                                                          'Игрок ${notificationsListItem.notificationFromPlayer.playerNickname}приянял приглашение вступить в команду.',
                                                       'notification_category':
                                                           'От игрока',
                                                     });

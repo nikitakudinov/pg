@@ -152,11 +152,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'PLAYERS',
-          path: '/players',
-          builder: (context, params) => PlayersWidget(),
-        ),
-        FFRoute(
           name: 'TOURNAMENT_EDITE',
           path: '/tournamentEdite',
           builder: (context, params) => TournamentEditeWidget(

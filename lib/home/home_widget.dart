@@ -1051,41 +1051,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   }())
                                                     Expanded(
                                                       child: FFButtonWidget(
-                                                        onPressed: () async {
-                                                          await NotificationsTable()
-                                                              .insert({
-                                                            'notification_created_at':
-                                                                supaSerialize<
-                                                                        DateTime>(
-                                                                    getCurrentTimestamp),
-                                                            'notification_from_player':
-                                                                currentUserUid,
-                                                            'notification_to_player':
-                                                                notificationsListItem
-                                                                    .notificationFromPlayer
-                                                                    .playerUid,
-                                                            'notification_type':
-                                                                'Отказ на предложение',
-                                                            'notification_body':
-                                                                'Игрок ${FFAppState().authPlayer.playerNickname} отказался от предложения вступить в вашу команду',
-                                                            'notification_category':
-                                                                'От игрока',
-                                                          });
-                                                          await NotificationsTable()
-                                                              .delete(
-                                                            matchingRows:
-                                                                (rows) =>
-                                                                    rows.eq(
-                                                              'notification_id',
-                                                              notificationsListItem
-                                                                  .notificationId,
-                                                            ),
-                                                          );
-                                                          setState(() {
-                                                            FFAppState()
-                                                                .removeFromNotofications(
-                                                                    notificationsListItem);
-                                                          });
+                                                        onPressed: () {
+                                                          print(
+                                                              'Button pressed ...');
                                                         },
                                                         text: 'Отказаться',
                                                         options:

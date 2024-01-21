@@ -1,6 +1,4 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -8,11 +6,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,23 +42,11 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
     super.initState();
     _model = createModel(context, () => TournamentEditeModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.tournamentLogo =
-            FFAppState().tournaments[widget.tournamentIndedx].tournamentLogo;
-      });
-      await action_blocks.countriesloader(context);
-      setState(() {});
-    });
-
     _model.expandableController1 = ExpandableController(initialExpanded: true);
-    _model.tournamentNameController ??= TextEditingController(
-        text: FFAppState().tournaments[widget.tournamentIndedx].tournamentName);
+    _model.tournamentNameController ??= TextEditingController();
     _model.tournamentNameFocusNode ??= FocusNode();
 
-    _model.tournamentTagController ??= TextEditingController(
-        text: FFAppState().tournaments[widget.tournamentIndedx].tournamentTag);
+    _model.tournamentTagController ??= TextEditingController();
     _model.tournamentTagFocusNode ??= FocusNode();
 
     _model.expandableController2 = ExpandableController(initialExpanded: true);
@@ -656,12 +640,22 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                                                     setState(() {}),
                                                 child: CountryPickerWidget(
                                                   selectedCountry: FFAppState()
-                                                      .tournaments[widget
-                                                          .tournamentIndedx]
+                                                      .MAINDATA
+                                                      .tournaments
+                                                      .where((e) =>
+                                                          e.tournamentId ==
+                                                          widget.tournamentId)
+                                                      .toList()
+                                                      .first
                                                       .tournamentCountry,
                                                   selectedFlag: FFAppState()
-                                                      .tournaments[widget
-                                                          .tournamentIndedx]
+                                                      .MAINDATA
+                                                      .tournaments
+                                                      .where((e) =>
+                                                          e.tournamentId ==
+                                                          widget.tournamentId)
+                                                      .toList()
+                                                      .first
                                                       .tournamentFlag,
                                                 ),
                                               ),
@@ -728,138 +722,115 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                         collapsed: Container(),
                         expanded: Container(
                           decoration: BoxDecoration(),
-                          child: Builder(
-                            builder: (context) {
-                              final tournamentItem = FFAppState()
-                                  .tournaments
-                                  .where((e) =>
-                                      e.tournamentId == widget.tournamentId)
-                                  .toList();
-                              return ListView.builder(
+                          child: ListView(
+                            padding: EdgeInsets.zero,
+                            primary: false,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            children: [
+                              ListView(
                                 padding: EdgeInsets.zero,
                                 primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                itemCount: tournamentItem.length,
-                                itemBuilder: (context, tournamentItemIndex) {
-                                  final tournamentItemItem =
-                                      tournamentItem[tournamentItemIndex];
-                                  return ListView(
-                                    padding: EdgeInsets.zero,
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 0.0, 15.0, 5.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 5.0, 0.0),
-                                                child: Container(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 5.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 5.0, 0.0),
+                                            child: Container(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                                child: Image.network(
+                                                  'https://picsum.photos/seed/811/600',
                                                   width: 50.0,
                                                   height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                    child: Image.network(
-                                                      'https://picsum.photos/seed/811/600',
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
-                                              Column(
+                                            ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Hello World',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                'Hello World',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Row(
                                                 mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                    'Hello World',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                  Text(
-                                                    'Hello World',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0),
-                                                        child: Container(
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                5.0, 0.0),
+                                                    child: Container(
+                                                      width: 20.0,
+                                                      height: 12.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.network(
+                                                          'https://picsum.photos/seed/728/600',
                                                           width: 20.0,
                                                           height: 12.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                          ),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0.0),
-                                                            child:
-                                                                Image.network(
-                                                              'https://picsum.photos/seed/728/600',
-                                                              width: 20.0,
-                                                              height: 12.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
-                                                      Text(
-                                                        'Hello World',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                    ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Hello World',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
                                                   ),
                                                 ],
                                               ),
                                             ],
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                         theme: ExpandableThemeData(
@@ -911,32 +882,8 @@ class _TournamentEditeWidgetState extends State<TournamentEditeWidget> {
                       ),
                       Expanded(
                         child: FFButtonWidget(
-                          onPressed: () async {
-                            await TournamentsTable().update(
-                              data: {
-                                'tournament_created_at':
-                                    supaSerialize<DateTime>(
-                                        getCurrentTimestamp),
-                                'tournament_name':
-                                    _model.tournamentNameController.text,
-                                'tournament_tag':
-                                    _model.tournamentTagController.text,
-                                'tournament_logo': _model.tournamentLogo,
-                                'tournament_flag':
-                                    _model.countryPickerModel.selectedFlag,
-                                'tournament_country':
-                                    _model.countryPickerModel.selectedCountry,
-                                'tournament_creator': currentUserUid,
-                              },
-                              matchingRows: (rows) => rows.eq(
-                                'tournament_id',
-                                FFAppState()
-                                    .tournaments[widget.tournamentIndedx]
-                                    .tournamentId,
-                              ),
-                            );
-
-                            context.pushNamed('TOURNAMENTS');
+                          onPressed: () {
+                            print('saveButton pressed ...');
                           },
                           text: 'Сохранить',
                           options: FFButtonOptions(

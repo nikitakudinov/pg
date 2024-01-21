@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -404,10 +403,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                       color: FlutterFlowTheme.of(context).primaryText,
                       size: 24.0,
                     ),
-                    onPressed: () async {
-                      setState(() {
-                        FFAppState().messages = [];
-                      });
+                    onPressed: () {
+                      print('IconButton pressed ...');
                     },
                   ),
                 ),

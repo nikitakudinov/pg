@@ -177,9 +177,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               return;
                             }
 
-                            setState(() {
-                              FFAppState().authUserUpdated = '0';
-                            });
+                            setState(() {});
 
                             context.goNamedAuth('HOME', context.mounted);
                           },
@@ -259,9 +257,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             return;
                           }
 
-                          setState(() {
-                            FFAppState().authUserUpdated = '0';
-                          });
+                          setState(() {});
 
                           context.goNamedAuth('HOME', context.mounted);
                         },
@@ -300,9 +296,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             return;
                           }
 
-                          setState(() {
-                            FFAppState().authUserUpdated = '0';
-                          });
+                          setState(() {});
 
                           context.goNamedAuth('HOME', context.mounted);
                         },

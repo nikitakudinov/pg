@@ -114,18 +114,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
                                       child: Image.network(
-                                        FFAppState()
-                                                    .curentMatchData
-                                                    .first
-                                                    .matchRival1
-                                                    .teamName ==
-                                                'Не определен'
-                                            ? 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/unknowLogo.png'
-                                            : FFAppState()
-                                                .curentMatchData
-                                                .first
-                                                .matchRival1
-                                                .teamLogo,
+                                        'https://picsum.photos/seed/811/600',
                                         width: 75.0,
                                         height: 75.0,
                                         fit: BoxFit.cover,
@@ -133,15 +122,13 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     ),
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival1.teamTag}'
-                                        .maybeHandleOverflow(maxChars: 20),
+                                    'Hello World',
                                     textAlign: TextAlign.end,
                                     style:
                                         FlutterFlowTheme.of(context).titleLarge,
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival1.teamName}'
-                                        .maybeHandleOverflow(maxChars: 20),
+                                    'Hello World',
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium,
@@ -156,12 +143,12 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchForTournament.tournamentTag}',
+                                    'Hello World',
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival1Wins.toString()} - ${FFAppState().curentMatchData.first.matchRival2Wins.toString()}',
+                                    'Hello World',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge,
                                   ),
@@ -175,7 +162,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                             .bodyMedium,
                                       ),
                                       Text(
-                                        '${FFAppState().curentMatchData.first.matchTournamentRound.toString()}',
+                                        'Hello World',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -191,7 +178,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          '${'${FFAppState().curentMatchData.first.matchDate}'}',
+                                          'Hello World',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
@@ -218,18 +205,7 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
                                       child: Image.network(
-                                        FFAppState()
-                                                    .curentMatchData
-                                                    .first
-                                                    .matchRival2
-                                                    .teamName ==
-                                                'Не определен'
-                                            ? 'https://supabase.proplayclub.ru/storage/v1/object/public/playground/unknowLogo.png'
-                                            : FFAppState()
-                                                .curentMatchData
-                                                .first
-                                                .matchRival2
-                                                .teamLogo,
+                                        'https://picsum.photos/seed/811/600',
                                         width: 50.0,
                                         height: 50.0,
                                         fit: BoxFit.cover,
@@ -237,15 +213,13 @@ class _MatchViewWidgetState extends State<MatchViewWidget> {
                                     ),
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival2.teamTag}'
-                                        .maybeHandleOverflow(maxChars: 20),
+                                    'Hello World',
                                     textAlign: TextAlign.start,
                                     style:
                                         FlutterFlowTheme.of(context).titleLarge,
                                   ),
                                   Text(
-                                    '${FFAppState().curentMatchData.first.matchRival2.teamName}'
-                                        .maybeHandleOverflow(maxChars: 20),
+                                    'Hello World',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium,
